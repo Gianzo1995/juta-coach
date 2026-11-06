@@ -68,7 +68,7 @@ def main():
     artifact = corpo.replace("<!--__AVVIO__-->",
                              '<script>window.JUTA_DISTRIBUZIONE="artifact";</script>\n<script src="modello.js"></script>')
     (claude / "artifact.html").write_text(artifact, encoding="utf-8")
-    b64 = base64.b64encode((VENDOR / "modello" / "pose_landmarker_lite.task").read_bytes()).decode()
+    b64 = base64.b64encode((VENDOR / "modello" / "pose_landmarker_full.task").read_bytes()).decode()
     (claude / "modello.js").write_text(f'window.MODELLO_POSA_B64="{b64}";\n')
     copia_vendor(claude, con_modello=False)
 

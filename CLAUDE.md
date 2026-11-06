@@ -21,7 +21,7 @@ Gianluca, titolare di Juta. **Non è uno sviluppatore.**
 | `web/motore.js` | Lo stesso motore in JavaScript (telefono). **Deve restare identico a `regole.py`.** |
 | `web/app.html` | Interfaccia telefono: live, manichino digitale, revisione, ricerca esercizi, "Come si fa". |
 | `web/costruisci.py` | Genera `sito/` (versione online) e `sito_claude/` (artifact claude.ai). |
-| `web/vendor/` | MediaPipe tasks-vision 0.10.21 (wasm, bundle) e modello `pose_landmarker_lite.task`. Non modificare. |
+| `web/vendor/` | MediaPipe tasks-vision 0.10.21 (wasm, bundle) e modelli `pose_landmarker_full.task` (in uso) e `_lite` (ripiego). Non modificare. |
 | `prova_motore.py` | Autotest del motore con movimenti simulati (squat, panca, lat, piegamenti). |
 | `prove/parita.py` | Verifica che Python e JavaScript diano gli stessi risultati (richiede Node). |
 | `avvia.py`, `motore/posa.py`, `*.bat`, `config.yaml` | Versione PC con webcam (Windows, Python 3.12). |
@@ -75,6 +75,15 @@ Ogni voce: `{ "id", "nome"?, "gruppo"?, "scheda", "config_app" }`.
 
 **Attenzione alla durata**: la "durata" misurata va da quando la misura di ripetizione supera `inizio_movimento`
 a quando torna oltre `posizione_iniziale`, quindi è più corta della ripetizione intera.
+
+## App telefono: scelte tecniche
+
+- Modello di posa **full** (più preciso del lite; ripiego automatico su lite se non si carica). Il pannello "Angoli"
+  mostra fps, tempo di elaborazione, risoluzione camera e modello in uso.
+- Camera richiesta a 1920×1080, registrazione per la revisione a 8 Mbit/s.
+- Ogni fotogramma viene copiato su una canvas (`quadro`): lo stesso fotogramma viene analizzato e disegnato,
+  così lo scheletro non resta indietro rispetto all'immagine.
+- Vista di lato: i segmenti del lato lontano dalla camera (spesso stimati perché coperti) sono disegnati tenui.
 
 ## Comportamento del motore (da non rompere)
 

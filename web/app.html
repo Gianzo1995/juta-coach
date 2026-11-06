@@ -181,7 +181,7 @@ canvas { display: block; width: 100%; height: 100%; }
 
 <section id="inizio" class="vista">
   <div class="intro">
-    <div class="marchio">Juta Health &amp; Fitness · Beta 0.5</div>
+    <div class="marchio">Juta Health &amp; Fitness · Beta 0.6</div>
     <h1>Allenati con un <span>occhio in più</span></h1>
     <p>Appoggia il telefono a 2–3 metri e allenati: ti corregge a voce mentre ti muovi, poi rivedi la serie con il manichino che ti mostra la posizione giusta.</p>
     <div class="catalogo">
@@ -342,20 +342,25 @@ async function preparaModello() {
   try { vision = await FilesetResolver.forVisionTasks(new URL("./wasm", location.href).href); }
   catch (e) { throw new Error("Non riesco a caricare il motore di riconoscimento. Ricarica la pagina. Dettaglio: " + (e.message || e)); }
   const base = () => window.MODELLO_POSA_B64 ? { modelAssetBuffer: modelloBytes() }
-    : { modelAssetPath: new URL("./modello/pose_landmarker_lite.task", location.href).href };
+    : { modelAssetPath: new URL(`./modello/pose_landmarker_${perf.modello}.task`, location.href).href };
   const opz = delegate => ({ baseOptions: { ...base(), delegate }, runningMode: "VIDEO", numPoses: 1,
     minPoseDetectionConfidence: 0.5, minPosePresenceConfidence: 0.5, minTrackingConfidence: 0.5 });
-  try { landmarker = await PoseLandmarker.createFromOptions(vision, opz("GPU")); }
-  catch {
-    try { landmarker = await PoseLandmarker.createFromOptions(vision, opz("CPU")); }
-    catch (e) { throw new Error("Non riesco a caricare il modello. Dettaglio: " + (e.message || e)); }
+  let ultimoErrore = null;
+  for (const modello of window.MODELLO_POSA_B64 ? ["full"] : ["full", "lite"]) {
+    perf.modello = modello;
+    for (const delegate of ["GPU", "CPU"]) {
+      try { landmarker = await PoseLandmarker.createFromOptions(vision, opz(delegate)); perf.delegate = delegate; return; }
+      catch (e) { ultimoErrore = e; }
+    }
   }
+  throw new Error("Non riesco a caricare il modello. Dettaglio: " + (ultimoErrore?.message || ultimoErrore));
 }
 
 // ---------------------------------------------------------------------------
 // Stato dell'app
 // ---------------------------------------------------------------------------
 const video = document.createElement("video");
+const quadro = document.createElement("canvas");      // copia del fotogramma: lo stesso viene analizzato e mostrato
 const rvVideo = document.createElement("video");
 for (const v of [video, rvVideo]) { v.playsInline = true; v.muted = true; v.setAttribute("playsinline", ""); v.className = "fuori"; document.body.append(v); }
 
@@ -364,7 +369,7 @@ let flusso = null, fronte = false, voce = true, tecnico = false;
 let sessione = null, ultimaSessione = null, registratore = null;
 let bufferPose = [], fermo = null, ripetuti = {}, rivediDopoErrore = {};
 let ultimoTV = -1, ultimoTs = 0, timerConto = 0, wakeLock = null;
-const perf = { fps: 0, elab: 0, ritardo: null, tPrec: 0, fasi: null };
+const perf = { fps: 0, elab: 0, ritardo: null, tPrec: 0, fasi: null, modello: "full", delegate: "" };
 
 function mostraVista(nome) {
   vista = nome;
@@ -417,7 +422,7 @@ async function apriCamera() {
     throw new Error("La fotocamera funziona solo dalla versione online dell'app (indirizzo https://).");
   fermaCamera();
   flusso = await navigator.mediaDevices.getUserMedia({ audio: false,
-    video: { facingMode: fronte ? "user" : "environment", width: { ideal: 1280 }, height: { ideal: 720 } } });
+    video: { facingMode: fronte ? "user" : "environment", width: { ideal: 1920 }, height: { ideal: 1080 }, frameRate: { ideal: 30 } } });
   video.removeAttribute("src"); video.srcObject = flusso;
   await video.play();
 }
@@ -428,7 +433,7 @@ function avviaRegistrazione(s) {
   const tipi = ["video/mp4;codecs=avc1", "video/mp4", "video/webm;codecs=vp9", "video/webm;codecs=vp8", "video/webm"];
   const tipo = tipi.find(t => MediaRecorder.isTypeSupported?.(t));
   try {
-    const r = new MediaRecorder(flusso, tipo ? { mimeType: tipo, videoBitsPerSecond: 2500000 } : undefined);
+    const r = new MediaRecorder(flusso, tipo ? { mimeType: tipo, videoBitsPerSecond: 8000000 } : { videoBitsPerSecond: 8000000 });
     const pezzi = [];
     r.ondataavailable = e => { if (e.data?.size) pezzi.push(e.data); };
     r.onstart = () => { if (sessione === s) s.offset = performance.now() / 1000; };
@@ -525,9 +530,11 @@ function elabora() {
   const w = video.videoWidth, h = video.videoHeight;
   if (!w) return;
   adattaTela($("tela"), w, h);
+  adattaTela(quadro, w, h);
+  quadro.getContext("2d").drawImage(video, 0, 0, w, h);
   const specchia = modo === "live" && fronte;
   if (!sessione) {           // conto alla rovescia: solo immagine
-    disegnaVideo($("tela"), video, null, null, specchia);
+    disegnaVideo($("tela"), quadro, null, null, specchia);
     disegnaGemello($("gemello"), null, {});
     return;
   }
@@ -539,7 +546,7 @@ function elabora() {
   if (PROVA) posa = PROVA.posa(tv, w, h, esercizio);
   else {
     const ts = Math.max(Math.round(t * 1000), ultimoTs + 1); ultimoTs = ts;
-    const ris = landmarker.detectForVideo(video, ts);
+    const ris = landmarker.detectForVideo(quadro, ts);
     posa = ris.landmarks?.length ? posaDaMediapipe(ris.landmarks[0], w, h) : null;
   }
   const ora = performance.now();
@@ -553,7 +560,7 @@ function elabora() {
   while (bufferPose.length && t - bufferPose[0].t > 4) bufferPose.shift();
   for (const ev of stato.eventi) gestisciEvento(ev);
 
-  disegnaVideo($("tela"), video, posa, stato, specchia);
+  disegnaVideo($("tela"), quadro, posa, stato, specchia);
   gemelloLive(posa, stato, t, specchia);
   aggiornaUI(stato);
 }
@@ -646,6 +653,7 @@ function aggiornaUI(stato) {
   if (tecnico) {
     const righe = [
       `${virgola(perf.fps, 1)} fps · elaborazione ${Math.round(perf.elab)} ms`,
+      `camera ${video.videoWidth}×${video.videoHeight} · modello ${perf.modello} (${perf.delegate})`,
       `ritardo ultimo avviso: ${perf.ritardo === null ? "-" : Math.round(perf.ritardo) + " ms"}`,
       `ultima ripetizione: ${testoFasi(perf.fasi) || "-"}`,
       `lato: ${stato.lato || "-"} · fase: ${stato.fase}`,
@@ -689,7 +697,7 @@ async function rivedi(s, primoErrore) {
 // Disegno: video con scheletro
 // ---------------------------------------------------------------------------
 function adattaTela(tela, w, h) { if (tela.width !== w || tela.height !== h) { tela.width = w; tela.height = h; } }
-function disegnaVideo(tela, sorgente, posa, stato, specchia, evidenzia = null) {
+function disegnaVideo(tela, sorgente, posa, stato, specchia, evidenzia = null, latoRev = null) {
   const ctx = tela.getContext("2d"), w = tela.width, h = tela.height;
   ctx.save();
   if (specchia) { ctx.translate(w, 0); ctx.scale(-1, 1); }
@@ -699,12 +707,15 @@ function disegnaVideo(tela, sorgente, posa, stato, specchia, evidenzia = null) {
     const colore = COLORI[stato?.colore] || COLORI.grigio;
     const sp = Math.max(3, w / 220);
     ctx.lineCap = "round";
+    const lato = stato?.lato || latoRev;
+    const lontano = lato === "sx" ? "_dx" : lato === "dx" ? "_sx" : null;
     for (const [a, b] of COLLEGAMENTI) {
       const pa = posa[a], pb = posa[b];
       if (Math.min(pa[2], pb[2]) < 0.5) continue;
       const evid = usati.has(a) && usati.has(b);
-      ctx.strokeStyle = evid ? colore : "rgba(255,255,255,.6)";
-      ctx.lineWidth = evid ? sp * 2 : sp * 0.9;
+      const tenue = lontano && a.endsWith(lontano) && b.endsWith(lontano);
+      ctx.strokeStyle = evid ? colore : tenue ? "rgba(255,255,255,.22)" : "rgba(255,255,255,.75)";
+      ctx.lineWidth = evid ? sp * 2 : tenue ? sp * 0.6 : sp * 1.1;
       ctx.beginPath(); ctx.moveTo(pa[0], pa[1]); ctx.lineTo(pb[0], pb[1]); ctx.stroke();
     }
     if (evidenzia && posa[evidenzia.punto]) {
@@ -1186,7 +1197,7 @@ function cicloRev() {
   let fant = null;
   if (m && fr?.posa) fant = calcolaFantasma(fr.posa, m.ev.esercizio, m.ev.id, fr.lato, m.ev.valore);
   disegnaVideo($("rv-tela"), orologio.v && rvVideo.readyState >= 2 ? rvVideo : null, fr?.posa || null, null, s.specchia,
-    fant ? { punto: fant.punto, gravita: m.ev.gravita } : null);
+    fant ? { punto: fant.punto, gravita: m.ev.gravita } : null, fr?.lato);
   disegnaGemello($("rv-gemello"), fr?.posa || null, { lato: fr?.lato, specchia: s.specchia, fantasma: fant?.posa,
     evidenzia: fant ? { punto: fant.punto, mobile: fant.mobile, gravita: m.ev.gravita } : null, etichetta: !!m, vuoto: "Nessun corpo rilevato in questo momento" });
   let testo = "";
