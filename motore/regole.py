@@ -26,6 +26,8 @@ ISTERESI_INVERSIONE = 5.0   # di quanto deve "tornare indietro" la misura per di
 # Catalogo esercizi (file JSON in esercizi/catalogo) ed ereditarieta'
 # --------------------------------------------------------------------------
 TIPI_MISURA = {"angolo", "inclinazione", "posizione", "durata"}
+# misure calcolate dal motore a fine ripetizione (in secondi), usabili negli errori con momento "fine"
+MISURE_TEMPO = {"durata", "discesa", "pausa", "salita"}
 
 
 def unisci(base, variante):
@@ -84,6 +86,7 @@ def completa(cfg):
     rip = cfg["ripetizione"]
     rip.setdefault("direzione", "diminuisce")
     rip.setdefault("durata_massima", 10.0)
+    rip.setdefault("tolleranza_pausa", 5.0)
     for e in cfg["errori"]:
         e.setdefault("gravita", "giallo")
         e.setdefault("momento", "fine")
@@ -103,7 +106,7 @@ def valida(cfg):
     for nome, m in misure.items():
         if m.get("tipo") not in TIPI_MISURA:
             problemi.append(f"misura '{nome}': tipo sconosciuto '{m.get('tipo')}'")
-    note = set(misure) | {"durata"} | {f"{n}_asimmetria" for n in misure}
+    note = set(misure) | MISURE_TEMPO | {f"{n}_asimmetria" for n in misure}
     rip = cfg.get("ripetizione") or {}
     if rip.get("misura") not in misure:
         problemi.append(f"ripetizione: misura '{rip.get('misura')}' non definita")
@@ -113,6 +116,31 @@ def valida(cfg):
         if "maggiore_di" not in e and "minore_di" not in e:
             problemi.append(f"errore '{e.get('id')}': manca la soglia (maggiore_di o minore_di)")
     return problemi
+
+
+def applica_impostazioni(cfg, imposta):
+    """Applica le scelte fatte prima della serie (es. {"lato": "dx"} o {"errori.profondita": {...}}).
+    "errori.<id>" aggiunge o sostituisce un errore, "errori.<id>.<campo>" ne cambia un campo,
+    gli altri percorsi (es. "ripetizione.posizione_iniziale") cambiano il campo indicato."""
+    out = copy.deepcopy(cfg)
+    for percorso, valore in imposta.items():
+        parti = percorso.split(".")
+        if parti[0] == "errori" and len(parti) >= 2:
+            idx = next((k for k, e in enumerate(out["errori"]) if e["id"] == parti[1]), None)
+            if len(parti) == 2:
+                nuovo = dict(copy.deepcopy(valore), id=parti[1])
+                if idx is None:
+                    out["errori"].append(nuovo)
+                else:
+                    out["errori"][idx] = nuovo
+            elif idx is not None:
+                out["errori"][idx][parti[2]] = copy.deepcopy(valore)
+            continue
+        o = out
+        for p in parti[:-1]:
+            o = o.setdefault(p, {})
+        o[parti[-1]] = copy.deepcopy(valore)
+    return completa(out)
 
 
 def carica_tutti(cartella="esercizi"):
@@ -185,6 +213,9 @@ class Analizzatore:
         self._t_estremo = None
         self._invertito = False
         self._fine_ultima_rip = None
+        self._serie = []            # (t, valore) della misura di ripetizione durante il movimento
+        self._t_alto = None         # ultimo istante in posizione iniziale
+        self._t_partenza = None
         self._errori_serie = {}
         self._msg = ("", "grigio", 0.0)
         self._err_msg = None
@@ -322,6 +353,7 @@ class Analizzatore:
         if self.fase in ("attesa", "pronto"):
             if in_posizione:
                 self.fase = "pronto"
+                self._t_alto = t
                 self._storico_pronto.append(dict(self._grezze))
             elif self.fase == "pronto" and in_movimento:
                 self._inizia_ripetizione(misure, t)
@@ -331,6 +363,7 @@ class Analizzatore:
         for nome, v in misure.items():
             self._min[nome] = min(self._min.get(nome, v), v)
             self._max[nome] = max(self._max.get(nome, v), v)
+        self._serie.append((t, valore))
         if segno * valore < segno * self._estremo:
             self._estremo, self._t_estremo = valore, t
         self._controlla_errori("durante", misure, t, stato, self.ripetizioni + 1)
@@ -352,6 +385,8 @@ class Analizzatore:
         self._anticipati = set()
         self._estremo = misure[self.cfg["ripetizione"]["misura"]]
         self._t_estremo = t
+        self._serie = [(t, self._estremo)]
+        self._t_partenza = self._t_alto if self._t_alto is not None else t
         self._invertito = False
         self._base = dict(self._storico_pronto[0]) if self._storico_pronto else {}
         self._storico_pronto.clear()
@@ -363,6 +398,9 @@ class Analizzatore:
         self.ripetizioni += 1
         durata = t - self._inizio_rip
         self._min["durata"] = self._max["durata"] = durata
+        fasi = self._calcola_fasi(t)
+        for k, v in fasi.items():
+            self._min[k] = self._max[k] = v
 
         # gli errori anticipati restano solo se valgono anche con i valori finali
         for eid in list(self._anticipati):
@@ -382,6 +420,7 @@ class Analizzatore:
             "numero": self.ripetizioni,
             "durata_s": round(durata, 2),
             "errori": errori,
+            "fasi": {k: round(v, 2) for k, v in fasi.items()},
             "inizio_t": round(self._inizio_rip, 3),
             "fondo_t": round(self._t_estremo, 3),
             "fine_t": round(t, 3),
@@ -392,6 +431,23 @@ class Analizzatore:
             self._mostra(self.cfg.get("messaggio_ok", "Ottima ripetizione!"), "verde", t)
         self._base = {}
         self._fine_ultima_rip = t
+
+    def _calcola_fasi(self, t_fine):
+        """Discesa: dall'uscita dalla posizione iniziale all'arrivo in basso.
+        Pausa: tempo passato entro 'tolleranza_pausa' dal punto piu' basso.
+        Salita: da quando si lascia il basso al ritorno in posizione iniziale."""
+        toll = self.cfg["ripetizione"].get("tolleranza_pausa", 5.0)
+        serie = self._serie
+        i = min(range(len(serie)), key=lambda k: abs(serie[k][0] - self._t_estremo))
+        i0 = i
+        while i0 > 0 and abs(serie[i0 - 1][1] - self._estremo) <= toll:
+            i0 -= 1
+        i1 = i
+        while i1 < len(serie) - 1 and abs(serie[i1 + 1][1] - self._estremo) <= toll:
+            i1 += 1
+        return {"discesa": serie[i0][0] - self._t_partenza,
+                "pausa": serie[i1][0] - serie[i0][0],
+                "salita": t_fine - serie[i1][0]}
 
     def _chiudi_serie(self, stato):
         if self.ripetizioni > 0:

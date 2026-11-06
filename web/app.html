@@ -128,6 +128,15 @@ canvas { display: block; width: 100%; height: 100%; }
 .link-es { background: none; border: 0; padding: 0; color: #8fe3b4; text-decoration: underline; text-underline-offset: 3px; font: inherit; text-align: left; }
 .riquadro { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 14px; display: grid; gap: 8px; }
 .riquadro.attenzione { border-color: rgba(242,181,48,.5); }
+.impostazioni { display: grid; gap: 12px; background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; }
+.impostazione { display: grid; gap: 8px; }
+.impostazione > span { font-weight: 600; }
+.chips-scelta { display: flex; flex-wrap: wrap; gap: 6px; }
+.chips-scelta button { min-width: 64px; background: var(--bg); border: 1px solid var(--line); border-radius: 999px; padding: 9px 16px; font-weight: 600; }
+.chips-scelta button[aria-pressed="true"] { background: var(--fg); color: var(--bg); border-color: var(--fg); }
+.avviso-rosso { margin: 0; background: rgba(229,72,77,.14); border: 1px solid var(--rosso); border-radius: 10px; padding: 12px 14px; font-weight: 600; }
+.riquadro.pericolo { border-color: var(--rosso); background: rgba(229,72,77,.10); }
+.misurati { display: grid; gap: 6px; }
 .misurato { font: 600 15px/1.3 var(--mono); color: var(--fg); background: var(--panel-2); border-radius: 8px; padding: 8px 10px; margin: 0; }
 .testata small { color: var(--muted); font-size: 13px; }
 .rv-schermi { display: flex; flex-direction: column; height: min(62vh, 640px); }
@@ -172,7 +181,7 @@ canvas { display: block; width: 100%; height: 100%; }
 
 <section id="inizio" class="vista">
   <div class="intro">
-    <div class="marchio">Juta Health &amp; Fitness · Beta 0.4</div>
+    <div class="marchio">Juta Health &amp; Fitness · Beta 0.5</div>
     <h1>Allenati con un <span>occhio in più</span></h1>
     <p>Appoggia il telefono a 2–3 metri e allenati: ti corregge a voce mentre ti muovi, poi rivedi la serie con il manichino che ti mostra la posizione giusta.</p>
     <div class="catalogo">
@@ -184,6 +193,8 @@ canvas { display: block; width: 100%; height: 100%; }
       <div class="scelto-testo"><b id="scelto-nome"></b><span id="scelto-info"></span></div>
       <button id="b-come" class="btn piccolo">Come si fa</button>
     </div>
+    <div id="impostazioni" class="impostazioni" hidden></div>
+    <p id="avviso-sicurezza" class="avviso-rosso" role="alert" hidden></p>
     <p id="nota-scheda" class="avviso" hidden></p>
     <div id="errore" hidden></div>
     <button id="b-live" class="btn primario">Avvia il live</button>
@@ -261,7 +272,8 @@ canvas { display: block; width: 100%; height: 100%; }
 /*__CATALOGO__*/
 /*__MOTORE__*/
 const CATALOGO = costruisciCatalogo(CATALOGO_GREZZO);
-const ESERCIZI = CATALOGO.esercizi;
+const ESERCIZI = CATALOGO.esercizi;              // config in uso (con le impostazioni scelte prima della serie)
+const ESERCIZI_BASE = JSON.parse(JSON.stringify(ESERCIZI));
 </script>
 <!--__AVVIO__-->
 <script type="module">
@@ -284,12 +296,13 @@ const COLLEGAMENTI = [
 // ---------------------------------------------------------------------------
 const VOCE_CATALOGO = Object.fromEntries(CATALOGO.elenco.map(v => [v.id, v]));
 const NOMI_MISURE = { ginocchio: "Ginocchio", busto: "Busto", gomito: "Gomito", tallone: "Tallone", anca: "Bacino",
-  corpo: "Linea del corpo", gambe: "Ginocchio", durata: "Durata", gomito_asimmetria: "Differenza braccia" };
+  corpo: "Linea del corpo", gambe: "Ginocchio", durata: "Durata", discesa: "Discesa", pausa: "Fermo in basso", salita: "Salita",
+  gomito_asimmetria: "Differenza braccia" };
 const nomeMisura = m => NOMI_MISURE[m] || (m.charAt(0).toUpperCase() + m.slice(1).replace(/_/g, " "));
 const senzaPunto = t => (t || "").trim().replace(/[.!]+$/, "");
 
 const virgola = (v, d = 0) => Number(v).toFixed(d).replace(".", ",");
-const tipoMisura = (es, misura) => misura === "durata" ? "durata" : (ESERCIZI[es]?.misure?.[misura.replace("_asimmetria", "")]?.tipo || "angolo");
+const tipoMisura = (es, misura) => MISURE_TEMPO.has(misura) ? "durata" : (ESERCIZI[es]?.misure?.[misura.replace("_asimmetria", "")]?.tipo || "angolo");
 function testoMisura(es, misura, v) {
   if (v === null || v === undefined) return "";
   const tipo = tipoMisura(es, misura);
@@ -297,6 +310,8 @@ function testoMisura(es, misura, v) {
   if (tipo === "posizione") return "sollevato";
   return `${Math.round(v)}°`;
 }
+const testoTempo = (es, e) => `${nomeMisura(e.misura)} ${testoMisura(es, e.misura, e.valore)} · minimo ${testoSoglia(es, e.misura, e.soglia)}`;
+const testoFasi = f => f ? `discesa ${virgola(f.discesa, 1)} s · fermo ${virgola(f.pausa, 1)} s · salita ${virgola(f.salita, 1)} s` : "";
 const testoSoglia = (es, misura, s) => tipoMisura(es, misura) === "durata" ? `${virgola(s, 1)} s` : `${Math.round(s)}°`;
 function spiegazione(es, id) {
   const t = ESERCIZI[es]?.testi_errori?.[id] || {}, err = erroreCfg(es, id) || {};
@@ -347,7 +362,7 @@ let flusso = null, fronte = false, voce = true, tecnico = false;
 let sessione = null, ultimaSessione = null, registratore = null;
 let bufferPose = [], fermo = null, ripetuti = {}, rivediDopoErrore = {};
 let ultimoTV = -1, ultimoTs = 0, timerConto = 0, wakeLock = null;
-const perf = { fps: 0, elab: 0, ritardo: null, tPrec: 0 };
+const perf = { fps: 0, elab: 0, ritardo: null, tPrec: 0, fasi: null };
 
 function mostraVista(nome) {
   vista = nome;
@@ -366,7 +381,7 @@ function aggiornaInizio() {
   if (DIST === "artifact") $("b-video").classList.add("primario");
 }
 function nuovaSessione(offset) {
-  return { esercizio, specchia: modo === "live" && fronte, offset, frames: [], eventi: [], blob: null,
+  return { esercizio, impostazioni: impostazioniCorrenti, specchia: modo === "live" && fronte, offset, frames: [], eventi: [], blob: null,
     pronta: null, larghezza: 0, altezza: 0 };
 }
 
@@ -482,8 +497,11 @@ async function analizzaVideo(file) {
   } catch (e) { attivo = false; mostraVista("inizio"); mostraErrore(e); }
 }
 
+let impostazioniCorrenti = [];
 function preparaSessioneUI() {
-  an = new Analizzatore(ESERCIZI[esercizio]);
+  const { cfg, etichette } = configScelta();
+  ESERCIZI[esercizio] = cfg; impostazioniCorrenti = etichette;
+  an = new Analizzatore(cfg);
   ripetuti = {}; rivediDopoErrore = {}; fermo = null; bufferPose = []; sessione = null;
   $("rip").textContent = "0"; $("riepilogo").hidden = true; $("conto").hidden = true;
   $("b-camera").hidden = modo !== "live";
@@ -562,6 +580,7 @@ function gestisciEvento(ev) {
   }
   if (ev.tipo === "ripetizione") {
     s.eventi.push({ ...ev, tv0: ev.inizio_t - off, tvF: ev.fine_t - off, tvB: ev.fondo_t - off });
+    perf.fasi = ev.fasi;
     for (const e of s.eventi) {          // errori di fine ripetizione: il momento giusto è il punto più basso
       if (e.tipo === "errore" && e.ripetizione === ev.numero && !e.anticipato && e.misura !== "durata"
           && erroreCfg(e.esercizio, e.id).momento === "fine") e.tvFoto = ev.fondo_t - off;
@@ -626,6 +645,7 @@ function aggiornaUI(stato) {
     const righe = [
       `${virgola(perf.fps, 1)} fps · elaborazione ${Math.round(perf.elab)} ms`,
       `ritardo ultimo avviso: ${perf.ritardo === null ? "-" : Math.round(perf.ritardo) + " ms"}`,
+      `ultima ripetizione: ${testoFasi(perf.fasi) || "-"}`,
       `lato: ${stato.lato || "-"} · fase: ${stato.fase}`,
       ...Object.entries(stato.misure).map(([k, v]) => `${k}: ${v.toFixed(2)}`),
     ];
@@ -727,7 +747,7 @@ function ruotaVerso(f, perno, mobile, misuraFn, obiettivo, punti) {
 const giaGiusto = (err, v, obiettivo) => err.maggiore_di !== undefined ? v <= obiettivo : v >= obiettivo;
 function calcolaFantasma(posa, es, errId, lato, valoreMisurato) {
   const cfg = ESERCIZI[es], err = erroreCfg(es, errId);
-  if (!posa || !err || err.misura === "durata") return null;
+  if (!posa || !err || MISURE_TEMPO.has(err.misura)) return null;
   const asim = err.misura.endsWith("_asimmetria");
   const nome = asim ? err.misura.replace("_asimmetria", "") : err.misura;
   const spec = cfg.misure[nome];
@@ -902,7 +922,7 @@ function gemelloLive(posa, stato, t, specchia) {
   else {
     fermo = null;
     if (stato.errore && stato.errore.momento === "durante") err = { esercizio, ...stato.errore };
-    else if (stato.errore && stato.errore.misura === "durata") err = { esercizio, ...stato.errore };
+    else if (stato.errore && MISURE_TEMPO.has(stato.errore.misura)) err = { esercizio, ...stato.errore };
   }
   let opz = { lato, specchia };
   let testo = "", gravita = "";
@@ -910,7 +930,7 @@ function gemelloLive(posa, stato, t, specchia) {
     const f = calcolaFantasma(fonte, err.esercizio || esercizio, err.id, lato, err.valore);
     gravita = err.gravita;
     if (f) { opz = { ...opz, fantasma: f.posa, evidenzia: { punto: f.punto, mobile: f.mobile, gravita }, etichetta: true }; testo = f.testo; }
-    else if (err.misura === "durata") testo = `Durata ${testoMisura(esercizio, "durata", err.valore)} · minimo ${testoSoglia(esercizio, "durata", err.soglia)}`;
+    else if (MISURE_TEMPO.has(err.misura)) testo = testoTempo(esercizio, err);
     if (fonte !== posa) testo = (testo ? testo + "\n" : "") + "Fermo immagine: il tuo punto più basso";
   }
   disegnaGemello($("gemello"), fonte, opz);
@@ -977,7 +997,7 @@ async function apriRevisione(s, primoErrore) {
 
   const r = riassunto(s);
   $("rv-titolo").textContent = `${ESERCIZI[s.esercizio].nome} · revisione`;
-  $("rv-sotto").textContent = `${r.tot} ripetizioni · ${r.corrette} corrette · ${rv.marcatori.length} errori`;
+  $("rv-sotto").textContent = [`${r.tot} ripetizioni · ${r.corrette} corrette · ${rv.marcatori.length} errori`, ...(s.impostazioni || [])].join(" · ");
   $("rv-tot").textContent = `${virgola(rv.durata, 1)} s`;
   costruisciLinea();
   gemelloStato.delete($("rv-gemello"));
@@ -1077,7 +1097,7 @@ function mostraSchedaErrore(m) {
   const chips = el("div", { className: "chips" },
     el("span", { className: "chip", textContent: `Ripetizione ${ev.ripetizione}` }),
     el("span", { className: "chip", textContent: ev.gravita === "rosso" ? "Da correggere subito" : "Da migliorare" }),
-    el("span", { className: "chip", textContent: ev.anticipato ? "Segnalato al punto più basso" : "Segnalato mentre succedeva" }));
+    el("span", { className: "chip", textContent: ev.anticipato ? "Segnalato al punto più basso" : (cfg.momento === "fine" ? "Segnalato a fine ripetizione" : "Segnalato mentre succedeva") }));
   chips.children[1].dataset.g = ev.gravita;
   const come = comeLista(sp.come);
   const lista = come.length > 1 ? el("ul") : el("p", { textContent: come[0] || "" });
@@ -1085,7 +1105,8 @@ function mostraSchedaErrore(m) {
   const ascolta = el("button", { className: "btn", textContent: "Ascolta la spiegazione" });
   ascolta.onclick = () => parla(`${cfg.messaggio}. ${compila(sp.cosa, ev)} ${sp.perche} ${come.join(" ")}`, true);
   $("scheda").replaceChildren(chips, el("h2", { textContent: cfg.messaggio }),
-    voceScheda("Cosa è successo", el("div", {}, el("p", { textContent: compila(sp.cosa, ev) }), el("p", { className: "misurato", textContent: testoMisurato(ev) }))),
+    voceScheda("Cosa è successo", el("div", { className: "misurati" }, el("p", { textContent: compila(sp.cosa, ev) }), el("p", { className: "misurato", textContent: testoMisurato(ev) }),
+      ...(rv.rip.find(r => r.numero === ev.ripetizione)?.fasi ? [el("p", { className: "misurato", textContent: "Tempi: " + testoFasi(rv.rip.find(r => r.numero === ev.ripetizione).fasi) })] : []))),
     voceScheda("Perché conta", el("p", { textContent: sp.perche })),
     voceScheda("Come correggerlo", lista),
     el("p", { className: "cue", textContent: `«${sp.cue}»` }),
@@ -1167,7 +1188,7 @@ function cicloRev() {
   disegnaGemello($("rv-gemello"), fr?.posa || null, { lato: fr?.lato, specchia: s.specchia, fantasma: fant?.posa,
     evidenzia: fant ? { punto: fant.punto, mobile: fant.mobile, gravita: m.ev.gravita } : null, etichetta: !!m, vuoto: "Nessun corpo rilevato in questo momento" });
   let testo = "";
-  if (m) testo = fant ? fant.testo : `Durata ${testoMisura(m.ev.esercizio, "durata", m.ev.valore)} · minimo ${testoSoglia(m.ev.esercizio, "durata", m.ev.soglia)}`;
+  if (m) testo = fant ? fant.testo : testoTempo(m.ev.esercizio, m.ev);
   mostraEtichetta($("rv-et"), testo, m?.ev.gravita);
 
   $("testina").style.left = `${Math.min(100, tv / rv.durata * 100)}%`;
@@ -1207,7 +1228,35 @@ function disegnaLista() {
     }
   }
 }
+let scelte = {};                 // impostazione -> indice dell'opzione scelta
+function disegnaImpostazioni() {
+  const v = VOCE_CATALOGO[esercizio], box = $("impostazioni");
+  const imps = v.analizzabile ? (ESERCIZI_BASE[esercizio].impostazioni || []) : [];
+  box.replaceChildren(); box.hidden = !imps.length;
+  for (const imp of imps) {
+    const gruppo = el("div", { className: "chips-scelta" });
+    gruppo.setAttribute("role", "group"); gruppo.setAttribute("aria-label", imp.domanda);
+    imp.opzioni.forEach((o, i) => {
+      const b = el("button", { textContent: o.etichetta });
+      b.setAttribute("aria-pressed", String((scelte[imp.id] ?? 0) === i));
+      b.onclick = () => { scelte[imp.id] = i; disegnaImpostazioni(); };
+      gruppo.append(b);
+    });
+    box.append(el("div", { className: "impostazione" }, el("span", { textContent: imp.domanda }), gruppo));
+  }
+}
+// config dell'esercizio con le scelte fatte, piu' una descrizione da mostrare in revisione
+function configScelta() {
+  const base = ESERCIZI_BASE[esercizio], imposta = {}, etichette = [];
+  for (const imp of base.impostazioni || []) {
+    const o = imp.opzioni[scelte[imp.id] ?? 0];
+    Object.assign(imposta, o.imposta); etichette.push(`${imp.domanda} ${o.etichetta}`);
+  }
+  return { cfg: Object.keys(imposta).length ? applicaImpostazioni(base, imposta) : JSON.parse(JSON.stringify(base)), etichette };
+}
+
 function scegli(id) {
+  if (id !== esercizio) scelte = {};
   esercizio = id;
   try { localStorage.setItem("juta-esercizio", id); } catch {}
   disegnaLista(); aggiornaScelto();
@@ -1219,6 +1268,9 @@ function aggiornaScelto() {
   const ok = v.analizzabile;
   $("b-live").disabled = !ok; $("file-video").disabled = !ok;
   $("b-video").classList.toggle("disattivo", !ok); $("nota-scheda").hidden = ok;
+  disegnaImpostazioni();
+  $("avviso-sicurezza").hidden = !v.cfg.avviso_sicurezza;
+  $("avviso-sicurezza").textContent = v.cfg.avviso_sicurezza || "";
   if (!ok) $("nota-scheda").textContent = `L'app non analizza questo esercizio.${v.cfg.motivo ? " " + v.cfg.motivo : ""} Apri «Come si fa» per la scheda tecnica.`;
 }
 
@@ -1237,6 +1289,7 @@ function disegnaCome(id) {
   const sez = (titolo, ...figli) => el("section", {}, el("h2", { textContent: titolo }), ...figli);
   const coppia = (x, y) => el("li", { className: "coppia" }, el("b", { textContent: x }), el("span", { textContent: y }));
   const parti = [];
+  if (cfg.avviso_sicurezza) parti.push(el("section", { className: "riquadro pericolo" }, sotto("Attenzione"), el("p", { textContent: cfg.avviso_sicurezza })));
   if (sc) {
     if (sc.descrizione) parti.push(el("section", {}, par(sc.descrizione)));
     const m = sc.muscoli || {}, dl = el("dl");

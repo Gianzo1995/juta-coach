@@ -49,7 +49,7 @@
       {"id": "allineamento", "messaggio": "Corpo in linea retta", "gravita": "rosso", "momento": "durante", "misura": "corpo", "minore_di": 155},
       {"id": "profondita", "messaggio": "Scendi di più", "gravita": "giallo", "momento": "fine", "misura": "gomito", "statistica": "minimo", "maggiore_di": 100},
       {"id": "gambe_piegate", "messaggio": "Gambe tese", "gravita": "giallo", "momento": "durante", "misura": "gambe", "minore_di": 160},
-      {"id": "troppo_veloce", "messaggio": "Rallenta il movimento", "gravita": "giallo", "momento": "fine", "misura": "durata", "statistica": "massimo", "minore_di": 1.5}
+      {"id": "troppo_veloce", "messaggio": "Rallenta il movimento", "gravita": "giallo", "momento": "fine", "misura": "discesa", "minore_di": 0.8}
     ],
     "testi_errori": {
       "allineamento": {"cosa_succede": "Il corpo non è dritto: il bacino scende verso terra oppure il sedere sale.", "perche_conta": "Con il bacino che cede la zona lombare si inarca sotto carico; con il sedere alto il lavoro passa dal petto alle spalle.", "come_correggere": "Stringi glutei e addome prima di scendere; se non riesci a tenerlo, passa ai piegamenti inclinati.", "frase_da_ricordare": "Corpo rigido come una tavola."},
@@ -110,7 +110,7 @@
     "errori": [
       {"id": "allineamento", "messaggio": "Bacino avanti, corpo dritto", "gravita": "giallo", "momento": "durante", "misura": "corpo", "minore_di": 150},
       {"id": "profondita", "messaggio": "Scendi di più", "gravita": "giallo", "momento": "fine", "misura": "gomito", "statistica": "minimo", "maggiore_di": 100},
-      {"id": "troppo_veloce", "messaggio": "Rallenta il movimento", "gravita": "giallo", "momento": "fine", "misura": "durata", "statistica": "massimo", "minore_di": 1.5}
+      {"id": "troppo_veloce", "messaggio": "Rallenta il movimento", "gravita": "giallo", "momento": "fine", "misura": "discesa", "minore_di": 0.8}
     ],
     "testi_errori": {
       "allineamento": {"cosa_succede": "Le anche restano piegate e il sedere va indietro.", "perche_conta": "Il peso si sposta sulle ginocchia e il petto lavora molto meno.", "come_correggere": "Porta il bacino in avanti finché spalle, anche e ginocchia sono in linea.", "frase_da_ricordare": "Linea da testa a ginocchia."}
@@ -161,7 +161,7 @@
       {"id": "allineamento", "messaggio": "Corpo in linea retta", "gravita": "rosso", "momento": "durante", "misura": "corpo", "minore_di": 155},
       {"id": "profondita", "messaggio": "Scendi di più", "gravita": "giallo", "momento": "fine", "misura": "gomito", "statistica": "minimo", "maggiore_di": 110},
       {"id": "gambe_piegate", "messaggio": "Gambe tese", "gravita": "giallo", "momento": "durante", "misura": "gambe", "minore_di": 160},
-      {"id": "troppo_veloce", "messaggio": "Rallenta il movimento", "gravita": "giallo", "momento": "fine", "misura": "durata", "statistica": "massimo", "minore_di": 1.5}
+      {"id": "troppo_veloce", "messaggio": "Rallenta il movimento", "gravita": "giallo", "momento": "fine", "misura": "discesa", "minore_di": 0.8}
     ],
     "analizzabilita": "parziale",
     "motivo": "Con le mani larghe l'avambraccio esce dal piano laterale: l'angolo del gomito visto di lato è deformato dalla prospettiva, quindi la soglia di profondità è meno affidabile che in PET-001. La larghezza della presa, cioè l'elemento che definisce la variante, non è misurabile.",
@@ -210,7 +210,7 @@
       {"id": "allineamento", "messaggio": "Corpo in linea retta", "gravita": "rosso", "momento": "durante", "misura": "corpo", "minore_di": 155},
       {"id": "profondita", "messaggio": "Petto sotto le mani", "gravita": "giallo", "momento": "fine", "misura": "gomito", "statistica": "minimo", "maggiore_di": 85},
       {"id": "gambe_piegate", "messaggio": "Gambe tese", "gravita": "giallo", "momento": "durante", "misura": "gambe", "minore_di": 160},
-      {"id": "troppo_veloce", "messaggio": "Scendi più lentamente", "gravita": "giallo", "momento": "fine", "misura": "durata", "statistica": "massimo", "minore_di": 2.5}
+      {"id": "troppo_veloce", "messaggio": "Scendi più lentamente", "gravita": "giallo", "momento": "fine", "misura": "discesa", "minore_di": 1.2}
     ],
     "testi_errori": {
       "profondita": {"cosa_succede": "Ti fermi all'altezza delle mani, come in un piegamento normale.", "perche_conta": "Il vantaggio dei rialzi è proprio la discesa in più: senza, l'esercizio è un piegamento standard.", "come_correggere": "Scendi col petto qualche centimetro sotto le mani, fin dove controlli le spalle.", "frase_da_ricordare": "Petto sotto le mani."},

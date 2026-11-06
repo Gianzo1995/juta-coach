@@ -33,7 +33,7 @@
       {"id": "glutei_staccati", "messaggio": "Glutei sulla panca", "gravita": "rosso", "momento": "durante", "misura": "glutei", "maggiore_di": 0.1},
       {"id": "profondita", "messaggio": "Porta il bilanciere al petto", "gravita": "giallo", "momento": "fine", "misura": "gomito", "statistica": "minimo", "maggiore_di": 100},
       {"id": "avambraccio_inclinato", "messaggio": "Polsi sopra i gomiti", "gravita": "rosso", "momento": "durante", "misura": "avambraccio", "maggiore_di": 25},
-      {"id": "rimbalzo", "messaggio": "Scendi più lentamente", "gravita": "rosso", "momento": "fine", "misura": "durata", "statistica": "massimo", "minore_di": 1.5}
+      {"id": "rimbalzo", "messaggio": "Scendi più lentamente", "gravita": "rosso", "momento": "fine", "misura": "discesa", "minore_di": 1.2}
     ],
     "testi_errori": {
       "avambraccio_inclinato": {"cosa_succede": "Il bilanciere non è sopra i gomiti: gli avambracci sono inclinati.", "perche_conta": "Con la presa supina un bilanciere fuori asse tende a scivolare verso le dita.", "come_correggere": "Tieni il bilanciere sul tallone della mano e tocca in basso sul petto.", "frase_da_ricordare": "Polsi sopra i gomiti, pollice chiuso."}
@@ -86,7 +86,7 @@
       {"id": "gambe_piegate", "messaggio": "Gambe tese", "gravita": "giallo", "momento": "durante", "misura": "gambe", "minore_di": 155},
       {"id": "profondita", "messaggio": "Porta il bilanciere al petto", "gravita": "giallo", "momento": "fine", "misura": "gomito", "statistica": "minimo", "maggiore_di": 100},
       {"id": "avambraccio_inclinato", "messaggio": "Polsi sopra i gomiti", "gravita": "giallo", "momento": "durante", "misura": "avambraccio", "maggiore_di": 25},
-      {"id": "rimbalzo", "messaggio": "Scendi più lentamente", "gravita": "rosso", "momento": "fine", "misura": "durata", "statistica": "massimo", "minore_di": 1.5}
+      {"id": "rimbalzo", "messaggio": "Scendi più lentamente", "gravita": "rosso", "momento": "fine", "misura": "discesa", "minore_di": 1.2}
     ],
     "testi_errori": {
       "gambe_piegate": {"cosa_succede": "Le ginocchia si piegano e i piedi cercano il pavimento.", "perche_conta": "Lo scopo dell'esercizio è togliere l'aiuto delle gambe: piegandole torni alla panca normale.", "come_correggere": "Stendi e contrai le gambe; se è troppo difficile, appoggia solo i talloni senza spingere.", "frase_da_ricordare": "Gambe tese, spingono solo le braccia."}
@@ -133,6 +133,7 @@
   },
   "config_app": {
     "eredita_da": "PET-012",
+    "avviso_sicurezza": "Esercizio ad alto rischio: da eseguire solo con l'istruttore, con fermi di sicurezza montati e un assistente. Per la maggior parte dei clienti è meglio la panca inclinata.",
     "messaggio_posizione": "Esercizio non supportato: chiedi all'istruttore",
     "messaggio_ok": "",
     "misure": {},
@@ -191,7 +192,7 @@
     "errori": [
       {"id": "profondita", "messaggio": "Gomiti fino a terra", "gravita": "giallo", "momento": "fine", "misura": "gomito", "statistica": "minimo", "maggiore_di": 120},
       {"id": "avambraccio_inclinato", "messaggio": "Polsi sopra i gomiti", "gravita": "giallo", "momento": "durante", "misura": "avambraccio", "maggiore_di": 25},
-      {"id": "rimbalzo", "messaggio": "Fermati con i gomiti a terra", "gravita": "giallo", "momento": "fine", "misura": "durata", "statistica": "massimo", "minore_di": 2.0}
+      {"id": "rimbalzo", "messaggio": "Fermati con i gomiti a terra", "gravita": "giallo", "momento": "fine", "misura": "pausa", "minore_di": 0.5}
     ],
     "testi_errori": {
       "profondita": {"cosa_succede": "Risali prima che i gomiti tocchino terra.", "perche_conta": "La floor press funziona proprio perché parte da fermo con i gomiti a terra.", "come_correggere": "Scendi finché il braccio appoggia, poi spingi.", "frase_da_ricordare": "Gomiti a terra, ogni volta."},
@@ -241,11 +242,18 @@
   },
   "config_app": {
     "eredita_da": "PET-012",
+    "impostazioni": [
+      {"id": "tavolette", "domanda": "Quante tavolette usi?", "opzioni": [
+        {"etichetta": "1", "imposta": {"errori.profondita": {"messaggio": "Arriva alla tavoletta", "gravita": "giallo", "momento": "fine", "misura": "gomito", "statistica": "minimo", "maggiore_di": 105}}},
+        {"etichetta": "2", "imposta": {"errori.profondita": {"messaggio": "Arriva alla tavoletta", "gravita": "giallo", "momento": "fine", "misura": "gomito", "statistica": "minimo", "maggiore_di": 115}}},
+        {"etichetta": "3", "imposta": {"errori.profondita": {"messaggio": "Arriva alla tavoletta", "gravita": "giallo", "momento": "fine", "misura": "gomito", "statistica": "minimo", "maggiore_di": 125}}},
+        {"etichetta": "4-5", "imposta": {"errori.profondita": {"messaggio": "Arriva alla tavoletta", "gravita": "giallo", "momento": "fine", "misura": "gomito", "statistica": "minimo", "maggiore_di": 135}}}]}
+    ],
     "messaggio_ok": "Ottima board press!",
     "errori": [
       {"id": "glutei_staccati", "messaggio": "Glutei sulla panca", "gravita": "rosso", "momento": "durante", "misura": "glutei", "maggiore_di": 0.1},
       {"id": "avambraccio_inclinato", "messaggio": "Polsi sopra i gomiti", "gravita": "giallo", "momento": "durante", "misura": "avambraccio", "maggiore_di": 25},
-      {"id": "rimbalzo", "messaggio": "Fermati sulla tavoletta", "gravita": "rosso", "momento": "fine", "misura": "durata", "statistica": "massimo", "minore_di": 1.5}
+      {"id": "rimbalzo", "messaggio": "Fermati sulla tavoletta", "gravita": "rosso", "momento": "fine", "misura": "pausa", "minore_di": 0.4}
     ],
     "testi_errori": {
       "rimbalzo": {"cosa_succede": "La ripetizione è troppo rapida: il bilanciere probabilmente rimbalza sulle tavolette.", "perche_conta": "Con carichi alti un rimbalzo fa perdere il controllo del bilanciere.", "come_correggere": "Scendi controllato, appoggia leggero e conta 'uno' prima di spingere.", "frase_da_ricordare": "Appoggia leggero, poi spingi."}

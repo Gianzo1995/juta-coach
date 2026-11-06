@@ -115,6 +115,19 @@ def ripetizione(fn_posa, inizio, fondo, secondi=2.0, **extra_fondo):
     return frames
 
 
+def ripetizione_fasi(fn_posa, inizio, fondo, discesa, pausa, salita, **extra_fondo):
+    """Ripetizione a velocita' costante: discesa, fermo in basso, salita (in secondi), poi 1 s fermo in alto."""
+    frames = []
+    def posa(f):
+        return fn_posa(inizio + (fondo - inizio) * f, **{k: v * f for k, v in extra_fondo.items()})
+    for i in range(int(discesa * FPS)):
+        frames.append(posa(i / (discesa * FPS)))
+    frames += [posa(1.0)] * int(pausa * FPS)
+    for i in range(int(salita * FPS)):
+        frames.append(posa(1 - i / (salita * FPS)))
+    return frames + [fn_posa(inizio)] * FPS
+
+
 def esegui(analizzatore, frames):
     eventi, t = [], 0.0
     for posa in frames:
@@ -177,10 +190,28 @@ def main():
     risultati.append(verifica("Panca piana PET-012", esegui(Analizzatore(es["PET-012"]), frames),
                               [[], ["profondita"], ["glutei_staccati"], ["avambraccio_inclinato"], ["rimbalzo"]]))
 
-    # PANCA CON FERMO (PET-014): ripetizione lenta con fermo ok, ripetizione normale = fermo mancato
-    frames = [pb(170)] * FPS + ripetizione(pb, 170, 80, secondi=5.0) + ripetizione(pb, 170, 80, secondi=3.0)
-    risultati.append(verifica("Panca con fermo PET-014", esegui(Analizzatore(es["PET-014"]), frames),
-                              [[], ["fermo_breve"]]))
+    # PANCA CON FERMO (PET-014): tempo 2-2-1 ok, stessa ripetizione senza fermo = fermo mancato
+    frames = [pb(170)] * FPS + ripetizione_fasi(pb, 170, 80, 2, 2, 1) + ripetizione_fasi(pb, 170, 80, 2, 0, 1)
+    ev = esegui(Analizzatore(es["PET-014"]), frames)
+    risultati.append(verifica("Panca con fermo PET-014", ev, [[], ["fermo_breve"]]))
+
+    # FASI: i tempi misurati devono somigliare a quelli eseguiti (2-2-1 e 0,5-0-1)
+    frames = [pb(170)] * FPS + ripetizione_fasi(pb, 170, 80, 2, 2, 1) + ripetizione_fasi(pb, 170, 80, 0.5, 0, 1)
+    ev = esegui(Analizzatore(es["PET-012"]), frames)
+    rip = [e for e in ev if e["tipo"] == "ripetizione"]
+    f1, f2 = rip[0]["fasi"], rip[1]["fasi"]
+    ok = (1.6 <= f1["discesa"] <= 2.1 and 1.8 <= f1["pausa"] <= 2.4 and 0.7 <= f1["salita"] <= 1.1
+          and f2["discesa"] < 0.8 and rip[0]["errori"] == [] and rip[1]["errori"] == ["rimbalzo"])
+    print(f"{'OK ' if ok else 'ERRORE'}  Fasi misurate: 2-2-1 -> {f1}, discesa veloce -> {f2} {rip[1]['errori']}")
+    risultati.append(ok)
+
+    # IMPOSTAZIONI prima della serie: lato scelto (PET-006) e tavolette (PET-020)
+    from motore.regole import applica_impostazioni
+    c6 = applica_impostazioni(es["PET-006"], {"lato": "sx"})
+    c20 = applica_impostazioni(es["PET-020"], {"errori.profondita": {"messaggio": "x", "misura": "gomito", "statistica": "minimo", "maggiore_di": 125}})
+    ok = c6["lato"] == "sx" and es["PET-006"]["lato"] == "auto" and any(e["id"] == "profondita" and e["momento"] == "fine" for e in c20["errori"])
+    print(f"{'OK ' if ok else 'ERRORE'}  Impostazioni: lato scelto e soglia per numero di tavolette")
+    risultati.append(ok)
 
     # LAT: buona, asimmetrica, ampiezza ridotta
     frames = [posa_lat(170, 170)] * FPS

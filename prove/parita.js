@@ -1,6 +1,6 @@
 // Parte JavaScript della prova di parità: vedi prove/parita.py
 const path = require("path");
-const { Analizzatore, costruisciCatalogo } = require(path.join(__dirname, "..", "web", "motore.js"));
+const { Analizzatore, costruisciCatalogo, applicaImpostazioni } = require(path.join(__dirname, "..", "web", "motore.js"));
 const d = require(path.resolve(process.argv[2]));
 let ok = true;
 
@@ -15,8 +15,15 @@ for (const [id, c] of Object.entries(d.cfg)) {
 }
 console.log("Configurazioni confrontate:", Object.keys(d.cfg).join(", "));
 
+for (const [k, v] of Object.entries(d.impostazioni || {})) {
+  const id = k.split("|")[0], r = applicaImpostazioni(esercizi[id], v.imposta);
+  const js = ordinato({ misure: r.misure, ripetizione: r.ripetizione, errori: r.errori, lato: r.lato });
+  if (JSON.stringify(js) !== JSON.stringify(ordinato(v.cfg))) { ok = false; console.log("IMPOSTAZIONE DIVERSA:", k); }
+}
+console.log("Impostazioni confrontate:", Object.keys(d.impostazioni || {}).length);
+
 const chiave = e => JSON.stringify([e.tipo, e.numero ?? e.ripetizione ?? null, e.errori ?? e.id ?? null,
-  e.durata_s ?? null, e.anticipato ?? null, e.t ?? e.fine_t ?? null]);
+  e.durata_s ?? null, e.anticipato ?? null, e.t ?? e.fine_t ?? null, e.fasi ? ordinato(e.fasi) : null]);
 for (const [k, frames] of Object.entries(d.cases)) {
   const a = new Analizzatore(esercizi[k]);
   let ev = [], t = 0;

@@ -32,6 +32,7 @@ def casi():
         "PET-017": [pb(170)] * FPS + R(pb, 170, 80, secondi=3.0) + R(pb, 170, 80, secondi=3.0, gambe=120),
         "PET-019": [pb(170)] * FPS + R(pb, 170, 115, secondi=3.0) + R(pb, 170, 130, secondi=3.0),
         "PET-020": [pb(170)] * FPS + R(pb, 170, 110, secondi=3.0) + R(pb, 170, 110, secondi=1.0),
+        "PET-014": [pb(170)] * FPS + pm.ripetizione_fasi(pb, 170, 80, 2, 2, 1) + pm.ripetizione_fasi(pb, 170, 80, 2, 0, 1),
         "PET-015": [pb(170)] * FPS + R(pb, 170, 90, secondi=5.0) + R(pb, 170, 115, secondi=3.0),
         "PET-011": [pp(175)] * FPS + R(pp, 175, 80, secondi=1.5) + R(pp, 175, 80, secondi=1.5, abbassa_bacino=70),
         "lat_machine": [pm.posa_lat(170, 170)] * FPS + R(lambda g: pm.posa_lat(g, g), 170, 60)
@@ -61,12 +62,21 @@ def main():
             ev += a.aggiorna(None, t).eventi
             t += 1 / FPS
         risultati[k] = ev
+    from motore.regole import applica_impostazioni
+    impost = {}
+    for i, cfg in es.items():
+        for imp in cfg.get("impostazioni", []):
+            for o in imp["opzioni"]:
+                chiave = f"{i}|{imp['id']}|{o['etichetta']}"
+                r = applica_impostazioni(cfg, o["imposta"])
+                impost[chiave] = {"imposta": o["imposta"], "cfg": {c_: r.get(c_) for c_ in ("misure", "ripetizione", "errori", "lato")}}
     chiavi = ("misure", "ripetizione", "errori", "lato")
     dati = {
         "voci": voci,
         "cfg": {k: {c_: v.get(c_) for c_ in chiavi} for k, v in es.items()},
         "cases": {k: [{n: list(v) for n, v in p.items()} for p in fr] for k, fr in c.items()},
         "py": risultati,
+        "impostazioni": impost,
     }
     with tempfile.NamedTemporaryFile("w", suffix=".json", delete=False) as f:
         json.dump(dati, f)

@@ -29,13 +29,18 @@
   },
   "config_app": {
     "eredita_da": "PET-001",
+    "impostazioni": [
+      {"id": "lato", "domanda": "Quale braccio lavora?", "opzioni": [
+        {"etichetta": "Destro", "imposta": {"lato": "dx"}},
+        {"etichetta": "Sinistro", "imposta": {"lato": "sx"}}]}
+    ],
     "messaggio_posizione": "Di lato, braccio che lavora verso la camera",
     "messaggio_ok": "Che forza!",
     "errori": [
       {"id": "allineamento", "messaggio": "Corpo in linea retta", "gravita": "rosso", "momento": "durante", "misura": "corpo", "minore_di": 150},
       {"id": "profondita", "messaggio": "Scendi di più", "gravita": "giallo", "momento": "fine", "misura": "gomito", "statistica": "minimo", "maggiore_di": 105},
       {"id": "gambe_piegate", "messaggio": "Gambe tese", "gravita": "giallo", "momento": "durante", "misura": "gambe", "minore_di": 160},
-      {"id": "troppo_veloce", "messaggio": "Rallenta il movimento", "gravita": "giallo", "momento": "fine", "misura": "durata", "statistica": "massimo", "minore_di": 2.0}
+      {"id": "troppo_veloce", "messaggio": "Rallenta il movimento", "gravita": "giallo", "momento": "fine", "misura": "discesa", "minore_di": 1.2}
     ],
     "testi_errori": {
       "allineamento": {"cosa_succede": "Il corpo perde la linea: di solito il sedere sale per rendere l'esercizio più facile.", "perche_conta": "Con un braccio solo il carico è alto e un tronco instabile scarica la tensione su schiena e spalla.", "come_correggere": "Allarga i piedi e stringi glutei e addome; se non tieni la linea, usa un rialzo per la mano.", "frase_da_ricordare": "Piedi larghi, corpo rigido."},
@@ -93,7 +98,7 @@
       {"id": "allineamento", "messaggio": "Corpo in linea retta", "gravita": "rosso", "momento": "durante", "misura": "corpo", "minore_di": 155},
       {"id": "poca_inclinazione", "messaggio": "Spalle davanti alle mani", "gravita": "giallo", "momento": "durante", "misura": "inclinazione_avanti", "minore_di": 15},
       {"id": "profondita", "messaggio": "Scendi di più", "gravita": "giallo", "momento": "fine", "misura": "gomito", "statistica": "minimo", "maggiore_di": 110},
-      {"id": "troppo_veloce", "messaggio": "Rallenta il movimento", "gravita": "giallo", "momento": "fine", "misura": "durata", "statistica": "massimo", "minore_di": 2.0}
+      {"id": "troppo_veloce", "messaggio": "Rallenta il movimento", "gravita": "giallo", "momento": "fine", "misura": "discesa", "minore_di": 1.2}
     ],
     "testi_errori": {
       "poca_inclinazione": {"cosa_succede": "Le spalle tornano sopra le mani e l'esercizio diventa un piegamento normale.", "perche_conta": "Senza inclinazione in avanti non alleni la forza specifica per la planche.", "come_correggere": "Mantieni le spalle davanti alle mani anche in salita; se è troppo difficile, scendi meno.", "frase_da_ricordare": "Spalle sempre oltre le mani."}
@@ -148,7 +153,7 @@
     },
     "errori": [
       {"id": "profondita", "messaggio": "Scendi di più", "gravita": "giallo", "momento": "fine", "misura": "gomito", "statistica": "minimo", "maggiore_di": 100},
-      {"id": "troppo_veloce", "messaggio": "Rallenta il movimento", "gravita": "giallo", "momento": "fine", "misura": "durata", "statistica": "massimo", "minore_di": 1.5}
+      {"id": "troppo_veloce", "messaggio": "Rallenta il movimento", "gravita": "giallo", "momento": "fine", "misura": "discesa", "minore_di": 0.8}
     ],
     "analizzabilita": "parziale",
     "motivo": "Si possono contare le ripetizioni e controllare l'ampiezza delle braccia. Gli errori tipici della variante (bacino e gamba) non sono controllabili: a ripetizioni alterne la gamba vicina alla camera si piega, quindi le misure di allineamento e gambe tese darebbero falsi allarmi. Le ho tolte.",
@@ -213,7 +218,7 @@
       {"id": "allineamento", "messaggio": "Corpo in linea retta", "gravita": "giallo", "momento": "durante", "misura": "corpo", "minore_di": 155},
       {"id": "profondita", "messaggio": "Petto al bordo", "gravita": "giallo", "momento": "fine", "misura": "gomito", "statistica": "minimo", "maggiore_di": 100},
       {"id": "gambe_piegate", "messaggio": "Gambe tese", "gravita": "giallo", "momento": "durante", "misura": "gambe", "minore_di": 160},
-      {"id": "troppo_veloce", "messaggio": "Rallenta il movimento", "gravita": "giallo", "momento": "fine", "misura": "durata", "statistica": "massimo", "minore_di": 1.5}
+      {"id": "troppo_veloce", "messaggio": "Rallenta il movimento", "gravita": "giallo", "momento": "fine", "misura": "discesa", "minore_di": 0.8}
     ],
     "testi_errori": {
       "allineamento": {"cosa_succede": "Il corpo non è dritto: il bacino cede o le anche restano indietro.", "perche_conta": "Questo esercizio serve proprio a imparare il corpo in linea per i piegamenti a terra.", "come_correggere": "Stringi glutei e addome; se le anche si piegano, arretra un po' i piedi.", "frase_da_ricordare": "Corpo rigido come una tavola."},
@@ -283,7 +288,7 @@
       {"id": "allineamento", "messaggio": "Corpo in linea retta", "gravita": "rosso", "momento": "durante", "misura": "corpo", "minore_di": 155},
       {"id": "profondita", "messaggio": "Scendi di più", "gravita": "giallo", "momento": "fine", "misura": "gomito", "statistica": "minimo", "maggiore_di": 100},
       {"id": "gambe_piegate", "messaggio": "Gambe tese", "gravita": "giallo", "momento": "durante", "misura": "gambe", "minore_di": 160},
-      {"id": "troppo_veloce", "messaggio": "Rallenta il movimento", "gravita": "giallo", "momento": "fine", "misura": "durata", "statistica": "massimo", "minore_di": 1.5}
+      {"id": "troppo_veloce", "messaggio": "Rallenta il movimento", "gravita": "giallo", "momento": "fine", "misura": "discesa", "minore_di": 0.8}
     ],
     "testi_errori": {
       "allineamento": {"cosa_succede": "Il corpo non è dritto: con i piedi in alto di solito il bacino cede, a volte il sedere sale.", "perche_conta": "Con i piedi rialzati la zona lombare si inarca facilmente sotto carico.", "come_correggere": "Stringi glutei e addome; se non tieni la linea, abbassa il rialzo.", "frase_da_ricordare": "Pancia dentro, corpo rigido."},

@@ -54,6 +54,15 @@ Ogni voce: `{ "id", "nome"?, "gruppo"?, "scheda", "config_app" }`.
 - Tipi di misura: `angolo` (3 punti), `inclinazione` (2 punti, rispetto alla verticale),
   `posizione` (spostamento verticale rispetto all'inizio, in unità di un segmento `scala`),
   `durata` (solo dichiarativa: la durata la calcola il motore a fine ripetizione).
+- **Misure di tempo automatiche** (secondi, usabili negli errori con `momento: "fine"`):
+  `durata` (da `inizio_movimento` al ritorno oltre `posizione_iniziale`), `discesa` (dall'uscita dalla posizione
+  iniziale all'arrivo in basso), `pausa` (tempo entro `ripetizione.tolleranza_pausa`, default 5, dal punto più basso),
+  `salita` (dal basso al ritorno in posizione iniziale). Per velocità e fermi usare `discesa`/`pausa`, non `durata`.
+- `impostazioni` (facoltativo): scelte del cliente prima della serie, es.
+  `[{"id": "lato", "domanda": "Quale braccio lavora?", "opzioni": [{"etichetta": "Destro", "imposta": {"lato": "dx"}}, ...]}]`.
+  `imposta` accetta percorsi: `"lato"`, `"ripetizione.<campo>"`, `"errori.<id>"` (aggiunge/sostituisce un errore),
+  `"errori.<id>.<campo>"`. Applicate da `applica_impostazioni` / `applicaImpostazioni` (identiche).
+- `avviso_sicurezza` (facoltativo): testo mostrato in rosso nella scelta dell'esercizio e in cima a "Come si fa".
   Con `lato: "entrambi"` il motore crea anche `<misura>_asimmetria`.
 - `ancora` (facoltativo, misure ad angolo): punto che resta fermo nel "fantasma" del manichino.
   Se manca, resta fermo l'estremo più vicino al pavimento.
@@ -83,12 +92,11 @@ a quando torna oltre `posizione_iniziale`, quindi è più corta della ripetizion
 ## Prossimi passi consigliati (richieste dal catalogo, non ancora fatte)
 
 - **A. Angolo con segno**: distinguere bacino che cede da sedere alto (piegamenti, plank, stacchi).
-- **B. Fasi della ripetizione**: durata di discesa, pausa in basso e salita (tempo tipo 2-1-1-0, rimbalzo).
-  Priorità alta: serve a PET-012/014/015 (rimbalzo e fermo oggi stimati solo dalla durata totale).
+- ~~B. Fasi della ripetizione~~ (fatto: misure `discesa`, `pausa`, `salita`).
 - **C. Controllo in alto** tra una ripetizione e l'altra (braccia/gambe distese).
 - **D. Misura `distanza`** tra due punti rispetto a un segmento (larghezza presa, ginocchia-mani).
-- **E. Scelta del lato che lavora** (esercizi a un braccio/una gamba, es. PET-006): il motore supporta già `lato: "sx"/"dx"`,
-  manca un selettore nell'app prima del live. Poco lavoro, molto utile.
+- ~~E. Scelta del lato che lavora~~ (fatto con `impostazioni`, es. PET-006; anche numero di tavolette PET-020).
+- ~~Avviso di sicurezza per esercizi solo-scheda~~ (fatto: `avviso_sicurezza`, es. PET-018).
 - Dopo: inclinazione delle spalle / rotazione del tronco (vista frontale), ripetizioni alternate sx/dx (PET-008),
   allineamento misurato sulla gamba che resta a terra (PET-008), conteggio sull'altezza della spalla,
   velocità del movimento e confronto tra ripetizioni della serie (PET-011 esplosivi).

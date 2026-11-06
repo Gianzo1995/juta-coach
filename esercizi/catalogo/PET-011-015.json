@@ -119,7 +119,7 @@
       {"id": "glutei_staccati", "messaggio": "Glutei sulla panca", "gravita": "rosso", "momento": "durante", "misura": "glutei", "maggiore_di": 0.1},
       {"id": "profondita", "messaggio": "Porta il bilanciere al petto", "gravita": "giallo", "momento": "fine", "misura": "gomito", "statistica": "minimo", "maggiore_di": 100},
       {"id": "avambraccio_inclinato", "messaggio": "Polsi sopra i gomiti", "gravita": "giallo", "momento": "durante", "misura": "avambraccio", "maggiore_di": 25},
-      {"id": "rimbalzo", "messaggio": "Scendi più lentamente", "gravita": "rosso", "momento": "fine", "misura": "durata", "statistica": "massimo", "minore_di": 1.2}
+      {"id": "rimbalzo", "messaggio": "Scendi più lentamente", "gravita": "rosso", "momento": "fine", "misura": "discesa", "minore_di": 0.8}
     ],
     "testi_errori": {
       "glutei_staccati": {"cosa_succede": "Il bacino si solleva dalla panca durante la spinta.", "perche_conta": "La zona lombare si inarca troppo sotto carico e la spinta diventa instabile.", "come_correggere": "Spingi i piedi a terra in avanti, non verso l'alto; se continua, riduci il carico.", "frase_da_ricordare": "Piedi piantati, glutei giù."},
@@ -176,7 +176,7 @@
       {"id": "glutei_staccati", "messaggio": "Glutei sulla panca", "gravita": "rosso", "momento": "durante", "misura": "glutei", "maggiore_di": 0.1},
       {"id": "profondita", "messaggio": "Porta il bilanciere al petto", "gravita": "giallo", "momento": "fine", "misura": "gomito", "statistica": "minimo", "maggiore_di": 110},
       {"id": "avambraccio_inclinato", "messaggio": "Polsi sopra i gomiti", "gravita": "giallo", "momento": "durante", "misura": "avambraccio", "maggiore_di": 25},
-      {"id": "rimbalzo", "messaggio": "Scendi più lentamente", "gravita": "rosso", "momento": "fine", "misura": "durata", "statistica": "massimo", "minore_di": 1.2}
+      {"id": "rimbalzo", "messaggio": "Scendi più lentamente", "gravita": "rosso", "momento": "fine", "misura": "discesa", "minore_di": 0.8}
     ],
     "analizzabilita": "parziale",
     "motivo": "Come PET-012. In più, con la presa larga l'avambraccio si inclina verso l'esterno (fuori dal piano laterale): l'angolo del gomito visto di lato è deformato e la soglia di profondità è meno affidabile. La larghezza della presa, cioè ciò che definisce la variante, non è misurabile di lato.",
@@ -224,15 +224,14 @@
       {"id": "glutei_staccati", "messaggio": "Glutei sulla panca", "gravita": "rosso", "momento": "durante", "misura": "glutei", "maggiore_di": 0.1},
       {"id": "profondita", "messaggio": "Porta il bilanciere al petto", "gravita": "giallo", "momento": "fine", "misura": "gomito", "statistica": "minimo", "maggiore_di": 100},
       {"id": "avambraccio_inclinato", "messaggio": "Polsi sopra i gomiti", "gravita": "giallo", "momento": "durante", "misura": "avambraccio", "maggiore_di": 25},
-      {"id": "fermo_breve", "messaggio": "Fermati al petto", "gravita": "giallo", "momento": "fine", "misura": "durata", "statistica": "massimo", "minore_di": 3.5}
+      {"id": "fermo_breve", "messaggio": "Fermati al petto", "gravita": "giallo", "momento": "fine", "misura": "pausa", "minore_di": 1.0}
     ],
     "testi_errori": {
       "fermo_breve": {"cosa_succede": "La ripetizione è troppo breve: il fermo al petto è mancato o è stato troppo corto.", "perche_conta": "Senza un fermo vero l'esercizio torna a essere una panca normale, con il rimbalzo.", "come_correggere": "Tocca il petto e conta 'uno, due' prima di spingere; se fatichi, togli peso.", "frase_da_ricordare": "Tocca e conta: uno, due."}
     },
     "analizzabilita": "parziale",
-    "motivo": "Come PET-012. Il fermo, che caratterizza la variante, si controlla solo in modo indiretto: una ripetizione troppo breve fa scattare l'avviso, ma una discesa lenta senza fermo non viene riconosciuta.",
+    "motivo": "Come PET-012. Il fermo al petto, che caratterizza la variante, si misura direttamente come tempo passato nel punto più basso; il rilassamento durante il fermo invece non è visibile.",
     "non_rilevabili": [
-      {"errore": "Fermo troppo breve con discesa lenta", "motivo": "Il motore misura la durata dell'intera ripetizione, non quanto il bilanciere resta fermo al petto."},
       {"errore": "Rilassamento durante il fermo", "motivo": "Lo sprofondamento del bilanciere nel petto è di pochi millimetri e il bilanciere non è un punto rilevato."}
     ],
     "richiesta_motore": [
@@ -275,18 +274,17 @@
       {"id": "glutei_staccati", "messaggio": "Glutei sulla panca", "gravita": "rosso", "momento": "durante", "misura": "glutei", "maggiore_di": 0.1},
       {"id": "fermo_alto", "messaggio": "Scendi più vicino al petto", "gravita": "giallo", "momento": "fine", "misura": "gomito", "statistica": "minimo", "maggiore_di": 110},
       {"id": "avambraccio_inclinato", "messaggio": "Polsi sopra i gomiti", "gravita": "giallo", "momento": "durante", "misura": "avambraccio", "maggiore_di": 25},
-      {"id": "fermo_breve", "messaggio": "Fermati sopra il petto", "gravita": "giallo", "momento": "fine", "misura": "durata", "statistica": "massimo", "minore_di": 3.0}
+      {"id": "fermo_breve", "messaggio": "Fermati sopra il petto", "gravita": "giallo", "momento": "fine", "misura": "pausa", "minore_di": 0.7}
     ],
     "testi_errori": {
       "fermo_alto": {"cosa_succede": "Ti fermi troppo lontano dal petto.", "perche_conta": "Lo scopo della Spoto press è rafforzare gli ultimi centimetri: fermandoti in alto li salti.", "come_correggere": "Scendi fino a un dito dal petto, poi fermati.", "frase_da_ricordare": "A un dito dal petto."},
       "fermo_breve": {"cosa_succede": "Il fermo è mancato o troppo corto.", "perche_conta": "Senza fermo l'esercizio diventa una panca a ampiezza ridotta.", "come_correggere": "Bilanciere immobile, conta 'uno', poi spingi.", "frase_da_ricordare": "Fermo, uno, spingi."}
     },
     "analizzabilita": "parziale",
-    "motivo": "Come PET-014, con un limite in più: l'errore principale della variante (il bilanciere che tocca il petto) non è misurabile, perché la differenza tra 'tocco' e 'fermo a 2-3 cm' è di pochi gradi di gomito, sotto la precisione di MediaPipe. Il giudizio si basa solo su un fermo troppo alto e su una ripetizione troppo breve.",
+    "motivo": "Come PET-014, con un limite in più: l'errore principale della variante (il bilanciere che tocca il petto) non è misurabile, perché la differenza tra 'tocco' e 'fermo a 2-3 cm' è di pochi gradi di gomito, sotto la precisione di MediaPipe. Il giudizio si basa su un fermo troppo alto e sulla durata del fermo in basso.",
     "non_rilevabili": [
       {"errore": "Il bilanciere tocca il petto", "motivo": "Bilanciere e petto non sono punti rilevati; la differenza di angolo del gomito è troppo piccola per essere affidabile."},
-      {"errore": "Bilanciere che oscilla durante il fermo", "motivo": "Servirebbe misurare la stabilità del polso nel tempo, non prevista."},
-      {"errore": "Fermo breve con discesa lenta", "motivo": "Come PET-014: il motore misura la durata dell'intera ripetizione."}
+      {"errore": "Bilanciere che oscilla durante il fermo", "motivo": "Servirebbe misurare la stabilità del polso nel tempo, non prevista."}
     ],
     "richiesta_motore": [
       "Come PET-014: tempo di permanenza vicino al minimo.",

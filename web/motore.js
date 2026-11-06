@@ -32,6 +32,8 @@ const geo = {
 // Catalogo ed ereditarieta' (identico a motore/regole.py)
 // ---------------------------------------------------------------------------
 const TIPI_MISURA = new Set(["angolo", "inclinazione", "posizione", "durata"]);
+// misure calcolate dal motore a fine ripetizione (in secondi), usabili negli errori con momento "fine"
+const MISURE_TEMPO = new Set(["durata", "discesa", "pausa", "salita"]);
 const copia = v => v === undefined ? v : JSON.parse(JSON.stringify(v));
 const eOggetto = v => v !== null && typeof v === "object" && !Array.isArray(v);
 
@@ -70,7 +72,7 @@ function risolviCatalogo(voci) {
 function completa(cfg) {
   cfg.lato ??= "auto"; cfg.visibilita_minima ??= 0.5;
   cfg.messaggio_posizione ??= "Mettiti in posizione davanti alla camera"; cfg.errori ??= [];
-  cfg.ripetizione.direzione ??= "diminuisce"; cfg.ripetizione.durata_massima ??= 10;
+  cfg.ripetizione.direzione ??= "diminuisce"; cfg.ripetizione.durata_massima ??= 10; cfg.ripetizione.tolleranza_pausa ??= 5;
   for (const e of cfg.errori) { e.gravita ??= "giallo"; e.momento ??= "fine"; e.statistica ??= "minimo"; e.anticipa ??= true; }
   return cfg;
 }
@@ -80,7 +82,7 @@ const analizzabile = cfg => cfg.analizzabilita !== "non_analizzabile" && !!cfg.r
 function valida(cfg) {
   const problemi = [], misure = cfg.misure || {};
   for (const [nome, m] of Object.entries(misure)) if (!TIPI_MISURA.has(m.tipo)) problemi.push(`misura '${nome}': tipo sconosciuto '${m.tipo}'`);
-  const note = new Set([...Object.keys(misure), "durata", ...Object.keys(misure).map(n => n + "_asimmetria")]);
+  const note = new Set([...Object.keys(misure), ...MISURE_TEMPO, ...Object.keys(misure).map(n => n + "_asimmetria")]);
   const rip = cfg.ripetizione || {};
   if (!(rip.misura in misure)) problemi.push(`ripetizione: misura '${rip.misura}' non definita`);
   for (const e of cfg.errori || []) {
@@ -88,6 +90,26 @@ function valida(cfg) {
     if (e.maggiore_di === undefined && e.minore_di === undefined) problemi.push(`errore '${e.id}': manca la soglia`);
   }
   return problemi;
+}
+
+// Scelte fatte prima della serie (es. {"lato": "dx"} o {"errori.profondita": {...}}): identico a regole.py
+function applicaImpostazioni(cfg, imposta) {
+  const out = copia(cfg);
+  for (const [percorso, valore] of Object.entries(imposta)) {
+    const parti = percorso.split(".");
+    if (parti[0] === "errori" && parti.length >= 2) {
+      const idx = out.errori.findIndex(e => e.id === parti[1]);
+      if (parti.length === 2) {
+        const nuovo = { ...copia(valore), id: parti[1] };
+        if (idx < 0) out.errori.push(nuovo); else out.errori[idx] = nuovo;
+      } else if (idx >= 0) out.errori[idx][parti[2]] = copia(valore);
+      continue;
+    }
+    let o = out;
+    for (const p of parti.slice(0, -1)) o = (o[p] ??= {});
+    o[parti[parti.length - 1]] = copia(valore);
+  }
+  return completa(out);
 }
 
 const GRUPPI = { PET: "Petto", DOR: "Schiena", SCH: "Schiena", GAM: "Gambe", SPA: "Spalle", BRA: "Braccia", ADD: "Addome", GLU: "Glutei" };
@@ -145,6 +167,7 @@ class Analizzatore {
     this.storicoPronto = []; this.base = {}; this.min = {}; this.max = {};
     this.erroriRip = new Set(); this.anticipati = new Set(); this.inizioRip = null;
     this.estremo = null; this.tEstremo = null; this.invertito = false; this.fineUltimaRip = null;
+    this.serie = []; this.tAlto = null; this.tPartenza = null;
     this.erroriSerie = {}; this.msg = ["", "grigio", 0]; this.errMsg = null; this.ultimaPersona = null;
   }
 
@@ -263,6 +286,7 @@ class Analizzatore {
     if (this.fase === "attesa" || this.fase === "pronto") {
       if (inPosizione) {
         this.fase = "pronto";
+        this.tAlto = t;
         this.storicoPronto.push({ ...this.grezze });
         if (this.storicoPronto.length > 10) this.storicoPronto.shift();
       } else if (this.fase === "pronto" && inMovimento) {
@@ -274,6 +298,7 @@ class Analizzatore {
       this.min[n] = Math.min(this.min[n] ?? v, v);
       this.max[n] = Math.max(this.max[n] ?? v, v);
     }
+    this.serie.push([t, valore]);
     if (segno * valore < segno * this.estremo) { this.estremo = valore; this.tEstremo = t; }
     this.controllaErrori("durante", misure, t, stato, this.ripetizioni + 1);
     if (!this.invertito && segno * (valore - this.estremo) > ISTERESI_INVERSIONE) {
@@ -287,6 +312,7 @@ class Analizzatore {
   iniziaRipetizione(misure, t) {
     this.fase = "movimento"; this.inizioRip = t; this.erroriRip = new Set(); this.anticipati = new Set();
     this.estremo = misure[this.cfg.ripetizione.misura]; this.tEstremo = t; this.invertito = false;
+    this.serie = [[t, this.estremo]]; this.tPartenza = this.tAlto !== null ? this.tAlto : t;
     this.base = this.storicoPronto.length ? { ...this.storicoPronto[0] } : {};
     this.storicoPronto = [];
     this.min = { ...misure }; this.max = { ...misure };
@@ -296,6 +322,8 @@ class Analizzatore {
     this.fase = "pronto"; this.ripetizioni += 1;
     const durata = t - this.inizioRip;
     this.min.durata = this.max.durata = durata;
+    const fasi = this.calcolaFasi(t);
+    for (const [k, v] of Object.entries(fasi)) this.min[k] = this.max[k] = v;
     for (const id of [...this.anticipati]) {
       const err = this.cfg.errori.find(e => e.id === id);
       const fonte = err.statistica === "minimo" ? this.min : this.max;
@@ -306,11 +334,23 @@ class Analizzatore {
     for (const e of errori) this.erroriSerie[e] = (this.erroriSerie[e] || 0) + 1;
     const arrot = o => Object.fromEntries(Object.entries(o).map(([k, v]) => [k, r2(v)]));
     stato.eventi.push({ tipo: "ripetizione", esercizio: this.cfg.id, numero: this.ripetizioni,
-      durata_s: r2(durata), errori, inizio_t: r3(this.inizioRip), fondo_t: r3(this.tEstremo), fine_t: r3(t),
+      durata_s: r2(durata), errori, fasi: Object.fromEntries(Object.entries(fasi).map(([k, v]) => [k, r2(v)])), inizio_t: r3(this.inizioRip), fondo_t: r3(this.tEstremo), fine_t: r3(t),
       minimi: arrot(this.min), massimi: arrot(this.max) });
     if (!errori.length) this.mostra(this.cfg.messaggio_ok || "Ottima ripetizione!", "verde", t);
     this.base = {};
     this.fineUltimaRip = t;
+  }
+
+  // discesa: dall'uscita dalla posizione iniziale all'arrivo in basso; pausa: entro tolleranza dal punto
+  // piu' basso; salita: da quando si lascia il basso al ritorno in posizione iniziale
+  calcolaFasi(tFine) {
+    const toll = this.cfg.ripetizione.tolleranza_pausa ?? 5, serie = this.serie;
+    let i = 0;
+    for (let k = 1; k < serie.length; k++) if (Math.abs(serie[k][0] - this.tEstremo) < Math.abs(serie[i][0] - this.tEstremo)) i = k;
+    let i0 = i, i1 = i;
+    while (i0 > 0 && Math.abs(serie[i0 - 1][1] - this.estremo) <= toll) i0--;
+    while (i1 < serie.length - 1 && Math.abs(serie[i1 + 1][1] - this.estremo) <= toll) i1++;
+    return { discesa: serie[i0][0] - this.tPartenza, pausa: serie[i1][0] - serie[i0][0], salita: tFine - serie[i1][0] };
   }
 
   chiudiSerie(stato) {
@@ -364,4 +404,4 @@ class Analizzatore {
   }
 }
 
-if (typeof module !== "undefined") module.exports = { Analizzatore, posaDaMediapipe, geo, violato, soglia, unisci, risolviCatalogo, costruisciCatalogo, completa, valida };
+if (typeof module !== "undefined") module.exports = { Analizzatore, posaDaMediapipe, geo, violato, soglia, unisci, risolviCatalogo, costruisciCatalogo, completa, valida, applicaImpostazioni };
