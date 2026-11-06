@@ -1,0 +1,10 @@
+# Impostazioni della postazione
+sede: trento_centro
+postazione: prova_pc
+esercizio_iniziale: squat
+
+camera: 0                 # 0 = webcam principale; 1, 2... per altre camere
+larghezza: 1280
+altezza: 720
+modello: full             # lite = piu' veloce, full = equilibrato, heavy = piu' preciso ma lento
+specchia_immagine: false  # true se vuoi vederti come allo specchio

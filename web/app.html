@@ -1,0 +1,1343 @@
+<title>Juta Coach</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Barlow:wght@400;500;600&display=swap">
+<style>
+/* Layout: tre viste a tutta altezza — inizio, sessione (banda di stato, video sopra e manichino sotto, comandi),
+   revisione (video + manichino, linea del tempo, scheda dell'errore). Un solo aspetto scuro, scelto per la sala. */
+:root {
+  --bg: #101418; --panel: #182027; --panel-2: #1f2932; --line: #2a343d; --fg: #eef2f4; --muted: #8d9aa5;
+  --verde: #2fbf71; --giallo: #f2b530; --rosso: #e5484d; --grigio: #3a4650;
+  --display: "Barlow Condensed", "Arial Narrow", system-ui, sans-serif;
+  --body: "Barlow", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: ui-monospace, Menlo, Consolas, monospace;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html, body { height: 100%; margin: 0; }
+body { background: var(--bg); color: var(--fg); font: 16px/1.45 var(--body); overflow: hidden; -webkit-tap-highlight-color: transparent; }
+button, label.btn { font: inherit; color: inherit; cursor: pointer; }
+button:focus-visible, label.btn:focus-within { outline: 2px solid var(--fg); outline-offset: 2px; }
+.vista { height: 100%; }
+.fuori { position: fixed; left: 0; top: 0; width: 2px; height: 2px; opacity: 0; pointer-events: none; }
+input[type="file"] { position: absolute; opacity: 0; width: 1px; height: 1px; }
+
+/* ---------------- Inizio ---------------- */
+#inizio { overflow-y: auto; padding-block: 28px; padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); }
+.intro { max-width: 480px; margin: 0 auto; display: grid; gap: 18px; }
+.marchio { font: 600 13px/1 var(--body); letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+h1 { font: 700 50px/0.95 var(--display); margin: 0; text-wrap: balance; }
+h1 span { color: var(--verde); }
+.intro > p { margin: 0; color: var(--muted); }
+.catalogo { display: grid; gap: 8px; }
+.cerca { display: grid; gap: 6px; font: 600 12px/1 var(--body); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.cerca input { font: 500 17px/1.2 var(--body); letter-spacing: 0; text-transform: none; color: var(--fg); background: var(--panel);
+  border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; width: 100%; }
+.cerca input:focus-visible { outline: 2px solid var(--verde); outline-offset: 1px; }
+.lista-es { max-height: 290px; overflow-y: auto; background: var(--panel); border: 1px solid var(--line); border-radius: 10px; }
+.lista-es h4 { position: sticky; top: 0; margin: 0; padding: 8px 12px 6px; background: var(--panel-2); font: 600 11px/1 var(--body);
+  letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.voce-es { display: flex; align-items: center; justify-content: space-between; gap: 10px; width: 100%; text-align: left; background: transparent;
+  border: 0; border-top: 1px solid var(--line); padding: 11px 12px; }
+.voce-es b { font-weight: 600; min-width: 0; }
+.voce-es small { color: var(--muted); font-size: 12px; white-space: nowrap; }
+.voce-es[aria-selected="true"] { background: rgba(47,191,113,.12); box-shadow: inset 3px 0 0 var(--verde); }
+.voce-es[data-stato="non_analizzabile"] b { color: var(--muted); }
+.vuoto { padding: 14px 12px; color: var(--muted); margin: 0; }
+.scelto { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.scelto-testo { min-width: 0; }
+.scelto-testo b { display: block; font: 700 26px/1 var(--display); }
+.scelto-testo span { color: var(--muted); font-size: 14px; }
+.btn.piccolo { width: auto; flex: none; padding: 10px 14px; font-size: 15px; }
+.btn:disabled, .btn.disattivo { opacity: .4; pointer-events: none; }
+.btn { display: block; width: 100%; text-align: center; border-radius: 10px; padding: 16px; border: 1px solid var(--line); background: transparent; font-weight: 600; }
+.btn.primario { background: var(--verde); color: #06150d; border: 0; font: 700 22px/1 var(--display); letter-spacing: .03em; }
+.nota { font-size: 13px; color: var(--muted); margin: 0; }
+.avviso { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 12px; font-size: 14px; color: var(--muted); margin: 0; }
+#errore { background: rgba(229, 72, 77, .12); border: 1px solid var(--rosso); border-radius: 10px; padding: 12px; }
+
+/* ---------------- Sessione ---------------- */
+#sessione { display: flex; flex-direction: column; }
+#stato { padding-block: 12px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+  background: var(--grigio); transition: background-color .12s; min-height: 78px; display: flex; align-items: center; }
+#stato[data-colore="verde"] { background: var(--verde); color: #06150d; }
+#stato[data-colore="giallo"] { background: var(--giallo); color: #1b1404; }
+#stato[data-colore="rosso"] { background: var(--rosso); }
+#messaggio { font: 700 clamp(28px, 7.5vw, 60px)/1.02 var(--display); letter-spacing: .01em; text-wrap: balance; margin: 0; }
+#palco { position: relative; flex: 1; min-height: 0; display: flex; flex-direction: column; }
+.pane { position: relative; flex: 1 1 0; min-height: 0; min-width: 0; overflow: hidden; }
+.pane > canvas { position: absolute; inset: 0; }
+#pane-video { background: #000; }
+#pane-gemello, .rv-gemello { background: var(--panel); border-top: 1px solid var(--line); }
+canvas { display: block; width: 100%; height: 100%; }
+#tela, #rv-tela { object-fit: contain; }
+.solo-manichino #pane-video { display: none; }
+.etichetta { position: absolute; left: max(10px, env(safe-area-inset-left, 0px)); top: 10px; max-width: calc(100% - 140px);
+  background: rgba(16,20,24,.85); border: 1px solid var(--line); border-radius: 8px; padding: 6px 10px; font-weight: 600; font-size: 15px; }
+.etichetta[data-g="rosso"] { border-color: var(--rosso); } .etichetta[data-g="giallo"] { border-color: var(--giallo); }
+.etichetta small { display: block; color: var(--muted); font-weight: 500; font-size: 12px; }
+#contatore { position: absolute; right: max(10px, env(safe-area-inset-right, 0px)); bottom: 10px;
+  background: rgba(16, 20, 24, .85); border: 1px solid var(--line); border-radius: 10px; padding: 4px 16px 8px; text-align: center; min-width: 96px; }
+#contatore small { display: block; font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); }
+#rip { font: 700 64px/1 var(--display); font-variant-numeric: tabular-nums; }
+#tecnico { position: absolute; left: max(10px, env(safe-area-inset-left, 0px)); top: 8px; margin: 0; font: 12px/1.5 var(--mono);
+  color: #ffe27a; background: rgba(0,0,0,.6); padding: 6px 8px; border-radius: 6px; white-space: pre; }
+#conto { position: absolute; inset: 0; display: grid; place-items: center; background: rgba(16,20,24,.55);
+  font: 700 160px/1 var(--display); font-variant-numeric: tabular-nums; }
+#conto small { display: block; font: 600 18px/1.2 var(--body); text-align: center; color: var(--fg); }
+#riepilogo { position: absolute; left: 10px; right: 10px; bottom: 10px; background: var(--panel-2); border: 1px solid var(--line);
+  border-radius: 14px; padding: 14px; display: grid; gap: 10px; box-shadow: 0 10px 30px rgba(0,0,0,.45); }
+#riepilogo strong { font: 700 26px/1.05 var(--display); }
+#riepilogo p { margin: 0; color: var(--muted); }
+.fila { display: flex; gap: 8px; flex-wrap: wrap; }
+.fila .btn { flex: 1 1 140px; padding: 12px; }
+#comandi { background: var(--panel); border-top: 1px solid var(--line); display: flex; gap: 6px; padding-block: 8px;
+  padding-left: max(12px, env(safe-area-inset-left, 0px)); padding-right: max(12px, env(safe-area-inset-right, 0px)); }
+#comandi button { flex: 1; min-width: 0; background: transparent; border: 1px solid var(--line); border-radius: 8px; padding: 10px 2px; font-size: 14px; color: var(--muted); }
+#comandi button[aria-pressed="true"] { color: var(--fg); border-color: var(--muted); }
+#comandi #b-stop { color: var(--fg); border-color: var(--rosso); }
+@media (orientation: landscape) {
+  #palco, .rv-schermi { flex-direction: row; }
+  #pane-gemello, .rv-gemello { border-top: 0; border-left: 1px solid var(--line); }
+}
+@media (orientation: landscape) and (max-height: 520px) {
+  #stato { min-height: 56px; padding-block: 6px; } #messaggio { font-size: 32px; }
+  #rip { font-size: 44px; } #conto { font-size: 110px; }
+}
+
+/* ---------------- Revisione ---------------- */
+#revisione, #come { overflow-y: auto; }
+.testata { position: sticky; top: 0; z-index: 3; display: flex; align-items: center; gap: 12px; background: var(--bg); border-bottom: 1px solid var(--line);
+  padding-block: 10px; padding-left: max(12px, env(safe-area-inset-left, 0px)); padding-right: max(12px, env(safe-area-inset-right, 0px)); }
+.testata button { background: transparent; border: 1px solid var(--line); border-radius: 8px; padding: 8px 12px; }
+.testata b { font: 700 24px/1 var(--display); display: block; }
+.testata-titolo, .testata > div { flex: 1; min-width: 0; }
+.corpo-come { display: grid; gap: 18px; padding-block: 16px 32px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); max-width: 720px; margin: 0 auto; }
+.corpo-come section { display: grid; gap: 8px; }
+.corpo-come h2 { font: 700 24px/1.05 var(--display); margin: 0; }
+.corpo-come h3 { font: 600 12px/1 var(--body); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin: 6px 0 0; }
+.corpo-come p, .corpo-come li, .corpo-come dd { max-width: 65ch; }
+.corpo-come p { margin: 0; }
+.corpo-come ul, .corpo-come ol { margin: 0; padding-left: 20px; display: grid; gap: 6px; }
+.corpo-come dl { margin: 0; display: grid; grid-template-columns: max-content 1fr; gap: 6px 12px; }
+.corpo-come dt { color: var(--muted); } .corpo-come dd { margin: 0; }
+.coppia b { display: block; } .coppia span { color: var(--muted); }
+.cue-lista { display: flex; flex-wrap: wrap; gap: 6px; }
+.cue-lista span { background: rgba(47,191,113,.12); color: #8fe3b4; border-radius: 999px; padding: 6px 12px; font-weight: 600; }
+.link-es { background: none; border: 0; padding: 0; color: #8fe3b4; text-decoration: underline; text-underline-offset: 3px; font: inherit; text-align: left; }
+.riquadro { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 14px; display: grid; gap: 8px; }
+.riquadro.attenzione { border-color: rgba(242,181,48,.5); }
+.misurato { font: 600 15px/1.3 var(--mono); color: var(--fg); background: var(--panel-2); border-radius: 8px; padding: 8px 10px; margin: 0; }
+.testata small { color: var(--muted); font-size: 13px; }
+.rv-schermi { display: flex; flex-direction: column; height: min(62vh, 640px); }
+.rv-video { background: #000; }
+.corpo-rev { display: grid; gap: 14px; padding-block: 14px 28px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); max-width: 760px; margin: 0 auto; }
+.linea { position: relative; height: 72px; touch-action: none; cursor: pointer; }
+.binario { position: absolute; left: 0; right: 0; top: 44px; height: 18px; background: var(--panel); border: 1px solid var(--line); border-radius: 6px; }
+.seg { position: absolute; top: 2px; bottom: 2px; background: #3a4a56; border-radius: 4px; }
+.seg.ok { background: rgba(47,191,113,.45); }
+.segno { position: absolute; top: 0; width: 26px; height: 26px; margin-left: -13px; border-radius: 50%; border: 2px solid var(--bg); padding: 0; }
+.segno[data-g="giallo"] { background: var(--giallo); } .segno[data-g="rosso"] { background: var(--rosso); }
+.segno[aria-current="true"] { box-shadow: 0 0 0 3px var(--fg); }
+.testina { position: absolute; top: 38px; bottom: 4px; width: 2px; background: var(--fg); margin-left: -1px; pointer-events: none; }
+.tempi { display: flex; justify-content: space-between; font: 12px/1 var(--mono); color: var(--muted); margin-top: -6px; font-variant-numeric: tabular-nums; }
+.rv-comandi { display: flex; gap: 6px; flex-wrap: wrap; }
+.rv-comandi button { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; min-width: 48px; }
+.rv-comandi #rv-play { flex: 1 1 110px; background: var(--fg); color: var(--bg); font-weight: 700; }
+.rv-comandi button[aria-pressed="true"] { border-color: var(--fg); }
+.vel { display: flex; gap: 6px; }
+.naviga { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.naviga button { background: transparent; border: 1px solid var(--line); border-radius: 8px; padding: 8px 14px; }
+.naviga button:disabled { opacity: .35; cursor: default; }
+.naviga span { color: var(--muted); font-size: 14px; }
+#scheda { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 16px; display: grid; gap: 12px; }
+#scheda h2 { font: 700 32px/1 var(--display); margin: 0; text-wrap: balance; }
+.chips { display: flex; gap: 6px; flex-wrap: wrap; }
+.chip { font-size: 12px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; padding: 4px 8px; border-radius: 999px; background: var(--panel-2); color: var(--muted); }
+.chip[data-g="giallo"] { background: rgba(242,181,48,.16); color: var(--giallo); }
+.chip[data-g="rosso"] { background: rgba(229,72,77,.16); color: #ff8a8d; }
+.chip[data-g="verde"] { background: rgba(47,191,113,.16); color: var(--verde); }
+.voce-scheda h3 { font: 600 12px/1 var(--body); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin: 0 0 4px; }
+.voce-scheda p, .voce-scheda ul { margin: 0; max-width: 62ch; }
+.voce-scheda ul { padding-left: 18px; }
+.cue { font: 700 26px/1.1 var(--display); margin: 0; padding: 10px 14px; border-radius: 10px; background: rgba(47,191,113,.12); color: #8fe3b4; }
+.numeri { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.numeri div { background: var(--panel-2); border-radius: 10px; padding: 10px; }
+.numeri b { display: block; font: 700 30px/1 var(--display); font-variant-numeric: tabular-nums; }
+.numeri span { font-size: 12px; color: var(--muted); }
+#ai { white-space: pre-wrap; background: var(--panel-2); border-radius: 10px; padding: 12px; margin: 0; }
+@media (prefers-reduced-motion: reduce) { #stato { transition: none; } }
+</style>
+
+<section id="inizio" class="vista">
+  <div class="intro">
+    <div class="marchio">Juta Health &amp; Fitness · Beta 0.4</div>
+    <h1>Allenati con un <span>occhio in più</span></h1>
+    <p>Appoggia il telefono a 2–3 metri e allenati: ti corregge a voce mentre ti muovi, poi rivedi la serie con il manichino che ti mostra la posizione giusta.</p>
+    <div class="catalogo">
+      <label class="cerca" for="cerca">Esercizio
+        <input id="cerca" type="search" placeholder="Cerca: squat, piegamenti, petto…" autocomplete="off" spellcheck="false"></label>
+      <div id="lista-es" class="lista-es" role="listbox" aria-label="Elenco esercizi"></div>
+    </div>
+    <div class="scelto">
+      <div class="scelto-testo"><b id="scelto-nome"></b><span id="scelto-info"></span></div>
+      <button id="b-come" class="btn piccolo">Come si fa</button>
+    </div>
+    <p id="nota-scheda" class="avviso" hidden>Questo esercizio non è ancora analizzabile dall'app: con una sola camera non si vedono bene i movimenti che contano. Apri «Come si fa» per la scheda tecnica.</p>
+    <div id="errore" hidden></div>
+    <button id="b-live" class="btn primario">Avvia il live</button>
+    <p id="nota-live" class="avviso" hidden>Qui dentro Claude la fotocamera in diretta non è disponibile. Registra la serie con il pulsante qui sotto: l'app la analizza e ti apre la revisione. Il live funziona dalla versione online dell'app.</p>
+    <label id="b-video" class="btn" for="file-video">Analizza un video registrato<input id="file-video" type="file" accept="video/*"></label>
+    <button id="b-ultima" class="btn" hidden>Rivedi l'ultima serie</button>
+    <p class="nota">Le immagini restano sul telefono: niente viene inviato. Il video serve solo per la revisione e si cancella quando chiudi l'app. Prototipo: le soglie degli errori sono ancora da calibrare con gli istruttori.</p>
+  </div>
+</section>
+
+<section id="sessione" class="vista" hidden>
+  <header id="stato" data-colore="grigio" aria-live="polite"><p id="messaggio">Juta Coach</p></header>
+  <main id="palco">
+    <div class="pane" id="pane-video">
+      <canvas id="tela" aria-label="Immagine della camera con lo scheletro rilevato"></canvas>
+      <pre id="tecnico" hidden></pre>
+      <div id="conto" hidden></div>
+    </div>
+    <div class="pane" id="pane-gemello">
+      <canvas id="gemello" aria-label="Manichino digitale che ripete il tuo movimento"></canvas>
+      <div id="et-gemello" class="etichetta" hidden></div>
+      <div id="contatore"><small>Ripetizioni</small><div id="rip">0</div></div>
+    </div>
+    <div id="riepilogo" hidden></div>
+  </main>
+  <nav id="comandi">
+    <button id="b-voce" aria-pressed="true">Voce</button>
+    <button id="b-camera">Gira</button>
+    <button id="b-manichino" aria-pressed="false">Manichino</button>
+    <button id="b-tecnico" aria-pressed="false">Angoli</button>
+    <button id="b-stop">Stop</button>
+  </nav>
+</section>
+
+<section id="come" class="vista" hidden>
+  <header class="testata">
+    <button id="come-indietro">Indietro</button>
+    <div><b id="come-titolo">Come si fa</b><small id="come-sotto"></small></div>
+  </header>
+  <div id="come-corpo" class="corpo-come"></div>
+</section>
+
+<section id="revisione" class="vista" hidden>
+  <header class="testata">
+    <button id="rv-indietro">Indietro</button>
+    <div class="testata-titolo"><b id="rv-titolo">Revisione</b><small id="rv-sotto"></small></div>
+    <button id="rv-come">Come si fa</button>
+  </header>
+  <div class="rv-schermi">
+    <div class="pane rv-video"><canvas id="rv-tela" aria-label="Video della serie con lo scheletro"></canvas></div>
+    <div class="pane rv-gemello"><canvas id="rv-gemello" aria-label="Manichino: in grigio il tuo movimento, in verde la posizione corretta"></canvas>
+      <div id="rv-et" class="etichetta" hidden></div></div>
+  </div>
+  <div class="corpo-rev">
+    <div>
+      <div class="linea" id="linea" aria-label="Linea del tempo della serie"><div class="binario" id="binario"></div><div class="testina" id="testina"></div></div>
+      <div class="tempi"><span id="rv-ora">0,0 s</span><span id="rv-tot">0,0 s</span></div>
+    </div>
+    <div class="rv-comandi">
+      <button id="rv-indietro-f" aria-label="Fotogramma precedente">‹</button>
+      <button id="rv-play">Riproduci</button>
+      <button id="rv-avanti-f" aria-label="Fotogramma successivo">›</button>
+      <div class="vel" role="group" aria-label="Velocità">
+        <button data-v="0.25" aria-pressed="false">¼×</button><button data-v="0.5" aria-pressed="true">½×</button><button data-v="1" aria-pressed="false">1×</button>
+      </div>
+    </div>
+    <div class="naviga">
+      <button id="rv-prec">‹ Errore prec.</button><span id="rv-conta"></span><button id="rv-succ">Errore succ. ›</button>
+    </div>
+    <article id="scheda" aria-live="polite"></article>
+  </div>
+</section>
+
+<script>
+/*__CATALOGO__*/
+/*__MOTORE__*/
+const CATALOGO = costruisciCatalogo(CATALOGO_GREZZO);
+const ESERCIZI = CATALOGO.esercizi;
+</script>
+<!--__AVVIO__-->
+<script type="module">
+import { PoseLandmarker, FilesetResolver } from "./vision_bundle.mjs";
+
+const DIST = window.JUTA_DISTRIBUZIONE || "web";
+const PROVA = window.__JUTA_PROVA || null;      // solo per i test automatici
+const $ = id => document.getElementById(id);
+const COLORI = { verde: "#2fbf71", giallo: "#f2b530", rosso: "#e5484d", grigio: "#9aa6b0" };
+const COLLEGAMENTI = [
+  ["spalla_sx","spalla_dx"],["anca_sx","anca_dx"],["spalla_sx","anca_sx"],["spalla_dx","anca_dx"],
+  ["spalla_sx","gomito_sx"],["gomito_sx","polso_sx"],["spalla_dx","gomito_dx"],["gomito_dx","polso_dx"],
+  ["anca_sx","ginocchio_sx"],["ginocchio_sx","caviglia_sx"],["anca_dx","ginocchio_dx"],["ginocchio_dx","caviglia_dx"],
+  ["caviglia_sx","tallone_sx"],["tallone_sx","punta_sx"],["caviglia_sx","punta_sx"],
+  ["caviglia_dx","tallone_dx"],["tallone_dx","punta_dx"],["caviglia_dx","punta_dx"],
+];
+
+// ---------------------------------------------------------------------------
+// Testi degli errori: dal catalogo (testi_errori), validati con gli istruttori
+// ---------------------------------------------------------------------------
+const VOCE_CATALOGO = Object.fromEntries(CATALOGO.elenco.map(v => [v.id, v]));
+const NOMI_MISURE = { ginocchio: "Ginocchio", busto: "Busto", gomito: "Gomito", tallone: "Tallone", anca: "Bacino",
+  corpo: "Linea del corpo", gambe: "Ginocchio", durata: "Durata", gomito_asimmetria: "Differenza braccia" };
+const nomeMisura = m => NOMI_MISURE[m] || (m.charAt(0).toUpperCase() + m.slice(1).replace(/_/g, " "));
+const senzaPunto = t => (t || "").trim().replace(/[.!]+$/, "");
+
+const virgola = (v, d = 0) => Number(v).toFixed(d).replace(".", ",");
+const tipoMisura = (es, misura) => misura === "durata" ? "durata" : (ESERCIZI[es]?.misure?.[misura.replace("_asimmetria", "")]?.tipo || "angolo");
+function testoMisura(es, misura, v) {
+  if (v === null || v === undefined) return "";
+  const tipo = tipoMisura(es, misura);
+  if (tipo === "durata") return `${virgola(v, 1)} s`;
+  if (tipo === "posizione") return "sollevato";
+  return `${Math.round(v)}°`;
+}
+const testoSoglia = (es, misura, s) => tipoMisura(es, misura) === "durata" ? `${virgola(s, 1)} s` : `${Math.round(s)}°`;
+function spiegazione(es, id) {
+  const t = ESERCIZI[es]?.testi_errori?.[id] || {}, err = erroreCfg(es, id) || {};
+  return {
+    cosa: t.cosa_succede || err.messaggio || "",
+    perche: t.perche_conta || "",
+    come: t.come_correggere || "",
+    cue: senzaPunto(t.frase_da_ricordare) || err.messaggio,
+    cue2: senzaPunto(t.frase_alternativa) || err.messaggio,
+  };
+}
+const erroreCfg = (es, id) => ESERCIZI[es].errori.find(e => e.id === id);
+
+// ---------------------------------------------------------------------------
+// Modello di riconoscimento
+// ---------------------------------------------------------------------------
+let landmarker = null;
+function modelloBytes() {
+  const b = atob(window.MODELLO_POSA_B64); const u = new Uint8Array(b.length);
+  for (let i = 0; i < b.length; i++) u[i] = b.charCodeAt(i);
+  return u;
+}
+async function preparaModello() {
+  if (landmarker) return;
+  let vision;
+  try { vision = await FilesetResolver.forVisionTasks(new URL("./wasm", location.href).href); }
+  catch (e) { throw new Error("Non riesco a caricare il motore di riconoscimento. Ricarica la pagina. Dettaglio: " + (e.message || e)); }
+  const base = () => window.MODELLO_POSA_B64 ? { modelAssetBuffer: modelloBytes() }
+    : { modelAssetPath: new URL("./modello/pose_landmarker_lite.task", location.href).href };
+  const opz = delegate => ({ baseOptions: { ...base(), delegate }, runningMode: "VIDEO", numPoses: 1,
+    minPoseDetectionConfidence: 0.5, minPosePresenceConfidence: 0.5, minTrackingConfidence: 0.5 });
+  try { landmarker = await PoseLandmarker.createFromOptions(vision, opz("GPU")); }
+  catch {
+    try { landmarker = await PoseLandmarker.createFromOptions(vision, opz("CPU")); }
+    catch (e) { throw new Error("Non riesco a caricare il modello. Dettaglio: " + (e.message || e)); }
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Stato dell'app
+// ---------------------------------------------------------------------------
+const video = document.createElement("video");
+const rvVideo = document.createElement("video");
+for (const v of [video, rvVideo]) { v.playsInline = true; v.muted = true; v.setAttribute("playsinline", ""); v.className = "fuori"; document.body.append(v); }
+
+let esercizio = "squat", an = null, modo = null, attivo = false, raf = 0, vista = "inizio";
+let flusso = null, fronte = false, voce = true, tecnico = false;
+let sessione = null, ultimaSessione = null, registratore = null;
+let bufferPose = [], fermo = null, ripetuti = {}, rivediDopoErrore = {};
+let ultimoTV = -1, ultimoTs = 0, timerConto = 0, wakeLock = null;
+const perf = { fps: 0, elab: 0, ritardo: null, tPrec: 0 };
+
+function mostraVista(nome) {
+  vista = nome;
+  for (const v of ["inizio", "sessione", "revisione", "come"]) $(v).hidden = v !== nome;
+}
+function mostraErrore(e) {
+  const testo = e?.name === "NotAllowedError" ? "Permesso fotocamera negato. Consentilo nelle impostazioni del browser per questo sito e riprova."
+    : e?.name === "NotFoundError" ? "Nessuna fotocamera trovata su questo dispositivo."
+    : (e?.message || "Qualcosa non ha funzionato. Ricarica la pagina e riprova.");
+  $("errore").textContent = testo; $("errore").hidden = false;
+}
+function aggiornaInizio() {
+  disegnaLista(); aggiornaScelto();
+  $("b-ultima").hidden = !ultimaSessione;
+  $("b-live").hidden = DIST === "artifact"; $("nota-live").hidden = DIST !== "artifact";
+  if (DIST === "artifact") $("b-video").classList.add("primario");
+}
+function nuovaSessione(offset) {
+  return { esercizio, specchia: modo === "live" && fronte, offset, frames: [], eventi: [], blob: null,
+    pronta: null, larghezza: 0, altezza: 0 };
+}
+
+// ---------------------------------------------------------------------------
+// Voce e vibrazione
+// ---------------------------------------------------------------------------
+let ultimoParlato = { testo: "", t: 0 };
+function attivaVoce() { try { speechSynthesis.speak(new SpeechSynthesisUtterance("")); } catch {} }
+function parla(testo, forza = false) {
+  if (!voce || !testo || !("speechSynthesis" in window)) return;
+  const ora = performance.now();
+  if (!forza && testo === ultimoParlato.testo && ora - ultimoParlato.t < 3000) return;
+  ultimoParlato = { testo, t: ora };
+  speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(testo);
+  u.lang = "it-IT"; u.rate = 1.15;
+  const it = speechSynthesis.getVoices().find(v => v.lang?.startsWith("it"));
+  if (it) u.voice = it;
+  speechSynthesis.speak(u);
+}
+async function bloccaSchermo() { try { wakeLock = await navigator.wakeLock?.request("screen"); } catch {} }
+document.addEventListener("visibilitychange", () => {
+  if (document.visibilityState === "visible" && attivo) bloccaSchermo();
+});
+
+// ---------------------------------------------------------------------------
+// Camera e registrazione locale
+// ---------------------------------------------------------------------------
+async function apriCamera() {
+  if (!window.isSecureContext || !navigator.mediaDevices?.getUserMedia)
+    throw new Error("La fotocamera funziona solo dalla versione online dell'app (indirizzo https://).");
+  fermaCamera();
+  flusso = await navigator.mediaDevices.getUserMedia({ audio: false,
+    video: { facingMode: fronte ? "user" : "environment", width: { ideal: 1280 }, height: { ideal: 720 } } });
+  video.removeAttribute("src"); video.srcObject = flusso;
+  await video.play();
+}
+function fermaCamera() { flusso?.getTracks().forEach(t => t.stop()); flusso = null; }
+
+function avviaRegistrazione(s) {
+  if (!flusso || !window.MediaRecorder) return;
+  const tipi = ["video/mp4;codecs=avc1", "video/mp4", "video/webm;codecs=vp9", "video/webm;codecs=vp8", "video/webm"];
+  const tipo = tipi.find(t => MediaRecorder.isTypeSupported?.(t));
+  try {
+    const r = new MediaRecorder(flusso, tipo ? { mimeType: tipo, videoBitsPerSecond: 2500000 } : undefined);
+    const pezzi = [];
+    r.ondataavailable = e => { if (e.data?.size) pezzi.push(e.data); };
+    r.onstart = () => { if (sessione === s) s.offset = performance.now() / 1000; };
+    r.start(1000);
+    registratore = { r, pezzi, tipo: r.mimeType || tipo || "video/webm" };
+  } catch { registratore = null; }
+}
+function fermaRegistrazione() {
+  const reg = registratore; registratore = null;
+  if (!reg) return Promise.resolve(null);
+  return new Promise(res => {
+    reg.r.onstop = () => res(reg.pezzi.length ? new Blob(reg.pezzi, { type: reg.tipo }) : null);
+    try { reg.r.stop(); } catch { res(null); }
+  });
+}
+
+// ---------------------------------------------------------------------------
+// Avvio: live e video
+// ---------------------------------------------------------------------------
+async function avviaLive() {
+  $("errore").hidden = true;
+  try {
+    attivaVoce();
+    modo = "live";
+    preparaSessioneUI();
+    mostraVista("sessione"); mostraStato("Carico il modello…", "grigio");
+    await preparaModello();
+    mostraStato("Apro la fotocamera…", "grigio");
+    await apriCamera();
+    attivo = true; bloccaSchermo();
+    raf = requestAnimationFrame(ciclo);
+    contoAllaRovescia();
+  } catch (e) { attivo = false; fermaCamera(); mostraVista("inizio"); mostraErrore(e); }
+}
+
+function contoAllaRovescia() {
+  clearInterval(timerConto);
+  let n = 5; const el = $("conto");
+  el.hidden = false; el.innerHTML = `<div>${n}<small>Mettiti in posizione</small></div>`;
+  mostraStato(ESERCIZI[esercizio].messaggio_posizione, "grigio");
+  parla("Mettiti in posizione", true);
+  timerConto = setInterval(() => {
+    n -= 1;
+    if (n > 0) { el.firstChild.firstChild.textContent = n; return; }
+    clearInterval(timerConto); el.hidden = true;
+    parla("Via", true);
+    sessione = nuovaSessione(performance.now() / 1000);
+    avviaRegistrazione(sessione);
+  }, 1000);
+}
+
+async function analizzaVideo(file) {
+  $("errore").hidden = true;
+  try {
+    attivaVoce();
+    mostraVista("sessione"); mostraStato("Carico il modello…", "grigio");
+    await preparaModello();
+    fermaCamera(); modo = "video";
+    preparaSessioneUI();
+    video.srcObject = null;
+    if (video.dataset.url) URL.revokeObjectURL(video.dataset.url);
+    video.dataset.url = URL.createObjectURL(file);
+    video.src = video.dataset.url; video.loop = false; ultimoTV = -1;
+    sessione = nuovaSessione(0); sessione.blob = file;
+    await video.play();
+    attivo = true; bloccaSchermo();
+    raf = requestAnimationFrame(ciclo);
+  } catch (e) { attivo = false; mostraVista("inizio"); mostraErrore(e); }
+}
+
+function preparaSessioneUI() {
+  an = new Analizzatore(ESERCIZI[esercizio]);
+  ripetuti = {}; rivediDopoErrore = {}; fermo = null; bufferPose = []; sessione = null;
+  $("rip").textContent = "0"; $("riepilogo").hidden = true; $("conto").hidden = true;
+  $("b-camera").hidden = modo !== "live";
+  $("et-gemello").hidden = true;
+  gemelloStato.delete($("gemello"));
+}
+
+// ---------------------------------------------------------------------------
+// Ciclo di analisi
+// ---------------------------------------------------------------------------
+function ciclo() {
+  if (!attivo) return;
+  if (video.readyState >= 2 && video.currentTime !== ultimoTV) { ultimoTV = video.currentTime; elabora(); }
+  if (modo === "video" && video.ended) { fineVideo(); return; }
+  raf = requestAnimationFrame(ciclo);
+}
+
+function elabora() {
+  const w = video.videoWidth, h = video.videoHeight;
+  if (!w) return;
+  adattaTela($("tela"), w, h);
+  const specchia = modo === "live" && fronte;
+  if (!sessione) {           // conto alla rovescia: solo immagine
+    disegnaVideo($("tela"), video, null, null, specchia);
+    disegnaGemello($("gemello"), null, {});
+    return;
+  }
+  sessione.larghezza = w; sessione.altezza = h;
+  const t = modo === "video" ? video.currentTime : performance.now() / 1000;
+  const tv = t - sessione.offset;
+  const t0 = performance.now();
+  let posa = null;
+  if (PROVA) posa = PROVA.posa(tv, w, h, esercizio);
+  else {
+    const ts = Math.max(Math.round(t * 1000), ultimoTs + 1); ultimoTs = ts;
+    const ris = landmarker.detectForVideo(video, ts);
+    posa = ris.landmarks?.length ? posaDaMediapipe(ris.landmarks[0], w, h) : null;
+  }
+  const ora = performance.now();
+  perf.elab = perf.elab ? 0.9 * perf.elab + 0.1 * (ora - t0) : ora - t0;
+  if (perf.tPrec) { const f = 1000 / Math.max(1, ora - perf.tPrec); perf.fps = perf.fps ? 0.9 * perf.fps + 0.1 * f : f; }
+  perf.tPrec = ora;
+
+  const stato = an.aggiorna(posa, t);
+  sessione.frames.push({ tv, posa, lato: stato.lato });
+  bufferPose.push({ t, posa, lato: stato.lato });
+  while (bufferPose.length && t - bufferPose[0].t > 4) bufferPose.shift();
+  for (const ev of stato.eventi) gestisciEvento(ev);
+
+  disegnaVideo($("tela"), video, posa, stato, specchia);
+  gemelloLive(posa, stato, t, specchia);
+  aggiornaUI(stato);
+}
+
+function posaAl(t) {
+  let best = null;
+  for (const b of bufferPose) if (b.posa && (!best || Math.abs(b.t - t) < Math.abs(best.t - t))) best = b;
+  return best;
+}
+
+function gestisciEvento(ev) {
+  const s = sessione, off = s.offset;
+  if (ev.tipo === "errore") {
+    const e = { ...ev, tv: ev.t - off, tvFoto: ev.t_origine - off };
+    s.eventi.push(e);
+    perf.ritardo = ev.ritardo_s * 1000 + perf.elab;
+    const sp = spiegazione(ev.esercizio, ev.id);
+    parla((ripetuti[ev.id] || 0) >= 2 ? sp?.cue2 : sp?.cue);
+    if (ev.gravita === "rosso") navigator.vibrate?.(200);
+    if (ev.anticipato) {                 // errore di ampiezza: fermo immagine sul punto più basso
+      const p = posaAl(ev.t_origine);
+      if (p) fermo = { posa: p.posa, lato: p.lato, err: e, fino: ev.t + 2.5 };
+    } else if (ev.misura !== "durata" && erroreCfg(ev.esercizio, ev.id).momento === "fine") {
+      rivediDopoErrore[ev.id] = e;       // asimmetria: il fermo immagine arriva con la ripetizione
+    }
+  }
+  if (ev.tipo === "ripetizione") {
+    s.eventi.push({ ...ev, tv0: ev.inizio_t - off, tvF: ev.fine_t - off, tvB: ev.fondo_t - off });
+    for (const e of s.eventi) {          // errori di fine ripetizione: il momento giusto è il punto più basso
+      if (e.tipo === "errore" && e.ripetizione === ev.numero && !e.anticipato && e.misura !== "durata"
+          && erroreCfg(e.esercizio, e.id).momento === "fine") e.tvFoto = ev.fondo_t - off;
+    }
+    for (const [id, e] of Object.entries(rivediDopoErrore)) {
+      const p = posaAl(ev.fondo_t);
+      if (p) fermo = { posa: p.posa, lato: p.lato, err: e, fino: ev.fine_t + 2.5 };
+    }
+    rivediDopoErrore = {};
+    for (const err of ESERCIZI[ev.esercizio].errori) ripetuti[err.id] = ev.errori.includes(err.id) ? (ripetuti[err.id] || 0) + 1 : 0;
+    if (!ev.errori.length) parla(String(ev.numero));
+    $("riepilogo").hidden = true;
+  }
+  if (ev.tipo === "serie" && modo === "live") chiudiSerieLive();
+}
+
+function chiudiSerieLive() {
+  const s = sessione;
+  s.pronta = fermaRegistrazione().then(b => { s.blob = b; return b; });
+  ultimaSessione = s;
+  sessione = nuovaSessione(performance.now() / 1000);
+  avviaRegistrazione(sessione);
+  mostraRiepilogo(s);
+}
+
+function fineVideo() {
+  attivo = false;
+  for (const ev of an.termina()) gestisciEvento(ev);
+  const s = sessione; sessione = null;
+  ultimaSessione = s;
+  apriRevisione(s, false);
+}
+
+async function stop() {
+  clearInterval(timerConto); $("conto").hidden = true;
+  attivo = false; cancelAnimationFrame(raf);
+  try { speechSynthesis.cancel(); } catch {}
+  let s = sessione; sessione = null;
+  if (modo === "video") { video.pause(); }
+  an?.reset();
+  if (modo === "live" && s) { s.pronta = fermaRegistrazione().then(b => { s.blob = b; return b; }); }
+  else await fermaRegistrazione();
+  fermaCamera();
+  try { await wakeLock?.release(); } catch {}
+  const haRip = s && s.eventi.some(e => e.tipo === "ripetizione");
+  if (haRip) { ultimaSessione = s; apriRevisione(s, false); }
+  else { mostraVista("inizio"); aggiornaInizio(); }
+}
+
+// ---------------------------------------------------------------------------
+// Interfaccia della sessione
+// ---------------------------------------------------------------------------
+function mostraStato(testo, colore) {
+  const m = $("messaggio");
+  if (m.textContent !== testo) m.textContent = testo || " ";
+  $("stato").dataset.colore = colore;
+}
+function aggiornaUI(stato) {
+  mostraStato(stato.messaggio || ESERCIZI[esercizio].nome, stato.colore);
+  $("rip").textContent = stato.ripetizioni;
+  if (tecnico) {
+    const righe = [
+      `${virgola(perf.fps, 1)} fps · elaborazione ${Math.round(perf.elab)} ms`,
+      `ritardo ultimo avviso: ${perf.ritardo === null ? "-" : Math.round(perf.ritardo) + " ms"}`,
+      `lato: ${stato.lato || "-"} · fase: ${stato.fase}`,
+      ...Object.entries(stato.misure).map(([k, v]) => `${k}: ${v.toFixed(2)}`),
+    ];
+    $("tecnico").textContent = righe.join("\n");
+  }
+}
+function riassunto(s) {
+  const reps = s.eventi.filter(e => e.tipo === "ripetizione");
+  const conta = {};
+  reps.forEach(r => r.errori.forEach(e => { conta[e] = (conta[e] || 0) + 1; }));
+  const top = Object.entries(conta).sort((a, b) => b[1] - a[1])[0] || null;
+  return { tot: reps.length, corrette: reps.filter(r => !r.errori.length).length, top };
+}
+function mostraRiepilogo(s) {
+  const r = riassunto(s), box = $("riepilogo");
+  box.replaceChildren();
+  const titolo = document.createElement("strong");
+  titolo.textContent = `Serie finita · ${r.corrette} su ${r.tot} corrette`;
+  const p = document.createElement("p");
+  p.textContent = r.top ? `Errore più frequente: ${erroreCfg(s.esercizio, r.top[0]).messaggio} (${r.top[1]} volt${r.top[1] === 1 ? "a" : "e"}).`
+    : "Nessun errore rilevato. Continua così.";
+  const fila = document.createElement("div"); fila.className = "fila";
+  const bottone = (testo, cls, fn) => { const b = document.createElement("button"); b.className = "btn " + cls; b.textContent = testo; b.onclick = fn; fila.append(b); };
+  bottone("Rivedi la serie", "primario", () => rivedi(s, false));
+  if (r.top) bottone("Vai al primo errore", "", () => rivedi(s, true));
+  bottone("Continua", "", () => { box.hidden = true; });
+  box.append(titolo, p, fila);
+  box.hidden = false;
+  parla(`Serie finita. ${r.corrette} su ${r.tot} corrette.`, true);
+}
+async function rivedi(s, primoErrore) {
+  attivo = false; cancelAnimationFrame(raf); clearInterval(timerConto);
+  await fermaRegistrazione();      // la serie successiva appena iniziata non serve
+  sessione = null; fermaCamera();
+  apriRevisione(s, primoErrore);
+}
+
+// ---------------------------------------------------------------------------
+// Disegno: video con scheletro
+// ---------------------------------------------------------------------------
+function adattaTela(tela, w, h) { if (tela.width !== w || tela.height !== h) { tela.width = w; tela.height = h; } }
+function disegnaVideo(tela, sorgente, posa, stato, specchia, evidenzia = null) {
+  const ctx = tela.getContext("2d"), w = tela.width, h = tela.height;
+  ctx.save();
+  if (specchia) { ctx.translate(w, 0); ctx.scale(-1, 1); }
+  if (sorgente) ctx.drawImage(sorgente, 0, 0, w, h); else { ctx.fillStyle = "#000"; ctx.fillRect(0, 0, w, h); }
+  if (posa) {
+    const usati = new Set(stato?.punti_usati || []);
+    const colore = COLORI[stato?.colore] || COLORI.grigio;
+    const sp = Math.max(3, w / 220);
+    ctx.lineCap = "round";
+    for (const [a, b] of COLLEGAMENTI) {
+      const pa = posa[a], pb = posa[b];
+      if (Math.min(pa[2], pb[2]) < 0.5) continue;
+      const evid = usati.has(a) && usati.has(b);
+      ctx.strokeStyle = evid ? colore : "rgba(255,255,255,.6)";
+      ctx.lineWidth = evid ? sp * 2 : sp * 0.9;
+      ctx.beginPath(); ctx.moveTo(pa[0], pa[1]); ctx.lineTo(pb[0], pb[1]); ctx.stroke();
+    }
+    if (evidenzia && posa[evidenzia.punto]) {
+      const p = posa[evidenzia.punto];
+      ctx.strokeStyle = COLORI[evidenzia.gravita] || COLORI.giallo; ctx.lineWidth = sp * 1.5;
+      ctx.beginPath(); ctx.arc(p[0], p[1], sp * 7, 0, Math.PI * 2); ctx.stroke();
+    }
+  }
+  ctx.restore();
+}
+
+// ---------------------------------------------------------------------------
+// Controparte digitale: manichino + fantasma della posizione corretta
+// ---------------------------------------------------------------------------
+const ruota = (p, c, a) => {
+  const s = Math.sin(a), k = Math.cos(a), x = p[0] - c[0], y = p[1] - c[1];
+  return [c[0] + x * k - y * s, c[1] + x * s + y * k];
+};
+// punti collegati: ruotando un'estremita' si muove tutto cio' che le e' attaccato, oltre il perno
+const GRAFO = (() => {
+  const g = {}, unisciNodi = (a, b) => { (g[a] ??= []).push(b); (g[b] ??= []).push(a); };
+  COLLEGAMENTI.forEach(([a, b]) => unisciNodi(a, b)); unisciNodi("naso", "spalla_sx"); unisciNodi("naso", "spalla_dx");
+  return g;
+})();
+function catena(mobile, perno) {
+  // tutti i punti raggiungibili dal punto mobile senza passare dal perno (di nessuno dei due lati)
+  const esclusi = new Set([`${perno}_sx`, `${perno}_dx`]), visti = new Set([mobile]), coda = [mobile];
+  while (coda.length) for (const v of GRAFO[coda.shift()] || []) if (!esclusi.has(v) && !visti.has(v)) { visti.add(v); coda.push(v); }
+  return [...visti];
+}
+function ruotaVerso(f, perno, mobile, misuraFn, obiettivo, punti) {
+  const attuale = misuraFn(f);
+  if (attuale === null) return;
+  const d = (attuale - obiettivo) * Math.PI / 180;
+  const prova = segno => { const g = {}; for (const n of punti) if (f[n]) g[n] = ruota(f[n], perno, segno * d);
+    const copia = { ...f, ...Object.fromEntries(Object.entries(g).map(([k, v]) => [k, [v[0], v[1], f[k][2]]])) };
+    return Math.abs(misuraFn(copia) - obiettivo); };
+  const segno = prova(1) <= prova(-1) ? 1 : -1;
+  for (const n of punti) if (f[n]) { const q = ruota(f[n], perno, segno * d); f[n] = [q[0], q[1], f[n][2]]; }
+}
+// la posizione e' gia' corretta in questo istante: niente fantasma
+const giaGiusto = (err, v, obiettivo) => err.maggiore_di !== undefined ? v <= obiettivo : v >= obiettivo;
+function calcolaFantasma(posa, es, errId, lato, valoreMisurato) {
+  const cfg = ESERCIZI[es], err = erroreCfg(es, errId);
+  if (!posa || !err || err.misura === "durata") return null;
+  const asim = err.misura.endsWith("_asimmetria");
+  const nome = asim ? err.misura.replace("_asimmetria", "") : err.misura;
+  const spec = cfg.misure[nome];
+  const f = {}; for (const [k, v] of Object.entries(posa)) f[k] = [v[0], v[1], v[2]];
+  const lati = lato === "entrambi" ? ["sx", "dx"] : [lato || "sx"];
+  const P = (n, l) => f[`${n}_${l}`];
+
+  if (spec.tipo === "angolo") {
+    const [a, b, c] = spec.punti;
+    // resta fermo il punto indicato da "ancora" o, se manca, quello piu' vicino al pavimento (mani nei piegamenti, piedi nello squat)
+    const l0 = lati[0], ancora = spec.ancora || (P(a, l0) && P(c, l0) && P(a, l0)[1] > P(c, l0)[1] ? a : c);
+    const mobile = ancora === c ? a : c;
+    const ang = l => g => geo.angolo(g[`${a}_${l}`], g[`${b}_${l}`], g[`${c}_${l}`]);
+    if (asim) {
+      const vs = ang("sx")(f), vd = ang("dx")(f);
+      if (vs === null || vd === null) return null;
+      const l = vs > vd ? "sx" : "dx", obiettivo = Math.min(vs, vd);
+      ruotaVerso(f, P(b, l), mobile, ang(l), obiettivo, catena(`${mobile}_${l}`, b));
+      return { posa: f, punto: `${b}_${l}`, mobile: `${mobile}_${l}`, testo: `Braccio in ritardo: ${Math.round(Math.max(vs, vd))}° → ${Math.round(obiettivo)}°` };
+    }
+    const obiettivo = err.maggiore_di !== undefined ? err.maggiore_di - 5 : err.minore_di + 5;
+    const attuali = lati.map(l => ang(l)(f)).filter(v => v !== null);
+    if (!attuali.length || attuali.every(v => giaGiusto(err, v, obiettivo))) return null;
+    for (const l of lati) ruotaVerso(f, P(b, l), mobile, ang(l), obiettivo, catena(`${mobile}_${l}`, b));
+    const att = attuali.length ? attuali.reduce((x, y) => x + y) / attuali.length : null;
+    return { posa: f, punto: `${b}_${lati[0]}`, mobile: `${mobile}_${lati[0]}`,
+      testo: `${nomeMisura(nome)} ${att === null ? "" : Math.round(att) + "° "}→ obiettivo ${obiettivo}°` };
+  }
+  if (spec.tipo === "inclinazione") {
+    const [basso, alto] = spec.punti, l = lati[0];
+    const obiettivo = (err.maggiore_di ?? 60) - 10;
+    const incl = g => geo.inclinazione(g[`${basso}_${l}`], g[`${alto}_${l}`]);
+    const att = incl(f);
+    if (att === null || giaGiusto(err, att, obiettivo)) return null;
+    ruotaVerso(f, P(basso, l), alto, incl, obiettivo, catena(`${alto}_${l}`, basso));
+    return { posa: f, punto: `${alto}_${l}`, mobile: `${alto}_${l}`, testo: `${nomeMisura(nome)} inclinato ${Math.round(att)}° → obiettivo ${obiettivo}°` };
+  }
+  if (spec.tipo === "posizione") {
+    const l = lati[0];
+    const scala = geo.distanza(P(spec.scala[0], l), P(spec.scala[1], l)) || 1;
+    if ((valoreMisurato ?? 1) <= 0) return null;
+    const giu = Math.max(0, valoreMisurato ?? err.maggiore_di ?? 0.1) * scala;
+    for (const ll of ["sx", "dx"]) { const p = P(spec.punto, ll); if (p) p[1] += giu; }
+    return { posa: f, punto: `${spec.punto}_${l}`, mobile: `${spec.punto}_${l}`,
+      testo: `${nomeMisura(nome)} sollevato → deve restare giù` };
+  }
+  return null;
+}
+
+const gemelloStato = new WeakMap();
+const fuoriSchermo = document.createElement("canvas");
+function disegnaGemello(tela, posa, opz) {
+  const dpr = Math.min(2, window.devicePixelRatio || 1);
+  const cw = tela.clientWidth, ch = tela.clientHeight;
+  if (!cw || !ch) return;
+  if (tela.width !== Math.round(cw * dpr) || tela.height !== Math.round(ch * dpr)) {
+    tela.width = Math.round(cw * dpr); tela.height = Math.round(ch * dpr);
+  }
+  const ctx = tela.getContext("2d");
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  ctx.fillStyle = "#182027"; ctx.fillRect(0, 0, cw, ch);
+  if (!posa) {
+    ctx.fillStyle = "#8d9aa5"; ctx.font = "500 15px Barlow, system-ui, sans-serif"; ctx.textAlign = "center";
+    ctx.fillText(opz.vuoto || "Il manichino appare quando ti vede", cw / 2, ch / 2);
+    return;
+  }
+  // inquadratura stabile: il riquadro si allarga subito, si restringe piano
+  const pts = [];
+  for (const g of [posa, opz.fantasma]) if (g) for (const v of Object.values(g)) if (v[2] >= 0.3) pts.push(v);
+  if (pts.length < 4) return;
+  const b = { x0: Math.min(...pts.map(p => p[0])), x1: Math.max(...pts.map(p => p[0])), y0: Math.min(...pts.map(p => p[1])), y1: Math.max(...pts.map(p => p[1])) };
+  let st = gemelloStato.get(tela);
+  if (!st) st = { ...b };
+  else for (const [k, piu] of [["x0", false], ["y0", false], ["x1", true], ["y1", true]]) {
+    const fuori = piu ? b[k] > st[k] : b[k] < st[k];
+    st[k] = fuori ? b[k] : st[k] + (b[k] - st[k]) * 0.04;
+  }
+  gemelloStato.set(tela, st);
+  const bw = Math.max(1, st.x1 - st.x0), bh = Math.max(1, st.y1 - st.y0);
+  const padX = 24, padTop = opz.etichetta ? 64 : 22, padBot = 26;
+  const sc = Math.min((cw - 2 * padX) / bw, (ch - padTop - padBot) / bh);
+  const ox = (cw - bw * sc) / 2 - st.x0 * sc, oy = padTop + (ch - padTop - padBot - bh * sc) / 2 - st.y0 * sc;
+  const T = p => [opz.specchia ? cw - (p[0] * sc + ox) : p[0] * sc + ox, p[1] * sc + oy];
+
+  // pavimento
+  const piedi = ["tallone_sx", "tallone_dx", "punta_sx", "punta_dx", "caviglia_sx", "caviglia_dx"].map(n => posa[n]).filter(p => p && p[2] >= 0.3);
+  if (piedi.length) {
+    const y = Math.max(...piedi.map(p => T(p)[1])) + 4;
+    ctx.strokeStyle = "#2a343d"; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(12, y); ctx.lineTo(cw - 12, y); ctx.stroke();
+  }
+  corpo(ctx, posa, T, opz.lato, { pieno: "#c9d3db", lontano: "#7d8b96", bordo: "#0e1317" });
+
+  if (opz.fantasma) {
+    if (fuoriSchermo.width !== tela.width || fuoriSchermo.height !== tela.height) { fuoriSchermo.width = tela.width; fuoriSchermo.height = tela.height; }
+    const g = fuoriSchermo.getContext("2d");
+    g.setTransform(dpr, 0, 0, dpr, 0, 0); g.clearRect(0, 0, cw, ch);
+    corpo(g, opz.fantasma, T, opz.lato, { pieno: "#2fbf71", lontano: "#22915a", bordo: "#0b3d22" });
+    ctx.save(); ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.globalAlpha = 0.5; ctx.drawImage(fuoriSchermo, 0, 0); ctx.restore();
+  }
+  if (opz.evidenzia && posa[opz.evidenzia.punto]) {
+    const L = lunghezzaBusto(posa, T);
+    const p = T(posa[opz.evidenzia.punto]);
+    ctx.strokeStyle = COLORI[opz.evidenzia.gravita] || COLORI.giallo; ctx.lineWidth = 3;
+    ctx.beginPath(); ctx.arc(p[0], p[1], Math.max(12, L * 0.2), 0, Math.PI * 2); ctx.stroke();
+    if (opz.fantasma && opz.evidenzia.mobile && posa[opz.evidenzia.mobile] && opz.fantasma[opz.evidenzia.mobile]) {
+      const da = T(posa[opz.evidenzia.mobile]), a = T(opz.fantasma[opz.evidenzia.mobile]);
+      if (Math.hypot(a[0] - da[0], a[1] - da[1]) > 8) {
+        ctx.strokeStyle = "#8fe3b4"; ctx.lineWidth = 2.5; ctx.setLineDash([6, 5]);
+        ctx.beginPath(); ctx.moveTo(da[0], da[1]); ctx.lineTo(a[0], a[1]); ctx.stroke(); ctx.setLineDash([]);
+        const ang = Math.atan2(a[1] - da[1], a[0] - da[0]);
+        ctx.fillStyle = "#8fe3b4"; ctx.beginPath();
+        ctx.moveTo(a[0], a[1]); ctx.lineTo(a[0] - 12 * Math.cos(ang - 0.45), a[1] - 12 * Math.sin(ang - 0.45));
+        ctx.lineTo(a[0] - 12 * Math.cos(ang + 0.45), a[1] - 12 * Math.sin(ang + 0.45)); ctx.closePath(); ctx.fill();
+      }
+    }
+  }
+}
+function lunghezzaBusto(posa, T) {
+  const m = (a, b) => [(a[0] + b[0]) / 2, (a[1] + b[1]) / 2];
+  const s = T(m(posa.spalla_sx, posa.spalla_dx)), a = T(m(posa.anca_sx, posa.anca_dx));
+  return Math.hypot(s[0] - a[0], s[1] - a[1]) || 60;
+}
+function corpo(ctx, posa, T, lato, c) {
+  const P = n => posa[n] && posa[n][2] >= 0.3 ? T(posa[n]) : null;
+  const L = lunghezzaBusto(posa, T);
+  const arti = l => [[`spalla_${l}`, `gomito_${l}`, .17], [`gomito_${l}`, `polso_${l}`, .14],
+    [`anca_${l}`, `ginocchio_${l}`, .24], [`ginocchio_${l}`, `caviglia_${l}`, .17],
+    [`caviglia_${l}`, `tallone_${l}`, .1], [`tallone_${l}`, `punta_${l}`, .1], [`caviglia_${l}`, `punta_${l}`, .1]];
+  ctx.lineCap = "round"; ctx.lineJoin = "round";
+  const strato = (lista, pieno) => {
+    for (const [colore, extra] of [[c.bordo, 4], [pieno, 0]]) {
+      ctx.strokeStyle = colore;
+      for (const [a, b, k] of lista) {
+        const pa = P(a), pb = P(b);
+        if (!pa || !pb) continue;
+        ctx.lineWidth = k * L + extra;
+        ctx.beginPath(); ctx.moveTo(pa[0], pa[1]); ctx.lineTo(pb[0], pb[1]); ctx.stroke();
+      }
+    }
+  };
+  const busto = () => {
+    const q = ["spalla_sx", "spalla_dx", "anca_dx", "anca_sx"].map(P);
+    if (q.some(p => !p)) return;
+    for (const [colore, extra] of [[c.bordo, 4], [c.pieno, 0]]) {
+      ctx.strokeStyle = colore; ctx.fillStyle = colore; ctx.lineWidth = 0.3 * L + extra;
+      ctx.beginPath(); ctx.moveTo(...q[0]); q.slice(1).forEach(p => ctx.lineTo(...p)); ctx.closePath(); ctx.stroke(); ctx.fill();
+    }
+    const naso = P("naso");
+    if (naso) {
+      const sp = [(q[0][0] + q[1][0]) / 2, (q[0][1] + q[1][1]) / 2];
+      for (const [colore, extra] of [[c.bordo, 4], [c.pieno, 0]]) {
+        ctx.strokeStyle = colore; ctx.lineWidth = 0.12 * L + extra;
+        ctx.beginPath(); ctx.moveTo(...sp); ctx.lineTo(...naso); ctx.stroke();
+        ctx.fillStyle = colore; ctx.beginPath(); ctx.arc(naso[0], naso[1], 0.21 * L + extra / 2, 0, Math.PI * 2); ctx.fill();
+      }
+    }
+  };
+  if (lato === "entrambi") { strato([...arti("sx"), ...arti("dx")], c.pieno); busto(); return; }
+  const vicino = lato === "dx" ? "dx" : "sx", lontano = vicino === "sx" ? "dx" : "sx";
+  strato(arti(lontano), c.lontano); busto(); strato(arti(vicino), c.pieno);
+}
+
+function mostraEtichetta(el, testo, gravita) {
+  if (!testo) { el.hidden = true; return; }
+  if (el.dataset.t !== testo) { el.dataset.t = testo; el.textContent = testo; }
+  el.dataset.g = gravita || ""; el.hidden = false;
+}
+
+function gemelloLive(posa, stato, t, specchia) {
+  let fonte = posa, lato = stato.lato, err = null;
+  if (fermo && t < fermo.fino) { fonte = fermo.posa; lato = fermo.lato; err = fermo.err; }
+  else {
+    fermo = null;
+    if (stato.errore && stato.errore.momento === "durante") err = { esercizio, ...stato.errore };
+    else if (stato.errore && stato.errore.misura === "durata") err = { esercizio, ...stato.errore };
+  }
+  let opz = { lato, specchia };
+  let testo = "", gravita = "";
+  if (err) {
+    const f = calcolaFantasma(fonte, err.esercizio || esercizio, err.id, lato, err.valore);
+    gravita = err.gravita;
+    if (f) { opz = { ...opz, fantasma: f.posa, evidenzia: { punto: f.punto, mobile: f.mobile, gravita }, etichetta: true }; testo = f.testo; }
+    else if (err.misura === "durata") testo = `Durata ${testoMisura(esercizio, "durata", err.valore)} · minimo ${testoSoglia(esercizio, "durata", err.soglia)}`;
+    if (fonte !== posa) testo = (testo ? testo + "\n" : "") + "Fermo immagine: il tuo punto più basso";
+  }
+  disegnaGemello($("gemello"), fonte, opz);
+  const el = $("et-gemello");
+  if (testo.includes("\n")) { const [a, b] = testo.split("\n"); if (el.dataset.t !== testo) { el.dataset.t = testo; el.innerHTML = ""; el.append(a); const s = document.createElement("small"); s.textContent = b; el.append(s); } el.dataset.g = gravita; el.hidden = false; }
+  else mostraEtichetta(el, testo, gravita);
+}
+
+// ---------------------------------------------------------------------------
+// Revisione
+// ---------------------------------------------------------------------------
+const rv = { s: null, marcatori: [], rip: [], sel: -1, durata: 0, ia: null };
+const orologio = {
+  v: null, t: 0, play: false, rate: 0.5, last: 0,
+  ora() {
+    if (this.v) return this.v.currentTime;
+    if (this.play) { const n = performance.now(); this.t = Math.min(rv.durata, this.t + (n - this.last) / 1000 * this.rate); this.last = n; if (this.t >= rv.durata) this.play = false; }
+    return this.t;
+  },
+  vai(t) { t = Math.max(0, Math.min(rv.durata, t)); if (this.v) this.v.currentTime = t; else this.t = t; },
+  suona() {
+    if (this.v) { if (this.v.ended || this.v.currentTime >= rv.durata - 0.05) this.v.currentTime = 0; this.v.playbackRate = this.rate; this.v.play().catch(() => {}); }
+    else { if (this.t >= rv.durata) this.t = 0; this.play = true; this.last = performance.now(); }
+  },
+  pausa() { if (this.v) this.v.pause(); else this.play = false; },
+  inPlay() { return this.v ? !this.v.paused && !this.v.ended : this.play; },
+  velocita(r) { this.rate = r; if (this.v) this.v.playbackRate = r; },
+};
+
+async function durataVideo(v) {
+  await new Promise(r => { if (v.readyState >= 1) r(); else v.addEventListener("loadedmetadata", r, { once: true }); });
+  if (isFinite(v.duration) && v.duration > 0) return v.duration;
+  // i video registrati dal browser a volte non dichiarano la durata
+  return new Promise(r => {
+    const fatto = () => { v.removeEventListener("timeupdate", fatto); const d = v.duration; v.currentTime = 0; r(isFinite(d) ? d : null); };
+    v.addEventListener("timeupdate", fatto); v.currentTime = 1e101;
+    setTimeout(() => r(null), 3000);
+  });
+}
+
+async function apriRevisione(s, primoErrore) {
+  attivo = false; cancelAnimationFrame(raf);
+  try { speechSynthesis.cancel(); } catch {}
+  mostraVista("revisione");
+  $("scheda").replaceChildren(Object.assign(document.createElement("p"), { className: "nota", textContent: "Preparo la revisione…" }));
+  if (s.pronta) await s.pronta;
+  rv.s = s; rv.sel = -1; rv.ia = null;
+  const ultimo = s.frames.length ? s.frames[s.frames.length - 1].tv : 0;
+  if (s.blob) {
+    if (rvVideo.dataset.url) URL.revokeObjectURL(rvVideo.dataset.url);
+    rvVideo.dataset.url = URL.createObjectURL(s.blob);
+    rvVideo.src = rvVideo.dataset.url;
+    orologio.v = rvVideo;
+    const d = await durataVideo(rvVideo);
+    rv.durata = d || ultimo;
+  } else { orologio.v = null; orologio.t = 0; rv.durata = ultimo; }
+  rv.durata = Math.max(rv.durata, 0.1);
+  orologio.pausa(); orologio.velocita(orologio.rate);
+
+  rv.rip = s.eventi.filter(e => e.tipo === "ripetizione");
+  const finali = new Map(rv.rip.map(r => [r.numero, new Set(r.errori)]));
+  rv.marcatori = s.eventi.filter(e => e.tipo === "errore" && finali.get(e.ripetizione)?.has(e.id))
+    .map(e => momentoPeggiore(s, e)).sort((a, b) => a.tv - b.tv);
+
+  const r = riassunto(s);
+  $("rv-titolo").textContent = `${ESERCIZI[s.esercizio].nome} · revisione`;
+  $("rv-sotto").textContent = `${r.tot} ripetizioni · ${r.corrette} corrette · ${rv.marcatori.length} errori`;
+  $("rv-tot").textContent = `${virgola(rv.durata, 1)} s`;
+  costruisciLinea();
+  gemelloStato.delete($("rv-gemello"));
+  if (primoErrore && rv.marcatori.length) seleziona(0); else { orologio.vai(0); mostraSchedaSerie(); aggiornaNaviga(); }
+  requestAnimationFrame(cicloRev);
+}
+
+// Per gli errori segnalati "durante" il movimento cerco il fotogramma peggiore della ripetizione
+function misuraDaPosa(es, nome, posa, lato) {
+  const spec = ESERCIZI[es]?.misure?.[nome];
+  if (!spec || !posa) return null;
+  const lati = lato === "entrambi" ? ["sx", "dx"] : [lato || "sx"];
+  const valori = lati.map(l => {
+    const p = n => posa[`${n}_${l}`];
+    if (spec.tipo === "angolo") return geo.angolo(p(spec.punti[0]), p(spec.punti[1]), p(spec.punti[2]));
+    if (spec.tipo === "inclinazione") return geo.inclinazione(p(spec.punti[0]), p(spec.punti[1]));
+    return null;
+  }).filter(v => v !== null);
+  return valori.length ? valori.reduce((x, y) => x + y) / valori.length : null;
+}
+function momentoPeggiore(s, e) {
+  const m = { ev: { ...e }, tv: Math.max(0, e.tvFoto) };
+  const cfg = erroreCfg(e.esercizio, e.id), rip = s.eventi.find(r => r.tipo === "ripetizione" && r.numero === e.ripetizione);
+  if (cfg.momento !== "durante" || !rip) return m;
+  const fonte = cfg.maggiore_di !== undefined ? rip.massimi : rip.minimi;
+  if (fonte?.[e.misura] !== undefined) m.ev.peggiore = fonte[e.misura];
+  let migliore = null;
+  for (const f of s.frames) {
+    if (f.tv < rip.tv0 || f.tv > rip.tvF || !f.posa) continue;
+    const v = misuraDaPosa(e.esercizio, e.misura, f.posa, f.lato);
+    if (v === null) continue;
+    const peggio = cfg.maggiore_di !== undefined ? v > (migliore?.v ?? -Infinity) : v < (migliore?.v ?? Infinity);
+    if (peggio) migliore = { v, tv: f.tv };
+  }
+  if (migliore) m.tv = Math.max(0, migliore.tv);
+  return m;
+}
+
+function costruisciLinea() {
+  const bin = $("binario"), linea = $("linea");
+  bin.replaceChildren(); linea.querySelectorAll(".segno").forEach(n => n.remove());
+  const pct = tv => `${Math.max(0, Math.min(100, tv / rv.durata * 100))}%`;
+  for (const r of rv.rip) {
+    const d = document.createElement("div");
+    d.className = "seg" + (r.errori.length ? "" : " ok");
+    d.style.left = pct(r.tv0); d.style.width = `${Math.max(0.6, (r.tvF - r.tv0) / rv.durata * 100)}%`;
+    bin.append(d);
+  }
+  let ultimaX = -99, riga = 0;
+  rv.marcatori.forEach((m, i) => {
+    const b = document.createElement("button");
+    b.className = "segno"; b.dataset.g = m.ev.gravita;
+    const x = m.tv / rv.durata * 100;
+    riga = x - ultimaX < 4 ? Math.min(1, riga + 1) : 0; ultimaX = x;
+    b.style.left = pct(m.tv); b.style.top = `${14 - riga * 14}px`;
+    b.setAttribute("aria-label", `${erroreCfg(m.ev.esercizio, m.ev.id).messaggio}, ripetizione ${m.ev.ripetizione}`);
+    b.addEventListener("click", e => { e.stopPropagation(); seleziona(i); });
+    linea.append(b);
+  });
+}
+
+function seleziona(i) {
+  rv.sel = i; rv.ia = null;
+  const m = rv.marcatori[i];
+  orologio.pausa(); orologio.vai(m.tv);
+  document.querySelectorAll(".segno").forEach((b, k) => b.setAttribute("aria-current", String(k === i)));
+  mostraSchedaErrore(m);
+  aggiornaNaviga();
+}
+function aggiornaNaviga() {
+  const n = rv.marcatori.length;
+  $("rv-conta").textContent = n ? (rv.sel >= 0 ? `Errore ${rv.sel + 1} di ${n}` : `${n} errori nella serie`) : "Nessun errore";
+  $("rv-prec").disabled = !n || rv.sel <= 0;
+  $("rv-succ").disabled = !n || rv.sel >= n - 1;
+}
+
+function el(tag, props = {}, ...figli) { const e = Object.assign(document.createElement(tag), props); e.append(...figli); return e; }
+function voceScheda(titolo, contenuto) { return el("div", { className: "voce-scheda" }, el("h3", { textContent: titolo }), contenuto); }
+function compila(t, ev) {
+  const v = testoMisura(ev.esercizio, ev.misura, ev.valore);
+  return t.replace("{valore}", v === "sollevato" ? "" : v).replace("{soglia}", testoSoglia(ev.esercizio, ev.misura, ev.soglia));
+}
+function testoMisurato(ev) {
+  if (tipoMisura(ev.esercizio, ev.misura) === "posizione") return "Misurato: sollevamento oltre il limite";
+  const cfg = erroreCfg(ev.esercizio, ev.id);
+  const verso = cfg.maggiore_di !== undefined ? "massimo" : "minimo";
+  const v = ev.peggiore ?? ev.valore;
+  // se arrotondando il valore sembra uguale alla soglia, mostro un decimale
+  let tv = testoMisura(ev.esercizio, ev.misura, v);
+  if (tipoMisura(ev.esercizio, ev.misura) === "angolo" && Math.round(v) === Math.round(ev.soglia)) tv = `${virgola(v, 1)}°`;
+  return `${ev.peggiore !== undefined ? "Valore peggiore" : "Misurato"}: ${tv} · ${verso} ammesso: ${testoSoglia(ev.esercizio, ev.misura, ev.soglia)}`;
+}
+const comeLista = c => Array.isArray(c) ? c : [c].filter(Boolean);
+
+function mostraSchedaErrore(m) {
+  const ev = m.ev, sp = spiegazione(ev.esercizio, ev.id), cfg = erroreCfg(ev.esercizio, ev.id);
+  const chips = el("div", { className: "chips" },
+    el("span", { className: "chip", textContent: `Ripetizione ${ev.ripetizione}` }),
+    el("span", { className: "chip", textContent: ev.gravita === "rosso" ? "Da correggere subito" : "Da migliorare" }),
+    el("span", { className: "chip", textContent: ev.anticipato ? "Segnalato al punto più basso" : "Segnalato mentre succedeva" }));
+  chips.children[1].dataset.g = ev.gravita;
+  const come = comeLista(sp.come);
+  const lista = come.length > 1 ? el("ul") : el("p", { textContent: come[0] || "" });
+  if (come.length > 1) for (const c of come) lista.append(el("li", { textContent: c }));
+  const ascolta = el("button", { className: "btn", textContent: "Ascolta la spiegazione" });
+  ascolta.onclick = () => parla(`${cfg.messaggio}. ${compila(sp.cosa, ev)} ${sp.perche} ${come.join(" ")}`, true);
+  $("scheda").replaceChildren(chips, el("h2", { textContent: cfg.messaggio }),
+    voceScheda("Cosa è successo", el("div", {}, el("p", { textContent: compila(sp.cosa, ev) }), el("p", { className: "misurato", textContent: testoMisurato(ev) }))),
+    voceScheda("Perché conta", el("p", { textContent: sp.perche })),
+    voceScheda("Come correggerlo", lista),
+    el("p", { className: "cue", textContent: `«${sp.cue}»` }),
+    el("div", { className: "fila" }, ascolta, ...bottoneIA(ev)),
+    ...(rv.ia ? [rv.ia] : []),
+    el("p", { className: "nota", textContent: "Spiegazioni di prova, da validare con gli istruttori Juta. In verde, sul manichino, la posizione corretta." }));
+}
+
+function mostraSchedaSerie() {
+  const r = riassunto(rv.s);
+  const numeri = el("div", { className: "numeri" },
+    el("div", {}, el("b", { textContent: r.tot }), el("span", { textContent: "ripetizioni" })),
+    el("div", {}, el("b", { textContent: r.corrette }), el("span", { textContent: "corrette" })),
+    el("div", {}, el("b", { textContent: rv.marcatori.length }), el("span", { textContent: "errori" })));
+  const figli = [el("h2", { textContent: r.top ? "Com'è andata la serie" : "Serie pulita" }), numeri];
+  if (r.top) {
+    const vai = el("button", { className: "btn primario", textContent: "Vai al primo errore" });
+    vai.onclick = () => seleziona(0);
+    figli.push(el("p", { textContent: `Errore più frequente: ${erroreCfg(rv.s.esercizio, r.top[0]).messaggio} (${r.top[1]} volt${r.top[1] === 1 ? "a" : "e"}). Tocca un segno colorato sulla linea del tempo per vedere l'errore sul manichino.` }),
+      el("div", { className: "fila" }, vai, ...bottoneIA(null)));
+  } else figli.push(el("p", { textContent: "Nessun errore rilevato in questa serie." }), el("div", { className: "fila" }, ...bottoneIA(null)));
+  if (rv.ia) figli.push(rv.ia);
+  if (!rv.s.blob) figli.push(el("p", { className: "nota", textContent: "Il video di questa serie non è disponibile su questo telefono: la revisione mostra solo il manichino." }));
+  $("scheda").replaceChildren(...figli);
+}
+
+// "Spiegamelo meglio": solo dentro Claude, chiede un commento inviando solo numeri
+let promessaSample = null;
+const capacitaSample = () => DIST !== "artifact" || !window.claude?.use ? Promise.resolve(null)
+  : (promessaSample ??= window.claude.use("sample").catch(() => null));
+let sampleOk = false;
+function bottoneIA(ev) {
+  if (!sampleOk) return [];
+  const b = el("button", { className: "btn", textContent: "Spiegamelo meglio" });
+  b.onclick = () => spiegaMeglio(b, ev);
+  return [b];
+}
+async function spiegaMeglio(btn, ev) {
+  const sample = await capacitaSample();
+  if (!sample) { btn.hidden = true; return; }
+  const s = rv.s, cfg = ESERCIZI[s.esercizio];
+  const dati = s.eventi.filter(e => e.tipo === "ripetizione").map(r => ({ ripetizione: r.numero, durata_s: r.durata_s, errori: r.errori, minimi: r.minimi, massimi: r.massimi }));
+  const soglie = cfg.errori.map(e => ({ errore: e.id, messaggio: e.messaggio, misura: e.misura, soglia: e.maggiore_di ?? e.minore_di, tipo: e.maggiore_di !== undefined ? "errore se maggiore" : "errore se minore" }));
+  const focus = ev ? `Concentrati sull'errore "${erroreCfg(ev.esercizio, ev.id).messaggio}" alla ripetizione ${ev.ripetizione} (valore ${ev.valore}, soglia ${ev.soglia}).` : "Commenta la serie nel suo insieme.";
+  const prompt = `Sei un istruttore di sala di una palestra italiana. Un cliente ha fatto una serie di ${cfg.nome} ripresa da una camera; un sistema ha misurato angoli (gradi) e durate (secondi). Le misure di posizione (tallone, anca) sono spostamenti relativi, non centimetri.\nSoglie: ${JSON.stringify(soglie)}\nRipetizioni: ${JSON.stringify(dati)}\n${focus}\nScrivi in italiano, 4-6 frasi brevi, tono diretto e incoraggiante, dando del tu: cosa è andato bene, l'errore principale e perché conta, 1-2 correzioni pratiche da provare alla prossima serie. Niente diagnosi mediche. Se i numeri sembrano poco affidabili (per esempio valori strani), dillo. Testo semplice, senza elenchi né titoli.`;
+  rv.ia = el("p", { id: "ai", textContent: "Sto preparando la spiegazione…" });
+  btn.after(rv.ia); btn.disabled = true;
+  try {
+    const r = await sample(prompt, { onText: ({ text }) => { rv.ia.textContent = text; }, modelTier: "quick" });
+    rv.ia.textContent = r.text;
+  } catch (e) {
+    if (e?.code === "not_granted") { sampleOk = false; btn.hidden = true; rv.ia.remove(); rv.ia = null; }
+    else rv.ia.textContent = e?.code === "rate_limited" ? "Troppe richieste in poco tempo: riprova tra un minuto." : "La spiegazione non è disponibile adesso.";
+  } finally { btn.disabled = false; }
+}
+
+function frameAl(tv) {
+  const f = rv.s.frames;
+  if (!f.length) return null;
+  let lo = 0, hi = f.length - 1;
+  while (lo < hi) { const mid = (lo + hi) >> 1; if (f[mid].tv < tv) lo = mid + 1; else hi = mid; }
+  if (lo > 0 && Math.abs(f[lo - 1].tv - tv) < Math.abs(f[lo].tv - tv)) lo -= 1;
+  return f[lo];
+}
+
+function cicloRev() {
+  if (vista !== "revisione") return;
+  const s = rv.s, tv = orologio.ora(), fr = frameAl(tv), gioca = orologio.inPlay();
+  let m = null;
+  if (rv.sel >= 0 && !gioca && Math.abs(tv - rv.marcatori[rv.sel].tv) < 0.4) m = rv.marcatori[rv.sel];
+  else m = rv.marcatori.find(x => tv >= x.tv - 0.25 && tv <= x.tv + 0.9) || null;
+
+  const w = s.larghezza || 1280, h = s.altezza || 720;
+  adattaTela($("rv-tela"), w, h);
+  let fant = null;
+  if (m && fr?.posa) fant = calcolaFantasma(fr.posa, m.ev.esercizio, m.ev.id, fr.lato, m.ev.valore);
+  disegnaVideo($("rv-tela"), orologio.v && rvVideo.readyState >= 2 ? rvVideo : null, fr?.posa || null, null, s.specchia,
+    fant ? { punto: fant.punto, gravita: m.ev.gravita } : null);
+  disegnaGemello($("rv-gemello"), fr?.posa || null, { lato: fr?.lato, specchia: s.specchia, fantasma: fant?.posa,
+    evidenzia: fant ? { punto: fant.punto, mobile: fant.mobile, gravita: m.ev.gravita } : null, etichetta: !!m, vuoto: "Nessun corpo rilevato in questo momento" });
+  let testo = "";
+  if (m) testo = fant ? fant.testo : `Durata ${testoMisura(m.ev.esercizio, "durata", m.ev.valore)} · minimo ${testoSoglia(m.ev.esercizio, "durata", m.ev.soglia)}`;
+  mostraEtichetta($("rv-et"), testo, m?.ev.gravita);
+
+  $("testina").style.left = `${Math.min(100, tv / rv.durata * 100)}%`;
+  $("rv-ora").textContent = `${virgola(tv, 1)} s`;
+  const etichetta = gioca ? "Pausa" : "Riproduci";
+  if ($("rv-play").textContent !== etichetta) $("rv-play").textContent = etichetta;
+  requestAnimationFrame(cicloRev);
+}
+
+// ---------------------------------------------------------------------------
+// Comandi
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+// Scelta esercizio (ricerca) e scheda "Come si fa"
+// ---------------------------------------------------------------------------
+const ETICHETTE_STATO = { parziale: "Analisi parziale", completa: "Analisi completa", non_analizzabile: "Solo scheda" };
+const VISTA = { laterale: "camera di lato", frontale: "camera di fronte", alto: "camera dall'alto" };
+const normalizza = t => (t || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+const testoRicerca = v => { const m = v.scheda?.muscoli || {};
+  return normalizza([v.nome, v.id, v.gruppo, ...(m.primari || []), ...(m.secondari || [])].join(" ")); };
+const statoVoce = v => v.analizzabile ? (v.cfg.analizzabilita || "completa") : "non_analizzabile";
+
+function disegnaLista() {
+  const parole = normalizza($("cerca").value).trim().split(/\s+/).filter(Boolean);
+  const box = $("lista-es"); box.replaceChildren();
+  const voci = CATALOGO.elenco.filter(v => parole.every(p => testoRicerca(v).includes(p)));
+  if (!voci.length) { box.append(el("p", { className: "vuoto", textContent: "Nessun esercizio trovato." })); return; }
+  for (const g of [...new Set(voci.map(v => v.gruppo))].sort((x, y) => x.localeCompare(y, "it"))) {
+    box.append(el("h4", { textContent: g }));
+    for (const v of voci.filter(x => x.gruppo === g).sort((x, y) => x.nome.localeCompare(y.nome, "it"))) {
+      const stato = statoVoce(v);
+      const b = el("button", { className: "voce-es" }, el("b", { textContent: v.nome }),
+        el("small", { textContent: stato === "non_analizzabile" ? "Solo scheda" : (VISTA[v.cfg.vista_camera] || "") }));
+      b.setAttribute("role", "option"); b.setAttribute("aria-selected", String(v.id === esercizio)); b.dataset.stato = stato;
+      b.onclick = () => scegli(v.id);
+      box.append(b);
+    }
+  }
+}
+function scegli(id) {
+  esercizio = id;
+  try { localStorage.setItem("juta-esercizio", id); } catch {}
+  disegnaLista(); aggiornaScelto();
+}
+function aggiornaScelto() {
+  const v = VOCE_CATALOGO[esercizio];
+  $("scelto-nome").textContent = v.nome;
+  $("scelto-info").textContent = [v.gruppo, v.analizzabile ? VISTA[v.cfg.vista_camera] : "", ETICHETTE_STATO[statoVoce(v)]].filter(Boolean).join(" · ");
+  const ok = v.analizzabile;
+  $("b-live").disabled = !ok; $("file-video").disabled = !ok;
+  $("b-video").classList.toggle("disattivo", !ok); $("nota-scheda").hidden = ok;
+}
+
+let ritornoCome = "inizio";
+function apriCome(id, da) {
+  ritornoCome = da;
+  if (da === "revisione") orologio.pausa();
+  mostraVista("come");
+  disegnaCome(id);
+}
+function disegnaCome(id) {
+  const v = VOCE_CATALOGO[id], sc = v.scheda, cfg = v.cfg;
+  $("come-titolo").textContent = v.nome;
+  $("come-sotto").textContent = [v.gruppo, ETICHETTE_STATO[statoVoce(v)]].join(" · ");
+  const par = t => el("p", { textContent: t }), sotto = t => el("h3", { textContent: t });
+  const sez = (titolo, ...figli) => el("section", {}, el("h2", { textContent: titolo }), ...figli);
+  const coppia = (x, y) => el("li", { className: "coppia" }, el("b", { textContent: x }), el("span", { textContent: y }));
+  const parti = [];
+  if (sc) {
+    if (sc.descrizione) parti.push(el("section", {}, par(sc.descrizione)));
+    const m = sc.muscoli || {}, dl = el("dl");
+    for (const [k, l] of [["primari", "Primari"], ["secondari", "Secondari"], ["stabilizzatori", "Stabilizzatori"]])
+      if (m[k]?.length) dl.append(el("dt", { textContent: l }), el("dd", { textContent: m[k].join(", ") }));
+    if (dl.children.length) parti.push(sez("Muscoli coinvolti", dl));
+    if (sc.partenza) parti.push(sez("Posizione di partenza", par(sc.partenza)));
+    if (sc.esecuzione) {
+      const e = sc.esecuzione;
+      parti.push(sez("Esecuzione", ...(typeof e === "string" ? [par(e)]
+        : [["eccentrica", "Discesa"], ["pausa", "Pausa"], ["concentrica", "Salita"]].filter(([k]) => e[k]).flatMap(([k, l]) => [sotto(l), par(e[k])]))));
+    }
+    const dett = [["rom", "Ampiezza del movimento"], ["respirazione", "Respirazione"], ["tempo", "Tempo"]].filter(([k]) => sc[k]);
+    if (dett.length) parti.push(sez("Dettagli", ...dett.flatMap(([k, l]) => [sotto(l), par(sc[k])])));
+    if (sc.errori?.length) { const ul = el("ul"); sc.errori.forEach(x => ul.append(coppia(x.errore, x.correzione))); parti.push(sez("Errori comuni e correzioni", ul)); }
+    if (sc.cue?.length) parti.push(sez("Frasi da ricordare", el("div", { className: "cue-lista" }, ...sc.cue.map(c => el("span", { textContent: c })))));
+    const rp = sc.regressione_progressione || {}, rpFigli = [];
+    for (const [k, l] of [["regressione", "Più facile"], ["progressione", "Più difficile"]]) if (rp[k]?.length) {
+      const ul = el("ul");
+      for (const t of rp[k]) {
+        const mm = /^([A-Z]{2,4}-\d{3})\s/.exec(t), li = el("li");
+        if (mm && VOCE_CATALOGO[mm[1]]) { const b = el("button", { className: "link-es", textContent: t }); b.onclick = () => disegnaCome(mm[1]); li.append(b); }
+        else li.append(t);
+        ul.append(li);
+      }
+      rpFigli.push(sotto(l), ul);
+    }
+    if (rpFigli.length) parti.push(sez("Varianti", ...rpFigli));
+    if (sc.precauzioni) parti.push(el("section", { className: "riquadro attenzione" }, sotto("Precauzioni"), par(sc.precauzioni)));
+  } else parti.push(el("p", { className: "avviso", textContent: "La scheda tecnica di questo esercizio non è ancora nel catalogo." }));
+
+  const app = el("section", { className: "riquadro" }, el("h2", { textContent: "Cosa controlla l'app" }));
+  if (v.analizzabile) {
+    app.append(par(`Camera: ${VISTA[cfg.vista_camera] || "-"}. ${cfg.messaggio_posizione || ""}`));
+    const ul = el("ul"); cfg.errori.forEach(e => ul.append(el("li", { textContent: `${e.messaggio} (${e.gravita === "rosso" ? "da correggere subito" : "da migliorare"})` })));
+    app.append(ul);
+  } else app.append(par("Per ora niente: questo esercizio non è analizzabile con una sola camera."));
+  if (cfg.motivo) app.append(par(cfg.motivo));
+  if (cfg.non_rilevabili?.length) { const ul = el("ul"); cfg.non_rilevabili.forEach(x => ul.append(coppia(x.errore, x.motivo))); app.append(sotto("Cosa l'app non vede"), ul); }
+  if (cfg.da_calibrare) app.append(el("p", { className: "nota", textContent: "Soglie ancora da calibrare con gli istruttori." }));
+  parti.push(app);
+  if (ritornoCome === "inizio" && id !== esercizio) {
+    const b = el("button", { className: "btn primario", textContent: "Scegli questo esercizio" });
+    b.onclick = () => { scegli(id); mostraVista("inizio"); aggiornaInizio(); };
+    parti.push(b);
+  }
+  $("come-corpo").replaceChildren(...parti);
+  $("come").scrollTo(0, 0);
+}
+$("cerca").addEventListener("input", disegnaLista);
+$("b-come").addEventListener("click", () => apriCome(esercizio, "inizio"));
+$("rv-come").addEventListener("click", () => rv.s && apriCome(rv.s.esercizio, "revisione"));
+$("come-indietro").addEventListener("click", () => {
+  mostraVista(ritornoCome);
+  if (ritornoCome === "revisione") requestAnimationFrame(cicloRev); else aggiornaInizio();
+});
+$("b-live").addEventListener("click", avviaLive);
+$("file-video").addEventListener("change", e => { const f = e.target.files?.[0]; e.target.value = ""; if (f) analizzaVideo(f); });
+$("b-ultima").addEventListener("click", () => ultimaSessione && apriRevisione(ultimaSessione, false));
+$("b-voce").addEventListener("click", e => { voce = !voce; e.currentTarget.setAttribute("aria-pressed", String(voce)); if (!voce) try { speechSynthesis.cancel(); } catch {} });
+$("b-tecnico").addEventListener("click", e => { tecnico = !tecnico; e.currentTarget.setAttribute("aria-pressed", String(tecnico)); $("tecnico").hidden = !tecnico; });
+$("b-manichino").addEventListener("click", e => {
+  const on = !document.body.classList.contains("solo-manichino");
+  document.body.classList.toggle("solo-manichino", on); e.currentTarget.setAttribute("aria-pressed", String(on));
+  gemelloStato.delete($("gemello"));
+});
+$("b-stop").addEventListener("click", stop);
+$("b-camera").addEventListener("click", async () => {
+  if (modo !== "live") return;
+  // cambiare camera interrompe la registrazione: chiudo la serie in corso
+  const haRip = sessione?.eventi.some(e => e.tipo === "ripetizione");
+  if (sessione && haRip) { for (const ev of an.termina()) if (ev.tipo !== "serie") gestisciEvento(ev); chiudiSerieLive(); }
+  await fermaRegistrazione();
+  fronte = !fronte;
+  try {
+    await apriCamera();
+    an.reset();
+    if (sessione) { sessione = nuovaSessione(performance.now() / 1000); avviaRegistrazione(sessione); }
+  } catch (e) { mostraStato("Fotocamera non disponibile", "grigio"); }
+});
+$("rv-indietro").addEventListener("click", () => {
+  orologio.pausa(); mostraVista("inizio"); aggiornaInizio();
+});
+$("rv-play").addEventListener("click", () => { if (orologio.inPlay()) orologio.pausa(); else { rv.sel = -1; aggiornaNaviga(); orologio.suona(); } });
+$("rv-indietro-f").addEventListener("click", () => { orologio.pausa(); orologio.vai(orologio.ora() - 1 / 30); });
+$("rv-avanti-f").addEventListener("click", () => { orologio.pausa(); orologio.vai(orologio.ora() + 1 / 30); });
+document.querySelectorAll(".vel button").forEach(b => b.addEventListener("click", () => {
+  orologio.velocita(Number(b.dataset.v));
+  document.querySelectorAll(".vel button").forEach(x => x.setAttribute("aria-pressed", String(x === b)));
+}));
+$("rv-prec").addEventListener("click", () => rv.sel > 0 && seleziona(rv.sel - 1));
+$("rv-succ").addEventListener("click", () => seleziona(Math.min(rv.marcatori.length - 1, rv.sel + 1)));
+$("linea").addEventListener("pointerdown", e => {
+  if (e.target.closest(".segno")) return;
+  const r = $("binario").getBoundingClientRect();
+  const fr = Math.max(0, Math.min(1, (e.clientX - r.left) / r.width));
+  orologio.pausa(); orologio.vai(fr * rv.durata);
+  if (rv.sel !== -1) { rv.sel = -1; rv.ia = null; mostraSchedaSerie(); aggiornaNaviga(); document.querySelectorAll(".segno").forEach(b => b.setAttribute("aria-current", "false")); }
+});
+
+try { const salvato = localStorage.getItem("juta-esercizio"); if (salvato && VOCE_CATALOGO[salvato]) esercizio = salvato; } catch {}
+aggiornaInizio();
+capacitaSample().then(c => { sampleOk = !!c; if (vista === "revisione" && rv.s && rv.sel < 0) mostraSchedaSerie(); });
+window.__juta = { rv, get sessione() { return sessione; }, get ultima() { return ultimaSessione; }, perf };
+</script>

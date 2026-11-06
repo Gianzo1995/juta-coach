@@ -1,0 +1,7 @@
+sito/
+sito_claude/
+__pycache__/
+*.pyc
+.venv/
+modelli/
+dati/

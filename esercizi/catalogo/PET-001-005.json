@@ -1,0 +1,282 @@
+[
+{
+  "id": "PET-001",
+  "scheda": {
+    "descrizione": "Esercizio a corpo libero di spinta orizzontale che allena soprattutto pettorali, tricipiti e deltoide anteriore, chiedendo al tempo stesso al core di tenere il corpo rigido come una tavola. È la base di tutta la famiglia dei piegamenti e serve a costruire forza di spinta e controllo del tronco senza attrezzi.",
+    "muscoli": {
+      "primari": ["grande pettorale"],
+      "secondari": ["tricipite brachiale", "deltoide anteriore"],
+      "stabilizzatori": ["retto dell'addome", "obliqui", "dentato anteriore", "glutei", "quadricipiti"]
+    },
+    "partenza": "Mani a terra poco più larghe delle spalle, sotto o leggermente avanti alle spalle, dita in avanti. Braccia distese senza bloccare con violenza i gomiti. Piedi uniti o alla larghezza delle anche, sulle punte. Corpo in linea da testa a talloni: glutei e addome contratti, bacino neutro (né sedere alto né pancia che cede), sguardo verso il pavimento poco avanti alle mani, collo in linea con la schiena.",
+    "esecuzione": {
+      "eccentrica": "Flessione dei gomiti ed estensione orizzontale delle spalle: il corpo scende in blocco, gomiti diretti indietro a circa 30-45° dal busto, scapole che si avvicinano. Si scende finché il petto arriva a 1-2 cm dal pavimento.",
+      "pausa": "Breve pausa opzionale in basso mantenendo la tensione, senza appoggiare il corpo a terra.",
+      "concentrica": "Estensione dei gomiti e adduzione orizzontale delle spalle: si spinge il pavimento via da sé, il corpo sale tutto insieme, a fine salita le scapole si allargano leggermente (protrazione)."
+    },
+    "rom": "Gomito da circa 170-180° (braccia distese) a circa 70-90° in basso. Spalla da posizione neutra a circa 30-40° di estensione orizzontale con petto a 1-2 cm da terra. Anca e ginocchio restano fissi a circa 180°.",
+    "respirazione": "Inspira durante la discesa, espira durante la spinta. Con carichi impegnativi si può trattenere brevemente il fiato nel passaggio più duro, mantenendo l'addome contratto.",
+    "tempo": "2-1-1-0 (2 s discesa, 1 s fermo in basso, 1 s salita, nessuna pausa in alto)",
+    "errori": [
+      {"errore": "Bacino che cede verso il pavimento (schiena inarcata)", "correzione": "Contrarre glutei e addome prima di scendere; se non si riesce a mantenere, passare alla versione inclinata o sulle ginocchia."},
+      {"errore": "Sedere alto (corpo a V rovesciata)", "correzione": "Portare le anche in linea con spalle e caviglie; immaginare un bastone appoggiato su testa, schiena e glutei."},
+      {"errore": "Gomiti aperti a 90° dal busto", "correzione": "Portare i gomiti a circa 45° dal corpo, mani leggermente più vicine o ruotate verso l'esterno."},
+      {"errore": "Ampiezza ridotta (si scende poco)", "correzione": "Scendere finché il petto è vicino al pavimento; se manca la forza, ridurre la difficoltà invece dell'ampiezza."},
+      {"errore": "Testa che cade in avanti o collo iperesteso", "correzione": "Sguardo a terra poco avanti alle mani, mento leggermente rientrato: il petto arriva a terra prima del naso."}
+    ],
+    "cue": ["Corpo rigido come una tavola", "Spingi via il pavimento", "Gomiti verso i fianchi", "Petto a terra, non il naso", "Stringi glutei e pancia"],
+    "regressione_progressione": {
+      "regressione": ["PET-009 Piegamenti inclinati", "PET-002 Piegamenti sulle ginocchia"],
+      "progressione": ["PET-010 Piegamenti declinati", "PET-004 Piegamenti con deficit", "PET-046 Piegamenti zavorrati", "PET-005 Piegamenti arciere"]
+    },
+    "precauzioni": "Il carico su polsi e spalle può essere fastidioso per chi ha disturbi in queste zone: in caso di dolore valutare impugnature su maniglie o una regressione, e chiedere il parere di un professionista sanitario. Interrompere se compare dolore, non semplice fatica."
+  },
+  "config_app": {
+    "eredita_da": null,
+    "vista_camera": "laterale",
+    "lato": "auto",
+    "messaggio_posizione": "Camera a terra di lato, corpo intero visibile",
+    "messaggio_ok": "Ottimo piegamento!",
+    "misure": {
+      "gomito": {"tipo": "angolo", "punti": ["spalla", "gomito", "polso"]},
+      "corpo": {"tipo": "angolo", "punti": ["spalla", "anca", "caviglia"]},
+      "gambe": {"tipo": "angolo", "punti": ["anca", "ginocchio", "caviglia"]},
+      "durata": {"tipo": "durata"}
+    },
+    "ripetizione": {"misura": "gomito", "direzione": "diminuisce", "posizione_iniziale": 160, "inizio_movimento": 145},
+    "errori": [
+      {"id": "allineamento", "messaggio": "Corpo in linea retta", "gravita": "rosso", "momento": "durante", "misura": "corpo", "minore_di": 155},
+      {"id": "profondita", "messaggio": "Scendi di più", "gravita": "giallo", "momento": "fine", "misura": "gomito", "statistica": "minimo", "maggiore_di": 100},
+      {"id": "gambe_piegate", "messaggio": "Gambe tese", "gravita": "giallo", "momento": "durante", "misura": "gambe", "minore_di": 160},
+      {"id": "troppo_veloce", "messaggio": "Rallenta il movimento", "gravita": "giallo", "momento": "fine", "misura": "durata", "statistica": "massimo", "minore_di": 1.5}
+    ],
+    "testi_errori": {
+      "allineamento": {"cosa_succede": "Il corpo non è dritto: il bacino scende verso terra oppure il sedere sale.", "perche_conta": "Con il bacino che cede la zona lombare si inarca sotto carico; con il sedere alto il lavoro passa dal petto alle spalle.", "come_correggere": "Stringi glutei e addome prima di scendere; se non riesci a tenerlo, passa ai piegamenti inclinati.", "frase_da_ricordare": "Corpo rigido come una tavola."},
+      "profondita": {"cosa_succede": "Ti fermi troppo presto, con i gomiti ancora poco piegati.", "perche_conta": "Con mezza ampiezza il petto lavora meno e progredisci più lentamente.", "come_correggere": "Scendi finché il petto è a un paio di centimetri da terra; se è troppo faticoso, rendi l'esercizio più facile invece di accorciarlo.", "frase_da_ricordare": "Petto vicino a terra."},
+      "gambe_piegate": {"cosa_succede": "Le ginocchia si piegano e il corpo perde la linea.", "perche_conta": "Le gambe piegate tolgono tensione al core e cambiano la leva dell'esercizio.", "come_correggere": "Spingi i talloni indietro e contrai le cosce.", "frase_da_ricordare": "Gambe tese, talloni indietro."},
+      "troppo_veloce": {"cosa_succede": "La ripetizione è troppo rapida e probabilmente rimbalzi in basso.", "perche_conta": "Senza controllo in discesa il muscolo lavora meno e le spalle prendono colpi.", "come_correggere": "Conta due secondi per scendere e uno per salire.", "frase_da_ricordare": "Giù in due, su in uno."}
+    },
+    "analizzabilita": "parziale",
+    "motivo": "Dalla vista laterale si leggono bene ampiezza e allineamento del corpo, ma non l'apertura dei gomiti né la posizione delle mani.",
+    "non_rilevabili": [
+      {"errore": "Gomiti aperti a 90° dal busto", "motivo": "L'angolo tra braccio e busto sul piano orizzontale si vede solo dall'alto o di fronte, non dalla vista laterale."},
+      {"errore": "Distinzione tra bacino che cede e sedere alto", "motivo": "L'angolo spalla-anca-caviglia diminuisce in entrambi i casi: il formato non dice da che parte si piega."},
+      {"errore": "Testa che cade o collo iperesteso", "motivo": "Il naso è l'unico punto della testa e non rappresenta in modo affidabile l'allineamento del collo."},
+      {"errore": "Scapole non controllate (protrazione/retrazione)", "motivo": "Le scapole non sono tra i punti rilevati."}
+    ],
+    "richiesta_motore": [
+      "Angolo con segno (es. 'angolo_orientato') per distinguere bacino che cede da sedere alto e dare due messaggi diversi.",
+      "Durata della sola fase eccentrica, per controllare la discesa invece della ripetizione intera.",
+      "Statistica 'massimo' calcolata anche tra una ripetizione e l'altra, per verificare che le braccia arrivino distese in alto."
+    ],
+    "da_calibrare": true
+  }
+},
+{
+  "id": "PET-002",
+  "scheda": {
+    "descrizione": "Regressione dei piegamenti con appoggio sulle ginocchia invece che sui piedi: la leva più corta riduce il carico sulle braccia. Serve a costruire la forza per arrivare al piegamento completo mantenendo la stessa tecnica.",
+    "muscoli": {
+      "primari": ["grande pettorale"],
+      "secondari": ["tricipite brachiale", "deltoide anteriore"],
+      "stabilizzatori": ["retto dell'addome", "obliqui", "dentato anteriore", "glutei"]
+    },
+    "partenza": "Come PET-001, ma appoggio sulle ginocchia (meglio su un tappetino), piedi sollevati o appoggiati. Linea retta da testa a ginocchia: le anche NON devono restare indietro sopra le ginocchia.",
+    "esecuzione": "Identica a PET-001; cambia solo il fulcro, che si sposta dalle punte dei piedi alle ginocchia.",
+    "rom": "Uguale a PET-001 per gomito e spalla. L'anca resta a circa 180° rispetto alla linea spalla-ginocchio.",
+    "respirazione": "Come PET-001.",
+    "tempo": "2-1-1-0",
+    "errori": [
+      {"errore": "Anche piegate e sedere indietro (posizione a quattro zampe)", "correzione": "Portare il bacino in avanti finché spalle, anche e ginocchia sono in linea."},
+      {"errore": "Ginocchia troppo vicine alle mani", "correzione": "Allontanare le ginocchia per allungare la leva e avere spazio per scendere col petto."},
+      {"errore": "Ampiezza ridotta", "correzione": "Come PET-001: petto vicino a terra."}
+    ],
+    "cue": ["Linea da testa a ginocchia", "Bacino in avanti", "Petto a terra", "Spingi via il pavimento"],
+    "regressione_progressione": {
+      "regressione": ["PET-009 Piegamenti inclinati (con appoggio alto)"],
+      "progressione": ["PET-009 Piegamenti inclinati (con appoggio via via più basso)", "PET-001 Piegamenti sulle braccia"]
+    },
+    "precauzioni": "Usare un tappetino per proteggere le ginocchia; in caso di fastidio a ginocchia, polsi o spalle preferire i piegamenti inclinati e chiedere il parere di un professionista sanitario."
+  },
+  "config_app": {
+    "eredita_da": "PET-001",
+    "messaggio_posizione": "Camera a terra di lato, ginocchia comprese",
+    "misure": {
+      "corpo": {"tipo": "angolo", "punti": ["spalla", "anca", "ginocchio"]},
+      "gambe": null
+    },
+    "errori": [
+      {"id": "allineamento", "messaggio": "Bacino avanti, corpo dritto", "gravita": "giallo", "momento": "durante", "misura": "corpo", "minore_di": 150},
+      {"id": "profondita", "messaggio": "Scendi di più", "gravita": "giallo", "momento": "fine", "misura": "gomito", "statistica": "minimo", "maggiore_di": 100},
+      {"id": "troppo_veloce", "messaggio": "Rallenta il movimento", "gravita": "giallo", "momento": "fine", "misura": "durata", "statistica": "massimo", "minore_di": 1.5}
+    ],
+    "testi_errori": {
+      "allineamento": {"cosa_succede": "Le anche restano piegate e il sedere va indietro.", "perche_conta": "Il peso si sposta sulle ginocchia e il petto lavora molto meno.", "come_correggere": "Porta il bacino in avanti finché spalle, anche e ginocchia sono in linea.", "frase_da_ricordare": "Linea da testa a ginocchia."}
+    },
+    "analizzabilita": "parziale",
+    "motivo": "Come PET-001: ampiezza e allineamento leggibili di lato, apertura dei gomiti no. Errore di allineamento declassato a giallo perché con appoggio sulle ginocchia il rischio lombare è minore.",
+    "non_rilevabili": [
+      {"errore": "Gomiti aperti a 90° dal busto", "motivo": "Richiede vista dall'alto o frontale."},
+      {"errore": "Ginocchia troppo vicine alle mani", "motivo": "Il formato non misura la distanza orizzontale tra due punti (ginocchio e polso)."}
+    ],
+    "richiesta_motore": [
+      "Possibilità di annullare in modo esplicito una misura o un errore ereditato (qui uso 'gambe': null e riscrivo l'intera lista errori).",
+      "Misura 'distanza' tra due punti in rapporto a un segmento di riferimento."
+    ],
+    "da_calibrare": true
+  }
+},
+{
+  "id": "PET-003",
+  "scheda": {
+    "descrizione": "Variante dei piegamenti con mani più larghe: aumenta l'apertura orizzontale della spalla e sposta l'enfasi sul petto, riducendo il contributo dei tricipiti. Utile per variare lo stimolo, ma più impegnativa per le spalle.",
+    "muscoli": {
+      "primari": ["grande pettorale"],
+      "secondari": ["deltoide anteriore", "tricipite brachiale"],
+      "stabilizzatori": ["retto dell'addome", "obliqui", "dentato anteriore", "glutei"]
+    },
+    "partenza": "Come PET-001, ma mani a circa 1,5 volte la larghezza delle spalle, dita in avanti o leggermente ruotate verso l'esterno.",
+    "esecuzione": "Come PET-001; i gomiti si aprono di più rispetto al busto (circa 60-75°), mantenendo gli avambracci il più possibile verticali.",
+    "rom": "Gomito da circa 170-180° a circa 90-100° in basso: con le mani larghe il gomito si piega meno per arrivare alla stessa altezza del petto.",
+    "respirazione": "Come PET-001.",
+    "tempo": "2-1-1-0",
+    "errori": [
+      {"errore": "Mani eccessivamente larghe (oltre 2 volte le spalle)", "correzione": "Riportare le mani a circa 1,5 volte la larghezza delle spalle."},
+      {"errore": "Gomiti a 90° pieni dal busto con avambracci inclinati", "correzione": "Tenere gli avambracci verticali e i gomiti leggermente sotto le spalle."},
+      {"errore": "Ampiezza ridotta", "correzione": "Come PET-001: petto vicino a terra."}
+    ],
+    "cue": ["Mani larghe ma non troppo", "Avambracci verticali", "Petto tra le mani", "Corpo rigido"],
+    "regressione_progressione": {
+      "regressione": ["PET-001 Piegamenti sulle braccia", "PET-009 Piegamenti inclinati con presa larga"],
+      "progressione": ["PET-004 Piegamenti con deficit", "PET-005 Piegamenti arciere"]
+    },
+    "precauzioni": "La presa larga aumenta la sollecitazione della spalla: chi ha fastidi alle spalle dovrebbe preferire la presa standard e chiedere il parere di un professionista sanitario."
+  },
+  "config_app": {
+    "eredita_da": "PET-001",
+    "errori": [
+      {"id": "allineamento", "messaggio": "Corpo in linea retta", "gravita": "rosso", "momento": "durante", "misura": "corpo", "minore_di": 155},
+      {"id": "profondita", "messaggio": "Scendi di più", "gravita": "giallo", "momento": "fine", "misura": "gomito", "statistica": "minimo", "maggiore_di": 110},
+      {"id": "gambe_piegate", "messaggio": "Gambe tese", "gravita": "giallo", "momento": "durante", "misura": "gambe", "minore_di": 160},
+      {"id": "troppo_veloce", "messaggio": "Rallenta il movimento", "gravita": "giallo", "momento": "fine", "misura": "durata", "statistica": "massimo", "minore_di": 1.5}
+    ],
+    "analizzabilita": "parziale",
+    "motivo": "Con le mani larghe l'avambraccio esce dal piano laterale: l'angolo del gomito visto di lato è deformato dalla prospettiva, quindi la soglia di profondità è meno affidabile che in PET-001. La larghezza della presa, cioè l'elemento che definisce la variante, non è misurabile.",
+    "non_rilevabili": [
+      {"errore": "Mani troppo larghe", "motivo": "Servirebbe la distanza tra i due polsi confrontata con la larghezza delle spalle, misura non prevista e visibile solo dal fronte."},
+      {"errore": "Avambracci inclinati", "motivo": "L'inclinazione dell'avambraccio sul piano frontale non si vede dalla vista laterale."}
+    ],
+    "richiesta_motore": [
+      "Misura 'distanza' tra punti di lato sinistro e destro (es. polso_sx-polso_dx rispetto a spalla_sx-spalla_dx) per verificare la larghezza della presa.",
+      "Conteggio ripetizioni basato sullo spostamento verticale della spalla, meno sensibile alla prospettiva dell'angolo del gomito."
+    ],
+    "da_calibrare": true
+  }
+},
+{
+  "id": "PET-004",
+  "scheda": {
+    "descrizione": "Piegamenti con le mani su maniglie o rialzi, che permettono al petto di scendere sotto il livello delle mani. L'ampiezza maggiore allunga di più il pettorale in basso ed è una progressione rispetto al piegamento standard.",
+    "muscoli": {
+      "primari": ["grande pettorale"],
+      "secondari": ["deltoide anteriore", "tricipite brachiale"],
+      "stabilizzatori": ["retto dell'addome", "obliqui", "dentato anteriore", "glutei"]
+    },
+    "partenza": "Come PET-001, ma con le mani su maniglie da piegamento, dischi o step stabili e alla stessa altezza (in genere 5-15 cm). Verificare che i rialzi non scivolino.",
+    "esecuzione": "Come PET-001, ma la discesa continua finché il petto scende 3-10 cm sotto il livello delle mani, secondo la mobilità delle spalle, senza perdere il controllo.",
+    "rom": "Gomito da circa 170-180° a circa 60-80° in basso. Spalla fino a circa 40-50° di estensione orizzontale, da adattare alla mobilità individuale.",
+    "respirazione": "Come PET-001.",
+    "tempo": "3-1-1-0 (discesa più lenta per gestire il tratto profondo)",
+    "errori": [
+      {"errore": "Scendere oltre la propria mobilità con spalle che rollano in avanti", "correzione": "Fermarsi dove si mantengono le scapole controllate; ridurre l'altezza dei rialzi."},
+      {"errore": "Rimbalzo nel punto più basso", "correzione": "Inserire una pausa di 1 secondo in basso."},
+      {"errore": "Non sfruttare il deficit (si scende come in un piegamento normale)", "correzione": "Scendere col petto sotto il livello delle mani; altrimenti l'attrezzo non serve."},
+      {"errore": "Rialzi instabili o ad altezze diverse", "correzione": "Usare supporti uguali e fermi."}
+    ],
+    "cue": ["Petto sotto le mani", "Scendi lento, fermati giù", "Spalle lontano dalle orecchie", "Corpo rigido"],
+    "regressione_progressione": {
+      "regressione": ["PET-001 Piegamenti sulle braccia"],
+      "progressione": ["PET-046 Piegamenti zavorrati", "PET-068 Piegamenti agli anelli"]
+    },
+    "precauzioni": "L'ampiezza aumentata sollecita la parte anteriore della spalla: aumentare l'altezza dei rialzi gradualmente. In caso di fastidi alle spalle chiedere il parere di un professionista sanitario."
+  },
+  "config_app": {
+    "eredita_da": "PET-001",
+    "errori": [
+      {"id": "allineamento", "messaggio": "Corpo in linea retta", "gravita": "rosso", "momento": "durante", "misura": "corpo", "minore_di": 155},
+      {"id": "profondita", "messaggio": "Petto sotto le mani", "gravita": "giallo", "momento": "fine", "misura": "gomito", "statistica": "minimo", "maggiore_di": 85},
+      {"id": "gambe_piegate", "messaggio": "Gambe tese", "gravita": "giallo", "momento": "durante", "misura": "gambe", "minore_di": 160},
+      {"id": "troppo_veloce", "messaggio": "Scendi più lentamente", "gravita": "giallo", "momento": "fine", "misura": "durata", "statistica": "massimo", "minore_di": 2.5}
+    ],
+    "testi_errori": {
+      "profondita": {"cosa_succede": "Ti fermi all'altezza delle mani, come in un piegamento normale.", "perche_conta": "Il vantaggio dei rialzi è proprio la discesa in più: senza, l'esercizio è un piegamento standard.", "come_correggere": "Scendi col petto qualche centimetro sotto le mani, fin dove controlli le spalle.", "frase_da_ricordare": "Petto sotto le mani."},
+      "troppo_veloce": {"cosa_succede": "Arrivi in basso troppo in fretta.", "perche_conta": "Nel tratto profondo la spalla è più esposta: serve controllo, non slancio.", "come_correggere": "Conta tre secondi in discesa e fermati un attimo in basso.", "frase_da_ricordare": "Giù lento, fermo, su."}
+    },
+    "analizzabilita": "parziale",
+    "motivo": "Ampiezza e allineamento sono leggibili di lato, ma l'errore più rischioso della variante (scendere oltre la propria mobilità di spalla) non è misurabile in modo affidabile. Maniglie o rialzi possono coprire in parte i polsi.",
+    "non_rilevabili": [
+      {"errore": "Discesa oltre la mobilità con spalle che rollano in avanti", "motivo": "Dipende da scapole e testa dell'omero, non rilevate; una soglia unica sul gomito non tiene conto della mobilità del singolo."},
+      {"errore": "Rimbalzo in basso", "motivo": "Servirebbe la durata della pausa nel punto più basso, non prevista."},
+      {"errore": "Rialzi instabili o ad altezze diverse", "motivo": "Gli attrezzi non sono rilevati dalla pose estimation."}
+    ],
+    "richiesta_motore": [
+      "Misura del tempo di permanenza vicino al minimo di una misura (pausa in basso), per rilevare il rimbalzo.",
+      "Soglie personalizzabili per cliente (es. profondità massima concordata con l'istruttore)."
+    ],
+    "da_calibrare": true
+  }
+},
+{
+  "id": "PET-005",
+  "scheda": {
+    "descrizione": "Piegamento asimmetrico in cui un braccio piega e porta quasi tutto il carico mentre l'altro resta disteso di lato come supporto. È una progressione avanzata verso il piegamento a un braccio e chiede molta forza unilaterale e stabilità del tronco.",
+    "muscoli": {
+      "primari": ["grande pettorale (lato che lavora)"],
+      "secondari": ["tricipite brachiale", "deltoide anteriore", "addominali"],
+      "stabilizzatori": ["obliqui", "dentato anteriore", "glutei", "muscoli della spalla del braccio disteso"]
+    },
+    "partenza": "Posizione di PET-001 con mani molto larghe (circa 2 volte le spalle), dita del braccio di supporto ruotate verso l'esterno. Piedi un po' più larghi del normale per stabilità.",
+    "esecuzione": "Il corpo scende spostandosi verso una mano: quel gomito si piega come in un piegamento normale, mentre il braccio opposto resta disteso e scorre di lato. Si risale spingendo soprattutto con il braccio piegato, tornando al centro. Si alterna il lato o si completano le ripetizioni da un lato.",
+    "rom": "Braccio che lavora: gomito da circa 170-180° a circa 70-90°. Braccio di supporto: gomito sempre vicino a 170-180°, spalla in abduzione ampia. Tronco parallelo al pavimento, senza ruotare.",
+    "respirazione": "Come PET-001; il blocco respiratorio breve nel punto più duro aiuta la stabilità del tronco.",
+    "tempo": "3-1-1-0",
+    "errori": [
+      {"errore": "Il braccio di supporto si piega e divide il carico", "correzione": "Mantenere il gomito disteso; se non si riesce, ridurre l'ampiezza o rialzare le mani."},
+      {"errore": "Tronco che ruota verso il lato che lavora", "correzione": "Spalle e bacino paralleli al pavimento; piedi più larghi."},
+      {"errore": "Bacino che cede", "correzione": "Glutei e addome contratti come in PET-001."},
+      {"errore": "Gomito del braccio che lavora molto aperto", "correzione": "Tenerlo a circa 45° dal busto."}
+    ],
+    "cue": ["Un braccio spinge, l'altro guida", "Braccio di supporto teso", "Spalle parallele a terra", "Scendi verso la mano"],
+    "regressione_progressione": {
+      "regressione": ["PET-003 Piegamenti presa larga", "PET-005 su rialzo (mani su panca)"],
+      "progressione": ["PET-006 Piegamenti a un braccio"]
+    },
+    "precauzioni": "Il carico unilaterale è elevato su spalla e polso del lato che lavora: inserirlo solo dopo aver padroneggiato i piegamenti standard. In caso di fastidi chiedere il parere di un professionista sanitario."
+  },
+  "config_app": {
+    "eredita_da": "PET-001",
+    "vista_camera": "frontale",
+    "lato": "entrambi",
+    "messaggio_posizione": "Esercizio non ancora supportato dall'app",
+    "messaggio_ok": "",
+    "misure": {},
+    "ripetizione": {},
+    "errori": [],
+    "testi_errori": {},
+    "analizzabilita": "non_analizzabile",
+    "motivo": "Le braccia lavorano sul piano frontale (una si apre di lato), il corpo è orizzontale e vicino al pavimento: di lato il braccio lontano è nascosto e l'angolo del gomito è deformato; di fronte il corpo è in forte scorcio e l'allineamento non si vede. Servirebbero due viste o una vista dall'alto.",
+    "non_rilevabili": [
+      {"errore": "Braccio di supporto che si piega", "motivo": "Dalla vista laterale il braccio lontano è coperto dal corpo; dalla frontale l'angolo del gomito è in scorcio."},
+      {"errore": "Tronco che ruota", "motivo": "La rotazione del tronco non è misurabile con i tipi di misura disponibili."},
+      {"errore": "Bacino che cede", "motivo": "Si vede solo di lato, mentre gli errori delle braccia si vedono solo di fronte."},
+      {"errore": "Gomito del braccio che lavora molto aperto", "motivo": "Richiede vista dall'alto."}
+    ],
+    "richiesta_motore": [
+      "Supporto a due camere contemporanee (laterale + frontale) o vista dall'alto.",
+      "Misura di rotazione del tronco (differenza di altezza tra spalla sinistra e destra rispetto al pavimento).",
+      "Conteggio ripetizioni alternate sinistra/destra."
+    ],
+    "da_calibrare": true
+  }
+}
+]
