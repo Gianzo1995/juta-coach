@@ -33,6 +33,8 @@ def casi():
         "PET-001": [pp(175)] * FPS + R(pp, 175, 80, secondi=3.0) + R(pp, 175, 115, secondi=3.0)
                    + R(pp, 175, 80, secondi=3.0, abbassa_bacino=70) + R(pp, 175, 80, secondi=1.0)
                    + R(pp, 175, 80, secondi=3.0, gambe=140),
+        "PET-007": [pp(175)] * FPS + R(pp, 175, 80, secondi=3.0) + R(pp, 175, 80, secondi=3.0, abbassa_bacino=70),
+        "PET-008": [pp(175)] * FPS + R(pp, 175, 80, secondi=3.0) + R(pp, 175, 115, secondi=3.0),
         "PET-002": [pp(175)] * FPS + R(pp, 175, 80, secondi=3.0) + R(pp, 175, 80, secondi=3.0, abbassa_bacino=70),
     }
 

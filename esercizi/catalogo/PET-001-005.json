@@ -1,6 +1,7 @@
 [
 {
   "id": "PET-001",
+  "nome": "Piegamenti sulle braccia",
   "scheda": {
     "descrizione": "Esercizio a corpo libero di spinta orizzontale che allena soprattutto pettorali, tricipiti e deltoide anteriore, chiedendo al tempo stesso al core di tenere il corpo rigido come una tavola. È la base di tutta la famiglia dei piegamenti e serve a costruire forza di spinta e controllo del tronco senza attrezzi.",
     "muscoli": {
@@ -74,6 +75,7 @@
 },
 {
   "id": "PET-002",
+  "nome": "Piegamenti sulle ginocchia",
   "scheda": {
     "descrizione": "Regressione dei piegamenti con appoggio sulle ginocchia invece che sui piedi: la leva più corta riduce il carico sulle braccia. Serve a costruire la forza per arrivare al piegamento completo mantenendo la stessa tecnica.",
     "muscoli": {
@@ -128,6 +130,7 @@
 },
 {
   "id": "PET-003",
+  "nome": "Piegamenti presa larga",
   "scheda": {
     "descrizione": "Variante dei piegamenti con mani più larghe: aumenta l'apertura orizzontale della spalla e sposta l'enfasi sul petto, riducendo il contributo dei tricipiti. Utile per variare lo stimolo, ma più impegnativa per le spalle.",
     "muscoli": {
@@ -175,6 +178,7 @@
 },
 {
   "id": "PET-004",
+  "nome": "Piegamenti con deficit",
   "scheda": {
     "descrizione": "Piegamenti con le mani su maniglie o rialzi, che permettono al petto di scendere sotto il livello delle mani. L'ampiezza maggiore allunga di più il pettorale in basso ed è una progressione rispetto al piegamento standard.",
     "muscoli": {
@@ -228,6 +232,7 @@
 },
 {
   "id": "PET-005",
+  "nome": "Piegamenti arciere",
   "scheda": {
     "descrizione": "Piegamento asimmetrico in cui un braccio piega e porta quasi tutto il carico mentre l'altro resta disteso di lato come supporto. È una progressione avanzata verso il piegamento a un braccio e chiede molta forza unilaterale e stabilità del tronco.",
     "muscoli": {

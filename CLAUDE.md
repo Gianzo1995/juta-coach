@@ -46,8 +46,8 @@ Gianluca, titolare di Juta. **Non è uno sviluppatore.**
 ## Formato del catalogo
 
 Ogni voce: `{ "id", "nome"?, "gruppo"?, "scheda", "config_app" }`.
-- `nome` e `gruppo` sono facoltativi: se mancano il nome si ricava dai riferimenti in
-  `regressione_progressione` di altre schede, il gruppo dal prefisso dell'id (PET → Petto).
+- `nome` va sempre indicato (se manca si ricava dai riferimenti in `regressione_progressione` che iniziano con la
+  maiuscola, altrimenti si usa l'id). `gruppo` è facoltativo: si ricava dal prefisso dell'id (PET → Petto).
 - `config_app.eredita_da`: la variante parte dalla config del base e sovrascrive solo i campi indicati.
   `null` toglie un campo/misura/testo; gli oggetti si uniscono campo per campo; **le liste (es. `errori`) sostituiscono**.
   Un oggetto vuoto `{}` non cancella niente.
@@ -86,5 +86,8 @@ a quando torna oltre `posizione_iniziale`, quindi è più corta della ripetizion
 - **B. Fasi della ripetizione**: durata di discesa, pausa in basso e salita (tempo tipo 2-1-1-0, rimbalzo).
 - **C. Controllo in alto** tra una ripetizione e l'altra (braccia/gambe distese).
 - **D. Misura `distanza`** tra due punti rispetto a un segmento (larghezza presa, ginocchia-mani).
-- Dopo: inclinazione delle spalle (vista frontale), ripetizioni alternate sx/dx, conteggio sull'altezza della spalla.
+- **E. Scelta del lato che lavora** (esercizi a un braccio/una gamba, es. PET-006): il motore supporta già `lato: "sx"/"dx"`,
+  manca un selettore nell'app prima del live. Poco lavoro, molto utile.
+- Dopo: inclinazione delle spalle / rotazione del tronco (vista frontale), ripetizioni alternate sx/dx (PET-008),
+  allineamento misurato sulla gamba che resta a terra (PET-008), conteggio sull'altezza della spalla.
 - Rimandati: soglie per cliente (serve identificazione, insieme ad Angel1), due camere / vista dall'alto.

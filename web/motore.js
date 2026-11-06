@@ -100,7 +100,7 @@ function costruisciCatalogo(voci) {
     const rp = v.scheda?.regressione_progressione || {};
     for (const s of [...(rp.regressione || []), ...(rp.progressione || [])]) {
       const m = /^([A-Z]{2,4}-\d{3})\s+(.+?)(\s*\(.*\))?$/.exec(s);
-      if (m && !nomiDaRiferimenti[m[1]]) nomiDaRiferimenti[m[1]] = m[2];
+      if (m && /^[A-ZÀ-Ý]/.test(m[2]) && !nomiDaRiferimenti[m[1]]) nomiDaRiferimenti[m[1]] = m[2];
     }
   }
   const esercizi = {}, elenco = [];

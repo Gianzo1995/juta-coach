@@ -758,7 +758,7 @@ function calcolaFantasma(posa, es, errId, lato, valoreMisurato) {
   }
   if (spec.tipo === "inclinazione") {
     const [basso, alto] = spec.punti, l = lati[0];
-    const obiettivo = (err.maggiore_di ?? 60) - 10;
+    const obiettivo = err.maggiore_di !== undefined ? err.maggiore_di - 10 : err.minore_di + 5;
     const incl = g => geo.inclinazione(g[`${basso}_${l}`], g[`${alto}_${l}`]);
     const att = incl(f);
     if (att === null || giaGiusto(err, att, obiettivo)) return null;
