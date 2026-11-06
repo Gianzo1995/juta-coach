@@ -120,14 +120,17 @@ def valida(cfg):
 
 def applica_impostazioni(cfg, imposta):
     """Applica le scelte fatte prima della serie (es. {"lato": "dx"} o {"errori.profondita": {...}}).
-    "errori.<id>" aggiunge o sostituisce un errore, "errori.<id>.<campo>" ne cambia un campo,
+    "errori.<id>" aggiunge o sostituisce un errore (null lo toglie), "errori.<id>.<campo>" ne cambia un campo,
     gli altri percorsi (es. "ripetizione.posizione_iniziale") cambiano il campo indicato."""
     out = copy.deepcopy(cfg)
     for percorso, valore in imposta.items():
         parti = percorso.split(".")
         if parti[0] == "errori" and len(parti) >= 2:
             idx = next((k for k, e in enumerate(out["errori"]) if e["id"] == parti[1]), None)
-            if len(parti) == 2:
+            if len(parti) == 2 and valore is None:          # null = controllo disattivato
+                if idx is not None:
+                    out["errori"].pop(idx)
+            elif len(parti) == 2:
                 nuovo = dict(copy.deepcopy(valore), id=parti[1])
                 if idx is None:
                     out["errori"].append(nuovo)

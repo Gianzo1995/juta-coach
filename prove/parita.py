@@ -33,6 +33,12 @@ def casi():
         "PET-019": [pb(170)] * FPS + R(pb, 170, 115, secondi=3.0) + R(pb, 170, 130, secondi=3.0),
         "PET-020": [pb(170)] * FPS + R(pb, 170, 110, secondi=3.0) + R(pb, 170, 110, secondi=1.0),
         "PET-014": [pb(170)] * FPS + pm.ripetizione_fasi(pb, 170, 80, 2, 2, 1) + pm.ripetizione_fasi(pb, 170, 80, 2, 0, 1),
+        "PET-025": [pm.posa_pullover(95)] * FPS + pm.ripetizione_fasi(lambda a, **kw: pm.posa_pullover(a, **kw), 95, 170, 3, 1, 2)
+                   + pm.ripetizione_fasi(lambda a, **kw: pm.posa_pullover(a, **kw), 95, 170, 3, 1, 2, sollevamento=0.2),
+        # valori non interi: dati simulati che cadono esattamente su una soglia possono differire di un fotogramma
+        # tra Python e JavaScript (ultima cifra decimale di acos); con dati reali non succede
+        "PET-021": [pb(110.3)] * FPS + pm.ripetizione_fasi(pb, 110.3, 170.2, 1, 1, 2) + pm.ripetizione_fasi(pb, 170.2, 110.3, 2, 2, 1)
+                   + pm.ripetizione_fasi(pb, 170.2, 110.3, 2, 0.2, 1),
         "PET-015": [pb(170)] * FPS + R(pb, 170, 90, secondi=5.0) + R(pb, 170, 115, secondi=3.0),
         "PET-011": [pp(175)] * FPS + R(pp, 175, 80, secondi=1.5) + R(pp, 175, 80, secondi=1.5, abbassa_bacino=70),
         "lat_machine": [pm.posa_lat(170, 170)] * FPS + R(lambda g: pm.posa_lat(g, g), 170, 60)

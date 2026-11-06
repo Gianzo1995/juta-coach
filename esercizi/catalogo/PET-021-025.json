@@ -1,0 +1,310 @@
+[
+{
+  "id": "PET-021",
+  "nome": "Pin press su panca",
+  "scheda": {
+    "descrizione": "Panca piana nel rack in cui ogni ripetizione parte da fermo, con il bilanciere appoggiato sui perni di sicurezza a un'altezza scelta. Elimina del tutto l'energia elastica della discesa e rafforza la spinta da un punto preciso del movimento, di solito quello in cui il cliente si blocca.",
+    "muscoli": {
+      "primari": ["grande pettorale", "tricipite brachiale"],
+      "secondari": ["deltoide anteriore"],
+      "stabilizzatori": ["come PET-012"]
+    },
+    "partenza": "Panca dentro il power rack, perni regolati all'altezza da allenare (da 2-3 cm sopra il petto fino a metà movimento). Ci si sistema sotto il bilanciere già appoggiato sui perni con l'assetto di PET-012: scapole addotte e depresse, piedi piantati, presa standard, polsi sopra i gomiti.",
+    "esecuzione": "Si crea tensione senza muovere il bilanciere, poi si spinge da fermo fino a braccia distese. Si riaccompagna il bilanciere sui perni in modo controllato, lo si appoggia completamente (1-2 s, senza perdere l'assetto) e si riparte.",
+    "rom": "Gomito da un angolo di partenza che dipende dall'altezza dei perni (circa 90-120°) fino a circa 165-180°.",
+    "respirazione": "Inspira e trattieni prima di ogni spinta; espira dopo il punto più duro o a braccia distese. Respiro libero mentre il bilanciere è appoggiato.",
+    "tempo": "2-2-1-0 (discesa controllata ai perni, 2 s di appoggio, spinta)",
+    "errori": [
+      {"errore": "Bilanciere lasciato cadere sui perni o rimbalzo", "correzione": "Riaccompagnarlo fino all'appoggio e fermarsi davvero."},
+      {"errore": "Perdita dell'assetto durante l'appoggio (scapole e glutei si rilassano)", "correzione": "Riprendere scapole e piedi prima di ogni spinta."},
+      {"errore": "Glutei che si staccano per sbloccare il bilanciere", "correzione": "Spinta dei piedi in avanti; ridurre il carico."},
+      {"errore": "Bilanciere non centrato sui perni (si inclina alla partenza)", "correzione": "Controllare che i perni siano alla stessa altezza e le mani simmetriche."}
+    ],
+    "cue": ["Tensione prima di spingere", "Spingi da fermo", "Riappoggia controllato", "Scapole e piedi a ogni ripetizione"],
+    "regressione_progressione": {
+      "regressione": ["PET-020 Board press", "PET-019 Floor press con bilanciere"],
+      "progressione": ["PET-021 con perni più bassi", "PET-012 Panca piana con bilanciere"]
+    },
+    "precauzioni": "I perni fanno anche da sicurezza, ma vanno controllati prima di ogni serie: devono essere alla stessa altezza e ben inseriti. Il carico può essere elevato: assistente consigliato. In caso di fastidi a spalle o gomiti chiedere il parere di un professionista sanitario."
+  },
+  "config_app": {
+    "eredita_da": "PET-012",
+    "messaggio_posizione": "Camera di lato, montanti del rack fuori inquadratura",
+    "messaggio_ok": "Ottima pin press!",
+    "errori": [
+      {"id": "glutei_staccati", "messaggio": "Glutei sulla panca", "gravita": "rosso", "momento": "durante", "misura": "glutei", "maggiore_di": 0.1},
+      {"id": "avambraccio_inclinato", "messaggio": "Polsi sopra i gomiti", "gravita": "giallo", "momento": "durante", "misura": "avambraccio", "maggiore_di": 25},
+      {"id": "appoggio_rapido", "messaggio": "Riappoggia controllato", "gravita": "giallo", "momento": "fine", "misura": "pausa", "minore_di": 1.0}
+    ],
+    "testi_errori": {
+      "appoggio_rapido": {"cosa_succede": "La ripetizione è troppo rapida: il bilanciere scende di colpo sui perni o rimbalza.", "perche_conta": "Lo scopo è ripartire da fermo: rimbalzando sui perni perdi il beneficio e rovini l'attrezzatura.", "come_correggere": "Riaccompagna il bilanciere fino all'appoggio e conta 'uno, due' prima di spingere.", "frase_da_ricordare": "Appoggia, conta, spingi."}
+    },
+    "analizzabilita": "parziale",
+    "motivo": "Due problemi in più rispetto a PET-012. 1) I montanti del rack possono coprire braccia e spalle se la camera è perpendicolare: va spostata leggermente. 2) La ripetizione parte dal basso, ma il motore conta le ripetizioni partendo con le braccia distese: se il cliente inizia con il bilanciere sui perni, la prima ripetizione potrebbe non essere contata. Va verificato sul campo.",
+    "non_rilevabili": [
+      {"errore": "Bilanciere non centrato sui perni", "motivo": "Bilanciere e perni non sono rilevati, e il dislivello sinistra/destra non si vede di lato."},
+      {"errore": "Perdita dell'assetto durante l'appoggio", "motivo": "Scapole non rilevate; i piccoli spostamenti a bilanciere fermo sono sotto la precisione della camera."}
+    ],
+    "richiesta_motore": [
+      "Conteggio ripetizioni con partenza dal basso (posizione di riposo con gomito piegato e direzione 'aumenta'), con angolo di partenza variabile secondo l'altezza dei perni.",
+      "Come PET-014: tempo di permanenza vicino al minimo."
+    ],
+    "da_calibrare": true
+  }
+},
+{
+  "id": "PET-022",
+  "nome": "Panca piana con elastici o catene",
+  "scheda": {
+    "descrizione": "Panca piana con elastici agganciati al bilanciere o catene appese alle estremità: il carico aumenta man mano che il bilanciere sale (resistenza accomodante). Allena la forza nella parte alta del movimento e la velocità di spinta, ed è usata soprattutto nella preparazione di forza.",
+    "muscoli": {
+      "primari": ["grande pettorale", "tricipite brachiale"],
+      "secondari": ["deltoide anteriore"],
+      "stabilizzatori": ["come PET-012"]
+    },
+    "partenza": "Come PET-012. Elastici fissati alla base del rack o della panca in modo simmetrico; catene appese alle estremità del bilanciere con parte degli anelli appoggiata a terra in basso. Carico del bilanciere in genere più basso rispetto alla panca normale.",
+    "esecuzione": "Come PET-012. In discesa gli elastici tirano verso il basso: controllare la discesa per non accelerare. In salita spingere il più velocemente possibile contro la resistenza crescente.",
+    "rom": "Come PET-012.",
+    "respirazione": "Come PET-012.",
+    "tempo": "2-0-X-0 nelle serie di velocità (X = salita il più veloce possibile) oppure 2-0-1-0",
+    "errori": [
+      {"errore": "Discesa accelerata dagli elastici e rimbalzo sul petto", "correzione": "Frenare attivamente in discesa, tocco leggero al petto."},
+      {"errore": "Elastici o catene non simmetrici", "correzione": "Stessa lunghezza e stesso punto di aggancio sui due lati; controllare prima della serie."},
+      {"errore": "Glutei che si staccano nella parte alta (dove il carico è maggiore)", "correzione": "Piedi piantati, ridurre la resistenza."},
+      {"errore": "Bilanciere che oscilla avanti e indietro", "correzione": "Polsi sopra i gomiti, catene che scendono verticali."}
+    ],
+    "cue": ["Frena la discesa", "Esplodi in salita", "Glutei giù fino in cima", "Polsi sopra i gomiti"],
+    "regressione_progressione": {
+      "regressione": ["PET-012 Panca piana con bilanciere"],
+      "progressione": ["PET-022 con più resistenza elastica", "PET-022 combinata con fermo al petto"]
+    },
+    "precauzioni": "Controllare elastici (crepe, usura) e agganci prima di ogni serie: un elastico che si sgancia sbilancia il bilanciere di colpo. Fermi di sicurezza e assistente. In caso di fastidi a spalle o gomiti chiedere il parere di un professionista sanitario."
+  },
+  "config_app": {
+    "eredita_da": "PET-012",
+    "messaggio_ok": "Ottima spinta!",
+    "analizzabilita": "parziale",
+    "motivo": "Come PET-012: stesse misure e soglie. Elastici e catene vicino ai dischi possono coprire ancora di più polsi e mani. La velocità della salita, che è lo scopo delle serie di velocità, non è misurabile; il controllo 'Scendi più lentamente' resta utile perché gli elastici accelerano la discesa.",
+    "non_rilevabili": [
+      {"errore": "Elastici o catene non simmetrici", "motivo": "Gli attrezzi non sono rilevati."},
+      {"errore": "Salita non abbastanza veloce", "motivo": "Il formato non prevede la velocità del movimento."},
+      {"errore": "Bilanciere che oscilla", "motivo": "Il bilanciere non è un punto rilevato; l'oscillazione del polso è troppo piccola per essere affidabile."}
+    ],
+    "richiesta_motore": [
+      "Come PET-011: misura di velocità, per le serie di velocità con resistenza accomodante."
+    ],
+    "da_calibrare": true
+  }
+},
+{
+  "id": "PET-023",
+  "nome": "Panca inclinata con bilanciere",
+  "scheda": {
+    "descrizione": "Distensione con bilanciere su panca inclinata a circa 30-45°: sposta l'enfasi sulla parte alta del petto (fasci clavicolari) e sul deltoide anteriore. È il principale esercizio con bilanciere per il petto alto.",
+    "muscoli": {
+      "primari": ["grande pettorale (fasci clavicolari)"],
+      "secondari": ["deltoide anteriore", "tricipite brachiale"],
+      "stabilizzatori": ["dentato anteriore", "romboidi e trapezio (tenuta scapolare)", "glutei"]
+    },
+    "partenza": "Schienale a circa 30-45° (oltre i 45° il lavoro passa sempre più alle spalle). Seduta regolata in modo da non scivolare, se presente. Testa, spalle e glutei appoggiati, piedi piantati a terra. Scapole addotte e depresse, presa prona come PET-012 (1-1,5 volte le spalle), polsi sopra i gomiti. Altezza dei supporti che consenta lo stacco a braccia quasi tese; la regolazione dipende dal modello della panca.",
+    "esecuzione": {
+      "eccentrica": "Flessione dei gomiti: il bilanciere scende verso la parte alta del petto, appena sotto le clavicole, con i gomiti a circa 45-60° dal busto e avambracci verticali (perpendicolari al pavimento).",
+      "pausa": "Tocco leggero al petto senza rimbalzo.",
+      "concentrica": "Estensione dei gomiti e flessione della spalla: il bilanciere sale in verticale fino a braccia distese sopra le spalle."
+    },
+    "rom": "Gomito da circa 165-180° a circa 70-90° con il bilanciere al petto. Spalla da circa 90° di flessione a circa 0-15° di estensione orizzontale in basso.",
+    "respirazione": "Come PET-012: inspira e trattieni prima della discesa, espira dopo il punto più duro della salita.",
+    "tempo": "3-0-1-0",
+    "errori": [
+      {"errore": "Glutei che si staccano o si scivola giù dalla panca", "correzione": "Piedi piantati, seduta regolata; ridurre il carico."},
+      {"errore": "Bilanciere che scende troppo in basso (verso lo sterno)", "correzione": "Toccare appena sotto le clavicole."},
+      {"errore": "Schienale troppo inclinato (oltre 45°)", "correzione": "Portarlo a 30-45° per mantenere il lavoro sul petto."},
+      {"errore": "Polsi piegati e bilanciere non sopra i gomiti", "correzione": "Avambracci verticali, polsi dritti."},
+      {"errore": "Rimbalzo sul petto", "correzione": "Discesa in 2-3 secondi e tocco leggero."}
+    ],
+    "cue": ["Tocca sotto le clavicole", "Avambracci verticali", "Scapole indietro e in basso", "Glutei giù, piedi piantati"],
+    "regressione_progressione": {
+      "regressione": ["PET-028 Panca inclinata al multipower", "PET-036 Panca inclinata con manubri", "PET-058 Chest press inclinata alla macchina"],
+      "progressione": ["PET-023 con fermo al petto", "PET-023 con carichi progressivi"]
+    },
+    "precauzioni": "Con carichi impegnativi usare fermi di sicurezza o assistente. Chi ha fastidi alle spalle dovrebbe ridurre l'inclinazione o preferire i manubri, e chiedere il parere di un professionista sanitario."
+  },
+  "config_app": {
+    "eredita_da": null,
+    "vista_camera": "laterale",
+    "lato": "auto",
+    "messaggio_posizione": "Camera di lato, all'altezza della panca",
+    "messaggio_ok": "Ottima inclinata!",
+    "misure": {
+      "gomito": {"tipo": "angolo", "punti": ["spalla", "gomito", "polso"]},
+      "avambraccio": {"tipo": "inclinazione", "punti": ["gomito", "polso"]},
+      "glutei": {"tipo": "posizione", "punto": "anca", "scala": ["spalla", "anca"]},
+      "durata": {"tipo": "durata"}
+    },
+    "ripetizione": {"misura": "gomito", "direzione": "diminuisce", "posizione_iniziale": 155, "inizio_movimento": 140},
+    "errori": [
+      {"id": "glutei_staccati", "messaggio": "Glutei sulla panca", "gravita": "rosso", "momento": "durante", "misura": "glutei", "maggiore_di": 0.1},
+      {"id": "profondita", "messaggio": "Porta il bilanciere al petto", "gravita": "giallo", "momento": "fine", "misura": "gomito", "statistica": "minimo", "maggiore_di": 100},
+      {"id": "avambraccio_inclinato", "messaggio": "Polsi sopra i gomiti", "gravita": "giallo", "momento": "durante", "misura": "avambraccio", "maggiore_di": 25},
+      {"id": "rimbalzo", "messaggio": "Scendi più lentamente", "gravita": "rosso", "momento": "fine", "misura": "discesa", "minore_di": 1.2}
+    ],
+    "testi_errori": {
+      "glutei_staccati": {"cosa_succede": "Il bacino si solleva o scivola giù dalla panca.", "perche_conta": "La schiena si inarca sotto carico e l'inclinazione cambia, spostando il lavoro dal petto.", "come_correggere": "Piedi piantati e seduta regolata; se continua, riduci il carico.", "frase_da_ricordare": "Glutei giù, piedi piantati."},
+      "profondita": {"cosa_succede": "Il bilanciere si ferma prima del petto.", "perche_conta": "Il petto alto lavora soprattutto nel tratto basso: con mezza ampiezza lo perdi.", "come_correggere": "Tocca appena sotto le clavicole a ogni ripetizione; se non ci arrivi, togli peso.", "frase_da_ricordare": "Tocca sotto le clavicole."},
+      "avambraccio_inclinato": {"cosa_succede": "Il bilanciere non è sopra i gomiti: gli avambracci sono inclinati.", "perche_conta": "La spinta è meno efficiente e polsi e spalle lavorano male.", "come_correggere": "Avambracci perpendicolari al pavimento; aggiusta il punto di tocco o la larghezza della presa.", "frase_da_ricordare": "Polsi sopra i gomiti."},
+      "rimbalzo": {"cosa_succede": "La ripetizione è troppo rapida: probabilmente rimbalzi sul petto.", "perche_conta": "Il rimbalzo colpisce lo sterno e fa perdere il controllo del bilanciere.", "come_correggere": "Scendi in due-tre secondi e tocca leggero.", "frase_da_ricordare": "Giù controllato, tocco leggero."}
+    },
+    "analizzabilita": "parziale",
+    "motivo": "Come PET-012: di lato si leggono ampiezza, avambraccio e glutei, ma il disco può coprire la mano e apertura dei gomiti e scapole non si vedono. Lo schienale della panca inclinata può coprire spalla e anca se la camera è troppo bassa: meglio all'altezza del petto del cliente.",
+    "non_rilevabili": [
+      {"errore": "Bilanciere che scende troppo in basso sul petto", "motivo": "Bilanciere e petto non sono punti rilevati."},
+      {"errore": "Schienale troppo inclinato", "motivo": "Si potrebbe stimare con l'inclinazione anca-spalla, ma è un errore di regolazione, non di esecuzione: meglio segnalarlo nel messaggio di posizione o farlo controllare all'istruttore."},
+      {"errore": "Gomiti aperti, scapole, polsi piegati", "motivo": "Come PET-012."}
+    ],
+    "richiesta_motore": [
+      "Controllo di posizione prima della serie (es. inclinazione del busto tra 45° e 60° dalla verticale) che avvisi se lo schienale è regolato male, senza contarlo come errore di esecuzione."
+    ],
+    "da_calibrare": true
+  }
+},
+{
+  "id": "PET-024",
+  "nome": "Panca declinata con bilanciere",
+  "scheda": {
+    "descrizione": "Distensione con bilanciere su panca declinata (testa più in basso del bacino, circa 15-30°): riduce l'ampiezza e sposta l'enfasi sulla parte bassa del petto. Permette in genere carichi leggermente superiori alla panca piana con meno sollecitazione della spalla.",
+    "muscoli": {
+      "primari": ["grande pettorale (fasci sternali e addominali)"],
+      "secondari": ["tricipite brachiale", "deltoide anteriore"],
+      "stabilizzatori": ["dentato anteriore", "romboidi e trapezio", "addominali"]
+    },
+    "partenza": "Panca a circa 15-30° di declinazione, gambe bloccate sotto i rulli. Testa, spalle e glutei appoggiati, scapole addotte e depresse, presa prona come PET-012. Lo stacco è scomodo: farsi passare il bilanciere da un assistente. La regolazione dei rulli dipende dal modello della panca.",
+    "esecuzione": {
+      "eccentrica": "Flessione dei gomiti: il bilanciere scende verso la parte bassa del petto (sotto i capezzoli), gomiti a circa 45-60° dal busto, avambracci perpendicolari al pavimento.",
+      "pausa": "Tocco leggero senza rimbalzo.",
+      "concentrica": "Estensione dei gomiti fino a braccia distese sopra le spalle."
+    },
+    "rom": "Gomito da circa 165-180° a circa 75-95° al petto: la corsa è un po' più corta che nella panca piana.",
+    "respirazione": "Come PET-012. Con la testa in basso evitare apnee prolungate tra una ripetizione e l'altra.",
+    "tempo": "3-0-1-0",
+    "errori": [
+      {"errore": "Bilanciere che scende verso il collo o il petto alto", "correzione": "Toccare sotto i capezzoli."},
+      {"errore": "Rimbalzo sul petto", "correzione": "Discesa controllata, tocco leggero."},
+      {"errore": "Polsi piegati e bilanciere non sopra i gomiti", "correzione": "Avambracci verticali, polsi dritti."},
+      {"errore": "Stacco e riposizionamento del bilanciere senza aiuto", "correzione": "Farsi sempre passare e riprendere il bilanciere da un assistente."}
+    ],
+    "cue": ["Tocca in basso sul petto", "Polsi sopra i gomiti", "Giù controllato", "Scapole strette"],
+    "regressione_progressione": {
+      "regressione": ["PET-029 Panca declinata al multipower", "PET-038 Panca declinata con manubri", "PET-059 Chest press declinata alla macchina"],
+      "progressione": ["PET-024 con fermo al petto", "PET-077 Dip alle parallele per il petto"]
+    },
+    "precauzioni": "Con la testa più in basso del bacino possono comparire capogiri: rialzarsi lentamente a fine serie. Assistente obbligatorio con carichi impegnativi. Chi ha problemi di pressione o fastidi alla testa in posizione declinata dovrebbe chiedere il parere di un professionista sanitario."
+  },
+  "config_app": {
+    "eredita_da": null,
+    "vista_camera": "laterale",
+    "lato": "auto",
+    "messaggio_posizione": "Camera di lato, all'altezza della panca",
+    "messaggio_ok": "Ottima declinata!",
+    "misure": {
+      "gomito": {"tipo": "angolo", "punti": ["spalla", "gomito", "polso"]},
+      "avambraccio": {"tipo": "inclinazione", "punti": ["gomito", "polso"]},
+      "durata": {"tipo": "durata"}
+    },
+    "ripetizione": {"misura": "gomito", "direzione": "diminuisce", "posizione_iniziale": 155, "inizio_movimento": 140},
+    "errori": [
+      {"id": "profondita", "messaggio": "Porta il bilanciere al petto", "gravita": "giallo", "momento": "fine", "misura": "gomito", "statistica": "minimo", "maggiore_di": 105},
+      {"id": "avambraccio_inclinato", "messaggio": "Polsi sopra i gomiti", "gravita": "giallo", "momento": "durante", "misura": "avambraccio", "maggiore_di": 25},
+      {"id": "rimbalzo", "messaggio": "Scendi più lentamente", "gravita": "rosso", "momento": "fine", "misura": "discesa", "minore_di": 1.2}
+    ],
+    "testi_errori": {
+      "profondita": {"cosa_succede": "Il bilanciere si ferma prima del petto.", "perche_conta": "La corsa della declinata è già corta: fermandoti prima il petto lavora poco.", "come_correggere": "Tocca sotto i capezzoli a ogni ripetizione; se non ci arrivi, togli peso.", "frase_da_ricordare": "Tocca il petto basso."},
+      "avambraccio_inclinato": {"cosa_succede": "Il bilanciere non è sopra i gomiti.", "perche_conta": "Con la testa in basso un bilanciere fuori asse tende a scivolare verso il viso.", "come_correggere": "Avambracci perpendicolari al pavimento; tocca più in basso sul petto.", "frase_da_ricordare": "Polsi sopra i gomiti."},
+      "rimbalzo": {"cosa_succede": "La ripetizione è troppo rapida: probabilmente rimbalzi sul petto.", "perche_conta": "Il rimbalzo colpisce lo sterno e fa perdere il controllo del bilanciere.", "come_correggere": "Scendi in due-tre secondi e tocca leggero.", "frase_da_ricordare": "Giù controllato, tocco leggero."}
+    },
+    "analizzabilita": "parziale",
+    "motivo": "Come PET-012, senza il controllo dei glutei: con le gambe bloccate nei rulli il bacino non si stacca e i rulli coprono ginocchia e caviglie. Disco che può coprire la mano, apertura dei gomiti e scapole non visibili.",
+    "non_rilevabili": [
+      {"errore": "Bilanciere che scende verso il collo", "motivo": "Bilanciere e petto non sono punti rilevati."},
+      {"errore": "Stacco senza assistente", "motivo": "Le persone esterne non sono analizzate."},
+      {"errore": "Gomiti aperti, scapole, polsi piegati", "motivo": "Come PET-012."}
+    ],
+    "richiesta_motore": [],
+    "da_calibrare": true
+  }
+},
+{
+  "id": "PET-025",
+  "nome": "Pullover con bilanciere",
+  "scheda": {
+    "descrizione": "Esercizio monoarticolare in cui il bilanciere, tenuto a braccia quasi tese, compie un arco da sopra il petto a dietro la testa e ritorno. Allena petto e gran dorsale in allungamento e lavora sulla mobilità della spalla in flessione.",
+    "muscoli": {
+      "primari": ["grande pettorale (fasci sternali)", "gran dorsale"],
+      "secondari": ["capo lungo del tricipite", "grande rotondo", "dentato anteriore"],
+      "stabilizzatori": ["addominali", "flessori dell'avambraccio"]
+    },
+    "partenza": "Versione consigliata: sdraiati lungo la panca, testa vicino al bordo, piedi a terra. (Versione trasversale: solo le spalle appoggiate sulla panca, bacino basso; più impegnativa per schiena e spalle.) Presa prona alla larghezza delle spalle o poco più stretta. Bilanciere sopra il petto a braccia distese, gomiti leggermente piegati e bloccati in quella posizione. Addome contratto, zona lombare appoggiata.",
+    "esecuzione": {
+      "eccentrica": "Flessione della spalla: il bilanciere scende con un arco dietro la testa mantenendo fisso l'angolo dei gomiti, finché le braccia sono circa in linea con il busto o fin dove la mobilità lo consente senza inarcare la schiena.",
+      "pausa": "Breve pausa in allungamento, senza rilassarsi.",
+      "concentrica": "Estensione della spalla: si riporta il bilanciere con lo stesso arco sopra il petto, pensando di 'tirare con il petto e i dorsali', non con le braccia."
+    },
+    "rom": "Spalla da circa 90° di flessione (bilanciere sopra il petto) a circa 160-180° (braccia in linea con il busto). Gomito fisso a circa 150-165° (leggermente piegato).",
+    "respirazione": "Inspira mentre il bilanciere scende dietro la testa (espansione del torace), espira mentre torna sopra il petto.",
+    "tempo": "3-1-2-0",
+    "errori": [
+      {"errore": "Gomiti che si piegano molto (diventa un'estensione dei tricipiti)", "correzione": "Bloccare l'angolo dei gomiti e muovere solo le spalle; ridurre il carico."},
+      {"errore": "Schiena che si inarca nell'allungamento", "correzione": "Addome contratto e zona lombare appoggiata; ridurre l'ampiezza."},
+      {"errore": "Ampiezza eccessiva oltre la propria mobilità", "correzione": "Fermarsi dove le braccia sono in linea con il busto o prima, senza dolore."},
+      {"errore": "Movimento veloce e a strappo", "correzione": "Discesa in 3 secondi, risalita controllata."}
+    ],
+    "cue": ["Gomiti fermi", "Muovi solo le spalle", "Pancia dentro, schiena giù", "Tira con petto e dorsali"],
+    "regressione_progressione": {
+      "regressione": ["PET-043 Pullover con manubrio", "PET-026 Pullover con bilanciere EZ"],
+      "progressione": ["PET-025 in versione trasversale", "PET-025 con pausa in allungamento"]
+    },
+    "precauzioni": "Il carico in allungamento sollecita molto la spalla: carichi moderati e ampiezza adattata alla mobilità. Chi ha fastidi alle spalle o limitazioni di mobilità in flessione chieda il parere di un professionista sanitario prima di eseguirlo."
+  },
+  "config_app": {
+    "eredita_da": null,
+    "impostazioni": [
+      {"id": "versione", "domanda": "Quale versione fai?", "opzioni": [
+        {"etichetta": "Lungo la panca", "imposta": {}},
+        {"etichetta": "Trasversale", "imposta": {"errori.schiena_inarcata": null}}]}
+    ],
+    "vista_camera": "laterale",
+    "lato": "auto",
+    "messaggio_posizione": "Camera di lato, panca e bilanciere visibili",
+    "messaggio_ok": "Ottimo pullover!",
+    "misure": {
+      "spalla": {"tipo": "angolo", "punti": ["anca", "spalla", "gomito"], "ancora": "anca"},
+      "gomito": {"tipo": "angolo", "punti": ["spalla", "gomito", "polso"]},
+      "glutei": {"tipo": "posizione", "punto": "anca", "scala": ["spalla", "anca"]},
+      "durata": {"tipo": "durata"}
+    },
+    "ripetizione": {"misura": "spalla", "direzione": "aumenta", "posizione_iniziale": 100, "inizio_movimento": 115},
+    "errori": [
+      {"id": "gomiti_piegati", "messaggio": "Gomiti fermi, quasi tesi", "gravita": "giallo", "momento": "durante", "misura": "gomito", "minore_di": 130},
+      {"id": "schiena_inarcata", "messaggio": "Schiena sulla panca", "gravita": "rosso", "momento": "durante", "misura": "glutei", "maggiore_di": 0.1},
+      {"id": "ampiezza", "messaggio": "Porta il bilanciere dietro la testa", "gravita": "giallo", "momento": "fine", "misura": "spalla", "statistica": "massimo", "minore_di": 145},
+      {"id": "troppo_veloce", "messaggio": "Rallenta il movimento", "gravita": "giallo", "momento": "fine", "misura": "discesa", "minore_di": 1.5}
+    ],
+    "testi_errori": {
+      "gomiti_piegati": {"cosa_succede": "I gomiti si piegano molto durante il movimento.", "perche_conta": "L'esercizio diventa un'estensione per i tricipiti e petto e dorsali lavorano meno.", "come_correggere": "Blocca i gomiti leggermente piegati e muovi solo le spalle; se non riesci, togli peso.", "frase_da_ricordare": "Gomiti fermi, muovi le spalle."},
+      "schiena_inarcata": {"cosa_succede": "Il bacino si solleva o la schiena si inarca quando il bilanciere va dietro la testa.", "perche_conta": "La zona lombare compensa la mobilità della spalla che manca e si carica sotto peso.", "come_correggere": "Contrai l'addome e tieni la schiena appoggiata; scendi meno dietro la testa.", "frase_da_ricordare": "Pancia dentro, schiena giù."},
+      "ampiezza": {"cosa_succede": "Il bilanciere non arriva abbastanza dietro la testa.", "perche_conta": "Il pullover lavora soprattutto in allungamento: con poca ampiezza perdi la parte utile.", "come_correggere": "Scendi finché le braccia sono quasi in linea con il busto, senza inarcare la schiena.", "frase_da_ricordare": "Braccia in linea con il busto."},
+      "troppo_veloce": {"cosa_succede": "La ripetizione è troppo rapida.", "perche_conta": "Con un carico veloce in allungamento la spalla è più esposta.", "come_correggere": "Conta tre secondi per scendere e due per risalire.", "frase_da_ricordare": "Giù in tre, su in due."}
+    },
+    "analizzabilita": "parziale",
+    "motivo": "Il movimento avviene sul piano laterale ed è ben visibile: angolo della spalla, gomiti e velocità sono misurabili. Due limiti: il disco può coprire testa e polsi nella parte dietro la testa, e l'arco della zona lombare si stima solo in modo indiretto dal sollevamento del bacino. Configurazione pensata per la versione lungo la panca; nella versione trasversale il controllo 'Schiena sulla panca' darebbe falsi allarmi e va disattivato.",
+    "non_rilevabili": [
+      {"errore": "Schiena che si inarca senza sollevare il bacino", "motivo": "La curvatura della colonna non è misurabile con i punti disponibili."},
+      {"errore": "Ampiezza oltre la propria mobilità", "motivo": "Il limite di mobilità è individuale: una soglia fissa non lo rappresenta. L'app può solo chiedere un'ampiezza minima, non verificare quella massima per il singolo cliente."}
+    ],
+    "richiesta_motore": [
+      "Soglie personalizzate per cliente (ampiezza massima concordata con l'istruttore).",
+      "Possibilità di scegliere la versione (lungo la panca / trasversale) e attivare o disattivare singoli errori."
+    ],
+    "da_calibrare": true
+  }
+}
+]

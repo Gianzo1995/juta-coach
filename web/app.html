@@ -310,6 +310,8 @@ function testoMisura(es, misura, v) {
   if (tipo === "posizione") return "sollevato";
   return `${Math.round(v)}°`;
 }
+// "punto piu' basso" vale per squat e panca; nei movimenti che aumentano (es. pullover) e' il punto di massima ampiezza
+const puntoEstremo = es => ESERCIZI[es]?.ripetizione?.direzione === "aumenta" ? "nel punto di massima ampiezza" : "al punto più basso";
 const testoTempo = (es, e) => `${nomeMisura(e.misura)} ${testoMisura(es, e.misura, e.valore)} · minimo ${testoSoglia(es, e.misura, e.soglia)}`;
 const testoFasi = f => f ? `discesa ${virgola(f.discesa, 1)} s · fermo ${virgola(f.pausa, 1)} s · salita ${virgola(f.salita, 1)} s` : "";
 const testoSoglia = (es, misura, s) => tipoMisura(es, misura) === "durata" ? `${virgola(s, 1)} s` : `${Math.round(s)}°`;
@@ -931,7 +933,7 @@ function gemelloLive(posa, stato, t, specchia) {
     gravita = err.gravita;
     if (f) { opz = { ...opz, fantasma: f.posa, evidenzia: { punto: f.punto, mobile: f.mobile, gravita }, etichetta: true }; testo = f.testo; }
     else if (MISURE_TEMPO.has(err.misura)) testo = testoTempo(esercizio, err);
-    if (fonte !== posa) testo = (testo ? testo + "\n" : "") + "Fermo immagine: il tuo punto più basso";
+    if (fonte !== posa) testo = (testo ? testo + "\n" : "") + `Fermo immagine ${puntoEstremo(esercizio)}`;
   }
   disegnaGemello($("gemello"), fonte, opz);
   const el = $("et-gemello");
@@ -1097,7 +1099,7 @@ function mostraSchedaErrore(m) {
   const chips = el("div", { className: "chips" },
     el("span", { className: "chip", textContent: `Ripetizione ${ev.ripetizione}` }),
     el("span", { className: "chip", textContent: ev.gravita === "rosso" ? "Da correggere subito" : "Da migliorare" }),
-    el("span", { className: "chip", textContent: ev.anticipato ? "Segnalato al punto più basso" : (cfg.momento === "fine" ? "Segnalato a fine ripetizione" : "Segnalato mentre succedeva") }));
+    el("span", { className: "chip", textContent: ev.anticipato ? `Segnalato ${puntoEstremo(ev.esercizio)}` : (cfg.momento === "fine" ? "Segnalato a fine ripetizione" : "Segnalato mentre succedeva") }));
   chips.children[1].dataset.g = ev.gravita;
   const come = comeLista(sp.come);
   const lista = come.length > 1 ? el("ul") : el("p", { textContent: come[0] || "" });

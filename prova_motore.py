@@ -115,6 +115,24 @@ def ripetizione(fn_posa, inizio, fondo, secondi=2.0, **extra_fondo):
     return frames
 
 
+def posa_pullover(spalla, gomito=160.0, sollevamento=0.0):
+    """Pullover visto di lato, sdraiati lungo la panca: testa a sinistra.
+    spalla = angolo anca-spalla-gomito (90 = braccia verticali, 180 = in linea con il busto)."""
+    sp, L = (500, 450), 120
+    t = math.radians(spalla)
+    d = (math.cos(t), -math.sin(t))                          # direzione del braccio
+    g = (sp[0] + L * d[0], sp[1] + L * d[1])
+    k = math.radians(180 - gomito)                            # piega del gomito
+    d2 = (d[0] * math.cos(k) - d[1] * math.sin(k), d[0] * math.sin(k) + d[1] * math.cos(k))
+    po = (g[0] + 110 * d2[0], g[1] + 110 * d2[1])
+    an = (sp[0] + 230, sp[1] - sollevamento * 230)
+    posa = {"naso": (sp[0] - 60, sp[1] - 15, 0.99)}
+    for nome, (x, y) in {"spalla": sp, "gomito": g, "polso": po, "anca": an}.items():
+        posa[f"{nome}_sx"] = (x, y, 0.95)
+        posa[f"{nome}_dx"] = (x + 5, y - 4, 0.4)
+    return posa
+
+
 def ripetizione_fasi(fn_posa, inizio, fondo, discesa, pausa, salita, **extra_fondo):
     """Ripetizione a velocita' costante: discesa, fermo in basso, salita (in secondi), poi 1 s fermo in alto."""
     frames = []
@@ -205,12 +223,23 @@ def main():
     print(f"{'OK ' if ok else 'ERRORE'}  Fasi misurate: 2-2-1 -> {f1}, discesa veloce -> {f2} {rip[1]['errori']}")
     risultati.append(ok)
 
+    # PULLOVER (PET-025): movimento "al contrario" (l'angolo aumenta): buona, poco ampia, gomiti piegati, troppo veloce
+    pv = lambda a, **kw: posa_pullover(a, **kw)
+    frames = [pv(95)] * FPS + ripetizione_fasi(pv, 95, 170, 3, 1, 2) + ripetizione_fasi(pv, 95, 135, 3, 1, 2)
+    frames += ripetizione_fasi(lambda a, gomito=0: posa_pullover(a, gomito=160 - gomito), 95, 170, 3, 1, 2, gomito=40)
+    frames += ripetizione_fasi(pv, 95, 170, 1, 0, 1)
+    ev = esegui(Analizzatore(es["PET-025"]), frames)
+    risultati.append(verifica("Pullover PET-025", ev, [[], ["ampiezza"], ["gomiti_piegati"], ["troppo_veloce"]]))
+    risultati.append(verifica_anticipo("Pullover PET-025", ev))
+
     # IMPOSTAZIONI prima della serie: lato scelto (PET-006) e tavolette (PET-020)
     from motore.regole import applica_impostazioni
     c6 = applica_impostazioni(es["PET-006"], {"lato": "sx"})
     c20 = applica_impostazioni(es["PET-020"], {"errori.profondita": {"messaggio": "x", "misura": "gomito", "statistica": "minimo", "maggiore_di": 125}})
-    ok = c6["lato"] == "sx" and es["PET-006"]["lato"] == "auto" and any(e["id"] == "profondita" and e["momento"] == "fine" for e in c20["errori"])
-    print(f"{'OK ' if ok else 'ERRORE'}  Impostazioni: lato scelto e soglia per numero di tavolette")
+    c25 = applica_impostazioni(es["PET-025"], {"errori.schiena_inarcata": None})
+    ok = (c6["lato"] == "sx" and es["PET-006"]["lato"] == "auto" and any(e["id"] == "profondita" and e["momento"] == "fine" for e in c20["errori"])
+          and not any(e["id"] == "schiena_inarcata" for e in c25["errori"]) and any(e["id"] == "schiena_inarcata" for e in es["PET-025"]["errori"]))
+    print(f"{'OK ' if ok else 'ERRORE'}  Impostazioni: lato scelto, soglia per numero di tavolette, controllo disattivato")
     risultati.append(ok)
 
     # LAT: buona, asimmetrica, ampiezza ridotta

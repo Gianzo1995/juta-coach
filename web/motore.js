@@ -99,7 +99,8 @@ function applicaImpostazioni(cfg, imposta) {
     const parti = percorso.split(".");
     if (parti[0] === "errori" && parti.length >= 2) {
       const idx = out.errori.findIndex(e => e.id === parti[1]);
-      if (parti.length === 2) {
+      if (parti.length === 2 && valore === null) { if (idx >= 0) out.errori.splice(idx, 1); }   // null = controllo disattivato
+      else if (parti.length === 2) {
         const nuovo = { ...copia(valore), id: parti[1] };
         if (idx < 0) out.errori.push(nuovo); else out.errori[idx] = nuovo;
       } else if (idx >= 0) out.errori[idx][parti[2]] = copia(valore);

@@ -35,6 +35,8 @@ Gianluca, titolare di Juta. **Non è uno sviluppatore.**
    python web/costruisci.py
    ```
    Tutti e tre devono passare prima di un commit. La GitHub Action li riesegue ad ogni push.
+   Nei dati simulati evita valori che cadono esattamente su una soglia (es. angoli interi a 5° dal minimo):
+   Python e JavaScript possono differire nell'ultima cifra di `acos` e contare un fotogramma diverso.
 2. **Push su `main` = pubblicazione automatica** su GitHub Pages (https://gianzo1995.github.io/juta-coach/).
    Il sito è pubblico: niente dati di clienti, chiavi o informazioni riservate nel repository.
 3. **Privacy**: nessun video o immagine lascia il telefono. Non aggiungere invii di immagini a server o API.
