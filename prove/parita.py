@@ -29,6 +29,9 @@ def casi():
                  + R(lambda k, busto=0, tallone=0: pm.posa_squat(k, 30 + busto, tallone), 175, 85, busto=40, tallone=0.2),
         "PET-012": [pb(170)] * FPS + R(pb, 170, 80, secondi=3.0) + R(pb, 170, 80, secondi=3.0, sollevamento=0.2)
                    + R(pb, 170, 80, secondi=3.0, avambraccio=35) + R(pb, 170, 80, secondi=1.0),
+        "PET-017": [pb(170)] * FPS + R(pb, 170, 80, secondi=3.0) + R(pb, 170, 80, secondi=3.0, gambe=120),
+        "PET-019": [pb(170)] * FPS + R(pb, 170, 115, secondi=3.0) + R(pb, 170, 130, secondi=3.0),
+        "PET-020": [pb(170)] * FPS + R(pb, 170, 110, secondi=3.0) + R(pb, 170, 110, secondi=1.0),
         "PET-015": [pb(170)] * FPS + R(pb, 170, 90, secondi=5.0) + R(pb, 170, 115, secondi=3.0),
         "PET-011": [pp(175)] * FPS + R(pp, 175, 80, secondi=1.5) + R(pp, 175, 80, secondi=1.5, abbassa_bacino=70),
         "lat_machine": [pm.posa_lat(170, 170)] * FPS + R(lambda g: pm.posa_lat(g, g), 170, 60)

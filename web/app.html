@@ -184,7 +184,7 @@ canvas { display: block; width: 100%; height: 100%; }
       <div class="scelto-testo"><b id="scelto-nome"></b><span id="scelto-info"></span></div>
       <button id="b-come" class="btn piccolo">Come si fa</button>
     </div>
-    <p id="nota-scheda" class="avviso" hidden>Questo esercizio non è ancora analizzabile dall'app: con una sola camera non si vedono bene i movimenti che contano. Apri «Come si fa» per la scheda tecnica.</p>
+    <p id="nota-scheda" class="avviso" hidden></p>
     <div id="errore" hidden></div>
     <button id="b-live" class="btn primario">Avvia il live</button>
     <p id="nota-live" class="avviso" hidden>Qui dentro Claude la fotocamera in diretta non è disponibile. Registra la serie con il pulsante qui sotto: l'app la analizza e ti apre la revisione. Il live funziona dalla versione online dell'app.</p>
@@ -1219,6 +1219,7 @@ function aggiornaScelto() {
   const ok = v.analizzabile;
   $("b-live").disabled = !ok; $("file-video").disabled = !ok;
   $("b-video").classList.toggle("disattivo", !ok); $("nota-scheda").hidden = ok;
+  if (!ok) $("nota-scheda").textContent = `L'app non analizza questo esercizio.${v.cfg.motivo ? " " + v.cfg.motivo : ""} Apri «Come si fa» per la scheda tecnica.`;
 }
 
 let ritornoCome = "inizio";
@@ -1272,7 +1273,7 @@ function disegnaCome(id) {
     app.append(par(`Camera: ${VISTA[cfg.vista_camera] || "-"}. ${cfg.messaggio_posizione || ""}`));
     const ul = el("ul"); cfg.errori.forEach(e => ul.append(el("li", { textContent: `${e.messaggio} (${e.gravita === "rosso" ? "da correggere subito" : "da migliorare"})` })));
     app.append(ul);
-  } else app.append(par("Per ora niente: questo esercizio non è analizzabile con una sola camera."));
+  } else app.append(par("Nessun controllo: l'app mostra solo la scheda di questo esercizio."));
   if (cfg.motivo) app.append(par(cfg.motivo));
   if (cfg.non_rilevabili?.length) { const ul = el("ul"); cfg.non_rilevabili.forEach(x => ul.append(coppia(x.errore, x.motivo))); app.append(sotto("Cosa l'app non vede"), ul); }
   if (cfg.da_calibrare) app.append(el("p", { className: "nota", textContent: "Soglie ancora da calibrare con gli istruttori." }));

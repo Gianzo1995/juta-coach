@@ -43,7 +43,7 @@ def braccio(spalla, gomito_ang, verso):
     return g, p
 
 
-def posa_panca_piana(gomito, sollevamento=0.0, avambraccio=0.0):
+def posa_panca_piana(gomito, sollevamento=0.0, avambraccio=0.0, gambe=180.0):
     """Panca piana vista di lato: testa a sinistra, piedi a destra, avambraccio verticale.
     sollevamento = bacino che si stacca (in lunghezze del busto), avambraccio = inclinazione in gradi."""
     L, sp = 110, (500, 450)
@@ -54,7 +54,10 @@ def posa_panca_piana(gomito, sollevamento=0.0, avambraccio=0.0):
     po = (g[0] + L * math.sin(a), g[1] - L * math.cos(a))
     an = (sp[0] + 230, sp[1] - sollevamento * 230)
     posa = {"naso": (sp[0] - 60, sp[1] - 15, 0.99)}
-    for nome, (x, y) in {"spalla": sp, "gomito": g, "polso": po, "anca": an}.items():
+    gi = (an[0] + 200, an[1])
+    k = math.radians(180 - gambe)                              # gambe piegate verso il basso
+    ca = (gi[0] + 200 * math.cos(k), gi[1] + 200 * math.sin(k))
+    for nome, (x, y) in {"spalla": sp, "gomito": g, "polso": po, "anca": an, "ginocchio": gi, "caviglia": ca}.items():
         posa[f"{nome}_sx"] = (x, y, 0.95)
         posa[f"{nome}_dx"] = (x + 5, y - 4, 0.4)
     return posa
