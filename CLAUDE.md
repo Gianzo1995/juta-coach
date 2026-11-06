@@ -16,7 +16,7 @@ Gianluca, titolare di Juta. **Non è uno sviluppatore.**
 
 | Percorso | Cosa contiene |
 |---|---|
-| `esercizi/catalogo/*.json` | **Catalogo esercizi**: regole (`config_app`) + scheda tecnica (`scheda`). Fonte unica per PC e telefono. |
+| `esercizi/catalogo/*.json` | **Catalogo esercizi**: regole (`config_app`) + scheda tecnica (`scheda`). Fonte unica per PC e telefono. La vecchia `panca` è stata sostituita da PET-012. |
 | `motore/regole.py` | Motore delle regole (Python, versione PC). |
 | `web/motore.js` | Lo stesso motore in JavaScript (telefono). **Deve restare identico a `regole.py`.** |
 | `web/app.html` | Interfaccia telefono: live, manichino digitale, revisione, ricerca esercizi, "Come si fa". |
@@ -84,10 +84,12 @@ a quando torna oltre `posizione_iniziale`, quindi è più corta della ripetizion
 
 - **A. Angolo con segno**: distinguere bacino che cede da sedere alto (piegamenti, plank, stacchi).
 - **B. Fasi della ripetizione**: durata di discesa, pausa in basso e salita (tempo tipo 2-1-1-0, rimbalzo).
+  Priorità alta: serve a PET-012/014/015 (rimbalzo e fermo oggi stimati solo dalla durata totale).
 - **C. Controllo in alto** tra una ripetizione e l'altra (braccia/gambe distese).
 - **D. Misura `distanza`** tra due punti rispetto a un segmento (larghezza presa, ginocchia-mani).
 - **E. Scelta del lato che lavora** (esercizi a un braccio/una gamba, es. PET-006): il motore supporta già `lato: "sx"/"dx"`,
   manca un selettore nell'app prima del live. Poco lavoro, molto utile.
 - Dopo: inclinazione delle spalle / rotazione del tronco (vista frontale), ripetizioni alternate sx/dx (PET-008),
-  allineamento misurato sulla gamba che resta a terra (PET-008), conteggio sull'altezza della spalla.
+  allineamento misurato sulla gamba che resta a terra (PET-008), conteggio sull'altezza della spalla,
+  velocità del movimento e confronto tra ripetizioni della serie (PET-011 esplosivi).
 - Rimandati: soglie per cliente (serve identificazione, insieme ad Angel1), due camere / vista dall'alto.

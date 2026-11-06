@@ -1257,7 +1257,7 @@ function disegnaCome(id) {
       const ul = el("ul");
       for (const t of rp[k]) {
         const mm = /^([A-Z]{2,4}-\d{3})\s/.exec(t), li = el("li");
-        if (mm && VOCE_CATALOGO[mm[1]]) { const b = el("button", { className: "link-es", textContent: t }); b.onclick = () => disegnaCome(mm[1]); li.append(b); }
+        if (mm && VOCE_CATALOGO[mm[1]] && mm[1] !== id) { const b = el("button", { className: "link-es", textContent: t }); b.onclick = () => disegnaCome(mm[1]); li.append(b); }
         else li.append(t);
         ul.append(li);
       }

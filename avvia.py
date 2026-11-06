@@ -121,7 +121,7 @@ def main():
     args = parser.parse_args()
 
     esercizi = carica_tutti("esercizi")
-    tasti = {ord("1"): "squat", ord("2"): "panca", ord("3"): "lat_machine"}
+    tasti = {ord("1"): "squat", ord("2"): "PET-012", ord("3"): "lat_machine"}
     attuale = args.esercizio
     analizzatore = Analizzatore(esercizi[attuale])
 

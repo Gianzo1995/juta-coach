@@ -23,11 +23,14 @@ R = pm.ripetizione
 def casi():
     sq = lambda k, **kw: pm.posa_squat(k, **kw)
     pp = lambda g, **kw: pm.posa_piegamento(g, **kw)
+    pb = lambda g, **kw: pm.posa_panca_piana(g, **kw)
     return {
         "squat": [pm.posa_squat(175)] * FPS + R(sq, 175, 80) + R(sq, 175, 115)
                  + R(lambda k, busto=0, tallone=0: pm.posa_squat(k, 30 + busto, tallone), 175, 85, busto=40, tallone=0.2),
-        "panca": [pm.posa_panca(170)] * FPS + R(lambda g, **kw: pm.posa_panca(g, **kw), 170, 80)
-                 + R(lambda g, **kw: pm.posa_panca(g, **kw), 170, 80, sollevamento=0.2),
+        "PET-012": [pb(170)] * FPS + R(pb, 170, 80, secondi=3.0) + R(pb, 170, 80, secondi=3.0, sollevamento=0.2)
+                   + R(pb, 170, 80, secondi=3.0, avambraccio=35) + R(pb, 170, 80, secondi=1.0),
+        "PET-015": [pb(170)] * FPS + R(pb, 170, 90, secondi=5.0) + R(pb, 170, 115, secondi=3.0),
+        "PET-011": [pp(175)] * FPS + R(pp, 175, 80, secondi=1.5) + R(pp, 175, 80, secondi=1.5, abbassa_bacino=70),
         "lat_machine": [pm.posa_lat(170, 170)] * FPS + R(lambda g: pm.posa_lat(g, g), 170, 60)
                        + R(lambda g: pm.posa_lat(g, min(170, g + 40)), 170, 60),
         "PET-001": [pp(175)] * FPS + R(pp, 175, 80, secondi=3.0) + R(pp, 175, 115, secondi=3.0)

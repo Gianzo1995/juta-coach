@@ -43,6 +43,23 @@ def braccio(spalla, gomito_ang, verso):
     return g, p
 
 
+def posa_panca_piana(gomito, sollevamento=0.0, avambraccio=0.0):
+    """Panca piana vista di lato: testa a sinistra, piedi a destra, avambraccio verticale.
+    sollevamento = bacino che si stacca (in lunghezze del busto), avambraccio = inclinazione in gradi."""
+    L, sp = 110, (500, 450)
+    t = math.radians(gomito)
+    v = (math.sin(t), -math.cos(t))                           # dal gomito verso la spalla
+    g = (sp[0] - L * v[0], sp[1] - L * v[1])
+    a = math.radians(avambraccio)
+    po = (g[0] + L * math.sin(a), g[1] - L * math.cos(a))
+    an = (sp[0] + 230, sp[1] - sollevamento * 230)
+    posa = {"naso": (sp[0] - 60, sp[1] - 15, 0.99)}
+    for nome, (x, y) in {"spalla": sp, "gomito": g, "polso": po, "anca": an}.items():
+        posa[f"{nome}_sx"] = (x, y, 0.95)
+        posa[f"{nome}_dx"] = (x + 5, y - 4, 0.4)
+    return posa
+
+
 def posa_panca(gomito, sollevamento=0.0):
     sp, an = (400, 500), (600, 500 - sollevamento * 200)
     g, p = braccio(sp, gomito, 1)
@@ -146,14 +163,21 @@ def main():
     risultati.append(verifica("Squat", ev, [[], ["profondita"], ["busto_inclinato", "talloni"]]))
     risultati.append(verifica_anticipo("Squat", ev))
 
-    # PANCA: buona, non arriva al petto, glutei staccati, troppo veloce
-    frames = [posa_panca(170)] * FPS
-    frames += ripetizione(lambda g, **kw: posa_panca(g, **kw), 170, 80)
-    frames += ripetizione(lambda g, **kw: posa_panca(g, **kw), 170, 115)
-    frames += ripetizione(lambda g, **kw: posa_panca(g, **kw), 170, 80, sollevamento=0.2)
-    frames += ripetizione(lambda g, **kw: posa_panca(g, **kw), 170, 80, secondi=0.8)
-    risultati.append(verifica("Panca", esegui(Analizzatore(es["panca"]), frames),
-                              [[], ["ampiezza"], ["glutei"], ["troppo_veloce"]]))
+    # PANCA PIANA (PET-012): buona, non arriva al petto, glutei staccati, avambraccio inclinato, rimbalzo
+    pb = lambda g, **kw: posa_panca_piana(g, **kw)
+    frames = [pb(170)] * FPS
+    frames += ripetizione(pb, 170, 80, secondi=3.0)
+    frames += ripetizione(pb, 170, 110, secondi=3.0)
+    frames += ripetizione(pb, 170, 80, secondi=3.0, sollevamento=0.2)
+    frames += ripetizione(pb, 170, 80, secondi=3.0, avambraccio=35)
+    frames += ripetizione(pb, 170, 80, secondi=1.0)
+    risultati.append(verifica("Panca piana PET-012", esegui(Analizzatore(es["PET-012"]), frames),
+                              [[], ["profondita"], ["glutei_staccati"], ["avambraccio_inclinato"], ["rimbalzo"]]))
+
+    # PANCA CON FERMO (PET-014): ripetizione lenta con fermo ok, ripetizione normale = fermo mancato
+    frames = [pb(170)] * FPS + ripetizione(pb, 170, 80, secondi=5.0) + ripetizione(pb, 170, 80, secondi=3.0)
+    risultati.append(verifica("Panca con fermo PET-014", esegui(Analizzatore(es["PET-014"]), frames),
+                              [[], ["fermo_breve"]]))
 
     # LAT: buona, asimmetrica, ampiezza ridotta
     frames = [posa_lat(170, 170)] * FPS
