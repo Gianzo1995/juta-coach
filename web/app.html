@@ -54,6 +54,10 @@ h1 span { color: var(--verde); }
 .btn { display: block; width: 100%; text-align: center; border-radius: 10px; padding: 16px; border: 1px solid var(--line); background: transparent; font-weight: 600; }
 .btn.primario { background: var(--verde); color: #06150d; border: 0; font: 700 22px/1 var(--display); letter-spacing: .03em; }
 .nota { font-size: 13px; color: var(--muted); margin: 0; }
+#nota-live { display: grid; gap: 10px; }
+#nota-live p { margin: 0; }
+.nota-titolo { color: var(--fg); font-weight: 700; }
+a.btn { text-decoration: none; box-sizing: border-box; }
 .avviso { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 12px; font-size: 14px; color: var(--muted); margin: 0; }
 #errore { background: rgba(229, 72, 77, .12); border: 1px solid var(--rosso); border-radius: 10px; padding: 12px; }
 
@@ -198,7 +202,12 @@ canvas { display: block; width: 100%; height: 100%; }
     <p id="nota-scheda" class="avviso" hidden></p>
     <div id="errore" hidden></div>
     <button id="b-live" class="btn primario">Avvia il live</button>
-    <p id="nota-live" class="avviso" hidden>Qui dentro Claude la fotocamera in diretta non è disponibile. Registra la serie con il pulsante qui sotto: l'app la analizza e ti apre la revisione. Il live funziona dalla versione online dell'app.</p>
+    <div id="nota-live" class="avviso" hidden>
+      <p class="nota-titolo">Per il live e il video in alta qualità usa la versione completa</p>
+      <p>Qui dentro Claude la fotocamera in diretta non è disponibile e l'iPhone comprime i video caricati, quindi la qualità è bassa. La versione completa si apre in Safari: aggiungila alla schermata Home da Condividi.</p>
+      <a class="btn primario" href="https://gianzo1995.github.io/juta-coach/" target="_blank" rel="noopener">Apri la versione completa</a>
+      <p class="nota">Oppure continua qui e registra la serie con il pulsante sotto.</p>
+    </div>
     <label id="b-video" class="btn" for="file-video">Analizza un video registrato<input id="file-video" type="file" accept="video/*"></label>
     <button id="b-ultima" class="btn" hidden>Rivedi l'ultima serie</button>
     <p class="nota">Le immagini restano sul telefono: niente viene inviato. Il video serve solo per la revisione e si cancella quando chiudi l'app. Prototipo: le soglie degli errori sono ancora da calibrare con gli istruttori.</p>
@@ -385,7 +394,7 @@ function aggiornaInizio() {
   disegnaLista(); aggiornaScelto();
   $("b-ultima").hidden = !ultimaSessione;
   $("b-live").hidden = DIST === "artifact"; $("nota-live").hidden = DIST !== "artifact";
-  if (DIST === "artifact") $("b-video").classList.add("primario");
+  if (DIST === "artifact") $("b-video").classList.remove("primario");
 }
 function nuovaSessione(offset) {
   return { esercizio, impostazioni: impostazioniCorrenti, specchia: modo === "live" && fronte, offset, frames: [], eventi: [], blob: null,
