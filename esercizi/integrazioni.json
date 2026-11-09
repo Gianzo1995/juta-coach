@@ -1,0 +1,569 @@
+[
+ {
+  "id": "PET-014",
+  "imposta": {
+   "errori.fermo_breve.misura": "pausa",
+   "errori.fermo_breve.minore_di": 1.0
+  },
+  "motivo": "Fermo misurato direttamente (tempo nel punto più basso): almeno metà dei 2 s previsti dal tempo 2-2-1-0."
+ },
+ {
+  "id": "PET-015",
+  "imposta": {
+   "errori.fermo_breve.misura": "pausa",
+   "errori.fermo_breve.minore_di": 0.5
+  },
+  "motivo": "Fermo misurato direttamente (tempo nel punto più basso): almeno metà dei 1 s previsti dal tempo 2-1-1-0."
+ },
+ {
+  "id": "PET-019",
+  "imposta": {
+   "errori.rimbalzo.misura": "pausa",
+   "errori.rimbalzo.minore_di": 0.5
+  },
+  "motivo": "Fermo misurato direttamente (tempo nel punto più basso): almeno metà dei 1 s previsti dal tempo 2-1-1-0."
+ },
+ {
+  "id": "PET-020",
+  "imposta": {
+   "errori.rimbalzo.misura": "pausa",
+   "errori.rimbalzo.minore_di": 0.5
+  },
+  "motivo": "Fermo misurato direttamente (tempo nel punto più basso): almeno metà dei 1 s previsti dal tempo 2-1-1-0."
+ },
+ {
+  "id": "PET-021",
+  "imposta": {
+   "errori.appoggio_rapido.misura": "pausa",
+   "errori.appoggio_rapido.minore_di": 1.0
+  },
+  "motivo": "Fermo misurato direttamente (tempo nel punto più basso): almeno metà dei 2 s previsti dal tempo 2-2-1-0."
+ },
+ {
+  "id": "PET-035",
+  "imposta": {
+   "errori.rimbalzo.misura": "pausa",
+   "errori.rimbalzo.minore_di": 0.5
+  },
+  "motivo": "Fermo misurato direttamente (tempo nel punto più basso): almeno metà dei 1 s previsti dal tempo 2-1-1-0."
+ },
+ {
+  "id": "PET-044",
+  "imposta": {
+   "errori.rimbalzo.misura": "pausa",
+   "errori.rimbalzo.minore_di": 0.5
+  },
+  "motivo": "Fermo misurato direttamente (tempo nel punto più basso): almeno metà dei 1 s previsti dal tempo 2-1-1-0."
+ },
+ {
+  "id": "PET-004",
+  "imposta": {
+   "errori.troppo_veloce.misura": "discesa",
+   "errori.troppo_veloce.minore_di": 1.2
+  },
+  "motivo": "Velocità della discesa misurata direttamente: avviso se dura meno del 40% dei 3 s previsti."
+ },
+ {
+  "id": "PET-012",
+  "imposta": {
+   "errori.rimbalzo.misura": "discesa",
+   "errori.rimbalzo.minore_di": 0.8
+  },
+  "motivo": "Velocità della discesa misurata direttamente: avviso se dura meno del 40% dei 2 s previsti."
+ },
+ {
+  "id": "PET-013",
+  "imposta": {
+   "errori.rimbalzo.misura": "discesa",
+   "errori.rimbalzo.minore_di": 0.8
+  },
+  "motivo": "Velocità della discesa misurata direttamente: avviso se dura meno del 40% dei 2 s previsti."
+ },
+ {
+  "id": "PET-016",
+  "imposta": {
+   "errori.rimbalzo.misura": "discesa",
+   "errori.rimbalzo.minore_di": 1.2
+  },
+  "motivo": "Velocità della discesa misurata direttamente: avviso se dura meno del 40% dei 3 s previsti."
+ },
+ {
+  "id": "PET-017",
+  "imposta": {
+   "errori.rimbalzo.misura": "discesa",
+   "errori.rimbalzo.minore_di": 1.2
+  },
+  "motivo": "Velocità della discesa misurata direttamente: avviso se dura meno del 40% dei 3 s previsti."
+ },
+ {
+  "id": "PET-023",
+  "imposta": {
+   "errori.rimbalzo.misura": "discesa",
+   "errori.rimbalzo.minore_di": 1.2
+  },
+  "motivo": "Velocità della discesa misurata direttamente: avviso se dura meno del 40% dei 3 s previsti."
+ },
+ {
+  "id": "PET-024",
+  "imposta": {
+   "errori.rimbalzo.misura": "discesa",
+   "errori.rimbalzo.minore_di": 1.2
+  },
+  "motivo": "Velocità della discesa misurata direttamente: avviso se dura meno del 40% dei 3 s previsti."
+ },
+ {
+  "id": "PET-027",
+  "imposta": {
+   "errori.rimbalzo.misura": "discesa",
+   "errori.rimbalzo.minore_di": 1.2
+  },
+  "motivo": "Velocità della discesa misurata direttamente: avviso se dura meno del 40% dei 3 s previsti."
+ },
+ {
+  "id": "PET-028",
+  "imposta": {
+   "errori.rimbalzo.misura": "discesa",
+   "errori.rimbalzo.minore_di": 1.2
+  },
+  "motivo": "Velocità della discesa misurata direttamente: avviso se dura meno del 40% dei 3 s previsti."
+ },
+ {
+  "id": "PET-029",
+  "imposta": {
+   "errori.rimbalzo.misura": "discesa",
+   "errori.rimbalzo.minore_di": 1.2
+  },
+  "motivo": "Velocità della discesa misurata direttamente: avviso se dura meno del 40% dei 3 s previsti."
+ },
+ {
+  "id": "PET-070",
+  "imposta": {
+   "errori.troppo_veloce.misura": "discesa",
+   "errori.troppo_veloce.minore_di": 1.2
+  },
+  "motivo": "Velocità della discesa misurata direttamente: avviso se dura meno del 40% dei 3 s previsti."
+ },
+ {
+  "id": "PET-077",
+  "imposta": {
+   "errori.troppo_veloce.misura": "discesa",
+   "errori.troppo_veloce.minore_di": 1.2
+  },
+  "motivo": "Velocità della discesa misurata direttamente: avviso se dura meno del 40% dei 3 s previsti."
+ },
+ {
+  "id": "PET-078",
+  "imposta": {
+   "errori.troppo_veloce.misura": "discesa",
+   "errori.troppo_veloce.minore_di": 1.2
+  },
+  "motivo": "Velocità della discesa misurata direttamente: avviso se dura meno del 40% dei 3 s previsti."
+ },
+ {
+  "id": "PET-080",
+  "imposta": {
+   "errori.troppo_veloce.misura": "discesa",
+   "errori.troppo_veloce.minore_di": 1.2
+  },
+  "motivo": "Velocità della discesa misurata direttamente: avviso se dura meno del 40% dei 3 s previsti."
+ },
+ {
+  "id": "PET-054",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "Velocità del ritorno misurata direttamente: avviso se dura meno del 40% dei 2 s previsti."
+ },
+ {
+  "id": "PET-056",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 1.2
+  },
+  "motivo": "Velocità del ritorno misurata direttamente: avviso se dura meno del 40% dei 3 s previsti."
+ },
+ {
+  "id": "PET-058",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 1.2
+  },
+  "motivo": "Velocità del ritorno misurata direttamente: avviso se dura meno del 40% dei 3 s previsti."
+ },
+ {
+  "id": "PET-059",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 1.2
+  },
+  "motivo": "Velocità del ritorno misurata direttamente: avviso se dura meno del 40% dei 3 s previsti."
+ },
+ {
+  "id": "PET-062",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "Velocità del ritorno misurata direttamente: avviso se dura meno del 40% dei 2 s previsti."
+ },
+ {
+  "id": "PET-006",
+  "imposta": {
+   "impostazioni": [
+    {
+     "id": "lato",
+     "domanda": "Quale braccio lavora?",
+     "opzioni": [
+      {
+       "etichetta": "Destro",
+       "imposta": {
+        "lato": "dx"
+       }
+      },
+      {
+       "etichetta": "Sinistro",
+       "imposta": {
+        "lato": "sx"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "motivo": "Scelta del lato di lavoro prima della serie (note per il motore, punto 6.2)."
+ },
+ {
+  "id": "PET-033",
+  "imposta": {
+   "impostazioni": [
+    {
+     "id": "lato",
+     "domanda": "Quale braccio analizzo?",
+     "opzioni": [
+      {
+       "etichetta": "Destro",
+       "imposta": {
+        "lato": "dx"
+       }
+      },
+      {
+       "etichetta": "Sinistro",
+       "imposta": {
+        "lato": "sx"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "motivo": "Scelta del lato di lavoro prima della serie (note per il motore, punto 6.2)."
+ },
+ {
+  "id": "PET-034",
+  "imposta": {
+   "impostazioni": [
+    {
+     "id": "lato",
+     "domanda": "Quale braccio lavora?",
+     "opzioni": [
+      {
+       "etichetta": "Destro",
+       "imposta": {
+        "lato": "dx"
+       }
+      },
+      {
+       "etichetta": "Sinistro",
+       "imposta": {
+        "lato": "sx"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "motivo": "Scelta del lato di lavoro prima della serie (note per il motore, punto 6.2)."
+ },
+ {
+  "id": "PET-044",
+  "imposta": {
+   "impostazioni": [
+    {
+     "id": "lato",
+     "domanda": "Quale braccio lavora?",
+     "opzioni": [
+      {
+       "etichetta": "Destro",
+       "imposta": {
+        "lato": "dx"
+       }
+      },
+      {
+       "etichetta": "Sinistro",
+       "imposta": {
+        "lato": "sx"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "motivo": "Scelta del lato di lavoro prima della serie (note per il motore, punto 6.2)."
+ },
+ {
+  "id": "PET-055",
+  "imposta": {
+   "impostazioni": [
+    {
+     "id": "lato",
+     "domanda": "Quale braccio lavora?",
+     "opzioni": [
+      {
+       "etichetta": "Destro",
+       "imposta": {
+        "lato": "dx"
+       }
+      },
+      {
+       "etichetta": "Sinistro",
+       "imposta": {
+        "lato": "sx"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "motivo": "Scelta del lato di lavoro prima della serie (note per il motore, punto 6.2)."
+ },
+ {
+  "id": "PET-057",
+  "imposta": {
+   "impostazioni": [
+    {
+     "id": "lato",
+     "domanda": "Quale braccio lavora?",
+     "opzioni": [
+      {
+       "etichetta": "Destro",
+       "imposta": {
+        "lato": "dx"
+       }
+      },
+      {
+       "etichetta": "Sinistro",
+       "imposta": {
+        "lato": "sx"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "motivo": "Scelta del lato di lavoro prima della serie (note per il motore, punto 6.2)."
+ },
+ {
+  "id": "PET-020",
+  "imposta": {
+   "impostazioni": [
+    {
+     "id": "tavolette",
+     "domanda": "Quante tavolette usi?",
+     "opzioni": [
+      {
+       "etichetta": "1",
+       "imposta": {
+        "errori.profondita": {
+         "messaggio": "Arriva alla tavoletta",
+         "gravita": "giallo",
+         "momento": "fine",
+         "misura": "gomito",
+         "statistica": "minimo",
+         "maggiore_di": 105
+        }
+       }
+      },
+      {
+       "etichetta": "2",
+       "imposta": {
+        "errori.profondita": {
+         "messaggio": "Arriva alla tavoletta",
+         "gravita": "giallo",
+         "momento": "fine",
+         "misura": "gomito",
+         "statistica": "minimo",
+         "maggiore_di": 115
+        }
+       }
+      },
+      {
+       "etichetta": "3",
+       "imposta": {
+        "errori.profondita": {
+         "messaggio": "Arriva alla tavoletta",
+         "gravita": "giallo",
+         "momento": "fine",
+         "misura": "gomito",
+         "statistica": "minimo",
+         "maggiore_di": 125
+        }
+       }
+      },
+      {
+       "etichetta": "4-5",
+       "imposta": {
+        "errori.profondita": {
+         "messaggio": "Arriva alla tavoletta",
+         "gravita": "giallo",
+         "momento": "fine",
+         "misura": "gomito",
+         "statistica": "minimo",
+         "maggiore_di": 135
+        }
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "motivo": "Profondità richiesta in base al numero di tavolette scelto prima della serie (richiesta di PET-020)."
+ },
+ {
+  "id": "PET-025",
+  "imposta": {
+   "impostazioni": [
+    {
+     "id": "versione",
+     "domanda": "Quale versione fai?",
+     "opzioni": [
+      {
+       "etichetta": "Lungo la panca",
+       "imposta": {}
+      },
+      {
+       "etichetta": "Trasversale",
+       "imposta": {
+        "errori.schiena_inarcata": null
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "motivo": "Nella versione trasversale il controllo 'Schiena sulla panca' darebbe falsi allarmi e si disattiva."
+ },
+ {
+  "id": "PET-026",
+  "imposta": {
+   "impostazioni": [
+    {
+     "id": "versione",
+     "domanda": "Quale versione fai?",
+     "opzioni": [
+      {
+       "etichetta": "Lungo la panca",
+       "imposta": {}
+      },
+      {
+       "etichetta": "Trasversale",
+       "imposta": {
+        "errori.schiena_inarcata": null
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "motivo": "Nella versione trasversale il controllo 'Schiena sulla panca' darebbe falsi allarmi e si disattiva."
+ },
+ {
+  "id": "PET-043",
+  "imposta": {
+   "impostazioni": [
+    {
+     "id": "versione",
+     "domanda": "Quale versione fai?",
+     "opzioni": [
+      {
+       "etichetta": "Lungo la panca",
+       "imposta": {}
+      },
+      {
+       "etichetta": "Trasversale",
+       "imposta": {
+        "errori.schiena_inarcata": null
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "motivo": "Nella versione trasversale il controllo 'Schiena sulla panca' darebbe falsi allarmi e si disattiva."
+ },
+ {
+  "id": "PET-018",
+  "imposta": {
+   "avviso_sicurezza": "Esercizio ad alto rischio: da eseguire solo con l'istruttore, con fermi di sicurezza montati e un assistente. Per la maggior parte dei clienti è meglio la panca inclinata."
+  },
+  "motivo": "Esercizio non analizzato per scelta di sicurezza (note, punto 4): avviso ben visibile."
+ },
+ {
+  "id": "PET-069",
+  "imposta": {
+   "avviso_sicurezza": "Esercizio avanzato con carico molto alto sulla spalla in allungamento: l'app non lo analizza. Solo per clienti esperti e con l'istruttore."
+  },
+  "motivo": "Esercizio non analizzato per scelta di sicurezza (note, punto 4): avviso ben visibile."
+ },
+ {
+  "id": "PET-072",
+  "imposta": {
+   "avviso_sicurezza": "Rischio che la palla ricada sul viso: l'app non lo analizza. Da eseguire con palle leggere e morbide, meglio con un compagno, sotto la guida dell'istruttore."
+  },
+  "motivo": "Esercizio non analizzato per scelta di sicurezza (note, punto 4): avviso ben visibile."
+ },
+ {
+  "id": "PET-014",
+  "imposta": {
+   "non_rilevabili": [
+    {
+     "errore": "Rilassamento durante il fermo",
+     "motivo": "Lo sprofondamento del bilanciere nel petto è di pochi millimetri e il bilanciere non è un punto rilevato."
+    }
+   ]
+  },
+  "motivo": "Tolta la voce sul fermo: ora il tempo nel punto più basso si misura."
+ },
+ {
+  "id": "PET-015",
+  "imposta": {
+   "non_rilevabili": [
+    {
+     "errore": "Il bilanciere tocca il petto",
+     "motivo": "Bilanciere e petto non sono punti rilevati; la differenza di angolo del gomito è troppo piccola per essere affidabile."
+    },
+    {
+     "errore": "Bilanciere che oscilla durante il fermo",
+     "motivo": "Servirebbe misurare la stabilità del polso nel tempo, non prevista."
+    }
+   ]
+  },
+  "motivo": "Tolta la voce sul fermo: ora il tempo nel punto più basso si misura."
+ },
+ {
+  "id": "PET-021",
+  "imposta": {
+   "non_rilevabili": [
+    {
+     "errore": "Bilanciere non centrato sui perni",
+     "motivo": "Bilanciere e perni non sono rilevati, e il dislivello sinistra/destra non si vede di lato."
+    },
+    {
+     "errore": "Perdita dell'assetto durante l'appoggio",
+     "motivo": "Scapole non rilevate; i piccoli spostamenti a bilanciere fermo sono sotto la precisione della camera."
+    }
+   ]
+  },
+  "motivo": "Tolta la voce sul fermo: ora il tempo nel punto più basso si misura."
+ }
+]

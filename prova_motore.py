@@ -261,8 +261,13 @@ def main():
     ev = esegui(Analizzatore(es["PET-001"]), frames)
     risultati.append(verifica("Piegamenti PET-001", ev, [[], ["profondita"], ["allineamento"], ["troppo_veloce"]]))
     # PET-002 (sulle ginocchia) eredita da PET-001 ma non ha piu' la misura "gambe"
-    risultati.append("gambe" not in es["PET-002"]["misure"] and es["PET-002"]["misure"]["corpo"]["punti"][2] == "ginocchio")
-    print(f"{'OK ' if risultati[-1] else 'ERRORE'}  Ereditarieta' PET-002: misura 'gambe' tolta, 'corpo' sostituita")
+    # PET-002 (sulle ginocchia) eredita da PET-001: 'corpo' sostituita, 'gomito' ereditata;
+    # la misura 'gambe' ereditata ma non usata non deve rendere obbligatorie le caviglie
+    a2 = Analizzatore(es["PET-002"])
+    ok = (es["PET-002"]["misure"]["corpo"]["punti"][2] == "ginocchio" and "gomito" in es["PET-002"]["misure"]
+          and not any(n.startswith("caviglia") for n in a2._punti_necessari("sx")))
+    risultati.append(ok)
+    print(f"{'OK ' if ok else 'ERRORE'}  Ereditarieta' PET-002: 'corpo' sostituita, caviglie non richieste")
 
     print("\nTUTTO OK: il motore funziona." if all(risultati)
           else "\nATTENZIONE: qualche controllo non e' passato.")

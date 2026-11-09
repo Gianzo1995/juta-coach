@@ -185,7 +185,7 @@ canvas { display: block; width: 100%; height: 100%; }
 
 <section id="inizio" class="vista">
   <div class="intro">
-    <div class="marchio">Juta Health &amp; Fitness · Beta 0.6</div>
+    <div class="marchio">Juta Health &amp; Fitness · Beta 0.7</div>
     <h1>Allenati con un <span>occhio in più</span></h1>
     <p>Appoggia il telefono a 2–3 metri e allenati: ti corregge a voce mentre ti muovi, poi rivedi la serie con il manichino che ti mostra la posizione giusta.</p>
     <div class="catalogo">
@@ -780,7 +780,9 @@ function calcolaFantasma(posa, es, errId, lato, valoreMisurato) {
   if (spec.tipo === "angolo") {
     const [a, b, c] = spec.punti;
     // resta fermo il punto indicato da "ancora" o, se manca, quello piu' vicino al pavimento (mani nei piegamenti, piedi nello squat)
-    const l0 = lati[0], ancora = spec.ancora || (P(a, l0) && P(c, l0) && P(a, l0)[1] > P(c, l0)[1] ? a : c);
+    // angoli di spalla (anca-spalla-braccio): il busto resta fermo e si muove il braccio (croci, chest press, pullover)
+    const l0 = lati[0], ancora = spec.ancora || (b === "spalla" && (a === "anca" || c === "anca") ? "anca"
+      : (P(a, l0) && P(c, l0) && P(a, l0)[1] > P(c, l0)[1] ? a : c));
     const mobile = ancora === c ? a : c;
     const ang = l => g => geo.angolo(g[`${a}_${l}`], g[`${b}_${l}`], g[`${c}_${l}`]);
     if (asim) {

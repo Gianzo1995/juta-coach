@@ -37,13 +37,14 @@ const MISURE_TEMPO = new Set(["durata", "discesa", "pausa", "salita"]);
 const copia = v => v === undefined ? v : JSON.parse(JSON.stringify(v));
 const eOggetto = v => v !== null && typeof v === "object" && !Array.isArray(v);
 
-// null toglie il campo; gli oggetti si uniscono campo per campo; le liste sostituiscono
+// null toglie il campo; misure e testi_errori si uniscono per nome; tutto il resto sostituisce
+const UNITI_PER_NOME = new Set(["misure", "testi_errori"]);
 function unisci(base, variante) {
   const out = copia(base);
   for (const [k, v] of Object.entries(variante)) {
     if (k === "eredita_da") continue;
     if (v === null) delete out[k];
-    else if (eOggetto(v) && eOggetto(out[k])) {
+    else if (UNITI_PER_NOME.has(k) && eOggetto(v) && eOggetto(out[k])) {
       const d = { ...out[k] };
       for (const [kk, vv] of Object.entries(v)) { if (vv === null) delete d[kk]; else d[kk] = copia(vv); }
       out[k] = d;
@@ -217,8 +218,11 @@ class Analizzatore {
   }
 
   nomiBase() {
+    // solo i punti delle misure usate (ripetizione ed errori), come in regole.py
+    const usate = new Set([this.cfg.ripetizione.misura, ...this.cfg.errori.map(e => e.misura.replace("_asimmetria", ""))]);
     const s = new Set();
-    for (const m of Object.values(this.cfg.misure)) {
+    for (const [nome, m] of Object.entries(this.cfg.misure)) {
+      if (!usate.has(nome)) continue;
       (m.punti || []).forEach(n => s.add(n));
       if (m.punto) s.add(m.punto);
       (m.scala || []).forEach(n => s.add(n));
@@ -321,7 +325,7 @@ class Analizzatore {
 
   chiudiRipetizione(t, stato) {
     this.fase = "pronto"; this.ripetizioni += 1;
-    const durata = t - this.inizioRip;
+    const durata = t - this.tPartenza;     // ripetizione intera: dall'uscita dalla posizione iniziale al ritorno
     this.min.durata = this.max.durata = durata;
     const fasi = this.calcolaFasi(t);
     for (const [k, v] of Object.entries(fasi)) this.min[k] = this.max[k] = v;

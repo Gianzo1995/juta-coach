@@ -54,9 +54,8 @@ def casi():
 
 def main():
     es = carica_tutti(str(RADICE / "esercizi"))
-    voci = []
-    for f in sorted((RADICE / "esercizi" / "catalogo").glob("*.json")):
-        voci += json.loads(f.read_text(encoding="utf-8"))
+    from motore.regole import leggi_catalogo
+    voci = leggi_catalogo(str(RADICE / "esercizi"))
     risultati = {}
     c = casi()
     for k, frames in c.items():

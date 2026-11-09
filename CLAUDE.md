@@ -51,13 +51,20 @@ Ogni voce: `{ "id", "nome"?, "gruppo"?, "scheda", "config_app" }`.
 - `nome` va sempre indicato (se manca si ricava dai riferimenti in `regressione_progressione` che iniziano con la
   maiuscola, altrimenti si usa l'id). `gruppo` è facoltativo: si ricava dal prefisso dell'id (PET → Petto).
 - `config_app.eredita_da`: la variante parte dalla config del base e sovrascrive solo i campi indicati.
-  `null` toglie un campo/misura/testo; gli oggetti si uniscono campo per campo; **le liste (es. `errori`) sostituiscono**.
-  Un oggetto vuoto `{}` non cancella niente.
+  `misure` e `testi_errori` si uniscono per nome (`null` toglie una singola misura/testo); **tutto il resto
+  (`ripetizione`, `errori`, testi, liste…) se presente sostituisce** quello del base (regola del generatore del catalogo).
+- **Integrazioni dell'app** (`esercizi/integrazioni.json`): il catalogo di Gianluca resta intatto; le aggiunte dell'app
+  (conversione dei controlli di velocità a discesa/pausa/salita, impostazioni, avvisi di sicurezza, testi superati)
+  stanno qui come `{"id", "imposta": {percorso: valore}, "motivo"}` e vengono applicate prima dell'ereditarietà
+  da `leggi_catalogo()` in `motore/regole.py` (usata anche da `costruisci.py` e dalla prova di parità).
+  Se un percorso non trova il campo o l'errore, il caricamento si ferma con un messaggio: va aggiornata l'integrazione.
+  Quando arriva un nuovo catalogo: sostituire il file in `esercizi/catalogo/`, rilanciare i test, sistemare le integrazioni.
+- Il motore richiede visibili solo i punti delle misure usate dalla ripetizione e dagli errori.
 - Tipi di misura: `angolo` (3 punti), `inclinazione` (2 punti, rispetto alla verticale),
   `posizione` (spostamento verticale rispetto all'inizio, in unità di un segmento `scala`),
   `durata` (solo dichiarativa: la durata la calcola il motore a fine ripetizione).
 - **Misure di tempo automatiche** (secondi, usabili negli errori con `momento: "fine"`):
-  `durata` (da `inizio_movimento` al ritorno oltre `posizione_iniziale`), `discesa` (dall'uscita dalla posizione
+  `durata` (ripetizione intera: dall'uscita dalla posizione iniziale al ritorno), `discesa` (dall'uscita dalla posizione
   iniziale all'arrivo in basso), `pausa` (tempo entro `ripetizione.tolleranza_pausa`, default 5, dal punto più basso),
   `salita` (dal basso al ritorno in posizione iniziale). Per velocità e fermi usare `discesa`/`pausa`, non `durata`.
 - `impostazioni` (facoltativo): scelte del cliente prima della serie, es.
@@ -67,14 +74,12 @@ Ogni voce: `{ "id", "nome"?, "gruppo"?, "scheda", "config_app" }`.
 - `avviso_sicurezza` (facoltativo): testo mostrato in rosso nella scelta dell'esercizio e in cima a "Come si fa".
   Con `lato: "entrambi"` il motore crea anche `<misura>_asimmetria`.
 - `ancora` (facoltativo, misure ad angolo): punto che resta fermo nel "fantasma" del manichino.
-  Se manca, resta fermo l'estremo più vicino al pavimento.
+  Se manca: negli angoli di spalla (anca-spalla-braccio) resta fermo l'anca, altrimenti l'estremo più vicino al pavimento.
 - `analizzabilita: "non_analizzabile"` → l'esercizio compare solo come scheda, senza analisi.
 - `testi_errori[id]`: `cosa_succede`, `perche_conta`, `come_correggere`, `frase_da_ricordare`
   (detta a voce in diretta), `frase_alternativa` (facoltativa, se l'errore si ripete 3 volte).
   `{valore}` e `{soglia}` nei testi vengono sostituiti con i numeri misurati.
 
-**Attenzione alla durata**: la "durata" misurata va da quando la misura di ripetizione supera `inizio_movimento`
-a quando torna oltre `posizione_iniziale`, quindi è più corta della ripetizione intera.
 
 ## App telefono: scelte tecniche
 

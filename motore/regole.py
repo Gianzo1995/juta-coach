@@ -30,18 +30,21 @@ TIPI_MISURA = {"angolo", "inclinazione", "posizione", "durata"}
 MISURE_TEMPO = {"durata", "discesa", "pausa", "salita"}
 
 
+UNITI_PER_NOME = {"misure", "testi_errori"}
+
+
 def unisci(base, variante):
     """Una variante parte dal base e sovrascrive solo i campi indicati.
-    - null toglie il campo (o la misura, o il testo)
-    - gli oggetti (misure, ripetizione, testi_errori...) si uniscono campo per campo
-    - le liste (errori, non_rilevabili...) sostituiscono quelle del base"""
+    - null toglie il campo (o la singola misura / il singolo testo)
+    - misure e testi_errori si uniscono per nome
+    - tutto il resto (ripetizione, errori, liste, testi...) se presente sostituisce quello del base"""
     out = copy.deepcopy(base)
     for k, v in variante.items():
         if k == "eredita_da":
             continue
         if v is None:
             out.pop(k, None)
-        elif isinstance(v, dict) and isinstance(out.get(k), dict):
+        elif k in UNITI_PER_NOME and isinstance(v, dict) and isinstance(out.get(k), dict):
             d = dict(out[k])
             for kk, vv in v.items():
                 if vv is None:
@@ -118,16 +121,16 @@ def valida(cfg):
     return problemi
 
 
-def applica_impostazioni(cfg, imposta):
-    """Applica le scelte fatte prima della serie (es. {"lato": "dx"} o {"errori.profondita": {...}}).
-    "errori.<id>" aggiunge o sostituisce un errore (null lo toglie), "errori.<id>.<campo>" ne cambia un campo,
-    gli altri percorsi (es. "ripetizione.posizione_iniziale") cambiano il campo indicato."""
+def applica_percorsi(cfg, imposta, rigido=False):
+    """Modifica una config con percorsi tipo "lato", "ripetizione.x", "errori.<id>", "errori.<id>.<campo>".
+    Con rigido=True un errore indicato ma non presente e' un problema (usato per le integrazioni)."""
     out = copy.deepcopy(cfg)
     for percorso, valore in imposta.items():
         parti = percorso.split(".")
         if parti[0] == "errori" and len(parti) >= 2:
+            out.setdefault("errori", [])
             idx = next((k for k, e in enumerate(out["errori"]) if e["id"] == parti[1]), None)
-            if len(parti) == 2 and valore is None:          # null = controllo disattivato
+            if len(parti) == 2 and valore is None:
                 if idx is not None:
                     out["errori"].pop(idx)
             elif len(parti) == 2:
@@ -138,19 +141,57 @@ def applica_impostazioni(cfg, imposta):
                     out["errori"][idx] = nuovo
             elif idx is not None:
                 out["errori"][idx][parti[2]] = copy.deepcopy(valore)
+            elif rigido:
+                raise ValueError(f"errore '{parti[1]}' non presente: impossibile applicare '{percorso}'")
             continue
         o = out
         for p in parti[:-1]:
+            if rigido and p not in o:
+                raise ValueError(f"campo '{p}' non presente: impossibile applicare '{percorso}'")
             o = o.setdefault(p, {})
         o[parti[-1]] = copy.deepcopy(valore)
-    return completa(out)
+    return out
 
 
-def carica_tutti(cartella="esercizi"):
-    """Carica tutti i file JSON del catalogo. Restituisce solo gli esercizi analizzabili."""
+def integra(voci, integrazioni):
+    """Applica le integrazioni dell'app (esercizi/integrazioni.json) sopra il catalogo, senza toccare i file
+    del catalogo. Ogni integrazione: {"id", "imposta": {percorso: valore}, "motivo"}. Agisce sulla config
+    dell'esercizio PRIMA dell'ereditarieta', quindi vale anche per le varianti che ereditano quel campo."""
+    per_id = {v["id"]: copy.deepcopy(v) for v in voci}
+    for it in integrazioni:
+        if it["id"] not in per_id:
+            raise ValueError(f"integrazione per un esercizio inesistente: {it['id']}")
+        v = per_id[it["id"]]
+        try:
+            v["config_app"] = applica_percorsi(v.get("config_app") or {}, it.get("imposta", {}), rigido=True)
+        except ValueError as e:
+            raise ValueError(f"integrazione {it['id']}: {e}") from None
+    return list(per_id.values())
+
+
+def leggi_catalogo(cartella="esercizi"):
+    """Voci del catalogo (catalogo/*.json) con le integrazioni dell'app gia' applicate."""
     voci = []
     for p in sorted(Path(cartella, "catalogo").glob("*.json")):
         voci += json.loads(p.read_text(encoding="utf-8"))
+    ids = [v["id"] for v in voci]
+    doppi = sorted({i for i in ids if ids.count(i) > 1})
+    if doppi:
+        raise ValueError(f"id duplicati nel catalogo: {doppi}")
+    f = Path(cartella, "integrazioni.json")
+    return integra(voci, json.loads(f.read_text(encoding="utf-8"))) if f.exists() else voci
+
+
+def applica_impostazioni(cfg, imposta):
+    """Applica le scelte fatte prima della serie (es. {"lato": "dx"} o {"errori.profondita": {...}}).
+    "errori.<id>" aggiunge o sostituisce un errore (null lo toglie), "errori.<id>.<campo>" ne cambia un campo,
+    gli altri percorsi (es. "ripetizione.posizione_iniziale") cambiano il campo indicato."""
+    return completa(applica_percorsi(cfg, imposta))
+
+
+def carica_tutti(cartella="esercizi"):
+    """Carica il catalogo (con le integrazioni). Restituisce solo gli esercizi analizzabili."""
+    voci = leggi_catalogo(cartella)
     esercizi = {}
     for i, cfg in risolvi_catalogo(voci).items():
         if not analizzabile(cfg):
@@ -280,8 +321,13 @@ class Analizzatore:
         return max(LATI, key=lambda l: self._vis_lati[l])
 
     def _nomi_base(self):
+        # solo i punti delle misure usate (ripetizione ed errori): una misura ereditata ma inutilizzata
+        # non deve sospendere l'analisi se i suoi punti non si vedono
+        usate = {self.cfg["ripetizione"]["misura"]} | {e["misura"].replace("_asimmetria", "") for e in self.cfg["errori"]}
         nomi = set()
-        for m in self.cfg["misure"].values():
+        for nome, m in self.cfg["misure"].items():
+            if nome not in usate:
+                continue
             nomi.update(m.get("punti", []))
             if "punto" in m:
                 nomi.add(m["punto"])
@@ -399,7 +445,7 @@ class Analizzatore:
     def _chiudi_ripetizione(self, t, stato):
         self.fase = "pronto"
         self.ripetizioni += 1
-        durata = t - self._inizio_rip
+        durata = t - self._t_partenza          # ripetizione intera: dall'uscita dalla posizione iniziale al ritorno
         self._min["durata"] = self._max["durata"] = durata
         fasi = self._calcola_fasi(t)
         for k, v in fasi.items():

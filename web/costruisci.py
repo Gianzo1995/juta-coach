@@ -11,6 +11,7 @@ Per aggiungere esercizi: nuovo file JSON in esercizi/catalogo/, poi rilancia que
 import base64
 import json
 import shutil
+import sys
 from pathlib import Path
 
 QUI = Path(__file__).parent
@@ -19,14 +20,13 @@ VENDOR = QUI / "vendor"          # MediaPipe (motore di riconoscimento) e modell
 
 
 def leggi_catalogo():
-    voci = []
-    for f in sorted((RADICE / "esercizi" / "catalogo").glob("*.json")):
-        voci += json.loads(f.read_text(encoding="utf-8"))
-    ids = [v["id"] for v in voci]
-    doppi = {i for i in ids if ids.count(i) > 1}
-    if doppi:
-        raise SystemExit(f"ERRORE: id duplicati nel catalogo: {sorted(doppi)}")
-    return voci
+    """Catalogo con le integrazioni dell'app (stessa funzione usata dal motore Python)."""
+    sys.path.insert(0, str(RADICE))
+    from motore.regole import leggi_catalogo as leggi
+    try:
+        return leggi(str(RADICE / "esercizi"))
+    except ValueError as e:
+        raise SystemExit(f"ERRORE nel catalogo: {e}")
 
 
 def pulisci(cartella):
