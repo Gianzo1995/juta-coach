@@ -23,3 +23,17 @@ def inclinazione(basso, alto):
 
 def distanza(a, b):
     return math.hypot(a[0] - b[0], a[1] - b[1])
+
+
+def angolo_orientato(a, b, c):
+    """Angolo in b con il verso: 180 = a, b, c in linea; meno di 180 = b SOTTO la retta a-c
+    (es. bacino che cede nei piegamenti); piu' di 180 = b SOPRA la retta (es. sedere alto).
+    Pensato per corpi orizzontali o inclinati: se la retta a-c e' verticale restituisce l'angolo senza verso."""
+    th = angolo(a, b, c)
+    if th is None:
+        return None
+    dx = c[0] - a[0]
+    if abs(dx) < 1e-6:
+        return th
+    y_retta = a[1] + (c[1] - a[1]) * (b[0] - a[0]) / dx
+    return th if b[1] >= y_retta else 360 - th

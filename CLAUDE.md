@@ -60,7 +60,9 @@ Ogni voce: `{ "id", "nome"?, "gruppo"?, "scheda", "config_app" }`.
   Se un percorso non trova il campo o l'errore, il caricamento si ferma con un messaggio: va aggiornata l'integrazione.
   Quando arriva un nuovo catalogo: sostituire il file in `esercizi/catalogo/`, rilanciare i test, sistemare le integrazioni.
 - Il motore richiede visibili solo i punti delle misure usate dalla ripetizione e dagli errori.
-- Tipi di misura: `angolo` (3 punti), `inclinazione` (2 punti, rispetto alla verticale),
+- Tipi di misura: `angolo` (3 punti, 0-180), `angolo_orientato` (3 punti: 180 = in linea, meno di 180 = punto
+  centrale SOTTO la retta tra gli estremi, più di 180 = SOPRA; per corpi orizzontali/inclinati, es. bacino nei
+  piegamenti), `inclinazione` (2 punti [A, B]: 0 = B sopra A, 90 = orizzontale, 180 = B sotto A),
   `posizione` (spostamento verticale rispetto all'inizio, in unità di un segmento `scala`),
   `durata` (solo dichiarativa: la durata la calcola il motore a fine ripetizione).
 - **Misure di tempo automatiche** (secondi, usabili negli errori con `momento: "fine"`):
@@ -107,7 +109,8 @@ Ogni voce: `{ "id", "nome"?, "gruppo"?, "scheda", "config_app" }`.
 
 ## Prossimi passi consigliati (richieste dal catalogo, non ancora fatte)
 
-- **A. Angolo con segno**: distinguere bacino che cede da sedere alto (piegamenti, plank, stacchi).
+- ~~A. Angolo con segno~~ (fatto: `angolo_orientato`; i piegamenti hanno "bacino_cede" e "sedere_alto" via integrazioni).
+  Da fare: verso avanti/indietro per corpi verticali (busto in PET-047, PET-054), serve conoscere il verso del viso.
 - ~~B. Fasi della ripetizione~~ (fatto: misure `discesa`, `pausa`, `salita`).
 - **C. Controllo in alto** tra una ripetizione e l'altra (braccia/gambe distese).
 - **D. Misura `distanza`** tra due punti rispetto a un segmento (larghezza presa, ginocchia-mani).

@@ -565,5 +565,523 @@
    ]
   },
   "motivo": "Tolta la voce sul fermo: ora il tempo nel punto più basso si misura."
+ },
+ {
+  "id": "PET-001",
+  "imposta": {
+   "misure.corpo.tipo": "angolo_orientato"
+  },
+  "motivo": "Angolo con verso: distingue il bacino che scende sotto la linea da quello che sale sopra (funzione 4)."
+ },
+ {
+  "id": "PET-002",
+  "imposta": {
+   "misure.corpo.tipo": "angolo_orientato"
+  },
+  "motivo": "Angolo con verso: distingue il bacino che scende sotto la linea da quello che sale sopra (funzione 4)."
+ },
+ {
+  "id": "PET-009",
+  "imposta": {
+   "misure.corpo.tipo": "angolo_orientato"
+  },
+  "motivo": "Angolo con verso: distingue il bacino che scende sotto la linea da quello che sale sopra (funzione 4)."
+ },
+ {
+  "id": "PET-010",
+  "imposta": {
+   "misure.corpo.tipo": "angolo_orientato"
+  },
+  "motivo": "Angolo con verso: distingue il bacino che scende sotto la linea da quello che sale sopra (funzione 4)."
+ },
+ {
+  "id": "PET-011",
+  "imposta": {
+   "misure.corpo.tipo": "angolo_orientato"
+  },
+  "motivo": "Angolo con verso: distingue il bacino che scende sotto la linea da quello che sale sopra (funzione 4)."
+ },
+ {
+  "id": "PET-065",
+  "imposta": {
+   "misure.corpo.tipo": "angolo_orientato"
+  },
+  "motivo": "Angolo con verso: distingue il bacino che scende sotto la linea da quello che sale sopra (funzione 4)."
+ },
+ {
+  "id": "PET-067",
+  "imposta": {
+   "misure.corpo.tipo": "angolo_orientato"
+  },
+  "motivo": "Angolo con verso: distingue il bacino che scende sotto la linea da quello che sale sopra (funzione 4)."
+ },
+ {
+  "id": "PET-068",
+  "imposta": {
+   "misure.corpo.tipo": "angolo_orientato"
+  },
+  "motivo": "Angolo con verso: distingue il bacino che scende sotto la linea da quello che sale sopra (funzione 4)."
+ },
+ {
+  "id": "PET-074",
+  "imposta": {
+   "misure.ponte.tipo": "angolo_orientato"
+  },
+  "motivo": "Angolo con verso: distingue il bacino che scende sotto la linea da quello che sale sopra (funzione 4)."
+ },
+ {
+  "id": "PET-001",
+  "imposta": {
+   "errori.allineamento": null,
+   "errori.bacino_cede": {
+    "messaggio": "Glutei stretti, bacino su",
+    "gravita": "rosso",
+    "momento": "durante",
+    "misura": "corpo",
+    "minore_di": 155
+   },
+   "errori.sedere_alto": {
+    "messaggio": "Abbassa il sedere",
+    "gravita": "giallo",
+    "momento": "durante",
+    "misura": "corpo",
+    "maggiore_di": 205
+   },
+   "testi_errori.bacino_cede": {
+    "cosa_succede": "Il bacino scende verso terra e la schiena si inarca.",
+    "perche_conta": "La zona lombare si carica proprio quando lo sforzo è massimo.",
+    "come_correggere": "Stringi glutei e addome prima di scendere; se non riesci a tenere la linea, passa a una versione più facile.",
+    "frase_da_ricordare": "Glutei stretti, bacino su.",
+    "frase_alternativa": "Pancia dentro, corpo rigido."
+   },
+   "testi_errori.sedere_alto": {
+    "cosa_succede": "Il sedere sale e il corpo forma una V rovesciata.",
+    "perche_conta": "L'esercizio diventa più facile e il lavoro passa dal petto alle spalle.",
+    "come_correggere": "Abbassa il bacino finché spalle, anche e piedi sono in linea.",
+    "frase_da_ricordare": "Sedere giù.",
+    "frase_alternativa": "Abbassa il sedere, corpo in linea."
+   }
+  },
+  "motivo": "'Corpo in linea retta' diviso in due correzioni: bacino che cede (sotto 155°, gravità rosso) e sedere alto (oltre 205°, gravità giallo)."
+ },
+ {
+  "id": "PET-002",
+  "imposta": {
+   "errori.allineamento": null,
+   "errori.bacino_cede": {
+    "messaggio": "Stringi glutei e pancia",
+    "gravita": "giallo",
+    "momento": "durante",
+    "misura": "corpo",
+    "minore_di": 150
+   },
+   "errori.sedere_alto": {
+    "messaggio": "Bacino avanti, corpo dritto",
+    "gravita": "giallo",
+    "momento": "durante",
+    "misura": "corpo",
+    "maggiore_di": 210
+   },
+   "testi_errori.bacino_cede": {
+    "cosa_succede": "Il bacino scende verso terra e la schiena si inarca.",
+    "perche_conta": "La zona lombare si carica proprio quando lo sforzo è massimo.",
+    "come_correggere": "Stringi glutei e addome prima di scendere; se non riesci a tenere la linea, passa a una versione più facile.",
+    "frase_da_ricordare": "Glutei stretti, bacino su.",
+    "frase_alternativa": "Pancia dentro, corpo rigido."
+   },
+   "testi_errori.sedere_alto": {
+    "cosa_succede": "Le anche restano piegate e il sedere va indietro e in alto.",
+    "perche_conta": "Il peso si sposta sulle ginocchia e il petto lavora molto meno.",
+    "come_correggere": "Porta il bacino in avanti finché spalle, anche e ginocchia sono in linea.",
+    "frase_da_ricordare": "Bacino avanti.",
+    "frase_alternativa": "Abbassa il sedere, corpo in linea."
+   }
+  },
+  "motivo": "'Bacino avanti, corpo dritto' diviso in due correzioni: bacino che cede (sotto 150°, gravità giallo) e sedere alto (oltre 210°, gravità giallo)."
+ },
+ {
+  "id": "PET-003",
+  "imposta": {
+   "errori.allineamento": null,
+   "errori.bacino_cede": {
+    "messaggio": "Glutei stretti, bacino su",
+    "gravita": "rosso",
+    "momento": "durante",
+    "misura": "corpo",
+    "minore_di": 155
+   },
+   "errori.sedere_alto": {
+    "messaggio": "Abbassa il sedere",
+    "gravita": "giallo",
+    "momento": "durante",
+    "misura": "corpo",
+    "maggiore_di": 205
+   },
+   "testi_errori.bacino_cede": {
+    "cosa_succede": "Il bacino scende verso terra e la schiena si inarca.",
+    "perche_conta": "La zona lombare si carica proprio quando lo sforzo è massimo.",
+    "come_correggere": "Stringi glutei e addome prima di scendere; se non riesci a tenere la linea, passa a una versione più facile.",
+    "frase_da_ricordare": "Glutei stretti, bacino su.",
+    "frase_alternativa": "Pancia dentro, corpo rigido."
+   },
+   "testi_errori.sedere_alto": {
+    "cosa_succede": "Il sedere sale e il corpo forma una V rovesciata.",
+    "perche_conta": "L'esercizio diventa più facile e il lavoro passa dal petto alle spalle.",
+    "come_correggere": "Abbassa il bacino finché spalle, anche e piedi sono in linea.",
+    "frase_da_ricordare": "Sedere giù.",
+    "frase_alternativa": "Abbassa il sedere, corpo in linea."
+   }
+  },
+  "motivo": "'Corpo in linea retta' diviso in due correzioni: bacino che cede (sotto 155°, gravità rosso) e sedere alto (oltre 205°, gravità giallo)."
+ },
+ {
+  "id": "PET-004",
+  "imposta": {
+   "errori.allineamento": null,
+   "errori.bacino_cede": {
+    "messaggio": "Glutei stretti, bacino su",
+    "gravita": "rosso",
+    "momento": "durante",
+    "misura": "corpo",
+    "minore_di": 155
+   },
+   "errori.sedere_alto": {
+    "messaggio": "Abbassa il sedere",
+    "gravita": "giallo",
+    "momento": "durante",
+    "misura": "corpo",
+    "maggiore_di": 205
+   },
+   "testi_errori.bacino_cede": {
+    "cosa_succede": "Il bacino scende verso terra e la schiena si inarca.",
+    "perche_conta": "La zona lombare si carica proprio quando lo sforzo è massimo.",
+    "come_correggere": "Stringi glutei e addome prima di scendere; se non riesci a tenere la linea, passa a una versione più facile.",
+    "frase_da_ricordare": "Glutei stretti, bacino su.",
+    "frase_alternativa": "Pancia dentro, corpo rigido."
+   },
+   "testi_errori.sedere_alto": {
+    "cosa_succede": "Il sedere sale e il corpo forma una V rovesciata.",
+    "perche_conta": "L'esercizio diventa più facile e il lavoro passa dal petto alle spalle.",
+    "come_correggere": "Abbassa il bacino finché spalle, anche e piedi sono in linea.",
+    "frase_da_ricordare": "Sedere giù.",
+    "frase_alternativa": "Abbassa il sedere, corpo in linea."
+   }
+  },
+  "motivo": "'Corpo in linea retta' diviso in due correzioni: bacino che cede (sotto 155°, gravità rosso) e sedere alto (oltre 205°, gravità giallo)."
+ },
+ {
+  "id": "PET-006",
+  "imposta": {
+   "errori.allineamento": null,
+   "errori.bacino_cede": {
+    "messaggio": "Glutei stretti, bacino su",
+    "gravita": "rosso",
+    "momento": "durante",
+    "misura": "corpo",
+    "minore_di": 150
+   },
+   "errori.sedere_alto": {
+    "messaggio": "Abbassa il sedere",
+    "gravita": "giallo",
+    "momento": "durante",
+    "misura": "corpo",
+    "maggiore_di": 210
+   },
+   "testi_errori.bacino_cede": {
+    "cosa_succede": "Il bacino scende verso terra e la schiena si inarca.",
+    "perche_conta": "La zona lombare si carica proprio quando lo sforzo è massimo.",
+    "come_correggere": "Stringi glutei e addome prima di scendere; se non riesci a tenere la linea, passa a una versione più facile.",
+    "frase_da_ricordare": "Glutei stretti, bacino su.",
+    "frase_alternativa": "Pancia dentro, corpo rigido."
+   },
+   "testi_errori.sedere_alto": {
+    "cosa_succede": "Il sedere sale e il corpo forma una V rovesciata.",
+    "perche_conta": "L'esercizio diventa più facile e il lavoro passa dal petto alle spalle.",
+    "come_correggere": "Abbassa il bacino finché spalle, anche e piedi sono in linea.",
+    "frase_da_ricordare": "Sedere giù.",
+    "frase_alternativa": "Abbassa il sedere, corpo in linea."
+   }
+  },
+  "motivo": "'Corpo in linea retta' diviso in due correzioni: bacino che cede (sotto 150°, gravità rosso) e sedere alto (oltre 210°, gravità giallo)."
+ },
+ {
+  "id": "PET-007",
+  "imposta": {
+   "errori.allineamento": null,
+   "errori.bacino_cede": {
+    "messaggio": "Glutei stretti, bacino su",
+    "gravita": "rosso",
+    "momento": "durante",
+    "misura": "corpo",
+    "minore_di": 155
+   },
+   "errori.sedere_alto": {
+    "messaggio": "Abbassa il sedere",
+    "gravita": "giallo",
+    "momento": "durante",
+    "misura": "corpo",
+    "maggiore_di": 205
+   },
+   "testi_errori.bacino_cede": {
+    "cosa_succede": "Il bacino scende verso terra e la schiena si inarca.",
+    "perche_conta": "La zona lombare si carica proprio quando lo sforzo è massimo.",
+    "come_correggere": "Stringi glutei e addome prima di scendere; se non riesci a tenere la linea, passa a una versione più facile.",
+    "frase_da_ricordare": "Glutei stretti, bacino su.",
+    "frase_alternativa": "Pancia dentro, corpo rigido."
+   },
+   "testi_errori.sedere_alto": {
+    "cosa_succede": "Il sedere sale e il corpo forma una V rovesciata.",
+    "perche_conta": "L'esercizio diventa più facile e il lavoro passa dal petto alle spalle.",
+    "come_correggere": "Abbassa il bacino finché spalle, anche e piedi sono in linea.",
+    "frase_da_ricordare": "Sedere giù.",
+    "frase_alternativa": "Abbassa il sedere, corpo in linea."
+   }
+  },
+  "motivo": "'Corpo in linea retta' diviso in due correzioni: bacino che cede (sotto 155°, gravità rosso) e sedere alto (oltre 205°, gravità giallo)."
+ },
+ {
+  "id": "PET-009",
+  "imposta": {
+   "errori.allineamento": null,
+   "errori.bacino_cede": {
+    "messaggio": "Glutei stretti, bacino su",
+    "gravita": "giallo",
+    "momento": "durante",
+    "misura": "corpo",
+    "minore_di": 155
+   },
+   "errori.sedere_alto": {
+    "messaggio": "Abbassa il sedere",
+    "gravita": "giallo",
+    "momento": "durante",
+    "misura": "corpo",
+    "maggiore_di": 205
+   },
+   "testi_errori.bacino_cede": {
+    "cosa_succede": "Il bacino scende verso terra e la schiena si inarca.",
+    "perche_conta": "La zona lombare si carica proprio quando lo sforzo è massimo.",
+    "come_correggere": "Stringi glutei e addome prima di scendere; se non riesci a tenere la linea, passa a una versione più facile.",
+    "frase_da_ricordare": "Glutei stretti, bacino su.",
+    "frase_alternativa": "Pancia dentro, corpo rigido."
+   },
+   "testi_errori.sedere_alto": {
+    "cosa_succede": "Il sedere sale e il corpo forma una V rovesciata.",
+    "perche_conta": "L'esercizio diventa più facile e il lavoro passa dal petto alle spalle.",
+    "come_correggere": "Abbassa il bacino finché spalle, anche e piedi sono in linea.",
+    "frase_da_ricordare": "Sedere giù.",
+    "frase_alternativa": "Abbassa il sedere, corpo in linea."
+   }
+  },
+  "motivo": "'Corpo in linea retta' diviso in due correzioni: bacino che cede (sotto 155°, gravità giallo) e sedere alto (oltre 205°, gravità giallo)."
+ },
+ {
+  "id": "PET-010",
+  "imposta": {
+   "errori.allineamento": null,
+   "errori.bacino_cede": {
+    "messaggio": "Glutei stretti, bacino su",
+    "gravita": "rosso",
+    "momento": "durante",
+    "misura": "corpo",
+    "minore_di": 155
+   },
+   "errori.sedere_alto": {
+    "messaggio": "Abbassa il sedere",
+    "gravita": "giallo",
+    "momento": "durante",
+    "misura": "corpo",
+    "maggiore_di": 205
+   },
+   "testi_errori.bacino_cede": {
+    "cosa_succede": "Il bacino scende verso terra e la schiena si inarca.",
+    "perche_conta": "La zona lombare si carica proprio quando lo sforzo è massimo.",
+    "come_correggere": "Stringi glutei e addome prima di scendere; se non riesci a tenere la linea, passa a una versione più facile.",
+    "frase_da_ricordare": "Glutei stretti, bacino su.",
+    "frase_alternativa": "Pancia dentro, corpo rigido."
+   },
+   "testi_errori.sedere_alto": {
+    "cosa_succede": "Il sedere sale e il corpo forma una V rovesciata.",
+    "perche_conta": "L'esercizio diventa più facile e il lavoro passa dal petto alle spalle.",
+    "come_correggere": "Abbassa il bacino finché spalle, anche e piedi sono in linea.",
+    "frase_da_ricordare": "Sedere giù.",
+    "frase_alternativa": "Abbassa il sedere, corpo in linea."
+   }
+  },
+  "motivo": "'Corpo in linea retta' diviso in due correzioni: bacino che cede (sotto 155°, gravità rosso) e sedere alto (oltre 205°, gravità giallo)."
+ },
+ {
+  "id": "PET-011",
+  "imposta": {
+   "errori.allineamento": null,
+   "errori.bacino_cede": {
+    "messaggio": "Glutei stretti, bacino su",
+    "gravita": "rosso",
+    "momento": "durante",
+    "misura": "corpo",
+    "minore_di": 150
+   },
+   "errori.sedere_alto": {
+    "messaggio": "Abbassa il sedere",
+    "gravita": "giallo",
+    "momento": "durante",
+    "misura": "corpo",
+    "maggiore_di": 210
+   },
+   "testi_errori.bacino_cede": {
+    "cosa_succede": "Il bacino scende verso terra e la schiena si inarca.",
+    "perche_conta": "La zona lombare si carica proprio quando lo sforzo è massimo.",
+    "come_correggere": "Stringi glutei e addome prima di scendere; se non riesci a tenere la linea, passa a una versione più facile.",
+    "frase_da_ricordare": "Glutei stretti, bacino su.",
+    "frase_alternativa": "Pancia dentro, corpo rigido."
+   },
+   "testi_errori.sedere_alto": {
+    "cosa_succede": "Il sedere sale e il corpo forma una V rovesciata.",
+    "perche_conta": "L'esercizio diventa più facile e il lavoro passa dal petto alle spalle.",
+    "come_correggere": "Abbassa il bacino finché spalle, anche e piedi sono in linea.",
+    "frase_da_ricordare": "Sedere giù.",
+    "frase_alternativa": "Abbassa il sedere, corpo in linea."
+   }
+  },
+  "motivo": "'Corpo rigido' diviso in due correzioni: bacino che cede (sotto 150°, gravità rosso) e sedere alto (oltre 210°, gravità giallo)."
+ },
+ {
+  "id": "PET-065",
+  "imposta": {
+   "errori.allineamento": null,
+   "errori.bacino_cede": {
+    "messaggio": "Glutei stretti, bacino su",
+    "gravita": "giallo",
+    "momento": "durante",
+    "misura": "corpo",
+    "minore_di": 155
+   },
+   "errori.sedere_alto": {
+    "messaggio": "Abbassa il sedere",
+    "gravita": "giallo",
+    "momento": "durante",
+    "misura": "corpo",
+    "maggiore_di": 205
+   },
+   "testi_errori.bacino_cede": {
+    "cosa_succede": "Il bacino scende verso terra e la schiena si inarca.",
+    "perche_conta": "La zona lombare si carica proprio quando lo sforzo è massimo.",
+    "come_correggere": "Stringi glutei e addome prima di scendere; se non riesci a tenere la linea, passa a una versione più facile.",
+    "frase_da_ricordare": "Glutei stretti, bacino su.",
+    "frase_alternativa": "Pancia dentro, corpo rigido."
+   },
+   "testi_errori.sedere_alto": {
+    "cosa_succede": "Il sedere sale e il corpo forma una V rovesciata.",
+    "perche_conta": "L'esercizio diventa più facile e il lavoro passa dal petto alle spalle.",
+    "come_correggere": "Abbassa il bacino finché spalle, anche e piedi sono in linea.",
+    "frase_da_ricordare": "Sedere giù.",
+    "frase_alternativa": "Abbassa il sedere, corpo in linea."
+   }
+  },
+  "motivo": "'Corpo in linea retta' diviso in due correzioni: bacino che cede (sotto 155°, gravità giallo) e sedere alto (oltre 205°, gravità giallo)."
+ },
+ {
+  "id": "PET-067",
+  "imposta": {
+   "errori.allineamento": null,
+   "errori.bacino_cede": {
+    "messaggio": "Glutei stretti, bacino su",
+    "gravita": "rosso",
+    "momento": "durante",
+    "misura": "corpo",
+    "minore_di": 155
+   },
+   "errori.sedere_alto": {
+    "messaggio": "Abbassa il sedere",
+    "gravita": "giallo",
+    "momento": "durante",
+    "misura": "corpo",
+    "maggiore_di": 205
+   },
+   "testi_errori.bacino_cede": {
+    "cosa_succede": "Il bacino scende verso terra e la schiena si inarca.",
+    "perche_conta": "La zona lombare si carica proprio quando lo sforzo è massimo.",
+    "come_correggere": "Stringi glutei e addome prima di scendere; se non riesci a tenere la linea, passa a una versione più facile.",
+    "frase_da_ricordare": "Glutei stretti, bacino su.",
+    "frase_alternativa": "Pancia dentro, corpo rigido."
+   },
+   "testi_errori.sedere_alto": {
+    "cosa_succede": "Il sedere sale e il corpo forma una V rovesciata.",
+    "perche_conta": "L'esercizio diventa più facile e il lavoro passa dal petto alle spalle.",
+    "come_correggere": "Abbassa il bacino finché spalle, anche e piedi sono in linea.",
+    "frase_da_ricordare": "Sedere giù.",
+    "frase_alternativa": "Abbassa il sedere, corpo in linea."
+   }
+  },
+  "motivo": "'Corpo in linea retta' diviso in due correzioni: bacino che cede (sotto 155°, gravità rosso) e sedere alto (oltre 205°, gravità giallo)."
+ },
+ {
+  "id": "PET-068",
+  "imposta": {
+   "errori.allineamento": null,
+   "errori.bacino_cede": {
+    "messaggio": "Glutei stretti, bacino su",
+    "gravita": "rosso",
+    "momento": "durante",
+    "misura": "corpo",
+    "minore_di": 155
+   },
+   "errori.sedere_alto": {
+    "messaggio": "Abbassa il sedere",
+    "gravita": "giallo",
+    "momento": "durante",
+    "misura": "corpo",
+    "maggiore_di": 205
+   },
+   "testi_errori.bacino_cede": {
+    "cosa_succede": "Il bacino scende verso terra e la schiena si inarca.",
+    "perche_conta": "La zona lombare si carica proprio quando lo sforzo è massimo.",
+    "come_correggere": "Stringi glutei e addome prima di scendere; se non riesci a tenere la linea, passa a una versione più facile.",
+    "frase_da_ricordare": "Glutei stretti, bacino su.",
+    "frase_alternativa": "Pancia dentro, corpo rigido."
+   },
+   "testi_errori.sedere_alto": {
+    "cosa_succede": "Il sedere sale e il corpo forma una V rovesciata.",
+    "perche_conta": "L'esercizio diventa più facile e il lavoro passa dal petto alle spalle.",
+    "come_correggere": "Abbassa il bacino finché spalle, anche e piedi sono in linea.",
+    "frase_da_ricordare": "Sedere giù.",
+    "frase_alternativa": "Abbassa il sedere, corpo in linea."
+   }
+  },
+  "motivo": "'Corpo in linea retta' diviso in due correzioni: bacino che cede (sotto 155°, gravità rosso) e sedere alto (oltre 205°, gravità giallo)."
+ },
+ {
+  "id": "PET-076",
+  "imposta": {
+   "errori.allineamento": null,
+   "errori.bacino_cede": {
+    "messaggio": "Glutei stretti, bacino su",
+    "gravita": "giallo",
+    "momento": "durante",
+    "misura": "corpo",
+    "minore_di": 155
+   },
+   "errori.sedere_alto": {
+    "messaggio": "Abbassa il sedere",
+    "gravita": "giallo",
+    "momento": "durante",
+    "misura": "corpo",
+    "maggiore_di": 205
+   },
+   "testi_errori.bacino_cede": {
+    "cosa_succede": "Il bacino scende verso terra e la schiena si inarca.",
+    "perche_conta": "La zona lombare si carica proprio quando lo sforzo è massimo.",
+    "come_correggere": "Stringi glutei e addome prima di scendere; se non riesci a tenere la linea, passa a una versione più facile.",
+    "frase_da_ricordare": "Glutei stretti, bacino su.",
+    "frase_alternativa": "Pancia dentro, corpo rigido."
+   },
+   "testi_errori.sedere_alto": {
+    "cosa_succede": "Il sedere sale e il corpo forma una V rovesciata.",
+    "perche_conta": "L'esercizio diventa più facile e il lavoro passa dal petto alle spalle.",
+    "come_correggere": "Abbassa il bacino finché spalle, anche e piedi sono in linea.",
+    "frase_da_ricordare": "Sedere giù.",
+    "frase_alternativa": "Abbassa il sedere, corpo in linea."
+   }
+  },
+  "motivo": "'Corpo in linea retta' diviso in due correzioni: bacino che cede (sotto 155°, gravità giallo) e sedere alto (oltre 205°, gravità giallo)."
  }
 ]

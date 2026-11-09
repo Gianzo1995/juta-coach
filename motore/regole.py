@@ -25,7 +25,7 @@ ISTERESI_INVERSIONE = 5.0   # di quanto deve "tornare indietro" la misura per di
 # --------------------------------------------------------------------------
 # Catalogo esercizi (file JSON in esercizi/catalogo) ed ereditarieta'
 # --------------------------------------------------------------------------
-TIPI_MISURA = {"angolo", "inclinazione", "posizione", "durata"}
+TIPI_MISURA = {"angolo", "angolo_orientato", "inclinazione", "posizione", "durata"}
 # misure calcolate dal motore a fine ripetizione (in secondi), usabili negli errori con momento "fine"
 MISURE_TEMPO = {"durata", "discesa", "pausa", "salita"}
 
@@ -347,6 +347,9 @@ class Analizzatore:
         if tipo == "angolo":
             a, b, c = spec["punti"]
             return geometria.angolo(p(a), p(b), p(c))
+        if tipo == "angolo_orientato":
+            a, b, c = spec["punti"]
+            return geometria.angolo_orientato(p(a), p(b), p(c))
         if tipo == "inclinazione":
             basso, alto = spec["punti"]
             return geometria.inclinazione(p(basso), p(alto))

@@ -44,7 +44,8 @@ def casi():
         "lat_machine": [pm.posa_lat(170, 170)] * FPS + R(lambda g: pm.posa_lat(g, g), 170, 60)
                        + R(lambda g: pm.posa_lat(g, min(170, g + 40)), 170, 60),
         "PET-001": [pp(175)] * FPS + R(pp, 175, 80, secondi=3.0) + R(pp, 175, 115, secondi=3.0)
-                   + R(pp, 175, 80, secondi=3.0, abbassa_bacino=70) + R(pp, 175, 80, secondi=1.0)
+                   + R(pp, 175, 80, secondi=3.0, abbassa_bacino=70) + R(pp, 175, 80, secondi=3.0, abbassa_bacino=-70)
+                   + R(pp, 175, 80, secondi=1.0)
                    + R(pp, 175, 80, secondi=3.0, gambe=140),
         "PET-007": [pp(175)] * FPS + R(pp, 175, 80, secondi=3.0) + R(pp, 175, 80, secondi=3.0, abbassa_bacino=70),
         "PET-008": [pp(175)] * FPS + R(pp, 175, 80, secondi=3.0) + R(pp, 175, 115, secondi=3.0),

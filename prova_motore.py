@@ -257,9 +257,10 @@ def main():
     frames += ripetizione(pp, 175, 80, secondi=3.0)
     frames += ripetizione(pp, 175, 115, secondi=3.0)
     frames += ripetizione(pp, 175, 80, secondi=3.0, abbassa_bacino=70)
+    frames += ripetizione(pp, 175, 80, secondi=3.0, abbassa_bacino=-70)
     frames += ripetizione(pp, 175, 80, secondi=1.0)
     ev = esegui(Analizzatore(es["PET-001"]), frames)
-    risultati.append(verifica("Piegamenti PET-001", ev, [[], ["profondita"], ["allineamento"], ["troppo_veloce"]]))
+    risultati.append(verifica("Piegamenti PET-001", ev, [[], ["profondita"], ["bacino_cede"], ["sedere_alto"], ["troppo_veloce"]]))
     # PET-002 (sulle ginocchia) eredita da PET-001 ma non ha piu' la misura "gambe"
     # PET-002 (sulle ginocchia) eredita da PET-001: 'corpo' sostituita, 'gomito' ereditata;
     # la misura 'gambe' ereditata ma non usata non deve rendere obbligatorie le caviglie

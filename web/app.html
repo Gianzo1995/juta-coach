@@ -185,7 +185,7 @@ canvas { display: block; width: 100%; height: 100%; }
 
 <section id="inizio" class="vista">
   <div class="intro">
-    <div class="marchio">Juta Health &amp; Fitness · Beta 0.7</div>
+    <div class="marchio">Juta Health &amp; Fitness · Beta 0.8</div>
     <h1>Allenati con un <span>occhio in più</span></h1>
     <p>Appoggia il telefono a 2–3 metri e allenati: ti corregge a voce mentre ti muovi, poi rivedi la serie con il manichino che ti mostra la posizione giusta.</p>
     <div class="catalogo">
@@ -765,6 +765,35 @@ function ruotaVerso(f, perno, mobile, misuraFn, obiettivo, punti) {
   const segno = prova(1) <= prova(-1) ? 1 : -1;
   for (const n of punti) if (f[n]) { const q = ruota(f[n], perno, segno * d); f[n] = [q[0], q[1], f[n][2]]; }
 }
+// Angolo con verso (es. corpo nei piegamenti): il fantasma alza o abbassa il punto centrale (il bacino)
+// finche' l'angolo arriva all'obiettivo, lasciando fermi gli estremi (spalle e piedi)
+const NOMI_PUNTI = { anca: "Bacino", ginocchio: "Ginocchio", gomito: "Gomito", spalla: "Spalla" };
+function testoVerso(punto, v) {
+  const dev = Math.round(v - 180);
+  return dev === 0 ? `${NOMI_PUNTI[punto] || punto} in linea` : `${NOMI_PUNTI[punto] || punto} ${Math.abs(dev)}° ${dev < 0 ? "sotto" : "sopra"} la linea`;
+}
+function fantasmaOrientato(f, spec, err, lati, valoreMisurato) {
+  const [a, b, c] = spec.punti, l = lati[0];
+  const P = n => f[`${n}_${l}`];
+  if (!P(a) || !P(b) || !P(c)) return null;
+  const obiettivo = err.maggiore_di !== undefined ? err.maggiore_di - 5 : err.minore_di + 5;
+  const att = geo.angoloOrientato(P(a), P(b), P(c));
+  if (att === null || giaGiusto(err, att, obiettivo)) return null;
+  // ricerca per bisezione dello spostamento verticale del punto centrale
+  const dx = P(c)[0] - P(a)[0];
+  if (Math.abs(dx) < 1e-6) return null;
+  const yRetta = P(a)[1] + (P(c)[1] - P(a)[1]) * (P(b)[0] - P(a)[0]) / dx;
+  let lo = P(b)[1], hi = yRetta + (yRetta - P(b)[1]);   // dalla posizione attuale fin oltre la linea
+  const val = y => geo.angoloOrientato(P(a), [P(b)[0], y], P(c));
+  for (let k = 0; k < 30; k++) {
+    const m = (lo + hi) / 2;
+    if ((val(m) - obiettivo) * (val(lo) - obiettivo) <= 0) hi = m; else lo = m;
+  }
+  const dy = (lo + hi) / 2 - P(b)[1];
+  for (const ll of ["sx", "dx"]) if (f[`${b}_${ll}`]) f[`${b}_${ll}`] = [f[`${b}_${ll}`][0], f[`${b}_${ll}`][1] + dy, f[`${b}_${ll}`][2]];
+  return { posa: f, punto: `${b}_${l}`, mobile: `${b}_${l}`, testo: `${testoVerso(b, att)} → in linea` };
+}
+
 // la posizione e' gia' corretta in questo istante: niente fantasma
 const giaGiusto = (err, v, obiettivo) => err.maggiore_di !== undefined ? v <= obiettivo : v >= obiettivo;
 function calcolaFantasma(posa, es, errId, lato, valoreMisurato) {
@@ -777,6 +806,7 @@ function calcolaFantasma(posa, es, errId, lato, valoreMisurato) {
   const lati = lato === "entrambi" ? ["sx", "dx"] : [lato || "sx"];
   const P = (n, l) => f[`${n}_${l}`];
 
+  if (spec.tipo === "angolo_orientato") return fantasmaOrientato(f, spec, err, lati, valoreMisurato);
   if (spec.tipo === "angolo") {
     const [a, b, c] = spec.punti;
     // resta fermo il punto indicato da "ancora" o, se manca, quello piu' vicino al pavimento (mani nei piegamenti, piedi nello squat)
@@ -1037,6 +1067,7 @@ function misuraDaPosa(es, nome, posa, lato) {
   const valori = lati.map(l => {
     const p = n => posa[`${n}_${l}`];
     if (spec.tipo === "angolo") return geo.angolo(p(spec.punti[0]), p(spec.punti[1]), p(spec.punti[2]));
+    if (spec.tipo === "angolo_orientato") return geo.angoloOrientato(p(spec.punti[0]), p(spec.punti[1]), p(spec.punti[2]));
     if (spec.tipo === "inclinazione") return geo.inclinazione(p(spec.punti[0]), p(spec.punti[1]));
     return null;
   }).filter(v => v !== null);
@@ -1106,6 +1137,10 @@ function compila(t, ev) {
 }
 function testoMisurato(ev) {
   if (tipoMisura(ev.esercizio, ev.misura) === "posizione") return "Misurato: sollevamento oltre il limite";
+  if (tipoMisura(ev.esercizio, ev.misura) === "angolo_orientato") {
+    const spec = ESERCIZI[ev.esercizio].misure[ev.misura], v = ev.peggiore ?? ev.valore;
+    return `${ev.peggiore !== undefined ? "Valore peggiore" : "Misurato"}: ${testoVerso(spec.punti[1], v)} · limite ${Math.round(Math.abs(ev.soglia - 180))}°`;
+  }
   const cfg = erroreCfg(ev.esercizio, ev.id);
   const verso = cfg.maggiore_di !== undefined ? "massimo" : "minimo";
   const v = ev.peggiore ?? ev.valore;

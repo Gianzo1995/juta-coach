@@ -22,6 +22,15 @@ const geo = {
     if (!den) return null;
     return Math.acos(Math.max(-1, Math.min(1, (bax * bcx + bay * bcy) / den))) * 180 / Math.PI;
   },
+  // 180 = in linea; meno di 180 = b sotto la retta a-c (bacino che cede); piu' di 180 = b sopra (sedere alto)
+  angoloOrientato(a, b, c) {
+    const th = geo.angolo(a, b, c);
+    if (th === null) return null;
+    const dx = c[0] - a[0];
+    if (Math.abs(dx) < 1e-6) return th;
+    const yRetta = a[1] + (c[1] - a[1]) * (b[0] - a[0]) / dx;
+    return b[1] >= yRetta ? th : 360 - th;
+  },
   inclinazione(basso, alto) {
     return Math.atan2(Math.abs(alto[0] - basso[0]), basso[1] - alto[1]) * 180 / Math.PI;
   },
@@ -31,7 +40,7 @@ const geo = {
 // ---------------------------------------------------------------------------
 // Catalogo ed ereditarieta' (identico a motore/regole.py)
 // ---------------------------------------------------------------------------
-const TIPI_MISURA = new Set(["angolo", "inclinazione", "posizione", "durata"]);
+const TIPI_MISURA = new Set(["angolo", "angolo_orientato", "inclinazione", "posizione", "durata"]);
 // misure calcolate dal motore a fine ripetizione (in secondi), usabili negli errori con momento "fine"
 const MISURE_TEMPO = new Set(["durata", "discesa", "pausa", "salita"]);
 const copia = v => v === undefined ? v : JSON.parse(JSON.stringify(v));
@@ -240,6 +249,7 @@ class Analizzatore {
   misuraSuLato(spec, posa, l) {
     const p = n => posa[`${n}_${l}`];
     if (spec.tipo === "angolo") return geo.angolo(p(spec.punti[0]), p(spec.punti[1]), p(spec.punti[2]));
+    if (spec.tipo === "angolo_orientato") return geo.angoloOrientato(p(spec.punti[0]), p(spec.punti[1]), p(spec.punti[2]));
     if (spec.tipo === "inclinazione") return geo.inclinazione(p(spec.punti[0]), p(spec.punti[1]));
     if (spec.tipo === "posizione") {
       const scala = geo.distanza(p(spec.scala[0]), p(spec.scala[1])) || 1;
