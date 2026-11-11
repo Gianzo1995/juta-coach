@@ -185,7 +185,7 @@ canvas { display: block; width: 100%; height: 100%; }
 
 <section id="inizio" class="vista">
   <div class="intro">
-    <div class="marchio">Juta Health &amp; Fitness · Beta 0.8</div>
+    <div class="marchio">Juta Health &amp; Fitness · Beta 0.9</div>
     <h1>Allenati con un <span>occhio in più</span></h1>
     <p>Appoggia il telefono a 2–3 metri e allenati: ti corregge a voce mentre ti muovi, poi rivedi la serie con il manichino che ti mostra la posizione giusta.</p>
     <div class="catalogo">
@@ -611,6 +611,11 @@ function gestisciEvento(ev) {
     for (const err of ESERCIZI[ev.esercizio].errori) ripetuti[err.id] = ev.errori.includes(err.id) ? (ripetuti[err.id] || 0) + 1 : 0;
     if (!ev.errori.length) parla(String(ev.numero));
     $("riepilogo").hidden = true;
+  }
+  if (ev.tipo === "annullata") {         // finestra fantasma o ripetizione non chiusa: niente ripetizione, niente errori
+    s.eventi = s.eventi.filter(e => !(e.tipo === "errore" && e.ripetizione === ev.ripetizione && e.t >= ev.inizio_t - 0.01));
+    rivediDopoErrore = {}; fermo = null;
+    parla(ESERCIZI[ev.esercizio].messaggio_non_chiusa || "Ripetizione non contata: torna fino alla posizione di partenza", true);
   }
   if (ev.tipo === "serie" && modo === "live") chiudiSerieLive();
 }

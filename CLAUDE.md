@@ -16,7 +16,7 @@ Gianluca, titolare di Juta. **Non è uno sviluppatore.**
 
 | Percorso | Cosa contiene |
 |---|---|
-| `esercizi/catalogo/*.json` | **Catalogo esercizi**: regole (`config_app`) + scheda tecnica (`scheda`). Fonte unica per PC e telefono. La vecchia `panca` è stata sostituita da PET-012. |
+| `esercizi/catalogo/*.json` | **Catalogo esercizi**: regole (`config_app`) + scheda tecnica (`scheda`). Fonte unica per PC e telefono. La vecchia `panca` è stata sostituita da PET-012. Cataloghi: base, PETTORALI 001-080, DORSALI 001-064 (SPALLE in arrivo). |
 | `motore/regole.py` | Motore delle regole (Python, versione PC). |
 | `web/motore.js` | Lo stesso motore in JavaScript (telefono). **Deve restare identico a `regole.py`.** |
 | `web/app.html` | Interfaccia telefono: live, manichino digitale, revisione, ricerca esercizi, "Come si fa". |
@@ -98,7 +98,14 @@ Ogni voce: `{ "id", "nome"?, "gruppo"?, "scheda", "config_app" }`.
   vengono segnalati al punto di inversione (isteresi 5), non a fine ripetizione. A fine ripetizione si
   ricontrollano con i valori finali.
 - Eventi: `ripetizione` (con `inizio_t`, `fondo_t`, `fine_t`, minimi/massimi), `errore` (con `t`, `t_origine`,
-  `valore`, `soglia`, `anticipato`), `serie` (dopo 6 s senza persona o senza movimento, o con `termina()`).
+  `valore`, `soglia`, `anticipato`), `serie` (dopo 6 s senza persona o senza movimento, o con `termina()`),
+  `annullata` (`ripetizione`, `inizio_t`, `motivo`: `non_chiusa` | `troppo_lunga`): la finestra non conta e l'app
+  toglie dalla revisione gli errori di quella finestra.
+- Regole della nota del catalogo (§4): gli errori "durante" si valutano solo a ripetizione in corso; `posizione`
+  è misurata rispetto all'inizio della serie; la **prima** ripetizione di una serie si apre solo dopo 0,5 s fermi
+  nella posizione di partenza (le successive no, così le ripetizioni continue contano); una finestra più lunga di
+  `durata_massima` (3 × durata prevista da `scheda.tempo`, minimo 6 s) viene scartata; se dopo l'inversione si
+  torna indietro di oltre 12° senza arrivare alla partenza → "ripetizione non chiusa".
 
 ## Decisioni già prese
 

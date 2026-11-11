@@ -1083,5 +1083,587 @@
    }
   },
   "motivo": "'Corpo in linea retta' diviso in due correzioni: bacino che cede (sotto 155°, gravità giallo) e sedere alto (oltre 205°, gravità giallo)."
+ },
+ {
+  "id": "DOR-001",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta (salita del motore), almeno il 40% dei 2 s previsti dal tempo."
+ },
+ {
+  "id": "DOR-002",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta (salita del motore), almeno il 40% dei 2 s previsti dal tempo."
+ },
+ {
+  "id": "DOR-003",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta (salita del motore), almeno il 40% dei 2 s previsti dal tempo."
+ },
+ {
+  "id": "DOR-008",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta (salita del motore), almeno il 40% dei 2 s previsti dal tempo."
+ },
+ {
+  "id": "DOR-014",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta (salita del motore), almeno il 40% dei 2 s previsti dal tempo."
+ },
+ {
+  "id": "DOR-015",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta (salita del motore), almeno il 40% dei 2 s previsti dal tempo."
+ },
+ {
+  "id": "DOR-020",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 1.2
+  },
+  "motivo": "'Risali più lentamente': misurata direttamente la fase lenta (salita del motore), almeno il 40% dei 3 s previsti dal tempo."
+ },
+ {
+  "id": "DOR-021",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 1.2
+  },
+  "motivo": "'Risali più lentamente': misurata direttamente la fase lenta (salita del motore), almeno il 40% dei 3 s previsti dal tempo."
+ },
+ {
+  "id": "DOR-022",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 1.2
+  },
+  "motivo": "'Risali più lentamente': misurata direttamente la fase lenta (salita del motore), almeno il 40% dei 3 s previsti dal tempo."
+ },
+ {
+  "id": "DOR-023",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 1.2
+  },
+  "motivo": "'Risali più lentamente': misurata direttamente la fase lenta (salita del motore), almeno il 40% dei 3 s previsti dal tempo."
+ },
+ {
+  "id": "DOR-025",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 1.2
+  },
+  "motivo": "'Risali più lentamente': misurata direttamente la fase lenta (salita del motore), almeno il 40% dei 3 s previsti dal tempo."
+ },
+ {
+  "id": "DOR-026",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Torna più lentamente': misurata direttamente la fase lenta (salita del motore), almeno il 40% dei 2 s previsti dal tempo."
+ },
+ {
+  "id": "DOR-027",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Torna più lentamente': misurata direttamente la fase lenta (salita del motore), almeno il 40% dei 2 s previsti dal tempo."
+ },
+ {
+  "id": "DOR-029",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Torna più lentamente': misurata direttamente la fase lenta (salita del motore), almeno il 40% dei 2 s previsti dal tempo."
+ },
+ {
+  "id": "DOR-030",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Torna più lentamente': misurata direttamente la fase lenta (salita del motore), almeno il 40% dei 2 s previsti dal tempo."
+ },
+ {
+  "id": "DOR-031",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Risali più lentamente': misurata direttamente la fase lenta (salita del motore), almeno il 40% dei 2 s previsti dal tempo."
+ },
+ {
+  "id": "DOR-032",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Risali più lentamente': misurata direttamente la fase lenta (salita del motore), almeno il 40% dei 2 s previsti dal tempo."
+ },
+ {
+  "id": "DOR-033",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 1.2
+  },
+  "motivo": "'Risali più lentamente': misurata direttamente la fase lenta (salita del motore), almeno il 40% dei 3 s previsti dal tempo."
+ },
+ {
+  "id": "DOR-034",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 1.2
+  },
+  "motivo": "'Risali più lentamente': misurata direttamente la fase lenta (salita del motore), almeno il 40% dei 3 s previsti dal tempo."
+ },
+ {
+  "id": "DOR-035",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Torna più lentamente': misurata direttamente la fase lenta (salita del motore), almeno il 40% dei 2 s previsti dal tempo."
+ },
+ {
+  "id": "DOR-037",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Torna più lentamente': misurata direttamente la fase lenta (salita del motore), almeno il 40% dei 2 s previsti dal tempo."
+ },
+ {
+  "id": "DOR-038",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Torna più lentamente': misurata direttamente la fase lenta (salita del motore), almeno il 40% dei 2 s previsti dal tempo."
+ },
+ {
+  "id": "DOR-039",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Torna più lentamente': misurata direttamente la fase lenta (salita del motore), almeno il 40% dei 2 s previsti dal tempo."
+ },
+ {
+  "id": "DOR-040",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 1.2
+  },
+  "motivo": "'Torna più lentamente': misurata direttamente la fase lenta (salita del motore), almeno il 40% dei 3 s previsti dal tempo."
+ },
+ {
+  "id": "DOR-041",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 1.2
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta (salita del motore), almeno il 40% dei 3 s previsti dal tempo."
+ },
+ {
+  "id": "DOR-042",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Risali più lentamente': misurata direttamente la fase lenta (salita del motore), almeno il 40% dei 2 s previsti dal tempo."
+ },
+ {
+  "id": "DOR-043",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Torna più lentamente': misurata direttamente la fase lenta (salita del motore), almeno il 40% dei 2 s previsti dal tempo."
+ },
+ {
+  "id": "DOR-044",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Risali più lentamente': misurata direttamente la fase lenta (salita del motore), almeno il 40% dei 2 s previsti dal tempo."
+ },
+ {
+  "id": "DOR-045",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta (salita del motore), almeno il 40% dei 2 s previsti dal tempo."
+ },
+ {
+  "id": "DOR-047",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta (salita del motore), almeno il 40% dei 2 s previsti dal tempo."
+ },
+ {
+  "id": "DOR-048",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 1.2
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta (salita del motore), almeno il 40% dei 3 s previsti dal tempo."
+ },
+ {
+  "id": "DOR-050",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 1.2
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta (salita del motore), almeno il 40% dei 3 s previsti dal tempo."
+ },
+ {
+  "id": "DOR-051",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 1.2
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta (salita del motore), almeno il 40% dei 3 s previsti dal tempo."
+ },
+ {
+  "id": "DOR-052",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 1.2
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta (salita del motore), almeno il 40% dei 3 s previsti dal tempo."
+ },
+ {
+  "id": "DOR-053",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 1.2
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta (salita del motore), almeno il 40% dei 3 s previsti dal tempo."
+ },
+ {
+  "id": "DOR-054",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 1.2
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta (salita del motore), almeno il 40% dei 3 s previsti dal tempo."
+ },
+ {
+  "id": "DOR-056",
+  "imposta": {
+   "errori.troppo_veloce.misura": "discesa",
+   "errori.troppo_veloce.minore_di": 2.0
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta (discesa del motore), almeno il 40% dei 5 s previsti dal tempo."
+ },
+ {
+  "id": "DOR-059",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 1.2
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta (salita del motore), almeno il 40% dei 3 s previsti dal tempo."
+ },
+ {
+  "id": "DOR-060",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 1.2
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta (salita del motore), almeno il 40% dei 3 s previsti dal tempo."
+ },
+ {
+  "id": "DOR-061",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 1.2
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta (salita del motore), almeno il 40% dei 3 s previsti dal tempo."
+ },
+ {
+  "id": "DOR-012",
+  "imposta": {
+   "impostazioni": [
+    {
+     "id": "lato",
+     "domanda": "Quale braccio lavora?",
+     "opzioni": [
+      {
+       "etichetta": "Destro",
+       "imposta": {
+        "lato": "dx"
+       }
+      },
+      {
+       "etichetta": "Sinistro",
+       "imposta": {
+        "lato": "sx"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "motivo": "Scelta del lato di lavoro prima della serie (note, punto 7.1)."
+ },
+ {
+  "id": "DOR-013",
+  "imposta": {
+   "impostazioni": [
+    {
+     "id": "lato",
+     "domanda": "Quale braccio lavora?",
+     "opzioni": [
+      {
+       "etichetta": "Destro",
+       "imposta": {
+        "lato": "dx"
+       }
+      },
+      {
+       "etichetta": "Sinistro",
+       "imposta": {
+        "lato": "sx"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "motivo": "Scelta del lato di lavoro prima della serie (note, punto 7.1)."
+ },
+ {
+  "id": "DOR-019",
+  "imposta": {
+   "impostazioni": [
+    {
+     "id": "lato",
+     "domanda": "Quale braccio lavora?",
+     "opzioni": [
+      {
+       "etichetta": "Destro",
+       "imposta": {
+        "lato": "dx"
+       }
+      },
+      {
+       "etichetta": "Sinistro",
+       "imposta": {
+        "lato": "sx"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "motivo": "Scelta del lato di lavoro prima della serie (note, punto 7.1)."
+ },
+ {
+  "id": "DOR-025",
+  "imposta": {
+   "impostazioni": [
+    {
+     "id": "lato",
+     "domanda": "Quale braccio lavora?",
+     "opzioni": [
+      {
+       "etichetta": "Destro",
+       "imposta": {
+        "lato": "dx"
+       }
+      },
+      {
+       "etichetta": "Sinistro",
+       "imposta": {
+        "lato": "sx"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "motivo": "Scelta del lato di lavoro prima della serie (note, punto 7.1)."
+ },
+ {
+  "id": "DOR-029",
+  "imposta": {
+   "impostazioni": [
+    {
+     "id": "lato",
+     "domanda": "Quale braccio lavora?",
+     "opzioni": [
+      {
+       "etichetta": "Destro",
+       "imposta": {
+        "lato": "dx"
+       }
+      },
+      {
+       "etichetta": "Sinistro",
+       "imposta": {
+        "lato": "sx"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "motivo": "Scelta del lato di lavoro prima della serie (note, punto 7.1)."
+ },
+ {
+  "id": "DOR-034",
+  "imposta": {
+   "impostazioni": [
+    {
+     "id": "lato",
+     "domanda": "Quale braccio lavora?",
+     "opzioni": [
+      {
+       "etichetta": "Destro",
+       "imposta": {
+        "lato": "dx"
+       }
+      },
+      {
+       "etichetta": "Sinistro",
+       "imposta": {
+        "lato": "sx"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "motivo": "Scelta del lato di lavoro prima della serie (note, punto 7.1)."
+ },
+ {
+  "id": "DOR-036",
+  "imposta": {
+   "impostazioni": [
+    {
+     "id": "lato",
+     "domanda": "Quale braccio lavora?",
+     "opzioni": [
+      {
+       "etichetta": "Destro",
+       "imposta": {
+        "lato": "dx"
+       }
+      },
+      {
+       "etichetta": "Sinistro",
+       "imposta": {
+        "lato": "sx"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "motivo": "Scelta del lato di lavoro prima della serie (note, punto 7.1)."
+ },
+ {
+  "id": "DOR-046",
+  "imposta": {
+   "impostazioni": [
+    {
+     "id": "lato",
+     "domanda": "Quale braccio lavora?",
+     "opzioni": [
+      {
+       "etichetta": "Destro",
+       "imposta": {
+        "lato": "dx"
+       }
+      },
+      {
+       "etichetta": "Sinistro",
+       "imposta": {
+        "lato": "sx"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "motivo": "Scelta del lato di lavoro prima della serie (note, punto 7.1)."
+ },
+ {
+  "id": "DOR-059",
+  "imposta": {
+   "impostazioni": [
+    {
+     "id": "lato",
+     "domanda": "Quale braccio lavora?",
+     "opzioni": [
+      {
+       "etichetta": "Destro",
+       "imposta": {
+        "lato": "dx"
+       }
+      },
+      {
+       "etichetta": "Sinistro",
+       "imposta": {
+        "lato": "sx"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "motivo": "Scelta del lato di lavoro prima della serie (note, punto 7.1)."
+ },
+ {
+  "id": "DOR-024",
+  "imposta": {
+   "avviso_sicurezza": "Esercizio sconsigliato: sollecita molto spalle e collo. L'app non lo analizza; per la maggior parte dei clienti è meglio la lat machine avanti al petto."
+  },
+  "motivo": "Non analizzato per scelta di sicurezza (note, punto 5): avviso ben visibile."
+ },
+ {
+  "id": "DOR-049",
+  "imposta": {
+   "avviso_sicurezza": "Esercizio ad alto rischio per spalle e gomiti: l'app non lo analizza. Solo per atleti esperti, con progressioni graduali e la supervisione dell'istruttore."
+  },
+  "motivo": "Non analizzato per scelta di sicurezza (note, punto 5): avviso ben visibile."
+ },
+ {
+  "id": "DOR-062",
+  "imposta": {
+   "avviso_sicurezza": "Lo slancio carica molto le spalle: l'app non lo analizza. Solo per chi fa bene le trazioni rigorose, con l'istruttore."
+  },
+  "motivo": "Non analizzato per scelta di sicurezza (note, punto 5): avviso ben visibile."
+ },
+ {
+  "id": "DOR-063",
+  "imposta": {
+   "avviso_sicurezza": "Esercizio ad alto rischio per spalle e gomiti: l'app non lo analizza. Solo per atleti esperti, con progressioni graduali e la supervisione dell'istruttore."
+  },
+  "motivo": "Non analizzato per scelta di sicurezza (note, punto 5): avviso ben visibile."
  }
 ]

@@ -11,6 +11,7 @@ La versione JavaScript (web/motore.js) deve restare identica a questa.
 from collections import deque
 import copy
 import json
+import re
 from dataclasses import dataclass, field
 from pathlib import Path
 import time
@@ -19,7 +20,10 @@ from . import geometria
 
 LATI = ("sx", "dx")
 GRAVITA = {"verde": 0, "giallo": 1, "rosso": 2}
-ISTERESI_INVERSIONE = 5.0   # di quanto deve "tornare indietro" la misura per dire che il movimento si e' invertito
+ISTERESI_INVERSIONE = 5.0
+SOSTA_MINIMA = 0.5          # secondi fermi nella posizione di partenza prima della PRIMA ripetizione della serie
+RITORNO_INDIETRO = 12.0     # gradi: se dopo l'inversione si torna verso l'estremo, la ripetizione non e' stata chiusa
+MESSAGGIO_NON_CHIUSA = "Ripetizione non contata: torna fino alla posizione di partenza"   # di quanto deve "tornare indietro" la misura per dire che il movimento si e' invertito
 
 
 # --------------------------------------------------------------------------
@@ -95,6 +99,24 @@ def completa(cfg):
         e.setdefault("momento", "fine")
         e.setdefault("statistica", "minimo")
         e.setdefault("anticipa", True)
+    return cfg
+
+
+def durata_prevista(tempo):
+    """Secondi previsti da un tempo tipo "2-1-1-0 (...)": somma delle prime quattro cifre (X = 1 s)."""
+    if not tempo:
+        return None
+    parti = re.findall(r"\d+(?:[.,]\d+)?|X", tempo)[:4]
+    if len(parti) < 4:
+        return None
+    return sum(1.0 if x == "X" else float(x.replace(",", ".")) for x in parti)
+
+
+def durata_massima_da_scheda(cfg, scheda):
+    """Finestra massima di una ripetizione: 3 volte la durata prevista dal tempo (minimo 6 s)."""
+    prevista = durata_prevista((scheda or {}).get("tempo"))
+    if prevista and cfg.get("ripetizione") and "durata_massima" not in cfg["ripetizione"]:
+        cfg["ripetizione"]["durata_massima"] = max(6.0, round(3 * prevista, 2))
     return cfg
 
 
@@ -192,6 +214,7 @@ def applica_impostazioni(cfg, imposta):
 def carica_tutti(cartella="esercizi"):
     """Carica il catalogo (con le integrazioni). Restituisce solo gli esercizi analizzabili."""
     voci = leggi_catalogo(cartella)
+    schede = {v["id"]: v.get("scheda") for v in voci}
     esercizi = {}
     for i, cfg in risolvi_catalogo(voci).items():
         if not analizzabile(cfg):
@@ -200,7 +223,7 @@ def carica_tutti(cartella="esercizi"):
         if problemi:
             print(f"ATTENZIONE {i}: " + "; ".join(problemi))
             continue
-        esercizi[i] = completa(cfg)
+        esercizi[i] = completa(durata_massima_da_scheda(cfg, schede.get(i)))
     return esercizi
 
 
@@ -259,6 +282,10 @@ class Analizzatore:
         self._fine_ultima_rip = None
         self._serie = []            # (t, valore) della misura di ripetizione durante il movimento
         self._t_alto = None         # ultimo istante in posizione iniziale
+        self._t_ingresso = None     # da quando si e' fermi nella posizione iniziale
+        self._sosta_ok = False
+        self._base_serie = None     # riferimento delle misure "posizione": inizio della serie
+        self._picco_ritorno = None
         self._t_partenza = None
         self._errori_serie = {}
         self._msg = ("", "grigio", 0.0)
@@ -404,11 +431,18 @@ class Analizzatore:
 
         if self.fase in ("attesa", "pronto"):
             if in_posizione:
+                if self._t_ingresso is None:
+                    self._t_ingresso = t
                 self.fase = "pronto"
                 self._t_alto = t
+                self._sosta_ok = t - self._t_ingresso >= SOSTA_MINIMA
                 self._storico_pronto.append(dict(self._grezze))
-            elif self.fase == "pronto" and in_movimento:
-                self._inizia_ripetizione(misure, t)
+            else:
+                self._t_ingresso = None
+                # la prima ripetizione della serie parte solo dopo una sosta nella posizione di partenza
+                # (non conta gesti come raccogliere i manubri); le successive possono essere continue
+                if self.fase == "pronto" and in_movimento and (self._sosta_ok or self.ripetizioni > 0):
+                    self._inizia_ripetizione(misure, t)
             return
 
         # fase == "movimento"
@@ -423,12 +457,27 @@ class Analizzatore:
         # punto di inversione: segnalo subito gli errori di ampiezza
         if not self._invertito and segno * (valore - self._estremo) > ISTERESI_INVERSIONE:
             self._invertito = True
+            self._picco_ritorno = valore
             self._controlla_errori("inversione", None, t, stato, self.ripetizioni + 1)
+        elif self._invertito:
+            if segno * valore > segno * self._picco_ritorno:
+                self._picco_ritorno = valore
+            elif segno * (self._picco_ritorno - valore) > RITORNO_INDIETRO and not in_posizione:
+                # si torna verso l'estremo senza essere arrivati alla posizione di partenza
+                return self._annulla_ripetizione(t, stato, "non_chiusa")
 
         if in_posizione:
             self._chiudi_ripetizione(t, stato)
         elif t - self._inizio_rip > rip["durata_massima"]:
-            self.fase = "attesa"
+            self._annulla_ripetizione(t, stato, "troppo_lunga")
+
+    def _annulla_ripetizione(self, t, stato, motivo):
+        """Finestra scartata: la ripetizione non viene contata e i suoi errori vanno ignorati."""
+        stato.eventi.append({"tipo": "annullata", "esercizio": self.cfg["id"], "ripetizione": self.ripetizioni + 1,
+                             "inizio_t": round(self._inizio_rip, 3), "t": round(t, 3), "motivo": motivo})
+        self.fase = "attesa"
+        self._t_ingresso = None
+        self._mostra(self.cfg.get("messaggio_non_chiusa", MESSAGGIO_NON_CHIUSA), "giallo", t)
 
     def _inizia_ripetizione(self, misure, t):
         self.fase = "movimento"
@@ -440,7 +489,11 @@ class Analizzatore:
         self._serie = [(t, self._estremo)]
         self._t_partenza = self._t_alto if self._t_alto is not None else t
         self._invertito = False
-        self._base = dict(self._storico_pronto[0]) if self._storico_pronto else {}
+        self._picco_ritorno = None
+        # misure "posizione": spostamento rispetto alla posizione di inizio della serie
+        if self._base_serie is None and self._storico_pronto:
+            self._base_serie = dict(self._storico_pronto[0])
+        self._base = dict(self._base_serie or {})
         self._storico_pronto.clear()
         self._min = dict(misure)
         self._max = dict(misure)

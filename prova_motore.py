@@ -232,6 +232,32 @@ def main():
     risultati.append(verifica("Pullover PET-025", ev, [[], ["ampiezza"], ["gomiti_piegati"], ["troppo_veloce"]]))
     risultati.append(verifica_anticipo("Pullover PET-025", ev))
 
+    # REGOLE DI INIZIO/FINE RIPETIZIONE (note, punto 4) sui piegamenti PET-001
+    pp = lambda g, **kw: posa_piegamento(g, **kw)
+    def scendi_sali(da, a_, sec):          # movimento lineare tra due angoli del gomito
+        n = int(sec * FPS)
+        return [pp(da + (a_ - da) * i / n) for i in range(n)]
+    def eventi_di(frames):
+        return esegui(Analizzatore(es["PET-001"]), frames)
+    # 1) senza sosta iniziale (0,2 s) la prima discesa non conta; dopo 1 s di sosta si'
+    ev = eventi_di([pp(175)] * 6 + ripetizione(pp, 175, 80, secondi=3.0) + [pp(175)] * FPS + ripetizione(pp, 175, 80, secondi=3.0))
+    n = sum(e["tipo"] == "ripetizione" for e in ev)
+    ok1 = n == 1
+    print(f"{'OK ' if ok1 else 'ERRORE'}  Sosta di partenza: senza sosta la prima discesa non conta ({n} ripetizione contata su 2)")
+    # 2) ripetizione non chiusa: sale solo fino a 150 e riscende -> scartata, poi una buona
+    fr = [pp(175)] * FPS + scendi_sali(175, 80, 1.5) + scendi_sali(80, 150, 1.0) + scendi_sali(150, 80, 1.0) + scendi_sali(80, 175, 1.0)
+    fr += [pp(175)] * FPS + ripetizione(pp, 175, 80, secondi=3.0)
+    ev = eventi_di(fr)
+    ann = [e for e in ev if e["tipo"] == "annullata"]; n = sum(e["tipo"] == "ripetizione" for e in ev)
+    ok2 = len(ann) == 1 and ann[0]["motivo"] == "non_chiusa" and n == 1
+    print(f"{'OK ' if ok2 else 'ERRORE'}  Ripetizione non chiusa: scartata ({[a['motivo'] for a in ann]}), contate {n}")
+    # 3) finestra troppo lunga (fermo in basso 20 s, oltre 3 volte il tempo 2-1-1-0) -> scartata
+    ev = eventi_di([pp(175)] * FPS + scendi_sali(175, 80, 1.5) + [pp(80)] * (20 * FPS) + scendi_sali(80, 175, 1.0))
+    ann = [e for e in ev if e["tipo"] == "annullata"]; n = sum(e["tipo"] == "ripetizione" for e in ev)
+    ok3 = len(ann) == 1 and ann[0]["motivo"] == "troppo_lunga" and n == 0
+    print(f"{'OK ' if ok3 else 'ERRORE'}  Finestra troppo lunga (limite {es['PET-001']['ripetizione']['durata_massima']} s): scartata, contate {n}")
+    risultati += [ok1, ok2, ok3]
+
     # IMPOSTAZIONI prima della serie: lato scelto (PET-006) e tavolette (PET-020)
     from motore.regole import applica_impostazioni
     c6 = applica_impostazioni(es["PET-006"], {"lato": "sx"})

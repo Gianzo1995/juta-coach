@@ -13,6 +13,9 @@ const PUNTI = {
 const LATI = ["sx", "dx"];
 const GRAVITA = { verde: 0, giallo: 1, rosso: 2 };
 const ISTERESI_INVERSIONE = 5;
+const SOSTA_MINIMA = 0.5;        // secondi fermi in partenza prima della PRIMA ripetizione della serie
+const RITORNO_INDIETRO = 12;     // gradi: tornare verso l'estremo dopo l'inversione = ripetizione non chiusa
+const MESSAGGIO_NON_CHIUSA = "Ripetizione non contata: torna fino alla posizione di partenza";
 const r2 = v => Math.round(v * 100) / 100, r3 = v => Math.round(v * 1000) / 1000;
 
 const geo = {
@@ -87,6 +90,20 @@ function completa(cfg) {
   return cfg;
 }
 
+// Secondi previsti da un tempo "2-1-1-0 (...)": somma delle prime quattro cifre (X = 1 s). Identico a regole.py
+function durataPrevista(tempo) {
+  if (!tempo) return null;
+  const parti = (tempo.match(/\d+(?:[.,]\d+)?|X/g) || []).slice(0, 4);
+  if (parti.length < 4) return null;
+  return parti.reduce((s, x) => s + (x === "X" ? 1 : parseFloat(x.replace(",", "."))), 0);
+}
+function durataMassimaDaScheda(cfg, scheda) {
+  const prevista = durataPrevista(scheda?.tempo);
+  if (prevista && cfg.ripetizione && cfg.ripetizione.durata_massima === undefined)
+    cfg.ripetizione.durata_massima = Math.max(6, Math.round(3 * prevista * 100) / 100);
+  return cfg;
+}
+
 const analizzabile = cfg => cfg.analizzabilita !== "non_analizzabile" && !!cfg.ripetizione && Object.keys(cfg.ripetizione).length > 0;
 
 function valida(cfg) {
@@ -143,7 +160,7 @@ function costruisciCatalogo(voci) {
     const gruppo = v.gruppo || GRUPPI[v.id.split("-")[0]] || "Altro";
     const ok = analizzabile(cfg), problemi = ok ? valida(cfg) : [];
     if (problemi.length) console.warn(`Esercizio ${v.id} escluso dall'analisi:`, problemi);
-    if (ok && !problemi.length) esercizi[v.id] = completa({ ...cfg, nome });
+    if (ok && !problemi.length) esercizi[v.id] = completa(durataMassimaDaScheda(copia({ ...cfg, nome }), v.scheda));
     elenco.push({ id: v.id, nome, gruppo, scheda: v.scheda || null, cfg, analizzabile: ok && !problemi.length, problemi });
   }
   return { elenco, esercizi };
@@ -179,6 +196,7 @@ class Analizzatore {
     this.erroriRip = new Set(); this.anticipati = new Set(); this.inizioRip = null;
     this.estremo = null; this.tEstremo = null; this.invertito = false; this.fineUltimaRip = null;
     this.serie = []; this.tAlto = null; this.tPartenza = null;
+    this.tIngresso = null; this.sostaOk = false; this.baseSerie = null; this.piccoRitorno = null;
     this.erroriSerie = {}; this.msg = ["", "grigio", 0]; this.errMsg = null; this.ultimaPersona = null;
   }
 
@@ -300,12 +318,15 @@ class Analizzatore {
 
     if (this.fase === "attesa" || this.fase === "pronto") {
       if (inPosizione) {
+        if (this.tIngresso === null) this.tIngresso = t;
         this.fase = "pronto";
         this.tAlto = t;
+        this.sostaOk = t - this.tIngresso >= SOSTA_MINIMA;
         this.storicoPronto.push({ ...this.grezze });
         if (this.storicoPronto.length > 10) this.storicoPronto.shift();
-      } else if (this.fase === "pronto" && inMovimento) {
-        this.iniziaRipetizione(misure, t);
+      } else {
+        this.tIngresso = null;
+        if (this.fase === "pronto" && inMovimento && (this.sostaOk || this.ripetizioni > 0)) this.iniziaRipetizione(misure, t);
       }
       return;
     }
@@ -318,17 +339,32 @@ class Analizzatore {
     this.controllaErrori("durante", misure, t, stato, this.ripetizioni + 1);
     if (!this.invertito && segno * (valore - this.estremo) > ISTERESI_INVERSIONE) {
       this.invertito = true;
+      this.piccoRitorno = valore;
       this.controllaErrori("inversione", null, t, stato, this.ripetizioni + 1);
+    } else if (this.invertito) {
+      if (segno * valore > segno * this.piccoRitorno) this.piccoRitorno = valore;
+      else if (segno * (this.piccoRitorno - valore) > RITORNO_INDIETRO && !inPosizione) return this.annullaRipetizione(t, stato, "non_chiusa");
     }
     if (inPosizione) this.chiudiRipetizione(t, stato);
-    else if (t - this.inizioRip > rip.durata_massima) this.fase = "attesa";
+    else if (t - this.inizioRip > rip.durata_massima) this.annullaRipetizione(t, stato, "troppo_lunga");
+  }
+
+  // finestra scartata: la ripetizione non viene contata e i suoi errori vanno ignorati
+  annullaRipetizione(t, stato, motivo) {
+    stato.eventi.push({ tipo: "annullata", esercizio: this.cfg.id, ripetizione: this.ripetizioni + 1,
+      inizio_t: r3(this.inizioRip), t: r3(t), motivo });
+    this.fase = "attesa";
+    this.tIngresso = null;
+    this.mostra(this.cfg.messaggio_non_chiusa || MESSAGGIO_NON_CHIUSA, "giallo", t);
   }
 
   iniziaRipetizione(misure, t) {
     this.fase = "movimento"; this.inizioRip = t; this.erroriRip = new Set(); this.anticipati = new Set();
-    this.estremo = misure[this.cfg.ripetizione.misura]; this.tEstremo = t; this.invertito = false;
+    this.estremo = misure[this.cfg.ripetizione.misura]; this.tEstremo = t; this.invertito = false; this.piccoRitorno = null;
     this.serie = [[t, this.estremo]]; this.tPartenza = this.tAlto !== null ? this.tAlto : t;
-    this.base = this.storicoPronto.length ? { ...this.storicoPronto[0] } : {};
+    // misure "posizione": spostamento rispetto alla posizione di inizio della serie
+    if (this.baseSerie === null && this.storicoPronto.length) this.baseSerie = { ...this.storicoPronto[0] };
+    this.base = { ...(this.baseSerie || {}) };
     this.storicoPronto = [];
     this.min = { ...misure }; this.max = { ...misure };
   }
@@ -419,4 +455,4 @@ class Analizzatore {
   }
 }
 
-if (typeof module !== "undefined") module.exports = { Analizzatore, posaDaMediapipe, geo, violato, soglia, unisci, risolviCatalogo, costruisciCatalogo, completa, valida, applicaImpostazioni };
+if (typeof module !== "undefined") module.exports = { durataPrevista, Analizzatore, posaDaMediapipe, geo, violato, soglia, unisci, risolviCatalogo, costruisciCatalogo, completa, valida, applicaImpostazioni };
