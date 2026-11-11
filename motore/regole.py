@@ -33,7 +33,7 @@ MESSAGGIO_NON_CHIUSA = "Ripetizione non contata: torna fino alla posizione di pa
 # --------------------------------------------------------------------------
 # Catalogo esercizi (file JSON in esercizi/catalogo) ed ereditarieta'
 # --------------------------------------------------------------------------
-TIPI_MISURA = {"angolo", "angolo_orientato", "inclinazione", "posizione", "distanza", "durata"}
+TIPI_MISURA = {"angolo", "angolo_orientato", "angolo_avanti", "inclinazione", "posizione", "distanza", "durata"}
 # misure calcolate dal motore a fine ripetizione (in secondi), usabili negli errori con momento "fine"
 MISURE_TEMPO = {"durata", "discesa", "pausa", "salita"}
 
@@ -287,6 +287,7 @@ class Analizzatore:
         self._vis_lati = {"sx": 0.0, "dx": 0.0}
         self._lisciate = {}
         self._grezze = {}   # posizioni assolute, per calcolare gli spostamenti
+        self._verso = {}    # per lato: +1 se la persona guarda a destra nell'immagine, -1 a sinistra (dal naso)
         self.reset()
 
     # ------------------------------------------------------------------
@@ -393,6 +394,8 @@ class Analizzatore:
             if "punto" in m:
                 nomi.add(m["punto"])
             nomi.update(m.get("scala", []))
+            if m.get("tipo") == "angolo_avanti":
+                nomi.add("naso")       # serve a capire da che parte guarda la persona
         return nomi
 
     def _punti_necessari(self, lato):
@@ -411,6 +414,13 @@ class Analizzatore:
         if tipo == "angolo_orientato":
             a, b, c = spec["punti"]
             return geometria.angolo_orientato(p(a), p(b), p(c))
+        if tipo == "angolo_avanti":
+            a, b, c = spec["punti"]
+            # verso dal naso rispetto al vertice; se il naso e' quasi sopra il vertice resta il verso precedente
+            dx = p("naso")[0] - p(b)[0]
+            if abs(dx) > 0.1 * geometria.distanza(p(a), p(b)):
+                self._verso[l] = 1 if dx > 0 else -1
+            return geometria.angolo_avanti(p(a), p(b), p(c), self._verso.get(l, 1))
         if tipo == "inclinazione":
             basso, alto = spec["punti"]
             return geometria.inclinazione(p(basso), p(alto))

@@ -5475,5 +5475,297 @@
    ]
   },
   "motivo": "Modalità balistica (note per il motore, punto 7): nessuna attesa di 0,5 s in partenza e finestra massima di 3 s, per salti e swing continui. Scelta della mano (come PET-006): si analizza il lato del braccio che tiene il kettlebell, verso la camera."
+ },
+ {
+  "id": "GLU-023",
+  "imposta": {
+   "analizzabilita": "parziale",
+   "vista_camera": "laterale",
+   "lato": "dx",
+   "impostazioni": [
+    {
+     "id": "lato",
+     "domanda": "Quale gamba lavora? (tienila verso la camera)",
+     "opzioni": [
+      {
+       "etichetta": "Destra",
+       "imposta": {
+        "lato": "dx"
+       }
+      },
+      {
+       "etichetta": "Sinistra",
+       "imposta": {
+        "lato": "sx"
+       }
+      }
+     ]
+    }
+   ],
+   "messaggio_posizione": "Camera di lato, gamba che lavora verso la camera, corpo intero visibile",
+   "messaggio_ok": "Ottimo kickback!",
+   "misure": {
+    "anca": {
+     "tipo": "angolo_avanti",
+     "punti": [
+      "spalla",
+      "anca",
+      "ginocchio"
+     ]
+    },
+    "ginocchio": {
+     "tipo": "angolo",
+     "punti": [
+      "anca",
+      "ginocchio",
+      "caviglia"
+     ]
+    }
+   },
+   "ripetizione": {
+    "misura": "anca",
+    "direzione": "aumenta",
+    "posizione_iniziale": 165,
+    "inizio_movimento": 172
+   },
+   "errori": [
+    {
+     "id": "lockout",
+     "messaggio": "Porta la gamba oltre il busto",
+     "gravita": "giallo",
+     "momento": "fine",
+     "misura": "anca",
+     "statistica": "massimo",
+     "minore_di": 185
+    },
+    {
+     "id": "schiena_inarcata",
+     "messaggio": "Non inarcare, fermati prima",
+     "gravita": "giallo",
+     "momento": "fine",
+     "misura": "anca",
+     "statistica": "massimo",
+     "maggiore_di": 215
+    },
+    {
+     "id": "ginocchio_piegato",
+     "messaggio": "Gamba quasi tesa",
+     "gravita": "giallo",
+     "momento": "durante",
+     "misura": "ginocchio",
+     "minore_di": 140
+    },
+    {
+     "id": "troppo_veloce",
+     "messaggio": "Torna più lentamente",
+     "gravita": "giallo",
+     "momento": "fine",
+     "misura": "salita",
+     "statistica": "massimo",
+     "minore_di": 0.8
+    }
+   ],
+   "testi_errori": {
+    "lockout": {
+     "cosa_succede": "L'anca arriva a {valore}: la gamba non va oltre la linea del busto (minimo {soglia}; 180° = in linea).",
+     "perche_conta": "Il gluteo lavora soprattutto negli ultimi gradi di estensione, quando la gamba passa dietro il busto.",
+     "come_correggere": "Spingi il tallone indietro stringendo il gluteo, senza inarcare la schiena; se non ci arrivi, togli carico.",
+     "frase_da_ricordare": "Tallone indietro, gluteo stretto."
+    },
+    "schiena_inarcata": {
+     "cosa_succede": "L'anca arriva a {valore}: la gamba va troppo oltre la linea del busto (limite {soglia}).",
+     "perche_conta": "Oltre questo punto l'anca non si estende più: a muoversi è la zona lombare, che si inarca.",
+     "come_correggere": "Fermati quando senti il gluteo stretto, addome contratto e costole basse.",
+     "frase_da_ricordare": "Fermati in linea, addome stretto."
+    },
+    "ginocchio_piegato": {
+     "cosa_succede": "Il ginocchio si piega fino a {valore} (limite {soglia}).",
+     "perche_conta": "Piegando il ginocchio lavorano i femorali e la spinta del gluteo si riduce.",
+     "come_correggere": "Tieni la gamba quasi tesa e spingi con il tallone.",
+     "frase_da_ricordare": "Gamba lunga."
+    },
+    "troppo_veloce": {
+     "cosa_succede": "La gamba torna troppo in fretta: il ritorno dura {valore} (minimo {soglia}).",
+     "perche_conta": "Tornando di colpo lavora il cavo o l'elastico al posto tuo.",
+     "come_correggere": "Conta due secondi per tornare, resistendo.",
+     "frase_da_ricordare": "Torna in due secondi."
+    }
+   },
+   "motivo": "Angolo con verso: il naso indica da che parte guardi; 180° = gamba in linea col busto, oltre 180° = dietro. Soglie stimate, da tarare in sala.",
+   "non_rilevabili": [
+    {
+     "errore": "Bacino che ruota",
+     "motivo": "La rotazione del bacino non si vede di lato."
+    }
+   ]
+  },
+  "motivo": "Reso analizzabile con l'angolo con verso oltre 180° (richiesta del catalogo). Regole proposte dall'app."
+ },
+ {
+  "id": "GLU-029",
+  "imposta": {
+   "analizzabilita": "parziale",
+   "vista_camera": "laterale",
+   "lato": "dx",
+   "impostazioni": [
+    {
+     "id": "lato",
+     "domanda": "Quale gamba lavora? (tienila verso la camera)",
+     "opzioni": [
+      {
+       "etichetta": "Destra",
+       "imposta": {
+        "lato": "dx"
+       }
+      },
+      {
+       "etichetta": "Sinistra",
+       "imposta": {
+        "lato": "sx"
+       }
+      }
+     ]
+    }
+   ],
+   "messaggio_posizione": "Camera di lato, gamba che lavora verso la camera, corpo intero visibile",
+   "messaggio_ok": "Ottimo kickback!",
+   "misure": {
+    "anca": {
+     "tipo": "angolo_avanti",
+     "punti": [
+      "spalla",
+      "anca",
+      "ginocchio"
+     ]
+    },
+    "ginocchio": {
+     "tipo": "angolo",
+     "punti": [
+      "anca",
+      "ginocchio",
+      "caviglia"
+     ]
+    }
+   },
+   "ripetizione": {
+    "misura": "anca",
+    "direzione": "aumenta",
+    "posizione_iniziale": 160,
+    "inizio_movimento": 168
+   },
+   "errori": [
+    {
+     "id": "lockout",
+     "messaggio": "Porta la gamba oltre il busto",
+     "gravita": "giallo",
+     "momento": "fine",
+     "misura": "anca",
+     "statistica": "massimo",
+     "minore_di": 185
+    },
+    {
+     "id": "schiena_inarcata",
+     "messaggio": "Non inarcare, fermati prima",
+     "gravita": "giallo",
+     "momento": "fine",
+     "misura": "anca",
+     "statistica": "massimo",
+     "maggiore_di": 215
+    },
+    {
+     "id": "ginocchio_piegato",
+     "messaggio": "Gamba quasi tesa",
+     "gravita": "giallo",
+     "momento": "durante",
+     "misura": "ginocchio",
+     "minore_di": 140
+    },
+    {
+     "id": "troppo_veloce",
+     "messaggio": "Torna più lentamente",
+     "gravita": "giallo",
+     "momento": "fine",
+     "misura": "salita",
+     "statistica": "massimo",
+     "minore_di": 0.8
+    }
+   ],
+   "testi_errori": {
+    "lockout": {
+     "cosa_succede": "L'anca arriva a {valore}: la gamba non va oltre la linea del busto (minimo {soglia}; 180° = in linea).",
+     "perche_conta": "Il gluteo lavora soprattutto negli ultimi gradi di estensione, quando la gamba passa dietro il busto.",
+     "come_correggere": "Spingi il tallone indietro stringendo il gluteo, senza inarcare la schiena; se non ci arrivi, togli carico.",
+     "frase_da_ricordare": "Tallone indietro, gluteo stretto."
+    },
+    "schiena_inarcata": {
+     "cosa_succede": "L'anca arriva a {valore}: la gamba va troppo oltre la linea del busto (limite {soglia}).",
+     "perche_conta": "Oltre questo punto l'anca non si estende più: a muoversi è la zona lombare, che si inarca.",
+     "come_correggere": "Fermati quando senti il gluteo stretto, addome contratto e costole basse.",
+     "frase_da_ricordare": "Fermati in linea, addome stretto."
+    },
+    "ginocchio_piegato": {
+     "cosa_succede": "Il ginocchio si piega fino a {valore} (limite {soglia}).",
+     "perche_conta": "Piegando il ginocchio lavorano i femorali e la spinta del gluteo si riduce.",
+     "come_correggere": "Tieni la gamba quasi tesa e spingi con il tallone.",
+     "frase_da_ricordare": "Gamba lunga."
+    },
+    "troppo_veloce": {
+     "cosa_succede": "La gamba torna troppo in fretta: il ritorno dura {valore} (minimo {soglia}).",
+     "perche_conta": "Tornando di colpo lavora il cavo o l'elastico al posto tuo.",
+     "come_correggere": "Conta due secondi per tornare, resistendo.",
+     "frase_da_ricordare": "Torna in due secondi."
+    }
+   },
+   "motivo": "Angolo con verso: il naso indica da che parte guardi; 180° = gamba in linea col busto, oltre 180° = dietro. Soglie stimate, da tarare in sala.",
+   "non_rilevabili": [
+    {
+     "errore": "Bacino che ruota",
+     "motivo": "La rotazione del bacino non si vede di lato."
+    }
+   ]
+  },
+  "motivo": "Come GLU-023; vale sia in piedi sia a quattro zampe (partenza più flessa). Regole proposte dall'app."
+ },
+ {
+  "id": "GLU-006",
+  "imposta": {
+   "misure.anca.tipo": "angolo_avanti",
+   "errori.schiena_inarcata": {
+    "messaggio": "Non inarcare, coscia in linea",
+    "gravita": "giallo",
+    "momento": "fine",
+    "misura": "anca",
+    "statistica": "massimo",
+    "maggiore_di": 200
+   },
+   "testi_errori.schiena_inarcata": {
+    "cosa_succede": "L'anca arriva a {valore}: la gamba va troppo oltre la linea del busto (limite {soglia}).",
+    "perche_conta": "Oltre questo punto l'anca non si estende più: a muoversi è la zona lombare, che si inarca.",
+    "come_correggere": "Fermati quando senti il gluteo stretto, addome contratto e costole basse.",
+    "frase_da_ricordare": "Fermati in linea, addome stretto."
+   }
+  },
+  "motivo": "Angolo con verso: ora si vede quando la coscia va oltre la linea del busto (schiena inarcata)."
+ },
+ {
+  "id": "GLU-027",
+  "imposta": {
+   "misure.anca.tipo": "angolo_avanti",
+   "errori.oltre_linea": {
+    "messaggio": "Fermati in linea col busto",
+    "gravita": "giallo",
+    "momento": "fine",
+    "misura": "anca",
+    "statistica": "massimo",
+    "maggiore_di": 195
+   },
+   "testi_errori.oltre_linea": {
+    "cosa_succede": "L'anca arriva a {valore}: la gamba va troppo oltre la linea del busto (limite {soglia}).",
+    "perche_conta": "Oltre questo punto l'anca non si estende più: a muoversi è la zona lombare, che si inarca.",
+    "come_correggere": "Fermati quando senti il gluteo stretto, addome contratto e costole basse.",
+    "frase_da_ricordare": "Fermati in linea col busto."
+   }
+  },
+  "motivo": "Angolo con verso: segnala le gambe oltre la linea del busto con la schiena inarcata (errore della scheda)."
  }
 ]

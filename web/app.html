@@ -1109,6 +1109,8 @@ function misuraDaPosa(es, nome, posa, lato) {
     const p = n => posa[nomePunto(n, l)];
     if (spec.tipo === "angolo") return geo.angolo(p(spec.punti[0]), p(spec.punti[1]), p(spec.punti[2]));
     if (spec.tipo === "angolo_orientato") return geo.angoloOrientato(p(spec.punti[0]), p(spec.punti[1]), p(spec.punti[2]));
+    if (spec.tipo === "angolo_avanti") { const b = p(spec.punti[1]), n = p("naso");
+      return geo.angoloAvanti(p(spec.punti[0]), b, p(spec.punti[2]), n && n[0] < b[0] ? -1 : 1); }
     if (spec.tipo === "inclinazione") return geo.inclinazione(p(spec.punti[0]), p(spec.punti[1]));
     if (spec.tipo === "distanza") { const sc = geo.distanza(p(spec.scala[0]), p(spec.scala[1]));
       return sc ? 100 * geo.distanza(p(spec.punti[0]), p(spec.punti[1])) / sc : null; }

@@ -75,6 +75,9 @@ def casi():
                    + pm.ripetizione_fasi(pm.posa_fronte_gambe, 115.3, 92.4, 1, 1, 2),
         "QUA-002": [pm.posa_squat(175)] * 6 + pm.ripetizione_fasi(lambda k: pm.posa_squat(k), 175, 110.3, 0.4, 0, 0.4)
                    + pm.ripetizione_fasi(lambda k: pm.posa_squat(k), 175, 135.4, 0.4, 0, 0.4),
+        "GLU-023": [pm.posa_kickback(160.3)] * FPS + pm.ripetizione_fasi(pm.posa_kickback, 160.3, 195.2, 1, 1, 2)
+                   + pm.ripetizione_fasi(pm.posa_kickback, 160.3, 222.3, 1, 1, 2)
+                   + pm.ripetizione_fasi(lambda a: pm.posa_kickback(a, -1), 160.3, 182.4, 1, 1, 2),
         "PET-002": [pp(175)] * FPS + R(pp, 175, 80, secondi=3.0) + R(pp, 175, 80, secondi=3.0, abbassa_bacino=70),
     }
 

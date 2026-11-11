@@ -179,6 +179,24 @@ def posa_fronte_gambe(gamba_dx, gamba_sx=90.0):
     return posa
 
 
+def posa_kickback(anca, verso=1):
+    """Kickback in piedi visto di lato, busto inclinato in avanti. anca = angolo dal davanti
+    (meno di 180 = gamba avanti, piu' di 180 = gamba oltre la linea del busto). verso: +1 guarda a destra."""
+    an = (500, 500)
+    u = (math.sin(math.radians(30)) * verso, -math.cos(math.radians(30)))       # verso la spalla
+    sp = (an[0] + 250 * u[0], an[1] + 250 * u[1])
+    phi = -math.radians(180 - anca) * verso
+    d = (-u[0] * math.cos(phi) + u[1] * math.sin(phi), -u[0] * math.sin(phi) - u[1] * math.cos(phi))
+    g = (an[0] + 220 * d[0], an[1] + 220 * d[1])
+    c = (an[0] + 420 * d[0], an[1] + 420 * d[1])
+    posa = punti_entrambi_lati({"spalla": sp, "anca": an, "ginocchio": g, "caviglia": c,
+                                "gomito": (sp[0] + 60 * verso, sp[1] + 80), "polso": (sp[0] + 120 * verso, sp[1] + 120),
+                                "tallone": c, "punta": c}, vis_sx=0.4, vis_dx=0.95)
+    for n in ("naso", "naso_sx", "naso_dx"):
+        posa[n] = (sp[0] + 50 * verso, sp[1] - 30, 0.99)
+    return posa
+
+
 def ripetizione(fn_posa, inizio, fondo, secondi=2.0, **extra_fondo):
     """Genera una ripetizione: da 'inizio' a 'fondo' e ritorno, piu' una pausa."""
     n = int(secondi * FPS)
@@ -438,6 +456,14 @@ def main():
     fr = ([sq(175)] * 6 + ripetizione_fasi(sq, 175, 110.3, 0.4, 0, 0.4) + ripetizione_fasi(sq, 175, 135.4, 0.4, 0, 0.4)
           + ripetizione_fasi(sq, 175, 110.3, 0.4, 0, 0.4))
     risultati.append(verifica("Squat jump QUA-002 (balistica)", esegui(Analizzatore(es["QUA-002"]), fr), [[], ["profondita"], []]))
+
+    # Angolo con verso (oltre 180): kickback, persona che guarda a destra e a sinistra
+    for verso, nome in ((1, "guarda a destra"), (-1, "guarda a sinistra")):
+        kb = lambda a, **kw: posa_kickback(a, verso)
+        fr = ([kb(160.3)] * FPS + ripetizione_fasi(kb, 160.3, 195.2, 1, 1, 2) + ripetizione_fasi(kb, 160.3, 182.4, 1, 1, 2)
+              + ripetizione_fasi(kb, 160.3, 222.3, 1, 1, 2))
+        risultati.append(verifica(f"Kickback al cavo GLU-023 ({nome})", esegui(Analizzatore(es["GLU-023"]), fr),
+                                  [[], ["lockout"], ["schiena_inarcata"]]))
 
     # Ogni esercizio analizzabile deve girare senza bloccarsi su una posa completa (tutti i punti, naso con lato)
     from motore.regole import applica_impostazioni

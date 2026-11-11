@@ -66,6 +66,9 @@ Ogni voce: `{ "id", "nome"?, "gruppo"?, "scheda", "config_app" }`.
   centrale SOTTO la retta tra gli estremi, più di 180 = SOPRA; per corpi orizzontali/inclinati, es. bacino nei
   piegamenti), `inclinazione` (2 punti [A, B]: 0 = B sopra A, 90 = orizzontale, 180 = B sotto A),
   `posizione` (spostamento verticale rispetto all'inizio, in unità di un segmento `scala`),
+  `angolo_avanti` (3 punti [A, B, C], 0-360 misurato dal davanti della persona, capito dal naso rispetto al vertice:
+  meno di 180 = C davanti, 180 = in linea, più di 180 = C dietro; es. anca nei kickback, gamba oltre la linea del busto;
+  richiede il naso visibile; se il naso è quasi sopra il vertice resta il verso precedente),
   `distanza` (`punti` [A, B] e `scala` [C, D]: distanza A-B in **percentuale** di C-D, 100 = uguali; i punti possono avere
   il lato nel nome, es. `ginocchio_sx`/`ginocchio_dx`, per misurare tra i due lati; nell'app compare in %),
   `durata` (solo dichiarativa: la durata la calcola il motore a fine ripetizione).
@@ -130,7 +133,7 @@ Ogni voce: `{ "id", "nome"?, "gruppo"?, "scheda", "config_app" }`.
 ## Prossimi passi consigliati (richieste dal catalogo, non ancora fatte)
 
 - ~~A. Angolo con segno~~ (fatto: `angolo_orientato`; i piegamenti hanno "bacino_cede" e "sedere_alto" via integrazioni).
-  Da fare: verso avanti/indietro per corpi verticali (busto in PET-047, PET-054), serve conoscere il verso del viso.
+  Verso avanti/indietro: fatto con `angolo_avanti` (kickback GLU-023/029, GLU-006, GLU-027). Da valutare: busto in PET-047, PET-054.
 - ~~B. Fasi della ripetizione~~ (fatto: misure `discesa`, `pausa`, `salita`).
 - **C. Controllo in alto** tra una ripetizione e l'altra (braccia/gambe distese).
 - ~~D. Misura `distanza`~~ (fatto: ADD-007, ABD-006/007/011 analizzabili via integrazioni, distanza tra le ginocchia
@@ -141,6 +144,7 @@ Ogni voce: `{ "id", "nome"?, "gruppo"?, "scheda", "config_app" }`.
 - ~~Avviso di sicurezza per esercizi solo-scheda~~ (fatto: `avviso_sicurezza`, es. PET-018).
 - ~~Scelta del lato in vista frontale~~ (fatto: affondi laterali QUA-013/038, cossack ADD-004/005, adduzioni ADD-006/008,
   abduzioni ABD-005/012, fire hydrant ABD-003/013 con camera dietro; regole proposte dall'app, da tarare).
+- ~~Angolo con verso oltre 180°~~ (fatto: `angolo_avanti`).
 - ~~Modalità balistica~~ (fatto: QUA-002, QUA-010, QUA-063, GLU-019, GLU-021 con scelta della mano).
 - ~~Modalità isometrica~~ (fatto: QUA-006 wall sit, DOR-064 front lever, regole proposte dall'app).
 - Dopo: inclinazione delle spalle / rotazione del tronco (vista frontale), ripetizioni alternate sx/dx (PET-008),
@@ -151,7 +155,9 @@ Ogni voce: `{ "id", "nome"?, "gruppo"?, "scheda", "config_app" }`.
 ## Stato attuale e come riprendere (aggiornato 11/11/2026)
 
 - **Versione app**: Beta 0.9. Catalogo: 383 esercizi (squat di base + PET 001-080 + DOR 001-064 + SPALLE DEA/DEL/DEP +
-  GAMBE: GLU 32, QUA 65, FEM 26, ADD 10, ABD 13, POL 14), 304 analizzabili, 287 integrazioni in `esercizi/integrazioni.json`.
+  GAMBE: GLU 32, QUA 65, FEM 26, ADD 10, ABD 13, POL 14), 322 analizzabili, 312 integrazioni in `esercizi/integrazioni.json`.
+  Funzioni aggiunte l'11/11/2026: misura `distanza`, modalità isometrica e balistica, gamba in vista frontale, `angolo_avanti`
+  (18 esercizi resi analizzabili con regole proposte dall'app: da far rivedere a Gianluca e tarare in sala).
   Gambe (11/11/2026): 86 controlli di velocità convertiti in discesa/salita/pausa, scelta della gamba su 30 esercizi a una gamba,
   avvisi rossi su GLU-020 e QUA-015. Il prefisso ADD ora è Adduttori: il futuro catalogo addome deve usare un altro prefisso. Ultimi file ricevuti da Gianluca: `NOTE_PER_IL_MOTORE_nuovo.md`
   (regole §1-§7, tutte applicate) e i tre cataloghi.
@@ -167,7 +173,7 @@ Ogni voce: `{ "id", "nome"?, "gruppo"?, "scheda", "config_app" }`.
 - **Richieste del catalogo gambe non ancora fatte** (esercizi lasciati solo-scheda o con analisi ridotta): modalità isometrica
   per Copenhagen plank (ADD-001/002: da sdraiati di fianco la posa è poco affidabile) e ADD-009 (nessun movimento visibile), statistica estesa al picco dopo la ripetizione (altezza del
   kettlebell, GLU-019), camera che segue la persona (ABD-008), QUA-060 step-up laterale (di fronte la piega
-  del ginocchio va verso la camera), angolo con verso oltre 180° (GLU-023/026/029).
+  del ginocchio va verso la camera), GLU-026 kickback alla macchina (la leva copre la gamba).
 - **In attesa da Gianluca**: regole per DEL-009, DEL-013, DEL-014/015, DEP-007 (a un braccio, vista frontale);
   taratura delle soglie in sala con gli istruttori; prossimi cataloghi (braccia, addome...).
 - **Quando arriva un nuovo catalogo**: copiarlo in `esercizi/catalogo/` senza modificarlo, lanciare build e test,

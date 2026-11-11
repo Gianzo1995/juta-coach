@@ -37,3 +37,16 @@ def angolo_orientato(a, b, c):
         return th
     y_retta = a[1] + (c[1] - a[1]) * (b[0] - a[0]) / dx
     return th if b[1] >= y_retta else 360 - th
+
+
+def angolo_avanti(a, b, c, verso):
+    """Angolo in b da 0 a 360, misurato dal davanti della persona (verso = +1 se guarda verso destra
+    nell'immagine, -1 se verso sinistra). Meno di 180 = c verso il davanti (es. anca flessa),
+    180 = in linea, piu' di 180 = c verso il dietro (es. gamba oltre la linea del busto)."""
+    th = angolo(a, b, c)
+    if th is None:
+        return None
+    ux, uy = a[0] - b[0], a[1] - b[1]
+    vx, vy = c[0] - b[0], c[1] - b[1]
+    croce = ux * vy - uy * vx
+    return th if croce * verso >= 0 else 360 - th

@@ -49,12 +49,20 @@ const geo = {
     return Math.atan2(Math.abs(alto[0] - basso[0]), basso[1] - alto[1]) * 180 / Math.PI;
   },
   distanza(a, b) { return Math.hypot(a[0] - b[0], a[1] - b[1]); },
+  // angolo in b da 0 a 360 misurato dal davanti (verso = +1 se la persona guarda a destra nell'immagine):
+  // meno di 180 = c verso il davanti, piu' di 180 = c verso il dietro. Identico a geometria.py
+  angoloAvanti(a, b, c, verso) {
+    const th = geo.angolo(a, b, c);
+    if (th === null) return null;
+    const croce = (a[0] - b[0]) * (c[1] - b[1]) - (a[1] - b[1]) * (c[0] - b[0]);
+    return croce * verso >= 0 ? th : 360 - th;
+  },
 };
 
 // ---------------------------------------------------------------------------
 // Catalogo ed ereditarieta' (identico a motore/regole.py)
 // ---------------------------------------------------------------------------
-const TIPI_MISURA = new Set(["angolo", "angolo_orientato", "inclinazione", "posizione", "distanza", "durata"]);
+const TIPI_MISURA = new Set(["angolo", "angolo_orientato", "angolo_avanti", "inclinazione", "posizione", "distanza", "durata"]);
 // misure calcolate dal motore a fine ripetizione (in secondi), usabili negli errori con momento "fine"
 const MISURE_TEMPO = new Set(["durata", "discesa", "pausa", "salita"]);
 const copia = v => v === undefined ? v : JSON.parse(JSON.stringify(v));
@@ -205,6 +213,7 @@ class Analizzatore {
   constructor(cfg, durataMessaggio = 2.5, pausaFineSerie = 6) {
     this.cfg = cfg; this.durataMessaggio = durataMessaggio; this.pausaFineSerie = pausaFineSerie;
     this.visLati = { sx: 0, dx: 0 }; this.lisciate = {}; this.grezze = {};
+    this.verso = {};   // per lato: +1 se la persona guarda a destra nell'immagine, -1 a sinistra (dal naso)
     this.reset();
   }
 
@@ -279,6 +288,7 @@ class Analizzatore {
       (m.punti || []).forEach(n => s.add(n));
       if (m.punto) s.add(m.punto);
       (m.scala || []).forEach(n => s.add(n));
+      if (m.tipo === "angolo_avanti") s.add("naso");   // serve a capire da che parte guarda la persona
     }
     return s;
   }
@@ -294,6 +304,13 @@ class Analizzatore {
     const p = n => posa[nomePunto(n, l)];
     if (spec.tipo === "angolo") return geo.angolo(p(spec.punti[0]), p(spec.punti[1]), p(spec.punti[2]));
     if (spec.tipo === "angolo_orientato") return geo.angoloOrientato(p(spec.punti[0]), p(spec.punti[1]), p(spec.punti[2]));
+    if (spec.tipo === "angolo_avanti") {
+      const [a, b, c] = spec.punti;
+      // verso dal naso rispetto al vertice; se il naso e' quasi sopra il vertice resta il verso precedente
+      const dx = p("naso")[0] - p(b)[0];
+      if (Math.abs(dx) > 0.1 * geo.distanza(p(a), p(b))) this.verso[l] = dx > 0 ? 1 : -1;
+      return geo.angoloAvanti(p(a), p(b), p(c), this.verso[l] ?? 1);
+    }
     if (spec.tipo === "inclinazione") return geo.inclinazione(p(spec.punti[0]), p(spec.punti[1]));
     if (spec.tipo === "posizione") {
       const scala = geo.distanza(p(spec.scala[0]), p(spec.scala[1])) || 1;
