@@ -3706,5 +3706,297 @@
    "avviso_sicurezza": "Rischio di urtare il box o atterrare male: solo con l'istruttore, box stabile o morbido e altezze progressive. L'app non lo analizza; per iniziare è meglio lo squat jump (QUA-002)."
   },
   "motivo": "Non analizzato per scelta di sicurezza (solo_scheda con avviso): avviso ben visibile."
+ },
+ {
+  "id": "ADD-007",
+  "imposta": {
+   "analizzabilita": "parziale",
+   "messaggio_posizione": "Camera di fronte all'altezza delle ginocchia, anche e ginocchia visibili",
+   "messaggio_ok": "Ottima chiusura!",
+   "misure": {
+    "ginocchia": {
+     "tipo": "distanza",
+     "punti": [
+      "ginocchio_sx",
+      "ginocchio_dx"
+     ],
+     "scala": [
+      "anca_sx",
+      "anca_dx"
+     ]
+    }
+   },
+   "ripetizione": {
+    "misura": "ginocchia",
+    "direzione": "diminuisce",
+    "posizione_iniziale": 220,
+    "inizio_movimento": 200
+   },
+   "errori": [
+    {
+     "id": "ampiezza",
+     "messaggio": "Chiudi fino in fondo",
+     "gravita": "giallo",
+     "momento": "fine",
+     "misura": "ginocchia",
+     "statistica": "minimo",
+     "maggiore_di": 130
+    },
+    {
+     "id": "troppo_veloce",
+     "messaggio": "Torna più lentamente",
+     "gravita": "giallo",
+     "momento": "fine",
+     "misura": "salita",
+     "statistica": "massimo",
+     "minore_di": 0.8
+    }
+   ],
+   "testi_errori": {
+    "ampiezza": {
+     "cosa_succede": "Le ginocchia si fermano a {valore} della larghezza delle anche: la chiusura non è completa (limite {soglia}).",
+     "perche_conta": "Gli adduttori lavorano soprattutto nell'ultima parte della chiusura.",
+     "come_correggere": "Porta i cuscinetti fino a farli quasi toccare; se non ci arrivi, togli peso.",
+     "frase_da_ricordare": "Chiudi fino in fondo."
+    },
+    "troppo_veloce": {
+     "cosa_succede": "Le gambe tornano troppo in fretta: la macchina ti trascina.",
+     "perche_conta": "Nel ritorno lento il muscolo lavora di più e l'anca resta protetta dagli strappi.",
+     "come_correggere": "Conta due secondi per tornare, resistendo al carico.",
+     "frase_da_ricordare": "Torna in due secondi."
+    }
+   },
+   "motivo": "Misura nuova: distanza tra le ginocchia in percentuale della larghezza delle anche (100% = larghe quanto le anche). Soglie stimate, da tarare in sala.",
+   "non_rilevabili": [
+    {
+     "errore": "Bacino che si stacca dallo schienale",
+     "motivo": "Di fronte lo spostamento del bacino in avanti è di pochi centimetri."
+    },
+    {
+     "errore": "Uso dello slancio del busto",
+     "motivo": "Il busto è quasi fermo e coperto dalla macchina."
+    }
+   ]
+  },
+  "motivo": "Reso analizzabile con la misura 'distanza' tra le ginocchia (richiesta del catalogo). Regole proposte dall'app."
+ },
+ {
+  "id": "ABD-006",
+  "imposta": {
+   "analizzabilita": "parziale",
+   "messaggio_posizione": "Camera di fronte all'altezza delle ginocchia, anche e ginocchia visibili",
+   "messaggio_ok": "Ottima apertura!",
+   "misure": {
+    "ginocchia": {
+     "tipo": "distanza",
+     "punti": [
+      "ginocchio_sx",
+      "ginocchio_dx"
+     ],
+     "scala": [
+      "anca_sx",
+      "anca_dx"
+     ]
+    }
+   },
+   "ripetizione": {
+    "misura": "ginocchia",
+    "direzione": "aumenta",
+    "posizione_iniziale": 130,
+    "inizio_movimento": 150
+   },
+   "errori": [
+    {
+     "id": "ampiezza",
+     "messaggio": "Apri di più",
+     "gravita": "giallo",
+     "momento": "fine",
+     "misura": "ginocchia",
+     "statistica": "massimo",
+     "minore_di": 220
+    },
+    {
+     "id": "troppo_veloce",
+     "messaggio": "Torna più lentamente",
+     "gravita": "giallo",
+     "momento": "fine",
+     "misura": "salita",
+     "statistica": "massimo",
+     "minore_di": 0.8
+    }
+   ],
+   "testi_errori": {
+    "ampiezza": {
+     "cosa_succede": "Le ginocchia si aprono solo fino a {valore} della larghezza delle anche (minimo {soglia}).",
+     "perche_conta": "Il medio gluteo lavora di più nella parte finale dell'apertura.",
+     "come_correggere": "Apri finché senti lavorare il lato del gluteo, senza staccare la schiena; se non ci arrivi, togli peso.",
+     "frase_da_ricordare": "Apri di più, glutei attivi."
+    },
+    "troppo_veloce": {
+     "cosa_succede": "Le gambe tornano troppo in fretta: la macchina ti trascina.",
+     "perche_conta": "Nel ritorno lento il muscolo lavora di più e l'anca resta protetta dagli strappi.",
+     "come_correggere": "Conta due secondi per tornare, resistendo al carico.",
+     "frase_da_ricordare": "Torna in due secondi."
+    }
+   },
+   "motivo": "Misura nuova: distanza tra le ginocchia in percentuale della larghezza delle anche (100% = larghe quanto le anche). Soglie stimate, da tarare in sala.",
+   "non_rilevabili": [
+    {
+     "errore": "Bacino che si stacca dallo schienale",
+     "motivo": "Di fronte lo spostamento del bacino in avanti è di pochi centimetri."
+    },
+    {
+     "errore": "Uso dello slancio del busto",
+     "motivo": "Il busto è quasi fermo e coperto dalla macchina."
+    }
+   ]
+  },
+  "motivo": "Reso analizzabile con la misura 'distanza' tra le ginocchia (richiesta del catalogo). Regole proposte dall'app."
+ },
+ {
+  "id": "ABD-007",
+  "imposta": {
+   "analizzabilita": "parziale",
+   "messaggio_posizione": "Camera di fronte all'altezza delle ginocchia, anche e ginocchia visibili",
+   "messaggio_ok": "Ottima apertura!",
+   "misure": {
+    "ginocchia": {
+     "tipo": "distanza",
+     "punti": [
+      "ginocchio_sx",
+      "ginocchio_dx"
+     ],
+     "scala": [
+      "anca_sx",
+      "anca_dx"
+     ]
+    }
+   },
+   "ripetizione": {
+    "misura": "ginocchia",
+    "direzione": "aumenta",
+    "posizione_iniziale": 130,
+    "inizio_movimento": 150
+   },
+   "errori": [
+    {
+     "id": "ampiezza",
+     "messaggio": "Apri di più",
+     "gravita": "giallo",
+     "momento": "fine",
+     "misura": "ginocchia",
+     "statistica": "massimo",
+     "minore_di": 220
+    },
+    {
+     "id": "troppo_veloce",
+     "messaggio": "Torna più lentamente",
+     "gravita": "giallo",
+     "momento": "fine",
+     "misura": "salita",
+     "statistica": "massimo",
+     "minore_di": 0.8
+    }
+   ],
+   "testi_errori": {
+    "ampiezza": {
+     "cosa_succede": "Le ginocchia si aprono solo fino a {valore} della larghezza delle anche (minimo {soglia}).",
+     "perche_conta": "Il medio gluteo lavora di più nella parte finale dell'apertura.",
+     "come_correggere": "Apri finché senti lavorare il lato del gluteo, senza staccare la schiena; se non ci arrivi, togli peso.",
+     "frase_da_ricordare": "Apri di più, glutei attivi."
+    },
+    "troppo_veloce": {
+     "cosa_succede": "Le gambe tornano troppo in fretta: la macchina ti trascina.",
+     "perche_conta": "Nel ritorno lento il muscolo lavora di più e l'anca resta protetta dagli strappi.",
+     "come_correggere": "Conta due secondi per tornare, resistendo al carico.",
+     "frase_da_ricordare": "Torna in due secondi."
+    }
+   },
+   "motivo": "Misura nuova: distanza tra le ginocchia in percentuale della larghezza delle anche (100% = larghe quanto le anche). Soglie stimate, da tarare in sala.",
+   "non_rilevabili": [
+    {
+     "errore": "Bacino che si stacca dallo schienale",
+     "motivo": "Di fronte lo spostamento del bacino in avanti è di pochi centimetri."
+    },
+    {
+     "errore": "Uso dello slancio del busto",
+     "motivo": "Il busto è quasi fermo e coperto dalla macchina."
+    }
+   ]
+  },
+  "motivo": "Come ABD-006 (busto in avanti: cambia l'enfasi, non la misura)."
+ },
+ {
+  "id": "ABD-011",
+  "imposta": {
+   "analizzabilita": "parziale",
+   "messaggio_posizione": "Camera di fronte, seduto, anche e ginocchia visibili",
+   "messaggio_ok": "Ottima apertura!",
+   "misure": {
+    "ginocchia": {
+     "tipo": "distanza",
+     "punti": [
+      "ginocchio_sx",
+      "ginocchio_dx"
+     ],
+     "scala": [
+      "anca_sx",
+      "anca_dx"
+     ]
+    }
+   },
+   "ripetizione": {
+    "misura": "ginocchia",
+    "direzione": "aumenta",
+    "posizione_iniziale": 130,
+    "inizio_movimento": 150
+   },
+   "errori": [
+    {
+     "id": "ampiezza",
+     "messaggio": "Apri di più",
+     "gravita": "giallo",
+     "momento": "fine",
+     "misura": "ginocchia",
+     "statistica": "massimo",
+     "minore_di": 180
+    },
+    {
+     "id": "troppo_veloce",
+     "messaggio": "Torna più lentamente",
+     "gravita": "giallo",
+     "momento": "fine",
+     "misura": "salita",
+     "statistica": "massimo",
+     "minore_di": 0.8
+    }
+   ],
+   "testi_errori": {
+    "ampiezza": {
+     "cosa_succede": "Le ginocchia si aprono solo fino a {valore} della larghezza delle anche (minimo {soglia}).",
+     "perche_conta": "Il medio gluteo lavora di più nella parte finale dell'apertura.",
+     "come_correggere": "Apri finché senti lavorare il lato del gluteo, senza staccare la schiena; se non ci arrivi, togli peso.",
+     "frase_da_ricordare": "Apri di più, glutei attivi."
+    },
+    "troppo_veloce": {
+     "cosa_succede": "Le gambe tornano troppo in fretta: la macchina ti trascina.",
+     "perche_conta": "Nel ritorno lento il muscolo lavora di più e l'anca resta protetta dagli strappi.",
+     "come_correggere": "Conta due secondi per tornare, resistendo al carico.",
+     "frase_da_ricordare": "Torna in due secondi."
+    }
+   },
+   "motivo": "Misura nuova: distanza tra le ginocchia in percentuale della larghezza delle anche (100% = larghe quanto le anche). Soglie stimate, da tarare in sala.",
+   "non_rilevabili": [
+    {
+     "errore": "Bacino che si stacca dallo schienale",
+     "motivo": "Di fronte lo spostamento del bacino in avanti è di pochi centimetri."
+    },
+    {
+     "errore": "Uso dello slancio del busto",
+     "motivo": "Il busto è quasi fermo e coperto dalla macchina."
+    }
+   ]
+  },
+  "motivo": "Come ABD-006 con ampiezza minore (elastico: 20-30° per lato)."
  }
 ]

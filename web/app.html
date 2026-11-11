@@ -317,13 +317,15 @@ function testoMisura(es, misura, v) {
   const tipo = tipoMisura(es, misura);
   if (tipo === "durata") return `${virgola(v, 1)} s`;
   if (tipo === "posizione") return "sollevato";
+  if (tipo === "distanza") return `${Math.round(v)}%`;
   return `${Math.round(v)}°`;
 }
 // "punto piu' basso" vale per squat e panca; nei movimenti che aumentano (es. pullover) e' il punto di massima ampiezza
 const puntoEstremo = es => ESERCIZI[es]?.ripetizione?.direzione === "aumenta" ? "nel punto di massima ampiezza" : "al punto più basso";
 const testoTempo = (es, e) => `${nomeMisura(e.misura)} ${testoMisura(es, e.misura, e.valore)} · minimo ${testoSoglia(es, e.misura, e.soglia)}`;
 const testoFasi = f => f ? `discesa ${virgola(f.discesa, 1)} s · fermo ${virgola(f.pausa, 1)} s · salita ${virgola(f.salita, 1)} s` : "";
-const testoSoglia = (es, misura, s) => tipoMisura(es, misura) === "durata" ? `${virgola(s, 1)} s` : `${Math.round(s)}°`;
+const testoSoglia = (es, misura, s) => { const t = tipoMisura(es, misura);
+  return t === "durata" ? `${virgola(s, 1)} s` : t === "distanza" ? `${Math.round(s)}%` : `${Math.round(s)}°`; };
 function spiegazione(es, id) {
   const t = ESERCIZI[es]?.testi_errori?.[id] || {}, err = erroreCfg(es, id) || {};
   return {
@@ -855,6 +857,20 @@ function calcolaFantasma(posa, es, errId, lato, valoreMisurato) {
     return { posa: f, punto: `${spec.punto}_${l}`, mobile: `${spec.punto}_${l}`,
       testo: `${nomeMisura(nome)} sollevato → deve restare giù` };
   }
+  if (spec.tipo === "distanza") {
+    // allontana o avvicina i due punti (con quello che sta sotto, es. ginocchio + caviglia) fino all'obiettivo
+    const a = nomePunto(spec.punti[0], lati[0]), b = nomePunto(spec.punti[1], lati[0]), pa = f[a], pb = f[b];
+    if (!pa || !pb || !valoreMisurato) return null;
+    const obiettivo = err.maggiore_di !== undefined ? err.maggiore_di - 5 : err.minore_di + 5;
+    const k = obiettivo / valoreMisurato - 1, mx = (pa[0] + pb[0]) / 2, my = (pa[1] + pb[1]) / 2;
+    const perno = spec.scala[0].replace(/_(sx|dx)$/, "");
+    for (const [n, q] of [[a, [...pa]], [b, [...pb]]]) {
+      const dx = (q[0] - mx) * k, dy = (q[1] - my) * k;
+      for (const c of catena(n, perno)) if (f[c]) f[c] = [f[c][0] + dx, f[c][1] + dy, f[c][2]];
+    }
+    return { posa: f, punto: a, mobile: b,
+      testo: `${nomeMisura(nome)} ${Math.round(valoreMisurato)}% → obiettivo ${Math.round(obiettivo)}%` };
+  }
   return null;
 }
 
@@ -1072,10 +1088,12 @@ function misuraDaPosa(es, nome, posa, lato) {
   if (!spec || !posa) return null;
   const lati = lato === "entrambi" ? ["sx", "dx"] : [lato || "sx"];
   const valori = lati.map(l => {
-    const p = n => posa[`${n}_${l}`];
+    const p = n => posa[nomePunto(n, l)];
     if (spec.tipo === "angolo") return geo.angolo(p(spec.punti[0]), p(spec.punti[1]), p(spec.punti[2]));
     if (spec.tipo === "angolo_orientato") return geo.angoloOrientato(p(spec.punti[0]), p(spec.punti[1]), p(spec.punti[2]));
     if (spec.tipo === "inclinazione") return geo.inclinazione(p(spec.punti[0]), p(spec.punti[1]));
+    if (spec.tipo === "distanza") { const sc = geo.distanza(p(spec.scala[0]), p(spec.scala[1]));
+      return sc ? 100 * geo.distanza(p(spec.punti[0]), p(spec.punti[1])) / sc : null; }
     return null;
   }).filter(v => v !== null);
   return valori.length ? valori.reduce((x, y) => x + y) / valori.length : null;
@@ -1217,7 +1235,7 @@ async function spiegaMeglio(btn, ev) {
   const dati = s.eventi.filter(e => e.tipo === "ripetizione").map(r => ({ ripetizione: r.numero, durata_s: r.durata_s, errori: r.errori, minimi: r.minimi, massimi: r.massimi }));
   const soglie = cfg.errori.map(e => ({ errore: e.id, messaggio: e.messaggio, misura: e.misura, soglia: e.maggiore_di ?? e.minore_di, tipo: e.maggiore_di !== undefined ? "errore se maggiore" : "errore se minore" }));
   const focus = ev ? `Concentrati sull'errore "${erroreCfg(ev.esercizio, ev.id).messaggio}" alla ripetizione ${ev.ripetizione} (valore ${ev.valore}, soglia ${ev.soglia}).` : "Commenta la serie nel suo insieme.";
-  const prompt = `Sei un istruttore di sala di una palestra italiana. Un cliente ha fatto una serie di ${cfg.nome} ripresa da una camera; un sistema ha misurato angoli (gradi) e durate (secondi). Le misure di posizione (tallone, anca) sono spostamenti relativi, non centimetri.\nSoglie: ${JSON.stringify(soglie)}\nRipetizioni: ${JSON.stringify(dati)}\n${focus}\nScrivi in italiano, 4-6 frasi brevi, tono diretto e incoraggiante, dando del tu: cosa è andato bene, l'errore principale e perché conta, 1-2 correzioni pratiche da provare alla prossima serie. Niente diagnosi mediche. Se i numeri sembrano poco affidabili (per esempio valori strani), dillo. Testo semplice, senza elenchi né titoli.`;
+  const prompt = `Sei un istruttore di sala di una palestra italiana. Un cliente ha fatto una serie di ${cfg.nome} ripresa da una camera; un sistema ha misurato angoli (gradi) e durate (secondi). Le misure di posizione (tallone, anca) sono spostamenti relativi, non centimetri; le distanze (es. tra le ginocchia) sono in percentuale della larghezza delle anche.\nSoglie: ${JSON.stringify(soglie)}\nRipetizioni: ${JSON.stringify(dati)}\n${focus}\nScrivi in italiano, 4-6 frasi brevi, tono diretto e incoraggiante, dando del tu: cosa è andato bene, l'errore principale e perché conta, 1-2 correzioni pratiche da provare alla prossima serie. Niente diagnosi mediche. Se i numeri sembrano poco affidabili (per esempio valori strani), dillo. Testo semplice, senza elenchi né titoli.`;
   rv.ia = el("p", { id: "ai", textContent: "Sto preparando la spiegazione…" });
   btn.after(rv.ia); btn.disabled = true;
   try {

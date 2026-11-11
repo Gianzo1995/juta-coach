@@ -133,6 +133,19 @@ def posa_polpaccio(caviglia, ginocchio=178.0):
                                vis_sx=0.95, vis_dx=0.4)
 
 
+def posa_seduto_fronte(ginocchia):
+    """Seduto alla adductor/abductor machine visto di fronte: ginocchia = distanza tra le ginocchia
+    in percentuale della larghezza delle anche (anche larghe 100 px)."""
+    posa = {n: (500, 200, 0.99) for n in ("naso", "naso_sx", "naso_dx")}
+    for lato, verso in (("dx", -1), ("sx", 1)):
+        x = 500 + verso * 50
+        for n, pt in (("spalla", (500 + verso * 80, 300)), ("gomito", (500 + verso * 110, 400)), ("polso", (500 + verso * 120, 480)),
+                      ("anca", (x, 500)), ("ginocchio", (500 + verso * ginocchia / 2, 560)),
+                      ("caviglia", (500 + verso * ginocchia / 2, 720))):
+            posa[f"{n}_{lato}"] = (pt[0], pt[1], 0.95)
+    return posa
+
+
 def ripetizione(fn_posa, inizio, fondo, secondi=2.0, **extra_fondo):
     """Genera una ripetizione: da 'inizio' a 'fondo' e ritorno, piu' una pausa."""
     n = int(secondi * FPS)
@@ -351,6 +364,15 @@ def main():
           + ripetizione_fasi(pc, 105.3, 135.2, 1, 1, 0.4))
     risultati.append(verifica("Calf raise POL-001", esegui(Analizzatore(es["POL-001"]), fr),
                               [[], ["ampiezza"], ["troppo_veloce"]]))
+
+    # Distanza tra le ginocchia (adductor / abductor machine, vista frontale)
+    sf = lambda d, **kw: posa_seduto_fronte(d)
+    fr = ([sf(240.3)] * FPS + ripetizione_fasi(sf, 240.3, 80.2, 1, 1, 2) + ripetizione_fasi(sf, 240.3, 150.4, 1, 1, 2)
+          + ripetizione_fasi(sf, 240.3, 80.2, 1, 1, 0.4))
+    risultati.append(verifica("Adductor machine ADD-007", esegui(Analizzatore(es["ADD-007"]), fr),
+                              [[], ["ampiezza"], ["troppo_veloce"]]))
+    fr = ([sf(100.3)] * FPS + ripetizione_fasi(sf, 100.3, 260.2, 1, 1, 2) + ripetizione_fasi(sf, 100.3, 190.4, 1, 1, 2))
+    risultati.append(verifica("Abductor machine ABD-006", esegui(Analizzatore(es["ABD-006"]), fr), [[], ["ampiezza"]]))
 
     # Ogni esercizio analizzabile deve girare senza bloccarsi su una posa completa (tutti i punti, naso con lato)
     from motore.regole import applica_impostazioni

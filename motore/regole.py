@@ -29,7 +29,7 @@ MESSAGGIO_NON_CHIUSA = "Ripetizione non contata: torna fino alla posizione di pa
 # --------------------------------------------------------------------------
 # Catalogo esercizi (file JSON in esercizi/catalogo) ed ereditarieta'
 # --------------------------------------------------------------------------
-TIPI_MISURA = {"angolo", "angolo_orientato", "inclinazione", "posizione", "durata"}
+TIPI_MISURA = {"angolo", "angolo_orientato", "inclinazione", "posizione", "distanza", "durata"}
 # misure calcolate dal motore a fine ripetizione (in secondi), usabili negli errori con momento "fine"
 MISURE_TEMPO = {"durata", "discesa", "pausa", "salita"}
 
@@ -37,6 +37,15 @@ MISURE_TEMPO = {"durata", "discesa", "pausa", "salita"}
 UNITI_PER_NOME = {"misure", "testi_errori"}
 # nomi dei punti usabili nelle misure (con _sx/_dx nella posa; naso_sx/naso_dx = naso, punta_piede = punta)
 NOMI_PUNTI = {"naso", "spalla", "gomito", "polso", "anca", "ginocchio", "caviglia", "tallone", "punta", "punta_piede"}
+
+
+def con_lato(nome):
+    """True se il nome del punto indica gia' il lato (es. "ginocchio_sx"): non dipende dal lato analizzato."""
+    return nome.endswith(("_sx", "_dx"))
+
+
+def punto_noto(nome):
+    return (nome[:-3] if con_lato(nome) else nome) in NOMI_PUNTI
 
 
 def unisci(base, variante):
@@ -135,7 +144,7 @@ def valida(cfg):
             problemi.append(f"misura '{nome}': tipo sconosciuto '{m.get('tipo')}'")
     for nome, m in misure.items():
         for n in list(m.get("punti", [])) + ([m["punto"]] if "punto" in m else []) + list(m.get("scala", [])):
-            if n not in NOMI_PUNTI:
+            if not punto_noto(n):
                 problemi.append(f"misura '{nome}': punto sconosciuto '{n}'")
     note = set(misure) | MISURE_TEMPO | {f"{n}_asimmetria" for n in misure}
     rip = cfg.get("ripetizione") or {}
@@ -369,13 +378,13 @@ class Analizzatore:
 
     def _punti_necessari(self, lato):
         lati = LATI if lato == "entrambi" else (lato,)
-        return sorted({f"{n}_{l}" for n in self._nomi_base() for l in lati})
+        return sorted({n if con_lato(n) else f"{n}_{l}" for n in self._nomi_base() for l in lati})
 
     # ------------------------------------------------------------------
     # Misure
     # ------------------------------------------------------------------
     def _misura_su_lato(self, spec, posa, l):
-        p = lambda n: posa[f"{n}_{l}"][:2]
+        p = lambda n: posa[n if con_lato(n) else f"{n}_{l}"][:2]
         tipo = spec["tipo"]
         if tipo == "angolo":
             a, b, c = spec["punti"]
@@ -390,6 +399,13 @@ class Analizzatore:
             s1, s2 = spec["scala"]
             scala = geometria.distanza(p(s1), p(s2)) or 1.0
             return -p(spec["punto"])[1] / scala
+        if tipo == "distanza":
+            # distanza tra due punti in percentuale del segmento "scala" (100 = lunga quanto il segmento)
+            scala = geometria.distanza(p(spec["scala"][0]), p(spec["scala"][1]))
+            if not scala:
+                return None
+            a, b = spec["punti"]
+            return 100.0 * geometria.distanza(p(a), p(b)) / scala
         raise ValueError(f"Tipo di misura sconosciuto: {tipo}")
 
     def _calcola_misure(self, posa, lato):

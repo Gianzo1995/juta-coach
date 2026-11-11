@@ -12,6 +12,10 @@ const PUNTI = {
   tallone_sx: 29, tallone_dx: 30, punta_sx: 31, punta_dx: 32, punta_piede_sx: 31, punta_piede_dx: 32,
 };
 const NOMI_PUNTI = new Set(Object.keys(PUNTI).filter(n => /_(sx|dx)$/.test(n)).map(n => n.slice(0, -3)));
+// un nome con il lato (es. "ginocchio_sx") non dipende dal lato analizzato: serve alle distanze tra i due lati
+const conLato = n => /_(sx|dx)$/.test(n);
+const puntoNoto = n => NOMI_PUNTI.has(conLato(n) ? n.slice(0, -3) : n);
+const nomePunto = (n, l) => conLato(n) ? n : `${n}_${l}`;
 
 const LATI = ["sx", "dx"];
 const GRAVITA = { verde: 0, giallo: 1, rosso: 2 };
@@ -46,7 +50,7 @@ const geo = {
 // ---------------------------------------------------------------------------
 // Catalogo ed ereditarieta' (identico a motore/regole.py)
 // ---------------------------------------------------------------------------
-const TIPI_MISURA = new Set(["angolo", "angolo_orientato", "inclinazione", "posizione", "durata"]);
+const TIPI_MISURA = new Set(["angolo", "angolo_orientato", "inclinazione", "posizione", "distanza", "durata"]);
 // misure calcolate dal motore a fine ripetizione (in secondi), usabili negli errori con momento "fine"
 const MISURE_TEMPO = new Set(["durata", "discesa", "pausa", "salita"]);
 const copia = v => v === undefined ? v : JSON.parse(JSON.stringify(v));
@@ -115,7 +119,7 @@ function valida(cfg) {
   const note = new Set([...Object.keys(misure), ...MISURE_TEMPO, ...Object.keys(misure).map(n => n + "_asimmetria")]);
   for (const [nome, m] of Object.entries(misure)) {
     for (const n of [...(m.punti || []), ...(m.punto ? [m.punto] : []), ...(m.scala || [])])
-      if (!NOMI_PUNTI.has(n)) problemi.push(`misura '${nome}': punto sconosciuto '${n}'`);
+      if (!puntoNoto(n)) problemi.push(`misura '${nome}': punto sconosciuto '${n}'`);
   }
   const rip = cfg.ripetizione || {};
   if (!(rip.misura in misure)) problemi.push(`ripetizione: misura '${rip.misura}' non definita`);
@@ -268,18 +272,23 @@ class Analizzatore {
   puntiNecessari(lato) {
     const lati = lato === "entrambi" ? LATI : [lato];
     const out = [];
-    for (const n of this.nomiBase()) for (const l of lati) out.push(`${n}_${l}`);
+    for (const n of this.nomiBase()) for (const l of lati) out.push(nomePunto(n, l));
     return [...new Set(out)].sort();
   }
 
   misuraSuLato(spec, posa, l) {
-    const p = n => posa[`${n}_${l}`];
+    const p = n => posa[nomePunto(n, l)];
     if (spec.tipo === "angolo") return geo.angolo(p(spec.punti[0]), p(spec.punti[1]), p(spec.punti[2]));
     if (spec.tipo === "angolo_orientato") return geo.angoloOrientato(p(spec.punti[0]), p(spec.punti[1]), p(spec.punti[2]));
     if (spec.tipo === "inclinazione") return geo.inclinazione(p(spec.punti[0]), p(spec.punti[1]));
     if (spec.tipo === "posizione") {
       const scala = geo.distanza(p(spec.scala[0]), p(spec.scala[1])) || 1;
       return -p(spec.punto)[1] / scala;
+    }
+    if (spec.tipo === "distanza") {   // distanza tra due punti in percentuale del segmento "scala"
+      const scala = geo.distanza(p(spec.scala[0]), p(spec.scala[1]));
+      if (!scala) return null;
+      return 100 * geo.distanza(p(spec.punti[0]), p(spec.punti[1])) / scala;
     }
     throw new Error("Tipo di misura sconosciuto: " + spec.tipo);
   }

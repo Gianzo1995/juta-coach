@@ -60,6 +60,11 @@ def casi():
         "POL-001": [pm.posa_polpaccio(105.3)] * FPS + pm.ripetizione_fasi(pm.posa_polpaccio, 105.3, 135.2, 1, 1, 2)
                    + pm.ripetizione_fasi(pm.posa_polpaccio, 105.3, 121.4, 1, 1, 2),
         "DEP-003": [pm.posa_alzata(30.3, 30.3)] * FPS + R(lambda a: pm.posa_alzata(a, a), 30.3, 80.2, secondi=3.0),
+        "ADD-007": [pm.posa_seduto_fronte(240.3)] * FPS + pm.ripetizione_fasi(pm.posa_seduto_fronte, 240.3, 80.2, 1, 1, 2)
+                   + pm.ripetizione_fasi(pm.posa_seduto_fronte, 240.3, 150.4, 1, 1, 2)
+                   + pm.ripetizione_fasi(pm.posa_seduto_fronte, 240.3, 80.2, 1, 1, 0.4),
+        "ABD-006": [pm.posa_seduto_fronte(100.3)] * FPS + pm.ripetizione_fasi(pm.posa_seduto_fronte, 100.3, 260.2, 1, 1, 2)
+                   + pm.ripetizione_fasi(pm.posa_seduto_fronte, 100.3, 190.4, 1, 1, 2),
         "PET-002": [pp(175)] * FPS + R(pp, 175, 80, secondi=3.0) + R(pp, 175, 80, secondi=3.0, abbassa_bacino=70),
     }
 

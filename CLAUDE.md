@@ -66,6 +66,8 @@ Ogni voce: `{ "id", "nome"?, "gruppo"?, "scheda", "config_app" }`.
   centrale SOTTO la retta tra gli estremi, più di 180 = SOPRA; per corpi orizzontali/inclinati, es. bacino nei
   piegamenti), `inclinazione` (2 punti [A, B]: 0 = B sopra A, 90 = orizzontale, 180 = B sotto A),
   `posizione` (spostamento verticale rispetto all'inizio, in unità di un segmento `scala`),
+  `distanza` (`punti` [A, B] e `scala` [C, D]: distanza A-B in **percentuale** di C-D, 100 = uguali; i punti possono avere
+  il lato nel nome, es. `ginocchio_sx`/`ginocchio_dx`, per misurare tra i due lati; nell'app compare in %),
   `durata` (solo dichiarativa: la durata la calcola il motore a fine ripetizione).
 - **Misure di tempo automatiche** (secondi, usabili negli errori con `momento: "fine"`):
   `durata` (ripetizione intera: dall'uscita dalla posizione iniziale al ritorno), `discesa` (dall'uscita dalla posizione
@@ -122,7 +124,8 @@ Ogni voce: `{ "id", "nome"?, "gruppo"?, "scheda", "config_app" }`.
   Da fare: verso avanti/indietro per corpi verticali (busto in PET-047, PET-054), serve conoscere il verso del viso.
 - ~~B. Fasi della ripetizione~~ (fatto: misure `discesa`, `pausa`, `salita`).
 - **C. Controllo in alto** tra una ripetizione e l'altra (braccia/gambe distese).
-- **D. Misura `distanza`** tra due punti rispetto a un segmento (larghezza presa, ginocchia-mani).
+- ~~D. Misura `distanza`~~ (fatto: ADD-007, ABD-006/007/011 analizzabili via integrazioni, distanza tra le ginocchia
+  in % della larghezza delle anche; regole proposte dall'app, da tarare). Da usare anche per larghezza presa, ginocchia-mani.
 - ~~E. Scelta del lato che lavora~~ (fatto con `impostazioni`, es. PET-006; anche numero di tavolette PET-020).
   Funziona anche in vista frontale: DEL-007 reso analizzabile via integrazioni con le regole di DEL-005.
   Da valutare con Gianluca: DEL-009, DEL-013, DEL-014/015, DEP-007 (servono regole scritte da lui).
@@ -149,8 +152,7 @@ Ogni voce: `{ "id", "nome"?, "gruppo"?, "scheda", "config_app" }`.
 - **Prove nel browser** (non nel repo): server locale su `sito/` e Playwright con `window.__JUTA_PROVA` per simulare la
   posa; controllare ricerca esercizi, scelta del braccio, avvisi rossi e uno squat in live con revisione.
 - **Richieste del catalogo gambe non ancora fatte** (esercizi lasciati solo-scheda o con analisi ridotta): modalità isometrica
-  (QUA-006, ADD-001/002/009), modalità balistica per salti e swing (QUA-002, QUA-010, QUA-063, GLU-021), misura `distanza`
-  tra i due lati (ADD-007, ABD-006/007/008/011), scelta del lato in vista frontale per affondi laterali, cossack, adduzioni/abduzioni
+  (QUA-006, ADD-001/002/009), modalità balistica per salti e swing (QUA-002, QUA-010, QUA-063, GLU-021), camera che segue la persona (ABD-008), scelta del lato in vista frontale per affondi laterali, cossack, adduzioni/abduzioni
   (QUA-013, QUA-038, QUA-060, ADD-004/005/006/008, ABD-003/005/012/013), angolo con verso oltre 180° (GLU-023/026/029).
 - **In attesa da Gianluca**: regole per DEL-009, DEL-013, DEL-014/015, DEP-007 (a un braccio, vista frontale);
   taratura delle soglie in sala con gli istruttori; prossimi cataloghi (braccia, addome...).
