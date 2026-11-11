@@ -5,7 +5,7 @@ Avvio:   python avvia.py
          python avvia.py --video prova.mp4      (analizza un video invece della webcam)
 
 Tasti nella finestra:
-  1 / 2 / 3   cambia esercizio (squat / panca / lat machine)
+  1 / 2 / 3   cambia esercizio (squat / panca PET-012 / lat machine DOR-020)
   R           azzera il conteggio
   D           mostra/nasconde i numeri tecnici (angoli)
   Q o ESC     esci
@@ -121,7 +121,7 @@ def main():
     args = parser.parse_args()
 
     esercizi = carica_tutti("esercizi")
-    tasti = {ord("1"): "squat", ord("2"): "PET-012", ord("3"): "lat_machine"}
+    tasti = {ord("1"): "squat", ord("2"): "PET-012", ord("3"): "DOR-020"}
     attuale = args.esercizio
     analizzatore = Analizzatore(esercizi[attuale])
 

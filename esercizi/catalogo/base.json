@@ -1,201 +1,110 @@
 [
- {
-  "id": "squat",
-  "nome": "Squat con bilanciere",
-  "gruppo": "Gambe",
-  "scheda": null,
-  "config_app": {
-   "eredita_da": null,
-   "vista_camera": "laterale",
-   "lato": "auto",
-   "messaggio_posizione": "Mettiti di lato, corpo intero visibile",
-   "messaggio_ok": "Ottimo squat!",
-   "misure": {
-    "ginocchio": {
-     "tipo": "angolo",
-     "punti": [
-      "anca",
-      "ginocchio",
-      "caviglia"
-     ],
-     "ancora": "caviglia"
-    },
-    "busto": {
-     "tipo": "inclinazione",
-     "punti": [
-      "anca",
-      "spalla"
-     ]
-    },
-    "tallone": {
-     "tipo": "posizione",
-     "punto": "tallone",
-     "scala": [
-      "ginocchio",
-      "caviglia"
-     ]
+  {
+    "id": "squat",
+    "nome": "Squat con bilanciere",
+    "gruppo": "Gambe",
+    "scheda": null,
+    "config_app": {
+      "eredita_da": null,
+      "vista_camera": "laterale",
+      "lato": "auto",
+      "messaggio_posizione": "Mettiti di lato, corpo intero visibile",
+      "messaggio_ok": "Ottimo squat!",
+      "misure": {
+        "ginocchio": {
+          "tipo": "angolo",
+          "punti": [
+            "anca",
+            "ginocchio",
+            "caviglia"
+          ],
+          "ancora": "caviglia"
+        },
+        "busto": {
+          "tipo": "inclinazione",
+          "punti": [
+            "anca",
+            "spalla"
+          ]
+        },
+        "tallone": {
+          "tipo": "posizione",
+          "punto": "tallone",
+          "scala": [
+            "ginocchio",
+            "caviglia"
+          ]
+        }
+      },
+      "ripetizione": {
+        "misura": "ginocchio",
+        "direzione": "diminuisce",
+        "posizione_iniziale": 160,
+        "inizio_movimento": 140
+      },
+      "errori": [
+        {
+          "id": "profondita",
+          "messaggio": "Scendi di più",
+          "gravita": "giallo",
+          "momento": "fine",
+          "misura": "ginocchio",
+          "statistica": "minimo",
+          "maggiore_di": 100
+        },
+        {
+          "id": "busto_inclinato",
+          "messaggio": "Petto in alto, busto più dritto",
+          "gravita": "rosso",
+          "momento": "durante",
+          "misura": "busto",
+          "maggiore_di": 55
+        },
+        {
+          "id": "talloni",
+          "messaggio": "Talloni a terra",
+          "gravita": "rosso",
+          "momento": "durante",
+          "misura": "tallone",
+          "maggiore_di": 0.08
+        }
+      ],
+      "testi_errori": {
+        "profondita": {
+          "cosa_succede": "Il ginocchio si è fermato a {valore}: per uno squat completo deve chiudersi sotto i {soglia}.",
+          "perche_conta": "Uno squat corto allena meno glutei e quadricipiti e abitua il corpo a un'ampiezza ridotta.",
+          "come_correggere": "Scendi finché l'anca arriva all'altezza del ginocchio. Se non ci arrivi, riduci il carico o allarga leggermente i piedi.",
+          "frase_da_ricordare": "Scendi di più",
+          "frase_alternativa": "Più giù, anca al ginocchio"
+        },
+        "busto_inclinato": {
+          "cosa_succede": "Il busto si è inclinato di {valore} rispetto alla verticale (limite {soglia}).",
+          "perche_conta": "Troppa inclinazione sposta il lavoro sulla zona lombare e rende il bilanciere instabile.",
+          "come_correggere": "Tieni il petto alto e lo sguardo in avanti. Spingi le ginocchia in avanti e in fuori per scendere più verticale.",
+          "frase_da_ricordare": "Petto in alto",
+          "frase_alternativa": "Busto dritto, guarda avanti"
+        },
+        "talloni": {
+          "cosa_succede": "Il tallone si è sollevato da terra durante il movimento.",
+          "perche_conta": "Con i talloni alti il peso va sulle punte: l'equilibrio peggiora e le ginocchia si caricano di più.",
+          "come_correggere": "Distribuisci il peso su tutto il piede, sentendo bene il tallone. Se succede sempre, lavora sulla mobilità della caviglia o usa un rialzo sotto i talloni.",
+          "frase_da_ricordare": "Talloni giù",
+          "frase_alternativa": "Peso sui talloni"
+        }
+      },
+      "analizzabilita": "parziale",
+      "motivo": "Dalla vista laterale si leggono profondità, inclinazione del busto e talloni.",
+      "non_rilevabili": [
+        {
+          "errore": "Ginocchia che collassano verso l'interno",
+          "motivo": "Si vede solo con una camera frontale."
+        },
+        {
+          "errore": "Schiena che si arrotonda",
+          "motivo": "Il modello rileva pochi punti sul busto: la curvatura della colonna non è misurabile in modo affidabile."
+        }
+      ],
+      "da_calibrare": true
     }
-   },
-   "ripetizione": {
-    "misura": "ginocchio",
-    "direzione": "diminuisce",
-    "posizione_iniziale": 160,
-    "inizio_movimento": 140
-   },
-   "errori": [
-    {
-     "id": "profondita",
-     "messaggio": "Scendi di più",
-     "gravita": "giallo",
-     "momento": "fine",
-     "misura": "ginocchio",
-     "statistica": "minimo",
-     "maggiore_di": 100
-    },
-    {
-     "id": "busto_inclinato",
-     "messaggio": "Petto in alto, busto più dritto",
-     "gravita": "rosso",
-     "momento": "durante",
-     "misura": "busto",
-     "maggiore_di": 55
-    },
-    {
-     "id": "talloni",
-     "messaggio": "Talloni a terra",
-     "gravita": "rosso",
-     "momento": "durante",
-     "misura": "tallone",
-     "maggiore_di": 0.08
-    }
-   ],
-   "testi_errori": {
-    "profondita": {
-     "cosa_succede": "Il ginocchio si è fermato a {valore}: per uno squat completo deve chiudersi sotto i {soglia}.",
-     "perche_conta": "Uno squat corto allena meno glutei e quadricipiti e abitua il corpo a un'ampiezza ridotta.",
-     "come_correggere": "Scendi finché l'anca arriva all'altezza del ginocchio. Se non ci arrivi, riduci il carico o allarga leggermente i piedi.",
-     "frase_da_ricordare": "Scendi di più",
-     "frase_alternativa": "Più giù, anca al ginocchio"
-    },
-    "busto_inclinato": {
-     "cosa_succede": "Il busto si è inclinato di {valore} rispetto alla verticale (limite {soglia}).",
-     "perche_conta": "Troppa inclinazione sposta il lavoro sulla zona lombare e rende il bilanciere instabile.",
-     "come_correggere": "Tieni il petto alto e lo sguardo in avanti. Spingi le ginocchia in avanti e in fuori per scendere più verticale.",
-     "frase_da_ricordare": "Petto in alto",
-     "frase_alternativa": "Busto dritto, guarda avanti"
-    },
-    "talloni": {
-     "cosa_succede": "Il tallone si è sollevato da terra durante il movimento.",
-     "perche_conta": "Con i talloni alti il peso va sulle punte: l'equilibrio peggiora e le ginocchia si caricano di più.",
-     "come_correggere": "Distribuisci il peso su tutto il piede, sentendo bene il tallone. Se succede sempre, lavora sulla mobilità della caviglia o usa un rialzo sotto i talloni.",
-     "frase_da_ricordare": "Talloni giù",
-     "frase_alternativa": "Peso sui talloni"
-    }
-   },
-   "analizzabilita": "parziale",
-   "motivo": "Dalla vista laterale si leggono profondità, inclinazione del busto e talloni.",
-   "non_rilevabili": [
-    {
-     "errore": "Ginocchia che collassano verso l'interno",
-     "motivo": "Si vede solo con una camera frontale."
-    },
-    {
-     "errore": "Schiena che si arrotonda",
-     "motivo": "Il modello rileva pochi punti sul busto: la curvatura della colonna non è misurabile in modo affidabile."
-    }
-   ],
-   "da_calibrare": true
   }
- },
- {
-  "id": "lat_machine",
-  "nome": "Lat machine",
-  "gruppo": "Schiena",
-  "scheda": null,
-  "config_app": {
-   "eredita_da": null,
-   "vista_camera": "frontale",
-   "lato": "entrambi",
-   "messaggio_posizione": "Siediti di fronte, braccia visibili",
-   "messaggio_ok": "Ottima trazione!",
-   "misure": {
-    "gomito": {
-     "tipo": "angolo",
-     "punti": [
-      "spalla",
-      "gomito",
-      "polso"
-     ],
-     "ancora": "spalla"
-    }
-   },
-   "ripetizione": {
-    "misura": "gomito",
-    "direzione": "diminuisce",
-    "posizione_iniziale": 150,
-    "inizio_movimento": 130
-   },
-   "errori": [
-    {
-     "id": "ampiezza",
-     "messaggio": "Tira fino al petto",
-     "gravita": "giallo",
-     "momento": "fine",
-     "misura": "gomito",
-     "statistica": "minimo",
-     "maggiore_di": 85
-    },
-    {
-     "id": "asimmetria",
-     "messaggio": "Tira in modo uguale con le due braccia",
-     "gravita": "giallo",
-     "momento": "fine",
-     "misura": "gomito_asimmetria",
-     "statistica": "massimo",
-     "maggiore_di": 25
-    },
-    {
-     "id": "slancio",
-     "messaggio": "Senza slancio, movimento controllato",
-     "gravita": "rosso",
-     "momento": "fine",
-     "misura": "durata",
-     "statistica": "minimo",
-     "minore_di": 1.2
-    }
-   ],
-   "testi_errori": {
-    "ampiezza": {
-     "cosa_succede": "Il gomito si è fermato a {valore}: la barra non è scesa abbastanza (obiettivo sotto i {soglia}).",
-     "perche_conta": "Con un'ampiezza corta i dorsali lavorano poco e il movimento resta sulle braccia.",
-     "come_correggere": "Porta la barra fino alla parte alta del petto. Pensa a portare i gomiti verso i fianchi.",
-     "frase_da_ricordare": "Tira al petto",
-     "frase_alternativa": "Gomiti ai fianchi"
-    },
-    "asimmetria": {
-     "cosa_succede": "Le due braccia sono arrivate ad angoli diversi: differenza di {valore} (limite {soglia}).",
-     "perche_conta": "Tirare di più con un lato carica in modo diverso spalle e schiena e crea squilibri.",
-     "come_correggere": "Impugna la barra alla stessa distanza dal centro con le due mani. Scendi più lento e senti i due gomiti arrivare insieme.",
-     "frase_da_ricordare": "Braccia uguali",
-     "frase_alternativa": "Tira con tutte e due"
-    },
-    "slancio": {
-     "cosa_succede": "La ripetizione è durata {valore}: sotto il minimo di {soglia}.",
-     "perche_conta": "Lo slancio sposta il lavoro dai dorsali al movimento del busto.",
-     "come_correggere": "Busto fermo: muovi solo le braccia. Risali lento, in due secondi, accompagnando la barra.",
-     "frase_da_ricordare": "Senza slancio",
-     "frase_alternativa": "Busto fermo, piano"
-    }
-   },
-   "analizzabilita": "parziale",
-   "motivo": "Dalla vista frontale si leggono ampiezza, simmetria e velocità.",
-   "non_rilevabili": [
-    {
-     "errore": "Busto che si inclina troppo indietro",
-     "motivo": "Si vede bene solo di lato."
-    }
-   ],
-   "da_calibrare": true
-  }
- }
 ]

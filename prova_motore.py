@@ -70,16 +70,6 @@ def posa_panca(gomito, sollevamento=0.0):
                                vis_dx=0.3)
 
 
-def posa_lat(gomito_sx, gomito_dx):
-    posa = {}
-    for lato, sp, ang, verso in (("sx", (600, 300), gomito_sx, -1),
-                                 ("dx", (400, 300), gomito_dx, 1)):
-        g, p = braccio(sp, ang, verso)
-        for nome, pt in (("spalla", sp), ("gomito", g), ("polso", p)):
-            posa[f"{nome}_{lato}"] = (pt[0], pt[1], 0.95)
-    return posa
-
-
 def posa_piegamento(gomito, abbassa_bacino=0.0, gambe=180.0, w=1280, h=720):
     """Piegamento visto di lato: mani a terra a sinistra, piedi a destra.
     abbassa_bacino in pixel (positivo = bacino che cede), gambe = angolo del ginocchio."""
@@ -281,14 +271,15 @@ def main():
     print(f"{'OK ' if ok else 'ERRORE'}  Impostazioni: lato scelto, soglia per numero di tavolette, controllo disattivato")
     risultati.append(ok)
 
-    # LAT: buona, asimmetrica, ampiezza ridotta
-    frames = [posa_lat(170, 170)] * FPS
-    frames += ripetizione(lambda g: posa_lat(g, g), 170, 60)
-    frames += ripetizione(lambda g: posa_lat(g, min(170, g + 40)), 170, 60)
-    frames += ripetizione(lambda g: posa_lat(g, g), 170, 100)
-    ev = esegui(Analizzatore(es["lat_machine"]), frames)
-    risultati.append(verifica("Lat machine", ev, [[], ["asimmetria"], ["ampiezza"]]))
-    risultati.append(verifica_anticipo("Lat machine", ev))
+    # LAT MACHINE (DOR-020, vista frontale): buona, ampiezza ridotta, risalita troppo veloce
+    lat = lambda a: posa_alzata(a, a)
+    frames = [lat(160.3)] * FPS
+    frames += ripetizione_fasi(lat, 160.3, 35.2, 1, 0.5, 2)
+    frames += ripetizione_fasi(lat, 160.3, 70.4, 1, 0.5, 2)
+    frames += ripetizione_fasi(lat, 160.3, 35.2, 1, 0.5, 0.6)
+    ev = esegui(Analizzatore(es["DOR-020"]), frames)
+    risultati.append(verifica("Lat machine DOR-020", ev, [[], ["ampiezza"], ["troppo_veloce"]]))
+    risultati.append(verifica_anticipo("Lat machine DOR-020", ev))
 
     # PIEGAMENTI (PET-001, ereditato dal catalogo): buono, poco profondo, bacino che cede, troppo veloce
     pp = lambda g, **kw: posa_piegamento(g, **kw)

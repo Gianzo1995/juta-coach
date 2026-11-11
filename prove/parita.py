@@ -41,8 +41,10 @@ def casi():
                    + pm.ripetizione_fasi(pb, 170.2, 110.3, 2, 0.2, 1),
         "PET-015": [pb(170)] * FPS + R(pb, 170, 90, secondi=5.0) + R(pb, 170, 115, secondi=3.0),
         "PET-011": [pp(175)] * FPS + R(pp, 175, 80, secondi=1.5) + R(pp, 175, 80, secondi=1.5, abbassa_bacino=70),
-        "lat_machine": [pm.posa_lat(170, 170)] * FPS + R(lambda g: pm.posa_lat(g, g), 170, 60)
-                       + R(lambda g: pm.posa_lat(g, min(170, g + 40)), 170, 60),
+        "DOR-020": [pm.posa_alzata(160.3, 160.3)] * FPS
+                   + pm.ripetizione_fasi(lambda a: pm.posa_alzata(a, a), 160.3, 35.2, 1, 0.5, 2)
+                   + pm.ripetizione_fasi(lambda a: pm.posa_alzata(a, a), 160.3, 70.4, 1, 0.5, 2)
+                   + pm.ripetizione_fasi(lambda a: pm.posa_alzata(a, a), 160.3, 35.2, 1, 0.5, 0.6),
         "PET-001": [pp(175)] * FPS + R(pp, 175, 80, secondi=3.0) + R(pp, 175, 115, secondi=3.0)
                    + R(pp, 175, 80, secondi=3.0, abbassa_bacino=70) + R(pp, 175, 80, secondi=3.0, abbassa_bacino=-70)
                    + R(pp, 175, 80, secondi=1.0)

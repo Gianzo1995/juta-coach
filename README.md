@@ -17,7 +17,7 @@ conta le ripetizioni, segnala gli errori a voce e mostra un manichino con la pos
 
 ## Esercizi
 
-Squat, panca piana, lat machine e i primi piegamenti (PET-001 … PET-005). Il catalogo è in
+Squat più i cataloghi Pettorali (PET), Dorsali (DOR) e Spalle (DEA, DEL, DEP): 223 esercizi. Il catalogo è in
 `esercizi/catalogo/`: per aggiungere esercizi basta un nuovo file JSON.
 
 ## Per chi sviluppa
