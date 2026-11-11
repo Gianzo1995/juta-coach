@@ -3998,5 +3998,169 @@
    ]
   },
   "motivo": "Come ABD-006 con ampiezza minore (elastico: 20-30° per lato)."
+ },
+ {
+  "id": "QUA-006",
+  "imposta": {
+   "analizzabilita": "parziale",
+   "modalita": "isometrica",
+   "messaggio_posizione": "Camera di lato all'altezza delle ginocchia, corpo intero visibile",
+   "messaggio_ok": "Ottima tenuta!",
+   "messaggio_tenuta": "Tieni, respira",
+   "misure": {
+    "ginocchio": {
+     "tipo": "angolo",
+     "punti": [
+      "anca",
+      "ginocchio",
+      "caviglia"
+     ],
+     "ancora": "caviglia"
+    }
+   },
+   "ripetizione": {
+    "misura": "ginocchio",
+    "tenuta_minimo": 60,
+    "tenuta_massimo": 125
+   },
+   "errori": [
+    {
+     "id": "cosce_alte",
+     "messaggio": "Scendi fino a 90 gradi",
+     "gravita": "giallo",
+     "momento": "durante",
+     "misura": "ginocchio",
+     "maggiore_di": 105
+    },
+    {
+     "id": "troppo_basso",
+     "messaggio": "Risali un poco, ginocchia a 90",
+     "gravita": "giallo",
+     "momento": "durante",
+     "misura": "ginocchio",
+     "minore_di": 72
+    }
+   ],
+   "testi_errori": {
+    "cosce_alte": {
+     "cosa_succede": "Il ginocchio è a {valore}: le cosce sono sopra il parallelo (limite {soglia}).",
+     "perche_conta": "Più in alto la tenuta è più facile e i quadricipiti lavorano meno.",
+     "come_correggere": "Scivola giù lungo il muro finché le cosce sono parallele al pavimento; se è troppo dura, accorcia il tempo invece di salire.",
+     "frase_da_ricordare": "Cosce parallele al pavimento."
+    },
+    "troppo_basso": {
+     "cosa_succede": "Il ginocchio è a {valore}: sei sceso sotto i 90° (limite {soglia}).",
+     "perche_conta": "Sotto i 90° le ginocchia si caricano di più senza un vero vantaggio nella tenuta.",
+     "come_correggere": "Sali leggermente lungo il muro fino ad avere ginocchia a 90° sopra le caviglie.",
+     "frase_da_ricordare": "Ginocchia a 90, sopra le caviglie."
+    }
+   },
+   "motivo": "Modalità isometrica: cronometro della tenuta al posto del conteggio; il primo secondo serve ad assestarsi. Soglie stimate, da tarare in sala.",
+   "non_rilevabili": [
+    {
+     "errore": "Ginocchia oltre le punte",
+     "motivo": "Dipende da dove sono i piedi rispetto al muro: serve un controllo dell'istruttore."
+    },
+    {
+     "errore": "Mani sulle cosce",
+     "motivo": "Le mani si confondono con le cosce viste di lato."
+    }
+   ]
+  },
+  "motivo": "Reso analizzabile con la modalità isometrica (richiesta del catalogo). Regole proposte dall'app."
+ },
+ {
+  "id": "DOR-064",
+  "imposta": {
+   "analizzabilita": "parziale",
+   "modalita": "isometrica",
+   "messaggio_posizione": "Camera di lato, corpo intero e sbarra visibili",
+   "messaggio_ok": "Ottimo front lever!",
+   "messaggio_tenuta": "Tieni, corpo teso",
+   "misure": {
+    "corpo": {
+     "tipo": "inclinazione",
+     "punti": [
+      "spalla",
+      "caviglia"
+     ]
+    },
+    "bacino": {
+     "tipo": "angolo_orientato",
+     "punti": [
+      "spalla",
+      "anca",
+      "caviglia"
+     ]
+    },
+    "gomito": {
+     "tipo": "angolo",
+     "punti": [
+      "spalla",
+      "gomito",
+      "polso"
+     ]
+    }
+   },
+   "ripetizione": {
+    "misura": "corpo",
+    "tenuta_minimo": 55,
+    "tenuta_massimo": 125
+   },
+   "errori": [
+    {
+     "id": "piedi_bassi",
+     "messaggio": "Alza i piedi, corpo orizzontale",
+     "gravita": "giallo",
+     "momento": "durante",
+     "misura": "corpo",
+     "maggiore_di": 105
+    },
+    {
+     "id": "bacino_cede",
+     "messaggio": "Glutei stretti, bacino su",
+     "gravita": "giallo",
+     "momento": "durante",
+     "misura": "bacino",
+     "minore_di": 160
+    },
+    {
+     "id": "braccia_piegate",
+     "messaggio": "Braccia tese",
+     "gravita": "giallo",
+     "momento": "durante",
+     "misura": "gomito",
+     "minore_di": 155
+    }
+   ],
+   "testi_errori": {
+    "piedi_bassi": {
+     "cosa_succede": "Il corpo è inclinato di {valore}: i piedi sono più bassi delle spalle (orizzontale = 90°, limite {soglia}).",
+     "perche_conta": "Con i piedi bassi la leva si accorcia e il front lever diventa più facile di quanto sembri.",
+     "come_correggere": "Spingi la sbarra verso i fianchi e alza i piedi fino all'orizzontale; se non ci riesci, usa una versione raccolta.",
+     "frase_da_ricordare": "Spingi la sbarra verso i fianchi."
+    },
+    "bacino_cede": {
+     "cosa_succede": "Il bacino scende sotto la linea spalle-piedi: il corpo fa la banana.",
+     "perche_conta": "La zona lombare si carica e la tenuta perde efficacia.",
+     "come_correggere": "Stringi glutei e addome; se il bacino cede, passa a una versione con le ginocchia piegate.",
+     "frase_da_ricordare": "Corpo teso come una tavola."
+    },
+    "braccia_piegate": {
+     "cosa_succede": "Il gomito è a {valore}: le braccia si piegano (limite {soglia}).",
+     "perche_conta": "Piegando le braccia lavora il bicipite e la tenuta diventa un'altra cosa; i gomiti si sovraccaricano.",
+     "come_correggere": "Tieni le braccia completamente tese e spingi giù la sbarra con i dorsali.",
+     "frase_da_ricordare": "Braccia tese."
+    }
+   },
+   "motivo": "Modalità isometrica: cronometro della tenuta al posto del conteggio; il primo secondo serve ad assestarsi. Soglie stimate, da tarare in sala.",
+   "non_rilevabili": [
+    {
+     "errore": "Scapole non depresse",
+     "motivo": "Le scapole non sono punti rilevati."
+    }
+   ]
+  },
+  "motivo": "Reso analizzabile con la modalità isometrica (note per il motore, punto 7.8). Regole proposte dall'app."
  }
 ]

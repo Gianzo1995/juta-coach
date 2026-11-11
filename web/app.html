@@ -310,6 +310,7 @@ const NOMI_MISURE = { ginocchio: "Ginocchio", busto: "Busto", gomito: "Gomito", 
 const nomeMisura = m => NOMI_MISURE[m] || (m.charAt(0).toUpperCase() + m.slice(1).replace(/_/g, " "));
 const senzaPunto = t => (t || "").trim().replace(/[.!]+$/, "");
 
+const isometrico = es => ESERCIZI[es]?.modalita === "isometrica";   // tenute: secondi al posto delle ripetizioni
 const virgola = (v, d = 0) => Number(v).toFixed(d).replace(".", ",");
 const tipoMisura = (es, misura) => MISURE_TEMPO.has(misura) ? "durata" : (ESERCIZI[es]?.misure?.[misura.replace("_asimmetria", "")]?.tipo || "angolo");
 function testoMisura(es, misura, v) {
@@ -323,7 +324,7 @@ function testoMisura(es, misura, v) {
 // "punto piu' basso" vale per squat e panca; nei movimenti che aumentano (es. pullover) e' il punto di massima ampiezza
 const puntoEstremo = es => ESERCIZI[es]?.ripetizione?.direzione === "aumenta" ? "nel punto di massima ampiezza" : "al punto più basso";
 const testoTempo = (es, e) => `${nomeMisura(e.misura)} ${testoMisura(es, e.misura, e.valore)} · minimo ${testoSoglia(es, e.misura, e.soglia)}`;
-const testoFasi = f => f ? `discesa ${virgola(f.discesa, 1)} s · fermo ${virgola(f.pausa, 1)} s · salita ${virgola(f.salita, 1)} s` : "";
+const testoFasi = f => f && f.discesa !== undefined ? `discesa ${virgola(f.discesa, 1)} s · fermo ${virgola(f.pausa, 1)} s · salita ${virgola(f.salita, 1)} s` : "";
 const testoSoglia = (es, misura, s) => { const t = tipoMisura(es, misura);
   return t === "durata" ? `${virgola(s, 1)} s` : t === "distanza" ? `${Math.round(s)}%` : `${Math.round(s)}°`; };
 function spiegazione(es, id) {
@@ -516,12 +517,15 @@ async function analizzaVideo(file) {
 }
 
 let impostazioniCorrenti = [];
+let secondiAnnunciati = 0;
 function preparaSessioneUI() {
   const { cfg, etichette } = configScelta();
   ESERCIZI[esercizio] = cfg; impostazioniCorrenti = etichette;
   an = new Analizzatore(cfg);
   ripetuti = {}; rivediDopoErrore = {}; fermo = null; bufferPose = []; sessione = null;
   $("rip").textContent = "0"; $("riepilogo").hidden = true; $("conto").hidden = true;
+  $("contatore").querySelector("small").textContent = isometrico(esercizio) ? "Secondi" : "Ripetizioni";
+  secondiAnnunciati = 0;
   $("b-camera").hidden = modo !== "live";
   $("et-gemello").hidden = true;
   gemelloStato.delete($("gemello"));
@@ -665,7 +669,14 @@ function mostraStato(testo, colore) {
 }
 function aggiornaUI(stato) {
   mostraStato(stato.messaggio || ESERCIZI[esercizio].nome, stato.colore);
-  $("rip").textContent = stato.ripetizioni;
+  if (!isometrico(esercizio)) $("rip").textContent = stato.ripetizioni;
+  else if (stato.fase === "movimento") {          // tenuta in corso: cronometro, e a voce ogni 10 secondi
+    const sec = Math.floor(stato.tenuta_s);
+    $("rip").textContent = sec;
+    if (sec >= 10 && sec % 10 === 0 && sec !== secondiAnnunciati && stato.colore !== "giallo" && stato.colore !== "rosso") {
+      secondiAnnunciati = sec; parla(`${sec} secondi`);
+    }
+  } else secondiAnnunciati = 0;
   if (tecnico) {
     const righe = [
       `${virgola(perf.fps, 1)} fps · elaborazione ${Math.round(perf.elab)} ms`,
@@ -683,13 +694,16 @@ function riassunto(s) {
   const conta = {};
   reps.forEach(r => r.errori.forEach(e => { conta[e] = (conta[e] || 0) + 1; }));
   const top = Object.entries(conta).sort((a, b) => b[1] - a[1])[0] || null;
-  return { tot: reps.length, corrette: reps.filter(r => !r.errori.length).length, top };
+  const migliore = reps.reduce((m, r) => Math.max(m, r.durata_s || 0), 0);   // tenute: la piu' lunga
+  return { tot: reps.length, corrette: reps.filter(r => !r.errori.length).length, top, migliore };
 }
 function mostraRiepilogo(s) {
   const r = riassunto(s), box = $("riepilogo");
   box.replaceChildren();
   const titolo = document.createElement("strong");
-  titolo.textContent = `Serie finita · ${r.corrette} su ${r.tot} corrette`;
+  const iso = isometrico(s.esercizio);
+  titolo.textContent = iso ? `Serie finita · tenuta di ${virgola(r.migliore, 1)} s` + (r.tot > 1 ? ` (la più lunga di ${r.tot})` : "")
+    : `Serie finita · ${r.corrette} su ${r.tot} corrette`;
   const p = document.createElement("p");
   p.textContent = r.top ? `Errore più frequente: ${erroreCfg(s.esercizio, r.top[0]).messaggio} (${r.top[1]} volt${r.top[1] === 1 ? "a" : "e"}).`
     : "Nessun errore rilevato. Continua così.";
@@ -700,7 +714,7 @@ function mostraRiepilogo(s) {
   bottone("Continua", "", () => { box.hidden = true; });
   box.append(titolo, p, fila);
   box.hidden = false;
-  parla(`Serie finita. ${r.corrette} su ${r.tot} corrette.`, true);
+  parla(iso ? `Serie finita. Hai tenuto ${Math.round(r.migliore)} secondi.` : `Serie finita. ${r.corrette} su ${r.tot} corrette.`, true);
 }
 async function rivedi(s, primoErrore) {
   attivo = false; cancelAnimationFrame(raf); clearInterval(timerConto);
@@ -1074,7 +1088,10 @@ async function apriRevisione(s, primoErrore) {
 
   const r = riassunto(s);
   $("rv-titolo").textContent = `${ESERCIZI[s.esercizio].nome} · revisione`;
-  $("rv-sotto").textContent = [`${r.tot} ripetizioni · ${r.corrette} corrette · ${rv.marcatori.length} errori`, ...(s.impostazioni || [])].join(" · ");
+  const riga = isometrico(s.esercizio)
+    ? `${r.tot} tenut${r.tot === 1 ? "a" : "e"} · la più lunga ${virgola(r.migliore, 1)} s · ${rv.marcatori.length} errori`
+    : `${r.tot} ripetizioni · ${r.corrette} corrette · ${rv.marcatori.length} errori`;
+  $("rv-sotto").textContent = [riga, ...(s.impostazioni || [])].join(" · ");
   $("rv-tot").textContent = `${virgola(rv.durata, 1)} s`;
   costruisciLinea();
   gemelloStato.delete($("rv-gemello"));
@@ -1179,7 +1196,7 @@ const comeLista = c => Array.isArray(c) ? c : [c].filter(Boolean);
 function mostraSchedaErrore(m) {
   const ev = m.ev, sp = spiegazione(ev.esercizio, ev.id), cfg = erroreCfg(ev.esercizio, ev.id);
   const chips = el("div", { className: "chips" },
-    el("span", { className: "chip", textContent: `Ripetizione ${ev.ripetizione}` }),
+    el("span", { className: "chip", textContent: `${isometrico(ev.esercizio) ? "Tenuta" : "Ripetizione"} ${ev.ripetizione}` }),
     el("span", { className: "chip", textContent: ev.gravita === "rosso" ? "Da correggere subito" : "Da migliorare" }),
     el("span", { className: "chip", textContent: ev.anticipato ? `Segnalato ${puntoEstremo(ev.esercizio)}` : (cfg.momento === "fine" ? "Segnalato a fine ripetizione" : "Segnalato mentre succedeva") }));
   chips.children[1].dataset.g = ev.gravita;
@@ -1190,7 +1207,7 @@ function mostraSchedaErrore(m) {
   ascolta.onclick = () => parla(`${cfg.messaggio}. ${compila(sp.cosa, ev)} ${sp.perche} ${come.join(" ")}`, true);
   $("scheda").replaceChildren(chips, el("h2", { textContent: cfg.messaggio }),
     voceScheda("Cosa è successo", el("div", { className: "misurati" }, el("p", { textContent: compila(sp.cosa, ev) }), el("p", { className: "misurato", textContent: testoMisurato(ev) }),
-      ...(rv.rip.find(r => r.numero === ev.ripetizione)?.fasi ? [el("p", { className: "misurato", textContent: "Tempi: " + testoFasi(rv.rip.find(r => r.numero === ev.ripetizione).fasi) })] : []))),
+      ...(testoFasi(rv.rip.find(r => r.numero === ev.ripetizione)?.fasi) ? [el("p", { className: "misurato", textContent: "Tempi: " + testoFasi(rv.rip.find(r => r.numero === ev.ripetizione).fasi) })] : []))),
     voceScheda("Perché conta", el("p", { textContent: sp.perche })),
     voceScheda("Come correggerlo", lista),
     el("p", { className: "cue", textContent: `«${sp.cue}»` }),
@@ -1202,8 +1219,11 @@ function mostraSchedaErrore(m) {
 function mostraSchedaSerie() {
   const r = riassunto(rv.s);
   const numeri = el("div", { className: "numeri" },
-    el("div", {}, el("b", { textContent: r.tot }), el("span", { textContent: "ripetizioni" })),
-    el("div", {}, el("b", { textContent: r.corrette }), el("span", { textContent: "corrette" })),
+    ...(isometrico(rv.s.esercizio)
+      ? [el("div", {}, el("b", { textContent: virgola(r.migliore, 1) }), el("span", { textContent: "secondi, la tenuta più lunga" })),
+         el("div", {}, el("b", { textContent: r.tot }), el("span", { textContent: r.tot === 1 ? "tenuta" : "tenute" }))]
+      : [el("div", {}, el("b", { textContent: r.tot }), el("span", { textContent: "ripetizioni" })),
+         el("div", {}, el("b", { textContent: r.corrette }), el("span", { textContent: "corrette" }))]),
     el("div", {}, el("b", { textContent: rv.marcatori.length }), el("span", { textContent: "errori" })));
   const figli = [el("h2", { textContent: r.top ? "Com'è andata la serie" : "Serie pulita" }), numeri];
   if (r.top) {
@@ -1234,8 +1254,9 @@ async function spiegaMeglio(btn, ev) {
   const s = rv.s, cfg = ESERCIZI[s.esercizio];
   const dati = s.eventi.filter(e => e.tipo === "ripetizione").map(r => ({ ripetizione: r.numero, durata_s: r.durata_s, errori: r.errori, minimi: r.minimi, massimi: r.massimi }));
   const soglie = cfg.errori.map(e => ({ errore: e.id, messaggio: e.messaggio, misura: e.misura, soglia: e.maggiore_di ?? e.minore_di, tipo: e.maggiore_di !== undefined ? "errore se maggiore" : "errore se minore" }));
+  const tipoSerie = isometrico(s.esercizio) ? "È un esercizio a tenuta: ogni voce di 'Ripetizioni' è una tenuta e durata_s sono i secondi tenuti.\n" : "";
   const focus = ev ? `Concentrati sull'errore "${erroreCfg(ev.esercizio, ev.id).messaggio}" alla ripetizione ${ev.ripetizione} (valore ${ev.valore}, soglia ${ev.soglia}).` : "Commenta la serie nel suo insieme.";
-  const prompt = `Sei un istruttore di sala di una palestra italiana. Un cliente ha fatto una serie di ${cfg.nome} ripresa da una camera; un sistema ha misurato angoli (gradi) e durate (secondi). Le misure di posizione (tallone, anca) sono spostamenti relativi, non centimetri; le distanze (es. tra le ginocchia) sono in percentuale della larghezza delle anche.\nSoglie: ${JSON.stringify(soglie)}\nRipetizioni: ${JSON.stringify(dati)}\n${focus}\nScrivi in italiano, 4-6 frasi brevi, tono diretto e incoraggiante, dando del tu: cosa è andato bene, l'errore principale e perché conta, 1-2 correzioni pratiche da provare alla prossima serie. Niente diagnosi mediche. Se i numeri sembrano poco affidabili (per esempio valori strani), dillo. Testo semplice, senza elenchi né titoli.`;
+  const prompt = `Sei un istruttore di sala di una palestra italiana. Un cliente ha fatto una serie di ${cfg.nome} ripresa da una camera; un sistema ha misurato angoli (gradi) e durate (secondi). Le misure di posizione (tallone, anca) sono spostamenti relativi, non centimetri; le distanze (es. tra le ginocchia) sono in percentuale della larghezza delle anche.\n${tipoSerie}Soglie: ${JSON.stringify(soglie)}\nRipetizioni: ${JSON.stringify(dati)}\n${focus}\nScrivi in italiano, 4-6 frasi brevi, tono diretto e incoraggiante, dando del tu: cosa è andato bene, l'errore principale e perché conta, 1-2 correzioni pratiche da provare alla prossima serie. Niente diagnosi mediche. Se i numeri sembrano poco affidabili (per esempio valori strani), dillo. Testo semplice, senza elenchi né titoli.`;
   rv.ia = el("p", { id: "ai", textContent: "Sto preparando la spiegazione…" });
   btn.after(rv.ia); btn.disabled = true;
   try {

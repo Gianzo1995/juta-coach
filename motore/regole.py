@@ -23,6 +23,10 @@ GRAVITA = {"verde": 0, "giallo": 1, "rosso": 2}
 ISTERESI_INVERSIONE = 5.0
 SOSTA_MINIMA = 0.5          # secondi fermi nella posizione di partenza prima della PRIMA ripetizione della serie
 RITORNO_INDIETRO = 12.0     # gradi: se dopo l'inversione si torna verso l'estremo, la ripetizione non e' stata chiusa
+USCITA_TENUTA = 1.0         # secondi fuori dalla posizione prima di chiudere una tenuta (modalita' isometrica)
+MESSAGGIO_TENUTA = "Tieni la posizione"
+PERSISTENZA_TENUTA = 1.0    # nelle tenute un errore "durante" conta solo se dura almeno questi secondi di fila
+ASSESTAMENTO_TENUTA = 1.0   # secondi all'inizio della tenuta senza controlli "durante" (ci si sta assestando)
 MESSAGGIO_NON_CHIUSA = "Ripetizione non contata: torna fino alla posizione di partenza"   # di quanto deve "tornare indietro" la misura per dire che il movimento si e' invertito
 
 
@@ -148,6 +152,8 @@ def valida(cfg):
                 problemi.append(f"misura '{nome}': punto sconosciuto '{n}'")
     note = set(misure) | MISURE_TEMPO | {f"{n}_asimmetria" for n in misure}
     rip = cfg.get("ripetizione") or {}
+    if cfg.get("modalita") == "isometrica" and "tenuta_minimo" not in rip and "tenuta_massimo" not in rip:
+        problemi.append("ripetizione: in modalita' isometrica serve tenuta_minimo o tenuta_massimo")
     if rip.get("misura") not in misure:
         problemi.append(f"ripetizione: misura '{rip.get('misura')}' non definita")
     for e in cfg.get("errori", []):
@@ -256,6 +262,7 @@ class Stato:
     eventi: list = field(default_factory=list)  # eventi nuovi in questo fotogramma
     punti_usati: list = field(default_factory=list)
     errore: dict = None             # errore mostrato in questo momento (per il manichino)
+    tenuta_s: float = 0.0           # modalita' isometrica: secondi di tenuta in corso
 
 
 def violato(err, valore):
@@ -306,6 +313,8 @@ class Analizzatore:
         self._msg = ("", "grigio", 0.0)
         self._err_msg = None
         self._ultima_persona = None
+        self._t_dentro = None       # modalita' isometrica: ultimo istante nella posizione da tenere
+        self._t_violazione = {}     # modalita' isometrica: da quando ogni errore "durante" e' violato
 
     # ------------------------------------------------------------------
     def aggiorna(self, posa, t=None):
@@ -315,6 +324,7 @@ class Analizzatore:
 
         # Nessuno nell'inquadratura: se dura, chiudo la serie
         if posa is None:
+            self._verifica_uscita_tenuta(t, stato)
             if (self._ultima_persona is not None
                     and t - self._ultima_persona > self.pausa_fine_serie):
                 self._chiudi_serie(stato)
@@ -334,12 +344,18 @@ class Analizzatore:
         stato.punti_usati = punti
 
         if min(posa[p][2] for p in punti) < self.cfg["visibilita_minima"]:
+            self._verifica_uscita_tenuta(t, stato)
             stato.messaggio = self.cfg["messaggio_posizione"]
             return self._applica_messaggio(stato, t)
 
         misure = self._calcola_misure(posa, lato)
         stato.misure = misure
-        self._macchina_ripetizioni(misure, t, stato)
+        if self._isometrica():
+            self._macchina_tenuta(misure, t, stato)
+            if self.fase == "movimento":
+                stato.tenuta_s = round(self._t_dentro - self._inizio_rip, 1)
+        else:
+            self._macchina_ripetizioni(misure, t, stato)
         stato.ripetizioni = self.ripetizioni
         stato.fase = self.fase
         return self._applica_messaggio(stato, t)
@@ -347,6 +363,8 @@ class Analizzatore:
     def termina(self, t=None):
         """Chiude la serie in corso (es. tasto Stop o fine del video)."""
         stato = Stato()
+        if self._isometrica() and self.fase == "movimento":
+            self._chiudi_tenuta(self._t_dentro, stato)
         self._chiudi_serie(stato)
         return stato.eventi
 
@@ -493,6 +511,76 @@ class Analizzatore:
         elif t - self._inizio_rip > rip["durata_massima"]:
             self._annulla_ripetizione(t, stato, "troppo_lunga")
 
+    # ------------------------------------------------------------------
+    # Modalita' isometrica: una "ripetizione" e' una tenuta (cronometro al posto del conteggio)
+    # ------------------------------------------------------------------
+    def _isometrica(self):
+        return self.cfg.get("modalita") == "isometrica"
+
+    def _macchina_tenuta(self, misure, t, stato):
+        rip = self.cfg["ripetizione"]
+        valore = misure.get(rip["misura"])
+        if valore is None:
+            return
+        dentro = rip.get("tenuta_minimo", float("-inf")) <= valore <= rip.get("tenuta_massimo", float("inf"))
+        if self.fase in ("attesa", "pronto"):
+            if not dentro:
+                self._t_ingresso = None
+                self.fase = "attesa"
+                return
+            if self._t_ingresso is None:
+                self._t_ingresso = t
+            self.fase = "pronto"
+            self._storico_pronto.append(dict(self._grezze))
+            if t - self._t_ingresso >= SOSTA_MINIMA:     # in posizione da mezzo secondo: parte il cronometro
+                self._t_alto = self._t_ingresso
+                self._inizia_ripetizione(misure, self._t_ingresso)
+                self._t_dentro = t
+                self._t_violazione = {}
+            return
+        if dentro:
+            self._t_dentro = t
+            for nome, v in misure.items():
+                self._min[nome] = min(self._min.get(nome, v), v)
+                self._max[nome] = max(self._max.get(nome, v), v)
+            if t - self._inizio_rip >= ASSESTAMENTO_TENUTA:
+                self._controlla_errori("durante", misure, t, stato, self.ripetizioni + 1)
+        else:
+            self._verifica_uscita_tenuta(t, stato)
+
+    def _verifica_uscita_tenuta(self, t, stato):
+        if self._isometrica() and self.fase == "movimento" and t - self._t_dentro > USCITA_TENUTA:
+            self._chiudi_tenuta(self._t_dentro, stato)
+
+    def _chiudi_tenuta(self, t_fine, stato):
+        self.fase = "attesa"
+        self._t_ingresso = None
+        self.ripetizioni += 1
+        durata = t_fine - self._inizio_rip
+        self._min["durata"] = self._max["durata"] = durata
+        self._controlla_errori("fine", None, t_fine, stato, self.ripetizioni)
+        errori = sorted(self._errori_rip)
+        for e in errori:
+            self._errori_serie[e] = self._errori_serie.get(e, 0) + 1
+        stato.eventi.append({
+            "tipo": "ripetizione",
+            "esercizio": self.cfg["id"],
+            "numero": self.ripetizioni,
+            "tenuta": True,
+            "durata_s": round(durata, 2),
+            "errori": errori,
+            "fasi": {},
+            "inizio_t": round(self._inizio_rip, 3),
+            "fondo_t": round(self._inizio_rip, 3),
+            "fine_t": round(t_fine, 3),
+            "minimi": {k: round(v, 2) for k, v in self._min.items()},
+            "massimi": {k: round(v, 2) for k, v in self._max.items()},
+        })
+        if not errori:
+            self._mostra(self.cfg.get("messaggio_ok", "Ottima tenuta!"), "verde", t_fine)
+        self._base = {}
+        self._fine_ultima_rip = t_fine
+
     def _annulla_ripetizione(self, t, stato, motivo):
         """Finestra scartata: la ripetizione non viene contata e i suoi errori vanno ignorati."""
         stato.eventi.append({"tipo": "annullata", "esercizio": self.cfg["id"], "ripetizione": self.ripetizioni + 1,
@@ -610,14 +698,20 @@ class Analizzatore:
                 fonte = self._min if err["statistica"] == "minimo" else self._max
                 valore = fonte.get(err["misura"])
             if not violato(err, valore):
+                self._t_violazione.pop(err["id"], None)
                 continue
+            t_inizio = t
+            if momento == "durante" and self._isometrica():
+                t_inizio = self._t_violazione.setdefault(err["id"], t)
+                if t - t_inizio < PERSISTENZA_TENUTA:
+                    continue
 
             self._errori_rip.add(err["id"])
             if momento == "inversione":
                 self._anticipati.add(err["id"])
             # il momento "vero" dell'errore: il punto piu' basso per gli errori di ampiezza
             ampiezza = err["misura"] == self.cfg["ripetizione"]["misura"] and momento != "durante"
-            t_origine = self._t_estremo if ampiezza else t
+            t_origine = self._t_estremo if ampiezza else t_inizio
             stato.eventi.append({
                 "tipo": "errore",
                 "esercizio": self.cfg["id"],
@@ -657,6 +751,6 @@ class Analizzatore:
             stato.messaggio = {
                 "attesa": self.cfg["messaggio_posizione"],
                 "pronto": "Pronto",
-                "movimento": "",
+                "movimento": self.cfg.get("messaggio_tenuta", MESSAGGIO_TENUTA) if self._isometrica() else "",
             }[self.fase]
         return stato

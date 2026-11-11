@@ -146,6 +146,25 @@ def posa_seduto_fronte(ginocchia):
     return posa
 
 
+def posa_front_lever(corpo, abbassa_bacino=0.0):
+    """Front lever visto di lato: corpo = inclinazione spalla-caviglia (90 = orizzontale, 180 = appesi)."""
+    sp, L = (400, 300), 300
+    d = (math.sin(math.radians(corpo)), -math.cos(math.radians(corpo)))
+    an = (sp[0] + 0.5 * L * d[0], sp[1] + 0.5 * L * d[1] + abbassa_bacino)
+    cv = (sp[0] + L * d[0], sp[1] + L * d[1])
+    return punti_entrambi_lati({"spalla": sp, "gomito": (sp[0] - 5, sp[1] - 120), "polso": (sp[0] - 10, sp[1] - 240),
+                                "anca": an, "ginocchio": (sp[0] + 0.75 * L * d[0], sp[1] + 0.75 * L * d[1] + abbassa_bacino / 2),
+                                "caviglia": cv, "tallone": cv, "punta": (cv[0] + 15, cv[1])}, vis_sx=0.95, vis_dx=0.4)
+
+
+def tenuta(fn_posa, fuori, dentro, secondi, entrata=1.0, **extra):
+    """Tenuta isometrica: da 'fuori' a 'dentro' in 'entrata' s, ferma 'secondi' s, poi ritorno e 2 s fuori."""
+    frames = [fn_posa(fuori + (dentro - fuori) * i / (entrata * FPS)) for i in range(int(entrata * FPS))]
+    frames += [fn_posa(dentro, **extra)] * int(secondi * FPS)
+    frames += [fn_posa(dentro + (fuori - dentro) * i / FPS) for i in range(FPS)]
+    return frames + [fn_posa(fuori)] * (2 * FPS)
+
+
 def ripetizione(fn_posa, inizio, fondo, secondi=2.0, **extra_fondo):
     """Genera una ripetizione: da 'inizio' a 'fondo' e ritorno, piu' una pausa."""
     n = int(secondi * FPS)
@@ -373,6 +392,20 @@ def main():
                               [[], ["ampiezza"], ["troppo_veloce"]]))
     fr = ([sf(100.3)] * FPS + ripetizione_fasi(sf, 100.3, 260.2, 1, 1, 2) + ripetizione_fasi(sf, 100.3, 190.4, 1, 1, 2))
     risultati.append(verifica("Abductor machine ABD-006", esegui(Analizzatore(es["ABD-006"]), fr), [[], ["ampiezza"]]))
+
+    # Modalita' isometrica: wall sit e front lever (tenute al posto delle ripetizioni)
+    fr = [posa_squat(175)] * FPS + tenuta(posa_squat, 175, 95.3, 10, entrata=2) + tenuta(posa_squat, 175, 110.4, 5, entrata=2)
+    ev = esegui(Analizzatore(es["QUA-006"]), fr)
+    risultati.append(verifica("Wall sit QUA-006 (tenute)", ev, [[], ["cosce_alte"]]))
+    durate = [e["durata_s"] for e in ev if e["tipo"] == "ripetizione"]
+    ok = len(durate) == 2 and 10 <= durate[0] <= 11.5 and 5 <= durate[1] <= 6.5
+    risultati.append(ok)
+    print(f"{'OK ' if ok else 'ERRORE'}  Wall sit: durata delle tenute {durate} s (attese circa 10,5 e 5,5)")
+    fl = lambda c, **kw: posa_front_lever(c, **kw)
+    fr = ([fl(178.3)] * FPS + tenuta(fl, 178.3, 90.3, 6) + tenuta(fl, 178.3, 112.4, 4)
+          + tenuta(fl, 178.3, 90.3, 4, abbassa_bacino=60))
+    risultati.append(verifica("Front lever DOR-064 (tenute)", esegui(Analizzatore(es["DOR-064"]), fr),
+                              [[], ["piedi_bassi"], ["bacino_cede"]]))
 
     # Ogni esercizio analizzabile deve girare senza bloccarsi su una posa completa (tutti i punti, naso con lato)
     from motore.regole import applica_impostazioni

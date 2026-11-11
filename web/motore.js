@@ -22,6 +22,10 @@ const GRAVITA = { verde: 0, giallo: 1, rosso: 2 };
 const ISTERESI_INVERSIONE = 5;
 const SOSTA_MINIMA = 0.5;        // secondi fermi in partenza prima della PRIMA ripetizione della serie
 const RITORNO_INDIETRO = 12;     // gradi: tornare verso l'estremo dopo l'inversione = ripetizione non chiusa
+const USCITA_TENUTA = 1;         // secondi fuori dalla posizione prima di chiudere una tenuta (modalita' isometrica)
+const MESSAGGIO_TENUTA = "Tieni la posizione";
+const PERSISTENZA_TENUTA = 1;    // nelle tenute un errore "durante" conta solo se dura almeno questi secondi di fila
+const ASSESTAMENTO_TENUTA = 1;   // secondi all'inizio della tenuta senza controlli "durante" (ci si sta assestando)
 const MESSAGGIO_NON_CHIUSA = "Ripetizione non contata: torna fino alla posizione di partenza";
 const r2 = v => Math.round(v * 100) / 100, r3 = v => Math.round(v * 1000) / 1000;
 
@@ -122,6 +126,8 @@ function valida(cfg) {
       if (!puntoNoto(n)) problemi.push(`misura '${nome}': punto sconosciuto '${n}'`);
   }
   const rip = cfg.ripetizione || {};
+  if (cfg.modalita === "isometrica" && !("tenuta_minimo" in rip) && !("tenuta_massimo" in rip))
+    problemi.push("ripetizione: in modalita' isometrica serve tenuta_minimo o tenuta_massimo");
   if (!(rip.misura in misure)) problemi.push(`ripetizione: misura '${rip.misura}' non definita`);
   for (const e of cfg.errori || []) {
     if (!note.has(e.misura)) problemi.push(`errore '${e.id}': misura '${e.misura}' non definita`);
@@ -210,12 +216,15 @@ class Analizzatore {
     this.serie = []; this.tAlto = null; this.tPartenza = null;
     this.tIngresso = null; this.sostaOk = false; this.baseSerie = null; this.piccoRitorno = null;
     this.erroriSerie = {}; this.msg = ["", "grigio", 0]; this.errMsg = null; this.ultimaPersona = null;
+    this.tDentro = null;   // modalita' isometrica: ultimo istante nella posizione da tenere
+    this.tViolazione = {}; // modalita' isometrica: da quando ogni errore "durante" e' violato
   }
 
   aggiorna(posa, t) {
     const stato = { colore: "grigio", messaggio: "", ripetizioni: this.ripetizioni, fase: this.fase,
-      lato: "", misure: {}, eventi: [], punti_usati: [], errore: null };
+      lato: "", misure: {}, eventi: [], punti_usati: [], errore: null, tenuta_s: 0 };
     if (!posa) {
+      this.verificaUscitaTenuta(t, stato);
       if (this.ultimaPersona !== null && t - this.ultimaPersona > this.pausaFineSerie) this.chiudiSerie(stato);
       stato.messaggio = this.cfg.messaggio_posizione;
       return stato;
@@ -229,18 +238,23 @@ class Analizzatore {
     const punti = this.puntiNecessari(lato);
     stato.punti_usati = punti;
     if (Math.min(...punti.map(p => posa[p][2])) < this.cfg.visibilita_minima) {
+      this.verificaUscitaTenuta(t, stato);
       stato.messaggio = this.cfg.messaggio_posizione;
       return this.applicaMessaggio(stato, t);
     }
     const misure = this.calcolaMisure(posa, lato);
     stato.misure = misure;
-    this.macchina(misure, t, stato);
+    if (this.isometrica()) {
+      this.macchinaTenuta(misure, t, stato);
+      if (this.fase === "movimento") stato.tenuta_s = Math.round((this.tDentro - this.inizioRip) * 10) / 10;
+    } else this.macchina(misure, t, stato);
     stato.ripetizioni = this.ripetizioni; stato.fase = this.fase;
     return this.applicaMessaggio(stato, t);
   }
 
   termina() {
     const stato = { eventi: [] };
+    if (this.isometrica() && this.fase === "movimento") this.chiudiTenuta(this.tDentro, stato);
     this.chiudiSerie(stato);
     return stato.eventi;
   }
@@ -366,6 +380,57 @@ class Analizzatore {
     else if (t - this.inizioRip > rip.durata_massima) this.annullaRipetizione(t, stato, "troppo_lunga");
   }
 
+  // Modalita' isometrica: una "ripetizione" e' una tenuta (cronometro al posto del conteggio). Identica a regole.py
+  isometrica() { return this.cfg.modalita === "isometrica"; }
+
+  macchinaTenuta(misure, t, stato) {
+    const rip = this.cfg.ripetizione, valore = misure[rip.misura];
+    if (valore === undefined) return;
+    const dentro = (rip.tenuta_minimo ?? -Infinity) <= valore && valore <= (rip.tenuta_massimo ?? Infinity);
+    if (this.fase === "attesa" || this.fase === "pronto") {
+      if (!dentro) { this.tIngresso = null; this.fase = "attesa"; return; }
+      if (this.tIngresso === null) this.tIngresso = t;
+      this.fase = "pronto";
+      this.storicoPronto.push({ ...this.grezze });
+      if (this.storicoPronto.length > 10) this.storicoPronto.shift();
+      if (t - this.tIngresso >= SOSTA_MINIMA) {     // in posizione da mezzo secondo: parte il cronometro
+        this.tAlto = this.tIngresso;
+        this.iniziaRipetizione(misure, this.tIngresso);
+        this.tDentro = t;
+        this.tViolazione = {};
+      }
+      return;
+    }
+    if (dentro) {
+      this.tDentro = t;
+      for (const [n, v] of Object.entries(misure)) {
+        this.min[n] = Math.min(this.min[n] ?? v, v);
+        this.max[n] = Math.max(this.max[n] ?? v, v);
+      }
+      if (t - this.inizioRip >= ASSESTAMENTO_TENUTA) this.controllaErrori("durante", misure, t, stato, this.ripetizioni + 1);
+    } else this.verificaUscitaTenuta(t, stato);
+  }
+
+  verificaUscitaTenuta(t, stato) {
+    if (this.isometrica() && this.fase === "movimento" && t - this.tDentro > USCITA_TENUTA) this.chiudiTenuta(this.tDentro, stato);
+  }
+
+  chiudiTenuta(tFine, stato) {
+    this.fase = "attesa"; this.tIngresso = null; this.ripetizioni += 1;
+    const durata = tFine - this.inizioRip;
+    this.min.durata = this.max.durata = durata;
+    this.controllaErrori("fine", null, tFine, stato, this.ripetizioni);
+    const errori = [...this.erroriRip].sort();
+    for (const e of errori) this.erroriSerie[e] = (this.erroriSerie[e] || 0) + 1;
+    const arrot = o => Object.fromEntries(Object.entries(o).map(([k, v]) => [k, r2(v)]));
+    stato.eventi.push({ tipo: "ripetizione", esercizio: this.cfg.id, numero: this.ripetizioni, tenuta: true,
+      durata_s: r2(durata), errori, fasi: {}, inizio_t: r3(this.inizioRip), fondo_t: r3(this.inizioRip), fine_t: r3(tFine),
+      minimi: arrot(this.min), massimi: arrot(this.max) });
+    if (!errori.length) this.mostra(this.cfg.messaggio_ok || "Ottima tenuta!", "verde", tFine);
+    this.base = {};
+    this.fineUltimaRip = tFine;
+  }
+
   // finestra scartata: la ripetizione non viene contata e i suoi errori vanno ignorati
   annullaRipetizione(t, stato, motivo) {
     stato.eventi.push({ tipo: "annullata", esercizio: this.cfg.id, ripetizione: this.ripetizioni + 1,
@@ -440,12 +505,17 @@ class Analizzatore {
       else if (err.momento !== momento) continue;
       const valore = momento === "durante" ? misure[err.misura]
         : (err.statistica === "minimo" ? this.min : this.max)[err.misura];
-      if (!violato(err, valore)) continue;
+      if (!violato(err, valore)) { delete this.tViolazione[err.id]; continue; }
+      let tInizio = t;
+      if (momento === "durante" && this.isometrica()) {
+        tInizio = this.tViolazione[err.id] ??= t;
+        if (t - tInizio < PERSISTENZA_TENUTA) continue;
+      }
 
       this.erroriRip.add(err.id);
       if (momento === "inversione") this.anticipati.add(err.id);
       const ampiezza = err.misura === this.cfg.ripetizione.misura && momento !== "durante";
-      const tOrigine = ampiezza ? this.tEstremo : t;
+      const tOrigine = ampiezza ? this.tEstremo : tInizio;
       stato.eventi.push({ tipo: "errore", esercizio: this.cfg.id, id: err.id, ripetizione: numero,
         t: r3(t), t_origine: r3(tOrigine), ritardo_s: r3(t - tOrigine), anticipato: momento === "inversione",
         misura: err.misura, valore: r2(valore), soglia: soglia(err), gravita: err.gravita });
@@ -466,7 +536,8 @@ class Analizzatore {
     if (t < scad) { stato.messaggio = testo; stato.colore = colore; stato.errore = this.errMsg; }
     else if (!stato.messaggio) {
       stato.colore = this.fase !== "attesa" ? "verde" : "grigio";
-      stato.messaggio = { attesa: this.cfg.messaggio_posizione, pronto: "Pronto", movimento: "" }[this.fase];
+      stato.messaggio = { attesa: this.cfg.messaggio_posizione, pronto: "Pronto",
+        movimento: this.isometrica() ? (this.cfg.messaggio_tenuta || MESSAGGIO_TENUTA) : "" }[this.fase];
     }
     return stato;
   }
