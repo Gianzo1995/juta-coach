@@ -1,7 +1,7 @@
 # Impostazioni della postazione
 sede: trento_centro
 postazione: prova_pc
-esercizio_iniziale: squat
+esercizio_iniziale: QUA-016
 
 camera: 0                 # 0 = webcam principale; 1, 2... per altre camere
 larghezza: 1280

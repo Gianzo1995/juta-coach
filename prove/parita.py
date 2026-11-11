@@ -78,6 +78,10 @@ def casi():
         "GLU-023": [pm.posa_kickback(160.3)] * FPS + pm.ripetizione_fasi(pm.posa_kickback, 160.3, 195.2, 1, 1, 2)
                    + pm.ripetizione_fasi(pm.posa_kickback, 160.3, 222.3, 1, 1, 2)
                    + pm.ripetizione_fasi(lambda a: pm.posa_kickback(a, -1), 160.3, 182.4, 1, 1, 2),
+        "AVA-001": [pm.posa_appeso(20.3)] * FPS + pm.tenuta(pm.posa_appeso, 20.3, 172.3, 8)
+                   + pm.tenuta(pm.posa_appeso, 20.3, 172.3, 4, oscilla=25),
+        "BIC-020": [pm.posa_braccio(165.3)] * FPS + pm.ripetizione_fasi(pm.posa_braccio, 165.3, 50.2, 1, 1, 2)
+                   + pm.ripetizione_fasi(pm.posa_braccio, 165.3, 80.4, 1, 1, 2),
         "PET-002": [pp(175)] * FPS + R(pp, 175, 80, secondi=3.0) + R(pp, 175, 80, secondi=3.0, abbassa_bacino=70),
     }
 

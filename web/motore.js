@@ -166,7 +166,8 @@ function applicaImpostazioni(cfg, imposta) {
 }
 
 const GRUPPI = { PET: "Petto", DOR: "Schiena", SCH: "Schiena", GAM: "Gambe", SPA: "Spalle", DEA: "Spalle", DEL: "Spalle", DEP: "Spalle", BRA: "Braccia",
-  GLU: "Glutei", QUA: "Quadricipiti", FEM: "Femorali", ADD: "Adduttori", ABD: "Abduttori", POL: "Polpacci" };
+  GLU: "Glutei", QUA: "Quadricipiti", FEM: "Femorali", ADD: "Adduttori", ABD: "Abduttori", POL: "Polpacci",
+  BIC: "Bicipiti", TRI: "Tricipiti", AVA: "Avambracci" };
 
 // Catalogo per l'app: nome e gruppo (ricavati se mancano), scheda, config risolta, esercizi analizzabili
 function costruisciCatalogo(voci) {

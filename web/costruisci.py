@@ -19,6 +19,9 @@ RADICE = QUI.parent
 VENDOR = QUI / "vendor"          # MediaPipe (motore di riconoscimento) e modello della posa
 
 
+NASCOSTI = {"squat"}
+
+
 def leggi_catalogo():
     """Catalogo con le integrazioni dell'app (stessa funzione usata dal motore Python)."""
     sys.path.insert(0, str(RADICE))
@@ -43,7 +46,8 @@ def copia_vendor(dest, con_modello):
 
 
 def main():
-    voci = leggi_catalogo()
+    # lo squat di base resta solo come banco di prova del motore: sul telefono c'e' QUA-016, con le stesse regole
+    voci = [v for v in leggi_catalogo() if v["id"] not in NASCOSTI]
     catalogo = "const CATALOGO_GREZZO = " + json.dumps(voci, ensure_ascii=False) + ";"
     app = (QUI / "app.html").read_text(encoding="utf-8")
     motore = (QUI / "motore.js").read_text(encoding="utf-8")

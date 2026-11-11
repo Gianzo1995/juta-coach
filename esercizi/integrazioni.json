@@ -5767,5 +5767,1150 @@
    }
   },
   "motivo": "Angolo con verso: segnala le gambe oltre la linea del busto con la schiena inarcata (errore della scheda)."
+ },
+ {
+  "id": "BIC-001",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta, il ritorno (salita del motore), almeno il 40% dei 2 s previsti dal tempo 1-1-2-0."
+ },
+ {
+  "id": "BIC-002",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta, il ritorno (salita del motore), almeno il 40% dei 2 s previsti dal tempo 1-1-2-0."
+ },
+ {
+  "id": "BIC-005",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 1.2
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta, il ritorno (salita del motore), almeno il 40% dei 3 s previsti dal tempo 1-0-3-0."
+ },
+ {
+  "id": "BIC-006",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta, il ritorno (salita del motore), almeno il 40% dei 2 s previsti dal tempo 1-1-2-0."
+ },
+ {
+  "id": "BIC-008",
+  "imposta": {
+   "errori.rimbalzo.misura": "salita",
+   "errori.rimbalzo.minore_di": 0.8
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta, il ritorno (salita del motore), almeno il 40% dei 2 s previsti dal tempo 1-1-2-0."
+ },
+ {
+  "id": "BIC-009",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta, il ritorno (salita del motore), almeno il 40% dei 2 s previsti dal tempo 1-1-2-0."
+ },
+ {
+  "id": "BIC-010",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta, il ritorno (salita del motore), almeno il 40% dei 2 s previsti dal tempo 1-1-2-0."
+ },
+ {
+  "id": "BIC-012",
+  "imposta": {
+   "errori.rimbalzo.misura": "salita",
+   "errori.rimbalzo.minore_di": 0.8
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta, il ritorno (salita del motore), almeno il 40% dei 2 s previsti dal tempo 1-1-2-0."
+ },
+ {
+  "id": "BIC-013",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta, il ritorno (salita del motore), almeno il 40% dei 2 s previsti dal tempo 1-1-2-0."
+ },
+ {
+  "id": "BIC-017",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta, il ritorno (salita del motore), almeno il 40% dei 2 s previsti dal tempo 1-1-2-0."
+ },
+ {
+  "id": "BIC-018",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 1.2
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta, il ritorno (salita del motore), almeno il 40% dei 3 s previsti dal tempo 1-1-3-0."
+ },
+ {
+  "id": "BIC-019",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta, il ritorno (salita del motore), almeno il 40% dei 2 s previsti dal tempo 1-1-2-0."
+ },
+ {
+  "id": "BIC-020",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta, il ritorno (salita del motore), almeno il 40% dei 2 s previsti dal tempo 1-1-2-0."
+ },
+ {
+  "id": "BIC-021",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta, il ritorno (salita del motore), almeno il 40% dei 2 s previsti dal tempo 1-1-2-0."
+ },
+ {
+  "id": "BIC-022",
+  "imposta": {
+   "errori.rimbalzo.misura": "salita",
+   "errori.rimbalzo.minore_di": 0.8
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta, il ritorno (salita del motore), almeno il 40% dei 2 s previsti dal tempo 1-1-2-0."
+ },
+ {
+  "id": "BIC-023",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta, il ritorno (salita del motore), almeno il 40% dei 2 s previsti dal tempo 1-1-2-0."
+ },
+ {
+  "id": "BIC-024",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta, il ritorno (salita del motore), almeno il 40% dei 2 s previsti dal tempo 1-1-2-0."
+ },
+ {
+  "id": "BIC-025",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta, il ritorno (salita del motore), almeno il 40% dei 2 s previsti dal tempo 1-1-2-0."
+ },
+ {
+  "id": "BIC-028",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta, il ritorno (salita del motore), almeno il 40% dei 2 s previsti dal tempo 1-1-2-0."
+ },
+ {
+  "id": "BIC-029",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta, il ritorno (salita del motore), almeno il 40% dei 2 s previsti dal tempo 1-1-2-0."
+ },
+ {
+  "id": "BIC-030",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Torna più lentamente': misurata direttamente la fase lenta, il ritorno (salita del motore), almeno il 40% dei 2 s previsti dal tempo 1-1-2-0."
+ },
+ {
+  "id": "BIC-031",
+  "imposta": {
+   "errori.rimbalzo.misura": "salita",
+   "errori.rimbalzo.minore_di": 0.8
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta, il ritorno (salita del motore), almeno il 40% dei 2 s previsti dal tempo 1-1-2-0."
+ },
+ {
+  "id": "BIC-033",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta, il ritorno (salita del motore), almeno il 40% dei 2 s previsti dal tempo 1-1-2-0."
+ },
+ {
+  "id": "BIC-034",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta, il ritorno (salita del motore), almeno il 40% dei 2 s previsti dal tempo 1-1-2-0."
+ },
+ {
+  "id": "BIC-035",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta, il ritorno (salita del motore), almeno il 40% dei 2 s previsti dal tempo 1-1-2-0."
+ },
+ {
+  "id": "TRI-001",
+  "imposta": {
+   "errori.troppo_veloce.misura": "discesa",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta, la prima fase (discesa del motore), almeno il 40% dei 2 s previsti dal tempo 2-1-1-0."
+ },
+ {
+  "id": "TRI-003",
+  "imposta": {
+   "errori.troppo_veloce.misura": "discesa",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta, la prima fase (discesa del motore), almeno il 40% dei 2 s previsti dal tempo 2-0-1-0."
+ },
+ {
+  "id": "TRI-004",
+  "imposta": {
+   "errori.troppo_veloce.misura": "discesa",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta, la prima fase (discesa del motore), almeno il 40% dei 2 s previsti dal tempo 2-0-1-0."
+ },
+ {
+  "id": "TRI-005",
+  "imposta": {
+   "errori.troppo_veloce.misura": "discesa",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta, la prima fase (discesa del motore), almeno il 40% dei 2 s previsti dal tempo 2-0-1-0."
+ },
+ {
+  "id": "TRI-006",
+  "imposta": {
+   "errori.troppo_veloce.misura": "discesa",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta, la prima fase (discesa del motore), almeno il 40% dei 2 s previsti dal tempo 2-0-1-0."
+ },
+ {
+  "id": "TRI-007",
+  "imposta": {
+   "errori.rimbalzo.misura": "discesa",
+   "errori.rimbalzo.minore_di": 0.8
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta, la prima fase (discesa del motore), almeno il 40% dei 2 s previsti dal tempo 2-0-1-0."
+ },
+ {
+  "id": "TRI-008",
+  "imposta": {
+   "errori.rimbalzo.misura": "pausa",
+   "errori.rimbalzo.minore_di": 0.5
+  },
+  "motivo": "'Pausa con gomiti a terra': fermo misurato direttamente nel punto più basso, almeno metà dei 1 s previsti dal tempo 2-1-1-0."
+ },
+ {
+  "id": "TRI-009",
+  "imposta": {
+   "errori.troppo_veloce.misura": "discesa",
+   "errori.troppo_veloce.minore_di": 1.2
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta, la prima fase (discesa del motore), almeno il 40% dei 3 s previsti dal tempo 3-0-1-0."
+ },
+ {
+  "id": "TRI-010",
+  "imposta": {
+   "errori.troppo_veloce.misura": "discesa",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta, la prima fase (discesa del motore), almeno il 40% dei 2 s previsti dal tempo 2-0-1-0."
+ },
+ {
+  "id": "TRI-011",
+  "imposta": {
+   "errori.troppo_veloce.misura": "discesa",
+   "errori.troppo_veloce.minore_di": 1.2
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta, la prima fase (discesa del motore), almeno il 40% dei 3 s previsti dal tempo 3-0-1-0."
+ },
+ {
+  "id": "TRI-012",
+  "imposta": {
+   "errori.troppo_veloce.misura": "discesa",
+   "errori.troppo_veloce.minore_di": 1.2
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta, la prima fase (discesa del motore), almeno il 40% dei 3 s previsti dal tempo 3-0-1-0."
+ },
+ {
+  "id": "TRI-013",
+  "imposta": {
+   "errori.troppo_veloce.misura": "discesa",
+   "errori.troppo_veloce.minore_di": 1.2
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta, la prima fase (discesa del motore), almeno il 40% dei 3 s previsti dal tempo 3-0-1-0."
+ },
+ {
+  "id": "TRI-014",
+  "imposta": {
+   "errori.rimbalzo.misura": "discesa",
+   "errori.rimbalzo.minore_di": 0.8
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta, la prima fase (discesa del motore), almeno il 40% dei 2 s previsti dal tempo 2-0-1-0."
+ },
+ {
+  "id": "TRI-015",
+  "imposta": {
+   "errori.troppo_veloce.misura": "discesa",
+   "errori.troppo_veloce.minore_di": 1.2
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta, la prima fase (discesa del motore), almeno il 40% dei 3 s previsti dal tempo 3-0-1-0."
+ },
+ {
+  "id": "TRI-016",
+  "imposta": {
+   "errori.troppo_veloce.misura": "discesa",
+   "errori.troppo_veloce.minore_di": 1.2
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta, la prima fase (discesa del motore), almeno il 40% dei 3 s previsti dal tempo 3-0-1-0."
+ },
+ {
+  "id": "TRI-017",
+  "imposta": {
+   "errori.troppo_veloce.misura": "discesa",
+   "errori.troppo_veloce.minore_di": 1.2
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta, la prima fase (discesa del motore), almeno il 40% dei 3 s previsti dal tempo 3-0-1-0."
+ },
+ {
+  "id": "TRI-018",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Torna più lentamente': misurata direttamente la fase lenta, il ritorno (salita del motore), almeno il 40% dei 2 s previsti dal tempo 1-1-2-0."
+ },
+ {
+  "id": "TRI-020",
+  "imposta": {
+   "errori.troppo_veloce.misura": "discesa",
+   "errori.troppo_veloce.minore_di": 1.2
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta, la prima fase (discesa del motore), almeno il 40% dei 3 s previsti dal tempo 3-0-1-0."
+ },
+ {
+  "id": "TRI-021",
+  "imposta": {
+   "errori.troppo_veloce.misura": "discesa",
+   "errori.troppo_veloce.minore_di": 1.2
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta, la prima fase (discesa del motore), almeno il 40% dei 3 s previsti dal tempo 3-0-1-0."
+ },
+ {
+  "id": "TRI-022",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Torna più lentamente': misurata direttamente la fase lenta, il ritorno (salita del motore), almeno il 40% dei 2 s previsti dal tempo 1-1-2-0."
+ },
+ {
+  "id": "TRI-027",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Torna più lentamente': misurata direttamente la fase lenta, il ritorno (salita del motore), almeno il 40% dei 2 s previsti dal tempo 1-1-2-0."
+ },
+ {
+  "id": "TRI-029",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Torna più lentamente': misurata direttamente la fase lenta, il ritorno (salita del motore), almeno il 40% dei 2 s previsti dal tempo 1-1-2-0."
+ },
+ {
+  "id": "TRI-030",
+  "imposta": {
+   "errori.troppo_veloce.misura": "discesa",
+   "errori.troppo_veloce.minore_di": 1.2
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta, la prima fase (discesa del motore), almeno il 40% dei 3 s previsti dal tempo 3-0-1-0."
+ },
+ {
+  "id": "TRI-032",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Torna più lentamente': misurata direttamente la fase lenta, il ritorno (salita del motore), almeno il 40% dei 2 s previsti dal tempo 1-1-2-0."
+ },
+ {
+  "id": "TRI-033",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Torna più lentamente': misurata direttamente la fase lenta, il ritorno (salita del motore), almeno il 40% dei 2 s previsti dal tempo 1-1-2-0."
+ },
+ {
+  "id": "TRI-034",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Torna più lentamente': misurata direttamente la fase lenta, il ritorno (salita del motore), almeno il 40% dei 2 s previsti dal tempo 1-1-2-0."
+ },
+ {
+  "id": "TRI-035",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Torna più lentamente': misurata direttamente la fase lenta, il ritorno (salita del motore), almeno il 40% dei 2 s previsti dal tempo 1-1-2-0."
+ },
+ {
+  "id": "TRI-036",
+  "imposta": {
+   "errori.troppo_veloce.misura": "discesa",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta, la prima fase (discesa del motore), almeno il 40% dei 2 s previsti dal tempo 2-0-1-0."
+ },
+ {
+  "id": "TRI-037",
+  "imposta": {
+   "errori.troppo_veloce.misura": "discesa",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta, la prima fase (discesa del motore), almeno il 40% dei 2 s previsti dal tempo 2-0-1-0."
+ },
+ {
+  "id": "TRI-038",
+  "imposta": {
+   "errori.troppo_veloce.misura": "discesa",
+   "errori.troppo_veloce.minore_di": 1.2
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta, la prima fase (discesa del motore), almeno il 40% dei 3 s previsti dal tempo 3-0-1-0."
+ },
+ {
+  "id": "TRI-039",
+  "imposta": {
+   "errori.troppo_veloce.misura": "discesa",
+   "errori.troppo_veloce.minore_di": 1.2
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta, la prima fase (discesa del motore), almeno il 40% dei 3 s previsti dal tempo 3-0-1-0."
+ },
+ {
+  "id": "AVA-007",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta, il ritorno (salita del motore), almeno il 40% dei 2 s previsti dal tempo 1-1-2-0."
+ },
+ {
+  "id": "AVA-009",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta, il ritorno (salita del motore), almeno il 40% dei 2 s previsti dal tempo 1-1-2-0."
+ },
+ {
+  "id": "AVA-012",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta, il ritorno (salita del motore), almeno il 40% dei 2 s previsti dal tempo 1-1-2-0."
+ },
+ {
+  "id": "AVA-016",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta, il ritorno (salita del motore), almeno il 40% dei 2 s previsti dal tempo 1-1-2-0."
+ },
+ {
+  "id": "TRI-001",
+  "imposta": {
+   "misure.corpo.tipo": "angolo_orientato"
+  },
+  "motivo": "Come PET-001: Angolo con verso: distingue il bacino che scende sotto la linea da quello che sale sopra (funzione 4)."
+ },
+ {
+  "id": "TRI-001",
+  "imposta": {
+   "errori.allineamento": null,
+   "errori.bacino_cede": {
+    "messaggio": "Glutei stretti, bacino su",
+    "gravita": "rosso",
+    "momento": "durante",
+    "misura": "corpo",
+    "minore_di": 155
+   },
+   "errori.sedere_alto": {
+    "messaggio": "Abbassa il sedere",
+    "gravita": "giallo",
+    "momento": "durante",
+    "misura": "corpo",
+    "maggiore_di": 205
+   },
+   "testi_errori.bacino_cede": {
+    "cosa_succede": "Il bacino scende verso terra e la schiena si inarca.",
+    "perche_conta": "La zona lombare si carica proprio quando lo sforzo è massimo.",
+    "come_correggere": "Stringi glutei e addome prima di scendere; se non riesci a tenere la linea, passa a una versione più facile.",
+    "frase_da_ricordare": "Glutei stretti, bacino su.",
+    "frase_alternativa": "Pancia dentro, corpo rigido."
+   },
+   "testi_errori.sedere_alto": {
+    "cosa_succede": "Il sedere sale e il corpo forma una V rovesciata.",
+    "perche_conta": "L'esercizio diventa più facile e il lavoro passa dal petto alle spalle.",
+    "come_correggere": "Abbassa il bacino finché spalle, anche e piedi sono in linea.",
+    "frase_da_ricordare": "Sedere giù.",
+    "frase_alternativa": "Abbassa il sedere, corpo in linea."
+   }
+  },
+  "motivo": "Come PET-001: 'Corpo in linea retta' diviso in due correzioni: bacino che cede (sotto 155°, gravità rosso) e sedere alto (oltre 205°, gravità giallo)."
+ },
+ {
+  "id": "BIC-020",
+  "imposta": {
+   "impostazioni": [
+    {
+     "id": "lato",
+     "domanda": "Quale braccio lavora? (tienilo verso la camera)",
+     "opzioni": [
+      {
+       "etichetta": "Destro",
+       "imposta": {
+        "lato": "dx"
+       }
+      },
+      {
+       "etichetta": "Sinistro",
+       "imposta": {
+        "lato": "sx"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "motivo": "Scelta del braccio che lavora prima della serie (come PET-006): si analizza solo quel lato, da tenere verso la camera."
+ },
+ {
+  "id": "BIC-022",
+  "imposta": {
+   "impostazioni": [
+    {
+     "id": "lato",
+     "domanda": "Quale braccio lavora? (tienilo verso la camera)",
+     "opzioni": [
+      {
+       "etichetta": "Destro",
+       "imposta": {
+        "lato": "dx"
+       }
+      },
+      {
+       "etichetta": "Sinistro",
+       "imposta": {
+        "lato": "sx"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "motivo": "Scelta del braccio che lavora prima della serie (come PET-006): si analizza solo quel lato, da tenere verso la camera."
+ },
+ {
+  "id": "BIC-027",
+  "imposta": {
+   "impostazioni": [
+    {
+     "id": "lato",
+     "domanda": "Quale braccio lavora? (tienilo verso la camera)",
+     "opzioni": [
+      {
+       "etichetta": "Destro",
+       "imposta": {
+        "lato": "dx"
+       }
+      },
+      {
+       "etichetta": "Sinistro",
+       "imposta": {
+        "lato": "sx"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "motivo": "Scelta del braccio che lavora prima della serie (come PET-006): si analizza solo quel lato, da tenere verso la camera."
+ },
+ {
+  "id": "BIC-029",
+  "imposta": {
+   "impostazioni": [
+    {
+     "id": "lato",
+     "domanda": "Quale braccio lavora? (tienilo verso la camera)",
+     "opzioni": [
+      {
+       "etichetta": "Destro",
+       "imposta": {
+        "lato": "dx"
+       }
+      },
+      {
+       "etichetta": "Sinistro",
+       "imposta": {
+        "lato": "sx"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "motivo": "Scelta del braccio che lavora prima della serie (come PET-006): si analizza solo quel lato, da tenere verso la camera."
+ },
+ {
+  "id": "BIC-032",
+  "imposta": {
+   "impostazioni": [
+    {
+     "id": "lato",
+     "domanda": "Quale braccio lavora? (tienilo verso la camera)",
+     "opzioni": [
+      {
+       "etichetta": "Destro",
+       "imposta": {
+        "lato": "dx"
+       }
+      },
+      {
+       "etichetta": "Sinistro",
+       "imposta": {
+        "lato": "sx"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "motivo": "Scelta del braccio che lavora prima della serie (come PET-006): si analizza solo quel lato, da tenere verso la camera."
+ },
+ {
+  "id": "TRI-017",
+  "imposta": {
+   "impostazioni": [
+    {
+     "id": "lato",
+     "domanda": "Quale braccio lavora? (tienilo verso la camera)",
+     "opzioni": [
+      {
+       "etichetta": "Destro",
+       "imposta": {
+        "lato": "dx"
+       }
+      },
+      {
+       "etichetta": "Sinistro",
+       "imposta": {
+        "lato": "sx"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "motivo": "Scelta del braccio che lavora prima della serie (come PET-006): si analizza solo quel lato, da tenere verso la camera."
+ },
+ {
+  "id": "TRI-018",
+  "imposta": {
+   "impostazioni": [
+    {
+     "id": "lato",
+     "domanda": "Quale braccio lavora? (tienilo verso la camera)",
+     "opzioni": [
+      {
+       "etichetta": "Destro",
+       "imposta": {
+        "lato": "dx"
+       }
+      },
+      {
+       "etichetta": "Sinistro",
+       "imposta": {
+        "lato": "sx"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "motivo": "Scelta del braccio che lavora prima della serie (come PET-006): si analizza solo quel lato, da tenere verso la camera."
+ },
+ {
+  "id": "TRI-025",
+  "imposta": {
+   "impostazioni": [
+    {
+     "id": "lato",
+     "domanda": "Quale braccio lavora? (tienilo verso la camera)",
+     "opzioni": [
+      {
+       "etichetta": "Destro",
+       "imposta": {
+        "lato": "dx"
+       }
+      },
+      {
+       "etichetta": "Sinistro",
+       "imposta": {
+        "lato": "sx"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "motivo": "Scelta del braccio che lavora prima della serie (come PET-006): si analizza solo quel lato, da tenere verso la camera."
+ },
+ {
+  "id": "TRI-028",
+  "imposta": {
+   "impostazioni": [
+    {
+     "id": "lato",
+     "domanda": "Quale braccio lavora? (tienilo verso la camera)",
+     "opzioni": [
+      {
+       "etichetta": "Destro",
+       "imposta": {
+        "lato": "dx"
+       }
+      },
+      {
+       "etichetta": "Sinistro",
+       "imposta": {
+        "lato": "sx"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "motivo": "Scelta del braccio che lavora prima della serie (come PET-006): si analizza solo quel lato, da tenere verso la camera."
+ },
+ {
+  "id": "TRI-029",
+  "imposta": {
+   "impostazioni": [
+    {
+     "id": "lato",
+     "domanda": "Quale braccio lavora? (tienilo verso la camera)",
+     "opzioni": [
+      {
+       "etichetta": "Destro",
+       "imposta": {
+        "lato": "dx"
+       }
+      },
+      {
+       "etichetta": "Sinistro",
+       "imposta": {
+        "lato": "sx"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "motivo": "Scelta del braccio che lavora prima della serie (come PET-006): si analizza solo quel lato, da tenere verso la camera."
+ },
+ {
+  "id": "AVA-001",
+  "imposta": {
+   "analizzabilita": "parziale",
+   "modalita": "isometrica",
+   "vista_camera": "laterale",
+   "lato": "auto",
+   "messaggio_posizione": "Camera di lato, corpo intero e sbarra visibili",
+   "messaggio_ok": "Ottima tenuta!",
+   "messaggio_tenuta": "Tieni, spalle attive",
+   "misure": {
+    "braccio": {
+     "tipo": "angolo",
+     "punti": [
+      "anca",
+      "spalla",
+      "gomito"
+     ]
+    },
+    "gomito": {
+     "tipo": "angolo",
+     "punti": [
+      "spalla",
+      "gomito",
+      "polso"
+     ]
+    },
+    "corpo": {
+     "tipo": "inclinazione",
+     "punti": [
+      "spalla",
+      "caviglia"
+     ]
+    }
+   },
+   "ripetizione": {
+    "misura": "braccio",
+    "tenuta_minimo": 145
+   },
+   "errori": [
+    {
+     "id": "braccia_piegate",
+     "messaggio": "Braccia distese",
+     "gravita": "giallo",
+     "momento": "durante",
+     "misura": "gomito",
+     "minore_di": 150
+    },
+    {
+     "id": "dondolio",
+     "messaggio": "Fermo, niente dondolio",
+     "gravita": "giallo",
+     "momento": "durante",
+     "misura": "corpo",
+     "minore_di": 165
+    }
+   ],
+   "testi_errori": {
+    "braccia_piegate": {
+     "cosa_succede": "Il gomito si piega fino a {valore} (limite {soglia}).",
+     "perche_conta": "Piegando le braccia la tenuta diventa una mezza trazione: lavorano i bicipiti e la presa si allena meno.",
+     "come_correggere": "Lascia le braccia distese, spalle leggermente attive verso il basso.",
+     "frase_da_ricordare": "Braccia distese."
+    },
+    "dondolio": {
+     "cosa_succede": "Il corpo oscilla di {valore} rispetto alla verticale (limite {soglia}).",
+     "perche_conta": "Il dondolio strattona la presa e le spalle e rende la tenuta più breve.",
+     "come_correggere": "Stringi addome e glutei, gambe unite; prima di staccare i piedi fermati del tutto.",
+     "frase_da_ricordare": "Fermo, corpo compatto."
+    }
+   },
+   "motivo": "Modalità isometrica: la tenuta parte con le braccia sopra la testa e il cronometro misura quanto resti appeso. Soglie stimate, da tarare in sala.",
+   "non_rilevabili": [
+    {
+     "errore": "Spalle completamente passive",
+     "motivo": "L'abbassamento delle scapole è di pochi centimetri e le scapole non sono punti rilevati."
+    },
+    {
+     "errore": "Piedi a terra",
+     "motivo": "Se la sbarra è bassa i piedi possono toccare: la camera non lo distingue con certezza."
+    }
+   ]
+  },
+  "motivo": "Reso analizzabile con la modalità isometrica (richiesta del catalogo). Regole proposte dall'app."
+ },
+ {
+  "id": "AVA-002",
+  "imposta": {
+   "analizzabilita": "parziale",
+   "modalita": "isometrica",
+   "vista_camera": "laterale",
+   "lato": "auto",
+   "messaggio_posizione": "Camera di lato, corpo intero e sbarra visibili",
+   "messaggio_ok": "Ottima tenuta!",
+   "messaggio_tenuta": "Tieni, spalle attive",
+   "misure": {
+    "braccio": {
+     "tipo": "angolo",
+     "punti": [
+      "anca",
+      "spalla",
+      "gomito"
+     ]
+    },
+    "gomito": {
+     "tipo": "angolo",
+     "punti": [
+      "spalla",
+      "gomito",
+      "polso"
+     ]
+    },
+    "corpo": {
+     "tipo": "inclinazione",
+     "punti": [
+      "spalla",
+      "caviglia"
+     ]
+    }
+   },
+   "ripetizione": {
+    "misura": "braccio",
+    "tenuta_minimo": 145
+   },
+   "errori": [
+    {
+     "id": "braccia_piegate",
+     "messaggio": "Braccia distese",
+     "gravita": "giallo",
+     "momento": "durante",
+     "misura": "gomito",
+     "minore_di": 150
+    },
+    {
+     "id": "dondolio",
+     "messaggio": "Fermo, niente dondolio",
+     "gravita": "giallo",
+     "momento": "durante",
+     "misura": "corpo",
+     "minore_di": 165
+    }
+   ],
+   "testi_errori": {
+    "braccia_piegate": {
+     "cosa_succede": "Il gomito si piega fino a {valore} (limite {soglia}).",
+     "perche_conta": "Piegando le braccia la tenuta diventa una mezza trazione: lavorano i bicipiti e la presa si allena meno.",
+     "come_correggere": "Lascia le braccia distese, spalle leggermente attive verso il basso.",
+     "frase_da_ricordare": "Braccia distese."
+    },
+    "dondolio": {
+     "cosa_succede": "Il corpo oscilla di {valore} rispetto alla verticale (limite {soglia}).",
+     "perche_conta": "Il dondolio strattona la presa e le spalle e rende la tenuta più breve.",
+     "come_correggere": "Stringi addome e glutei, gambe unite; prima di staccare i piedi fermati del tutto.",
+     "frase_da_ricordare": "Fermo, corpo compatto."
+    }
+   },
+   "motivo": "Modalità isometrica: la tenuta parte con le braccia sopra la testa e il cronometro misura quanto resti appeso. Soglie stimate, da tarare in sala.",
+   "non_rilevabili": [
+    {
+     "errore": "Spalle completamente passive",
+     "motivo": "L'abbassamento delle scapole è di pochi centimetri e le scapole non sono punti rilevati."
+    },
+    {
+     "errore": "Piedi a terra",
+     "motivo": "Se la sbarra è bassa i piedi possono toccare: la camera non lo distingue con certezza."
+    }
+   ]
+  },
+  "motivo": "Come AVA-001 (gli asciugamani non cambiano le misure)."
+ },
+ {
+  "id": "AVA-003",
+  "imposta": {
+   "analizzabilita": "parziale",
+   "modalita": "isometrica",
+   "vista_camera": "laterale",
+   "lato": "dx",
+   "messaggio_posizione": "Camera di lato, corpo intero e sbarra visibili",
+   "messaggio_ok": "Ottima tenuta!",
+   "messaggio_tenuta": "Tieni, spalle attive",
+   "misure": {
+    "braccio": {
+     "tipo": "angolo",
+     "punti": [
+      "anca",
+      "spalla",
+      "gomito"
+     ]
+    },
+    "gomito": {
+     "tipo": "angolo",
+     "punti": [
+      "spalla",
+      "gomito",
+      "polso"
+     ]
+    },
+    "corpo": {
+     "tipo": "inclinazione",
+     "punti": [
+      "spalla",
+      "caviglia"
+     ]
+    }
+   },
+   "ripetizione": {
+    "misura": "braccio",
+    "tenuta_minimo": 145
+   },
+   "errori": [
+    {
+     "id": "braccia_piegate",
+     "messaggio": "Braccia distese",
+     "gravita": "giallo",
+     "momento": "durante",
+     "misura": "gomito",
+     "minore_di": 150
+    },
+    {
+     "id": "dondolio",
+     "messaggio": "Fermo, niente dondolio",
+     "gravita": "giallo",
+     "momento": "durante",
+     "misura": "corpo",
+     "minore_di": 165
+    }
+   ],
+   "testi_errori": {
+    "braccia_piegate": {
+     "cosa_succede": "Il gomito si piega fino a {valore} (limite {soglia}).",
+     "perche_conta": "Piegando le braccia la tenuta diventa una mezza trazione: lavorano i bicipiti e la presa si allena meno.",
+     "come_correggere": "Lascia le braccia distese, spalle leggermente attive verso il basso.",
+     "frase_da_ricordare": "Braccia distese."
+    },
+    "dondolio": {
+     "cosa_succede": "Il corpo oscilla di {valore} rispetto alla verticale (limite {soglia}).",
+     "perche_conta": "Il dondolio strattona la presa e le spalle e rende la tenuta più breve.",
+     "come_correggere": "Stringi addome e glutei, gambe unite; prima di staccare i piedi fermati del tutto.",
+     "frase_da_ricordare": "Fermo, corpo compatto."
+    }
+   },
+   "motivo": "Modalità isometrica: la tenuta parte con le braccia sopra la testa e il cronometro misura quanto resti appeso. Soglie stimate, da tarare in sala.",
+   "non_rilevabili": [
+    {
+     "errore": "Spalle completamente passive",
+     "motivo": "L'abbassamento delle scapole è di pochi centimetri e le scapole non sono punti rilevati."
+    },
+    {
+     "errore": "Piedi a terra",
+     "motivo": "Se la sbarra è bassa i piedi possono toccare: la camera non lo distingue con certezza."
+    }
+   ],
+   "impostazioni": [
+    {
+     "id": "lato",
+     "domanda": "Con quale braccio sei appeso? (tienilo verso la camera)",
+     "opzioni": [
+      {
+       "etichetta": "Destro",
+       "imposta": {
+        "lato": "dx"
+       }
+      },
+      {
+       "etichetta": "Sinistro",
+       "imposta": {
+        "lato": "sx"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "motivo": "Come AVA-001, con la scelta del braccio."
+ },
+ {
+  "id": "TRI-031",
+  "imposta": {
+   "analizzabilita": "parziale",
+   "vista_camera": "frontale",
+   "lato": "dx",
+   "impostazioni": [
+    {
+     "id": "lato",
+     "domanda": "Quale braccio lavora?",
+     "opzioni": [
+      {
+       "etichetta": "Destro",
+       "imposta": {
+        "lato": "dx"
+       }
+      },
+      {
+       "etichetta": "Sinistro",
+       "imposta": {
+        "lato": "sx"
+       }
+      }
+     ]
+    }
+   ],
+   "messaggio_posizione": "Camera di fronte, busto e braccia visibili",
+   "messaggio_ok": "Ottima estensione!",
+   "misure": {
+    "gomito": {
+     "tipo": "angolo",
+     "punti": [
+      "spalla",
+      "gomito",
+      "polso"
+     ]
+    }
+   },
+   "ripetizione": {
+    "misura": "gomito",
+    "direzione": "aumenta",
+    "posizione_iniziale": 100,
+    "inizio_movimento": 115
+   },
+   "errori": [
+    {
+     "id": "lockout",
+     "messaggio": "Distendi il braccio",
+     "gravita": "giallo",
+     "momento": "fine",
+     "misura": "gomito",
+     "statistica": "massimo",
+     "minore_di": 155
+    },
+    {
+     "id": "troppo_veloce",
+     "messaggio": "Torna più lentamente",
+     "gravita": "giallo",
+     "momento": "fine",
+     "misura": "salita",
+     "statistica": "massimo",
+     "minore_di": 0.8
+    }
+   ],
+   "testi_errori": {
+    "lockout": {
+     "cosa_succede": "Il gomito si ferma a {valore}: il braccio non si distende (minimo {soglia}).",
+     "perche_conta": "Il tricipite lavora di più nell'ultima parte dell'estensione.",
+     "come_correggere": "Distendi il braccio di lato fino in fondo, senza muovere la spalla; se non ci arrivi, togli carico.",
+     "frase_da_ricordare": "Distendi fino in fondo."
+    },
+    "troppo_veloce": {
+     "cosa_succede": "Il braccio torna troppo in fretta: il ritorno dura {valore} (minimo {soglia}).",
+     "perche_conta": "Tornando di colpo lavora il cavo al posto tuo.",
+     "come_correggere": "Conta due secondi per tornare.",
+     "frase_da_ricordare": "Torna in due secondi."
+    }
+   },
+   "motivo": "Vista frontale con la scelta del braccio: si legge l'estensione del gomito sul piano frontale. Soglie stimate, da tarare in sala.",
+   "non_rilevabili": [
+    {
+     "errore": "Spalla che si muove",
+     "motivo": "Di fronte lo spostamento in avanti della spalla non si vede."
+    }
+   ]
+  },
+  "motivo": "Reso analizzabile con la scelta del braccio in vista frontale (richiesta del catalogo). Regole proposte dall'app."
  }
 ]

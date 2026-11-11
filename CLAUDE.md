@@ -16,7 +16,7 @@ Gianluca, titolare di Juta. **Non è uno sviluppatore.**
 
 | Percorso | Cosa contiene |
 |---|---|
-| `esercizi/catalogo/*.json` | **Catalogo esercizi**: regole (`config_app`) + scheda tecnica (`scheda`). Fonte unica per PC e telefono. La vecchia `panca` è stata sostituita da PET-012, la vecchia `lat_machine` da DOR-020. Cataloghi: base, PETTORALI 001-080, DORSALI 001-064, SPALLE DEA/DEL/DEP (gruppo «Spalle»), GAMBE GLU/QUA/FEM/ADD/ABD/POL (gruppi Glutei, Quadricipiti, Femorali, Adduttori, Abduttori, Polpacci). |
+| `esercizi/catalogo/*.json` | **Catalogo esercizi**: regole (`config_app`) + scheda tecnica (`scheda`). Fonte unica per PC e telefono. La vecchia `panca` è stata sostituita da PET-012, la vecchia `lat_machine` da DOR-020. Cataloghi: base, PETTORALI 001-080, DORSALI 001-064, SPALLE DEA/DEL/DEP (gruppo «Spalle»), GAMBE GLU/QUA/FEM/ADD/ABD/POL (gruppi Glutei, Quadricipiti, Femorali, Adduttori, Abduttori, Polpacci), BRACCIA BIC/TRI/AVA (Bicipiti, Tricipiti, Avambracci). Lo `squat` di `base.json` è solo un banco di prova del motore: sul telefono è nascosto (`NASCOSTI` in `costruisci.py`) e si usa QUA-016, con le stesse regole. |
 | `motore/regole.py` | Motore delle regole (Python, versione PC). |
 | `web/motore.js` | Lo stesso motore in JavaScript (telefono). **Deve restare identico a `regole.py`.** |
 | `web/app.html` | Interfaccia telefono: live, manichino digitale, revisione, ricerca esercizi, "Come si fa". |
@@ -154,13 +154,17 @@ Ogni voce: `{ "id", "nome"?, "gruppo"?, "scheda", "config_app" }`.
 
 ## Stato attuale e come riprendere (aggiornato 11/11/2026)
 
-- **Versione app**: Beta 0.9. Catalogo: 383 esercizi (squat di base + PET 001-080 + DOR 001-064 + SPALLE DEA/DEL/DEP +
-  GAMBE: GLU 32, QUA 65, FEM 26, ADD 10, ABD 13, POL 14), 322 analizzabili, 312 integrazioni in `esercizi/integrazioni.json`.
+- **Versione app**: Beta 0.9. Catalogo: 474 esercizi sul telefono (PET 001-080 + DOR 001-064 + SPALLE DEA/DEL/DEP +
+  GAMBE: GLU 32, QUA 65, FEM 26, ADD 10, ABD 13, POL 14 + BRACCIA: BIC 35, TRI 39, AVA 18), 400 analizzabili,
+  388 integrazioni in `esercizi/integrazioni.json`. Esercizio iniziale: QUA-016.
+  Braccia (11/11/2026): 60 controlli di velocità convertiti, scelta del braccio su 10 esercizi a un braccio, TRI-001 con
+  bacino che cede / sedere alto (come PET-001); resi analizzabili con regole proposte dall'app AVA-001/002/003 (appesi,
+  modalità isometrica) e TRI-031 (vista frontale con scelta del braccio).
   Funzioni aggiunte l'11/11/2026: misura `distanza`, modalità isometrica e balistica, gamba in vista frontale, `angolo_avanti`
   (18 esercizi resi analizzabili con regole proposte dall'app: da far rivedere a Gianluca e tarare in sala).
   Gambe (11/11/2026): 86 controlli di velocità convertiti in discesa/salita/pausa, scelta della gamba su 30 esercizi a una gamba,
-  avvisi rossi su GLU-020 e QUA-015. Il prefisso ADD ora è Adduttori: il futuro catalogo addome deve usare un altro prefisso. Ultimi file ricevuti da Gianluca: `NOTE_PER_IL_MOTORE_nuovo.md`
-  (regole §1-§7, tutte applicate) e i tre cataloghi.
+  avvisi rossi su GLU-020 e QUA-015. Il prefisso ADD ora è Adduttori: il futuro catalogo addome deve usare un altro prefisso. Ultimi file ricevuti da Gianluca: `NOTE_PER_IL_MOTORE.md`
+  (versione con le braccia, regole §1-§7) e i cinque cataloghi.
 - **Dove la usa**: dal telefono in Safari (sito GitHub Pages, ha la modalità live) e dentro l'app Claude
   (artifact privato https://claude.ai/artifact/WVtohRo9gD7CcymYtvYsqS, solo video caricato; i video scelti su iPhone
   vengono compressi da iOS, per questo per la qualità migliore va usata la versione Safari).
@@ -174,8 +178,14 @@ Ogni voce: `{ "id", "nome"?, "gruppo"?, "scheda", "config_app" }`.
   per Copenhagen plank (ADD-001/002: da sdraiati di fianco la posa è poco affidabile) e ADD-009 (nessun movimento visibile), statistica estesa al picco dopo la ripetizione (altezza del
   kettlebell, GLU-019), camera che segue la persona (ABD-008), QUA-060 step-up laterale (di fronte la piega
   del ginocchio va verso la camera), GLU-026 kickback alla macchina (la leva copre la gamba).
+- **Richieste del catalogo braccia non ancora fatte**: punti della mano (curl ed estensioni dei polsi, rotazioni, presa:
+  AVA-004/005/006/010/011/013/015/017/018), conteggio alternato sx+dx (BIC-014, BIC-017: oggi conta solo il braccio verso la
+  camera), durata della sola fase eccentrica (BIC-005, TRI-007, TRI-014), gomito che va avanti nel Bayesian curl BIC-029
+  (`angolo_avanti` non adatto: il valore salta tra 0 e 360 con il braccio lungo il busto), BIC-007 curl 21 (ripetizioni
+  parziali a blocchi), TRI-019 tate press. AVA-008 e AVA-014 (tenute con bilanciere e dischi) restano solo scheda:
+  la camera non distingue la tenuta dallo stare in piedi.
 - **In attesa da Gianluca**: regole per DEL-009, DEL-013, DEL-014/015, DEP-007 (a un braccio, vista frontale);
-  taratura delle soglie in sala con gli istruttori; prossimi cataloghi (braccia, addome...).
+  taratura delle soglie in sala con gli istruttori; prossimi cataloghi (addome...).
 - **Quando arriva un nuovo catalogo**: copiarlo in `esercizi/catalogo/` senza modificarlo, lanciare build e test,
   convertire i controlli di velocità su `durata` in `discesa`/`salita` (40% della fase prevista da `scheda.tempo`),
   aggiungere scelta del braccio agli esercizi a un braccio/alternati e `avviso_sicurezza` ai non analizzabili per

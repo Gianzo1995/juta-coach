@@ -197,6 +197,37 @@ def posa_kickback(anca, verso=1):
     return posa
 
 
+def posa_braccio(gomito):
+    """Curl visto di lato, braccio destro verso la camera: gomito = angolo spalla-gomito-polso."""
+    sp, gm = (500, 300), (500, 450)
+    d = ruota((0, 1), -(180 - gomito))
+    pl = (gm[0] + 140 * d[0], gm[1] + 140 * d[1])
+    posa = punti_entrambi_lati({"spalla": sp, "gomito": gm, "polso": pl, "anca": (500, 560), "ginocchio": (505, 760),
+                                "caviglia": (500, 950), "tallone": (480, 960), "punta": (560, 965)}, vis_sx=0.4, vis_dx=0.95)
+    for n in ("naso", "naso_sx", "naso_dx"):
+        posa[n] = (530, 230, 0.99)
+    return posa
+
+
+def posa_appeso(braccio, oscilla=0.0, gomito_lato="sx"):
+    """Appeso alla sbarra visto di lato: braccio = angolo anca-spalla-gomito (20 = braccia lungo i fianchi,
+    170 = sopra la testa); oscilla = gradi del corpo rispetto alla verticale."""
+    sp = (500, 300)
+    t = math.radians(oscilla)
+    giu = (math.sin(t), math.cos(t))
+    an = (sp[0] + 250 * giu[0], sp[1] + 250 * giu[1])
+    cv = (sp[0] + 550 * giu[0], sp[1] + 550 * giu[1])
+    b = ruota(giu, -braccio)
+    gm = (sp[0] + 130 * b[0], sp[1] + 130 * b[1])
+    pl = (sp[0] + 260 * b[0], sp[1] + 260 * b[1])
+    posa = punti_entrambi_lati({"spalla": sp, "gomito": gm, "polso": pl, "anca": an,
+                                "ginocchio": ((an[0] + cv[0]) / 2, (an[1] + cv[1]) / 2), "caviglia": cv, "tallone": cv, "punta": cv},
+                               vis_sx=0.95 if gomito_lato == "sx" else 0.4, vis_dx=0.95 if gomito_lato == "dx" else 0.4)
+    for n in ("naso", "naso_sx", "naso_dx"):
+        posa[n] = (sp[0] + 30, sp[1] - 60, 0.99)
+    return posa
+
+
 def ripetizione(fn_posa, inizio, fondo, secondi=2.0, **extra_fondo):
     """Genera una ripetizione: da 'inizio' a 'fondo' e ritorno, piu' una pausa."""
     n = int(secondi * FPS)
@@ -464,6 +495,21 @@ def main():
               + ripetizione_fasi(kb, 160.3, 222.3, 1, 1, 2))
         risultati.append(verifica(f"Kickback al cavo GLU-023 ({nome})", esegui(Analizzatore(es["GLU-023"]), fr),
                                   [[], ["lockout"], ["schiena_inarcata"]]))
+
+    # Braccia: appeso alla sbarra (tenuta) e curl di concentrazione con il braccio scelto
+    ap = lambda b, **kw: posa_appeso(b, **kw)
+    fr = ([ap(20.3)] * FPS + tenuta(ap, 20.3, 172.3, 8) + tenuta(ap, 20.3, 172.3, 4, oscilla=25))
+    ev = esegui(Analizzatore(es["AVA-001"]), fr)
+    risultati.append(verifica("Appeso alla sbarra AVA-001 (tenute)", ev, [[], ["dondolio"]]))
+    cu = lambda g, **kw: posa_braccio(g)
+    fr = [cu(165.3)] * FPS + ripetizione_fasi(cu, 165.3, 50.2, 1, 1, 2) + ripetizione_fasi(cu, 165.3, 80.4, 1, 1, 2)
+    scelte = es["BIC-020"]["impostazioni"][0]["opzioni"]
+    risultati.append(verifica("Curl di concentrazione BIC-020 (braccio destro scelto)",
+                              esegui(Analizzatore(applica_impostazioni(es["BIC-020"], scelte[0]["imposta"])), fr), [[], ["ampiezza"]]))
+    ev = esegui(Analizzatore(applica_impostazioni(es["BIC-020"], scelte[1]["imposta"])), fr)
+    ok = not [e for e in ev if e["tipo"] == "ripetizione"]
+    risultati.append(ok)
+    print(f"{'OK ' if ok else 'ERRORE'}  BIC-020 con braccio sinistro scelto: il braccio lontano dalla camera non conta ripetizioni")
 
     # Ogni esercizio analizzabile deve girare senza bloccarsi su una posa completa (tutti i punti, naso con lato)
     from motore.regole import applica_impostazioni
