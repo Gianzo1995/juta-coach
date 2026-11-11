@@ -107,7 +107,8 @@ def completa(cfg):
     cfg.setdefault("errori", [])
     rip = cfg["ripetizione"]
     rip.setdefault("direzione", "diminuisce")
-    rip.setdefault("durata_massima", 10.0)
+    # modalita' balistica (salti, swing): finestra massima fissa di 3 s, se il catalogo non ne indica un'altra
+    rip.setdefault("durata_massima", 3.0 if cfg.get("modalita") == "balistica" else 10.0)
     rip.setdefault("tolleranza_pausa", 5.0)
     for e in cfg["errori"]:
         e.setdefault("gravita", "giallo")
@@ -481,7 +482,9 @@ class Analizzatore:
                 self._t_ingresso = None
                 # la prima ripetizione della serie parte solo dopo una sosta nella posizione di partenza
                 # (non conta gesti come raccogliere i manubri); le successive possono essere continue
-                if self.fase == "pronto" and in_movimento and (self._sosta_ok or self.ripetizioni > 0):
+                # in modalita' balistica (salti, swing continui) nessuna attesa: si parte subito
+                balistica = self.cfg.get("modalita") == "balistica"
+                if self.fase == "pronto" and in_movimento and (self._sosta_ok or self.ripetizioni > 0 or balistica):
                     self._inizia_ripetizione(misure, t)
             return
 

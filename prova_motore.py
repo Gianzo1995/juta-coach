@@ -433,6 +433,12 @@ def main():
     fr = ([fg(115.3)] * FPS + ripetizione_fasi(fg, 115.3, 75.2, 1, 1, 2) + ripetizione_fasi(fg, 115.3, 92.4, 1, 1, 2))
     risultati.append(verifica("Adduzione al cavo ADD-006 (destra)", esegui(Analizzatore(es["ADD-006"]), fr), [[], ["ampiezza"]]))
 
+    # Modalita' balistica: salti continui, il primo conta anche senza 0,5 s fermi in partenza
+    sq = lambda k, **kw: posa_squat(k)
+    fr = ([sq(175)] * 6 + ripetizione_fasi(sq, 175, 110.3, 0.4, 0, 0.4) + ripetizione_fasi(sq, 175, 135.4, 0.4, 0, 0.4)
+          + ripetizione_fasi(sq, 175, 110.3, 0.4, 0, 0.4))
+    risultati.append(verifica("Squat jump QUA-002 (balistica)", esegui(Analizzatore(es["QUA-002"]), fr), [[], ["profondita"], []]))
+
     # Ogni esercizio analizzabile deve girare senza bloccarsi su una posa completa (tutti i punti, naso con lato)
     from motore.regole import applica_impostazioni
     bloccati = []

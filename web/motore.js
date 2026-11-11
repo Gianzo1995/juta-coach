@@ -96,7 +96,7 @@ function risolviCatalogo(voci) {
 function completa(cfg) {
   cfg.lato ??= "auto"; cfg.visibilita_minima ??= 0.5;
   cfg.messaggio_posizione ??= "Mettiti in posizione davanti alla camera"; cfg.errori ??= [];
-  cfg.ripetizione.direzione ??= "diminuisce"; cfg.ripetizione.durata_massima ??= 10; cfg.ripetizione.tolleranza_pausa ??= 5;
+  cfg.ripetizione.direzione ??= "diminuisce"; cfg.ripetizione.durata_massima ??= cfg.modalita === "balistica" ? 3 : 10; cfg.ripetizione.tolleranza_pausa ??= 5;
   for (const e of cfg.errori) { e.gravita ??= "giallo"; e.momento ??= "fine"; e.statistica ??= "minimo"; e.anticipa ??= true; }
   return cfg;
 }
@@ -357,7 +357,8 @@ class Analizzatore {
         if (this.storicoPronto.length > 10) this.storicoPronto.shift();
       } else {
         this.tIngresso = null;
-        if (this.fase === "pronto" && inMovimento && (this.sostaOk || this.ripetizioni > 0)) this.iniziaRipetizione(misure, t);
+        // in modalita' balistica (salti, swing continui) nessuna attesa: si parte subito
+        if (this.fase === "pronto" && inMovimento && (this.sostaOk || this.ripetizioni > 0 || this.cfg.modalita === "balistica")) this.iniziaRipetizione(misure, t);
       }
       return;
     }

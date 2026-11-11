@@ -5420,5 +5420,60 @@
    ]
   },
   "motivo": "Reso analizzabile con la scelta della gamba e la camera dietro (richiesta del catalogo). Regole proposte dall'app."
+ },
+ {
+  "id": "QUA-002",
+  "imposta": {
+   "modalita": "balistica"
+  },
+  "motivo": "Modalità balistica (note per il motore, punto 7): nessuna attesa di 0,5 s in partenza e finestra massima di 3 s, per salti e swing continui."
+ },
+ {
+  "id": "QUA-010",
+  "imposta": {
+   "modalita": "balistica"
+  },
+  "motivo": "Modalità balistica (note per il motore, punto 7): nessuna attesa di 0,5 s in partenza e finestra massima di 3 s, per salti e swing continui."
+ },
+ {
+  "id": "QUA-063",
+  "imposta": {
+   "modalita": "balistica"
+  },
+  "motivo": "Modalità balistica (note per il motore, punto 7): nessuna attesa di 0,5 s in partenza e finestra massima di 3 s, per salti e swing continui."
+ },
+ {
+  "id": "GLU-019",
+  "imposta": {
+   "modalita": "balistica"
+  },
+  "motivo": "Modalità balistica (note per il motore, punto 7): nessuna attesa di 0,5 s in partenza e finestra massima di 3 s, per salti e swing continui."
+ },
+ {
+  "id": "GLU-021",
+  "imposta": {
+   "modalita": "balistica",
+   "impostazioni": [
+    {
+     "id": "lato",
+     "domanda": "Con quale mano tieni il kettlebell? (tienila verso la camera)",
+     "opzioni": [
+      {
+       "etichetta": "Destra",
+       "imposta": {
+        "lato": "dx"
+       }
+      },
+      {
+       "etichetta": "Sinistra",
+       "imposta": {
+        "lato": "sx"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "motivo": "Modalità balistica (note per il motore, punto 7): nessuna attesa di 0,5 s in partenza e finestra massima di 3 s, per salti e swing continui. Scelta della mano (come PET-006): si analizza il lato del braccio che tiene il kettlebell, verso la camera."
  }
 ]

@@ -84,6 +84,8 @@ Ogni voce: `{ "id", "nome"?, "gruppo"?, "scheda", "config_app" }`.
   `tenuta: true` e `durata_s` = secondi tenuti. Errori "durante": ignorati nel primo secondo (assestamento) e contati solo se
   durano 1 s di fila; errori "fine" sulla `durata`. `messaggio_tenuta` = testo durante la tenuta. Nell'app il contatore
   mostra i secondi (a voce ogni 10 s). Esempi: QUA-006 wall sit, DOR-064 front lever.
+- `modalita: "balistica"` (facoltativo): salti e swing continui; la prima ripetizione parte senza i 0,5 s fermi e la
+  finestra massima è 3 s (se `ripetizione.durata_massima` non dice altro). Esempi: QUA-002/010/063, GLU-019/021.
 - `avviso_sicurezza` (facoltativo): testo mostrato in rosso nella scelta dell'esercizio e in cima a "Come si fa".
   Con `lato: "entrambi"` il motore crea anche `<misura>_asimmetria`.
 - `ancora` (facoltativo, misure ad angolo): punto che resta fermo nel "fantasma" del manichino.
@@ -139,6 +141,7 @@ Ogni voce: `{ "id", "nome"?, "gruppo"?, "scheda", "config_app" }`.
 - ~~Avviso di sicurezza per esercizi solo-scheda~~ (fatto: `avviso_sicurezza`, es. PET-018).
 - ~~Scelta del lato in vista frontale~~ (fatto: affondi laterali QUA-013/038, cossack ADD-004/005, adduzioni ADD-006/008,
   abduzioni ABD-005/012, fire hydrant ABD-003/013 con camera dietro; regole proposte dall'app, da tarare).
+- ~~Modalità balistica~~ (fatto: QUA-002, QUA-010, QUA-063, GLU-019, GLU-021 con scelta della mano).
 - ~~Modalità isometrica~~ (fatto: QUA-006 wall sit, DOR-064 front lever, regole proposte dall'app).
 - Dopo: inclinazione delle spalle / rotazione del tronco (vista frontale), ripetizioni alternate sx/dx (PET-008),
   allineamento misurato sulla gamba che resta a terra (PET-008), conteggio sull'altezza della spalla,
@@ -162,7 +165,8 @@ Ogni voce: `{ "id", "nome"?, "gruppo"?, "scheda", "config_app" }`.
 - **Prove nel browser** (non nel repo): server locale su `sito/` e Playwright con `window.__JUTA_PROVA` per simulare la
   posa; controllare ricerca esercizi, scelta del braccio, avvisi rossi e uno squat in live con revisione.
 - **Richieste del catalogo gambe non ancora fatte** (esercizi lasciati solo-scheda o con analisi ridotta): modalità isometrica
-  per Copenhagen plank (ADD-001/002: da sdraiati di fianco la posa è poco affidabile) e ADD-009 (nessun movimento visibile), modalità balistica per salti e swing (QUA-002, QUA-010, QUA-063, GLU-021), camera che segue la persona (ABD-008), QUA-060 step-up laterale (di fronte la piega
+  per Copenhagen plank (ADD-001/002: da sdraiati di fianco la posa è poco affidabile) e ADD-009 (nessun movimento visibile), statistica estesa al picco dopo la ripetizione (altezza del
+  kettlebell, GLU-019), camera che segue la persona (ABD-008), QUA-060 step-up laterale (di fronte la piega
   del ginocchio va verso la camera), angolo con verso oltre 180° (GLU-023/026/029).
 - **In attesa da Gianluca**: regole per DEL-009, DEL-013, DEL-014/015, DEP-007 (a un braccio, vista frontale);
   taratura delle soglie in sala con gli istruttori; prossimi cataloghi (braccia, addome...).
