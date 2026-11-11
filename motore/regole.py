@@ -35,6 +35,8 @@ MISURE_TEMPO = {"durata", "discesa", "pausa", "salita"}
 
 
 UNITI_PER_NOME = {"misure", "testi_errori"}
+# nomi dei punti usabili nelle misure (con _sx/_dx nella posa; naso_sx/naso_dx = naso, punta_piede = punta)
+NOMI_PUNTI = {"naso", "spalla", "gomito", "polso", "anca", "ginocchio", "caviglia", "tallone", "punta", "punta_piede"}
 
 
 def unisci(base, variante):
@@ -131,6 +133,10 @@ def valida(cfg):
     for nome, m in misure.items():
         if m.get("tipo") not in TIPI_MISURA:
             problemi.append(f"misura '{nome}': tipo sconosciuto '{m.get('tipo')}'")
+    for nome, m in misure.items():
+        for n in list(m.get("punti", [])) + ([m["punto"]] if "punto" in m else []) + list(m.get("scala", [])):
+            if n not in NOMI_PUNTI:
+                problemi.append(f"misura '{nome}': punto sconosciuto '{n}'")
     note = set(misure) | MISURE_TEMPO | {f"{n}_asimmetria" for n in misure}
     rip = cfg.get("ripetizione") or {}
     if rip.get("misura") not in misure:

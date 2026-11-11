@@ -14,7 +14,7 @@ from mediapipe.tasks.python import vision
 
 # Indici dei punti MediaPipe (sx/dx = sinistra/destra DELLA PERSONA)
 PUNTI = {
-    "naso": 0,
+    "naso": 0, "naso_sx": 0, "naso_dx": 0,   # il naso e' unico: _sx/_dx per le misure (naso-spalla-gomito)
     "spalla_sx": 11, "spalla_dx": 12,
     "gomito_sx": 13, "gomito_dx": 14,
     "polso_sx": 15, "polso_dx": 16,
@@ -23,6 +23,7 @@ PUNTI = {
     "caviglia_sx": 27, "caviglia_dx": 28,
     "tallone_sx": 29, "tallone_dx": 30,
     "punta_sx": 31, "punta_dx": 32,
+    "punta_piede_sx": 31, "punta_piede_dx": 32,   # nome usato nel catalogo gambe
 }
 
 # Linee da disegnare per lo scheletro

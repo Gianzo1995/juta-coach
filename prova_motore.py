@@ -94,7 +94,7 @@ def posa_piegamento(gomito, abbassa_bacino=0.0, gambe=180.0, w=1280, h=720):
 # ---------------- simulazione ----------------
 def posa_alzata(braccio_dx, braccio_sx=15.0):
     """Alzata laterale vista di fronte: braccio = angolo anca-spalla-gomito, braccia tese."""
-    posa = {"naso": (500, 180, 0.99)}
+    posa = {n: (500, 180, 0.99) for n in ("naso", "naso_sx", "naso_dx")}   # come la posa reale (naso con lato)
     for lato, x, verso, a in (("dx", 420, -1, braccio_dx), ("sx", 580, 1, braccio_sx)):
         r = math.radians(a)
         g = (x + verso * 150 * math.sin(r), 300 + 150 * math.cos(r))
@@ -103,6 +103,34 @@ def posa_alzata(braccio_dx, braccio_sx=15.0):
                       ("ginocchio", (x, 760)), ("caviglia", (x, 950))):
             posa[f"{n}_{lato}"] = (pt[0], pt[1], 0.95)
     return posa
+
+
+def ruota(v, gradi):
+    r = math.radians(gradi)
+    return (v[0] * math.cos(r) - v[1] * math.sin(r), v[0] * math.sin(r) + v[1] * math.cos(r))
+
+
+def posa_ponte(anca, ginocchio=90.0):
+    """Ponte glutei visto di lato: anca = angolo spalla-anca-ginocchio, ginocchio = anca-ginocchio-caviglia."""
+    a, k = (500, 700), (700, 600)
+    u = ((k[0] - a[0]) / 223.6, (k[1] - a[1]) / 223.6)
+    sp = ruota(u, anca)
+    sp = (a[0] + 250 * sp[0], a[1] + 250 * sp[1])
+    c = ruota((-u[0], -u[1]), -ginocchio)
+    c = (k[0] + 200 * c[0], k[1] + 200 * c[1])
+    return punti_entrambi_lati({"spalla": sp, "anca": a, "ginocchio": k, "caviglia": c,
+                                "gomito": (sp[0] + 60, sp[1]), "polso": (sp[0] + 120, sp[1])}, vis_sx=0.95, vis_dx=0.4)
+
+
+def posa_polpaccio(caviglia, ginocchio=178.0):
+    """Calf raise visto di lato: caviglia = angolo ginocchio-caviglia-punta del piede (90 circa = piede a terra)."""
+    cv, k = (500, 900), (500, 700)
+    an = (500 - 250 * math.sin(math.radians(180 - ginocchio)), 450)
+    d = ruota((0, -1), caviglia)
+    pt = (cv[0] + 70 * d[0], cv[1] + 70 * d[1])
+    return punti_entrambi_lati({"spalla": (an[0], 200), "anca": an, "ginocchio": k, "caviglia": cv,
+                                "tallone": (cv[0] - 20, cv[1] + 15), "punta": pt, "punta_piede": pt},
+                               vis_sx=0.95, vis_dx=0.4)
 
 
 def ripetizione(fn_posa, inizio, fondo, secondi=2.0, **extra_fondo):
@@ -310,6 +338,37 @@ def main():
     ok = not [e for e in ev if e["tipo"] == "ripetizione"]
     risultati.append(ok)
     print(f"{'OK ' if ok else 'ERRORE'}  DEL-007 con braccio sinistro scelto: il braccio fermo non conta ripetizioni")
+
+    # Gambe: ponte glutei (fasi), calf raise (punto "punta_piede" = punta del piede)
+    po = lambda a, **kw: posa_ponte(a, **kw)
+    fr = ([po(140.3)] * FPS + ripetizione_fasi(po, 140.3, 175.2, 1, 2, 2) + ripetizione_fasi(po, 140.3, 160.4, 1, 1, 2)
+          + ripetizione_fasi(po, 140.3, 175.2, 1, 1, 0.4)
+          + ripetizione_fasi(lambda a: posa_ponte(a, 130.3), 140.3, 175.2, 1, 1, 2))
+    risultati.append(verifica("Ponte glutei GLU-001", esegui(Analizzatore(es["GLU-001"]), fr),
+                              [[], ["lockout"], ["troppo_veloce"], ["piedi_lontani"]]))
+    pc = lambda a, **kw: posa_polpaccio(a, **kw)
+    fr = ([pc(105.3)] * FPS + ripetizione_fasi(pc, 105.3, 135.2, 1, 1, 2) + ripetizione_fasi(pc, 105.3, 121.4, 1, 1, 2)
+          + ripetizione_fasi(pc, 105.3, 135.2, 1, 1, 0.4))
+    risultati.append(verifica("Calf raise POL-001", esegui(Analizzatore(es["POL-001"]), fr),
+                              [[], ["ampiezza"], ["troppo_veloce"]]))
+
+    # Ogni esercizio analizzabile deve girare senza bloccarsi su una posa completa (tutti i punti, naso con lato)
+    from motore.regole import applica_impostazioni
+    bloccati = []
+    for i, cfg in es.items():
+        for imp in cfg.get("impostazioni") or []:
+            cfg = applica_impostazioni(cfg, imp["opzioni"][0]["imposta"])
+        try:
+            a = Analizzatore(cfg)
+            for k, f in enumerate(ripetizione(posa_squat, 175, 90, secondi=1.0)):
+                f = dict(f, naso=(500, 100, 0.99), naso_sx=(500, 100, 0.99), naso_dx=(500, 100, 0.99))
+                f.update({f"punta_piede_{l}": f[f"punta_{l}"] for l in ("sx", "dx")})
+                a.aggiorna(f, k / FPS)
+        except Exception as e:  # noqa: BLE001
+            bloccati.append(f"{i}: {type(e).__name__} {e}")
+    risultati.append(not bloccati)
+    print(f"{'OK ' if not bloccati else 'ERRORE'}  {len(es)} esercizi analizzabili girano senza bloccarsi"
+          + "".join(f"\n         {b}" for b in bloccati))
 
     print("\nTUTTO OK: il motore funziona." if all(risultati)
           else "\nATTENZIONE: qualche controllo non e' passato.")

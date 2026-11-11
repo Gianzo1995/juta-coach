@@ -4,11 +4,14 @@
 // Gli esercizi arrivano dal catalogo (file JSON in esercizi/catalogo): vedi costruisciCatalogo().
 
 // Indici MediaPipe (sx/dx = sinistra/destra della persona)
+// naso_sx/naso_dx: il naso e' unico, ma cosi' le misure lo trovano come gli altri punti (es. naso-spalla-gomito);
+// punta_piede = punta (nome usato nel catalogo gambe)
 const PUNTI = {
-  naso: 0, spalla_sx: 11, spalla_dx: 12, gomito_sx: 13, gomito_dx: 14, polso_sx: 15, polso_dx: 16,
+  naso: 0, naso_sx: 0, naso_dx: 0, spalla_sx: 11, spalla_dx: 12, gomito_sx: 13, gomito_dx: 14, polso_sx: 15, polso_dx: 16,
   anca_sx: 23, anca_dx: 24, ginocchio_sx: 25, ginocchio_dx: 26, caviglia_sx: 27, caviglia_dx: 28,
-  tallone_sx: 29, tallone_dx: 30, punta_sx: 31, punta_dx: 32,
+  tallone_sx: 29, tallone_dx: 30, punta_sx: 31, punta_dx: 32, punta_piede_sx: 31, punta_piede_dx: 32,
 };
+const NOMI_PUNTI = new Set(Object.keys(PUNTI).filter(n => /_(sx|dx)$/.test(n)).map(n => n.slice(0, -3)));
 
 const LATI = ["sx", "dx"];
 const GRAVITA = { verde: 0, giallo: 1, rosso: 2 };
@@ -110,6 +113,10 @@ function valida(cfg) {
   const problemi = [], misure = cfg.misure || {};
   for (const [nome, m] of Object.entries(misure)) if (!TIPI_MISURA.has(m.tipo)) problemi.push(`misura '${nome}': tipo sconosciuto '${m.tipo}'`);
   const note = new Set([...Object.keys(misure), ...MISURE_TEMPO, ...Object.keys(misure).map(n => n + "_asimmetria")]);
+  for (const [nome, m] of Object.entries(misure)) {
+    for (const n of [...(m.punti || []), ...(m.punto ? [m.punto] : []), ...(m.scala || [])])
+      if (!NOMI_PUNTI.has(n)) problemi.push(`misura '${nome}': punto sconosciuto '${n}'`);
+  }
   const rip = cfg.ripetizione || {};
   if (!(rip.misura in misure)) problemi.push(`ripetizione: misura '${rip.misura}' non definita`);
   for (const e of cfg.errori || []) {
@@ -140,7 +147,8 @@ function applicaImpostazioni(cfg, imposta) {
   return completa(out);
 }
 
-const GRUPPI = { PET: "Petto", DOR: "Schiena", SCH: "Schiena", GAM: "Gambe", SPA: "Spalle", DEA: "Spalle", DEL: "Spalle", DEP: "Spalle", BRA: "Braccia", ADD: "Addome", GLU: "Glutei" };
+const GRUPPI = { PET: "Petto", DOR: "Schiena", SCH: "Schiena", GAM: "Gambe", SPA: "Spalle", DEA: "Spalle", DEL: "Spalle", DEP: "Spalle", BRA: "Braccia",
+  GLU: "Glutei", QUA: "Quadricipiti", FEM: "Femorali", ADD: "Adduttori", ABD: "Abduttori", POL: "Polpacci" };
 
 // Catalogo per l'app: nome e gruppo (ricavati se mancano), scheda, config risolta, esercizi analizzabili
 function costruisciCatalogo(voci) {
@@ -261,7 +269,7 @@ class Analizzatore {
     const lati = lato === "entrambi" ? LATI : [lato];
     const out = [];
     for (const n of this.nomiBase()) for (const l of lati) out.push(`${n}_${l}`);
-    return out.sort();
+    return [...new Set(out)].sort();
   }
 
   misuraSuLato(spec, posa, l) {

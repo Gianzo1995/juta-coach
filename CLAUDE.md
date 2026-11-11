@@ -16,13 +16,13 @@ Gianluca, titolare di Juta. **Non è uno sviluppatore.**
 
 | Percorso | Cosa contiene |
 |---|---|
-| `esercizi/catalogo/*.json` | **Catalogo esercizi**: regole (`config_app`) + scheda tecnica (`scheda`). Fonte unica per PC e telefono. La vecchia `panca` è stata sostituita da PET-012, la vecchia `lat_machine` da DOR-020. Cataloghi: base, PETTORALI 001-080, DORSALI 001-064, SPALLE DEA/DEL/DEP (gruppo «Spalle»). |
+| `esercizi/catalogo/*.json` | **Catalogo esercizi**: regole (`config_app`) + scheda tecnica (`scheda`). Fonte unica per PC e telefono. La vecchia `panca` è stata sostituita da PET-012, la vecchia `lat_machine` da DOR-020. Cataloghi: base, PETTORALI 001-080, DORSALI 001-064, SPALLE DEA/DEL/DEP (gruppo «Spalle»), GAMBE GLU/QUA/FEM/ADD/ABD/POL (gruppi Glutei, Quadricipiti, Femorali, Adduttori, Abduttori, Polpacci). |
 | `motore/regole.py` | Motore delle regole (Python, versione PC). |
 | `web/motore.js` | Lo stesso motore in JavaScript (telefono). **Deve restare identico a `regole.py`.** |
 | `web/app.html` | Interfaccia telefono: live, manichino digitale, revisione, ricerca esercizi, "Come si fa". |
 | `web/costruisci.py` | Genera `sito/` (versione online) e `sito_claude/` (artifact claude.ai). |
 | `web/vendor/` | MediaPipe tasks-vision 0.10.21 (wasm, bundle) e modelli `pose_landmarker_full.task` (in uso) e `_lite` (ripiego). Non modificare. |
-| `prova_motore.py` | Autotest del motore con movimenti simulati (squat, panca, lat DOR-020, piegamenti, alzate). |
+| `prova_motore.py` | Autotest del motore con movimenti simulati (squat, panca, lat DOR-020, piegamenti, alzate, ponte, calf raise) + prova che ogni esercizio analizzabile giri senza bloccarsi. |
 | `prove/parita.py` | Verifica che Python e JavaScript diano gli stessi risultati (richiede Node). |
 | `avvia.py`, `motore/posa.py`, `*.bat`, `config.yaml` | Versione PC con webcam (Windows, Python 3.12). |
 
@@ -60,6 +60,8 @@ Ogni voce: `{ "id", "nome"?, "gruppo"?, "scheda", "config_app" }`.
   Se un percorso non trova il campo o l'errore, il caricamento si ferma con un messaggio: va aggiornata l'integrazione.
   Quando arriva un nuovo catalogo: sostituire il file in `esercizi/catalogo/`, rilanciare i test, sistemare le integrazioni.
 - Il motore richiede visibili solo i punti delle misure usate dalla ripetizione e dagli errori.
+- Punti usabili: `naso`, `spalla`, `gomito`, `polso`, `anca`, `ginocchio`, `caviglia`, `tallone`, `punta` (alias `punta_piede`).
+  Il naso è unico ma nella posa esiste anche come `naso_sx`/`naso_dx`. Un punto sconosciuto esclude l'esercizio dall'analisi (`valida`).
 - Tipi di misura: `angolo` (3 punti, 0-180), `angolo_orientato` (3 punti: 180 = in linea, meno di 180 = punto
   centrale SOTTO la retta tra gli estremi, più di 180 = SOPRA; per corpi orizzontali/inclinati, es. bacino nei
   piegamenti), `inclinazione` (2 punti [A, B]: 0 = B sopra A, 90 = orizzontale, 180 = B sotto A),
@@ -132,8 +134,10 @@ Ogni voce: `{ "id", "nome"?, "gruppo"?, "scheda", "config_app" }`.
 
 ## Stato attuale e come riprendere (aggiornato 11/11/2026)
 
-- **Versione app**: Beta 0.9. Catalogo: 223 esercizi (squat di base + PET 001-080 + DOR 001-064 + SPALLE DEA/DEL/DEP),
-  168 integrazioni in `esercizi/integrazioni.json`. Ultimi file ricevuti da Gianluca: `NOTE_PER_IL_MOTORE_nuovo.md`
+- **Versione app**: Beta 0.9. Catalogo: 383 esercizi (squat di base + PET 001-080 + DOR 001-064 + SPALLE DEA/DEL/DEP +
+  GAMBE: GLU 32, QUA 65, FEM 26, ADD 10, ABD 13, POL 14), 304 analizzabili, 287 integrazioni in `esercizi/integrazioni.json`.
+  Gambe (11/11/2026): 86 controlli di velocità convertiti in discesa/salita/pausa, scelta della gamba su 30 esercizi a una gamba,
+  avvisi rossi su GLU-020 e QUA-015. Il prefisso ADD ora è Adduttori: il futuro catalogo addome deve usare un altro prefisso. Ultimi file ricevuti da Gianluca: `NOTE_PER_IL_MOTORE_nuovo.md`
   (regole §1-§7, tutte applicate) e i tre cataloghi.
 - **Dove la usa**: dal telefono in Safari (sito GitHub Pages, ha la modalità live) e dentro l'app Claude
   (artifact privato https://claude.ai/artifact/WVtohRo9gD7CcymYtvYsqS, solo video caricato; i video scelti su iPhone
@@ -144,8 +148,12 @@ Ogni voce: `{ "id", "nome"?, "gruppo"?, "scheda", "config_app" }`.
   `gh run rerun <id> --failed`.
 - **Prove nel browser** (non nel repo): server locale su `sito/` e Playwright con `window.__JUTA_PROVA` per simulare la
   posa; controllare ricerca esercizi, scelta del braccio, avvisi rossi e uno squat in live con revisione.
+- **Richieste del catalogo gambe non ancora fatte** (esercizi lasciati solo-scheda o con analisi ridotta): modalità isometrica
+  (QUA-006, ADD-001/002/009), modalità balistica per salti e swing (QUA-002, QUA-010, QUA-063, GLU-021), misura `distanza`
+  tra i due lati (ADD-007, ABD-006/007/008/011), scelta del lato in vista frontale per affondi laterali, cossack, adduzioni/abduzioni
+  (QUA-013, QUA-038, QUA-060, ADD-004/005/006/008, ABD-003/005/012/013), angolo con verso oltre 180° (GLU-023/026/029).
 - **In attesa da Gianluca**: regole per DEL-009, DEL-013, DEL-014/015, DEP-007 (a un braccio, vista frontale);
-  taratura delle soglie in sala con gli istruttori; prossimi cataloghi (gambe, braccia, addome...).
+  taratura delle soglie in sala con gli istruttori; prossimi cataloghi (braccia, addome...).
 - **Quando arriva un nuovo catalogo**: copiarlo in `esercizi/catalogo/` senza modificarlo, lanciare build e test,
   convertire i controlli di velocità su `durata` in `discesa`/`salita` (40% della fase prevista da `scheda.tempo`),
   aggiungere scelta del braccio agli esercizi a un braccio/alternati e `avviso_sicurezza` ai non analizzabili per

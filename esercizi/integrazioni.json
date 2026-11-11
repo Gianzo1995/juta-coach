@@ -2217,5 +2217,1494 @@
    "avviso_sicurezza": "Esercizio avanzato a testa in giù: l'app non lo analizza perché in questa posa il riconoscimento del corpo non è affidabile. Da fare solo se lo padroneggi già o con l'istruttore."
   },
   "motivo": "Non analizzato per scelta di sicurezza (note, punto 5): avviso ben visibile."
+ },
+ {
+  "id": "GLU-001",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta, il ritorno (salita del motore), almeno il 40% dei 2 s previsti dal tempo 1-2-2-0."
+ },
+ {
+  "id": "GLU-003",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.4
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta, il ritorno (salita del motore), almeno il 40% dei 1 s previsti dal tempo 1-1-1-0."
+ },
+ {
+  "id": "GLU-004",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta, il ritorno (salita del motore), almeno il 40% dei 2 s previsti dal tempo 1-2-2-0."
+ },
+ {
+  "id": "GLU-006",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Rallenta il movimento': misurata direttamente la fase lenta, il ritorno (salita del motore), almeno il 40% dei 2 s previsti dal tempo 1-1-2-0."
+ },
+ {
+  "id": "GLU-007",
+  "imposta": {
+   "errori.troppo_veloce.misura": "discesa",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta, la prima fase (discesa del motore), almeno il 40% dei 2 s previsti dal tempo 2-0-1-0."
+ },
+ {
+  "id": "GLU-008",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta, il ritorno (salita del motore), almeno il 40% dei 2 s previsti dal tempo 1-2-2-0."
+ },
+ {
+  "id": "GLU-010",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta, il ritorno (salita del motore), almeno il 40% dei 2 s previsti dal tempo 1-2-2-0."
+ },
+ {
+  "id": "GLU-017",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta, il ritorno (salita del motore), almeno il 40% dei 2 s previsti dal tempo 1-2-2-0."
+ },
+ {
+  "id": "GLU-018",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta, il ritorno (salita del motore), almeno il 40% dei 2 s previsti dal tempo 1-2-2-0."
+ },
+ {
+  "id": "GLU-024",
+  "imposta": {
+   "errori.troppo_veloce.misura": "discesa",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta, la prima fase (discesa del motore), almeno il 40% dei 2 s previsti dal tempo 2-0-1-1."
+ },
+ {
+  "id": "GLU-025",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta, il ritorno (salita del motore), almeno il 40% dei 2 s previsti dal tempo 1-2-2-0."
+ },
+ {
+  "id": "GLU-027",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Niente slancio, scendi lento': misurata direttamente la fase lenta, il ritorno (salita del motore), almeno il 40% dei 2 s previsti dal tempo 1-1-2-0."
+ },
+ {
+  "id": "GLU-032",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta, il ritorno (salita del motore), almeno il 40% dei 2 s previsti dal tempo 1-2-2-0."
+ },
+ {
+  "id": "QUA-001",
+  "imposta": {
+   "errori.troppo_veloce.misura": "discesa",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta, la prima fase (discesa del motore), almeno il 40% dei 2 s previsti dal tempo 2-1-1-0."
+ },
+ {
+  "id": "QUA-003",
+  "imposta": {
+   "errori.troppo_veloce.misura": "discesa",
+   "errori.troppo_veloce.minore_di": 1.2
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta, la prima fase (discesa del motore), almeno il 40% dei 3 s previsti dal tempo 3-0-1-0."
+ },
+ {
+  "id": "QUA-004",
+  "imposta": {
+   "errori.troppo_veloce.misura": "discesa",
+   "errori.troppo_veloce.minore_di": 1.2
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta, la prima fase (discesa del motore), almeno il 40% dei 3 s previsti dal tempo 3-0-1-0."
+ },
+ {
+  "id": "QUA-005",
+  "imposta": {
+   "errori.troppo_veloce.misura": "discesa",
+   "errori.troppo_veloce.minore_di": 1.2
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta, la prima fase (discesa del motore), almeno il 40% dei 3 s previsti dal tempo 3-0-1-0."
+ },
+ {
+  "id": "QUA-007",
+  "imposta": {
+   "errori.troppo_veloce.misura": "discesa",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta, la prima fase (discesa del motore), almeno il 40% dei 2 s previsti dal tempo 2-0-1-0."
+ },
+ {
+  "id": "QUA-011",
+  "imposta": {
+   "errori.troppo_veloce.misura": "discesa",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta, la prima fase (discesa del motore), almeno il 40% dei 2 s previsti dal tempo 2-0-1-0."
+ },
+ {
+  "id": "QUA-012",
+  "imposta": {
+   "errori.troppo_veloce.misura": "discesa",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta, la prima fase (discesa del motore), almeno il 40% dei 2 s previsti dal tempo 2-0-1-0."
+ },
+ {
+  "id": "QUA-014",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta, il ritorno (salita del motore), almeno il 40% dei 2 s previsti dal tempo 1-1-2-0."
+ },
+ {
+  "id": "QUA-018",
+  "imposta": {
+   "errori.fermo_breve.misura": "pausa",
+   "errori.fermo_breve.minore_di": 1.0
+  },
+  "motivo": "Fermo misurato direttamente (tempo nel punto più basso): almeno metà dei 2 s previsti dal tempo 2-2-1-0."
+ },
+ {
+  "id": "QUA-019",
+  "imposta": {
+   "errori.caduta_box.misura": "discesa",
+   "errori.caduta_box.minore_di": 0.8
+  },
+  "motivo": "'Siediti controllato': misurata direttamente la fase lenta, la prima fase (discesa del motore), almeno il 40% dei 2 s previsti dal tempo 2-1-1-0."
+ },
+ {
+  "id": "QUA-023",
+  "imposta": {
+   "errori.troppo_veloce.misura": "discesa",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta, la prima fase (discesa del motore), almeno il 40% dei 2 s previsti dal tempo 2-0-1-0."
+ },
+ {
+  "id": "QUA-025",
+  "imposta": {
+   "errori.troppo_veloce.misura": "discesa",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta, la prima fase (discesa del motore), almeno il 40% dei 2 s previsti dal tempo 2-0-1-0."
+ },
+ {
+  "id": "QUA-026",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta, il ritorno (salita del motore), almeno il 40% dei 2 s previsti dal tempo 1-1-2-0."
+ },
+ {
+  "id": "QUA-027",
+  "imposta": {
+   "errori.troppo_veloce.misura": "discesa",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta, la prima fase (discesa del motore), almeno il 40% dei 2 s previsti dal tempo 2-1-1-0."
+ },
+ {
+  "id": "QUA-028",
+  "imposta": {
+   "errori.troppo_veloce.misura": "discesa",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta, la prima fase (discesa del motore), almeno il 40% dei 2 s previsti dal tempo 2-0-1-0."
+ },
+ {
+  "id": "QUA-029",
+  "imposta": {
+   "errori.troppo_veloce.misura": "discesa",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta, la prima fase (discesa del motore), almeno il 40% dei 2 s previsti dal tempo 2-0-1-0."
+ },
+ {
+  "id": "QUA-030",
+  "imposta": {
+   "errori.troppo_veloce.misura": "discesa",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta, la prima fase (discesa del motore), almeno il 40% dei 2 s previsti dal tempo 2-1-1-0."
+ },
+ {
+  "id": "QUA-031",
+  "imposta": {
+   "errori.troppo_veloce.misura": "discesa",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta, la prima fase (discesa del motore), almeno il 40% dei 2 s previsti dal tempo 2-1-1-0."
+ },
+ {
+  "id": "QUA-032",
+  "imposta": {
+   "errori.troppo_veloce.misura": "discesa",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta, la prima fase (discesa del motore), almeno il 40% dei 2 s previsti dal tempo 2-1-1-0."
+ },
+ {
+  "id": "QUA-033",
+  "imposta": {
+   "errori.troppo_veloce.misura": "discesa",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta, la prima fase (discesa del motore), almeno il 40% dei 2 s previsti dal tempo 2-0-1-0."
+ },
+ {
+  "id": "QUA-036",
+  "imposta": {
+   "errori.troppo_veloce.misura": "discesa",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta, la prima fase (discesa del motore), almeno il 40% dei 2 s previsti dal tempo 2-0-1-0."
+ },
+ {
+  "id": "QUA-037",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta, il ritorno (salita del motore), almeno il 40% dei 2 s previsti dal tempo 1-1-2-0."
+ },
+ {
+  "id": "QUA-039",
+  "imposta": {
+   "errori.troppo_veloce.misura": "discesa",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta, la prima fase (discesa del motore), almeno il 40% dei 2 s previsti dal tempo 2-1-1-0."
+ },
+ {
+  "id": "QUA-040",
+  "imposta": {
+   "errori.troppo_veloce.misura": "discesa",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta, la prima fase (discesa del motore), almeno il 40% dei 2 s previsti dal tempo 2-1-1-0."
+ },
+ {
+  "id": "QUA-041",
+  "imposta": {
+   "errori.troppo_veloce.misura": "discesa",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta, la prima fase (discesa del motore), almeno il 40% dei 2 s previsti dal tempo 2-1-1-0."
+ },
+ {
+  "id": "QUA-042",
+  "imposta": {
+   "errori.troppo_veloce.misura": "discesa",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta, la prima fase (discesa del motore), almeno il 40% dei 2 s previsti dal tempo 2-0-1-0."
+ },
+ {
+  "id": "QUA-043",
+  "imposta": {
+   "errori.troppo_veloce.misura": "discesa",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta, la prima fase (discesa del motore), almeno il 40% dei 2 s previsti dal tempo 2-1-1-0."
+ },
+ {
+  "id": "QUA-045",
+  "imposta": {
+   "errori.troppo_veloce.misura": "discesa",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta, la prima fase (discesa del motore), almeno il 40% dei 2 s previsti dal tempo 2-1-1-0."
+ },
+ {
+  "id": "QUA-046",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Torna più lentamente': misurata direttamente la fase lenta, il ritorno (salita del motore), almeno il 40% dei 2 s previsti dal tempo 1-1-2-0."
+ },
+ {
+  "id": "QUA-047",
+  "imposta": {
+   "errori.troppo_veloce.misura": "discesa",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta, la prima fase (discesa del motore), almeno il 40% dei 2 s previsti dal tempo 2-1-1-0."
+ },
+ {
+  "id": "QUA-049",
+  "imposta": {
+   "errori.troppo_veloce.misura": "discesa",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta, la prima fase (discesa del motore), almeno il 40% dei 2 s previsti dal tempo 2-1-1-0."
+ },
+ {
+  "id": "QUA-050",
+  "imposta": {
+   "errori.troppo_veloce.misura": "discesa",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta, la prima fase (discesa del motore), almeno il 40% dei 2 s previsti dal tempo 2-1-1-0."
+ },
+ {
+  "id": "QUA-051",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Torna più lentamente': misurata direttamente la fase lenta, il ritorno (salita del motore), almeno il 40% dei 2 s previsti dal tempo 1-1-2-0."
+ },
+ {
+  "id": "QUA-053",
+  "imposta": {
+   "errori.troppo_veloce.misura": "discesa",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta, la prima fase (discesa del motore), almeno il 40% dei 2 s previsti dal tempo 2-1-1-0."
+ },
+ {
+  "id": "QUA-054",
+  "imposta": {
+   "errori.troppo_veloce.misura": "discesa",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta, la prima fase (discesa del motore), almeno il 40% dei 2 s previsti dal tempo 2-1-1-0."
+ },
+ {
+  "id": "QUA-055",
+  "imposta": {
+   "errori.troppo_veloce.misura": "discesa",
+   "errori.troppo_veloce.minore_di": 1.2
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta, la prima fase (discesa del motore), almeno il 40% dei 3 s previsti dal tempo 3-0-1-0."
+ },
+ {
+  "id": "QUA-056",
+  "imposta": {
+   "errori.troppo_veloce.misura": "discesa",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta, la prima fase (discesa del motore), almeno il 40% dei 2 s previsti dal tempo 2-0-1-0."
+ },
+ {
+  "id": "QUA-057",
+  "imposta": {
+   "errori.troppo_veloce.misura": "discesa",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta, la prima fase (discesa del motore), almeno il 40% dei 2 s previsti dal tempo 2-1-1-0."
+ },
+ {
+  "id": "QUA-059",
+  "imposta": {
+   "errori.troppo_veloce.misura": "discesa",
+   "errori.troppo_veloce.minore_di": 1.2
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta, la prima fase (discesa del motore), almeno il 40% dei 3 s previsti dal tempo 3-1-1-0."
+ },
+ {
+  "id": "QUA-061",
+  "imposta": {
+   "errori.troppo_veloce.misura": "discesa",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta, la prima fase (discesa del motore), almeno il 40% dei 2 s previsti dal tempo 2-1-1-0."
+ },
+ {
+  "id": "QUA-064",
+  "imposta": {
+   "errori.troppo_veloce.misura": "discesa",
+   "errori.troppo_veloce.minore_di": 1.2
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta, la prima fase (discesa del motore), almeno il 40% dei 3 s previsti dal tempo 3-1-1-0."
+ },
+ {
+  "id": "QUA-065",
+  "imposta": {
+   "errori.troppo_veloce.misura": "discesa",
+   "errori.troppo_veloce.minore_di": 1.2
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta, la prima fase (discesa del motore), almeno il 40% dei 3 s previsti dal tempo 3-0-1-0."
+ },
+ {
+  "id": "FEM-001",
+  "imposta": {
+   "errori.troppo_veloce.misura": "discesa",
+   "errori.troppo_veloce.minore_di": 1.6
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta, la prima fase (discesa del motore), almeno il 40% dei 4 s previsti dal tempo 4-1-1-0."
+ },
+ {
+  "id": "FEM-002",
+  "imposta": {
+   "errori.troppo_veloce.misura": "discesa",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta, la prima fase (discesa del motore), almeno il 40% dei 2 s previsti dal tempo 2-1-1-0."
+ },
+ {
+  "id": "FEM-003",
+  "imposta": {
+   "errori.troppo_veloce.misura": "discesa",
+   "errori.troppo_veloce.minore_di": 1.2
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta, la prima fase (discesa del motore), almeno il 40% dei 3 s previsti dal tempo 3-0-1-0."
+ },
+ {
+  "id": "FEM-004",
+  "imposta": {
+   "errori.troppo_veloce.misura": "discesa",
+   "errori.troppo_veloce.minore_di": 1.2
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta, la prima fase (discesa del motore), almeno il 40% dei 3 s previsti dal tempo 3-0-1-0."
+ },
+ {
+  "id": "FEM-005",
+  "imposta": {
+   "errori.troppo_veloce.misura": "discesa",
+   "errori.troppo_veloce.minore_di": 1.2
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta, la prima fase (discesa del motore), almeno il 40% dei 3 s previsti dal tempo 3-0-1-0."
+ },
+ {
+  "id": "FEM-006",
+  "imposta": {
+   "errori.troppo_veloce.misura": "discesa",
+   "errori.troppo_veloce.minore_di": 1.2
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta, la prima fase (discesa del motore), almeno il 40% dei 3 s previsti dal tempo 3-0-1-0."
+ },
+ {
+  "id": "FEM-007",
+  "imposta": {
+   "errori.troppo_veloce.misura": "discesa",
+   "errori.troppo_veloce.minore_di": 1.2
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta, la prima fase (discesa del motore), almeno il 40% dei 3 s previsti dal tempo 3-0-1-0."
+ },
+ {
+  "id": "FEM-008",
+  "imposta": {
+   "errori.troppo_veloce.misura": "discesa",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta, la prima fase (discesa del motore), almeno il 40% dei 2 s previsti dal tempo 2-1-1-0."
+ },
+ {
+  "id": "FEM-009",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Torna più lentamente': misurata direttamente la fase lenta, il ritorno (salita del motore), almeno il 40% dei 2 s previsti dal tempo 1-1-2-0."
+ },
+ {
+  "id": "FEM-010",
+  "imposta": {
+   "errori.troppo_veloce.misura": "discesa",
+   "errori.troppo_veloce.minore_di": 1.2
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta, la prima fase (discesa del motore), almeno il 40% dei 3 s previsti dal tempo 3-0-1-0."
+ },
+ {
+  "id": "FEM-011",
+  "imposta": {
+   "errori.troppo_veloce.misura": "discesa",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta, la prima fase (discesa del motore), almeno il 40% dei 2 s previsti dal tempo 2-1-1-0."
+ },
+ {
+  "id": "FEM-012",
+  "imposta": {
+   "errori.troppo_veloce.misura": "discesa",
+   "errori.troppo_veloce.minore_di": 1.2
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta, la prima fase (discesa del motore), almeno il 40% dei 3 s previsti dal tempo 3-0-1-0."
+ },
+ {
+  "id": "FEM-013",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Torna più lentamente': misurata direttamente la fase lenta, il ritorno (salita del motore), almeno il 40% dei 2 s previsti dal tempo 1-1-2-0."
+ },
+ {
+  "id": "FEM-014",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Torna più lentamente': misurata direttamente la fase lenta, il ritorno (salita del motore), almeno il 40% dei 2 s previsti dal tempo 1-1-2-0."
+ },
+ {
+  "id": "FEM-016",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Torna più lentamente': misurata direttamente la fase lenta, il ritorno (salita del motore), almeno il 40% dei 2 s previsti dal tempo 1-1-2-0."
+ },
+ {
+  "id": "FEM-018",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Torna più lentamente': misurata direttamente la fase lenta, il ritorno (salita del motore), almeno il 40% dei 2 s previsti dal tempo 1-1-2-0."
+ },
+ {
+  "id": "FEM-019",
+  "imposta": {
+   "errori.troppo_veloce.misura": "discesa",
+   "errori.troppo_veloce.minore_di": 1.2
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta, la prima fase (discesa del motore), almeno il 40% dei 3 s previsti dal tempo 3-0-1-0."
+ },
+ {
+  "id": "FEM-020",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Torna più lentamente': misurata direttamente la fase lenta, il ritorno (salita del motore), almeno il 40% dei 2 s previsti dal tempo 1-1-2-0."
+ },
+ {
+  "id": "FEM-021",
+  "imposta": {
+   "errori.troppo_veloce.misura": "discesa",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta, la prima fase (discesa del motore), almeno il 40% dei 2 s previsti dal tempo 2-0-1-0."
+ },
+ {
+  "id": "FEM-022",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Torna più lentamente': misurata direttamente la fase lenta, il ritorno (salita del motore), almeno il 40% dei 2 s previsti dal tempo 1-1-2-0."
+ },
+ {
+  "id": "FEM-023",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Torna più lentamente': misurata direttamente la fase lenta, il ritorno (salita del motore), almeno il 40% dei 2 s previsti dal tempo 1-1-2-0."
+ },
+ {
+  "id": "FEM-025",
+  "imposta": {
+   "errori.troppo_veloce.misura": "discesa",
+   "errori.troppo_veloce.minore_di": 1.2
+  },
+  "motivo": "'Distendi più lentamente': misurata direttamente la fase lenta, la prima fase (discesa del motore), almeno il 40% dei 3 s previsti dal tempo 3-0-1-0."
+ },
+ {
+  "id": "POL-001",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Rallenta, fermati in alto': misurata direttamente la fase lenta, il ritorno (salita del motore), almeno il 40% dei 2 s previsti dal tempo 1-1-2-1."
+ },
+ {
+  "id": "POL-005",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Rallenta, fermati in alto': misurata direttamente la fase lenta, il ritorno (salita del motore), almeno il 40% dei 2 s previsti dal tempo 1-1-2-1."
+ },
+ {
+  "id": "POL-006",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Rallenta, fermati in alto': misurata direttamente la fase lenta, il ritorno (salita del motore), almeno il 40% dei 2 s previsti dal tempo 1-1-2-1."
+ },
+ {
+  "id": "POL-007",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Rallenta, fermati in alto': misurata direttamente la fase lenta, il ritorno (salita del motore), almeno il 40% dei 2 s previsti dal tempo 1-1-2-1."
+ },
+ {
+  "id": "POL-009",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Rallenta, fermati in alto': misurata direttamente la fase lenta, il ritorno (salita del motore), almeno il 40% dei 2 s previsti dal tempo 1-1-2-1."
+ },
+ {
+  "id": "POL-010",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Rallenta, fermati in alto': misurata direttamente la fase lenta, il ritorno (salita del motore), almeno il 40% dei 2 s previsti dal tempo 1-1-2-1."
+ },
+ {
+  "id": "POL-011",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Rallenta, fermati in alto': misurata direttamente la fase lenta, il ritorno (salita del motore), almeno il 40% dei 2 s previsti dal tempo 1-1-2-1."
+ },
+ {
+  "id": "POL-012",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Rallenta, fermati in alto': misurata direttamente la fase lenta, il ritorno (salita del motore), almeno il 40% dei 2 s previsti dal tempo 1-1-2-1."
+ },
+ {
+  "id": "POL-013",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Rallenta, fermati in alto': misurata direttamente la fase lenta, il ritorno (salita del motore), almeno il 40% dei 2 s previsti dal tempo 1-1-2-1."
+ },
+ {
+  "id": "GLU-002",
+  "imposta": {
+   "impostazioni": [
+    {
+     "id": "lato",
+     "domanda": "Quale gamba lavora?",
+     "opzioni": [
+      {
+       "etichetta": "Destra",
+       "imposta": {
+        "lato": "dx"
+       }
+      },
+      {
+       "etichetta": "Sinistra",
+       "imposta": {
+        "lato": "sx"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "motivo": "Scelta della gamba che lavora prima della serie (come PET-006): si analizza solo quel lato, da tenere verso la camera."
+ },
+ {
+  "id": "GLU-005",
+  "imposta": {
+   "impostazioni": [
+    {
+     "id": "lato",
+     "domanda": "Quale gamba lavora?",
+     "opzioni": [
+      {
+       "etichetta": "Destra",
+       "imposta": {
+        "lato": "dx"
+       }
+      },
+      {
+       "etichetta": "Sinistra",
+       "imposta": {
+        "lato": "sx"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "motivo": "Scelta della gamba che lavora prima della serie (come PET-006): si analizza solo quel lato, da tenere verso la camera."
+ },
+ {
+  "id": "GLU-006",
+  "imposta": {
+   "impostazioni": [
+    {
+     "id": "lato",
+     "domanda": "Quale gamba lavora?",
+     "opzioni": [
+      {
+       "etichetta": "Destra",
+       "imposta": {
+        "lato": "dx"
+       }
+      },
+      {
+       "etichetta": "Sinistra",
+       "imposta": {
+        "lato": "sx"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "motivo": "Scelta della gamba che lavora prima della serie (come PET-006): si analizza solo quel lato, da tenere verso la camera."
+ },
+ {
+  "id": "GLU-009",
+  "imposta": {
+   "impostazioni": [
+    {
+     "id": "lato",
+     "domanda": "Quale gamba lavora?",
+     "opzioni": [
+      {
+       "etichetta": "Destra",
+       "imposta": {
+        "lato": "dx"
+       }
+      },
+      {
+       "etichetta": "Sinistra",
+       "imposta": {
+        "lato": "sx"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "motivo": "Scelta della gamba che lavora prima della serie (come PET-006): si analizza solo quel lato, da tenere verso la camera."
+ },
+ {
+  "id": "QUA-003",
+  "imposta": {
+   "impostazioni": [
+    {
+     "id": "lato",
+     "domanda": "Quale gamba lavora?",
+     "opzioni": [
+      {
+       "etichetta": "Destra",
+       "imposta": {
+        "lato": "dx"
+       }
+      },
+      {
+       "etichetta": "Sinistra",
+       "imposta": {
+        "lato": "sx"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "motivo": "Scelta della gamba che lavora prima della serie (come PET-006): si analizza solo quel lato, da tenere verso la camera."
+ },
+ {
+  "id": "QUA-004",
+  "imposta": {
+   "impostazioni": [
+    {
+     "id": "lato",
+     "domanda": "Quale gamba lavora?",
+     "opzioni": [
+      {
+       "etichetta": "Destra",
+       "imposta": {
+        "lato": "dx"
+       }
+      },
+      {
+       "etichetta": "Sinistra",
+       "imposta": {
+        "lato": "sx"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "motivo": "Scelta della gamba che lavora prima della serie (come PET-006): si analizza solo quel lato, da tenere verso la camera."
+ },
+ {
+  "id": "QUA-011",
+  "imposta": {
+   "impostazioni": [
+    {
+     "id": "lato",
+     "domanda": "Quale gamba lavora?",
+     "opzioni": [
+      {
+       "etichetta": "Destra",
+       "imposta": {
+        "lato": "dx"
+       }
+      },
+      {
+       "etichetta": "Sinistra",
+       "imposta": {
+        "lato": "sx"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "motivo": "Scelta della gamba che lavora prima della serie (come PET-006): si analizza solo quel lato, da tenere verso la camera."
+ },
+ {
+  "id": "QUA-012",
+  "imposta": {
+   "impostazioni": [
+    {
+     "id": "lato",
+     "domanda": "Quale gamba lavora?",
+     "opzioni": [
+      {
+       "etichetta": "Destra",
+       "imposta": {
+        "lato": "dx"
+       }
+      },
+      {
+       "etichetta": "Sinistra",
+       "imposta": {
+        "lato": "sx"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "motivo": "Scelta della gamba che lavora prima della serie (come PET-006): si analizza solo quel lato, da tenere verso la camera."
+ },
+ {
+  "id": "QUA-014",
+  "imposta": {
+   "impostazioni": [
+    {
+     "id": "lato",
+     "domanda": "Quale gamba lavora?",
+     "opzioni": [
+      {
+       "etichetta": "Destra",
+       "imposta": {
+        "lato": "dx"
+       }
+      },
+      {
+       "etichetta": "Sinistra",
+       "imposta": {
+        "lato": "sx"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "motivo": "Scelta della gamba che lavora prima della serie (come PET-006): si analizza solo quel lato, da tenere verso la camera."
+ },
+ {
+  "id": "QUA-025",
+  "imposta": {
+   "impostazioni": [
+    {
+     "id": "lato",
+     "domanda": "Quale gamba lavora?",
+     "opzioni": [
+      {
+       "etichetta": "Destra",
+       "imposta": {
+        "lato": "dx"
+       }
+      },
+      {
+       "etichetta": "Sinistra",
+       "imposta": {
+        "lato": "sx"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "motivo": "Scelta della gamba che lavora prima della serie (come PET-006): si analizza solo quel lato, da tenere verso la camera."
+ },
+ {
+  "id": "QUA-026",
+  "imposta": {
+   "impostazioni": [
+    {
+     "id": "lato",
+     "domanda": "Quale gamba lavora?",
+     "opzioni": [
+      {
+       "etichetta": "Destra",
+       "imposta": {
+        "lato": "dx"
+       }
+      },
+      {
+       "etichetta": "Sinistra",
+       "imposta": {
+        "lato": "sx"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "motivo": "Scelta della gamba che lavora prima della serie (come PET-006): si analizza solo quel lato, da tenere verso la camera."
+ },
+ {
+  "id": "QUA-028",
+  "imposta": {
+   "impostazioni": [
+    {
+     "id": "lato",
+     "domanda": "Quale gamba lavora?",
+     "opzioni": [
+      {
+       "etichetta": "Destra",
+       "imposta": {
+        "lato": "dx"
+       }
+      },
+      {
+       "etichetta": "Sinistra",
+       "imposta": {
+        "lato": "sx"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "motivo": "Scelta della gamba che lavora prima della serie (come PET-006): si analizza solo quel lato, da tenere verso la camera."
+ },
+ {
+  "id": "QUA-029",
+  "imposta": {
+   "impostazioni": [
+    {
+     "id": "lato",
+     "domanda": "Quale gamba lavora?",
+     "opzioni": [
+      {
+       "etichetta": "Destra",
+       "imposta": {
+        "lato": "dx"
+       }
+      },
+      {
+       "etichetta": "Sinistra",
+       "imposta": {
+        "lato": "sx"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "motivo": "Scelta della gamba che lavora prima della serie (come PET-006): si analizza solo quel lato, da tenere verso la camera."
+ },
+ {
+  "id": "QUA-036",
+  "imposta": {
+   "impostazioni": [
+    {
+     "id": "lato",
+     "domanda": "Quale gamba lavora?",
+     "opzioni": [
+      {
+       "etichetta": "Destra",
+       "imposta": {
+        "lato": "dx"
+       }
+      },
+      {
+       "etichetta": "Sinistra",
+       "imposta": {
+        "lato": "sx"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "motivo": "Scelta della gamba che lavora prima della serie (come PET-006): si analizza solo quel lato, da tenere verso la camera."
+ },
+ {
+  "id": "QUA-037",
+  "imposta": {
+   "impostazioni": [
+    {
+     "id": "lato",
+     "domanda": "Quale gamba lavora?",
+     "opzioni": [
+      {
+       "etichetta": "Destra",
+       "imposta": {
+        "lato": "dx"
+       }
+      },
+      {
+       "etichetta": "Sinistra",
+       "imposta": {
+        "lato": "sx"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "motivo": "Scelta della gamba che lavora prima della serie (come PET-006): si analizza solo quel lato, da tenere verso la camera."
+ },
+ {
+  "id": "QUA-044",
+  "imposta": {
+   "impostazioni": [
+    {
+     "id": "lato",
+     "domanda": "Quale gamba lavora?",
+     "opzioni": [
+      {
+       "etichetta": "Destra",
+       "imposta": {
+        "lato": "dx"
+       }
+      },
+      {
+       "etichetta": "Sinistra",
+       "imposta": {
+        "lato": "sx"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "motivo": "Scelta della gamba che lavora prima della serie (come PET-006): si analizza solo quel lato, da tenere verso la camera."
+ },
+ {
+  "id": "QUA-052",
+  "imposta": {
+   "impostazioni": [
+    {
+     "id": "lato",
+     "domanda": "Quale gamba lavora?",
+     "opzioni": [
+      {
+       "etichetta": "Destra",
+       "imposta": {
+        "lato": "dx"
+       }
+      },
+      {
+       "etichetta": "Sinistra",
+       "imposta": {
+        "lato": "sx"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "motivo": "Scelta della gamba che lavora prima della serie (come PET-006): si analizza solo quel lato, da tenere verso la camera."
+ },
+ {
+  "id": "QUA-055",
+  "imposta": {
+   "impostazioni": [
+    {
+     "id": "lato",
+     "domanda": "Quale gamba lavora?",
+     "opzioni": [
+      {
+       "etichetta": "Destra",
+       "imposta": {
+        "lato": "dx"
+       }
+      },
+      {
+       "etichetta": "Sinistra",
+       "imposta": {
+        "lato": "sx"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "motivo": "Scelta della gamba che lavora prima della serie (come PET-006): si analizza solo quel lato, da tenere verso la camera."
+ },
+ {
+  "id": "QUA-056",
+  "imposta": {
+   "impostazioni": [
+    {
+     "id": "lato",
+     "domanda": "Quale gamba lavora?",
+     "opzioni": [
+      {
+       "etichetta": "Destra",
+       "imposta": {
+        "lato": "dx"
+       }
+      },
+      {
+       "etichetta": "Sinistra",
+       "imposta": {
+        "lato": "sx"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "motivo": "Scelta della gamba che lavora prima della serie (come PET-006): si analizza solo quel lato, da tenere verso la camera."
+ },
+ {
+  "id": "QUA-065",
+  "imposta": {
+   "impostazioni": [
+    {
+     "id": "lato",
+     "domanda": "Quale gamba lavora?",
+     "opzioni": [
+      {
+       "etichetta": "Destra",
+       "imposta": {
+        "lato": "dx"
+       }
+      },
+      {
+       "etichetta": "Sinistra",
+       "imposta": {
+        "lato": "sx"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "motivo": "Scelta della gamba che lavora prima della serie (come PET-006): si analizza solo quel lato, da tenere verso la camera."
+ },
+ {
+  "id": "FEM-002",
+  "imposta": {
+   "impostazioni": [
+    {
+     "id": "lato",
+     "domanda": "Quale gamba lavora?",
+     "opzioni": [
+      {
+       "etichetta": "Destra",
+       "imposta": {
+        "lato": "dx"
+       }
+      },
+      {
+       "etichetta": "Sinistra",
+       "imposta": {
+        "lato": "sx"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "motivo": "Scelta della gamba che lavora prima della serie (come PET-006): si analizza solo quel lato, da tenere verso la camera."
+ },
+ {
+  "id": "FEM-008",
+  "imposta": {
+   "impostazioni": [
+    {
+     "id": "lato",
+     "domanda": "Quale gamba lavora?",
+     "opzioni": [
+      {
+       "etichetta": "Destra",
+       "imposta": {
+        "lato": "dx"
+       }
+      },
+      {
+       "etichetta": "Sinistra",
+       "imposta": {
+        "lato": "sx"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "motivo": "Scelta della gamba che lavora prima della serie (come PET-006): si analizza solo quel lato, da tenere verso la camera."
+ },
+ {
+  "id": "FEM-011",
+  "imposta": {
+   "impostazioni": [
+    {
+     "id": "lato",
+     "domanda": "Quale gamba lavora?",
+     "opzioni": [
+      {
+       "etichetta": "Destra",
+       "imposta": {
+        "lato": "dx"
+       }
+      },
+      {
+       "etichetta": "Sinistra",
+       "imposta": {
+        "lato": "sx"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "motivo": "Scelta della gamba che lavora prima della serie (come PET-006): si analizza solo quel lato, da tenere verso la camera."
+ },
+ {
+  "id": "FEM-013",
+  "imposta": {
+   "impostazioni": [
+    {
+     "id": "lato",
+     "domanda": "Quale gamba lavora?",
+     "opzioni": [
+      {
+       "etichetta": "Destra",
+       "imposta": {
+        "lato": "dx"
+       }
+      },
+      {
+       "etichetta": "Sinistra",
+       "imposta": {
+        "lato": "sx"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "motivo": "Scelta della gamba che lavora prima della serie (come PET-006): si analizza solo quel lato, da tenere verso la camera."
+ },
+ {
+  "id": "FEM-015",
+  "imposta": {
+   "impostazioni": [
+    {
+     "id": "lato",
+     "domanda": "Quale gamba lavora?",
+     "opzioni": [
+      {
+       "etichetta": "Destra",
+       "imposta": {
+        "lato": "dx"
+       }
+      },
+      {
+       "etichetta": "Sinistra",
+       "imposta": {
+        "lato": "sx"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "motivo": "Scelta della gamba che lavora prima della serie (come PET-006): si analizza solo quel lato, da tenere verso la camera."
+ },
+ {
+  "id": "FEM-017",
+  "imposta": {
+   "impostazioni": [
+    {
+     "id": "lato",
+     "domanda": "Quale gamba lavora?",
+     "opzioni": [
+      {
+       "etichetta": "Destra",
+       "imposta": {
+        "lato": "dx"
+       }
+      },
+      {
+       "etichetta": "Sinistra",
+       "imposta": {
+        "lato": "sx"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "motivo": "Scelta della gamba che lavora prima della serie (come PET-006): si analizza solo quel lato, da tenere verso la camera."
+ },
+ {
+  "id": "FEM-018",
+  "imposta": {
+   "impostazioni": [
+    {
+     "id": "lato",
+     "domanda": "Quale gamba lavora?",
+     "opzioni": [
+      {
+       "etichetta": "Destra",
+       "imposta": {
+        "lato": "dx"
+       }
+      },
+      {
+       "etichetta": "Sinistra",
+       "imposta": {
+        "lato": "sx"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "motivo": "Scelta della gamba che lavora prima della serie (come PET-006): si analizza solo quel lato, da tenere verso la camera."
+ },
+ {
+  "id": "FEM-024",
+  "imposta": {
+   "impostazioni": [
+    {
+     "id": "lato",
+     "domanda": "Quale gamba lavora?",
+     "opzioni": [
+      {
+       "etichetta": "Destra",
+       "imposta": {
+        "lato": "dx"
+       }
+      },
+      {
+       "etichetta": "Sinistra",
+       "imposta": {
+        "lato": "sx"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "motivo": "Scelta della gamba che lavora prima della serie (come PET-006): si analizza solo quel lato, da tenere verso la camera."
+ },
+ {
+  "id": "POL-002",
+  "imposta": {
+   "impostazioni": [
+    {
+     "id": "lato",
+     "domanda": "Quale gamba lavora?",
+     "opzioni": [
+      {
+       "etichetta": "Destra",
+       "imposta": {
+        "lato": "dx"
+       }
+      },
+      {
+       "etichetta": "Sinistra",
+       "imposta": {
+        "lato": "sx"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "motivo": "Scelta della gamba che lavora prima della serie (come PET-006): si analizza solo quel lato, da tenere verso la camera."
+ },
+ {
+  "id": "POL-008",
+  "imposta": {
+   "impostazioni": [
+    {
+     "id": "lato",
+     "domanda": "Quale gamba lavora?",
+     "opzioni": [
+      {
+       "etichetta": "Destra",
+       "imposta": {
+        "lato": "dx"
+       }
+      },
+      {
+       "etichetta": "Sinistra",
+       "imposta": {
+        "lato": "sx"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "motivo": "Scelta della gamba che lavora prima della serie (come PET-006): si analizza solo quel lato, da tenere verso la camera."
+ },
+ {
+  "id": "QUA-060",
+  "imposta": {
+   "impostazioni": null
+  },
+  "motivo": "Variante solo-scheda di QUA-014: non eredita la scelta della gamba."
+ },
+ {
+  "id": "GLU-020",
+  "imposta": {
+   "avviso_sicurezza": "Esercizio impegnativo per spalle e schiena: da fare solo con l'istruttore. L'app non lo analizza; per la maggior parte dei clienti è meglio il kettlebell swing classico (GLU-019)."
+  },
+  "motivo": "Non analizzato per scelta di sicurezza (solo_scheda con avviso): avviso ben visibile."
+ },
+ {
+  "id": "QUA-015",
+  "imposta": {
+   "avviso_sicurezza": "Rischio di urtare il box o atterrare male: solo con l'istruttore, box stabile o morbido e altezze progressive. L'app non lo analizza; per iniziare è meglio lo squat jump (QUA-002)."
+  },
+  "motivo": "Non analizzato per scelta di sicurezza (solo_scheda con avviso): avviso ben visibile."
  }
 ]

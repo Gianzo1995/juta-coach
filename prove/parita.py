@@ -55,6 +55,11 @@ def casi():
                    + R(pm.posa_alzata, 15.3, 55.2, secondi=3.0) + R(pm.posa_alzata, 15.3, 88.7, secondi=0.8),
         "DEL-005": [pm.posa_alzata(15.3, 15.3)] * FPS + R(lambda a: pm.posa_alzata(a, a), 15.3, 88.7, secondi=3.0)
                    + R(lambda a: pm.posa_alzata(a, max(15.3, a - 35)), 15.3, 88.7, secondi=3.0),
+        "GLU-001": [pm.posa_ponte(140.3)] * FPS + pm.ripetizione_fasi(pm.posa_ponte, 140.3, 175.2, 1, 2, 2)
+                   + pm.ripetizione_fasi(pm.posa_ponte, 140.3, 160.4, 1, 1, 2) + pm.ripetizione_fasi(pm.posa_ponte, 140.3, 175.2, 1, 1, 0.4),
+        "POL-001": [pm.posa_polpaccio(105.3)] * FPS + pm.ripetizione_fasi(pm.posa_polpaccio, 105.3, 135.2, 1, 1, 2)
+                   + pm.ripetizione_fasi(pm.posa_polpaccio, 105.3, 121.4, 1, 1, 2),
+        "DEP-003": [pm.posa_alzata(30.3, 30.3)] * FPS + R(lambda a: pm.posa_alzata(a, a), 30.3, 80.2, secondi=3.0),
         "PET-002": [pp(175)] * FPS + R(pp, 175, 80, secondi=3.0) + R(pp, 175, 80, secondi=3.0, abbassa_bacino=70),
     }
 

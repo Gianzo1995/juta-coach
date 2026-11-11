@@ -816,7 +816,9 @@ function calcolaFantasma(posa, es, errId, lato, valoreMisurato) {
     const [a, b, c] = spec.punti;
     // resta fermo il punto indicato da "ancora" o, se manca, quello piu' vicino al pavimento (mani nei piegamenti, piedi nello squat)
     // angoli di spalla (anca-spalla-braccio): il busto resta fermo e si muove il braccio (croci, chest press, pullover)
-    const l0 = lati[0], ancora = spec.ancora || (b === "spalla" && (a === "anca" || c === "anca") ? "anca"
+    // con il naso (es. naso-spalla-gomito nelle alzate posteriori) resta ferma la testa e si muove il braccio
+    const l0 = lati[0], ancora = spec.ancora || (a === "naso" || c === "naso" ? "naso"
+      : b === "spalla" && (a === "anca" || c === "anca") ? "anca"
       : (P(a, l0) && P(c, l0) && P(a, l0)[1] > P(c, l0)[1] ? a : c));
     const mobile = ancora === c ? a : c;
     const ang = l => g => geo.angolo(g[`${a}_${l}`], g[`${b}_${l}`], g[`${c}_${l}`]);
