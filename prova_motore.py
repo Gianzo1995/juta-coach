@@ -102,6 +102,19 @@ def posa_piegamento(gomito, abbassa_bacino=0.0, gambe=180.0, w=1280, h=720):
 
 
 # ---------------- simulazione ----------------
+def posa_alzata(braccio_dx, braccio_sx=15.0):
+    """Alzata laterale vista di fronte: braccio = angolo anca-spalla-gomito, braccia tese."""
+    posa = {"naso": (500, 180, 0.99)}
+    for lato, x, verso, a in (("dx", 420, -1, braccio_dx), ("sx", 580, 1, braccio_sx)):
+        r = math.radians(a)
+        g = (x + verso * 150 * math.sin(r), 300 + 150 * math.cos(r))
+        po = (x + verso * 290 * math.sin(r), 300 + 290 * math.cos(r))
+        for n, pt in (("spalla", (x, 300)), ("anca", (x, 560)), ("gomito", g), ("polso", po),
+                      ("ginocchio", (x, 760)), ("caviglia", (x, 950))):
+            posa[f"{n}_{lato}"] = (pt[0], pt[1], 0.95)
+    return posa
+
+
 def ripetizione(fn_posa, inizio, fondo, secondi=2.0, **extra_fondo):
     """Genera una ripetizione: da 'inizio' a 'fondo' e ritorno, piu' una pausa."""
     n = int(secondi * FPS)
@@ -295,6 +308,17 @@ def main():
           and not any(n.startswith("caviglia") for n in a2._punti_necessari("sx")))
     risultati.append(ok)
     print(f"{'OK ' if ok else 'ERRORE'}  Ereditarieta' PET-002: 'corpo' sostituita, caviglie non richieste")
+
+    # DEL-007 (alzata a un braccio, vista frontale): con la scelta del braccio conta solo quello che lavora
+    from motore.regole import applica_impostazioni
+    fr = ([posa_alzata(15.3)] * FPS + ripetizione(posa_alzata, 15.3, 88.7, secondi=3.0)
+          + ripetizione(posa_alzata, 15.3, 55.2, secondi=3.0))
+    risultati.append(verifica("Alzata a un braccio DEL-007 (destro)",
+                              esegui(Analizzatore(applica_impostazioni(es["DEL-007"], {"lato": "dx"})), fr), [[], ["ampiezza"]]))
+    ev = esegui(Analizzatore(applica_impostazioni(es["DEL-007"], {"lato": "sx"})), fr)
+    ok = not [e for e in ev if e["tipo"] == "ripetizione"]
+    risultati.append(ok)
+    print(f"{'OK ' if ok else 'ERRORE'}  DEL-007 con braccio sinistro scelto: il braccio fermo non conta ripetizioni")
 
     print("\nTUTTO OK: il motore funziona." if all(risultati)
           else "\nATTENZIONE: qualche controllo non e' passato.")

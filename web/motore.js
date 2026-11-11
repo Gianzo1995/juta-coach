@@ -140,7 +140,7 @@ function applicaImpostazioni(cfg, imposta) {
   return completa(out);
 }
 
-const GRUPPI = { PET: "Petto", DOR: "Schiena", SCH: "Schiena", GAM: "Gambe", SPA: "Spalle", BRA: "Braccia", ADD: "Addome", GLU: "Glutei" };
+const GRUPPI = { PET: "Petto", DOR: "Schiena", SCH: "Schiena", GAM: "Gambe", SPA: "Spalle", DEA: "Spalle", DEL: "Spalle", DEP: "Spalle", BRA: "Braccia", ADD: "Addome", GLU: "Glutei" };
 
 // Catalogo per l'app: nome e gruppo (ricavati se mancano), scheda, config risolta, esercizi analizzabili
 function costruisciCatalogo(voci) {

@@ -49,6 +49,10 @@ def casi():
                    + R(pp, 175, 80, secondi=3.0, gambe=140),
         "PET-007": [pp(175)] * FPS + R(pp, 175, 80, secondi=3.0) + R(pp, 175, 80, secondi=3.0, abbassa_bacino=70),
         "PET-008": [pp(175)] * FPS + R(pp, 175, 80, secondi=3.0) + R(pp, 175, 115, secondi=3.0),
+        "DEL-007": [pm.posa_alzata(15.3)] * FPS + R(pm.posa_alzata, 15.3, 88.7, secondi=3.0)
+                   + R(pm.posa_alzata, 15.3, 55.2, secondi=3.0) + R(pm.posa_alzata, 15.3, 88.7, secondi=0.8),
+        "DEL-005": [pm.posa_alzata(15.3, 15.3)] * FPS + R(lambda a: pm.posa_alzata(a, a), 15.3, 88.7, secondi=3.0)
+                   + R(lambda a: pm.posa_alzata(a, max(15.3, a - 35)), 15.3, 88.7, secondi=3.0),
         "PET-002": [pp(175)] * FPS + R(pp, 175, 80, secondi=3.0) + R(pp, 175, 80, secondi=3.0, abbassa_bacino=70),
     }
 

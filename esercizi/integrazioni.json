@@ -1665,5 +1665,557 @@
    "avviso_sicurezza": "Esercizio ad alto rischio per spalle e gomiti: l'app non lo analizza. Solo per atleti esperti, con progressioni graduali e la supervisione dell'istruttore."
   },
   "motivo": "Non analizzato per scelta di sicurezza (note, punto 5): avviso ben visibile."
+ },
+ {
+  "id": "DEA-001",
+  "imposta": {
+   "errori.troppo_veloce.misura": "discesa",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Scendi più lentamente': misurato direttamente la discesa (prima fase), almeno il 40% dei 2 s previsti dal tempo."
+ },
+ {
+  "id": "DEA-014",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Scendi più lentamente': misurato direttamente il ritorno (salita del motore), almeno il 40% dei 2 s previsti dal tempo."
+ },
+ {
+  "id": "DEA-015",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Scendi più lentamente': misurato direttamente il ritorno (salita del motore), almeno il 40% dei 2 s previsti dal tempo."
+ },
+ {
+  "id": "DEA-018",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 1.2
+  },
+  "motivo": "'Scendi più lentamente': misurato direttamente il ritorno (salita del motore), almeno il 40% dei 3 s previsti dal tempo."
+ },
+ {
+  "id": "DEA-020",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 1.2
+  },
+  "motivo": "'Scendi più lentamente': misurato direttamente il ritorno (salita del motore), almeno il 40% dei 3 s previsti dal tempo."
+ },
+ {
+  "id": "DEA-021",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 1.2
+  },
+  "motivo": "'Scendi più lentamente': misurato direttamente il ritorno (salita del motore), almeno il 40% dei 3 s previsti dal tempo."
+ },
+ {
+  "id": "DEA-022",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 1.2
+  },
+  "motivo": "'Scendi più lentamente': misurato direttamente il ritorno (salita del motore), almeno il 40% dei 3 s previsti dal tempo."
+ },
+ {
+  "id": "DEA-023",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Scendi più lentamente': misurato direttamente il ritorno (salita del motore), almeno il 40% dei 2 s previsti dal tempo."
+ },
+ {
+  "id": "DEA-025",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Scendi più lentamente': misurato direttamente il ritorno (salita del motore), almeno il 40% dei 2 s previsti dal tempo."
+ },
+ {
+  "id": "DEA-030",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Scendi più lentamente': misurato direttamente il ritorno (salita del motore), almeno il 40% dei 2 s previsti dal tempo."
+ },
+ {
+  "id": "DEA-032",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Torna più lentamente': misurato direttamente il ritorno (salita del motore), almeno il 40% dei 2 s previsti dal tempo."
+ },
+ {
+  "id": "DEA-034",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Scendi più lentamente': misurato direttamente il ritorno (salita del motore), almeno il 40% dei 2 s previsti dal tempo."
+ },
+ {
+  "id": "DEA-037",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 1.2
+  },
+  "motivo": "'Scendi più lentamente': misurato direttamente il ritorno (salita del motore), almeno il 40% dei 3 s previsti dal tempo."
+ },
+ {
+  "id": "DEA-038",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 1.2
+  },
+  "motivo": "'Scendi più lentamente': misurato direttamente il ritorno (salita del motore), almeno il 40% dei 3 s previsti dal tempo."
+ },
+ {
+  "id": "DEA-040",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Scendi più lentamente': misurato direttamente il ritorno (salita del motore), almeno il 40% dei 2 s previsti dal tempo."
+ },
+ {
+  "id": "DEL-001",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Scendi più lentamente': misurato direttamente il ritorno (salita del motore), almeno il 40% dei 2 s previsti dal tempo."
+ },
+ {
+  "id": "DEL-003",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Scendi più lentamente': misurato direttamente il ritorno (salita del motore), almeno il 40% dei 2 s previsti dal tempo."
+ },
+ {
+  "id": "DEL-004",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Scendi più lentamente': misurato direttamente il ritorno (salita del motore), almeno il 40% dei 2 s previsti dal tempo."
+ },
+ {
+  "id": "DEL-005",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Scendi più lentamente': misurato direttamente il ritorno (salita del motore), almeno il 40% dei 2 s previsti dal tempo."
+ },
+ {
+  "id": "DEL-008",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Scendi più lentamente': misurato direttamente il ritorno (salita del motore), almeno il 40% dei 2 s previsti dal tempo."
+ },
+ {
+  "id": "DEL-011",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Scendi più lentamente': misurato direttamente il ritorno (salita del motore), almeno il 40% dei 2 s previsti dal tempo."
+ },
+ {
+  "id": "DEL-012",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Scendi più lentamente': misurato direttamente il ritorno (salita del motore), almeno il 40% dei 2 s previsti dal tempo."
+ },
+ {
+  "id": "DEL-016",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Scendi più lentamente': misurato direttamente il ritorno (salita del motore), almeno il 40% dei 2 s previsti dal tempo."
+ },
+ {
+  "id": "DEL-017",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Scendi più lentamente': misurato direttamente il ritorno (salita del motore), almeno il 40% dei 2 s previsti dal tempo."
+ },
+ {
+  "id": "DEL-018",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Scendi più lentamente': misurato direttamente il ritorno (salita del motore), almeno il 40% dei 2 s previsti dal tempo."
+ },
+ {
+  "id": "DEL-019",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Scendi più lentamente': misurato direttamente il ritorno (salita del motore), almeno il 40% dei 2 s previsti dal tempo."
+ },
+ {
+  "id": "DEL-020",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Scendi più lentamente': misurato direttamente il ritorno (salita del motore), almeno il 40% dei 2 s previsti dal tempo."
+ },
+ {
+  "id": "DEP-001",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Scendi più lentamente': misurato direttamente il ritorno (salita del motore), almeno il 40% dei 2 s previsti dal tempo."
+ },
+ {
+  "id": "DEP-002",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Rallenta, niente strappi': misurato direttamente il ritorno (salita del motore), almeno il 40% dei 2 s previsti dal tempo."
+ },
+ {
+  "id": "DEP-003",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Scendi più lentamente': misurato direttamente il ritorno (salita del motore), almeno il 40% dei 2 s previsti dal tempo."
+ },
+ {
+  "id": "DEP-005",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Scendi più lentamente': misurato direttamente il ritorno (salita del motore), almeno il 40% dei 2 s previsti dal tempo."
+ },
+ {
+  "id": "DEP-008",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Torna più lentamente': misurato direttamente il ritorno (salita del motore), almeno il 40% dei 2 s previsti dal tempo."
+ },
+ {
+  "id": "DEP-013",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Torna più lentamente': misurato direttamente il ritorno (salita del motore), almeno il 40% dei 2 s previsti dal tempo."
+ },
+ {
+  "id": "DEP-016",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Torna più lentamente': misurato direttamente il ritorno (salita del motore), almeno il 40% dei 2 s previsti dal tempo."
+ },
+ {
+  "id": "DEP-018",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Scendi più lentamente': misurato direttamente il ritorno (salita del motore), almeno il 40% dei 2 s previsti dal tempo."
+ },
+ {
+  "id": "DEA-022",
+  "imposta": {
+   "impostazioni": [
+    {
+     "id": "lato",
+     "domanda": "Quale braccio lavora?",
+     "opzioni": [
+      {
+       "etichetta": "Destro",
+       "imposta": {
+        "lato": "dx"
+       }
+      },
+      {
+       "etichetta": "Sinistro",
+       "imposta": {
+        "lato": "sx"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "motivo": "Scelta del lato di lavoro prima della serie (note, punto 7.1)."
+ },
+ {
+  "id": "DEA-023",
+  "imposta": {
+   "impostazioni": [
+    {
+     "id": "lato",
+     "domanda": "Quale braccio lavora?",
+     "opzioni": [
+      {
+       "etichetta": "Destro",
+       "imposta": {
+        "lato": "dx"
+       }
+      },
+      {
+       "etichetta": "Sinistro",
+       "imposta": {
+        "lato": "sx"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "motivo": "Scelta del lato di lavoro prima della serie (note, punto 7.1)."
+ },
+ {
+  "id": "DEA-026",
+  "imposta": {
+   "impostazioni": [
+    {
+     "id": "lato",
+     "domanda": "Quale braccio lavora?",
+     "opzioni": [
+      {
+       "etichetta": "Destro",
+       "imposta": {
+        "lato": "dx"
+       }
+      },
+      {
+       "etichetta": "Sinistro",
+       "imposta": {
+        "lato": "sx"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "motivo": "Scelta del lato di lavoro prima della serie (note, punto 7.1)."
+ },
+ {
+  "id": "DEA-036",
+  "imposta": {
+   "impostazioni": [
+    {
+     "id": "lato",
+     "domanda": "Quale braccio lavora?",
+     "opzioni": [
+      {
+       "etichetta": "Destro",
+       "imposta": {
+        "lato": "dx"
+       }
+      },
+      {
+       "etichetta": "Sinistro",
+       "imposta": {
+        "lato": "sx"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "motivo": "Scelta del lato di lavoro prima della serie (note, punto 7.1)."
+ },
+ {
+  "id": "DEA-038",
+  "imposta": {
+   "impostazioni": [
+    {
+     "id": "lato",
+     "domanda": "Quale braccio lavora?",
+     "opzioni": [
+      {
+       "etichetta": "Destro",
+       "imposta": {
+        "lato": "dx"
+       }
+      },
+      {
+       "etichetta": "Sinistro",
+       "imposta": {
+        "lato": "sx"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "motivo": "Scelta del lato di lavoro prima della serie (note, punto 7.1)."
+ },
+ {
+  "id": "DEL-007",
+  "imposta": {
+   "analizzabilita": "parziale",
+   "lato": "dx",
+   "impostazioni": [
+    {
+     "id": "lato",
+     "domanda": "Quale braccio lavora?",
+     "opzioni": [
+      {
+       "etichetta": "Destro",
+       "imposta": {
+        "lato": "dx"
+       }
+      },
+      {
+       "etichetta": "Sinistro",
+       "imposta": {
+        "lato": "sx"
+       }
+      }
+     ]
+    }
+   ],
+   "messaggio_posizione": "Camera di fronte, corpo intero visibile",
+   "messaggio_ok": "Ottime alzate!",
+   "ripetizione": {
+    "misura": "braccio",
+    "direzione": "aumenta",
+    "posizione_iniziale": 25,
+    "inizio_movimento": 40
+   },
+   "errori": [
+    {
+     "id": "ampiezza",
+     "messaggio": "Gomiti all'altezza delle spalle",
+     "gravita": "giallo",
+     "momento": "fine",
+     "misura": "braccio",
+     "statistica": "massimo",
+     "minore_di": 70
+    },
+    {
+     "id": "gomiti_piegati",
+     "messaggio": "Non piegare i gomiti",
+     "gravita": "giallo",
+     "momento": "durante",
+     "misura": "gomito",
+     "minore_di": 130
+    },
+    {
+     "id": "busto_laterale",
+     "messaggio": "Busto fermo",
+     "gravita": "giallo",
+     "momento": "durante",
+     "misura": "busto",
+     "maggiore_di": 10
+    },
+    {
+     "id": "troppo_veloce",
+     "messaggio": "Scendi più lentamente",
+     "gravita": "giallo",
+     "momento": "fine",
+     "misura": "salita",
+     "statistica": "massimo",
+     "minore_di": 0.8
+    }
+   ]
+  },
+  "motivo": "Diventa analizzabile con la scelta del braccio anche in vista frontale (note, punto 7.1): usa le regole di DEL-005 sul solo braccio scelto."
+ },
+ {
+  "id": "DEA-010",
+  "imposta": {
+   "avviso_sicurezza": "Esercizio sconsigliato: il bilanciere dietro la nuca sollecita molto spalle e collo. L'app non lo analizza; per la maggior parte dei clienti è meglio il lento avanti."
+  },
+  "motivo": "Non analizzato per scelta di sicurezza (note, punto 5): avviso ben visibile."
+ },
+ {
+  "id": "DEA-012",
+  "imposta": {
+   "avviso_sicurezza": "Esercizio sconsigliato: il passaggio dietro la nuca sollecita molto spalle e collo. L'app non lo analizza; da fare solo con l'istruttore."
+  },
+  "motivo": "Non analizzato per scelta di sicurezza (note, punto 5): avviso ben visibile."
+ },
+ {
+  "id": "DEA-017",
+  "imposta": {
+   "avviso_sicurezza": "Esercizio sconsigliato: il bilanciere dietro la nuca sollecita molto spalle e collo. L'app non lo analizza; per la maggior parte dei clienti è meglio il lento avanti al multipower."
+  },
+  "motivo": "Non analizzato per scelta di sicurezza (note, punto 5): avviso ben visibile."
+ },
+ {
+  "id": "DEA-029",
+  "imposta": {
+   "avviso_sicurezza": "Esercizio avanzato: il kettlebell capovolto può perdere l'equilibrio e cadere. L'app non lo analizza; da fare solo con l'istruttore e con carichi leggeri."
+  },
+  "motivo": "Non analizzato per scelta di sicurezza (note, punto 5): avviso ben visibile."
+ },
+ {
+  "id": "DEA-002",
+  "imposta": {
+   "avviso_sicurezza": "Esercizio avanzato a testa in giù: l'app non lo analizza perché in questa posa il riconoscimento del corpo non è affidabile. Da fare solo se lo padroneggi già o con l'istruttore."
+  },
+  "motivo": "Non analizzato per scelta di sicurezza (note, punto 5): avviso ben visibile."
+ },
+ {
+  "id": "DEA-003",
+  "imposta": {
+   "avviso_sicurezza": "Esercizio avanzato a testa in giù: l'app non lo analizza perché in questa posa il riconoscimento del corpo non è affidabile. Da fare solo se lo padroneggi già o con l'istruttore."
+  },
+  "motivo": "Non analizzato per scelta di sicurezza (note, punto 5): avviso ben visibile."
+ },
+ {
+  "id": "DEA-004",
+  "imposta": {
+   "avviso_sicurezza": "Esercizio avanzato a testa in giù: l'app non lo analizza perché in questa posa il riconoscimento del corpo non è affidabile. Da fare solo se lo padroneggi già o con l'istruttore."
+  },
+  "motivo": "Non analizzato per scelta di sicurezza (note, punto 5): avviso ben visibile."
+ },
+ {
+  "id": "DEA-005",
+  "imposta": {
+   "avviso_sicurezza": "Esercizio avanzato a testa in giù: l'app non lo analizza perché in questa posa il riconoscimento del corpo non è affidabile. Da fare solo se lo padroneggi già o con l'istruttore."
+  },
+  "motivo": "Non analizzato per scelta di sicurezza (note, punto 5): avviso ben visibile."
+ },
+ {
+  "id": "DEA-006",
+  "imposta": {
+   "avviso_sicurezza": "Esercizio avanzato a testa in giù: l'app non lo analizza perché in questa posa il riconoscimento del corpo non è affidabile. Da fare solo se lo padroneggi già o con l'istruttore."
+  },
+  "motivo": "Non analizzato per scelta di sicurezza (note, punto 5): avviso ben visibile."
+ },
+ {
+  "id": "DEA-007",
+  "imposta": {
+   "avviso_sicurezza": "Esercizio avanzato a testa in giù: l'app non lo analizza perché in questa posa il riconoscimento del corpo non è affidabile. Da fare solo se lo padroneggi già o con l'istruttore."
+  },
+  "motivo": "Non analizzato per scelta di sicurezza (note, punto 5): avviso ben visibile."
  }
 ]
