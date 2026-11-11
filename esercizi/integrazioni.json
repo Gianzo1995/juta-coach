@@ -4162,5 +4162,1263 @@
    ]
   },
   "motivo": "Reso analizzabile con la modalità isometrica (note per il motore, punto 7.8). Regole proposte dall'app."
+ },
+ {
+  "id": "QUA-013",
+  "imposta": {
+   "analizzabilita": "parziale",
+   "vista_camera": "frontale",
+   "lato": "dx",
+   "impostazioni": [
+    {
+     "id": "lato",
+     "domanda": "Quale gamba si piega?",
+     "opzioni": [
+      {
+       "etichetta": "Destra",
+       "imposta": {
+        "lato": "dx"
+       }
+      },
+      {
+       "etichetta": "Sinistra",
+       "imposta": {
+        "lato": "sx"
+       }
+      }
+     ]
+    }
+   ],
+   "messaggio_posizione": "Camera di fronte, corpo intero visibile, spazio ai lati",
+   "messaggio_ok": "Ottimo affondo!",
+   "misure": {
+    "ginocchio": {
+     "tipo": "angolo",
+     "punti": [
+      "anca",
+      "ginocchio",
+      "caviglia"
+     ],
+     "ancora": "caviglia"
+    },
+    "busto": {
+     "tipo": "inclinazione",
+     "punti": [
+      "anca",
+      "spalla"
+     ]
+    }
+   },
+   "ripetizione": {
+    "misura": "ginocchio",
+    "direzione": "diminuisce",
+    "posizione_iniziale": 160,
+    "inizio_movimento": 145
+   },
+   "errori": [
+    {
+     "id": "profondita",
+     "messaggio": "Scendi di più sulla gamba",
+     "gravita": "giallo",
+     "momento": "fine",
+     "misura": "ginocchio",
+     "statistica": "minimo",
+     "maggiore_di": 115
+    },
+    {
+     "id": "busto_inclinato",
+     "messaggio": "Busto più dritto",
+     "gravita": "giallo",
+     "momento": "durante",
+     "misura": "busto",
+     "maggiore_di": 40
+    },
+    {
+     "id": "troppo_veloce",
+     "messaggio": "Scendi più lentamente",
+     "gravita": "giallo",
+     "momento": "fine",
+     "misura": "discesa",
+     "statistica": "massimo",
+     "minore_di": 0.8
+    }
+   ],
+   "testi_errori": {
+    "profondita": {
+     "cosa_succede": "Il ginocchio della gamba che lavora si ferma a {valore} (deve scendere sotto {soglia}).",
+     "perche_conta": "Con poca ampiezza glutei e adduttori lavorano meno e la mobilità dell'anca non migliora.",
+     "come_correggere": "Siediti indietro sulla gamba che si piega, tallone a terra; se non scendi, riduci la distanza tra i piedi.",
+     "frase_da_ricordare": "Siediti sulla gamba."
+    },
+    "busto_inclinato": {
+     "cosa_succede": "Il busto si piega di lato di {valore} (limite {soglia}).",
+     "perche_conta": "Piegando il busto il peso esce dalla gamba e la schiena compensa.",
+     "come_correggere": "Petto alto e busto sopra il bacino; porta le braccia avanti per bilanciarti.",
+     "frase_da_ricordare": "Petto alto."
+    },
+    "troppo_veloce": {
+     "cosa_succede": "Scendi troppo in fretta: la discesa dura {valore} (minimo {soglia}).",
+     "perche_conta": "Scendendo veloce il ginocchio prende un colpo e il muscolo lavora meno.",
+     "come_correggere": "Conta due secondi per scendere sulla gamba.",
+     "frase_da_ricordare": "Giù in due secondi."
+    }
+   },
+   "motivo": "Lato scelto: si analizza solo la gamba che lavora. Vista frontale, soglie stimate, da tarare in sala.",
+   "non_rilevabili": [
+    {
+     "errore": "Ginocchio che cede verso l'interno",
+     "motivo": "Di fronte si confonde con la piega del ginocchio: serve una misura dedicata."
+    },
+    {
+     "errore": "Tallone che si stacca",
+     "motivo": "Di fronte il tallone è coperto dal piede."
+    }
+   ]
+  },
+  "motivo": "Reso analizzabile in vista frontale con la scelta della gamba (richiesta del catalogo). Regole proposte dall'app."
+ },
+ {
+  "id": "QUA-038",
+  "imposta": {
+   "analizzabilita": "parziale",
+   "vista_camera": "frontale",
+   "lato": "dx",
+   "impostazioni": [
+    {
+     "id": "lato",
+     "domanda": "Quale gamba si piega?",
+     "opzioni": [
+      {
+       "etichetta": "Destra",
+       "imposta": {
+        "lato": "dx"
+       }
+      },
+      {
+       "etichetta": "Sinistra",
+       "imposta": {
+        "lato": "sx"
+       }
+      }
+     ]
+    }
+   ],
+   "messaggio_posizione": "Camera di fronte, corpo intero visibile, spazio ai lati",
+   "messaggio_ok": "Ottimo affondo!",
+   "misure": {
+    "ginocchio": {
+     "tipo": "angolo",
+     "punti": [
+      "anca",
+      "ginocchio",
+      "caviglia"
+     ],
+     "ancora": "caviglia"
+    },
+    "busto": {
+     "tipo": "inclinazione",
+     "punti": [
+      "anca",
+      "spalla"
+     ]
+    }
+   },
+   "ripetizione": {
+    "misura": "ginocchio",
+    "direzione": "diminuisce",
+    "posizione_iniziale": 160,
+    "inizio_movimento": 145
+   },
+   "errori": [
+    {
+     "id": "profondita",
+     "messaggio": "Scendi di più sulla gamba",
+     "gravita": "giallo",
+     "momento": "fine",
+     "misura": "ginocchio",
+     "statistica": "minimo",
+     "maggiore_di": 115
+    },
+    {
+     "id": "busto_inclinato",
+     "messaggio": "Busto più dritto",
+     "gravita": "giallo",
+     "momento": "durante",
+     "misura": "busto",
+     "maggiore_di": 40
+    },
+    {
+     "id": "troppo_veloce",
+     "messaggio": "Scendi più lentamente",
+     "gravita": "giallo",
+     "momento": "fine",
+     "misura": "discesa",
+     "statistica": "massimo",
+     "minore_di": 0.8
+    }
+   ],
+   "testi_errori": {
+    "profondita": {
+     "cosa_succede": "Il ginocchio della gamba che lavora si ferma a {valore} (deve scendere sotto {soglia}).",
+     "perche_conta": "Con poca ampiezza glutei e adduttori lavorano meno e la mobilità dell'anca non migliora.",
+     "come_correggere": "Siediti indietro sulla gamba che si piega, tallone a terra; se non scendi, riduci la distanza tra i piedi.",
+     "frase_da_ricordare": "Siediti sulla gamba."
+    },
+    "busto_inclinato": {
+     "cosa_succede": "Il busto si piega di lato di {valore} (limite {soglia}).",
+     "perche_conta": "Piegando il busto il peso esce dalla gamba e la schiena compensa.",
+     "come_correggere": "Petto alto e busto sopra il bacino; porta le braccia avanti per bilanciarti.",
+     "frase_da_ricordare": "Petto alto."
+    },
+    "troppo_veloce": {
+     "cosa_succede": "Scendi troppo in fretta: la discesa dura {valore} (minimo {soglia}).",
+     "perche_conta": "Scendendo veloce il ginocchio prende un colpo e il muscolo lavora meno.",
+     "come_correggere": "Conta due secondi per scendere sulla gamba.",
+     "frase_da_ricordare": "Giù in due secondi."
+    }
+   },
+   "motivo": "Lato scelto: si analizza solo la gamba che lavora. Vista frontale, soglie stimate, da tarare in sala.",
+   "non_rilevabili": [
+    {
+     "errore": "Ginocchio che cede verso l'interno",
+     "motivo": "Di fronte si confonde con la piega del ginocchio: serve una misura dedicata."
+    },
+    {
+     "errore": "Tallone che si stacca",
+     "motivo": "Di fronte il tallone è coperto dal piede."
+    }
+   ]
+  },
+  "motivo": "Reso analizzabile in vista frontale con la scelta della gamba (richiesta del catalogo). Regole proposte dall'app."
+ },
+ {
+  "id": "ADD-004",
+  "imposta": {
+   "analizzabilita": "parziale",
+   "vista_camera": "frontale",
+   "lato": "dx",
+   "impostazioni": [
+    {
+     "id": "lato",
+     "domanda": "Quale gamba si piega?",
+     "opzioni": [
+      {
+       "etichetta": "Destra",
+       "imposta": {
+        "lato": "dx"
+       }
+      },
+      {
+       "etichetta": "Sinistra",
+       "imposta": {
+        "lato": "sx"
+       }
+      }
+     ]
+    }
+   ],
+   "messaggio_posizione": "Camera di fronte, corpo intero visibile, spazio ai lati",
+   "messaggio_ok": "Ottimo cossack!",
+   "misure": {
+    "ginocchio": {
+     "tipo": "angolo",
+     "punti": [
+      "anca",
+      "ginocchio",
+      "caviglia"
+     ],
+     "ancora": "caviglia"
+    },
+    "busto": {
+     "tipo": "inclinazione",
+     "punti": [
+      "anca",
+      "spalla"
+     ]
+    }
+   },
+   "ripetizione": {
+    "misura": "ginocchio",
+    "direzione": "diminuisce",
+    "posizione_iniziale": 160,
+    "inizio_movimento": 145
+   },
+   "errori": [
+    {
+     "id": "profondita",
+     "messaggio": "Scendi di più sulla gamba",
+     "gravita": "giallo",
+     "momento": "fine",
+     "misura": "ginocchio",
+     "statistica": "minimo",
+     "maggiore_di": 90
+    },
+    {
+     "id": "busto_inclinato",
+     "messaggio": "Busto più dritto",
+     "gravita": "giallo",
+     "momento": "durante",
+     "misura": "busto",
+     "maggiore_di": 50
+    },
+    {
+     "id": "troppo_veloce",
+     "messaggio": "Scendi più lentamente",
+     "gravita": "giallo",
+     "momento": "fine",
+     "misura": "discesa",
+     "statistica": "massimo",
+     "minore_di": 0.8
+    }
+   ],
+   "testi_errori": {
+    "profondita": {
+     "cosa_succede": "Il ginocchio della gamba che lavora si ferma a {valore} (deve scendere sotto {soglia}).",
+     "perche_conta": "Con poca ampiezza glutei e adduttori lavorano meno e la mobilità dell'anca non migliora.",
+     "come_correggere": "Siediti indietro sulla gamba che si piega, tallone a terra; se non scendi, riduci la distanza tra i piedi.",
+     "frase_da_ricordare": "Siediti sulla gamba."
+    },
+    "busto_inclinato": {
+     "cosa_succede": "Il busto si piega di lato di {valore} (limite {soglia}).",
+     "perche_conta": "Piegando il busto il peso esce dalla gamba e la schiena compensa.",
+     "come_correggere": "Petto alto e busto sopra il bacino; porta le braccia avanti per bilanciarti.",
+     "frase_da_ricordare": "Petto alto."
+    },
+    "troppo_veloce": {
+     "cosa_succede": "Scendi troppo in fretta: la discesa dura {valore} (minimo {soglia}).",
+     "perche_conta": "Scendendo veloce il ginocchio prende un colpo e il muscolo lavora meno.",
+     "come_correggere": "Conta due secondi per scendere sulla gamba.",
+     "frase_da_ricordare": "Giù in due secondi."
+    }
+   },
+   "motivo": "Lato scelto: si analizza solo la gamba che lavora. Vista frontale, soglie stimate, da tarare in sala.",
+   "non_rilevabili": [
+    {
+     "errore": "Ginocchio che cede verso l'interno",
+     "motivo": "Di fronte si confonde con la piega del ginocchio: serve una misura dedicata."
+    },
+    {
+     "errore": "Tallone che si stacca",
+     "motivo": "Di fronte il tallone è coperto dal piede."
+    }
+   ]
+  },
+  "motivo": "Reso analizzabile in vista frontale con la scelta della gamba (richiesta del catalogo). Regole proposte dall'app."
+ },
+ {
+  "id": "ADD-005",
+  "imposta": {
+   "analizzabilita": "parziale",
+   "vista_camera": "frontale",
+   "lato": "dx",
+   "impostazioni": [
+    {
+     "id": "lato",
+     "domanda": "Quale gamba si piega?",
+     "opzioni": [
+      {
+       "etichetta": "Destra",
+       "imposta": {
+        "lato": "dx"
+       }
+      },
+      {
+       "etichetta": "Sinistra",
+       "imposta": {
+        "lato": "sx"
+       }
+      }
+     ]
+    }
+   ],
+   "messaggio_posizione": "Camera di fronte, corpo intero visibile, spazio ai lati",
+   "messaggio_ok": "Ottimo cossack!",
+   "misure": {
+    "ginocchio": {
+     "tipo": "angolo",
+     "punti": [
+      "anca",
+      "ginocchio",
+      "caviglia"
+     ],
+     "ancora": "caviglia"
+    },
+    "busto": {
+     "tipo": "inclinazione",
+     "punti": [
+      "anca",
+      "spalla"
+     ]
+    }
+   },
+   "ripetizione": {
+    "misura": "ginocchio",
+    "direzione": "diminuisce",
+    "posizione_iniziale": 160,
+    "inizio_movimento": 145
+   },
+   "errori": [
+    {
+     "id": "profondita",
+     "messaggio": "Scendi di più sulla gamba",
+     "gravita": "giallo",
+     "momento": "fine",
+     "misura": "ginocchio",
+     "statistica": "minimo",
+     "maggiore_di": 90
+    },
+    {
+     "id": "busto_inclinato",
+     "messaggio": "Busto più dritto",
+     "gravita": "giallo",
+     "momento": "durante",
+     "misura": "busto",
+     "maggiore_di": 50
+    },
+    {
+     "id": "troppo_veloce",
+     "messaggio": "Scendi più lentamente",
+     "gravita": "giallo",
+     "momento": "fine",
+     "misura": "discesa",
+     "statistica": "massimo",
+     "minore_di": 0.8
+    }
+   ],
+   "testi_errori": {
+    "profondita": {
+     "cosa_succede": "Il ginocchio della gamba che lavora si ferma a {valore} (deve scendere sotto {soglia}).",
+     "perche_conta": "Con poca ampiezza glutei e adduttori lavorano meno e la mobilità dell'anca non migliora.",
+     "come_correggere": "Siediti indietro sulla gamba che si piega, tallone a terra; se non scendi, riduci la distanza tra i piedi.",
+     "frase_da_ricordare": "Siediti sulla gamba."
+    },
+    "busto_inclinato": {
+     "cosa_succede": "Il busto si piega di lato di {valore} (limite {soglia}).",
+     "perche_conta": "Piegando il busto il peso esce dalla gamba e la schiena compensa.",
+     "come_correggere": "Petto alto e busto sopra il bacino; porta le braccia avanti per bilanciarti.",
+     "frase_da_ricordare": "Petto alto."
+    },
+    "troppo_veloce": {
+     "cosa_succede": "Scendi troppo in fretta: la discesa dura {valore} (minimo {soglia}).",
+     "perche_conta": "Scendendo veloce il ginocchio prende un colpo e il muscolo lavora meno.",
+     "come_correggere": "Conta due secondi per scendere sulla gamba.",
+     "frase_da_ricordare": "Giù in due secondi."
+    }
+   },
+   "motivo": "Lato scelto: si analizza solo la gamba che lavora. Vista frontale, soglie stimate, da tarare in sala.",
+   "non_rilevabili": [
+    {
+     "errore": "Ginocchio che cede verso l'interno",
+     "motivo": "Di fronte si confonde con la piega del ginocchio: serve una misura dedicata."
+    },
+    {
+     "errore": "Tallone che si stacca",
+     "motivo": "Di fronte il tallone è coperto dal piede."
+    }
+   ]
+  },
+  "motivo": "Reso analizzabile in vista frontale con la scelta della gamba (richiesta del catalogo). Regole proposte dall'app."
+ },
+ {
+  "id": "ADD-006",
+  "imposta": {
+   "analizzabilita": "parziale",
+   "vista_camera": "frontale",
+   "lato": "dx",
+   "impostazioni": [
+    {
+     "id": "lato",
+     "domanda": "Quale gamba lavora?",
+     "opzioni": [
+      {
+       "etichetta": "Destra",
+       "imposta": {
+        "lato": "dx",
+        "misure.gamba": {
+         "tipo": "angolo",
+         "punti": [
+          "anca_sx",
+          "anca_dx",
+          "caviglia_dx"
+         ],
+         "ancora": "anca_sx"
+        }
+       }
+      },
+      {
+       "etichetta": "Sinistra",
+       "imposta": {
+        "lato": "sx",
+        "misure.gamba": {
+         "tipo": "angolo",
+         "punti": [
+          "anca_dx",
+          "anca_sx",
+          "caviglia_sx"
+         ],
+         "ancora": "anca_dx"
+        }
+       }
+      }
+     ]
+    }
+   ],
+   "messaggio_posizione": "Camera di fronte, corpo intero visibile",
+   "messaggio_ok": "Ottima adduzione!",
+   "misure": {
+    "gamba": {
+     "tipo": "angolo",
+     "punti": [
+      "anca_sx",
+      "anca_dx",
+      "caviglia_dx"
+     ],
+     "ancora": "anca_sx"
+    },
+    "busto": {
+     "tipo": "inclinazione",
+     "punti": [
+      "anca",
+      "spalla"
+     ]
+    }
+   },
+   "ripetizione": {
+    "misura": "gamba",
+    "direzione": "diminuisce",
+    "posizione_iniziale": 105,
+    "inizio_movimento": 98,
+    "tolleranza_pausa": 2
+   },
+   "errori": [
+    {
+     "id": "ampiezza",
+     "messaggio": "Porta la gamba oltre il centro",
+     "gravita": "giallo",
+     "momento": "fine",
+     "misura": "gamba",
+     "statistica": "minimo",
+     "maggiore_di": 88
+    },
+    {
+     "id": "busto_laterale",
+     "messaggio": "Busto dritto",
+     "gravita": "giallo",
+     "momento": "durante",
+     "misura": "busto",
+     "maggiore_di": 20
+    },
+    {
+     "id": "troppo_veloce",
+     "messaggio": "Torna più lentamente",
+     "gravita": "giallo",
+     "momento": "fine",
+     "misura": "salita",
+     "statistica": "massimo",
+     "minore_di": 0.8
+    }
+   ],
+   "testi_errori": {
+    "ampiezza": {
+     "cosa_succede": "La gamba si ferma a {valore} rispetto alla linea delle anche (90° = gamba dritta sotto l'anca; deve scendere sotto {soglia}).",
+     "perche_conta": "Gli adduttori lavorano di più nella parte finale, quando la gamba passa davanti all'altra.",
+     "come_correggere": "Porta il piede oltre l'altro piede, passando davanti; se non ci arrivi, riduci il carico.",
+     "frase_da_ricordare": "Oltre il centro."
+    },
+    "busto_laterale": {
+     "cosa_succede": "Il busto si piega di lato di {valore} (limite {soglia}).",
+     "perche_conta": "Piegando il busto si sposta il bacino e il lavoro passa dall'anca alla schiena.",
+     "come_correggere": "Tieni il busto dritto, appoggiati con una mano se serve, e riduci l'ampiezza o il carico.",
+     "frase_da_ricordare": "Busto dritto."
+    },
+    "troppo_veloce": {
+     "cosa_succede": "La gamba torna troppo in fretta: il ritorno dura {valore} (minimo {soglia}).",
+     "perche_conta": "Nel ritorno lento il muscolo continua a lavorare; tornando di colpo lavora l'elastico o il cavo al posto tuo.",
+     "come_correggere": "Conta due secondi per tornare, resistendo.",
+     "frase_da_ricordare": "Torna in due secondi."
+    }
+   },
+   "motivo": "Lato scelto: si analizza solo la gamba che lavora. Vista frontale, soglie stimate, da tarare in sala. La gamba è misurata rispetto alla linea delle anche: 90° = sotto l'anca, sopra 90° = aperta, sotto = oltre il centro.",
+   "non_rilevabili": [
+    {
+     "errore": "Slancio",
+     "motivo": "Si vede solo indirettamente dalla velocità del ritorno."
+    }
+   ]
+  },
+  "motivo": "Reso analizzabile in vista frontale con la scelta della gamba e un angolo rispetto alla linea delle anche. Regole proposte dall'app."
+ },
+ {
+  "id": "ADD-008",
+  "imposta": {
+   "analizzabilita": "parziale",
+   "vista_camera": "frontale",
+   "lato": "dx",
+   "impostazioni": [
+    {
+     "id": "lato",
+     "domanda": "Quale gamba lavora?",
+     "opzioni": [
+      {
+       "etichetta": "Destra",
+       "imposta": {
+        "lato": "dx",
+        "misure.gamba": {
+         "tipo": "angolo",
+         "punti": [
+          "anca_sx",
+          "anca_dx",
+          "caviglia_dx"
+         ],
+         "ancora": "anca_sx"
+        }
+       }
+      },
+      {
+       "etichetta": "Sinistra",
+       "imposta": {
+        "lato": "sx",
+        "misure.gamba": {
+         "tipo": "angolo",
+         "punti": [
+          "anca_dx",
+          "anca_sx",
+          "caviglia_sx"
+         ],
+         "ancora": "anca_dx"
+        }
+       }
+      }
+     ]
+    }
+   ],
+   "messaggio_posizione": "Camera di fronte, corpo intero visibile",
+   "messaggio_ok": "Ottima adduzione!",
+   "misure": {
+    "gamba": {
+     "tipo": "angolo",
+     "punti": [
+      "anca_sx",
+      "anca_dx",
+      "caviglia_dx"
+     ],
+     "ancora": "anca_sx"
+    },
+    "busto": {
+     "tipo": "inclinazione",
+     "punti": [
+      "anca",
+      "spalla"
+     ]
+    }
+   },
+   "ripetizione": {
+    "misura": "gamba",
+    "direzione": "diminuisce",
+    "posizione_iniziale": 105,
+    "inizio_movimento": 98,
+    "tolleranza_pausa": 2
+   },
+   "errori": [
+    {
+     "id": "ampiezza",
+     "messaggio": "Porta la gamba oltre il centro",
+     "gravita": "giallo",
+     "momento": "fine",
+     "misura": "gamba",
+     "statistica": "minimo",
+     "maggiore_di": 88
+    },
+    {
+     "id": "busto_laterale",
+     "messaggio": "Busto dritto",
+     "gravita": "giallo",
+     "momento": "durante",
+     "misura": "busto",
+     "maggiore_di": 20
+    },
+    {
+     "id": "troppo_veloce",
+     "messaggio": "Torna più lentamente",
+     "gravita": "giallo",
+     "momento": "fine",
+     "misura": "salita",
+     "statistica": "massimo",
+     "minore_di": 0.8
+    }
+   ],
+   "testi_errori": {
+    "ampiezza": {
+     "cosa_succede": "La gamba si ferma a {valore} rispetto alla linea delle anche (90° = gamba dritta sotto l'anca; deve scendere sotto {soglia}).",
+     "perche_conta": "Gli adduttori lavorano di più nella parte finale, quando la gamba passa davanti all'altra.",
+     "come_correggere": "Porta il piede oltre l'altro piede, passando davanti; se non ci arrivi, riduci il carico.",
+     "frase_da_ricordare": "Oltre il centro."
+    },
+    "busto_laterale": {
+     "cosa_succede": "Il busto si piega di lato di {valore} (limite {soglia}).",
+     "perche_conta": "Piegando il busto si sposta il bacino e il lavoro passa dall'anca alla schiena.",
+     "come_correggere": "Tieni il busto dritto, appoggiati con una mano se serve, e riduci l'ampiezza o il carico.",
+     "frase_da_ricordare": "Busto dritto."
+    },
+    "troppo_veloce": {
+     "cosa_succede": "La gamba torna troppo in fretta: il ritorno dura {valore} (minimo {soglia}).",
+     "perche_conta": "Nel ritorno lento il muscolo continua a lavorare; tornando di colpo lavora l'elastico o il cavo al posto tuo.",
+     "come_correggere": "Conta due secondi per tornare, resistendo.",
+     "frase_da_ricordare": "Torna in due secondi."
+    }
+   },
+   "motivo": "Lato scelto: si analizza solo la gamba che lavora. Vista frontale, soglie stimate, da tarare in sala. La gamba è misurata rispetto alla linea delle anche: 90° = sotto l'anca, sopra 90° = aperta, sotto = oltre il centro.",
+   "non_rilevabili": [
+    {
+     "errore": "Slancio",
+     "motivo": "Si vede solo indirettamente dalla velocità del ritorno."
+    }
+   ]
+  },
+  "motivo": "Reso analizzabile in vista frontale con la scelta della gamba e un angolo rispetto alla linea delle anche. Regole proposte dall'app."
+ },
+ {
+  "id": "ABD-005",
+  "imposta": {
+   "analizzabilita": "parziale",
+   "vista_camera": "frontale",
+   "lato": "dx",
+   "impostazioni": [
+    {
+     "id": "lato",
+     "domanda": "Quale gamba lavora?",
+     "opzioni": [
+      {
+       "etichetta": "Destra",
+       "imposta": {
+        "lato": "dx",
+        "misure.gamba": {
+         "tipo": "angolo",
+         "punti": [
+          "anca_sx",
+          "anca_dx",
+          "caviglia_dx"
+         ],
+         "ancora": "anca_sx"
+        }
+       }
+      },
+      {
+       "etichetta": "Sinistra",
+       "imposta": {
+        "lato": "sx",
+        "misure.gamba": {
+         "tipo": "angolo",
+         "punti": [
+          "anca_dx",
+          "anca_sx",
+          "caviglia_sx"
+         ],
+         "ancora": "anca_dx"
+        }
+       }
+      }
+     ]
+    }
+   ],
+   "messaggio_posizione": "Camera di fronte, corpo intero visibile",
+   "messaggio_ok": "Ottima abduzione!",
+   "misure": {
+    "gamba": {
+     "tipo": "angolo",
+     "punti": [
+      "anca_sx",
+      "anca_dx",
+      "caviglia_dx"
+     ],
+     "ancora": "anca_sx"
+    },
+    "busto": {
+     "tipo": "inclinazione",
+     "punti": [
+      "anca",
+      "spalla"
+     ]
+    }
+   },
+   "ripetizione": {
+    "misura": "gamba",
+    "direzione": "aumenta",
+    "posizione_iniziale": 100,
+    "inizio_movimento": 107,
+    "tolleranza_pausa": 2
+   },
+   "errori": [
+    {
+     "id": "ampiezza",
+     "messaggio": "Apri di più la gamba",
+     "gravita": "giallo",
+     "momento": "fine",
+     "misura": "gamba",
+     "statistica": "massimo",
+     "minore_di": 115
+    },
+    {
+     "id": "busto_laterale",
+     "messaggio": "Busto dritto, non piegarti",
+     "gravita": "giallo",
+     "momento": "durante",
+     "misura": "busto",
+     "maggiore_di": 20
+    },
+    {
+     "id": "troppo_veloce",
+     "messaggio": "Torna più lentamente",
+     "gravita": "giallo",
+     "momento": "fine",
+     "misura": "salita",
+     "statistica": "massimo",
+     "minore_di": 0.8
+    }
+   ],
+   "testi_errori": {
+    "ampiezza": {
+     "cosa_succede": "La gamba si apre fino a {valore} rispetto alla linea delle anche (90° = gamba dritta sotto l'anca; minimo {soglia}).",
+     "perche_conta": "Il medio gluteo lavora di più nella parte alta dell'apertura.",
+     "come_correggere": "Apri la gamba di lato tenendo la punta del piede in avanti, senza piegare il busto; se non ci arrivi, togli carico.",
+     "frase_da_ricordare": "Apri di lato, punta avanti."
+    },
+    "busto_laterale": {
+     "cosa_succede": "Il busto si piega di lato di {valore} (limite {soglia}).",
+     "perche_conta": "Piegando il busto si sposta il bacino e il lavoro passa dall'anca alla schiena.",
+     "come_correggere": "Tieni il busto dritto, appoggiati con una mano se serve, e riduci l'ampiezza o il carico.",
+     "frase_da_ricordare": "Busto dritto."
+    },
+    "troppo_veloce": {
+     "cosa_succede": "La gamba torna troppo in fretta: il ritorno dura {valore} (minimo {soglia}).",
+     "perche_conta": "Nel ritorno lento il muscolo continua a lavorare; tornando di colpo lavora l'elastico o il cavo al posto tuo.",
+     "come_correggere": "Conta due secondi per tornare, resistendo.",
+     "frase_da_ricordare": "Torna in due secondi."
+    }
+   },
+   "motivo": "Lato scelto: si analizza solo la gamba che lavora. Vista frontale, soglie stimate, da tarare in sala. La gamba è misurata rispetto alla linea delle anche: se il bacino si alza dal lato che lavora l'apertura risulta minore.",
+   "non_rilevabili": [
+    {
+     "errore": "Punta del piede verso l'alto",
+     "motivo": "La rotazione del piede non si vede bene di fronte."
+    }
+   ]
+  },
+  "motivo": "Reso analizzabile in vista frontale con la scelta della gamba e un angolo rispetto alla linea delle anche. Regole proposte dall'app."
+ },
+ {
+  "id": "ABD-012",
+  "imposta": {
+   "analizzabilita": "parziale",
+   "vista_camera": "frontale",
+   "lato": "dx",
+   "impostazioni": [
+    {
+     "id": "lato",
+     "domanda": "Quale gamba lavora?",
+     "opzioni": [
+      {
+       "etichetta": "Destra",
+       "imposta": {
+        "lato": "dx",
+        "misure.gamba": {
+         "tipo": "angolo",
+         "punti": [
+          "anca_sx",
+          "anca_dx",
+          "caviglia_dx"
+         ],
+         "ancora": "anca_sx"
+        }
+       }
+      },
+      {
+       "etichetta": "Sinistra",
+       "imposta": {
+        "lato": "sx",
+        "misure.gamba": {
+         "tipo": "angolo",
+         "punti": [
+          "anca_dx",
+          "anca_sx",
+          "caviglia_sx"
+         ],
+         "ancora": "anca_dx"
+        }
+       }
+      }
+     ]
+    }
+   ],
+   "messaggio_posizione": "Camera di fronte, corpo intero visibile",
+   "messaggio_ok": "Ottima abduzione!",
+   "misure": {
+    "gamba": {
+     "tipo": "angolo",
+     "punti": [
+      "anca_sx",
+      "anca_dx",
+      "caviglia_dx"
+     ],
+     "ancora": "anca_sx"
+    },
+    "busto": {
+     "tipo": "inclinazione",
+     "punti": [
+      "anca",
+      "spalla"
+     ]
+    }
+   },
+   "ripetizione": {
+    "misura": "gamba",
+    "direzione": "aumenta",
+    "posizione_iniziale": 100,
+    "inizio_movimento": 107,
+    "tolleranza_pausa": 2
+   },
+   "errori": [
+    {
+     "id": "ampiezza",
+     "messaggio": "Apri di più la gamba",
+     "gravita": "giallo",
+     "momento": "fine",
+     "misura": "gamba",
+     "statistica": "massimo",
+     "minore_di": 112
+    },
+    {
+     "id": "busto_laterale",
+     "messaggio": "Busto dritto, non piegarti",
+     "gravita": "giallo",
+     "momento": "durante",
+     "misura": "busto",
+     "maggiore_di": 20
+    },
+    {
+     "id": "troppo_veloce",
+     "messaggio": "Torna più lentamente",
+     "gravita": "giallo",
+     "momento": "fine",
+     "misura": "salita",
+     "statistica": "massimo",
+     "minore_di": 0.8
+    }
+   ],
+   "testi_errori": {
+    "ampiezza": {
+     "cosa_succede": "La gamba si apre fino a {valore} rispetto alla linea delle anche (90° = gamba dritta sotto l'anca; minimo {soglia}).",
+     "perche_conta": "Il medio gluteo lavora di più nella parte alta dell'apertura.",
+     "come_correggere": "Apri la gamba di lato tenendo la punta del piede in avanti, senza piegare il busto; se non ci arrivi, togli carico.",
+     "frase_da_ricordare": "Apri di lato, punta avanti."
+    },
+    "busto_laterale": {
+     "cosa_succede": "Il busto si piega di lato di {valore} (limite {soglia}).",
+     "perche_conta": "Piegando il busto si sposta il bacino e il lavoro passa dall'anca alla schiena.",
+     "come_correggere": "Tieni il busto dritto, appoggiati con una mano se serve, e riduci l'ampiezza o il carico.",
+     "frase_da_ricordare": "Busto dritto."
+    },
+    "troppo_veloce": {
+     "cosa_succede": "La gamba torna troppo in fretta: il ritorno dura {valore} (minimo {soglia}).",
+     "perche_conta": "Nel ritorno lento il muscolo continua a lavorare; tornando di colpo lavora l'elastico o il cavo al posto tuo.",
+     "come_correggere": "Conta due secondi per tornare, resistendo.",
+     "frase_da_ricordare": "Torna in due secondi."
+    }
+   },
+   "motivo": "Lato scelto: si analizza solo la gamba che lavora. Vista frontale, soglie stimate, da tarare in sala. La gamba è misurata rispetto alla linea delle anche: se il bacino si alza dal lato che lavora l'apertura risulta minore.",
+   "non_rilevabili": [
+    {
+     "errore": "Punta del piede verso l'alto",
+     "motivo": "La rotazione del piede non si vede bene di fronte."
+    }
+   ]
+  },
+  "motivo": "Reso analizzabile in vista frontale con la scelta della gamba e un angolo rispetto alla linea delle anche. Regole proposte dall'app."
+ },
+ {
+  "id": "ABD-003",
+  "imposta": {
+   "analizzabilita": "parziale",
+   "vista_camera": "frontale",
+   "lato": "dx",
+   "impostazioni": [
+    {
+     "id": "lato",
+     "domanda": "Quale gamba lavora?",
+     "opzioni": [
+      {
+       "etichetta": "Destra",
+       "imposta": {
+        "lato": "dx",
+        "misure.coscia": {
+         "tipo": "angolo",
+         "punti": [
+          "anca_sx",
+          "anca_dx",
+          "ginocchio_dx"
+         ],
+         "ancora": "anca_sx"
+        },
+        "misure.bacino": {
+         "tipo": "inclinazione",
+         "punti": [
+          "anca_sx",
+          "anca_dx"
+         ]
+        }
+       }
+      },
+      {
+       "etichetta": "Sinistra",
+       "imposta": {
+        "lato": "sx",
+        "misure.coscia": {
+         "tipo": "angolo",
+         "punti": [
+          "anca_dx",
+          "anca_sx",
+          "ginocchio_sx"
+         ],
+         "ancora": "anca_dx"
+        },
+        "misure.bacino": {
+         "tipo": "inclinazione",
+         "punti": [
+          "anca_dx",
+          "anca_sx"
+         ]
+        }
+       }
+      }
+     ]
+    }
+   ],
+   "messaggio_posizione": "Camera dietro di te, a quattro zampe, corpo intero visibile",
+   "messaggio_ok": "Ottimo!",
+   "misure": {
+    "coscia": {
+     "tipo": "angolo",
+     "punti": [
+      "anca_sx",
+      "anca_dx",
+      "ginocchio_dx"
+     ],
+     "ancora": "anca_sx"
+    },
+    "bacino": {
+     "tipo": "inclinazione",
+     "punti": [
+      "anca_sx",
+      "anca_dx"
+     ]
+    }
+   },
+   "ripetizione": {
+    "misura": "coscia",
+    "direzione": "aumenta",
+    "posizione_iniziale": 100,
+    "inizio_movimento": 108,
+    "tolleranza_pausa": 2
+   },
+   "errori": [
+    {
+     "id": "ampiezza",
+     "messaggio": "Ginocchio più in alto",
+     "gravita": "giallo",
+     "momento": "fine",
+     "misura": "coscia",
+     "statistica": "massimo",
+     "minore_di": 125
+    },
+    {
+     "id": "bacino_inclinato",
+     "messaggio": "Bacino fermo, non inclinarlo",
+     "gravita": "giallo",
+     "momento": "durante",
+     "misura": "bacino",
+     "minore_di": 75
+    },
+    {
+     "id": "troppo_veloce",
+     "messaggio": "Torna più lentamente",
+     "gravita": "giallo",
+     "momento": "fine",
+     "misura": "salita",
+     "statistica": "massimo",
+     "minore_di": 0.8
+    }
+   ],
+   "testi_errori": {
+    "ampiezza": {
+     "cosa_succede": "La coscia si apre fino a {valore} rispetto alla linea delle anche (90° = coscia verticale; minimo {soglia}).",
+     "perche_conta": "Il medio gluteo lavora soprattutto nella parte alta del movimento.",
+     "come_correggere": "Alza il ginocchio di lato fino all'altezza dell'anca, senza ruotare il bacino.",
+     "frase_da_ricordare": "Ginocchio all'altezza dell'anca."
+    },
+    "bacino_inclinato": {
+     "cosa_succede": "Il bacino si inclina di {valore} verso il lato opposto (limite {soglia}; 90° = bacino in piano).",
+     "perche_conta": "Inclinando il bacino sembra di alzare di più la gamba, ma il gluteo lavora meno e la schiena ruota.",
+     "come_correggere": "Tieni le anche alla stessa altezza e riduci l'ampiezza.",
+     "frase_da_ricordare": "Anche in piano."
+    },
+    "troppo_veloce": {
+     "cosa_succede": "La gamba torna troppo in fretta: il ritorno dura {valore} (minimo {soglia}).",
+     "perche_conta": "Nel ritorno lento il muscolo continua a lavorare; tornando di colpo lavora l'elastico o il cavo al posto tuo.",
+     "come_correggere": "Conta due secondi per tornare, resistendo.",
+     "frase_da_ricordare": "Torna in due secondi."
+    }
+   },
+   "motivo": "Ripreso da dietro: la coscia è misurata rispetto alla linea delle anche. Da dietro il riconoscimento della posa è un po' meno preciso. Soglie stimate, da tarare in sala.",
+   "non_rilevabili": [
+    {
+     "errore": "Schiena che si inarca",
+     "motivo": "Da dietro la curva della schiena non si vede."
+    }
+   ]
+  },
+  "motivo": "Reso analizzabile con la scelta della gamba e la camera dietro (richiesta del catalogo). Regole proposte dall'app."
+ },
+ {
+  "id": "ABD-013",
+  "imposta": {
+   "analizzabilita": "parziale",
+   "vista_camera": "frontale",
+   "lato": "dx",
+   "impostazioni": [
+    {
+     "id": "lato",
+     "domanda": "Quale gamba lavora?",
+     "opzioni": [
+      {
+       "etichetta": "Destra",
+       "imposta": {
+        "lato": "dx",
+        "misure.coscia": {
+         "tipo": "angolo",
+         "punti": [
+          "anca_sx",
+          "anca_dx",
+          "ginocchio_dx"
+         ],
+         "ancora": "anca_sx"
+        },
+        "misure.bacino": {
+         "tipo": "inclinazione",
+         "punti": [
+          "anca_sx",
+          "anca_dx"
+         ]
+        }
+       }
+      },
+      {
+       "etichetta": "Sinistra",
+       "imposta": {
+        "lato": "sx",
+        "misure.coscia": {
+         "tipo": "angolo",
+         "punti": [
+          "anca_dx",
+          "anca_sx",
+          "ginocchio_sx"
+         ],
+         "ancora": "anca_dx"
+        },
+        "misure.bacino": {
+         "tipo": "inclinazione",
+         "punti": [
+          "anca_dx",
+          "anca_sx"
+         ]
+        }
+       }
+      }
+     ]
+    }
+   ],
+   "messaggio_posizione": "Camera dietro di te, a quattro zampe, corpo intero visibile",
+   "messaggio_ok": "Ottimo!",
+   "misure": {
+    "coscia": {
+     "tipo": "angolo",
+     "punti": [
+      "anca_sx",
+      "anca_dx",
+      "ginocchio_dx"
+     ],
+     "ancora": "anca_sx"
+    },
+    "bacino": {
+     "tipo": "inclinazione",
+     "punti": [
+      "anca_sx",
+      "anca_dx"
+     ]
+    }
+   },
+   "ripetizione": {
+    "misura": "coscia",
+    "direzione": "aumenta",
+    "posizione_iniziale": 100,
+    "inizio_movimento": 108,
+    "tolleranza_pausa": 2
+   },
+   "errori": [
+    {
+     "id": "ampiezza",
+     "messaggio": "Ginocchio più in alto",
+     "gravita": "giallo",
+     "momento": "fine",
+     "misura": "coscia",
+     "statistica": "massimo",
+     "minore_di": 125
+    },
+    {
+     "id": "bacino_inclinato",
+     "messaggio": "Bacino fermo, non inclinarlo",
+     "gravita": "giallo",
+     "momento": "durante",
+     "misura": "bacino",
+     "minore_di": 75
+    },
+    {
+     "id": "troppo_veloce",
+     "messaggio": "Torna più lentamente",
+     "gravita": "giallo",
+     "momento": "fine",
+     "misura": "salita",
+     "statistica": "massimo",
+     "minore_di": 0.8
+    }
+   ],
+   "testi_errori": {
+    "ampiezza": {
+     "cosa_succede": "La coscia si apre fino a {valore} rispetto alla linea delle anche (90° = coscia verticale; minimo {soglia}).",
+     "perche_conta": "Il medio gluteo lavora soprattutto nella parte alta del movimento.",
+     "come_correggere": "Alza il ginocchio di lato fino all'altezza dell'anca, senza ruotare il bacino.",
+     "frase_da_ricordare": "Ginocchio all'altezza dell'anca."
+    },
+    "bacino_inclinato": {
+     "cosa_succede": "Il bacino si inclina di {valore} verso il lato opposto (limite {soglia}; 90° = bacino in piano).",
+     "perche_conta": "Inclinando il bacino sembra di alzare di più la gamba, ma il gluteo lavora meno e la schiena ruota.",
+     "come_correggere": "Tieni le anche alla stessa altezza e riduci l'ampiezza.",
+     "frase_da_ricordare": "Anche in piano."
+    },
+    "troppo_veloce": {
+     "cosa_succede": "La gamba torna troppo in fretta: il ritorno dura {valore} (minimo {soglia}).",
+     "perche_conta": "Nel ritorno lento il muscolo continua a lavorare; tornando di colpo lavora l'elastico o il cavo al posto tuo.",
+     "come_correggere": "Conta due secondi per tornare, resistendo.",
+     "frase_da_ricordare": "Torna in due secondi."
+    }
+   },
+   "motivo": "Ripreso da dietro: la coscia è misurata rispetto alla linea delle anche. Da dietro il riconoscimento della posa è un po' meno preciso. Soglie stimate, da tarare in sala.",
+   "non_rilevabili": [
+    {
+     "errore": "Schiena che si inarca",
+     "motivo": "Da dietro la curva della schiena non si vede."
+    }
+   ]
+  },
+  "motivo": "Reso analizzabile con la scelta della gamba e la camera dietro (richiesta del catalogo). Regole proposte dall'app."
  }
 ]

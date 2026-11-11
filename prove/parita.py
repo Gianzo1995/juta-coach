@@ -69,6 +69,10 @@ def casi():
                    + pm.tenuta(pm.posa_squat, 175, 110.4, 5, entrata=2),
         "DOR-064": [pm.posa_front_lever(178.3)] * FPS + pm.tenuta(pm.posa_front_lever, 178.3, 90.3, 6)
                    + pm.tenuta(pm.posa_front_lever, 178.3, 112.4, 4) + pm.tenuta(pm.posa_front_lever, 178.3, 90.3, 4, abbassa_bacino=60),
+        "ABD-005": [pm.posa_fronte_gambe(92.3)] * FPS + pm.ripetizione_fasi(pm.posa_fronte_gambe, 92.3, 125.2, 1, 1, 2)
+                   + pm.ripetizione_fasi(pm.posa_fronte_gambe, 92.3, 110.4, 1, 1, 2),
+        "ADD-006": [pm.posa_fronte_gambe(115.3)] * FPS + pm.ripetizione_fasi(pm.posa_fronte_gambe, 115.3, 75.2, 1, 1, 2)
+                   + pm.ripetizione_fasi(pm.posa_fronte_gambe, 115.3, 92.4, 1, 1, 2),
         "PET-002": [pp(175)] * FPS + R(pp, 175, 80, secondi=3.0) + R(pp, 175, 80, secondi=3.0, abbassa_bacino=70),
     }
 

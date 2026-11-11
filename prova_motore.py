@@ -165,6 +165,20 @@ def tenuta(fn_posa, fuori, dentro, secondi, entrata=1.0, **extra):
     return frames + [fn_posa(fuori)] * (2 * FPS)
 
 
+def posa_fronte_gambe(gamba_dx, gamba_sx=90.0):
+    """In piedi visto di fronte: gamba = angolo tra la linea delle anche e la gamba (90 = sotto l'anca,
+    piu' di 90 = aperta verso l'esterno, meno di 90 = oltre il centro)."""
+    posa = {n: (500, 150, 0.99) for n in ("naso", "naso_sx", "naso_dx")}
+    for lato, x, verso, g in (("dx", 450, -1, gamba_dx), ("sx", 550, 1, gamba_sx)):
+        a = math.radians(g - 90)
+        d = (verso * math.sin(a), math.cos(a))
+        for n, pt in (("spalla", (500 + verso * 80, 250)), ("gomito", (500 + verso * 100, 360)), ("polso", (500 + verso * 105, 460)),
+                      ("anca", (x, 500)), ("ginocchio", (x + 200 * d[0], 500 + 200 * d[1])),
+                      ("caviglia", (x + 400 * d[0], 500 + 400 * d[1]))):
+            posa[f"{n}_{lato}"] = (pt[0], pt[1], 0.95)
+    return posa
+
+
 def ripetizione(fn_posa, inizio, fondo, secondi=2.0, **extra_fondo):
     """Genera una ripetizione: da 'inizio' a 'fondo' e ritorno, piu' una pausa."""
     n = int(secondi * FPS)
@@ -406,6 +420,18 @@ def main():
           + tenuta(fl, 178.3, 90.3, 4, abbassa_bacino=60))
     risultati.append(verifica("Front lever DOR-064 (tenute)", esegui(Analizzatore(es["DOR-064"]), fr),
                               [[], ["piedi_bassi"], ["bacino_cede"]]))
+
+    # Vista frontale con la scelta della gamba: gamba misurata rispetto alla linea delle anche
+    fg = lambda g, **kw: posa_fronte_gambe(g)
+    fr = ([fg(92.3)] * FPS + ripetizione_fasi(fg, 92.3, 125.2, 1, 1, 2) + ripetizione_fasi(fg, 92.3, 110.4, 1, 1, 2))
+    risultati.append(verifica("Abduzione al cavo ABD-005 (destra)", esegui(Analizzatore(es["ABD-005"]), fr), [[], ["ampiezza"]]))
+    sx = es["ABD-005"]["impostazioni"][0]["opzioni"][1]["imposta"]
+    ev = esegui(Analizzatore(applica_impostazioni(es["ABD-005"], sx)), fr)
+    ok = not [e for e in ev if e["tipo"] == "ripetizione"]
+    risultati.append(ok)
+    print(f"{'OK ' if ok else 'ERRORE'}  ABD-005 con gamba sinistra scelta: la gamba ferma non conta ripetizioni")
+    fr = ([fg(115.3)] * FPS + ripetizione_fasi(fg, 115.3, 75.2, 1, 1, 2) + ripetizione_fasi(fg, 115.3, 92.4, 1, 1, 2))
+    risultati.append(verifica("Adduzione al cavo ADD-006 (destra)", esegui(Analizzatore(es["ADD-006"]), fr), [[], ["ampiezza"]]))
 
     # Ogni esercizio analizzabile deve girare senza bloccarsi su una posa completa (tutti i punti, naso con lato)
     from motore.regole import applica_impostazioni

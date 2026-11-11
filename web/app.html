@@ -772,6 +772,7 @@ const GRAFO = (() => {
 })();
 function catena(mobile, perno) {
   // tutti i punti raggiungibili dal punto mobile senza passare dal perno (di nessuno dei due lati)
+  perno = perno.replace(/_(sx|dx)$/, "");
   const esclusi = new Set([`${perno}_sx`, `${perno}_dx`]), visti = new Set([mobile]), coda = [mobile];
   while (coda.length) for (const v of GRAFO[coda.shift()] || []) if (!esclusi.has(v) && !visti.has(v)) { visti.add(v); coda.push(v); }
   return [...visti];
@@ -795,7 +796,7 @@ function testoVerso(punto, v) {
 }
 function fantasmaOrientato(f, spec, err, lati, valoreMisurato) {
   const [a, b, c] = spec.punti, l = lati[0];
-  const P = n => f[`${n}_${l}`];
+  const P = n => f[nomePunto(n, l)];
   if (!P(a) || !P(b) || !P(c)) return null;
   const obiettivo = err.maggiore_di !== undefined ? err.maggiore_di - 5 : err.minore_di + 5;
   const att = geo.angoloOrientato(P(a), P(b), P(c));
@@ -812,7 +813,7 @@ function fantasmaOrientato(f, spec, err, lati, valoreMisurato) {
   }
   const dy = (lo + hi) / 2 - P(b)[1];
   for (const ll of ["sx", "dx"]) if (f[`${b}_${ll}`]) f[`${b}_${ll}`] = [f[`${b}_${ll}`][0], f[`${b}_${ll}`][1] + dy, f[`${b}_${ll}`][2]];
-  return { posa: f, punto: `${b}_${l}`, mobile: `${b}_${l}`, testo: `${testoVerso(b, att)} → in linea` };
+  return { posa: f, punto: nomePunto(b, l), mobile: nomePunto(b, l), testo: `${testoVerso(b, att)} → in linea` };
 }
 
 // la posizione e' gia' corretta in questo istante: niente fantasma
@@ -825,7 +826,7 @@ function calcolaFantasma(posa, es, errId, lato, valoreMisurato) {
   const spec = cfg.misure[nome];
   const f = {}; for (const [k, v] of Object.entries(posa)) f[k] = [v[0], v[1], v[2]];
   const lati = lato === "entrambi" ? ["sx", "dx"] : [lato || "sx"];
-  const P = (n, l) => f[`${n}_${l}`];
+  const P = (n, l) => f[nomePunto(n, l)];   // i punti con il lato nel nome (es. "anca_sx") restano quelli
 
   if (spec.tipo === "angolo_orientato") return fantasmaOrientato(f, spec, err, lati, valoreMisurato);
   if (spec.tipo === "angolo") {
@@ -837,30 +838,30 @@ function calcolaFantasma(posa, es, errId, lato, valoreMisurato) {
       : b === "spalla" && (a === "anca" || c === "anca") ? "anca"
       : (P(a, l0) && P(c, l0) && P(a, l0)[1] > P(c, l0)[1] ? a : c));
     const mobile = ancora === c ? a : c;
-    const ang = l => g => geo.angolo(g[`${a}_${l}`], g[`${b}_${l}`], g[`${c}_${l}`]);
+    const ang = l => g => geo.angolo(g[nomePunto(a, l)], g[nomePunto(b, l)], g[nomePunto(c, l)]);
     if (asim) {
       const vs = ang("sx")(f), vd = ang("dx")(f);
       if (vs === null || vd === null) return null;
       const l = vs > vd ? "sx" : "dx", obiettivo = Math.min(vs, vd);
-      ruotaVerso(f, P(b, l), mobile, ang(l), obiettivo, catena(`${mobile}_${l}`, b));
-      return { posa: f, punto: `${b}_${l}`, mobile: `${mobile}_${l}`, testo: `Braccio in ritardo: ${Math.round(Math.max(vs, vd))}° → ${Math.round(obiettivo)}°` };
+      ruotaVerso(f, P(b, l), mobile, ang(l), obiettivo, catena(nomePunto(mobile, l), b));
+      return { posa: f, punto: nomePunto(b, l), mobile: nomePunto(mobile, l), testo: `Braccio in ritardo: ${Math.round(Math.max(vs, vd))}° → ${Math.round(obiettivo)}°` };
     }
     const obiettivo = err.maggiore_di !== undefined ? err.maggiore_di - 5 : err.minore_di + 5;
     const attuali = lati.map(l => ang(l)(f)).filter(v => v !== null);
     if (!attuali.length || attuali.every(v => giaGiusto(err, v, obiettivo))) return null;
-    for (const l of lati) ruotaVerso(f, P(b, l), mobile, ang(l), obiettivo, catena(`${mobile}_${l}`, b));
+    for (const l of lati) ruotaVerso(f, P(b, l), mobile, ang(l), obiettivo, catena(nomePunto(mobile, l), b));
     const att = attuali.length ? attuali.reduce((x, y) => x + y) / attuali.length : null;
-    return { posa: f, punto: `${b}_${lati[0]}`, mobile: `${mobile}_${lati[0]}`,
+    return { posa: f, punto: nomePunto(b, lati[0]), mobile: nomePunto(mobile, lati[0]),
       testo: `${nomeMisura(nome)} ${att === null ? "" : Math.round(att) + "° "}→ obiettivo ${obiettivo}°` };
   }
   if (spec.tipo === "inclinazione") {
     const [basso, alto] = spec.punti, l = lati[0];
     const obiettivo = err.maggiore_di !== undefined ? err.maggiore_di - 10 : err.minore_di + 5;
-    const incl = g => geo.inclinazione(g[`${basso}_${l}`], g[`${alto}_${l}`]);
+    const incl = g => geo.inclinazione(g[nomePunto(basso, l)], g[nomePunto(alto, l)]);
     const att = incl(f);
     if (att === null || giaGiusto(err, att, obiettivo)) return null;
-    ruotaVerso(f, P(basso, l), alto, incl, obiettivo, catena(`${alto}_${l}`, basso));
-    return { posa: f, punto: `${alto}_${l}`, mobile: `${alto}_${l}`, testo: `${nomeMisura(nome)} inclinato ${Math.round(att)}° → obiettivo ${obiettivo}°` };
+    ruotaVerso(f, P(basso, l), alto, incl, obiettivo, catena(nomePunto(alto, l), basso));
+    return { posa: f, punto: nomePunto(alto, l), mobile: nomePunto(alto, l), testo: `${nomeMisura(nome)} inclinato ${Math.round(att)}° → obiettivo ${obiettivo}°` };
   }
   if (spec.tipo === "posizione") {
     const l = lati[0];

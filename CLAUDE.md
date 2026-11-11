@@ -75,8 +75,10 @@ Ogni voce: `{ "id", "nome"?, "gruppo"?, "scheda", "config_app" }`.
   `salita` (dal basso al ritorno in posizione iniziale). Per velocità e fermi usare `discesa`/`pausa`, non `durata`.
 - `impostazioni` (facoltativo): scelte del cliente prima della serie, es.
   `[{"id": "lato", "domanda": "Quale braccio lavora?", "opzioni": [{"etichetta": "Destro", "imposta": {"lato": "dx"}}, ...]}]`.
-  `imposta` accetta percorsi: `"lato"`, `"ripetizione.<campo>"`, `"errori.<id>"` (aggiunge/sostituisce un errore),
-  `"errori.<id>.<campo>"`. Applicate da `applica_impostazioni` / `applicaImpostazioni` (identiche).
+  `imposta` accetta percorsi: `"lato"`, `"ripetizione.<campo>"`, `"misure.<nome>"` (es. misura diversa per lato),
+  `"errori.<id>"` (aggiunge/sostituisce un errore), `"errori.<id>.<campo>"`.
+  Gamba in vista frontale: angolo `[anca_<altro lato>, anca_<lato>, caviglia_<lato>]` con `ancora` sull'anca opposta
+  (90 = gamba sotto l'anca, più di 90 = aperta, meno = oltre il centro), impostato per lato con `misure.gamba`. Applicate da `applica_impostazioni` / `applicaImpostazioni` (identiche).
 - `modalita: "isometrica"` (facoltativo): tenute al posto delle ripetizioni. `ripetizione` = `{misura, tenuta_minimo,
   tenuta_massimo}`: la tenuta parte dopo 0,5 s nell'intervallo e finisce dopo 1 s fuori; l'evento è una `ripetizione` con
   `tenuta: true` e `durata_s` = secondi tenuti. Errori "durante": ignorati nel primo secondo (assestamento) e contati solo se
@@ -135,6 +137,8 @@ Ogni voce: `{ "id", "nome"?, "gruppo"?, "scheda", "config_app" }`.
   Funziona anche in vista frontale: DEL-007 reso analizzabile via integrazioni con le regole di DEL-005.
   Da valutare con Gianluca: DEL-009, DEL-013, DEL-014/015, DEP-007 (servono regole scritte da lui).
 - ~~Avviso di sicurezza per esercizi solo-scheda~~ (fatto: `avviso_sicurezza`, es. PET-018).
+- ~~Scelta del lato in vista frontale~~ (fatto: affondi laterali QUA-013/038, cossack ADD-004/005, adduzioni ADD-006/008,
+  abduzioni ABD-005/012, fire hydrant ABD-003/013 con camera dietro; regole proposte dall'app, da tarare).
 - ~~Modalità isometrica~~ (fatto: QUA-006 wall sit, DOR-064 front lever, regole proposte dall'app).
 - Dopo: inclinazione delle spalle / rotazione del tronco (vista frontale), ripetizioni alternate sx/dx (PET-008),
   allineamento misurato sulla gamba che resta a terra (PET-008), conteggio sull'altezza della spalla,
@@ -158,8 +162,8 @@ Ogni voce: `{ "id", "nome"?, "gruppo"?, "scheda", "config_app" }`.
 - **Prove nel browser** (non nel repo): server locale su `sito/` e Playwright con `window.__JUTA_PROVA` per simulare la
   posa; controllare ricerca esercizi, scelta del braccio, avvisi rossi e uno squat in live con revisione.
 - **Richieste del catalogo gambe non ancora fatte** (esercizi lasciati solo-scheda o con analisi ridotta): modalità isometrica
-  per Copenhagen plank (ADD-001/002: da sdraiati di fianco la posa è poco affidabile) e ADD-009 (nessun movimento visibile), modalità balistica per salti e swing (QUA-002, QUA-010, QUA-063, GLU-021), camera che segue la persona (ABD-008), scelta del lato in vista frontale per affondi laterali, cossack, adduzioni/abduzioni
-  (QUA-013, QUA-038, QUA-060, ADD-004/005/006/008, ABD-003/005/012/013), angolo con verso oltre 180° (GLU-023/026/029).
+  per Copenhagen plank (ADD-001/002: da sdraiati di fianco la posa è poco affidabile) e ADD-009 (nessun movimento visibile), modalità balistica per salti e swing (QUA-002, QUA-010, QUA-063, GLU-021), camera che segue la persona (ABD-008), QUA-060 step-up laterale (di fronte la piega
+  del ginocchio va verso la camera), angolo con verso oltre 180° (GLU-023/026/029).
 - **In attesa da Gianluca**: regole per DEL-009, DEL-013, DEL-014/015, DEP-007 (a un braccio, vista frontale);
   taratura delle soglie in sala con gli istruttori; prossimi cataloghi (braccia, addome...).
 - **Quando arriva un nuovo catalogo**: copiarlo in `esercizi/catalogo/` senza modificarlo, lanciare build e test,
