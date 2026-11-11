@@ -129,3 +129,24 @@ Ogni voce: `{ "id", "nome"?, "gruppo"?, "scheda", "config_app" }`.
   allineamento misurato sulla gamba che resta a terra (PET-008), conteggio sull'altezza della spalla,
   velocità del movimento e confronto tra ripetizioni della serie (PET-011 esplosivi).
 - Rimandati: soglie per cliente (serve identificazione, insieme ad Angel1), due camere / vista dall'alto.
+
+## Stato attuale e come riprendere (aggiornato 11/11/2026)
+
+- **Versione app**: Beta 0.9. Catalogo: 223 esercizi (squat di base + PET 001-080 + DOR 001-064 + SPALLE DEA/DEL/DEP),
+  168 integrazioni in `esercizi/integrazioni.json`. Ultimi file ricevuti da Gianluca: `NOTE_PER_IL_MOTORE_nuovo.md`
+  (regole §1-§7, tutte applicate) e i tre cataloghi.
+- **Dove la usa**: dal telefono in Safari (sito GitHub Pages, ha la modalità live) e dentro l'app Claude
+  (artifact privato https://claude.ai/artifact/WVtohRo9gD7CcymYtvYsqS, solo video caricato; i video scelti su iPhone
+  vengono compressi da iOS, per questo per la qualità migliore va usata la versione Safari).
+- **Pubblicare l'artifact**: dopo `python web/costruisci.py`, ripubblicare `sito_claude/artifact.html` sullo stesso URL
+  (capacità `sample` per "Spiegamelo meglio"; il modello è in `sito_claude/modello.js`, già caricato: ripassarlo solo se cambia).
+- **Pubblicazione GitHub**: se il deploy di Pages resta in "deployment_queued" e va in timeout, rilanciare
+  `gh run rerun <id> --failed`.
+- **Prove nel browser** (non nel repo): server locale su `sito/` e Playwright con `window.__JUTA_PROVA` per simulare la
+  posa; controllare ricerca esercizi, scelta del braccio, avvisi rossi e uno squat in live con revisione.
+- **In attesa da Gianluca**: regole per DEL-009, DEL-013, DEL-014/015, DEP-007 (a un braccio, vista frontale);
+  taratura delle soglie in sala con gli istruttori; prossimi cataloghi (gambe, braccia, addome...).
+- **Quando arriva un nuovo catalogo**: copiarlo in `esercizi/catalogo/` senza modificarlo, lanciare build e test,
+  convertire i controlli di velocità su `durata` in `discesa`/`salita` (40% della fase prevista da `scheda.tempo`),
+  aggiungere scelta del braccio agli esercizi a un braccio/alternati e `avviso_sicurezza` ai non analizzabili per
+  sicurezza, tutto in `integrazioni.json`; se il prefisso dell'id è nuovo, aggiungerlo a `GRUPPI` in `web/motore.js`.
