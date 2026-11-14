@@ -8652,5 +8652,2811 @@
    ]
   },
   "motivo": "Sdraiati su un fianco: immagine ruotata perché la persona appaia in piedi. Regole proposte dall'app, da provare e tarare in sala. Regole di DEL-005 (senza il busto, che da sdraiati è orizzontale); conta il braccio che si muove (lato alternato)."
+ },
+ {
+  "id": "QUA-001",
+  "imposta": {
+   "impostazioni": [
+    {
+     "id": "vista",
+     "domanda": "Dove hai messo la camera?",
+     "opzioni": [
+      {
+       "etichetta": "Di lato",
+       "imposta": {}
+      },
+      {
+       "etichetta": "Di fronte (ginocchia)",
+       "imposta": {
+        "vista_camera": "frontale",
+        "lato": "entrambi",
+        "messaggio_posizione": "Camera di fronte all'altezza del bacino, a 2-3 metri, corpo intero visibile",
+        "ripetizione": {
+         "misura": "discesa_anca",
+         "direzione": "diminuisce",
+         "posizione_iniziale": 180,
+         "inizio_movimento": 165,
+         "durata_massima": 12.0,
+         "tolleranza_pausa": 5.0
+        },
+        "errori": [
+         {
+          "id": "ginocchia_dentro",
+          "messaggio": "Ginocchia in fuori",
+          "gravita": "rosso",
+          "momento": "fine",
+          "statistica": "minimo",
+          "misura": "ginocchia_caviglie",
+          "minore_di": 80
+         },
+         {
+          "id": "spalla_destra_bassa",
+          "messaggio": "Spalle alla stessa altezza",
+          "gravita": "giallo",
+          "momento": "durante",
+          "misura": "spalle",
+          "maggiore_di": 102
+         },
+         {
+          "id": "spalla_sinistra_bassa",
+          "messaggio": "Spalle alla stessa altezza",
+          "gravita": "giallo",
+          "momento": "durante",
+          "misura": "spalle",
+          "minore_di": 78
+         },
+         {
+          "id": "troppo_veloce",
+          "messaggio": "Scendi più lentamente",
+          "gravita": "giallo",
+          "momento": "fine",
+          "misura": "discesa",
+          "statistica": "massimo",
+          "minore_di": 0.8,
+          "anticipa": true
+         }
+        ],
+        "misure.discesa_anca": {
+         "tipo": "distanza",
+         "punti": [
+          "anca",
+          "caviglia"
+         ],
+         "scala": [
+          "spalla_sx",
+          "spalla_dx"
+         ]
+        },
+        "misure.ginocchia_caviglie": {
+         "tipo": "distanza",
+         "punti": [
+          "ginocchio_sx",
+          "ginocchio_dx"
+         ],
+         "scala": [
+          "caviglia_sx",
+          "caviglia_dx"
+         ],
+         "muovi": "punti"
+        },
+        "misure.spalle": {
+         "tipo": "inclinazione",
+         "punti": [
+          "spalla_sx",
+          "spalla_dx"
+         ]
+        },
+        "testi_errori.ginocchia_dentro": {
+         "cosa_succede": "Scendendo le ginocchia si avvicinano tra loro più dei piedi.",
+         "perche_conta": "Il ginocchio cede verso l'interno: aumenta lo stress sui legamenti, soprattutto con il carico.",
+         "come_correggere": "Spingi le ginocchia in fuori, nella direzione delle punte dei piedi; se non ci riesci, riduci il carico.",
+         "frase_da_ricordare": "Ginocchia in fuori, sopra le punte.",
+         "frase_alternativa": "Apri le ginocchia, spingi il pavimento."
+        },
+        "testi_errori.spalla_destra_bassa": {
+         "cosa_succede": "Il busto si inclina da un lato e una spalla scende.",
+         "perche_conta": "Il peso si sposta su una gamba sola e il carico non è più simmetrico.",
+         "come_correggere": "Distribuisci il peso su tutti e due i piedi e tieni il petto rivolto in avanti.",
+         "frase_da_ricordare": "Spalle alla stessa altezza."
+        },
+        "testi_errori.spalla_sinistra_bassa": {
+         "cosa_succede": "Il busto si inclina da un lato e una spalla scende.",
+         "perche_conta": "Il peso si sposta su una gamba sola e il carico non è più simmetrico.",
+         "come_correggere": "Distribuisci il peso su tutti e due i piedi e tieni il petto rivolto in avanti.",
+         "frase_da_ricordare": "Spalle alla stessa altezza."
+        }
+       }
+      }
+     ]
+    }
+   ],
+   "non_rilevabili": [
+    {
+     "errore": "Ginocchia che cedono verso l'interno",
+     "motivo": "Di lato non si vede: scegli \"Di fronte (ginocchia)\" prima della serie (regola in prova)."
+    },
+    {
+     "errore": "Schiena arrotondata",
+     "motivo": "La curvatura della colonna non è misurabile con i punti disponibili."
+    }
+   ]
+  },
+  "motivo": "Vista frontale (scelta prima della serie): regole proposte dall'app, da tarare in sala. Di fronte: conteggio dalla distanza anca-caviglia (in % della larghezza delle spalle), ginocchia dentro se più vicine delle caviglie (sotto 80%), spalle storte oltre 12°."
+ },
+ {
+  "id": "QUA-016",
+  "imposta": {
+   "impostazioni": [
+    {
+     "id": "vista",
+     "domanda": "Dove hai messo la camera?",
+     "opzioni": [
+      {
+       "etichetta": "Di lato",
+       "imposta": {}
+      },
+      {
+       "etichetta": "Di fronte (ginocchia)",
+       "imposta": {
+        "vista_camera": "frontale",
+        "lato": "entrambi",
+        "messaggio_posizione": "Camera di fronte all'altezza del bacino, a 2-3 metri, corpo intero visibile",
+        "ripetizione": {
+         "misura": "discesa_anca",
+         "direzione": "diminuisce",
+         "posizione_iniziale": 180,
+         "inizio_movimento": 165,
+         "durata_massima": 12.0,
+         "tolleranza_pausa": 5.0
+        },
+        "errori": [
+         {
+          "id": "ginocchia_dentro",
+          "messaggio": "Ginocchia in fuori",
+          "gravita": "rosso",
+          "momento": "fine",
+          "statistica": "minimo",
+          "misura": "ginocchia_caviglie",
+          "minore_di": 80
+         },
+         {
+          "id": "spalla_destra_bassa",
+          "messaggio": "Spalle alla stessa altezza",
+          "gravita": "giallo",
+          "momento": "durante",
+          "misura": "spalle",
+          "maggiore_di": 102
+         },
+         {
+          "id": "spalla_sinistra_bassa",
+          "messaggio": "Spalle alla stessa altezza",
+          "gravita": "giallo",
+          "momento": "durante",
+          "misura": "spalle",
+          "minore_di": 78
+         }
+        ],
+        "misure.discesa_anca": {
+         "tipo": "distanza",
+         "punti": [
+          "anca",
+          "caviglia"
+         ],
+         "scala": [
+          "spalla_sx",
+          "spalla_dx"
+         ]
+        },
+        "misure.ginocchia_caviglie": {
+         "tipo": "distanza",
+         "punti": [
+          "ginocchio_sx",
+          "ginocchio_dx"
+         ],
+         "scala": [
+          "caviglia_sx",
+          "caviglia_dx"
+         ],
+         "muovi": "punti"
+        },
+        "misure.spalle": {
+         "tipo": "inclinazione",
+         "punti": [
+          "spalla_sx",
+          "spalla_dx"
+         ]
+        },
+        "testi_errori.ginocchia_dentro": {
+         "cosa_succede": "Scendendo le ginocchia si avvicinano tra loro più dei piedi.",
+         "perche_conta": "Il ginocchio cede verso l'interno: aumenta lo stress sui legamenti, soprattutto con il carico.",
+         "come_correggere": "Spingi le ginocchia in fuori, nella direzione delle punte dei piedi; se non ci riesci, riduci il carico.",
+         "frase_da_ricordare": "Ginocchia in fuori, sopra le punte.",
+         "frase_alternativa": "Apri le ginocchia, spingi il pavimento."
+        },
+        "testi_errori.spalla_destra_bassa": {
+         "cosa_succede": "Il busto si inclina da un lato e una spalla scende.",
+         "perche_conta": "Il peso si sposta su una gamba sola e il carico non è più simmetrico.",
+         "come_correggere": "Distribuisci il peso su tutti e due i piedi e tieni il petto rivolto in avanti.",
+         "frase_da_ricordare": "Spalle alla stessa altezza."
+        },
+        "testi_errori.spalla_sinistra_bassa": {
+         "cosa_succede": "Il busto si inclina da un lato e una spalla scende.",
+         "perche_conta": "Il peso si sposta su una gamba sola e il carico non è più simmetrico.",
+         "come_correggere": "Distribuisci il peso su tutti e due i piedi e tieni il petto rivolto in avanti.",
+         "frase_da_ricordare": "Spalle alla stessa altezza."
+        }
+       }
+      }
+     ]
+    }
+   ],
+   "non_rilevabili": [
+    {
+     "errore": "Ginocchia che cedono verso l'interno",
+     "motivo": "Di lato non si vede: scegli \"Di fronte (ginocchia)\" prima della serie (regola in prova)."
+    },
+    {
+     "errore": "Schiena arrotondata",
+     "motivo": "La curvatura della colonna non è misurabile con i punti disponibili."
+    }
+   ]
+  },
+  "motivo": "Vista frontale (scelta prima della serie): regole proposte dall'app, da tarare in sala. Di fronte: conteggio dalla distanza anca-caviglia (in % della larghezza delle spalle), ginocchia dentro se più vicine delle caviglie (sotto 80%), spalle storte oltre 12°."
+ },
+ {
+  "id": "QUA-017",
+  "imposta": {
+   "impostazioni": [
+    {
+     "id": "vista",
+     "domanda": "Dove hai messo la camera?",
+     "opzioni": [
+      {
+       "etichetta": "Di lato",
+       "imposta": {}
+      },
+      {
+       "etichetta": "Di fronte (ginocchia)",
+       "imposta": {
+        "vista_camera": "frontale",
+        "lato": "entrambi",
+        "messaggio_posizione": "Camera di fronte all'altezza del bacino, a 2-3 metri, corpo intero visibile",
+        "ripetizione": {
+         "misura": "discesa_anca",
+         "direzione": "diminuisce",
+         "posizione_iniziale": 180,
+         "inizio_movimento": 165,
+         "durata_massima": 12.0,
+         "tolleranza_pausa": 5.0
+        },
+        "errori": [
+         {
+          "id": "ginocchia_dentro",
+          "messaggio": "Ginocchia in fuori",
+          "gravita": "rosso",
+          "momento": "fine",
+          "statistica": "minimo",
+          "misura": "ginocchia_caviglie",
+          "minore_di": 80
+         },
+         {
+          "id": "spalla_destra_bassa",
+          "messaggio": "Spalle alla stessa altezza",
+          "gravita": "giallo",
+          "momento": "durante",
+          "misura": "spalle",
+          "maggiore_di": 102
+         },
+         {
+          "id": "spalla_sinistra_bassa",
+          "messaggio": "Spalle alla stessa altezza",
+          "gravita": "giallo",
+          "momento": "durante",
+          "misura": "spalle",
+          "minore_di": 78
+         }
+        ],
+        "misure.discesa_anca": {
+         "tipo": "distanza",
+         "punti": [
+          "anca",
+          "caviglia"
+         ],
+         "scala": [
+          "spalla_sx",
+          "spalla_dx"
+         ]
+        },
+        "misure.ginocchia_caviglie": {
+         "tipo": "distanza",
+         "punti": [
+          "ginocchio_sx",
+          "ginocchio_dx"
+         ],
+         "scala": [
+          "caviglia_sx",
+          "caviglia_dx"
+         ],
+         "muovi": "punti"
+        },
+        "misure.spalle": {
+         "tipo": "inclinazione",
+         "punti": [
+          "spalla_sx",
+          "spalla_dx"
+         ]
+        },
+        "testi_errori.ginocchia_dentro": {
+         "cosa_succede": "Scendendo le ginocchia si avvicinano tra loro più dei piedi.",
+         "perche_conta": "Il ginocchio cede verso l'interno: aumenta lo stress sui legamenti, soprattutto con il carico.",
+         "come_correggere": "Spingi le ginocchia in fuori, nella direzione delle punte dei piedi; se non ci riesci, riduci il carico.",
+         "frase_da_ricordare": "Ginocchia in fuori, sopra le punte.",
+         "frase_alternativa": "Apri le ginocchia, spingi il pavimento."
+        },
+        "testi_errori.spalla_destra_bassa": {
+         "cosa_succede": "Il busto si inclina da un lato e una spalla scende.",
+         "perche_conta": "Il peso si sposta su una gamba sola e il carico non è più simmetrico.",
+         "come_correggere": "Distribuisci il peso su tutti e due i piedi e tieni il petto rivolto in avanti.",
+         "frase_da_ricordare": "Spalle alla stessa altezza."
+        },
+        "testi_errori.spalla_sinistra_bassa": {
+         "cosa_succede": "Il busto si inclina da un lato e una spalla scende.",
+         "perche_conta": "Il peso si sposta su una gamba sola e il carico non è più simmetrico.",
+         "come_correggere": "Distribuisci il peso su tutti e due i piedi e tieni il petto rivolto in avanti.",
+         "frase_da_ricordare": "Spalle alla stessa altezza."
+        }
+       }
+      }
+     ]
+    }
+   ],
+   "non_rilevabili": [
+    {
+     "errore": "Ginocchia che cedono verso l'interno",
+     "motivo": "Di lato non si vede: scegli \"Di fronte (ginocchia)\" prima della serie (regola in prova)."
+    },
+    {
+     "errore": "Schiena arrotondata",
+     "motivo": "La curvatura della colonna non è misurabile con i punti disponibili."
+    }
+   ]
+  },
+  "motivo": "Vista frontale (scelta prima della serie): regole proposte dall'app, da tarare in sala. Di fronte: conteggio dalla distanza anca-caviglia (in % della larghezza delle spalle), ginocchia dentro se più vicine delle caviglie (sotto 80%), spalle storte oltre 12°."
+ },
+ {
+  "id": "QUA-018",
+  "imposta": {
+   "impostazioni": [
+    {
+     "id": "vista",
+     "domanda": "Dove hai messo la camera?",
+     "opzioni": [
+      {
+       "etichetta": "Di lato",
+       "imposta": {}
+      },
+      {
+       "etichetta": "Di fronte (ginocchia)",
+       "imposta": {
+        "vista_camera": "frontale",
+        "lato": "entrambi",
+        "messaggio_posizione": "Camera di fronte all'altezza del bacino, a 2-3 metri, corpo intero visibile",
+        "ripetizione": {
+         "misura": "discesa_anca",
+         "direzione": "diminuisce",
+         "posizione_iniziale": 180,
+         "inizio_movimento": 165,
+         "durata_massima": 15.0,
+         "tolleranza_pausa": 5.0
+        },
+        "errori": [
+         {
+          "id": "ginocchia_dentro",
+          "messaggio": "Ginocchia in fuori",
+          "gravita": "rosso",
+          "momento": "fine",
+          "statistica": "minimo",
+          "misura": "ginocchia_caviglie",
+          "minore_di": 80
+         },
+         {
+          "id": "spalla_destra_bassa",
+          "messaggio": "Spalle alla stessa altezza",
+          "gravita": "giallo",
+          "momento": "durante",
+          "misura": "spalle",
+          "maggiore_di": 102
+         },
+         {
+          "id": "spalla_sinistra_bassa",
+          "messaggio": "Spalle alla stessa altezza",
+          "gravita": "giallo",
+          "momento": "durante",
+          "misura": "spalle",
+          "minore_di": 78
+         },
+         {
+          "id": "fermo_breve",
+          "messaggio": "Fermati in basso",
+          "gravita": "giallo",
+          "momento": "fine",
+          "misura": "pausa",
+          "statistica": "massimo",
+          "minore_di": 1.0,
+          "anticipa": true
+         }
+        ],
+        "misure.discesa_anca": {
+         "tipo": "distanza",
+         "punti": [
+          "anca",
+          "caviglia"
+         ],
+         "scala": [
+          "spalla_sx",
+          "spalla_dx"
+         ]
+        },
+        "misure.ginocchia_caviglie": {
+         "tipo": "distanza",
+         "punti": [
+          "ginocchio_sx",
+          "ginocchio_dx"
+         ],
+         "scala": [
+          "caviglia_sx",
+          "caviglia_dx"
+         ],
+         "muovi": "punti"
+        },
+        "misure.spalle": {
+         "tipo": "inclinazione",
+         "punti": [
+          "spalla_sx",
+          "spalla_dx"
+         ]
+        },
+        "testi_errori.ginocchia_dentro": {
+         "cosa_succede": "Scendendo le ginocchia si avvicinano tra loro più dei piedi.",
+         "perche_conta": "Il ginocchio cede verso l'interno: aumenta lo stress sui legamenti, soprattutto con il carico.",
+         "come_correggere": "Spingi le ginocchia in fuori, nella direzione delle punte dei piedi; se non ci riesci, riduci il carico.",
+         "frase_da_ricordare": "Ginocchia in fuori, sopra le punte.",
+         "frase_alternativa": "Apri le ginocchia, spingi il pavimento."
+        },
+        "testi_errori.spalla_destra_bassa": {
+         "cosa_succede": "Il busto si inclina da un lato e una spalla scende.",
+         "perche_conta": "Il peso si sposta su una gamba sola e il carico non è più simmetrico.",
+         "come_correggere": "Distribuisci il peso su tutti e due i piedi e tieni il petto rivolto in avanti.",
+         "frase_da_ricordare": "Spalle alla stessa altezza."
+        },
+        "testi_errori.spalla_sinistra_bassa": {
+         "cosa_succede": "Il busto si inclina da un lato e una spalla scende.",
+         "perche_conta": "Il peso si sposta su una gamba sola e il carico non è più simmetrico.",
+         "come_correggere": "Distribuisci il peso su tutti e due i piedi e tieni il petto rivolto in avanti.",
+         "frase_da_ricordare": "Spalle alla stessa altezza."
+        }
+       }
+      }
+     ]
+    }
+   ],
+   "non_rilevabili": [
+    {
+     "errore": "Ginocchia che cedono verso l'interno",
+     "motivo": "Di lato non si vede: scegli \"Di fronte (ginocchia)\" prima della serie (regola in prova)."
+    },
+    {
+     "errore": "Schiena arrotondata",
+     "motivo": "La curvatura della colonna non è misurabile con i punti disponibili."
+    },
+    {
+     "errore": "Fermo troppo breve con discesa lenta",
+     "motivo": "Il motore misura la durata dell'intera ripetizione."
+    }
+   ]
+  },
+  "motivo": "Vista frontale (scelta prima della serie): regole proposte dall'app, da tarare in sala. Di fronte: conteggio dalla distanza anca-caviglia (in % della larghezza delle spalle), ginocchia dentro se più vicine delle caviglie (sotto 80%), spalle storte oltre 12°."
+ },
+ {
+  "id": "QUA-019",
+  "imposta": {
+   "impostazioni": [
+    {
+     "id": "vista",
+     "domanda": "Dove hai messo la camera?",
+     "opzioni": [
+      {
+       "etichetta": "Di lato",
+       "imposta": {}
+      },
+      {
+       "etichetta": "Di fronte (ginocchia)",
+       "imposta": {
+        "vista_camera": "frontale",
+        "lato": "entrambi",
+        "messaggio_posizione": "Camera di fronte all'altezza del bacino, a 2-3 metri, corpo intero visibile",
+        "ripetizione": {
+         "misura": "discesa_anca",
+         "direzione": "diminuisce",
+         "posizione_iniziale": 180,
+         "inizio_movimento": 165,
+         "durata_massima": 12.0,
+         "tolleranza_pausa": 5.0
+        },
+        "errori": [
+         {
+          "id": "ginocchia_dentro",
+          "messaggio": "Ginocchia in fuori",
+          "gravita": "rosso",
+          "momento": "fine",
+          "statistica": "minimo",
+          "misura": "ginocchia_caviglie",
+          "minore_di": 80
+         },
+         {
+          "id": "spalla_destra_bassa",
+          "messaggio": "Spalle alla stessa altezza",
+          "gravita": "giallo",
+          "momento": "durante",
+          "misura": "spalle",
+          "maggiore_di": 102
+         },
+         {
+          "id": "spalla_sinistra_bassa",
+          "messaggio": "Spalle alla stessa altezza",
+          "gravita": "giallo",
+          "momento": "durante",
+          "misura": "spalle",
+          "minore_di": 78
+         },
+         {
+          "id": "caduta_box",
+          "messaggio": "Siediti controllato",
+          "gravita": "rosso",
+          "momento": "fine",
+          "misura": "discesa",
+          "statistica": "massimo",
+          "minore_di": 0.8,
+          "anticipa": true
+         }
+        ],
+        "misure.discesa_anca": {
+         "tipo": "distanza",
+         "punti": [
+          "anca",
+          "caviglia"
+         ],
+         "scala": [
+          "spalla_sx",
+          "spalla_dx"
+         ]
+        },
+        "misure.ginocchia_caviglie": {
+         "tipo": "distanza",
+         "punti": [
+          "ginocchio_sx",
+          "ginocchio_dx"
+         ],
+         "scala": [
+          "caviglia_sx",
+          "caviglia_dx"
+         ],
+         "muovi": "punti"
+        },
+        "misure.spalle": {
+         "tipo": "inclinazione",
+         "punti": [
+          "spalla_sx",
+          "spalla_dx"
+         ]
+        },
+        "testi_errori.ginocchia_dentro": {
+         "cosa_succede": "Scendendo le ginocchia si avvicinano tra loro più dei piedi.",
+         "perche_conta": "Il ginocchio cede verso l'interno: aumenta lo stress sui legamenti, soprattutto con il carico.",
+         "come_correggere": "Spingi le ginocchia in fuori, nella direzione delle punte dei piedi; se non ci riesci, riduci il carico.",
+         "frase_da_ricordare": "Ginocchia in fuori, sopra le punte.",
+         "frase_alternativa": "Apri le ginocchia, spingi il pavimento."
+        },
+        "testi_errori.spalla_destra_bassa": {
+         "cosa_succede": "Il busto si inclina da un lato e una spalla scende.",
+         "perche_conta": "Il peso si sposta su una gamba sola e il carico non è più simmetrico.",
+         "come_correggere": "Distribuisci il peso su tutti e due i piedi e tieni il petto rivolto in avanti.",
+         "frase_da_ricordare": "Spalle alla stessa altezza."
+        },
+        "testi_errori.spalla_sinistra_bassa": {
+         "cosa_succede": "Il busto si inclina da un lato e una spalla scende.",
+         "perche_conta": "Il peso si sposta su una gamba sola e il carico non è più simmetrico.",
+         "come_correggere": "Distribuisci il peso su tutti e due i piedi e tieni il petto rivolto in avanti.",
+         "frase_da_ricordare": "Spalle alla stessa altezza."
+        }
+       }
+      }
+     ]
+    }
+   ],
+   "non_rilevabili": [
+    {
+     "errore": "Ginocchia che cedono verso l'interno",
+     "motivo": "Di lato non si vede: scegli \"Di fronte (ginocchia)\" prima della serie (regola in prova)."
+    },
+    {
+     "errore": "Schiena arrotondata",
+     "motivo": "La curvatura della colonna non è misurabile con i punti disponibili."
+    },
+    {
+     "errore": "Rilassamento sul box",
+     "motivo": "Non misurabile."
+    }
+   ]
+  },
+  "motivo": "Vista frontale (scelta prima della serie): regole proposte dall'app, da tarare in sala. Di fronte: conteggio dalla distanza anca-caviglia (in % della larghezza delle spalle), ginocchia dentro se più vicine delle caviglie (sotto 80%), spalle storte oltre 12°."
+ },
+ {
+  "id": "QUA-020",
+  "imposta": {
+   "impostazioni": [
+    {
+     "id": "vista",
+     "domanda": "Dove hai messo la camera?",
+     "opzioni": [
+      {
+       "etichetta": "Di lato",
+       "imposta": {}
+      },
+      {
+       "etichetta": "Di fronte (ginocchia)",
+       "imposta": {
+        "vista_camera": "frontale",
+        "lato": "entrambi",
+        "messaggio_posizione": "Camera di fronte all'altezza del bacino, a 2-3 metri, corpo intero visibile",
+        "ripetizione": {
+         "misura": "discesa_anca",
+         "direzione": "diminuisce",
+         "posizione_iniziale": 180,
+         "inizio_movimento": 165,
+         "durata_massima": 15.0,
+         "tolleranza_pausa": 5.0
+        },
+        "errori": [
+         {
+          "id": "ginocchia_dentro",
+          "messaggio": "Ginocchia in fuori",
+          "gravita": "rosso",
+          "momento": "fine",
+          "statistica": "minimo",
+          "misura": "ginocchia_caviglie",
+          "minore_di": 80
+         },
+         {
+          "id": "spalla_destra_bassa",
+          "messaggio": "Spalle alla stessa altezza",
+          "gravita": "giallo",
+          "momento": "durante",
+          "misura": "spalle",
+          "maggiore_di": 102
+         },
+         {
+          "id": "spalla_sinistra_bassa",
+          "messaggio": "Spalle alla stessa altezza",
+          "gravita": "giallo",
+          "momento": "durante",
+          "misura": "spalle",
+          "minore_di": 78
+         }
+        ],
+        "misure.discesa_anca": {
+         "tipo": "distanza",
+         "punti": [
+          "anca",
+          "caviglia"
+         ],
+         "scala": [
+          "spalla_sx",
+          "spalla_dx"
+         ]
+        },
+        "misure.ginocchia_caviglie": {
+         "tipo": "distanza",
+         "punti": [
+          "ginocchio_sx",
+          "ginocchio_dx"
+         ],
+         "scala": [
+          "caviglia_sx",
+          "caviglia_dx"
+         ],
+         "muovi": "punti"
+        },
+        "misure.spalle": {
+         "tipo": "inclinazione",
+         "punti": [
+          "spalla_sx",
+          "spalla_dx"
+         ]
+        },
+        "testi_errori.ginocchia_dentro": {
+         "cosa_succede": "Scendendo le ginocchia si avvicinano tra loro più dei piedi.",
+         "perche_conta": "Il ginocchio cede verso l'interno: aumenta lo stress sui legamenti, soprattutto con il carico.",
+         "come_correggere": "Spingi le ginocchia in fuori, nella direzione delle punte dei piedi; se non ci riesci, riduci il carico.",
+         "frase_da_ricordare": "Ginocchia in fuori, sopra le punte.",
+         "frase_alternativa": "Apri le ginocchia, spingi il pavimento."
+        },
+        "testi_errori.spalla_destra_bassa": {
+         "cosa_succede": "Il busto si inclina da un lato e una spalla scende.",
+         "perche_conta": "Il peso si sposta su una gamba sola e il carico non è più simmetrico.",
+         "come_correggere": "Distribuisci il peso su tutti e due i piedi e tieni il petto rivolto in avanti.",
+         "frase_da_ricordare": "Spalle alla stessa altezza."
+        },
+        "testi_errori.spalla_sinistra_bassa": {
+         "cosa_succede": "Il busto si inclina da un lato e una spalla scende.",
+         "perche_conta": "Il peso si sposta su una gamba sola e il carico non è più simmetrico.",
+         "come_correggere": "Distribuisci il peso su tutti e due i piedi e tieni il petto rivolto in avanti.",
+         "frase_da_ricordare": "Spalle alla stessa altezza."
+        }
+       }
+      }
+     ]
+    }
+   ],
+   "non_rilevabili": [
+    {
+     "errore": "Ginocchia che cedono verso l'interno",
+     "motivo": "Di lato non si vede: scegli \"Di fronte (ginocchia)\" prima della serie (regola in prova)."
+    },
+    {
+     "errore": "Schiena arrotondata",
+     "motivo": "La curvatura della colonna non è misurabile con i punti disponibili."
+    }
+   ]
+  },
+  "motivo": "Vista frontale (scelta prima della serie): regole proposte dall'app, da tarare in sala. Di fronte: conteggio dalla distanza anca-caviglia (in % della larghezza delle spalle), ginocchia dentro se più vicine delle caviglie (sotto 80%), spalle storte oltre 12°."
+ },
+ {
+  "id": "QUA-021",
+  "imposta": {
+   "impostazioni": [
+    {
+     "id": "vista",
+     "domanda": "Dove hai messo la camera?",
+     "opzioni": [
+      {
+       "etichetta": "Di lato",
+       "imposta": {}
+      },
+      {
+       "etichetta": "Di fronte (ginocchia)",
+       "imposta": {
+        "vista_camera": "frontale",
+        "lato": "entrambi",
+        "messaggio_posizione": "Camera di fronte all'altezza del bacino, a 2-3 metri, corpo intero visibile",
+        "ripetizione": {
+         "misura": "discesa_anca",
+         "direzione": "diminuisce",
+         "posizione_iniziale": 180,
+         "inizio_movimento": 165,
+         "durata_massima": 12.0,
+         "tolleranza_pausa": 5.0
+        },
+        "errori": [
+         {
+          "id": "ginocchia_dentro",
+          "messaggio": "Ginocchia in fuori",
+          "gravita": "rosso",
+          "momento": "fine",
+          "statistica": "minimo",
+          "misura": "ginocchia_caviglie",
+          "minore_di": 80
+         },
+         {
+          "id": "spalla_destra_bassa",
+          "messaggio": "Spalle alla stessa altezza",
+          "gravita": "giallo",
+          "momento": "durante",
+          "misura": "spalle",
+          "maggiore_di": 102
+         },
+         {
+          "id": "spalla_sinistra_bassa",
+          "messaggio": "Spalle alla stessa altezza",
+          "gravita": "giallo",
+          "momento": "durante",
+          "misura": "spalle",
+          "minore_di": 78
+         }
+        ],
+        "misure.discesa_anca": {
+         "tipo": "distanza",
+         "punti": [
+          "anca",
+          "caviglia"
+         ],
+         "scala": [
+          "spalla_sx",
+          "spalla_dx"
+         ]
+        },
+        "misure.ginocchia_caviglie": {
+         "tipo": "distanza",
+         "punti": [
+          "ginocchio_sx",
+          "ginocchio_dx"
+         ],
+         "scala": [
+          "caviglia_sx",
+          "caviglia_dx"
+         ],
+         "muovi": "punti"
+        },
+        "misure.spalle": {
+         "tipo": "inclinazione",
+         "punti": [
+          "spalla_sx",
+          "spalla_dx"
+         ]
+        },
+        "testi_errori.ginocchia_dentro": {
+         "cosa_succede": "Scendendo le ginocchia si avvicinano tra loro più dei piedi.",
+         "perche_conta": "Il ginocchio cede verso l'interno: aumenta lo stress sui legamenti, soprattutto con il carico.",
+         "come_correggere": "Spingi le ginocchia in fuori, nella direzione delle punte dei piedi; se non ci riesci, riduci il carico.",
+         "frase_da_ricordare": "Ginocchia in fuori, sopra le punte.",
+         "frase_alternativa": "Apri le ginocchia, spingi il pavimento."
+        },
+        "testi_errori.spalla_destra_bassa": {
+         "cosa_succede": "Il busto si inclina da un lato e una spalla scende.",
+         "perche_conta": "Il peso si sposta su una gamba sola e il carico non è più simmetrico.",
+         "come_correggere": "Distribuisci il peso su tutti e due i piedi e tieni il petto rivolto in avanti.",
+         "frase_da_ricordare": "Spalle alla stessa altezza."
+        },
+        "testi_errori.spalla_sinistra_bassa": {
+         "cosa_succede": "Il busto si inclina da un lato e una spalla scende.",
+         "perche_conta": "Il peso si sposta su una gamba sola e il carico non è più simmetrico.",
+         "come_correggere": "Distribuisci il peso su tutti e due i piedi e tieni il petto rivolto in avanti.",
+         "frase_da_ricordare": "Spalle alla stessa altezza."
+        }
+       }
+      }
+     ]
+    }
+   ],
+   "non_rilevabili": [
+    {
+     "errore": "Ginocchia che cedono verso l'interno",
+     "motivo": "Di lato non si vede: scegli \"Di fronte (ginocchia)\" prima della serie (regola in prova)."
+    },
+    {
+     "errore": "Schiena arrotondata",
+     "motivo": "La curvatura della colonna non è misurabile con i punti disponibili."
+    }
+   ]
+  },
+  "motivo": "Vista frontale (scelta prima della serie): regole proposte dall'app, da tarare in sala. Di fronte: conteggio dalla distanza anca-caviglia (in % della larghezza delle spalle), ginocchia dentro se più vicine delle caviglie (sotto 80%), spalle storte oltre 12°."
+ },
+ {
+  "id": "QUA-022",
+  "imposta": {
+   "impostazioni": [
+    {
+     "id": "vista",
+     "domanda": "Dove hai messo la camera?",
+     "opzioni": [
+      {
+       "etichetta": "Di lato",
+       "imposta": {}
+      },
+      {
+       "etichetta": "Di fronte (ginocchia)",
+       "imposta": {
+        "vista_camera": "frontale",
+        "lato": "entrambi",
+        "messaggio_posizione": "Camera di fronte all'altezza del bacino, a 2-3 metri, corpo intero visibile",
+        "ripetizione": {
+         "misura": "discesa_anca",
+         "direzione": "diminuisce",
+         "posizione_iniziale": 180,
+         "inizio_movimento": 165,
+         "durata_massima": 12.0,
+         "tolleranza_pausa": 5.0
+        },
+        "errori": [
+         {
+          "id": "ginocchia_dentro",
+          "messaggio": "Ginocchia in fuori",
+          "gravita": "rosso",
+          "momento": "fine",
+          "statistica": "minimo",
+          "misura": "ginocchia_caviglie",
+          "minore_di": 80
+         },
+         {
+          "id": "spalla_destra_bassa",
+          "messaggio": "Spalle alla stessa altezza",
+          "gravita": "giallo",
+          "momento": "durante",
+          "misura": "spalle",
+          "maggiore_di": 102
+         },
+         {
+          "id": "spalla_sinistra_bassa",
+          "messaggio": "Spalle alla stessa altezza",
+          "gravita": "giallo",
+          "momento": "durante",
+          "misura": "spalle",
+          "minore_di": 78
+         }
+        ],
+        "misure.discesa_anca": {
+         "tipo": "distanza",
+         "punti": [
+          "anca",
+          "caviglia"
+         ],
+         "scala": [
+          "spalla_sx",
+          "spalla_dx"
+         ]
+        },
+        "misure.ginocchia_caviglie": {
+         "tipo": "distanza",
+         "punti": [
+          "ginocchio_sx",
+          "ginocchio_dx"
+         ],
+         "scala": [
+          "caviglia_sx",
+          "caviglia_dx"
+         ],
+         "muovi": "punti"
+        },
+        "misure.spalle": {
+         "tipo": "inclinazione",
+         "punti": [
+          "spalla_sx",
+          "spalla_dx"
+         ]
+        },
+        "testi_errori.ginocchia_dentro": {
+         "cosa_succede": "Scendendo le ginocchia si avvicinano tra loro più dei piedi.",
+         "perche_conta": "Il ginocchio cede verso l'interno: aumenta lo stress sui legamenti, soprattutto con il carico.",
+         "come_correggere": "Spingi le ginocchia in fuori, nella direzione delle punte dei piedi; se non ci riesci, riduci il carico.",
+         "frase_da_ricordare": "Ginocchia in fuori, sopra le punte.",
+         "frase_alternativa": "Apri le ginocchia, spingi il pavimento."
+        },
+        "testi_errori.spalla_destra_bassa": {
+         "cosa_succede": "Il busto si inclina da un lato e una spalla scende.",
+         "perche_conta": "Il peso si sposta su una gamba sola e il carico non è più simmetrico.",
+         "come_correggere": "Distribuisci il peso su tutti e due i piedi e tieni il petto rivolto in avanti.",
+         "frase_da_ricordare": "Spalle alla stessa altezza."
+        },
+        "testi_errori.spalla_sinistra_bassa": {
+         "cosa_succede": "Il busto si inclina da un lato e una spalla scende.",
+         "perche_conta": "Il peso si sposta su una gamba sola e il carico non è più simmetrico.",
+         "come_correggere": "Distribuisci il peso su tutti e due i piedi e tieni il petto rivolto in avanti.",
+         "frase_da_ricordare": "Spalle alla stessa altezza."
+        }
+       }
+      }
+     ]
+    }
+   ],
+   "non_rilevabili": [
+    {
+     "errore": "Ginocchia che cedono verso l'interno",
+     "motivo": "Di lato non si vede: scegli \"Di fronte (ginocchia)\" prima della serie (regola in prova)."
+    },
+    {
+     "errore": "Schiena arrotondata",
+     "motivo": "La curvatura della colonna non è misurabile con i punti disponibili."
+    }
+   ]
+  },
+  "motivo": "Vista frontale (scelta prima della serie): regole proposte dall'app, da tarare in sala. Di fronte: conteggio dalla distanza anca-caviglia (in % della larghezza delle spalle), ginocchia dentro se più vicine delle caviglie (sotto 80%), spalle storte oltre 12°."
+ },
+ {
+  "id": "QUA-027",
+  "imposta": {
+   "impostazioni": [
+    {
+     "id": "vista",
+     "domanda": "Dove hai messo la camera?",
+     "opzioni": [
+      {
+       "etichetta": "Di lato",
+       "imposta": {}
+      },
+      {
+       "etichetta": "Di fronte (ginocchia)",
+       "imposta": {
+        "vista_camera": "frontale",
+        "lato": "entrambi",
+        "messaggio_posizione": "Camera di fronte all'altezza del bacino, a 2-3 metri, corpo intero visibile",
+        "ripetizione": {
+         "misura": "discesa_anca",
+         "direzione": "diminuisce",
+         "posizione_iniziale": 180,
+         "inizio_movimento": 165,
+         "durata_massima": 12.0,
+         "tolleranza_pausa": 5.0
+        },
+        "errori": [
+         {
+          "id": "ginocchia_dentro",
+          "messaggio": "Ginocchia in fuori",
+          "gravita": "rosso",
+          "momento": "fine",
+          "statistica": "minimo",
+          "misura": "ginocchia_caviglie",
+          "minore_di": 80
+         },
+         {
+          "id": "spalla_destra_bassa",
+          "messaggio": "Spalle alla stessa altezza",
+          "gravita": "giallo",
+          "momento": "durante",
+          "misura": "spalle",
+          "maggiore_di": 102
+         },
+         {
+          "id": "spalla_sinistra_bassa",
+          "messaggio": "Spalle alla stessa altezza",
+          "gravita": "giallo",
+          "momento": "durante",
+          "misura": "spalle",
+          "minore_di": 78
+         },
+         {
+          "id": "troppo_veloce",
+          "messaggio": "Scendi più lentamente",
+          "gravita": "giallo",
+          "momento": "fine",
+          "misura": "discesa",
+          "statistica": "massimo",
+          "minore_di": 0.8,
+          "anticipa": true
+         }
+        ],
+        "misure.discesa_anca": {
+         "tipo": "distanza",
+         "punti": [
+          "anca",
+          "caviglia"
+         ],
+         "scala": [
+          "spalla_sx",
+          "spalla_dx"
+         ]
+        },
+        "misure.ginocchia_caviglie": {
+         "tipo": "distanza",
+         "punti": [
+          "ginocchio_sx",
+          "ginocchio_dx"
+         ],
+         "scala": [
+          "caviglia_sx",
+          "caviglia_dx"
+         ],
+         "muovi": "punti"
+        },
+        "misure.spalle": {
+         "tipo": "inclinazione",
+         "punti": [
+          "spalla_sx",
+          "spalla_dx"
+         ]
+        },
+        "testi_errori.ginocchia_dentro": {
+         "cosa_succede": "Scendendo le ginocchia si avvicinano tra loro più dei piedi.",
+         "perche_conta": "Il ginocchio cede verso l'interno: aumenta lo stress sui legamenti, soprattutto con il carico.",
+         "come_correggere": "Spingi le ginocchia in fuori, nella direzione delle punte dei piedi; se non ci riesci, riduci il carico.",
+         "frase_da_ricordare": "Ginocchia in fuori, sopra le punte.",
+         "frase_alternativa": "Apri le ginocchia, spingi il pavimento."
+        },
+        "testi_errori.spalla_destra_bassa": {
+         "cosa_succede": "Il busto si inclina da un lato e una spalla scende.",
+         "perche_conta": "Il peso si sposta su una gamba sola e il carico non è più simmetrico.",
+         "come_correggere": "Distribuisci il peso su tutti e due i piedi e tieni il petto rivolto in avanti.",
+         "frase_da_ricordare": "Spalle alla stessa altezza."
+        },
+        "testi_errori.spalla_sinistra_bassa": {
+         "cosa_succede": "Il busto si inclina da un lato e una spalla scende.",
+         "perche_conta": "Il peso si sposta su una gamba sola e il carico non è più simmetrico.",
+         "come_correggere": "Distribuisci il peso su tutti e due i piedi e tieni il petto rivolto in avanti.",
+         "frase_da_ricordare": "Spalle alla stessa altezza."
+        }
+       }
+      }
+     ]
+    }
+   ],
+   "non_rilevabili": [
+    {
+     "errore": "Ginocchia che cedono verso l'interno",
+     "motivo": "Di lato non si vede: scegli \"Di fronte (ginocchia)\" prima della serie (regola in prova)."
+    },
+    {
+     "errore": "Schiena arrotondata",
+     "motivo": "La curvatura della colonna non è misurabile con i punti disponibili."
+    }
+   ]
+  },
+  "motivo": "Vista frontale (scelta prima della serie): regole proposte dall'app, da tarare in sala. Di fronte: conteggio dalla distanza anca-caviglia (in % della larghezza delle spalle), ginocchia dentro se più vicine delle caviglie (sotto 80%), spalle storte oltre 12°."
+ },
+ {
+  "id": "QUA-030",
+  "imposta": {
+   "impostazioni": [
+    {
+     "id": "vista",
+     "domanda": "Dove hai messo la camera?",
+     "opzioni": [
+      {
+       "etichetta": "Di lato",
+       "imposta": {}
+      },
+      {
+       "etichetta": "Di fronte (ginocchia)",
+       "imposta": {
+        "vista_camera": "frontale",
+        "lato": "entrambi",
+        "messaggio_posizione": "Camera di fronte all'altezza del bacino, a 2-3 metri, corpo intero visibile",
+        "ripetizione": {
+         "misura": "discesa_anca",
+         "direzione": "diminuisce",
+         "posizione_iniziale": 180,
+         "inizio_movimento": 165,
+         "durata_massima": 12.0,
+         "tolleranza_pausa": 5.0
+        },
+        "errori": [
+         {
+          "id": "ginocchia_dentro",
+          "messaggio": "Ginocchia in fuori",
+          "gravita": "rosso",
+          "momento": "fine",
+          "statistica": "minimo",
+          "misura": "ginocchia_caviglie",
+          "minore_di": 80
+         },
+         {
+          "id": "spalla_destra_bassa",
+          "messaggio": "Spalle alla stessa altezza",
+          "gravita": "giallo",
+          "momento": "durante",
+          "misura": "spalle",
+          "maggiore_di": 102
+         },
+         {
+          "id": "spalla_sinistra_bassa",
+          "messaggio": "Spalle alla stessa altezza",
+          "gravita": "giallo",
+          "momento": "durante",
+          "misura": "spalle",
+          "minore_di": 78
+         },
+         {
+          "id": "troppo_veloce",
+          "messaggio": "Scendi più lentamente",
+          "gravita": "giallo",
+          "momento": "fine",
+          "misura": "discesa",
+          "statistica": "massimo",
+          "minore_di": 0.8,
+          "anticipa": true
+         }
+        ],
+        "misure.discesa_anca": {
+         "tipo": "distanza",
+         "punti": [
+          "anca",
+          "caviglia"
+         ],
+         "scala": [
+          "spalla_sx",
+          "spalla_dx"
+         ]
+        },
+        "misure.ginocchia_caviglie": {
+         "tipo": "distanza",
+         "punti": [
+          "ginocchio_sx",
+          "ginocchio_dx"
+         ],
+         "scala": [
+          "caviglia_sx",
+          "caviglia_dx"
+         ],
+         "muovi": "punti"
+        },
+        "misure.spalle": {
+         "tipo": "inclinazione",
+         "punti": [
+          "spalla_sx",
+          "spalla_dx"
+         ]
+        },
+        "testi_errori.ginocchia_dentro": {
+         "cosa_succede": "Scendendo le ginocchia si avvicinano tra loro più dei piedi.",
+         "perche_conta": "Il ginocchio cede verso l'interno: aumenta lo stress sui legamenti, soprattutto con il carico.",
+         "come_correggere": "Spingi le ginocchia in fuori, nella direzione delle punte dei piedi; se non ci riesci, riduci il carico.",
+         "frase_da_ricordare": "Ginocchia in fuori, sopra le punte.",
+         "frase_alternativa": "Apri le ginocchia, spingi il pavimento."
+        },
+        "testi_errori.spalla_destra_bassa": {
+         "cosa_succede": "Il busto si inclina da un lato e una spalla scende.",
+         "perche_conta": "Il peso si sposta su una gamba sola e il carico non è più simmetrico.",
+         "come_correggere": "Distribuisci il peso su tutti e due i piedi e tieni il petto rivolto in avanti.",
+         "frase_da_ricordare": "Spalle alla stessa altezza."
+        },
+        "testi_errori.spalla_sinistra_bassa": {
+         "cosa_succede": "Il busto si inclina da un lato e una spalla scende.",
+         "perche_conta": "Il peso si sposta su una gamba sola e il carico non è più simmetrico.",
+         "come_correggere": "Distribuisci il peso su tutti e due i piedi e tieni il petto rivolto in avanti.",
+         "frase_da_ricordare": "Spalle alla stessa altezza."
+        }
+       }
+      }
+     ]
+    }
+   ],
+   "non_rilevabili": [
+    {
+     "errore": "Ginocchia che cedono verso l'interno",
+     "motivo": "Di lato non si vede: scegli \"Di fronte (ginocchia)\" prima della serie (regola in prova)."
+    },
+    {
+     "errore": "Schiena arrotondata",
+     "motivo": "La curvatura della colonna non è misurabile con i punti disponibili."
+    }
+   ]
+  },
+  "motivo": "Vista frontale (scelta prima della serie): regole proposte dall'app, da tarare in sala. Di fronte: conteggio dalla distanza anca-caviglia (in % della larghezza delle spalle), ginocchia dentro se più vicine delle caviglie (sotto 80%), spalle storte oltre 12°."
+ },
+ {
+  "id": "QUA-031",
+  "imposta": {
+   "impostazioni": [
+    {
+     "id": "vista",
+     "domanda": "Dove hai messo la camera?",
+     "opzioni": [
+      {
+       "etichetta": "Di lato",
+       "imposta": {}
+      },
+      {
+       "etichetta": "Di fronte (ginocchia)",
+       "imposta": {
+        "vista_camera": "frontale",
+        "lato": "entrambi",
+        "messaggio_posizione": "Camera di fronte all'altezza del bacino, a 2-3 metri, corpo intero visibile",
+        "ripetizione": {
+         "misura": "discesa_anca",
+         "direzione": "diminuisce",
+         "posizione_iniziale": 180,
+         "inizio_movimento": 165,
+         "durata_massima": 12.0,
+         "tolleranza_pausa": 5.0
+        },
+        "errori": [
+         {
+          "id": "ginocchia_dentro",
+          "messaggio": "Ginocchia in fuori",
+          "gravita": "rosso",
+          "momento": "fine",
+          "statistica": "minimo",
+          "misura": "ginocchia_caviglie",
+          "minore_di": 80
+         },
+         {
+          "id": "spalla_destra_bassa",
+          "messaggio": "Spalle alla stessa altezza",
+          "gravita": "giallo",
+          "momento": "durante",
+          "misura": "spalle",
+          "maggiore_di": 102
+         },
+         {
+          "id": "spalla_sinistra_bassa",
+          "messaggio": "Spalle alla stessa altezza",
+          "gravita": "giallo",
+          "momento": "durante",
+          "misura": "spalle",
+          "minore_di": 78
+         },
+         {
+          "id": "troppo_veloce",
+          "messaggio": "Scendi più lentamente",
+          "gravita": "giallo",
+          "momento": "fine",
+          "misura": "discesa",
+          "statistica": "massimo",
+          "minore_di": 0.8,
+          "anticipa": true
+         }
+        ],
+        "misure.discesa_anca": {
+         "tipo": "distanza",
+         "punti": [
+          "anca",
+          "caviglia"
+         ],
+         "scala": [
+          "spalla_sx",
+          "spalla_dx"
+         ]
+        },
+        "misure.ginocchia_caviglie": {
+         "tipo": "distanza",
+         "punti": [
+          "ginocchio_sx",
+          "ginocchio_dx"
+         ],
+         "scala": [
+          "caviglia_sx",
+          "caviglia_dx"
+         ],
+         "muovi": "punti"
+        },
+        "misure.spalle": {
+         "tipo": "inclinazione",
+         "punti": [
+          "spalla_sx",
+          "spalla_dx"
+         ]
+        },
+        "testi_errori.ginocchia_dentro": {
+         "cosa_succede": "Scendendo le ginocchia si avvicinano tra loro più dei piedi.",
+         "perche_conta": "Il ginocchio cede verso l'interno: aumenta lo stress sui legamenti, soprattutto con il carico.",
+         "come_correggere": "Spingi le ginocchia in fuori, nella direzione delle punte dei piedi; se non ci riesci, riduci il carico.",
+         "frase_da_ricordare": "Ginocchia in fuori, sopra le punte.",
+         "frase_alternativa": "Apri le ginocchia, spingi il pavimento."
+        },
+        "testi_errori.spalla_destra_bassa": {
+         "cosa_succede": "Il busto si inclina da un lato e una spalla scende.",
+         "perche_conta": "Il peso si sposta su una gamba sola e il carico non è più simmetrico.",
+         "come_correggere": "Distribuisci il peso su tutti e due i piedi e tieni il petto rivolto in avanti.",
+         "frase_da_ricordare": "Spalle alla stessa altezza."
+        },
+        "testi_errori.spalla_sinistra_bassa": {
+         "cosa_succede": "Il busto si inclina da un lato e una spalla scende.",
+         "perche_conta": "Il peso si sposta su una gamba sola e il carico non è più simmetrico.",
+         "come_correggere": "Distribuisci il peso su tutti e due i piedi e tieni il petto rivolto in avanti.",
+         "frase_da_ricordare": "Spalle alla stessa altezza."
+        }
+       }
+      }
+     ]
+    }
+   ],
+   "non_rilevabili": [
+    {
+     "errore": "Ginocchia che cedono verso l'interno",
+     "motivo": "Di lato non si vede: scegli \"Di fronte (ginocchia)\" prima della serie (regola in prova)."
+    },
+    {
+     "errore": "Schiena arrotondata",
+     "motivo": "La curvatura della colonna non è misurabile con i punti disponibili."
+    }
+   ]
+  },
+  "motivo": "Vista frontale (scelta prima della serie): regole proposte dall'app, da tarare in sala. Di fronte: conteggio dalla distanza anca-caviglia (in % della larghezza delle spalle), ginocchia dentro se più vicine delle caviglie (sotto 80%), spalle storte oltre 12°."
+ },
+ {
+  "id": "QUA-032",
+  "imposta": {
+   "impostazioni": [
+    {
+     "id": "vista",
+     "domanda": "Dove hai messo la camera?",
+     "opzioni": [
+      {
+       "etichetta": "Di lato",
+       "imposta": {}
+      },
+      {
+       "etichetta": "Di fronte (ginocchia)",
+       "imposta": {
+        "vista_camera": "frontale",
+        "lato": "entrambi",
+        "messaggio_posizione": "Camera di fronte all'altezza del bacino, a 2-3 metri, corpo intero visibile",
+        "ripetizione": {
+         "misura": "discesa_anca",
+         "direzione": "diminuisce",
+         "posizione_iniziale": 180,
+         "inizio_movimento": 165,
+         "durata_massima": 12.0,
+         "tolleranza_pausa": 5.0
+        },
+        "errori": [
+         {
+          "id": "ginocchia_dentro",
+          "messaggio": "Ginocchia in fuori",
+          "gravita": "rosso",
+          "momento": "fine",
+          "statistica": "minimo",
+          "misura": "ginocchia_caviglie",
+          "minore_di": 80
+         },
+         {
+          "id": "spalla_destra_bassa",
+          "messaggio": "Spalle alla stessa altezza",
+          "gravita": "giallo",
+          "momento": "durante",
+          "misura": "spalle",
+          "maggiore_di": 102
+         },
+         {
+          "id": "spalla_sinistra_bassa",
+          "messaggio": "Spalle alla stessa altezza",
+          "gravita": "giallo",
+          "momento": "durante",
+          "misura": "spalle",
+          "minore_di": 78
+         },
+         {
+          "id": "troppo_veloce",
+          "messaggio": "Scendi più lentamente",
+          "gravita": "giallo",
+          "momento": "fine",
+          "misura": "discesa",
+          "statistica": "massimo",
+          "minore_di": 0.8,
+          "anticipa": true
+         }
+        ],
+        "misure.discesa_anca": {
+         "tipo": "distanza",
+         "punti": [
+          "anca",
+          "caviglia"
+         ],
+         "scala": [
+          "spalla_sx",
+          "spalla_dx"
+         ]
+        },
+        "misure.ginocchia_caviglie": {
+         "tipo": "distanza",
+         "punti": [
+          "ginocchio_sx",
+          "ginocchio_dx"
+         ],
+         "scala": [
+          "caviglia_sx",
+          "caviglia_dx"
+         ],
+         "muovi": "punti"
+        },
+        "misure.spalle": {
+         "tipo": "inclinazione",
+         "punti": [
+          "spalla_sx",
+          "spalla_dx"
+         ]
+        },
+        "testi_errori.ginocchia_dentro": {
+         "cosa_succede": "Scendendo le ginocchia si avvicinano tra loro più dei piedi.",
+         "perche_conta": "Il ginocchio cede verso l'interno: aumenta lo stress sui legamenti, soprattutto con il carico.",
+         "come_correggere": "Spingi le ginocchia in fuori, nella direzione delle punte dei piedi; se non ci riesci, riduci il carico.",
+         "frase_da_ricordare": "Ginocchia in fuori, sopra le punte.",
+         "frase_alternativa": "Apri le ginocchia, spingi il pavimento."
+        },
+        "testi_errori.spalla_destra_bassa": {
+         "cosa_succede": "Il busto si inclina da un lato e una spalla scende.",
+         "perche_conta": "Il peso si sposta su una gamba sola e il carico non è più simmetrico.",
+         "come_correggere": "Distribuisci il peso su tutti e due i piedi e tieni il petto rivolto in avanti.",
+         "frase_da_ricordare": "Spalle alla stessa altezza."
+        },
+        "testi_errori.spalla_sinistra_bassa": {
+         "cosa_succede": "Il busto si inclina da un lato e una spalla scende.",
+         "perche_conta": "Il peso si sposta su una gamba sola e il carico non è più simmetrico.",
+         "come_correggere": "Distribuisci il peso su tutti e due i piedi e tieni il petto rivolto in avanti.",
+         "frase_da_ricordare": "Spalle alla stessa altezza."
+        }
+       }
+      }
+     ]
+    }
+   ],
+   "non_rilevabili": [
+    {
+     "errore": "Ginocchia che cedono verso l'interno",
+     "motivo": "Di lato non si vede: scegli \"Di fronte (ginocchia)\" prima della serie (regola in prova)."
+    },
+    {
+     "errore": "Schiena arrotondata",
+     "motivo": "La curvatura della colonna non è misurabile con i punti disponibili."
+    }
+   ]
+  },
+  "motivo": "Vista frontale (scelta prima della serie): regole proposte dall'app, da tarare in sala. Di fronte: conteggio dalla distanza anca-caviglia (in % della larghezza delle spalle), ginocchia dentro se più vicine delle caviglie (sotto 80%), spalle storte oltre 12°."
+ },
+ {
+  "id": "QUA-039",
+  "imposta": {
+   "impostazioni": [
+    {
+     "id": "vista",
+     "domanda": "Dove hai messo la camera?",
+     "opzioni": [
+      {
+       "etichetta": "Di lato",
+       "imposta": {}
+      },
+      {
+       "etichetta": "Di fronte (ginocchia)",
+       "imposta": {
+        "vista_camera": "frontale",
+        "lato": "entrambi",
+        "messaggio_posizione": "Camera di fronte all'altezza del bacino, a 2-3 metri, corpo intero visibile",
+        "ripetizione": {
+         "misura": "discesa_anca",
+         "direzione": "diminuisce",
+         "posizione_iniziale": 180,
+         "inizio_movimento": 165,
+         "durata_massima": 12.0,
+         "tolleranza_pausa": 5.0
+        },
+        "errori": [
+         {
+          "id": "ginocchia_dentro",
+          "messaggio": "Ginocchia in fuori",
+          "gravita": "rosso",
+          "momento": "fine",
+          "statistica": "minimo",
+          "misura": "ginocchia_caviglie",
+          "minore_di": 80
+         },
+         {
+          "id": "spalla_destra_bassa",
+          "messaggio": "Spalle alla stessa altezza",
+          "gravita": "giallo",
+          "momento": "durante",
+          "misura": "spalle",
+          "maggiore_di": 102
+         },
+         {
+          "id": "spalla_sinistra_bassa",
+          "messaggio": "Spalle alla stessa altezza",
+          "gravita": "giallo",
+          "momento": "durante",
+          "misura": "spalle",
+          "minore_di": 78
+         },
+         {
+          "id": "troppo_veloce",
+          "messaggio": "Scendi più lentamente",
+          "gravita": "giallo",
+          "momento": "fine",
+          "misura": "discesa",
+          "statistica": "massimo",
+          "minore_di": 0.8,
+          "anticipa": true
+         }
+        ],
+        "misure.discesa_anca": {
+         "tipo": "distanza",
+         "punti": [
+          "anca",
+          "caviglia"
+         ],
+         "scala": [
+          "spalla_sx",
+          "spalla_dx"
+         ]
+        },
+        "misure.ginocchia_caviglie": {
+         "tipo": "distanza",
+         "punti": [
+          "ginocchio_sx",
+          "ginocchio_dx"
+         ],
+         "scala": [
+          "caviglia_sx",
+          "caviglia_dx"
+         ],
+         "muovi": "punti"
+        },
+        "misure.spalle": {
+         "tipo": "inclinazione",
+         "punti": [
+          "spalla_sx",
+          "spalla_dx"
+         ]
+        },
+        "testi_errori.ginocchia_dentro": {
+         "cosa_succede": "Scendendo le ginocchia si avvicinano tra loro più dei piedi.",
+         "perche_conta": "Il ginocchio cede verso l'interno: aumenta lo stress sui legamenti, soprattutto con il carico.",
+         "come_correggere": "Spingi le ginocchia in fuori, nella direzione delle punte dei piedi; se non ci riesci, riduci il carico.",
+         "frase_da_ricordare": "Ginocchia in fuori, sopra le punte.",
+         "frase_alternativa": "Apri le ginocchia, spingi il pavimento."
+        },
+        "testi_errori.spalla_destra_bassa": {
+         "cosa_succede": "Il busto si inclina da un lato e una spalla scende.",
+         "perche_conta": "Il peso si sposta su una gamba sola e il carico non è più simmetrico.",
+         "come_correggere": "Distribuisci il peso su tutti e due i piedi e tieni il petto rivolto in avanti.",
+         "frase_da_ricordare": "Spalle alla stessa altezza."
+        },
+        "testi_errori.spalla_sinistra_bassa": {
+         "cosa_succede": "Il busto si inclina da un lato e una spalla scende.",
+         "perche_conta": "Il peso si sposta su una gamba sola e il carico non è più simmetrico.",
+         "come_correggere": "Distribuisci il peso su tutti e due i piedi e tieni il petto rivolto in avanti.",
+         "frase_da_ricordare": "Spalle alla stessa altezza."
+        }
+       }
+      }
+     ]
+    }
+   ],
+   "non_rilevabili": [
+    {
+     "errore": "Ginocchia che cedono verso l'interno",
+     "motivo": "Di lato non si vede: scegli \"Di fronte (ginocchia)\" prima della serie (regola in prova)."
+    },
+    {
+     "errore": "Schiena arrotondata",
+     "motivo": "La curvatura della colonna non è misurabile con i punti disponibili."
+    }
+   ]
+  },
+  "motivo": "Vista frontale (scelta prima della serie): regole proposte dall'app, da tarare in sala. Di fronte: conteggio dalla distanza anca-caviglia (in % della larghezza delle spalle), ginocchia dentro se più vicine delle caviglie (sotto 80%), spalle storte oltre 12°."
+ },
+ {
+  "id": "QUA-040",
+  "imposta": {
+   "impostazioni": [
+    {
+     "id": "vista",
+     "domanda": "Dove hai messo la camera?",
+     "opzioni": [
+      {
+       "etichetta": "Di lato",
+       "imposta": {}
+      },
+      {
+       "etichetta": "Di fronte (ginocchia)",
+       "imposta": {
+        "vista_camera": "frontale",
+        "lato": "entrambi",
+        "messaggio_posizione": "Camera di fronte all'altezza del bacino, a 2-3 metri, corpo intero visibile",
+        "ripetizione": {
+         "misura": "discesa_anca",
+         "direzione": "diminuisce",
+         "posizione_iniziale": 180,
+         "inizio_movimento": 165,
+         "durata_massima": 12.0,
+         "tolleranza_pausa": 5.0
+        },
+        "errori": [
+         {
+          "id": "ginocchia_dentro",
+          "messaggio": "Ginocchia in fuori",
+          "gravita": "rosso",
+          "momento": "fine",
+          "statistica": "minimo",
+          "misura": "ginocchia_caviglie",
+          "minore_di": 80
+         },
+         {
+          "id": "spalla_destra_bassa",
+          "messaggio": "Spalle alla stessa altezza",
+          "gravita": "giallo",
+          "momento": "durante",
+          "misura": "spalle",
+          "maggiore_di": 102
+         },
+         {
+          "id": "spalla_sinistra_bassa",
+          "messaggio": "Spalle alla stessa altezza",
+          "gravita": "giallo",
+          "momento": "durante",
+          "misura": "spalle",
+          "minore_di": 78
+         },
+         {
+          "id": "troppo_veloce",
+          "messaggio": "Scendi più lentamente",
+          "gravita": "giallo",
+          "momento": "fine",
+          "misura": "discesa",
+          "statistica": "massimo",
+          "minore_di": 0.8,
+          "anticipa": true
+         }
+        ],
+        "misure.discesa_anca": {
+         "tipo": "distanza",
+         "punti": [
+          "anca",
+          "caviglia"
+         ],
+         "scala": [
+          "spalla_sx",
+          "spalla_dx"
+         ]
+        },
+        "misure.ginocchia_caviglie": {
+         "tipo": "distanza",
+         "punti": [
+          "ginocchio_sx",
+          "ginocchio_dx"
+         ],
+         "scala": [
+          "caviglia_sx",
+          "caviglia_dx"
+         ],
+         "muovi": "punti"
+        },
+        "misure.spalle": {
+         "tipo": "inclinazione",
+         "punti": [
+          "spalla_sx",
+          "spalla_dx"
+         ]
+        },
+        "testi_errori.ginocchia_dentro": {
+         "cosa_succede": "Scendendo le ginocchia si avvicinano tra loro più dei piedi.",
+         "perche_conta": "Il ginocchio cede verso l'interno: aumenta lo stress sui legamenti, soprattutto con il carico.",
+         "come_correggere": "Spingi le ginocchia in fuori, nella direzione delle punte dei piedi; se non ci riesci, riduci il carico.",
+         "frase_da_ricordare": "Ginocchia in fuori, sopra le punte.",
+         "frase_alternativa": "Apri le ginocchia, spingi il pavimento."
+        },
+        "testi_errori.spalla_destra_bassa": {
+         "cosa_succede": "Il busto si inclina da un lato e una spalla scende.",
+         "perche_conta": "Il peso si sposta su una gamba sola e il carico non è più simmetrico.",
+         "come_correggere": "Distribuisci il peso su tutti e due i piedi e tieni il petto rivolto in avanti.",
+         "frase_da_ricordare": "Spalle alla stessa altezza."
+        },
+        "testi_errori.spalla_sinistra_bassa": {
+         "cosa_succede": "Il busto si inclina da un lato e una spalla scende.",
+         "perche_conta": "Il peso si sposta su una gamba sola e il carico non è più simmetrico.",
+         "come_correggere": "Distribuisci il peso su tutti e due i piedi e tieni il petto rivolto in avanti.",
+         "frase_da_ricordare": "Spalle alla stessa altezza."
+        }
+       }
+      }
+     ]
+    }
+   ],
+   "non_rilevabili": [
+    {
+     "errore": "Ginocchia che cedono verso l'interno",
+     "motivo": "Di lato non si vede: scegli \"Di fronte (ginocchia)\" prima della serie (regola in prova)."
+    },
+    {
+     "errore": "Schiena arrotondata",
+     "motivo": "La curvatura della colonna non è misurabile con i punti disponibili."
+    }
+   ]
+  },
+  "motivo": "Vista frontale (scelta prima della serie): regole proposte dall'app, da tarare in sala. Di fronte: conteggio dalla distanza anca-caviglia (in % della larghezza delle spalle), ginocchia dentro se più vicine delle caviglie (sotto 80%), spalle storte oltre 12°."
+ },
+ {
+  "id": "QUA-041",
+  "imposta": {
+   "impostazioni": [
+    {
+     "id": "vista",
+     "domanda": "Dove hai messo la camera?",
+     "opzioni": [
+      {
+       "etichetta": "Di lato",
+       "imposta": {}
+      },
+      {
+       "etichetta": "Di fronte (ginocchia)",
+       "imposta": {
+        "vista_camera": "frontale",
+        "lato": "entrambi",
+        "messaggio_posizione": "Camera di fronte all'altezza del bacino, a 2-3 metri, corpo intero visibile",
+        "ripetizione": {
+         "misura": "discesa_anca",
+         "direzione": "diminuisce",
+         "posizione_iniziale": 180,
+         "inizio_movimento": 165,
+         "durata_massima": 12.0,
+         "tolleranza_pausa": 5.0
+        },
+        "errori": [
+         {
+          "id": "ginocchia_dentro",
+          "messaggio": "Ginocchia in fuori",
+          "gravita": "rosso",
+          "momento": "fine",
+          "statistica": "minimo",
+          "misura": "ginocchia_caviglie",
+          "minore_di": 80
+         },
+         {
+          "id": "spalla_destra_bassa",
+          "messaggio": "Spalle alla stessa altezza",
+          "gravita": "giallo",
+          "momento": "durante",
+          "misura": "spalle",
+          "maggiore_di": 102
+         },
+         {
+          "id": "spalla_sinistra_bassa",
+          "messaggio": "Spalle alla stessa altezza",
+          "gravita": "giallo",
+          "momento": "durante",
+          "misura": "spalle",
+          "minore_di": 78
+         },
+         {
+          "id": "troppo_veloce",
+          "messaggio": "Scendi più lentamente",
+          "gravita": "giallo",
+          "momento": "fine",
+          "misura": "discesa",
+          "statistica": "massimo",
+          "minore_di": 0.8,
+          "anticipa": true
+         }
+        ],
+        "misure.discesa_anca": {
+         "tipo": "distanza",
+         "punti": [
+          "anca",
+          "caviglia"
+         ],
+         "scala": [
+          "spalla_sx",
+          "spalla_dx"
+         ]
+        },
+        "misure.ginocchia_caviglie": {
+         "tipo": "distanza",
+         "punti": [
+          "ginocchio_sx",
+          "ginocchio_dx"
+         ],
+         "scala": [
+          "caviglia_sx",
+          "caviglia_dx"
+         ],
+         "muovi": "punti"
+        },
+        "misure.spalle": {
+         "tipo": "inclinazione",
+         "punti": [
+          "spalla_sx",
+          "spalla_dx"
+         ]
+        },
+        "testi_errori.ginocchia_dentro": {
+         "cosa_succede": "Scendendo le ginocchia si avvicinano tra loro più dei piedi.",
+         "perche_conta": "Il ginocchio cede verso l'interno: aumenta lo stress sui legamenti, soprattutto con il carico.",
+         "come_correggere": "Spingi le ginocchia in fuori, nella direzione delle punte dei piedi; se non ci riesci, riduci il carico.",
+         "frase_da_ricordare": "Ginocchia in fuori, sopra le punte.",
+         "frase_alternativa": "Apri le ginocchia, spingi il pavimento."
+        },
+        "testi_errori.spalla_destra_bassa": {
+         "cosa_succede": "Il busto si inclina da un lato e una spalla scende.",
+         "perche_conta": "Il peso si sposta su una gamba sola e il carico non è più simmetrico.",
+         "come_correggere": "Distribuisci il peso su tutti e due i piedi e tieni il petto rivolto in avanti.",
+         "frase_da_ricordare": "Spalle alla stessa altezza."
+        },
+        "testi_errori.spalla_sinistra_bassa": {
+         "cosa_succede": "Il busto si inclina da un lato e una spalla scende.",
+         "perche_conta": "Il peso si sposta su una gamba sola e il carico non è più simmetrico.",
+         "come_correggere": "Distribuisci il peso su tutti e due i piedi e tieni il petto rivolto in avanti.",
+         "frase_da_ricordare": "Spalle alla stessa altezza."
+        }
+       }
+      }
+     ]
+    }
+   ],
+   "non_rilevabili": [
+    {
+     "errore": "Ginocchia che cedono verso l'interno",
+     "motivo": "Di lato non si vede: scegli \"Di fronte (ginocchia)\" prima della serie (regola in prova)."
+    },
+    {
+     "errore": "Schiena arrotondata",
+     "motivo": "La curvatura della colonna non è misurabile con i punti disponibili."
+    }
+   ]
+  },
+  "motivo": "Vista frontale (scelta prima della serie): regole proposte dall'app, da tarare in sala. Di fronte: conteggio dalla distanza anca-caviglia (in % della larghezza delle spalle), ginocchia dentro se più vicine delle caviglie (sotto 80%), spalle storte oltre 12°."
+ },
+ {
+  "id": "QUA-050",
+  "imposta": {
+   "impostazioni": [
+    {
+     "id": "vista",
+     "domanda": "Dove hai messo la camera?",
+     "opzioni": [
+      {
+       "etichetta": "Di lato",
+       "imposta": {}
+      },
+      {
+       "etichetta": "Di fronte (ginocchia)",
+       "imposta": {
+        "vista_camera": "frontale",
+        "lato": "entrambi",
+        "messaggio_posizione": "Camera di fronte all'altezza del bacino, a 2-3 metri, corpo intero visibile",
+        "ripetizione": {
+         "misura": "discesa_anca",
+         "direzione": "diminuisce",
+         "posizione_iniziale": 180,
+         "inizio_movimento": 165,
+         "durata_massima": 12.0,
+         "tolleranza_pausa": 5.0
+        },
+        "errori": [
+         {
+          "id": "ginocchia_dentro",
+          "messaggio": "Ginocchia in fuori",
+          "gravita": "rosso",
+          "momento": "fine",
+          "statistica": "minimo",
+          "misura": "ginocchia_caviglie",
+          "minore_di": 80
+         },
+         {
+          "id": "spalla_destra_bassa",
+          "messaggio": "Spalle alla stessa altezza",
+          "gravita": "giallo",
+          "momento": "durante",
+          "misura": "spalle",
+          "maggiore_di": 102
+         },
+         {
+          "id": "spalla_sinistra_bassa",
+          "messaggio": "Spalle alla stessa altezza",
+          "gravita": "giallo",
+          "momento": "durante",
+          "misura": "spalle",
+          "minore_di": 78
+         },
+         {
+          "id": "troppo_veloce",
+          "messaggio": "Scendi più lentamente",
+          "gravita": "giallo",
+          "momento": "fine",
+          "misura": "discesa",
+          "statistica": "massimo",
+          "minore_di": 0.8,
+          "anticipa": true
+         }
+        ],
+        "misure.discesa_anca": {
+         "tipo": "distanza",
+         "punti": [
+          "anca",
+          "caviglia"
+         ],
+         "scala": [
+          "spalla_sx",
+          "spalla_dx"
+         ]
+        },
+        "misure.ginocchia_caviglie": {
+         "tipo": "distanza",
+         "punti": [
+          "ginocchio_sx",
+          "ginocchio_dx"
+         ],
+         "scala": [
+          "caviglia_sx",
+          "caviglia_dx"
+         ],
+         "muovi": "punti"
+        },
+        "misure.spalle": {
+         "tipo": "inclinazione",
+         "punti": [
+          "spalla_sx",
+          "spalla_dx"
+         ]
+        },
+        "testi_errori.ginocchia_dentro": {
+         "cosa_succede": "Scendendo le ginocchia si avvicinano tra loro più dei piedi.",
+         "perche_conta": "Il ginocchio cede verso l'interno: aumenta lo stress sui legamenti, soprattutto con il carico.",
+         "come_correggere": "Spingi le ginocchia in fuori, nella direzione delle punte dei piedi; se non ci riesci, riduci il carico.",
+         "frase_da_ricordare": "Ginocchia in fuori, sopra le punte.",
+         "frase_alternativa": "Apri le ginocchia, spingi il pavimento."
+        },
+        "testi_errori.spalla_destra_bassa": {
+         "cosa_succede": "Il busto si inclina da un lato e una spalla scende.",
+         "perche_conta": "Il peso si sposta su una gamba sola e il carico non è più simmetrico.",
+         "come_correggere": "Distribuisci il peso su tutti e due i piedi e tieni il petto rivolto in avanti.",
+         "frase_da_ricordare": "Spalle alla stessa altezza."
+        },
+        "testi_errori.spalla_sinistra_bassa": {
+         "cosa_succede": "Il busto si inclina da un lato e una spalla scende.",
+         "perche_conta": "Il peso si sposta su una gamba sola e il carico non è più simmetrico.",
+         "come_correggere": "Distribuisci il peso su tutti e due i piedi e tieni il petto rivolto in avanti.",
+         "frase_da_ricordare": "Spalle alla stessa altezza."
+        }
+       }
+      }
+     ]
+    }
+   ],
+   "non_rilevabili": [
+    {
+     "errore": "Ginocchia che cedono verso l'interno",
+     "motivo": "Di lato non si vede: scegli \"Di fronte (ginocchia)\" prima della serie (regola in prova)."
+    },
+    {
+     "errore": "Schiena arrotondata",
+     "motivo": "La curvatura della colonna non è misurabile con i punti disponibili."
+    }
+   ]
+  },
+  "motivo": "Vista frontale (scelta prima della serie): regole proposte dall'app, da tarare in sala. Di fronte: conteggio dalla distanza anca-caviglia (in % della larghezza delle spalle), ginocchia dentro se più vicine delle caviglie (sotto 80%), spalle storte oltre 12°."
+ },
+ {
+  "id": "QUA-053",
+  "imposta": {
+   "impostazioni": [
+    {
+     "id": "vista",
+     "domanda": "Dove hai messo la camera?",
+     "opzioni": [
+      {
+       "etichetta": "Di lato",
+       "imposta": {}
+      },
+      {
+       "etichetta": "Di fronte (ginocchia)",
+       "imposta": {
+        "vista_camera": "frontale",
+        "lato": "entrambi",
+        "messaggio_posizione": "Camera di fronte all'altezza del bacino, a 2-3 metri, corpo intero visibile",
+        "ripetizione": {
+         "misura": "discesa_anca",
+         "direzione": "diminuisce",
+         "posizione_iniziale": 180,
+         "inizio_movimento": 165,
+         "durata_massima": 12.0,
+         "tolleranza_pausa": 5.0
+        },
+        "errori": [
+         {
+          "id": "ginocchia_dentro",
+          "messaggio": "Ginocchia in fuori",
+          "gravita": "rosso",
+          "momento": "fine",
+          "statistica": "minimo",
+          "misura": "ginocchia_caviglie",
+          "minore_di": 80
+         },
+         {
+          "id": "spalla_destra_bassa",
+          "messaggio": "Spalle alla stessa altezza",
+          "gravita": "giallo",
+          "momento": "durante",
+          "misura": "spalle",
+          "maggiore_di": 102
+         },
+         {
+          "id": "spalla_sinistra_bassa",
+          "messaggio": "Spalle alla stessa altezza",
+          "gravita": "giallo",
+          "momento": "durante",
+          "misura": "spalle",
+          "minore_di": 78
+         },
+         {
+          "id": "troppo_veloce",
+          "messaggio": "Scendi più lentamente",
+          "gravita": "giallo",
+          "momento": "fine",
+          "misura": "discesa",
+          "statistica": "massimo",
+          "minore_di": 0.8,
+          "anticipa": true
+         }
+        ],
+        "misure.discesa_anca": {
+         "tipo": "distanza",
+         "punti": [
+          "anca",
+          "caviglia"
+         ],
+         "scala": [
+          "spalla_sx",
+          "spalla_dx"
+         ]
+        },
+        "misure.ginocchia_caviglie": {
+         "tipo": "distanza",
+         "punti": [
+          "ginocchio_sx",
+          "ginocchio_dx"
+         ],
+         "scala": [
+          "caviglia_sx",
+          "caviglia_dx"
+         ],
+         "muovi": "punti"
+        },
+        "misure.spalle": {
+         "tipo": "inclinazione",
+         "punti": [
+          "spalla_sx",
+          "spalla_dx"
+         ]
+        },
+        "testi_errori.ginocchia_dentro": {
+         "cosa_succede": "Scendendo le ginocchia si avvicinano tra loro più dei piedi.",
+         "perche_conta": "Il ginocchio cede verso l'interno: aumenta lo stress sui legamenti, soprattutto con il carico.",
+         "come_correggere": "Spingi le ginocchia in fuori, nella direzione delle punte dei piedi; se non ci riesci, riduci il carico.",
+         "frase_da_ricordare": "Ginocchia in fuori, sopra le punte.",
+         "frase_alternativa": "Apri le ginocchia, spingi il pavimento."
+        },
+        "testi_errori.spalla_destra_bassa": {
+         "cosa_succede": "Il busto si inclina da un lato e una spalla scende.",
+         "perche_conta": "Il peso si sposta su una gamba sola e il carico non è più simmetrico.",
+         "come_correggere": "Distribuisci il peso su tutti e due i piedi e tieni il petto rivolto in avanti.",
+         "frase_da_ricordare": "Spalle alla stessa altezza."
+        },
+        "testi_errori.spalla_sinistra_bassa": {
+         "cosa_succede": "Il busto si inclina da un lato e una spalla scende.",
+         "perche_conta": "Il peso si sposta su una gamba sola e il carico non è più simmetrico.",
+         "come_correggere": "Distribuisci il peso su tutti e due i piedi e tieni il petto rivolto in avanti.",
+         "frase_da_ricordare": "Spalle alla stessa altezza."
+        }
+       }
+      }
+     ]
+    }
+   ],
+   "non_rilevabili": [
+    {
+     "errore": "Ginocchia che cedono verso l'interno",
+     "motivo": "Di lato non si vede: scegli \"Di fronte (ginocchia)\" prima della serie (regola in prova)."
+    },
+    {
+     "errore": "Schiena arrotondata",
+     "motivo": "La curvatura della colonna non è misurabile con i punti disponibili."
+    }
+   ]
+  },
+  "motivo": "Vista frontale (scelta prima della serie): regole proposte dall'app, da tarare in sala. Di fronte: conteggio dalla distanza anca-caviglia (in % della larghezza delle spalle), ginocchia dentro se più vicine delle caviglie (sotto 80%), spalle storte oltre 12°."
+ },
+ {
+  "id": "QUA-054",
+  "imposta": {
+   "impostazioni": [
+    {
+     "id": "vista",
+     "domanda": "Dove hai messo la camera?",
+     "opzioni": [
+      {
+       "etichetta": "Di lato",
+       "imposta": {}
+      },
+      {
+       "etichetta": "Di fronte (ginocchia)",
+       "imposta": {
+        "vista_camera": "frontale",
+        "lato": "entrambi",
+        "messaggio_posizione": "Camera di fronte all'altezza del bacino, a 2-3 metri, corpo intero visibile",
+        "ripetizione": {
+         "misura": "discesa_anca",
+         "direzione": "diminuisce",
+         "posizione_iniziale": 180,
+         "inizio_movimento": 165,
+         "durata_massima": 12.0,
+         "tolleranza_pausa": 5.0
+        },
+        "errori": [
+         {
+          "id": "ginocchia_dentro",
+          "messaggio": "Ginocchia in fuori",
+          "gravita": "rosso",
+          "momento": "fine",
+          "statistica": "minimo",
+          "misura": "ginocchia_caviglie",
+          "minore_di": 80
+         },
+         {
+          "id": "spalla_destra_bassa",
+          "messaggio": "Spalle alla stessa altezza",
+          "gravita": "giallo",
+          "momento": "durante",
+          "misura": "spalle",
+          "maggiore_di": 102
+         },
+         {
+          "id": "spalla_sinistra_bassa",
+          "messaggio": "Spalle alla stessa altezza",
+          "gravita": "giallo",
+          "momento": "durante",
+          "misura": "spalle",
+          "minore_di": 78
+         },
+         {
+          "id": "troppo_veloce",
+          "messaggio": "Scendi più lentamente",
+          "gravita": "giallo",
+          "momento": "fine",
+          "misura": "discesa",
+          "statistica": "massimo",
+          "minore_di": 0.8,
+          "anticipa": true
+         }
+        ],
+        "misure.discesa_anca": {
+         "tipo": "distanza",
+         "punti": [
+          "anca",
+          "caviglia"
+         ],
+         "scala": [
+          "spalla_sx",
+          "spalla_dx"
+         ]
+        },
+        "misure.ginocchia_caviglie": {
+         "tipo": "distanza",
+         "punti": [
+          "ginocchio_sx",
+          "ginocchio_dx"
+         ],
+         "scala": [
+          "caviglia_sx",
+          "caviglia_dx"
+         ],
+         "muovi": "punti"
+        },
+        "misure.spalle": {
+         "tipo": "inclinazione",
+         "punti": [
+          "spalla_sx",
+          "spalla_dx"
+         ]
+        },
+        "testi_errori.ginocchia_dentro": {
+         "cosa_succede": "Scendendo le ginocchia si avvicinano tra loro più dei piedi.",
+         "perche_conta": "Il ginocchio cede verso l'interno: aumenta lo stress sui legamenti, soprattutto con il carico.",
+         "come_correggere": "Spingi le ginocchia in fuori, nella direzione delle punte dei piedi; se non ci riesci, riduci il carico.",
+         "frase_da_ricordare": "Ginocchia in fuori, sopra le punte.",
+         "frase_alternativa": "Apri le ginocchia, spingi il pavimento."
+        },
+        "testi_errori.spalla_destra_bassa": {
+         "cosa_succede": "Il busto si inclina da un lato e una spalla scende.",
+         "perche_conta": "Il peso si sposta su una gamba sola e il carico non è più simmetrico.",
+         "come_correggere": "Distribuisci il peso su tutti e due i piedi e tieni il petto rivolto in avanti.",
+         "frase_da_ricordare": "Spalle alla stessa altezza."
+        },
+        "testi_errori.spalla_sinistra_bassa": {
+         "cosa_succede": "Il busto si inclina da un lato e una spalla scende.",
+         "perche_conta": "Il peso si sposta su una gamba sola e il carico non è più simmetrico.",
+         "come_correggere": "Distribuisci il peso su tutti e due i piedi e tieni il petto rivolto in avanti.",
+         "frase_da_ricordare": "Spalle alla stessa altezza."
+        }
+       }
+      }
+     ]
+    }
+   ],
+   "non_rilevabili": [
+    {
+     "errore": "Ginocchia che cedono verso l'interno",
+     "motivo": "Di lato non si vede: scegli \"Di fronte (ginocchia)\" prima della serie (regola in prova)."
+    },
+    {
+     "errore": "Schiena arrotondata",
+     "motivo": "La curvatura della colonna non è misurabile con i punti disponibili."
+    }
+   ]
+  },
+  "motivo": "Vista frontale (scelta prima della serie): regole proposte dall'app, da tarare in sala. Di fronte: conteggio dalla distanza anca-caviglia (in % della larghezza delle spalle), ginocchia dentro se più vicine delle caviglie (sotto 80%), spalle storte oltre 12°."
+ },
+ {
+  "id": "QUA-057",
+  "imposta": {
+   "impostazioni": [
+    {
+     "id": "vista",
+     "domanda": "Dove hai messo la camera?",
+     "opzioni": [
+      {
+       "etichetta": "Di lato",
+       "imposta": {}
+      },
+      {
+       "etichetta": "Di fronte (ginocchia)",
+       "imposta": {
+        "vista_camera": "frontale",
+        "lato": "entrambi",
+        "messaggio_posizione": "Camera di fronte all'altezza del bacino, a 2-3 metri, corpo intero visibile",
+        "ripetizione": {
+         "misura": "discesa_anca",
+         "direzione": "diminuisce",
+         "posizione_iniziale": 180,
+         "inizio_movimento": 165,
+         "durata_massima": 12.0,
+         "tolleranza_pausa": 5.0
+        },
+        "errori": [
+         {
+          "id": "ginocchia_dentro",
+          "messaggio": "Ginocchia in fuori",
+          "gravita": "rosso",
+          "momento": "fine",
+          "statistica": "minimo",
+          "misura": "ginocchia_caviglie",
+          "minore_di": 80
+         },
+         {
+          "id": "spalla_destra_bassa",
+          "messaggio": "Spalle alla stessa altezza",
+          "gravita": "giallo",
+          "momento": "durante",
+          "misura": "spalle",
+          "maggiore_di": 102
+         },
+         {
+          "id": "spalla_sinistra_bassa",
+          "messaggio": "Spalle alla stessa altezza",
+          "gravita": "giallo",
+          "momento": "durante",
+          "misura": "spalle",
+          "minore_di": 78
+         },
+         {
+          "id": "troppo_veloce",
+          "messaggio": "Scendi più lentamente",
+          "gravita": "giallo",
+          "momento": "fine",
+          "misura": "discesa",
+          "statistica": "massimo",
+          "minore_di": 0.8,
+          "anticipa": true
+         }
+        ],
+        "misure.discesa_anca": {
+         "tipo": "distanza",
+         "punti": [
+          "anca",
+          "caviglia"
+         ],
+         "scala": [
+          "spalla_sx",
+          "spalla_dx"
+         ]
+        },
+        "misure.ginocchia_caviglie": {
+         "tipo": "distanza",
+         "punti": [
+          "ginocchio_sx",
+          "ginocchio_dx"
+         ],
+         "scala": [
+          "caviglia_sx",
+          "caviglia_dx"
+         ],
+         "muovi": "punti"
+        },
+        "misure.spalle": {
+         "tipo": "inclinazione",
+         "punti": [
+          "spalla_sx",
+          "spalla_dx"
+         ]
+        },
+        "testi_errori.ginocchia_dentro": {
+         "cosa_succede": "Scendendo le ginocchia si avvicinano tra loro più dei piedi.",
+         "perche_conta": "Il ginocchio cede verso l'interno: aumenta lo stress sui legamenti, soprattutto con il carico.",
+         "come_correggere": "Spingi le ginocchia in fuori, nella direzione delle punte dei piedi; se non ci riesci, riduci il carico.",
+         "frase_da_ricordare": "Ginocchia in fuori, sopra le punte.",
+         "frase_alternativa": "Apri le ginocchia, spingi il pavimento."
+        },
+        "testi_errori.spalla_destra_bassa": {
+         "cosa_succede": "Il busto si inclina da un lato e una spalla scende.",
+         "perche_conta": "Il peso si sposta su una gamba sola e il carico non è più simmetrico.",
+         "come_correggere": "Distribuisci il peso su tutti e due i piedi e tieni il petto rivolto in avanti.",
+         "frase_da_ricordare": "Spalle alla stessa altezza."
+        },
+        "testi_errori.spalla_sinistra_bassa": {
+         "cosa_succede": "Il busto si inclina da un lato e una spalla scende.",
+         "perche_conta": "Il peso si sposta su una gamba sola e il carico non è più simmetrico.",
+         "come_correggere": "Distribuisci il peso su tutti e due i piedi e tieni il petto rivolto in avanti.",
+         "frase_da_ricordare": "Spalle alla stessa altezza."
+        }
+       }
+      }
+     ]
+    }
+   ],
+   "non_rilevabili": [
+    {
+     "errore": "Ginocchia che cedono verso l'interno",
+     "motivo": "Di lato non si vede: scegli \"Di fronte (ginocchia)\" prima della serie (regola in prova)."
+    }
+   ]
+  },
+  "motivo": "Vista frontale (scelta prima della serie): regole proposte dall'app, da tarare in sala. Di fronte: conteggio dalla distanza anca-caviglia (in % della larghezza delle spalle), ginocchia dentro se più vicine delle caviglie (sotto 80%), spalle storte oltre 12°."
+ },
+ {
+  "id": "QUA-058",
+  "imposta": {
+   "impostazioni": [
+    {
+     "id": "vista",
+     "domanda": "Dove hai messo la camera?",
+     "opzioni": [
+      {
+       "etichetta": "Di lato",
+       "imposta": {}
+      },
+      {
+       "etichetta": "Di fronte (ginocchia)",
+       "imposta": {
+        "vista_camera": "frontale",
+        "lato": "entrambi",
+        "messaggio_posizione": "Camera di fronte all'altezza del bacino, a 2-3 metri, corpo intero visibile",
+        "ripetizione": {
+         "misura": "discesa_anca",
+         "direzione": "diminuisce",
+         "posizione_iniziale": 180,
+         "inizio_movimento": 165,
+         "durata_massima": 12.0,
+         "tolleranza_pausa": 5.0
+        },
+        "errori": [
+         {
+          "id": "ginocchia_dentro",
+          "messaggio": "Ginocchia in fuori",
+          "gravita": "rosso",
+          "momento": "fine",
+          "statistica": "minimo",
+          "misura": "ginocchia_caviglie",
+          "minore_di": 80
+         },
+         {
+          "id": "spalla_destra_bassa",
+          "messaggio": "Spalle alla stessa altezza",
+          "gravita": "giallo",
+          "momento": "durante",
+          "misura": "spalle",
+          "maggiore_di": 102
+         },
+         {
+          "id": "spalla_sinistra_bassa",
+          "messaggio": "Spalle alla stessa altezza",
+          "gravita": "giallo",
+          "momento": "durante",
+          "misura": "spalle",
+          "minore_di": 78
+         }
+        ],
+        "misure.discesa_anca": {
+         "tipo": "distanza",
+         "punti": [
+          "anca",
+          "caviglia"
+         ],
+         "scala": [
+          "spalla_sx",
+          "spalla_dx"
+         ]
+        },
+        "misure.ginocchia_caviglie": {
+         "tipo": "distanza",
+         "punti": [
+          "ginocchio_sx",
+          "ginocchio_dx"
+         ],
+         "scala": [
+          "caviglia_sx",
+          "caviglia_dx"
+         ],
+         "muovi": "punti"
+        },
+        "misure.spalle": {
+         "tipo": "inclinazione",
+         "punti": [
+          "spalla_sx",
+          "spalla_dx"
+         ]
+        },
+        "testi_errori.ginocchia_dentro": {
+         "cosa_succede": "Scendendo le ginocchia si avvicinano tra loro più dei piedi.",
+         "perche_conta": "Il ginocchio cede verso l'interno: aumenta lo stress sui legamenti, soprattutto con il carico.",
+         "come_correggere": "Spingi le ginocchia in fuori, nella direzione delle punte dei piedi; se non ci riesci, riduci il carico.",
+         "frase_da_ricordare": "Ginocchia in fuori, sopra le punte.",
+         "frase_alternativa": "Apri le ginocchia, spingi il pavimento."
+        },
+        "testi_errori.spalla_destra_bassa": {
+         "cosa_succede": "Il busto si inclina da un lato e una spalla scende.",
+         "perche_conta": "Il peso si sposta su una gamba sola e il carico non è più simmetrico.",
+         "come_correggere": "Distribuisci il peso su tutti e due i piedi e tieni il petto rivolto in avanti.",
+         "frase_da_ricordare": "Spalle alla stessa altezza."
+        },
+        "testi_errori.spalla_sinistra_bassa": {
+         "cosa_succede": "Il busto si inclina da un lato e una spalla scende.",
+         "perche_conta": "Il peso si sposta su una gamba sola e il carico non è più simmetrico.",
+         "come_correggere": "Distribuisci il peso su tutti e due i piedi e tieni il petto rivolto in avanti.",
+         "frase_da_ricordare": "Spalle alla stessa altezza."
+        }
+       }
+      }
+     ]
+    }
+   ],
+   "non_rilevabili": [
+    {
+     "errore": "Ginocchia che cedono verso l'interno",
+     "motivo": "Di lato non si vede: scegli \"Di fronte (ginocchia)\" prima della serie (regola in prova)."
+    },
+    {
+     "errore": "Schiena arrotondata",
+     "motivo": "La curvatura della colonna non è misurabile con i punti disponibili."
+    }
+   ]
+  },
+  "motivo": "Vista frontale (scelta prima della serie): regole proposte dall'app, da tarare in sala. Di fronte: conteggio dalla distanza anca-caviglia (in % della larghezza delle spalle), ginocchia dentro se più vicine delle caviglie (sotto 80%), spalle storte oltre 12°."
+ },
+ {
+  "id": "QUA-059",
+  "imposta": {
+   "impostazioni": [
+    {
+     "id": "vista",
+     "domanda": "Dove hai messo la camera?",
+     "opzioni": [
+      {
+       "etichetta": "Di lato",
+       "imposta": {}
+      },
+      {
+       "etichetta": "Di fronte (ginocchia)",
+       "imposta": {
+        "vista_camera": "frontale",
+        "lato": "entrambi",
+        "messaggio_posizione": "Camera di fronte all'altezza del bacino, a 2-3 metri, corpo intero visibile",
+        "ripetizione": {
+         "misura": "discesa_anca",
+         "direzione": "diminuisce",
+         "posizione_iniziale": 180,
+         "inizio_movimento": 165,
+         "durata_massima": 15.0,
+         "tolleranza_pausa": 5.0
+        },
+        "errori": [
+         {
+          "id": "ginocchia_dentro",
+          "messaggio": "Ginocchia in fuori",
+          "gravita": "rosso",
+          "momento": "fine",
+          "statistica": "minimo",
+          "misura": "ginocchia_caviglie",
+          "minore_di": 80
+         },
+         {
+          "id": "spalla_destra_bassa",
+          "messaggio": "Spalle alla stessa altezza",
+          "gravita": "giallo",
+          "momento": "durante",
+          "misura": "spalle",
+          "maggiore_di": 102
+         },
+         {
+          "id": "spalla_sinistra_bassa",
+          "messaggio": "Spalle alla stessa altezza",
+          "gravita": "giallo",
+          "momento": "durante",
+          "misura": "spalle",
+          "minore_di": 78
+         },
+         {
+          "id": "troppo_veloce",
+          "messaggio": "Scendi più lentamente",
+          "gravita": "giallo",
+          "momento": "fine",
+          "misura": "discesa",
+          "statistica": "massimo",
+          "minore_di": 1.2,
+          "anticipa": true
+         }
+        ],
+        "misure.discesa_anca": {
+         "tipo": "distanza",
+         "punti": [
+          "anca",
+          "caviglia"
+         ],
+         "scala": [
+          "spalla_sx",
+          "spalla_dx"
+         ]
+        },
+        "misure.ginocchia_caviglie": {
+         "tipo": "distanza",
+         "punti": [
+          "ginocchio_sx",
+          "ginocchio_dx"
+         ],
+         "scala": [
+          "caviglia_sx",
+          "caviglia_dx"
+         ],
+         "muovi": "punti"
+        },
+        "misure.spalle": {
+         "tipo": "inclinazione",
+         "punti": [
+          "spalla_sx",
+          "spalla_dx"
+         ]
+        },
+        "testi_errori.ginocchia_dentro": {
+         "cosa_succede": "Scendendo le ginocchia si avvicinano tra loro più dei piedi.",
+         "perche_conta": "Il ginocchio cede verso l'interno: aumenta lo stress sui legamenti, soprattutto con il carico.",
+         "come_correggere": "Spingi le ginocchia in fuori, nella direzione delle punte dei piedi; se non ci riesci, riduci il carico.",
+         "frase_da_ricordare": "Ginocchia in fuori, sopra le punte.",
+         "frase_alternativa": "Apri le ginocchia, spingi il pavimento."
+        },
+        "testi_errori.spalla_destra_bassa": {
+         "cosa_succede": "Il busto si inclina da un lato e una spalla scende.",
+         "perche_conta": "Il peso si sposta su una gamba sola e il carico non è più simmetrico.",
+         "come_correggere": "Distribuisci il peso su tutti e due i piedi e tieni il petto rivolto in avanti.",
+         "frase_da_ricordare": "Spalle alla stessa altezza."
+        },
+        "testi_errori.spalla_sinistra_bassa": {
+         "cosa_succede": "Il busto si inclina da un lato e una spalla scende.",
+         "perche_conta": "Il peso si sposta su una gamba sola e il carico non è più simmetrico.",
+         "come_correggere": "Distribuisci il peso su tutti e due i piedi e tieni il petto rivolto in avanti.",
+         "frase_da_ricordare": "Spalle alla stessa altezza."
+        }
+       }
+      }
+     ]
+    }
+   ],
+   "non_rilevabili": [
+    {
+     "errore": "Ginocchia che cedono verso l'interno",
+     "motivo": "Di lato non si vede: scegli \"Di fronte (ginocchia)\" prima della serie (regola in prova)."
+    },
+    {
+     "errore": "Schiena arrotondata",
+     "motivo": "La curvatura della colonna non è misurabile con i punti disponibili."
+    }
+   ]
+  },
+  "motivo": "Vista frontale (scelta prima della serie): regole proposte dall'app, da tarare in sala. Di fronte: conteggio dalla distanza anca-caviglia (in % della larghezza delle spalle), ginocchia dentro se più vicine delle caviglie (sotto 80%), spalle storte oltre 12°."
+ },
+ {
+  "id": "GLU-012",
+  "imposta": {
+   "impostazioni": [
+    {
+     "id": "vista",
+     "domanda": "Dove hai messo la camera?",
+     "opzioni": [
+      {
+       "etichetta": "Di lato",
+       "imposta": {}
+      },
+      {
+       "etichetta": "Di fronte (ginocchia)",
+       "imposta": {
+        "vista_camera": "frontale",
+        "lato": "entrambi",
+        "messaggio_posizione": "Camera di fronte all'altezza del bacino, a 2-3 metri, corpo intero visibile",
+        "ripetizione": {
+         "misura": "discesa_anca",
+         "direzione": "diminuisce",
+         "posizione_iniziale": 180,
+         "inizio_movimento": 165,
+         "durata_massima": 15.0,
+         "tolleranza_pausa": 5.0
+        },
+        "errori": [
+         {
+          "id": "ginocchia_dentro",
+          "messaggio": "Ginocchia in fuori",
+          "gravita": "rosso",
+          "momento": "fine",
+          "statistica": "minimo",
+          "misura": "ginocchia_caviglie",
+          "minore_di": 80
+         },
+         {
+          "id": "spalla_destra_bassa",
+          "messaggio": "Spalle alla stessa altezza",
+          "gravita": "giallo",
+          "momento": "durante",
+          "misura": "spalle",
+          "maggiore_di": 102
+         },
+         {
+          "id": "spalla_sinistra_bassa",
+          "messaggio": "Spalle alla stessa altezza",
+          "gravita": "giallo",
+          "momento": "durante",
+          "misura": "spalle",
+          "minore_di": 78
+         }
+        ],
+        "misure.discesa_anca": {
+         "tipo": "distanza",
+         "punti": [
+          "anca",
+          "caviglia"
+         ],
+         "scala": [
+          "spalla_sx",
+          "spalla_dx"
+         ]
+        },
+        "misure.ginocchia_caviglie": {
+         "tipo": "distanza",
+         "punti": [
+          "ginocchio_sx",
+          "ginocchio_dx"
+         ],
+         "scala": [
+          "caviglia_sx",
+          "caviglia_dx"
+         ],
+         "muovi": "punti"
+        },
+        "misure.spalle": {
+         "tipo": "inclinazione",
+         "punti": [
+          "spalla_sx",
+          "spalla_dx"
+         ]
+        },
+        "testi_errori.ginocchia_dentro": {
+         "cosa_succede": "Scendendo le ginocchia si avvicinano tra loro più dei piedi.",
+         "perche_conta": "Il ginocchio cede verso l'interno: aumenta lo stress sui legamenti, soprattutto con il carico.",
+         "come_correggere": "Spingi le ginocchia in fuori, nella direzione delle punte dei piedi; se non ci riesci, riduci il carico.",
+         "frase_da_ricordare": "Ginocchia in fuori, sopra le punte.",
+         "frase_alternativa": "Apri le ginocchia, spingi il pavimento."
+        },
+        "testi_errori.spalla_destra_bassa": {
+         "cosa_succede": "Il busto si inclina da un lato e una spalla scende.",
+         "perche_conta": "Il peso si sposta su una gamba sola e il carico non è più simmetrico.",
+         "come_correggere": "Distribuisci il peso su tutti e due i piedi e tieni il petto rivolto in avanti.",
+         "frase_da_ricordare": "Spalle alla stessa altezza."
+        },
+        "testi_errori.spalla_sinistra_bassa": {
+         "cosa_succede": "Il busto si inclina da un lato e una spalla scende.",
+         "perche_conta": "Il peso si sposta su una gamba sola e il carico non è più simmetrico.",
+         "come_correggere": "Distribuisci il peso su tutti e due i piedi e tieni il petto rivolto in avanti.",
+         "frase_da_ricordare": "Spalle alla stessa altezza."
+        }
+       }
+      }
+     ]
+    }
+   ],
+   "non_rilevabili": [
+    {
+     "errore": "Schiena arrotondata",
+     "motivo": "La curvatura della colonna non è misurabile con i punti disponibili (come nello squat dell'app)."
+    },
+    {
+     "errore": "Bilanciere lontano dalle gambe",
+     "motivo": "Il bilanciere non è rilevato."
+    },
+    {
+     "errore": "Anche che salgono prima delle spalle",
+     "motivo": "Servirebbe confrontare due misure nello stesso istante, non previsto."
+    },
+    {
+     "errore": "Iperestensione della schiena in alto",
+     "motivo": "Non distinguibile dall'estensione dell'anca."
+    },
+    {
+     "errore": "Ginocchia che cedono verso l'interno",
+     "motivo": "Di lato non si vede: scegli \"Di fronte (ginocchia)\" prima della serie (regola in prova)."
+    }
+   ]
+  },
+  "motivo": "Vista frontale (scelta prima della serie): regole proposte dall'app, da tarare in sala. Di fronte: conteggio dalla distanza anca-caviglia (in % della larghezza delle spalle), ginocchia dentro se più vicine delle caviglie (sotto 80%), spalle storte oltre 12°."
  }
 ]

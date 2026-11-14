@@ -6,7 +6,7 @@ Uso:  python prova_motore.py
 import math
 from pathlib import Path
 
-from motore.regole import Analizzatore, carica_tutti, crea_analizzatore
+from motore.regole import Analizzatore, applica_impostazioni, carica_tutti, crea_analizzatore
 
 FPS = 30
 
@@ -311,6 +311,31 @@ def posa_sdraiato(gamba=0.0, braccio=10.0):
     posa = {n: (x, y, 0.9) for n, (x, y) in pts.items()}
     for n in ("naso", "naso_sx", "naso_dx"):
         posa[n] = (170, 590, 0.99)
+    return posa
+
+
+def posa_squat_fronte(ginocchio, dentro=0.0, inclina=0.0):
+    """Squat visto di fronte (persona rivolta alla camera, sinistra della persona a destra nell'immagine).
+    ginocchio = angolo del ginocchio, dentro = pixel di cui ogni ginocchio va verso l'interno, inclina = gradi di
+    inclinazione delle spalle (positivo = spalla destra piu' bassa)."""
+    s = math.radians((180 - ginocchio) / 2)
+    drop = 2 * 200 * (1 - math.cos(s))                       # quanto scende il bacino
+    posa = {}
+    for l, x in (("dx", 440), ("sx", 560)):
+        verso = -1 if l == "dx" else 1                         # verso l'esterno
+        an = (x, 500 + drop)
+        gi = (x + verso * (25 - dentro), 700 + drop / 2)
+        cv = (x + verso * 15, 900)
+        posa.update({f"anca_{l}": an, f"ginocchio_{l}": gi, f"caviglia_{l}": cv,
+                     f"tallone_{l}": (cv[0], cv[1] + 10), f"punta_{l}": (cv[0] + verso * 10, cv[1] + 25)})
+    r = math.radians(inclina)
+    cx, cy = 500, 250 + drop
+    for l, d in (("dx", -90), ("sx", 90)):
+        sp = (cx + d * math.cos(r), cy - d * math.sin(r))     # spalla destra (d<0) scende se inclina>0
+        posa.update({f"spalla_{l}": sp, f"gomito_{l}": (sp[0], sp[1] + 120), f"polso_{l}": (sp[0], sp[1] + 230)})
+    posa = {n: (x, y, 0.9) for n, (x, y) in posa.items()}
+    for n in ("naso", "naso_sx", "naso_dx"):
+        posa[n] = (500, 170 + drop, 0.99)
     return posa
 
 
@@ -661,8 +686,15 @@ def main():
     risultati.append(verifica("Alzate laterali da sdraiato DEL-010 (conta il braccio che si muove)",
                               esegui(crea_analizzatore(es["DEL-010"]), frames), [[], ["ampiezza"]]))
 
+    # VISTA FRONTALE (scelta prima della serie): ginocchia che cedono verso l'interno, spalle storte
+    fronte = applica_impostazioni(es["QUA-016"], es["QUA-016"]["impostazioni"][0]["opzioni"][1]["imposta"])
+    sf = lambda g, **kw: posa_squat_fronte(g, **kw)
+    frames = [sf(175.3)] * FPS + ripetizione(sf, 175.3, 85.2, secondi=3.0) + ripetizione(sf, 175.3, 85.2, secondi=3.0, dentro=40)
+    frames += ripetizione(sf, 175.3, 85.2, secondi=3.0, inclina=20)
+    risultati.append(verifica("Squat QUA-016 di fronte (ginocchia dentro, spalla destra bassa)",
+                              esegui(Analizzatore(fronte), frames), [[], ["ginocchia_dentro"], ["spalla_destra_bassa"]]))
+
     # Ogni esercizio analizzabile deve girare senza bloccarsi su una posa completa (tutti i punti, naso con lato)
-    from motore.regole import applica_impostazioni
     bloccati = []
     for i, cfg in es.items():
         for imp in cfg.get("impostazioni") or []:

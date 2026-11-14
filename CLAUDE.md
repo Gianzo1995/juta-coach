@@ -81,6 +81,11 @@ Ogni voce: `{ "id", "nome"?, "gruppo"?, "scheda", "config_app" }`.
   cambia. Impostazione "Guardando il telefono, dove hai la testa?". Resi analizzabili (14/11/2026, regole proposte dall'app,
   DA PROVARE IN SALA: non verificato con MediaPipe vero): ABD-001 (distanza caviglie), ABD-002/010 clamshell (distanza
   ginocchia + piedi uniti), DEL-010 (regole di DEL-005 senza busto, lato alternato).
+- Vista frontale a scelta (impostazione "Dove hai messo la camera?": "Di lato" = regole di prima, "Di fronte (ginocchia)")
+  su 22 squat a due gambe (QUA-001/016-022/027/030-032/039-041/050/053/054/057-059, GLU-012): conteggio con `discesa_anca`
+  (distanza anca-caviglia in % della larghezza delle spalle), `ginocchia_dentro` (distanza ginocchia/caviglie sotto 80%),
+  spalle storte (`inclinazione` spalla_sx→spalla_dx, 90 = dritte, oltre 12°). `"muovi": "punti"` in una misura distanza:
+  il fantasma sposta solo i due punti. Regole proposte dall'app, da tarare.
   Il naso è unico ma nella posa esiste anche come `naso_sx`/`naso_dx`. Un punto sconosciuto esclude l'esercizio dall'analisi (`valida`).
 - Tipi di misura: `angolo` (3 punti, 0-180), `angolo_orientato` (3 punti: 180 = in linea, meno di 180 = punto
   centrale SOTTO la retta tra gli estremi, più di 180 = SOPRA; per corpi orizzontali/inclinati, es. bacino nei

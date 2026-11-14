@@ -927,7 +927,8 @@ function calcolaFantasma(posa, es, errId, lato, valoreMisurato) {
     const perno = spec.scala[0].replace(/_(sx|dx)$/, "");
     for (const [n, q] of [[a, [...pa]], [b, [...pb]]]) {
       const dx = (q[0] - mx) * k, dy = (q[1] - my) * k;
-      for (const c of catena(n, perno)) if (f[c]) f[c] = [f[c][0] + dx, f[c][1] + dy, f[c][2]];
+      // "muovi": "punti" = si spostano solo i due punti (es. ginocchia che vanno in fuori, il resto del corpo fermo)
+      for (const c of spec.muovi === "punti" ? [n] : catena(n, perno)) if (f[c]) f[c] = [f[c][0] + dx, f[c][1] + dy, f[c][2]];
     }
     return { posa: f, punto: a, mobile: b,
       testo: `${nomeMisura(nome)} ${Math.round(valoreMisurato)}% → obiettivo ${Math.round(obiettivo)}%` };
