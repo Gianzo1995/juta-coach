@@ -40,7 +40,10 @@ MISURE_TEMPO = {"durata", "discesa", "pausa", "salita"}
 
 UNITI_PER_NOME = {"misure", "testi_errori"}
 # nomi dei punti usabili nelle misure (con _sx/_dx nella posa; naso_sx/naso_dx = naso, punta_piede = punta)
-NOMI_PUNTI = {"naso", "spalla", "gomito", "polso", "anca", "ginocchio", "caviglia", "tallone", "punta", "punta_piede"}
+# orecchio e punti della mano (indice, mignolo, pollice): calcolati da MediaPipe ma meno stabili degli altri,
+# da usare nelle misure "facoltative" (se non si vedono la misura salta, il conteggio continua)
+NOMI_PUNTI = {"naso", "spalla", "gomito", "polso", "anca", "ginocchio", "caviglia", "tallone", "punta", "punta_piede",
+              "orecchio", "indice", "mignolo", "pollice"}
 
 
 def con_lato(nome):
@@ -50,6 +53,12 @@ def con_lato(nome):
 
 def punto_noto(nome):
     return (nome[:-3] if con_lato(nome) else nome) in NOMI_PUNTI
+
+
+def _punti_misura(m):
+    """Punti che servono a una misura (con il naso per 'angolo_avanti', che capisce da li' il davanti)."""
+    nomi = list(m.get("punti", [])) + ([m["punto"]] if "punto" in m else []) + list(m.get("scala", []))
+    return nomi + (["naso"] if m.get("tipo") == "angolo_avanti" else [])
 
 
 def unisci(base, variante):
@@ -388,14 +397,9 @@ class Analizzatore:
         usate = {self.cfg["ripetizione"]["misura"]} | {e["misura"].replace("_asimmetria", "") for e in self.cfg["errori"]}
         nomi = set()
         for nome, m in self.cfg["misure"].items():
-            if nome not in usate:
-                continue
-            nomi.update(m.get("punti", []))
-            if "punto" in m:
-                nomi.add(m["punto"])
-            nomi.update(m.get("scala", []))
-            if m.get("tipo") == "angolo_avanti":
-                nomi.add("naso")       # serve a capire da che parte guarda la persona
+            if nome not in usate or m.get("facoltativa"):
+                continue           # i punti delle misure facoltative non sono obbligatori
+            nomi.update(_punti_misura(m))
         return nomi
 
     def _punti_necessari(self, lato):
@@ -437,10 +441,24 @@ class Analizzatore:
             return 100.0 * geometria.distanza(p(a), p(b)) / scala
         raise ValueError(f"Tipo di misura sconosciuto: {tipo}")
 
+    def _visibile(self, spec, posa, lati):
+        """Misura facoltativa: tutti i suoi punti devono esserci ed essere visibili."""
+        for l in lati:
+            for n in _punti_misura(spec):
+                q = posa.get(n if con_lato(n) else f"{n}_{l}")
+                if q is None or q[2] < self.cfg["visibilita_minima"]:
+                    return False
+        return True
+
     def _calcola_misure(self, posa, lato):
         misure = {}
         for nome, spec in self.cfg["misure"].items():
             if spec["tipo"] == "durata":
+                continue
+            if spec.get("facoltativa") and not self._visibile(spec, posa, LATI if lato == "entrambi" else (lato,)):
+                # non si vede: la misura salta in questo fotogramma (e il filtro riparte da capo)
+                self._lisciate.pop(nome, None)
+                self._lisciate.pop(f"{nome}_asimmetria", None)
                 continue
             if lato == "entrambi":
                 valori = [self._misura_su_lato(spec, posa, l) for l in LATI]
@@ -454,7 +472,7 @@ class Analizzatore:
                 if valore is None:
                     continue
             misure[nome] = self._liscia(nome, valore)
-            if spec["tipo"] == "posizione":
+            if spec["tipo"] == "posizione" or spec.get("rispetto_inizio"):
                 base = self._base.get(nome)
                 misure[nome] = 0.0 if base is None else misure[nome] - base
                 self._grezze[nome] = self._lisciate[nome]

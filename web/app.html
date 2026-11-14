@@ -306,7 +306,7 @@ const COLLEGAMENTI = [
 const VOCE_CATALOGO = Object.fromEntries(CATALOGO.elenco.map(v => [v.id, v]));
 const NOMI_MISURE = { ginocchio: "Ginocchio", busto: "Busto", gomito: "Gomito", tallone: "Tallone", anca: "Bacino",
   corpo: "Linea del corpo", gambe: "Ginocchio", durata: "Durata", discesa: "Discesa", pausa: "Fermo in basso", salita: "Salita",
-  gomito_asimmetria: "Differenza braccia" };
+  gomito_asimmetria: "Differenza braccia", testa: "Testa", orecchio_spalla: "Spalle", polso: "Polso" };
 const nomeMisura = m => NOMI_MISURE[m] || (m.charAt(0).toUpperCase() + m.slice(1).replace(/_/g, " "));
 const senzaPunto = t => (t || "").trim().replace(/[.!]+$/, "");
 
@@ -768,6 +768,8 @@ const ruota = (p, c, a) => {
 const GRAFO = (() => {
   const g = {}, unisciNodi = (a, b) => { (g[a] ??= []).push(b); (g[b] ??= []).push(a); };
   COLLEGAMENTI.forEach(([a, b]) => unisciNodi(a, b)); unisciNodi("naso", "spalla_sx"); unisciNodi("naso", "spalla_dx");
+  // testa e mani: ruotando l'orecchio si muove la testa, ruotando l'indice si muove la mano
+  for (const l of ["sx", "dx"]) { unisciNodi(`orecchio_${l}`, "naso"); for (const d of ["indice", "mignolo", "pollice"]) unisciNodi(`polso_${l}`, `${d}_${l}`); }
   return g;
 })();
 function catena(mobile, perno) {
@@ -801,6 +803,13 @@ function fantasmaOrientato(f, spec, err, lati, valoreMisurato) {
   const obiettivo = err.maggiore_di !== undefined ? err.maggiore_di - 5 : err.minore_di + 5;
   const att = geo.angoloOrientato(P(a), P(b), P(c));
   if (att === null || giaGiusto(err, att, obiettivo)) return null;
+  if (spec.ancora === a) {
+    // resta fermo il primo estremo (es. bacino per la testa): ruota l'altro estremo attorno al vertice
+    const fn = g => geo.angoloOrientato(g[nomePunto(a, l)], g[nomePunto(b, l)], g[nomePunto(c, l)]);
+    ruotaVerso(f, P(b), c, fn, obiettivo, catena(nomePunto(c, l), b));
+    const dev = Math.round(Math.abs(att - 180));
+    return { posa: f, punto: nomePunto(b, l), mobile: nomePunto(c, l), testo: `${nomeMisura(err.misura)} ${dev}° fuori linea → in linea` };
+  }
   // ricerca per bisezione dello spostamento verticale del punto centrale
   const dx = P(c)[0] - P(a)[0];
   if (Math.abs(dx) < 1e-6) return null;
@@ -871,6 +880,17 @@ function calcolaFantasma(posa, es, errId, lato, valoreMisurato) {
     for (const ll of ["sx", "dx"]) { const p = P(spec.punto, ll); if (p) p[1] += giu; }
     return { posa: f, punto: `${spec.punto}_${l}`, mobile: `${spec.punto}_${l}`,
       testo: `${nomeMisura(nome)} sollevato → deve restare giù` };
+  }
+  if (spec.tipo === "distanza" && spec.rispetto_inizio) {
+    // distanza confrontata con l'inizio della serie (es. spalle che salgono verso le orecchie):
+    // il fantasma riporta giu' le spalle della differenza misurata
+    const [a, b] = spec.punti, mobile = a === "spalla" ? a : b;
+    if (mobile !== "spalla" || !valoreMisurato || valoreMisurato >= 0) return null;
+    const scala = geo.distanza(P(spec.scala[0], lati[0]), P(spec.scala[1], lati[0])) || 1;
+    const giu = -valoreMisurato / 100 * scala;
+    for (const ll of ["sx", "dx"]) { const q = P("spalla", ll); if (q) q[1] += giu; }
+    return { posa: f, punto: nomePunto("spalla", lati[0]), mobile: nomePunto("spalla", lati[0]),
+      testo: `${nomeMisura(nome)} salite verso le orecchie → giù` };
   }
   if (spec.tipo === "distanza") {
     // allontana o avvicina i due punti (con quello che sta sotto, es. ginocchio + caviglia) fino all'obiettivo
@@ -965,7 +985,7 @@ function lunghezzaBusto(posa, T) {
 function corpo(ctx, posa, T, lato, c) {
   const P = n => posa[n] && posa[n][2] >= 0.3 ? T(posa[n]) : null;
   const L = lunghezzaBusto(posa, T);
-  const arti = l => [[`spalla_${l}`, `gomito_${l}`, .17], [`gomito_${l}`, `polso_${l}`, .14],
+  const arti = l => [[`spalla_${l}`, `gomito_${l}`, .17], [`gomito_${l}`, `polso_${l}`, .14], [`polso_${l}`, `indice_${l}`, .08],
     [`anca_${l}`, `ginocchio_${l}`, .24], [`ginocchio_${l}`, `caviglia_${l}`, .17],
     [`caviglia_${l}`, `tallone_${l}`, .1], [`tallone_${l}`, `punta_${l}`, .1], [`caviglia_${l}`, `punta_${l}`, .1]];
   ctx.lineCap = "round"; ctx.lineJoin = "round";

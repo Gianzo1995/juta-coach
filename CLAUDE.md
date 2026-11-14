@@ -61,6 +61,11 @@ Ogni voce: `{ "id", "nome"?, "gruppo"?, "scheda", "config_app" }`.
   Quando arriva un nuovo catalogo: sostituire il file in `esercizi/catalogo/`, rilanciare i test, sistemare le integrazioni.
 - Il motore richiede visibili solo i punti delle misure usate dalla ripetizione e dagli errori.
 - Punti usabili: `naso`, `spalla`, `gomito`, `polso`, `anca`, `ginocchio`, `caviglia`, `tallone`, `punta` (alias `punta_piede`).
+  Punti extra (meno stabili): `orecchio`, `indice`, `mignolo`, `pollice` (indici MediaPipe 7/8, 19/20, 17/18, 21/22):
+  usarli solo in misure con `"facoltativa": true` (i punti non sono obbligatori: se non si vedono la misura salta in quel
+  fotogramma, il conteggio continua). `distanza` con `"rispetto_inizio": true` = variazione rispetto all'inizio della serie
+  (come `posizione`), in punti percentuali della scala. Pilota (14/11/2026): testa PET-001 (angolo_orientato anca-spalla-orecchio,
+  `ancora` anca), spalle che salgono DOR-004/BIC-002/TRI-022 (orecchio-spalla), polso piegato PET-012/DEA-008 (gomito-polso-indice).
   Il naso è unico ma nella posa esiste anche come `naso_sx`/`naso_dx`. Un punto sconosciuto esclude l'esercizio dall'analisi (`valida`).
 - Tipi di misura: `angolo` (3 punti, 0-180), `angolo_orientato` (3 punti: 180 = in linea, meno di 180 = punto
   centrale SOTTO la retta tra gli estremi, più di 180 = SOPRA; per corpi orizzontali/inclinati, es. bacino nei

@@ -15,6 +15,10 @@ from mediapipe.tasks.python import vision
 # Indici dei punti MediaPipe (sx/dx = sinistra/destra DELLA PERSONA)
 PUNTI = {
     "naso": 0, "naso_sx": 0, "naso_dx": 0,   # il naso e' unico: _sx/_dx per le misure (naso-spalla-gomito)
+    "orecchio_sx": 7, "orecchio_dx": 8,      # orecchio e mano: meno stabili, usati nelle misure facoltative
+    "mignolo_sx": 17, "mignolo_dx": 18,
+    "indice_sx": 19, "indice_dx": 20,
+    "pollice_sx": 21, "pollice_dx": 22,
     "spalla_sx": 11, "spalla_dx": 12,
     "gomito_sx": 13, "gomito_dx": 14,
     "polso_sx": 15, "polso_dx": 16,

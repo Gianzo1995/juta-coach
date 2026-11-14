@@ -25,7 +25,7 @@ console.log("Impostazioni confrontate:", Object.keys(d.impostazioni || {}).lengt
 const chiave = e => JSON.stringify([e.tipo, e.numero ?? e.ripetizione ?? null, e.errori ?? e.id ?? null,
   e.durata_s ?? null, e.anticipato ?? null, e.t ?? e.fine_t ?? null, e.fasi ? ordinato(e.fasi) : null]);
 for (const [k, frames] of Object.entries(d.cases)) {
-  const a = new Analizzatore(esercizi[k]);
+  const a = new Analizzatore(esercizi[k.split("#")[0]]);   // "ID#nome": piu' casi sullo stesso esercizio
   let ev = [], t = 0;
   for (const p of frames) { ev.push(...a.aggiorna(p, t).eventi); t += 1 / 30; }
   for (let i = 0; i < 240; i++) { ev.push(...a.aggiorna(null, t).eventi); t += 1 / 30; }

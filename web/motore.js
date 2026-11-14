@@ -6,8 +6,10 @@
 // Indici MediaPipe (sx/dx = sinistra/destra della persona)
 // naso_sx/naso_dx: il naso e' unico, ma cosi' le misure lo trovano come gli altri punti (es. naso-spalla-gomito);
 // punta_piede = punta (nome usato nel catalogo gambe)
+// orecchio e punti della mano (indice, mignolo, pollice): meno stabili, da usare nelle misure "facoltative"
 const PUNTI = {
-  naso: 0, naso_sx: 0, naso_dx: 0, spalla_sx: 11, spalla_dx: 12, gomito_sx: 13, gomito_dx: 14, polso_sx: 15, polso_dx: 16,
+  naso: 0, naso_sx: 0, naso_dx: 0, orecchio_sx: 7, orecchio_dx: 8,
+  mignolo_sx: 17, mignolo_dx: 18, indice_sx: 19, indice_dx: 20, pollice_sx: 21, pollice_dx: 22, spalla_sx: 11, spalla_dx: 12, gomito_sx: 13, gomito_dx: 14, polso_sx: 15, polso_dx: 16,
   anca_sx: 23, anca_dx: 24, ginocchio_sx: 25, ginocchio_dx: 26, caviglia_sx: 27, caviglia_dx: 28,
   tallone_sx: 29, tallone_dx: 30, punta_sx: 31, punta_dx: 32, punta_piede_sx: 31, punta_piede_dx: 32,
 };
@@ -16,6 +18,9 @@ const NOMI_PUNTI = new Set(Object.keys(PUNTI).filter(n => /_(sx|dx)$/.test(n)).m
 const conLato = n => /_(sx|dx)$/.test(n);
 const puntoNoto = n => NOMI_PUNTI.has(conLato(n) ? n.slice(0, -3) : n);
 const nomePunto = (n, l) => conLato(n) ? n : `${n}_${l}`;
+// punti che servono a una misura (con il naso per "angolo_avanti", che capisce da li' il davanti)
+const puntiMisura = m => [...(m.punti || []), ...(m.punto ? [m.punto] : []), ...(m.scala || []),
+  ...(m.tipo === "angolo_avanti" ? ["naso"] : [])];
 
 const LATI = ["sx", "dx"];
 const GRAVITA = { verde: 0, giallo: 1, rosso: 2 };
@@ -285,13 +290,19 @@ class Analizzatore {
     const usate = new Set([this.cfg.ripetizione.misura, ...this.cfg.errori.map(e => e.misura.replace("_asimmetria", ""))]);
     const s = new Set();
     for (const [nome, m] of Object.entries(this.cfg.misure)) {
-      if (!usate.has(nome)) continue;
-      (m.punti || []).forEach(n => s.add(n));
-      if (m.punto) s.add(m.punto);
-      (m.scala || []).forEach(n => s.add(n));
-      if (m.tipo === "angolo_avanti") s.add("naso");   // serve a capire da che parte guarda la persona
+      if (!usate.has(nome) || m.facoltativa) continue;   // i punti delle misure facoltative non sono obbligatori
+      puntiMisura(m).forEach(n => s.add(n));
     }
     return s;
+  }
+
+  // misura facoltativa: tutti i suoi punti devono esserci ed essere visibili
+  visibile(spec, posa, lati) {
+    for (const l of lati) for (const n of puntiMisura(spec)) {
+      const q = posa[nomePunto(n, l)];
+      if (!q || q[2] < this.cfg.visibilita_minima) return false;
+    }
+    return true;
   }
 
   puntiNecessari(lato) {
@@ -329,6 +340,11 @@ class Analizzatore {
     const misure = {};
     for (const [nome, spec] of Object.entries(this.cfg.misure)) {
       if (spec.tipo === "durata") continue;
+      if (spec.facoltativa && !this.visibile(spec, posa, lato === "entrambi" ? LATI : [lato])) {
+        // non si vede: la misura salta in questo fotogramma (e il filtro riparte da capo)
+        delete this.lisciate[nome]; delete this.lisciate[`${nome}_asimmetria`];
+        continue;
+      }
       let valore;
       if (lato === "entrambi") {
         const v = LATI.map(l => this.misuraSuLato(spec, posa, l));
@@ -340,7 +356,7 @@ class Analizzatore {
         if (valore === null) continue;
       }
       misure[nome] = this.liscia(nome, valore);
-      if (spec.tipo === "posizione") {
+      if (spec.tipo === "posizione" || spec.rispetto_inizio) {
         const base = this.base[nome];
         misure[nome] = base === undefined ? 0 : misure[nome] - base;
         this.grezze[nome] = this.lisciate[nome];

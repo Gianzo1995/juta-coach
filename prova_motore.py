@@ -43,7 +43,7 @@ def braccio(spalla, gomito_ang, verso):
     return g, p
 
 
-def posa_panca_piana(gomito, sollevamento=0.0, avambraccio=0.0, gambe=180.0):
+def posa_panca_piana(gomito, sollevamento=0.0, avambraccio=0.0, gambe=180.0, polso=None):
     """Panca piana vista di lato: testa a sinistra, piedi a destra, avambraccio verticale.
     sollevamento = bacino che si stacca (in lunghezze del busto), avambraccio = inclinazione in gradi."""
     L, sp = 110, (500, 450)
@@ -57,7 +57,13 @@ def posa_panca_piana(gomito, sollevamento=0.0, avambraccio=0.0, gambe=180.0):
     gi = (an[0] + 200, an[1])
     k = math.radians(180 - gambe)                              # gambe piegate verso il basso
     ca = (gi[0] + 200 * math.cos(k), gi[1] + 200 * math.sin(k))
-    for nome, (x, y) in {"spalla": sp, "gomito": g, "polso": po, "anca": an, "ginocchio": gi, "caviglia": ca}.items():
+    pts = {"spalla": sp, "gomito": g, "polso": po, "anca": an, "ginocchio": gi, "caviglia": ca}
+    if polso is not None:
+        # indice sul prolungamento dell'avambraccio, piegato all'indietro (verso la testa) di 'polso' gradi
+        d = ((po[0] - g[0]) / L, (po[1] - g[1]) / L)
+        u = ruota(d, -polso)
+        pts["indice"] = (po[0] + 45 * u[0], po[1] + 45 * u[1])
+    for nome, (x, y) in pts.items():
         posa[f"{nome}_sx"] = (x, y, 0.95)
         posa[f"{nome}_dx"] = (x + 5, y - 4, 0.4)
     return posa
@@ -70,7 +76,7 @@ def posa_panca(gomito, sollevamento=0.0):
                                vis_dx=0.3)
 
 
-def posa_piegamento(gomito, abbassa_bacino=0.0, gambe=180.0, w=1280, h=720):
+def posa_piegamento(gomito, abbassa_bacino=0.0, gambe=180.0, w=1280, h=720, testa=None, vis_orecchio=0.9):
     """Piegamento visto di lato: mani a terra a sinistra, piedi a destra.
     abbassa_bacino in pixel (positivo = bacino che cede), gambe = angolo del ginocchio."""
     pavimento = 600
@@ -84,9 +90,16 @@ def posa_piegamento(gomito, abbassa_bacino=0.0, gambe=180.0, w=1280, h=720):
     gi = ((an[0] + cav[0]) / 2, (an[1] + cav[1]) / 2 + 105 * math.sin(k))
     pts = {"polso": polso, "gomito": g, "spalla": sp, "anca": an, "ginocchio": gi, "caviglia": cav,
            "tallone": (cav[0] + 15, cav[1] - 15), "punta": (cav[0] + 5, pavimento)}
+    if testa is not None:
+        # orecchio sul prolungamento della linea bacino-spalla, ruotato di 'testa' gradi (positivo = verso terra)
+        d = (sp[0] - an[0], sp[1] - an[1])
+        n = math.hypot(*d)
+        u = ruota((d[0] / n, d[1] / n), -testa)
+        pts["orecchio"] = (sp[0] + 70 * u[0], sp[1] + 70 * u[1])
     posa = {"naso": (sp[0] - 60, sp[1] - 10, 0.99)}
     for nome, (x, y) in pts.items():
-        posa[f"{nome}_sx"] = (x, y, 0.95)
+        v = vis_orecchio if nome == "orecchio" else 0.95
+        posa[f"{nome}_sx"] = (x, y, v)
         posa[f"{nome}_dx"] = (x + 6, y - 3, 0.4)
     return posa
 
@@ -197,15 +210,20 @@ def posa_kickback(anca, verso=1):
     return posa
 
 
-def posa_braccio(gomito):
-    """Curl visto di lato, braccio destro verso la camera: gomito = angolo spalla-gomito-polso."""
-    sp, gm = (500, 300), (500, 450)
+def posa_braccio(gomito, spalle=None):
+    """Curl visto di lato, braccio destro verso la camera: gomito = angolo spalla-gomito-polso.
+    spalle (pixel): se indicato aggiunge l'orecchio e alza spalla e braccio di tanto (spalle che salgono)."""
+    su = spalle or 0.0
+    sp, gm = (500, 300 - su), (500, 450 - su)
     d = ruota((0, 1), -(180 - gomito))
     pl = (gm[0] + 140 * d[0], gm[1] + 140 * d[1])
     posa = punti_entrambi_lati({"spalla": sp, "gomito": gm, "polso": pl, "anca": (500, 560), "ginocchio": (505, 760),
                                 "caviglia": (500, 950), "tallone": (480, 960), "punta": (560, 965)}, vis_sx=0.4, vis_dx=0.95)
     for n in ("naso", "naso_sx", "naso_dx"):
         posa[n] = (530, 230, 0.99)
+    if spalle is not None:
+        posa["orecchio_sx"] = (515, 245, 0.4)
+        posa["orecchio_dx"] = (515, 245, 0.9)
     return posa
 
 
@@ -510,6 +528,31 @@ def main():
     ok = not [e for e in ev if e["tipo"] == "ripetizione"]
     risultati.append(ok)
     print(f"{'OK ' if ok else 'ERRORE'}  BIC-020 con braccio sinistro scelto: il braccio lontano dalla camera non conta ripetizioni")
+
+    # PUNTI EXTRA (orecchio, indice) nelle misure facoltative: se non si vedono il conteggio continua
+    pp = lambda g, **kw: posa_piegamento(g, **kw)
+    testa = lambda base: (lambda g, testa=0: pp(g, testa=base + testa))
+    frames = [pp(175, testa=0.3)] * FPS
+    frames += ripetizione(testa(0.3), 175, 80, secondi=3.0)
+    frames += ripetizione(testa(0.3), 175, 80, secondi=3.0, testa=30)
+    frames += ripetizione(testa(0.3), 175, 80, secondi=3.0, testa=-35)
+    frames += ripetizione(lambda g: pp(g, testa=30.3, vis_orecchio=0.2), 175, 80, secondi=3.0)
+    risultati.append(verifica("Piegamenti PET-001 con l'orecchio (testa giu', su, orecchio non visibile)",
+                              esegui(Analizzatore(es["PET-001"]), frames), [[], ["testa_cade"], ["collo_iperesteso"], []]))
+    spalle = lambda g, spalle=0: posa_braccio(g, spalle=0.2 + spalle)
+    frames = [posa_braccio(165.3, spalle=0.2)] * FPS
+    frames += ripetizione(spalle, 165.3, 50.2, secondi=3.0)
+    frames += ripetizione(spalle, 165.3, 50.2, secondi=3.0, spalle=30)
+    frames += ripetizione(spalle, 165.3, 50.2, secondi=3.0, spalle=10)
+    risultati.append(verifica("Curl BIC-002: spalle che salgono (orecchio-spalla rispetto all'inizio)",
+                              esegui(Analizzatore(es["BIC-002"]), frames), [[], ["spalle_salgono"], []]))
+    polso = lambda g, polso=0: posa_panca_piana(g, polso=0.3 + polso)
+    frames = [posa_panca_piana(170, polso=0.3)] * FPS
+    frames += ripetizione(polso, 170, 80, secondi=3.0)
+    frames += ripetizione(polso, 170, 80, secondi=3.0, polso=50)
+    frames += ripetizione(polso, 170, 80, secondi=3.0, polso=20)
+    risultati.append(verifica("Panca PET-012: polso piegato (gomito-polso-indice)",
+                              esegui(Analizzatore(es["PET-012"]), frames), [[], ["polso_piegato"], []]))
 
     # Ogni esercizio analizzabile deve girare senza bloccarsi su una posa completa (tutti i punti, naso con lato)
     from motore.regole import applica_impostazioni

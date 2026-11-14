@@ -80,6 +80,16 @@ def casi():
                    + pm.ripetizione_fasi(lambda a: pm.posa_kickback(a, -1), 160.3, 182.4, 1, 1, 2),
         "AVA-001": [pm.posa_appeso(20.3)] * FPS + pm.tenuta(pm.posa_appeso, 20.3, 172.3, 8)
                    + pm.tenuta(pm.posa_appeso, 20.3, 172.3, 4, oscilla=25),
+        # punti extra nelle misure facoltative (orecchio, indice): testa, spalle che salgono, polso
+        "PET-001#testa": [pp(175, testa=0.3)] * FPS + R(lambda g, testa=0: pp(g, testa=0.3 + testa), 175, 80, secondi=3.0)
+                   + R(lambda g, testa=0: pp(g, testa=0.3 + testa), 175, 80, secondi=3.0, testa=30.7)
+                   + R(lambda g, testa=0: pp(g, testa=0.3 + testa), 175, 80, secondi=3.0, testa=-35.4)
+                   + R(lambda g: pp(g, testa=30.3, vis_orecchio=0.2), 175, 80, secondi=3.0),
+        "BIC-002": [pm.posa_braccio(165.3, spalle=0.2)] * FPS
+                   + R(lambda g, spalle=0: pm.posa_braccio(g, spalle=0.2 + spalle), 165.3, 50.2, secondi=3.0)
+                   + R(lambda g, spalle=0: pm.posa_braccio(g, spalle=0.2 + spalle), 165.3, 50.2, secondi=3.0, spalle=30.3),
+        "PET-012#polso": [pb(170, polso=0.3)] * FPS + R(lambda g, polso=0: pb(g, polso=0.3 + polso), 170, 80, secondi=3.0)
+                   + R(lambda g, polso=0: pb(g, polso=0.3 + polso), 170, 80, secondi=3.0, polso=50.3),
         "BIC-020": [pm.posa_braccio(165.3)] * FPS + pm.ripetizione_fasi(pm.posa_braccio, 165.3, 50.2, 1, 1, 2)
                    + pm.ripetizione_fasi(pm.posa_braccio, 165.3, 80.4, 1, 1, 2),
         "PET-002": [pp(175)] * FPS + R(pp, 175, 80, secondi=3.0) + R(pp, 175, 80, secondi=3.0, abbassa_bacino=70),
@@ -93,7 +103,7 @@ def main():
     risultati = {}
     c = casi()
     for k, frames in c.items():
-        a, ev, t = Analizzatore(es[k]), [], 0.0
+        a, ev, t = Analizzatore(es[k.split("#")[0]]), [], 0.0   # "ID#nome": piu' casi sullo stesso esercizio
         for p in frames:
             ev += a.aggiorna(p, t).eventi
             t += 1 / FPS

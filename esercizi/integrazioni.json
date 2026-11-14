@@ -6912,5 +6912,301 @@
    ]
   },
   "motivo": "Reso analizzabile con la scelta del braccio in vista frontale (richiesta del catalogo). Regole proposte dall'app."
+ },
+ {
+  "id": "PET-001",
+  "imposta": {
+   "misure.testa": {
+    "tipo": "angolo_orientato",
+    "punti": [
+     "anca",
+     "spalla",
+     "orecchio"
+    ],
+    "ancora": "anca",
+    "facoltativa": true
+   },
+   "errori.testa_cade": {
+    "messaggio": "Testa in linea",
+    "gravita": "giallo",
+    "momento": "fine",
+    "statistica": "massimo",
+    "misura": "testa",
+    "maggiore_di": 200
+   },
+   "errori.collo_iperesteso": {
+    "messaggio": "Sguardo a terra",
+    "gravita": "giallo",
+    "momento": "fine",
+    "statistica": "minimo",
+    "misura": "testa",
+    "minore_di": 155
+   },
+   "testi_errori.testa_cade": {
+    "cosa_succede": "La testa scende verso terra prima del petto.",
+    "perche_conta": "Il collo si piega sotto sforzo e la discesa sembra più profonda di quanto è davvero.",
+    "come_correggere": "Guarda il pavimento poco davanti alle mani e porta giù il petto, non il mento.",
+    "frase_da_ricordare": "Testa in linea con il corpo.",
+    "frase_alternativa": "Scende il petto, non la testa."
+   },
+   "testi_errori.collo_iperesteso": {
+    "cosa_succede": "La testa si alza e il collo si piega all'indietro.",
+    "perche_conta": "Il collo resta in tensione per tutta la serie.",
+    "come_correggere": "Abbassa lo sguardo verso il pavimento, poco davanti alle mani.",
+    "frase_da_ricordare": "Sguardo a terra, collo lungo.",
+    "frase_alternativa": "Mento leggermente dentro."
+   },
+   "non_rilevabili": [
+    {
+     "errore": "Gomiti aperti a 90° dal busto",
+     "motivo": "L'angolo tra braccio e busto sul piano orizzontale si vede solo dall'alto o di fronte, non dalla vista laterale."
+    },
+    {
+     "errore": "Distinzione tra bacino che cede e sedere alto",
+     "motivo": "L'angolo spalla-anca-caviglia diminuisce in entrambi i casi: il formato non dice da che parte si piega."
+    },
+    {
+     "errore": "Testa che cade o collo iperesteso",
+     "motivo": "In prova: stimato dall'orecchio rispetto alla linea bacino-spalla; vede solo la testa chiaramente fuori linea."
+    },
+    {
+     "errore": "Scapole non controllate (protrazione/retrazione)",
+     "motivo": "Le scapole non sono tra i punti rilevati."
+    }
+   ]
+  },
+  "motivo": "Pilota punti extra: regola proposta dall'app, da tarare in sala. Testa misurata dall'orecchio: angolo bacino-spalla-orecchio con verso (oltre 200° testa che cade, sotto 155° collo iperesteso)."
+ },
+ {
+  "id": "DOR-004",
+  "imposta": {
+   "misure.orecchio_spalla": {
+    "tipo": "distanza",
+    "punti": [
+     "orecchio",
+     "spalla"
+    ],
+    "scala": [
+     "spalla",
+     "anca"
+    ],
+    "rispetto_inizio": true,
+    "facoltativa": true
+   },
+   "errori.spalle_salgono": {
+    "messaggio": "Spalle giù",
+    "gravita": "giallo",
+    "momento": "fine",
+    "statistica": "minimo",
+    "misura": "orecchio_spalla",
+    "minore_di": -8
+   },
+   "testi_errori.spalle_salgono": {
+    "cosa_succede": "Le spalle salgono verso le orecchie durante il movimento.",
+    "perche_conta": "Entra in gioco il trapezio al posto del muscolo che vuoi allenare e il collo si irrigidisce.",
+    "come_correggere": "Prima di partire porta le spalle in basso e indietro e tienile lì; se non ci riesci, alleggerisci il carico.",
+    "frase_da_ricordare": "Spalle giù, lontane dalle orecchie.",
+    "frase_alternativa": "Collo lungo, spalle basse."
+   },
+   "non_rilevabili": [
+    {
+     "errore": "Schiena arrotondata",
+     "motivo": "La curvatura della colonna non è misurabile con i punti disponibili (come nello squat)."
+    },
+    {
+     "errore": "Spalle che salgono verso le orecchie",
+     "motivo": "In prova: stimato dalla distanza orecchio-spalla rispetto all'inizio della serie; vede solo le spalle che salgono in modo evidente."
+    },
+    {
+     "errore": "Gomiti troppo aperti",
+     "motivo": "L'apertura dei gomiti si vede solo di fronte o dall'alto."
+    }
+   ]
+  },
+  "motivo": "Pilota punti extra: regola proposta dall'app, da tarare in sala. Spalle che salgono: distanza orecchio-spalla in % del busto, avviso se cala di oltre 8 punti rispetto all'inizio della serie."
+ },
+ {
+  "id": "BIC-002",
+  "imposta": {
+   "misure.orecchio_spalla": {
+    "tipo": "distanza",
+    "punti": [
+     "orecchio",
+     "spalla"
+    ],
+    "scala": [
+     "spalla",
+     "anca"
+    ],
+    "rispetto_inizio": true,
+    "facoltativa": true
+   },
+   "errori.spalle_salgono": {
+    "messaggio": "Spalle giù",
+    "gravita": "giallo",
+    "momento": "fine",
+    "statistica": "minimo",
+    "misura": "orecchio_spalla",
+    "minore_di": -8
+   },
+   "testi_errori.spalle_salgono": {
+    "cosa_succede": "Le spalle salgono verso le orecchie durante il movimento.",
+    "perche_conta": "Entra in gioco il trapezio al posto del muscolo che vuoi allenare e il collo si irrigidisce.",
+    "come_correggere": "Prima di partire porta le spalle in basso e indietro e tienile lì; se non ci riesci, alleggerisci il carico.",
+    "frase_da_ricordare": "Spalle giù, lontane dalle orecchie.",
+    "frase_alternativa": "Collo lungo, spalle basse."
+   },
+   "non_rilevabili": [
+    {
+     "errore": "Polsi piegati",
+     "motivo": "La posizione della mano è poco precisa."
+    },
+    {
+     "errore": "Spalle che salgono",
+     "motivo": "In prova: stimato dalla distanza orecchio-spalla rispetto all'inizio della serie; vede solo le spalle che salgono in modo evidente."
+    },
+    {
+     "errore": "Tipo di presa",
+     "motivo": "La rotazione della mano non è misurabile."
+    }
+   ]
+  },
+  "motivo": "Pilota punti extra: regola proposta dall'app, da tarare in sala. Spalle che salgono: distanza orecchio-spalla in % del busto, avviso se cala di oltre 8 punti rispetto all'inizio della serie."
+ },
+ {
+  "id": "TRI-022",
+  "imposta": {
+   "misure.orecchio_spalla": {
+    "tipo": "distanza",
+    "punti": [
+     "orecchio",
+     "spalla"
+    ],
+    "scala": [
+     "spalla",
+     "anca"
+    ],
+    "rispetto_inizio": true,
+    "facoltativa": true
+   },
+   "errori.spalle_salgono": {
+    "messaggio": "Spalle giù",
+    "gravita": "giallo",
+    "momento": "fine",
+    "statistica": "minimo",
+    "misura": "orecchio_spalla",
+    "minore_di": -8
+   },
+   "testi_errori.spalle_salgono": {
+    "cosa_succede": "Le spalle salgono verso le orecchie durante il movimento.",
+    "perche_conta": "Entra in gioco il trapezio al posto del muscolo che vuoi allenare e il collo si irrigidisce.",
+    "come_correggere": "Prima di partire porta le spalle in basso e indietro e tienile lì; se non ci riesci, alleggerisci il carico.",
+    "frase_da_ricordare": "Spalle giù, lontane dalle orecchie.",
+    "frase_alternativa": "Collo lungo, spalle basse."
+   },
+   "non_rilevabili": [
+    {
+     "errore": "Polsi piegati",
+     "motivo": "Mani poco precise."
+    },
+    {
+     "errore": "Spalle che salgono",
+     "motivo": "In prova: stimato dalla distanza orecchio-spalla rispetto all'inizio della serie; vede solo le spalle che salgono in modo evidente."
+    }
+   ]
+  },
+  "motivo": "Pilota punti extra: regola proposta dall'app, da tarare in sala. Spalle che salgono: distanza orecchio-spalla in % del busto, avviso se cala di oltre 8 punti rispetto all'inizio della serie."
+ },
+ {
+  "id": "PET-012",
+  "imposta": {
+   "misure.polso": {
+    "tipo": "angolo",
+    "punti": [
+     "gomito",
+     "polso",
+     "indice"
+    ],
+    "facoltativa": true
+   },
+   "errori.polso_piegato": {
+    "messaggio": "Polso dritto",
+    "gravita": "giallo",
+    "momento": "fine",
+    "statistica": "minimo",
+    "misura": "polso",
+    "minore_di": 145
+   },
+   "testi_errori.polso_piegato": {
+    "cosa_succede": "Il polso si piega e la mano non resta in linea con l'avambraccio.",
+    "perche_conta": "Il carico pesa sul polso invece che sull'avambraccio: a lungo andare può dare fastidio.",
+    "come_correggere": "Impugna con il palmo pieno e tieni le nocche verso l'alto, in linea con l'avambraccio.",
+    "frase_da_ricordare": "Polso dritto.",
+    "frase_alternativa": "Nocche in linea con l'avambraccio."
+   },
+   "non_rilevabili": [
+    {
+     "errore": "Gomiti aperti a 90° dal busto",
+     "motivo": "L'apertura dei gomiti rispetto al busto si vede solo dall'alto o dai piedi della panca."
+    },
+    {
+     "errore": "Scapole che si staccano dalla panca",
+     "motivo": "Le scapole non sono tra i punti rilevati."
+    },
+    {
+     "errore": "Polsi piegati all'indietro",
+     "motivo": "In prova: stimato dal punto dell'indice; la mano è rilevata in modo approssimativo, vede solo il polso piegato in modo evidente."
+    },
+    {
+     "errore": "Rimbalzo vero e proprio",
+     "motivo": "Servirebbe la velocità del bilanciere nel punto più basso; la durata della ripetizione è solo un indizio."
+    },
+    {
+     "errore": "Bilanciere che tocca troppo in alto sul petto (verso il collo)",
+     "motivo": "Il bilanciere e il petto non sono punti rilevati: si può solo dedurre in parte dall'inclinazione dell'avambraccio."
+    }
+   ]
+  },
+  "motivo": "Pilota punti extra: regola proposta dall'app, da tarare in sala. Polso piegato: angolo gomito-polso-indice, avviso sotto 145° (180° = mano in linea)."
+ },
+ {
+  "id": "DEA-008",
+  "imposta": {
+   "misure.polso": {
+    "tipo": "angolo",
+    "punti": [
+     "gomito",
+     "polso",
+     "indice"
+    ],
+    "facoltativa": true
+   },
+   "errori.polso_piegato": {
+    "messaggio": "Polso dritto",
+    "gravita": "giallo",
+    "momento": "fine",
+    "statistica": "minimo",
+    "misura": "polso",
+    "minore_di": 145
+   },
+   "testi_errori.polso_piegato": {
+    "cosa_succede": "Il polso si piega e la mano non resta in linea con l'avambraccio.",
+    "perche_conta": "Il carico pesa sul polso invece che sull'avambraccio: a lungo andare può dare fastidio.",
+    "come_correggere": "Impugna con il palmo pieno e tieni le nocche verso l'alto, in linea con l'avambraccio.",
+    "frase_da_ricordare": "Polso dritto.",
+    "frase_alternativa": "Nocche in linea con l'avambraccio."
+   },
+   "non_rilevabili": [
+    {
+     "errore": "Polsi piegati all'indietro",
+     "motivo": "In prova: stimato dal punto dell'indice; la mano è rilevata in modo approssimativo, vede solo il polso piegato in modo evidente."
+    },
+    {
+     "errore": "Busto inclinato in avanti invece che indietro",
+     "motivo": "L'inclinazione non distingue la direzione: la soglia scatta in entrambi i casi (entrambi sbagliati)."
+    }
+   ]
+  },
+  "motivo": "Pilota punti extra: regola proposta dall'app, da tarare in sala. Polso piegato: angolo gomito-polso-indice, avviso sotto 145° (180° = mano in linea)."
  }
 ]
