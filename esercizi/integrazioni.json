@@ -8192,5 +8192,465 @@
    ]
   },
   "motivo": "Controllo indiretto (regola proposta dall'app, da tarare in sala). Esercizio alternato: un contatore per braccio, ripetizioni sommate (lato 'alternato')."
+ },
+ {
+  "id": "ABD-001",
+  "imposta": {
+   "analizzabilita": "parziale",
+   "vista_camera": "frontale",
+   "lato": "entrambi",
+   "ruota_immagine": 90,
+   "messaggio_posizione": "Telefono a terra davanti a te, a 2-3 metri: sdraiati sul fianco con la pancia verso la camera, corpo intero visibile",
+   "messaggio_ok": "Ottima abduzione!",
+   "impostazioni": [
+    {
+     "id": "testa",
+     "domanda": "Guardando il telefono, dove hai la testa?",
+     "opzioni": [
+      {
+       "etichetta": "A sinistra",
+       "imposta": {
+        "ruota_immagine": 90
+       }
+      },
+      {
+       "etichetta": "A destra",
+       "imposta": {
+        "ruota_immagine": -90
+       }
+      }
+     ]
+    }
+   ],
+   "misure": {
+    "caviglie": {
+     "tipo": "distanza",
+     "punti": [
+      "caviglia_sx",
+      "caviglia_dx"
+     ],
+     "scala": [
+      "anca_sx",
+      "anca_dx"
+     ]
+    }
+   },
+   "ripetizione": {
+    "misura": "caviglie",
+    "direzione": "aumenta",
+    "posizione_iniziale": 140,
+    "inizio_movimento": 165
+   },
+   "errori": [
+    {
+     "id": "ampiezza",
+     "messaggio": "Solleva di più la gamba",
+     "gravita": "giallo",
+     "momento": "fine",
+     "statistica": "massimo",
+     "misura": "caviglie",
+     "minore_di": 250
+    },
+    {
+     "id": "troppo_alta",
+     "messaggio": "Non salire troppo",
+     "gravita": "giallo",
+     "momento": "fine",
+     "statistica": "massimo",
+     "misura": "caviglie",
+     "maggiore_di": 450
+    },
+    {
+     "id": "troppo_veloce",
+     "messaggio": "Scendi più lentamente",
+     "gravita": "giallo",
+     "momento": "fine",
+     "statistica": "massimo",
+     "misura": "salita",
+     "minore_di": 0.8
+    }
+   ],
+   "testi_errori": {
+    "ampiezza": {
+     "cosa_succede": "La gamba si alza poco: i piedi restano vicini.",
+     "perche_conta": "Il gluteo medio lavora soprattutto nella parte alta.",
+     "come_correggere": "Sali con il tallone che guida fino a circa 30-40°.",
+     "frase_da_ricordare": "Tallone verso l'alto."
+    },
+    "troppo_alta": {
+     "cosa_succede": "La gamba sale oltre i 45° circa.",
+     "perche_conta": "Oltre quel punto il bacino ruota e il lavoro passa ad altri muscoli.",
+     "come_correggere": "Fermati a circa 30-40°, con le anche impilate.",
+     "frase_da_ricordare": "Anche impilate, sali fino a metà."
+    },
+    "troppo_veloce": {
+     "cosa_succede": "La gamba torna giù troppo in fretta.",
+     "perche_conta": "Nella discesa lenta il muscolo lavora di più.",
+     "come_correggere": "Conta due secondi per tornare giù.",
+     "frase_da_ricordare": "Scendi in due secondi."
+    }
+   },
+   "non_rilevabili": [
+    {
+     "errore": "Bacino che ruota indietro",
+     "motivo": "La rotazione del bacino avviene verso la camera: non si legge."
+    },
+    {
+     "errore": "Gamba che va avanti",
+     "motivo": "Lo spostamento in avanti è verso la camera: non si legge."
+    },
+    {
+     "errore": "Punta del piede verso l'alto",
+     "motivo": "La rotazione del piede non è misurabile."
+    }
+   ]
+  },
+  "motivo": "Sdraiati su un fianco: immagine ruotata perché la persona appaia in piedi. Regole proposte dall'app, da provare e tarare in sala. Ampiezza dalla distanza tra le caviglie (in % della distanza tra le anche)."
+ },
+ {
+  "id": "ABD-002",
+  "imposta": {
+   "analizzabilita": "parziale",
+   "vista_camera": "frontale",
+   "lato": "entrambi",
+   "ruota_immagine": 90,
+   "messaggio_posizione": "Telefono a terra davanti a te, a 2-3 metri: sdraiati sul fianco con la pancia verso la camera, corpo intero visibile",
+   "messaggio_ok": "Ottima apertura!",
+   "impostazioni": [
+    {
+     "id": "testa",
+     "domanda": "Guardando il telefono, dove hai la testa?",
+     "opzioni": [
+      {
+       "etichetta": "A sinistra",
+       "imposta": {
+        "ruota_immagine": 90
+       }
+      },
+      {
+       "etichetta": "A destra",
+       "imposta": {
+        "ruota_immagine": -90
+       }
+      }
+     ]
+    }
+   ],
+   "misure": {
+    "ginocchia": {
+     "tipo": "distanza",
+     "punti": [
+      "ginocchio_sx",
+      "ginocchio_dx"
+     ],
+     "scala": [
+      "anca_sx",
+      "anca_dx"
+     ]
+    },
+    "piedi": {
+     "tipo": "distanza",
+     "punti": [
+      "caviglia_sx",
+      "caviglia_dx"
+     ],
+     "scala": [
+      "anca_sx",
+      "anca_dx"
+     ]
+    }
+   },
+   "ripetizione": {
+    "misura": "ginocchia",
+    "direzione": "aumenta",
+    "posizione_iniziale": 135,
+    "inizio_movimento": 155
+   },
+   "errori": [
+    {
+     "id": "ampiezza",
+     "messaggio": "Apri di più",
+     "gravita": "giallo",
+     "momento": "fine",
+     "statistica": "massimo",
+     "misura": "ginocchia",
+     "minore_di": 170
+    },
+    {
+     "id": "piedi_staccati",
+     "messaggio": "Piedi uniti",
+     "gravita": "giallo",
+     "momento": "durante",
+     "misura": "piedi",
+     "maggiore_di": 160
+    },
+    {
+     "id": "troppo_veloce",
+     "messaggio": "Scendi più lentamente",
+     "gravita": "giallo",
+     "momento": "fine",
+     "statistica": "massimo",
+     "misura": "salita",
+     "minore_di": 0.8
+    }
+   ],
+   "testi_errori": {
+    "ampiezza": {
+     "cosa_succede": "Il ginocchio si apre poco.",
+     "perche_conta": "I rotatori dell'anca lavorano soprattutto nell'ultima parte dell'apertura.",
+     "come_correggere": "Apri il ginocchio finché il bacino resta fermo.",
+     "frase_da_ricordare": "Apri lento, bacino fermo."
+    },
+    "piedi_staccati": {
+     "cosa_succede": "I piedi si separano durante l'apertura.",
+     "perche_conta": "Il movimento diventa un'abduzione e cambia il lavoro dei muscoli.",
+     "come_correggere": "Tieni i talloni a contatto per tutta la ripetizione.",
+     "frase_da_ricordare": "Piedi uniti."
+    },
+    "troppo_veloce": {
+     "cosa_succede": "Il ginocchio si richiude troppo in fretta.",
+     "perche_conta": "Nella discesa lenta il muscolo lavora di più.",
+     "come_correggere": "Conta due secondi per tornare giù.",
+     "frase_da_ricordare": "Scendi in due secondi."
+    }
+   },
+   "non_rilevabili": [
+    {
+     "errore": "Bacino che ruota indietro",
+     "motivo": "La rotazione del bacino avviene verso la camera: non si legge."
+    }
+   ]
+  },
+  "motivo": "Sdraiati su un fianco: immagine ruotata perché la persona appaia in piedi. Regole proposte dall'app, da provare e tarare in sala. Apertura dalla distanza tra le ginocchia, piedi uniti dalla distanza tra le caviglie."
+ },
+ {
+  "id": "ABD-010",
+  "imposta": {
+   "analizzabilita": "parziale",
+   "vista_camera": "frontale",
+   "lato": "entrambi",
+   "ruota_immagine": 90,
+   "messaggio_posizione": "Telefono a terra davanti a te, a 2-3 metri: sdraiati sul fianco con la pancia verso la camera, corpo intero visibile",
+   "messaggio_ok": "Ottima apertura!",
+   "impostazioni": [
+    {
+     "id": "testa",
+     "domanda": "Guardando il telefono, dove hai la testa?",
+     "opzioni": [
+      {
+       "etichetta": "A sinistra",
+       "imposta": {
+        "ruota_immagine": 90
+       }
+      },
+      {
+       "etichetta": "A destra",
+       "imposta": {
+        "ruota_immagine": -90
+       }
+      }
+     ]
+    }
+   ],
+   "misure": {
+    "ginocchia": {
+     "tipo": "distanza",
+     "punti": [
+      "ginocchio_sx",
+      "ginocchio_dx"
+     ],
+     "scala": [
+      "anca_sx",
+      "anca_dx"
+     ]
+    },
+    "piedi": {
+     "tipo": "distanza",
+     "punti": [
+      "caviglia_sx",
+      "caviglia_dx"
+     ],
+     "scala": [
+      "anca_sx",
+      "anca_dx"
+     ]
+    }
+   },
+   "ripetizione": {
+    "misura": "ginocchia",
+    "direzione": "aumenta",
+    "posizione_iniziale": 135,
+    "inizio_movimento": 155
+   },
+   "errori": [
+    {
+     "id": "ampiezza",
+     "messaggio": "Apri di più",
+     "gravita": "giallo",
+     "momento": "fine",
+     "statistica": "massimo",
+     "misura": "ginocchia",
+     "minore_di": 170
+    },
+    {
+     "id": "piedi_staccati",
+     "messaggio": "Piedi uniti",
+     "gravita": "giallo",
+     "momento": "durante",
+     "misura": "piedi",
+     "maggiore_di": 160
+    },
+    {
+     "id": "troppo_veloce",
+     "messaggio": "Scendi più lentamente",
+     "gravita": "giallo",
+     "momento": "fine",
+     "statistica": "massimo",
+     "misura": "salita",
+     "minore_di": 0.8
+    }
+   ],
+   "testi_errori": {
+    "ampiezza": {
+     "cosa_succede": "Il ginocchio si apre poco.",
+     "perche_conta": "I rotatori dell'anca lavorano soprattutto nell'ultima parte dell'apertura.",
+     "come_correggere": "Apri il ginocchio finché il bacino resta fermo.",
+     "frase_da_ricordare": "Apri lento, bacino fermo."
+    },
+    "piedi_staccati": {
+     "cosa_succede": "I piedi si separano durante l'apertura.",
+     "perche_conta": "Il movimento diventa un'abduzione e cambia il lavoro dei muscoli.",
+     "come_correggere": "Tieni i talloni a contatto per tutta la ripetizione.",
+     "frase_da_ricordare": "Piedi uniti."
+    },
+    "troppo_veloce": {
+     "cosa_succede": "Il ginocchio si richiude troppo in fretta.",
+     "perche_conta": "Nella discesa lenta il muscolo lavora di più.",
+     "come_correggere": "Conta due secondi per tornare giù.",
+     "frase_da_ricordare": "Scendi in due secondi."
+    }
+   },
+   "non_rilevabili": [
+    {
+     "errore": "Bacino che ruota indietro",
+     "motivo": "La rotazione del bacino avviene verso la camera: non si legge."
+    }
+   ]
+  },
+  "motivo": "Sdraiati su un fianco: immagine ruotata perché la persona appaia in piedi. Regole proposte dall'app, da provare e tarare in sala. Come ABD-002."
+ },
+ {
+  "id": "DEL-010",
+  "imposta": {
+   "analizzabilita": "parziale",
+   "vista_camera": "frontale",
+   "lato": "alternato",
+   "ruota_immagine": 90,
+   "messaggio_posizione": "Telefono a terra davanti a te, a 2-3 metri: sdraiati sul fianco con la pancia verso la camera, corpo intero visibile",
+   "messaggio_ok": "Ottima alzata!",
+   "impostazioni": [
+    {
+     "id": "testa",
+     "domanda": "Guardando il telefono, dove hai la testa?",
+     "opzioni": [
+      {
+       "etichetta": "A sinistra",
+       "imposta": {
+        "ruota_immagine": 90
+       }
+      },
+      {
+       "etichetta": "A destra",
+       "imposta": {
+        "ruota_immagine": -90
+       }
+      }
+     ]
+    }
+   ],
+   "misure": {
+    "braccio": {
+     "tipo": "angolo",
+     "punti": [
+      "anca",
+      "spalla",
+      "gomito"
+     ]
+    },
+    "gomito": {
+     "tipo": "angolo",
+     "punti": [
+      "spalla",
+      "gomito",
+      "polso"
+     ]
+    }
+   },
+   "ripetizione": {
+    "misura": "braccio",
+    "direzione": "aumenta",
+    "posizione_iniziale": 25,
+    "inizio_movimento": 40
+   },
+   "errori": [
+    {
+     "id": "ampiezza",
+     "messaggio": "Gomiti all'altezza delle spalle",
+     "gravita": "giallo",
+     "momento": "fine",
+     "misura": "braccio",
+     "statistica": "massimo",
+     "minore_di": 70,
+     "anticipa": true
+    },
+    {
+     "id": "gomiti_piegati",
+     "messaggio": "Non piegare i gomiti",
+     "gravita": "giallo",
+     "momento": "durante",
+     "misura": "gomito",
+     "minore_di": 130,
+     "statistica": "minimo",
+     "anticipa": true
+    },
+    {
+     "id": "troppo_veloce",
+     "messaggio": "Scendi più lentamente",
+     "gravita": "giallo",
+     "momento": "fine",
+     "misura": "salita",
+     "statistica": "massimo",
+     "minore_di": 0.8,
+     "anticipa": true
+    }
+   ],
+   "testi_errori": {
+    "ampiezza": {
+     "cosa_succede": "Le braccia si fermano sotto l'altezza delle spalle.",
+     "perche_conta": "Il deltoide laterale lavora soprattutto nell'ultima parte della salita.",
+     "come_correggere": "Porta i gomiti fino all'altezza delle spalle.",
+     "frase_da_ricordare": "Gomiti all'altezza delle spalle."
+    },
+    "gomiti_piegati": {
+     "cosa_succede": "I gomiti si piegano molto durante la salita.",
+     "perche_conta": "Piegando le braccia accorci la leva e l'esercizio diventa più facile.",
+     "come_correggere": "Gomiti leggermente piegati e fermi; usa un carico più leggero.",
+     "frase_da_ricordare": "Gomiti fermi."
+    },
+    "troppo_veloce": {
+     "cosa_succede": "La ripetizione è troppo rapida.",
+     "perche_conta": "Senza controllo in discesa la spalla lavora metà del tempo.",
+     "come_correggere": "Conta due secondi per scendere.",
+     "frase_da_ricordare": "Su in uno, giù in due."
+    }
+   },
+   "non_rilevabili": [
+    {
+     "errore": "Busto che ruota indietro",
+     "motivo": "La rotazione del busto avviene verso la camera: non si legge."
+    }
+   ]
+  },
+  "motivo": "Sdraiati su un fianco: immagine ruotata perché la persona appaia in piedi. Regole proposte dall'app, da provare e tarare in sala. Regole di DEL-005 (senza il busto, che da sdraiati è orizzontale); conta il braccio che si muove (lato alternato)."
  }
 ]

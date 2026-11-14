@@ -542,6 +542,26 @@ function ciclo() {
   raf = requestAnimationFrame(ciclo);
 }
 
+// immagine ruotata di 90 (orario), -90 (antiorario) o 180 gradi, e ritorno dei punti all'immagine originale
+const ruotato = document.createElement("canvas");
+function quadroRuotato(gradi, w, h) {
+  const g = gradi === 180 ? [w, h] : [h, w];
+  adattaTela(ruotato, g[0], g[1]);
+  const c = ruotato.getContext("2d");
+  c.setTransform(1, 0, 0, 1, 0, 0);
+  if (gradi === 90) { c.translate(h, 0); c.rotate(Math.PI / 2); }
+  else if (gradi === -90) { c.translate(0, w); c.rotate(-Math.PI / 2); }
+  else { c.translate(w, h); c.rotate(Math.PI); }
+  c.drawImage(quadro, 0, 0, w, h);
+  return ruotato;
+}
+function posaDaRuotata(lms, w, h, gradi) {
+  // (u, v) = coordinate normalizzate nell'immagine ruotata -> pixel nell'immagine originale
+  const torna = gradi === 90 ? (u, v) => [v * w, (1 - u) * h] : gradi === -90 ? (u, v) => [(1 - v) * w, u * h]
+    : (u, v) => [(1 - u) * w, (1 - v) * h];
+  return posaDaMediapipe(lms.map(p => { const [x, y] = torna(p.x, p.y); return { ...p, x: x / w, y: y / h }; }), w, h);
+}
+
 function elabora() {
   const w = video.videoWidth, h = video.videoHeight;
   if (!w) return;
@@ -562,8 +582,11 @@ function elabora() {
   if (PROVA) posa = PROVA.posa(tv, w, h, esercizio);
   else {
     const ts = Math.max(Math.round(t * 1000), ultimoTs + 1); ultimoTs = ts;
-    const ris = landmarker.detectForVideo(quadro, ts);
-    posa = ris.landmarks?.length ? posaDaMediapipe(ris.landmarks[0], w, h) : null;
+    // esercizi da sdraiati su un fianco: l'immagine viene ruotata cosi' la persona appare in piedi (MediaPipe
+    // riconosce meglio le pose dritte); i punti trovati tornano poi nelle coordinate dell'immagine originale
+    const gradi = ESERCIZI[esercizio]?.ruota_immagine || 0;
+    const ris = landmarker.detectForVideo(gradi ? quadroRuotato(gradi, w, h) : quadro, ts);
+    posa = ris.landmarks?.length ? (gradi ? posaDaRuotata(ris.landmarks[0], w, h, gradi) : posaDaMediapipe(ris.landmarks[0], w, h)) : null;
   }
   const ora = performance.now();
   perf.elab = perf.elab ? 0.9 * perf.elab + 0.1 * (ora - t0) : ora - t0;

@@ -293,6 +293,27 @@ def posa_curl_alterno(gomito_sx, gomito_dx):
     return posa
 
 
+def posa_sdraiato(gamba=0.0, braccio=10.0):
+    """Sdraiati sul fianco con la pancia verso la camera, testa a sinistra (posa gia' riportata all'immagine originale).
+    gamba = gradi di abduzione della gamba sopra, braccio = angolo anca-spalla-gomito del braccio sopra."""
+    w, L = 60, 282                                             # distanza tra le anche e lunghezza della gamba
+    pts = {}
+    for l, dy in (("dx", -w / 2), ("sx", w / 2)):            # dx sopra, sx sotto
+        an, sp = (500, 600 + dy), (250, 600 + dy)
+        a = math.radians(gamba if l == "dx" else 0)
+        cv = (an[0] + L * math.cos(a), an[1] - L * math.sin(a))
+        b = math.radians(braccio if l == "dx" else 10)
+        gm = (sp[0] + 130 * math.cos(b), sp[1] - 130 * math.sin(b))
+        pts.update({f"anca_{l}": an, f"spalla_{l}": sp, f"caviglia_{l}": cv,
+                    f"ginocchio_{l}": ((an[0] + cv[0]) / 2, (an[1] + cv[1]) / 2), f"gomito_{l}": gm,
+                    f"polso_{l}": (sp[0] + 260 * math.cos(b), sp[1] - 260 * math.sin(b)),
+                    f"tallone_{l}": (cv[0] + 10, cv[1] + 5), f"punta_{l}": (cv[0] + 25, cv[1] - 10)})
+    posa = {n: (x, y, 0.9) for n, (x, y) in pts.items()}
+    for n in ("naso", "naso_sx", "naso_dx"):
+        posa[n] = (170, 590, 0.99)
+    return posa
+
+
 def ripetizione(fn_posa, inizio, fondo, secondi=2.0, **extra_fondo):
     """Genera una ripetizione: da 'inizio' a 'fondo' e ritorno, piu' una pausa."""
     n = int(secondi * FPS)
@@ -629,6 +650,16 @@ def main():
     ok = lati_rip == ["sx", "dx", "sx", "dx"] and [e["ripetizione"] for e in err] == [3]
     risultati.append(ok)
     print(f"{'OK ' if ok else 'ERRORE'}  BIC-014: lati {lati_rip}, errori sulla ripetizione {[e['ripetizione'] for e in err]}")
+
+    # SDRAIATI SU UN FIANCO (immagine ruotata nell'app; qui la posa e' gia' nelle coordinate originali)
+    frames = [posa_sdraiato(0.3)] * FPS + ripetizione(posa_sdraiato, 0.3, 35.2, secondi=3.0)
+    frames += ripetizione(posa_sdraiato, 0.3, 12.2, secondi=3.0) + ripetizione(posa_sdraiato, 0.3, 55.2, secondi=3.0)
+    risultati.append(verifica("Abduzione da sdraiato ABD-001 (distanza tra le caviglie)",
+                              esegui(Analizzatore(es["ABD-001"]), frames), [[], ["ampiezza"], ["troppo_alta"]]))
+    br = lambda b: posa_sdraiato(braccio=b)
+    frames = [br(10.3)] * FPS + ripetizione(br, 10.3, 85.2, secondi=3.0) + ripetizione(br, 10.3, 50.2, secondi=4.5)
+    risultati.append(verifica("Alzate laterali da sdraiato DEL-010 (conta il braccio che si muove)",
+                              esegui(crea_analizzatore(es["DEL-010"]), frames), [[], ["ampiezza"]]))
 
     # Ogni esercizio analizzabile deve girare senza bloccarsi su una posa completa (tutti i punti, naso con lato)
     from motore.regole import applica_impostazioni

@@ -101,6 +101,9 @@ def casi():
                    + R(lambda g: pm.posa_curl_alterno(g, 165.3), 165.3, 50.2, secondi=3.0)
                    + R(lambda g: pm.posa_curl_alterno(165.3, g), 165.3, 50.2, secondi=3.0)
                    + R(lambda g: pm.posa_curl_alterno(g, 165.3), 165.3, 90.2, secondi=3.0),
+        "ABD-001": [pm.posa_sdraiato(0.3)] * FPS + R(pm.posa_sdraiato, 0.3, 35.2, secondi=3.0) + R(pm.posa_sdraiato, 0.3, 12.2, secondi=3.0),
+        "DEL-010": [pm.posa_sdraiato(braccio=10.3)] * FPS + R(lambda b: pm.posa_sdraiato(braccio=b), 10.3, 85.2, secondi=3.0)
+                   + R(lambda b: pm.posa_sdraiato(braccio=b), 10.3, 50.2, secondi=3.0),
         "BIC-020": [pm.posa_braccio(165.3)] * FPS + pm.ripetizione_fasi(pm.posa_braccio, 165.3, 50.2, 1, 1, 2)
                    + pm.ripetizione_fasi(pm.posa_braccio, 165.3, 80.4, 1, 1, 2),
         "PET-002": [pp(175)] * FPS + R(pp, 175, 80, secondi=3.0) + R(pp, 175, 80, secondi=3.0, abbassa_bacino=70),

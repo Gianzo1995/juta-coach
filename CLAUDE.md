@@ -76,6 +76,11 @@ Ogni voce: `{ "id", "nome"?, "gruppo"?, "scheda", "config_app" }`.
   a fine ripetizione). Camera di tre quarti. BIC-014, BIC-017, DEA-023, DEA-026 (questi due con scelta "Alternate/Solo destro/Solo sinistro").
   Usare sempre la funzione crea_analizzatore (app, avvia.py, prove).
 - Braccia troppo basse (misura `braccia` già presente) aggiunto a PET-045/054/062.
+- `ruota_immagine` (90 = orario, -90 = antiorario, 180): l'app ruota il fotogramma prima di MediaPipe (la persona sdraiata
+  appare in piedi) e riporta i punti all'immagine originale (`quadroRuotato` / `posaDaRuotata` in app.html); il motore non
+  cambia. Impostazione "Guardando il telefono, dove hai la testa?". Resi analizzabili (14/11/2026, regole proposte dall'app,
+  DA PROVARE IN SALA: non verificato con MediaPipe vero): ABD-001 (distanza caviglie), ABD-002/010 clamshell (distanza
+  ginocchia + piedi uniti), DEL-010 (regole di DEL-005 senza busto, lato alternato).
   Il naso è unico ma nella posa esiste anche come `naso_sx`/`naso_dx`. Un punto sconosciuto esclude l'esercizio dall'analisi (`valida`).
 - Tipi di misura: `angolo` (3 punti, 0-180), `angolo_orientato` (3 punti: 180 = in linea, meno di 180 = punto
   centrale SOTTO la retta tra gli estremi, più di 180 = SOPRA; per corpi orizzontali/inclinati, es. bacino nei
