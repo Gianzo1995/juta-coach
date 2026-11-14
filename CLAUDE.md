@@ -86,6 +86,10 @@ Ogni voce: `{ "id", "nome"?, "gruppo"?, "scheda", "config_app" }`.
   (distanza anca-caviglia in % della larghezza delle spalle), `ginocchia_dentro` (distanza ginocchia/caviglie sotto 80%),
   spalle storte (`inclinazione` spalla_sx→spalla_dx, 90 = dritte, oltre 12°). `"muovi": "punti"` in una misura distanza:
   il fantasma sposta solo i due punti. Regole proposte dall'app, da tarare.
+- Camera a 60 fps (prova) per gli esercizi in modalità balistica o con `?fps=60` nell'indirizzo; il pannello "Angoli"
+  mostra gli fps reali della camera. Da verificare su iPhone se Safari li concede e se il modello full regge.
+- Stato 14/11/2026: 405 esercizi analizzabili (+4 sdraiati). Tutti i controlli aggiunti oggi sono regole proposte
+  dall'app, provate solo con movimenti simulati: da provare con il telefono e tarare in sala.
   Il naso è unico ma nella posa esiste anche come `naso_sx`/`naso_dx`. Un punto sconosciuto esclude l'esercizio dall'analisi (`valida`).
 - Tipi di misura: `angolo` (3 punti, 0-180), `angolo_orientato` (3 punti: 180 = in linea, meno di 180 = punto
   centrale SOTTO la retta tra gli estremi, più di 180 = SOPRA; per corpi orizzontali/inclinati, es. bacino nei
