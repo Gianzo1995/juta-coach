@@ -61,6 +61,7 @@ Ogni voce: `{ "id", "nome"?, "gruppo"?, "scheda", "config_app" }`.
   Quando arriva un nuovo catalogo: sostituire il file in `esercizi/catalogo/`, rilanciare i test, sistemare le integrazioni.
 - Il motore richiede visibili solo i punti delle misure usate dalla ripetizione e dagli errori.
 - Punti usabili: `naso`, `spalla`, `gomito`, `polso`, `anca`, `ginocchio`, `caviglia`, `tallone`, `punta` (alias `punta_piede`).
+  Il naso è unico ma nella posa esiste anche come `naso_sx`/`naso_dx`. Un punto sconosciuto esclude l'esercizio dall'analisi (`valida`).
   Punti extra (meno stabili): `orecchio`, `indice`, `mignolo`, `pollice` (indici MediaPipe 7/8, 19/20, 17/18, 21/22):
   usarli solo in misure con `"facoltativa": true` (i punti non sono obbligatori: se non si vedono la misura salta in quel
   fotogramma, il conteggio continua). `distanza` con `"rispetto_inizio": true` = variazione rispetto all'inizio della serie
@@ -90,7 +91,6 @@ Ogni voce: `{ "id", "nome"?, "gruppo"?, "scheda", "config_app" }`.
   mostra gli fps reali della camera. Da verificare su iPhone se Safari li concede e se il modello full regge.
 - Stato 14/11/2026: 405 esercizi analizzabili (+4 sdraiati). Tutti i controlli aggiunti oggi sono regole proposte
   dall'app, provate solo con movimenti simulati: da provare con il telefono e tarare in sala.
-  Il naso è unico ma nella posa esiste anche come `naso_sx`/`naso_dx`. Un punto sconosciuto esclude l'esercizio dall'analisi (`valida`).
 - Tipi di misura: `angolo` (3 punti, 0-180), `angolo_orientato` (3 punti: 180 = in linea, meno di 180 = punto
   centrale SOTTO la retta tra gli estremi, più di 180 = SOPRA; per corpi orizzontali/inclinati, es. bacino nei
   piegamenti), `inclinazione` (2 punti [A, B]: 0 = B sopra A, 90 = orizzontale, 180 = B sotto A),
@@ -164,7 +164,7 @@ Ogni voce: `{ "id", "nome"?, "gruppo"?, "scheda", "config_app" }`.
 - ~~A. Angolo con segno~~ (fatto: `angolo_orientato`; i piegamenti hanno "bacino_cede" e "sedere_alto" via integrazioni).
   Verso avanti/indietro: fatto con `angolo_avanti` (kickback GLU-023/029, GLU-006, GLU-027). Da valutare: busto in PET-047, PET-054.
 - ~~B. Fasi della ripetizione~~ (fatto: misure `discesa`, `pausa`, `salita`).
-- **C. Controllo in alto** tra una ripetizione e l'altra (braccia/gambe distese).
+- ~~C. Controllo in alto~~ (fatto: misura automatica `partenza`).
 - ~~D. Misura `distanza`~~ (fatto: ADD-007, ABD-006/007/011 analizzabili via integrazioni, distanza tra le ginocchia
   in % della larghezza delle anche; regole proposte dall'app, da tarare). Da usare anche per larghezza presa, ginocchia-mani.
 - ~~E. Scelta del lato che lavora~~ (fatto con `impostazioni`, es. PET-006; anche numero di tavolette PET-020).
@@ -208,8 +208,7 @@ Ogni voce: `{ "id", "nome"?, "gruppo"?, "scheda", "config_app" }`.
   kettlebell, GLU-019), camera che segue la persona (ABD-008), QUA-060 step-up laterale (di fronte la piega
   del ginocchio va verso la camera), GLU-026 kickback alla macchina (la leva copre la gamba).
 - **Richieste del catalogo braccia non ancora fatte**: punti della mano (curl ed estensioni dei polsi, rotazioni, presa:
-  AVA-004/005/006/010/011/013/015/017/018), conteggio alternato sx+dx (BIC-014, BIC-017: oggi conta solo il braccio verso la
-  camera), durata della sola fase eccentrica (BIC-005, TRI-007, TRI-014), gomito che va avanti nel Bayesian curl BIC-029
+  AVA-004/005/006/010/011/013/015/017/018), conteggio alternato sx+dx (fatto 14/11: `lato: "alternato"`), durata della sola fase eccentrica (BIC-005, TRI-007, TRI-014), gomito che va avanti nel Bayesian curl BIC-029
   (`angolo_avanti` non adatto: il valore salta tra 0 e 360 con il braccio lungo il busto), BIC-007 curl 21 (ripetizioni
   parziali a blocchi), TRI-019 tate press. AVA-008 e AVA-014 (tenute con bilanciere e dischi) restano solo scheda:
   la camera non distingue la tenuta dallo stare in piedi.
