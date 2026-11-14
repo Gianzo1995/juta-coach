@@ -36,6 +36,9 @@ MESSAGGIO_NON_CHIUSA = "Ripetizione non contata: torna fino alla posizione di pa
 TIPI_MISURA = {"angolo", "angolo_orientato", "angolo_avanti", "inclinazione", "posizione", "distanza", "durata"}
 # misure calcolate dal motore a fine ripetizione (in secondi), usabili negli errori con momento "fine"
 MISURE_TEMPO = {"durata", "discesa", "pausa", "salita"}
+# "partenza": il valore piu' in alto (braccia/gambe piu' distese) della misura di ripetizione nella sosta prima della
+# ripetizione, per controllare che tra una ripetizione e l'altra si arrivi distesi (usabile negli errori "fine")
+MISURE_AUTOMATICHE = MISURE_TEMPO | {"partenza"}
 
 
 UNITI_PER_NOME = {"misure", "testi_errori"}
@@ -160,7 +163,7 @@ def valida(cfg):
         for n in list(m.get("punti", [])) + ([m["punto"]] if "punto" in m else []) + list(m.get("scala", [])):
             if not punto_noto(n):
                 problemi.append(f"misura '{nome}': punto sconosciuto '{n}'")
-    note = set(misure) | MISURE_TEMPO | {f"{n}_asimmetria" for n in misure}
+    note = set(misure) | MISURE_AUTOMATICHE | {f"{n}_asimmetria" for n in misure}
     rip = cfg.get("ripetizione") or {}
     if cfg.get("modalita") == "isometrica" and "tenuta_minimo" not in rip and "tenuta_massimo" not in rip:
         problemi.append("ripetizione: in modalita' isometrica serve tenuta_minimo o tenuta_massimo")
@@ -319,6 +322,7 @@ class Analizzatore:
         self._sosta_ok = False
         self._base_serie = None     # riferimento delle misure "posizione": inizio della serie
         self._picco_ritorno = None
+        self._picco_partenza = None  # valore piu' disteso della misura di ripetizione nella sosta prima della ripetizione
         self._t_partenza = None
         self._errori_serie = {}
         self._msg = ("", "grigio", 0.0)
@@ -438,6 +442,10 @@ class Analizzatore:
             if not scala:
                 return None
             a, b = spec["punti"]
+            if spec.get("asse") == "x":      # solo in orizzontale (es. bilanciere lontano dai piedi)
+                return 100.0 * abs(p(a)[0] - p(b)[0]) / scala
+            if spec.get("asse") == "y":      # in verticale con il segno: positivo se A sta sopra B (es. naso sopra i polsi)
+                return 100.0 * (p(b)[1] - p(a)[1]) / scala
             return 100.0 * geometria.distanza(p(a), p(b)) / scala
         raise ValueError(f"Tipo di misura sconosciuto: {tipo}")
 
@@ -502,6 +510,8 @@ class Analizzatore:
             if in_posizione:
                 if self._t_ingresso is None:
                     self._t_ingresso = t
+                if self._picco_partenza is None or segno * valore > segno * self._picco_partenza:
+                    self._picco_partenza = valore
                 self.fase = "pronto"
                 self._t_alto = t
                 self._sosta_ok = t - self._t_ingresso >= SOSTA_MINIMA
@@ -618,6 +628,7 @@ class Analizzatore:
                              "inizio_t": round(self._inizio_rip, 3), "t": round(t, 3), "motivo": motivo})
         self.fase = "attesa"
         self._t_ingresso = None
+        self._picco_partenza = None
         self._mostra(self.cfg.get("messaggio_non_chiusa", MESSAGGIO_NON_CHIUSA), "giallo", t)
 
     def _inizia_ripetizione(self, misure, t):
@@ -638,6 +649,9 @@ class Analizzatore:
         self._storico_pronto.clear()
         self._min = dict(misure)
         self._max = dict(misure)
+        if self._picco_partenza is not None and not self._isometrica():
+            self._min["partenza"] = self._max["partenza"] = self._picco_partenza
+        self._picco_partenza = None
 
     def _chiudi_ripetizione(self, t, stato):
         self.fase = "pronto"
@@ -785,3 +799,78 @@ class Analizzatore:
                 "movimento": self.cfg.get("messaggio_tenuta", MESSAGGIO_TENUTA) if self._isometrica() else "",
             }[self.fase]
         return stato
+
+
+# --------------------------------------------------------------------------
+# Esercizi alternati (lato "alternato"): un analizzatore per lato, ripetizioni sommate
+# --------------------------------------------------------------------------
+def crea_analizzatore(cfg, **kw):
+    """Analizzatore giusto per la config: alternato (due lati sommati) o normale."""
+    return AnalizzatoreAlternato(cfg, **kw) if cfg.get("lato") == "alternato" else Analizzatore(cfg, **kw)
+
+
+class AnalizzatoreAlternato:
+    """Destro e sinistro contati ognuno con le proprie regole; le ripetizioni sono numerate in un'unica serie.
+    Gli errori di una ripetizione escono insieme alla ripetizione (con il numero giusto), non prima."""
+
+    def __init__(self, cfg, **kw):
+        self.cfg = cfg
+        self.lati = {l: Analizzatore(dict(cfg, lato=l), **kw) for l in LATI}
+        self.reset()
+
+    def reset(self):
+        for a in self.lati.values():
+            a.reset()
+        self.ripetizioni = 0
+        self._sospesi = {l: [] for l in LATI}
+        self._errori_serie = {}
+
+    def _gestisci(self, l, eventi, out):
+        for ev in eventi:
+            if ev["tipo"] == "errore":
+                self._sospesi[l].append(ev)
+            elif ev["tipo"] == "ripetizione":
+                self.ripetizioni += 1
+                for e in self._sospesi[l]:
+                    out.append(dict(e, ripetizione=self.ripetizioni, lato=l))
+                self._sospesi[l] = []
+                for e in ev["errori"]:
+                    self._errori_serie[e] = self._errori_serie.get(e, 0) + 1
+                out.append(dict(ev, numero=self.ripetizioni, lato=l))
+            elif ev["tipo"] == "annullata":
+                self._sospesi[l] = []
+                out.append(dict(ev, ripetizione=self.ripetizioni + 1, lato=l))
+            # "serie" dei singoli lati: la serie comune si chiude quando entrambi hanno chiuso
+
+    def _chiudi_se_finita(self, out):
+        if self.ripetizioni and all(a.ripetizioni == 0 and a.fase != "movimento" for a in self.lati.values()):
+            out.append({"tipo": "serie", "esercizio": self.cfg["id"], "ripetizioni": self.ripetizioni,
+                        "errori": dict(self._errori_serie)})
+            self.ripetizioni = 0
+            self._errori_serie = {}
+
+    def aggiorna(self, posa, t=None):
+        t = time.monotonic() if t is None else t
+        stati = {l: a.aggiorna(posa, t) for l, a in self.lati.items()}
+        out = []
+        for l in LATI:
+            self._gestisci(l, stati[l].eventi, out)
+        self._chiudi_se_finita(out)
+        # stato mostrato: il messaggio piu' grave dei due lati (a parita', quello in movimento)
+        ordine = {"grigio": 0, "verde": 1, "giallo": 2, "rosso": 3}
+        scelto = max(LATI, key=lambda l: (ordine.get(stati[l].colore, 0), stati[l].fase == "movimento", l == "dx"))
+        st = stati[scelto]
+        fasi = [s.fase for s in stati.values()]
+        return Stato(colore=st.colore, messaggio=st.messaggio, ripetizioni=self.ripetizioni,
+                     fase="movimento" if "movimento" in fasi else ("pronto" if "pronto" in fasi else "attesa"),
+                     lato="entrambi",
+                     misure={f"{k}_{l}": v for l in LATI for k, v in stati[l].misure.items()},
+                     eventi=out, punti_usati=sorted(set(stati["sx"].punti_usati) | set(stati["dx"].punti_usati)),
+                     errore=dict(st.errore, lato=scelto) if st.errore else None)
+
+    def termina(self, t=None):
+        out = []
+        for l in LATI:
+            self._gestisci(l, self.lati[l].termina(t), out)
+        self._chiudi_se_finita(out)
+        return out

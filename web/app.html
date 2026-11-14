@@ -306,7 +306,8 @@ const COLLEGAMENTI = [
 const VOCE_CATALOGO = Object.fromEntries(CATALOGO.elenco.map(v => [v.id, v]));
 const NOMI_MISURE = { ginocchio: "Ginocchio", busto: "Busto", gomito: "Gomito", tallone: "Tallone", anca: "Bacino",
   corpo: "Linea del corpo", gambe: "Ginocchio", durata: "Durata", discesa: "Discesa", pausa: "Fermo in basso", salita: "Salita",
-  gomito_asimmetria: "Differenza braccia", testa: "Testa", orecchio_spalla: "Spalle", polso: "Polso" };
+  gomito_asimmetria: "Differenza braccia", testa: "Testa", orecchio_spalla: "Spalle", polso: "Polso",
+  partenza: "In alto", bilanciere: "Bilanciere", mento: "Mento" };
 const nomeMisura = m => NOMI_MISURE[m] || (m.charAt(0).toUpperCase() + m.slice(1).replace(/_/g, " "));
 const senzaPunto = t => (t || "").trim().replace(/[.!]+$/, "");
 
@@ -521,7 +522,7 @@ let secondiAnnunciati = 0;
 function preparaSessioneUI() {
   const { cfg, etichette } = configScelta();
   ESERCIZI[esercizio] = cfg; impostazioniCorrenti = etichette;
-  an = new Analizzatore(cfg);
+  an = creaAnalizzatore(cfg);
   ripetuti = {}; rivediDopoErrore = {}; fermo = null; bufferPose = []; sessione = null;
   $("rip").textContent = "0"; $("riepilogo").hidden = true; $("conto").hidden = true;
   $("contatore").querySelector("small").textContent = isometrico(esercizio) ? "Secondi" : "Ripetizioni";
@@ -831,8 +832,10 @@ function calcolaFantasma(posa, es, errId, lato, valoreMisurato) {
   const cfg = ESERCIZI[es], err = erroreCfg(es, errId);
   if (!posa || !err || MISURE_TEMPO.has(err.misura)) return null;
   const asim = err.misura.endsWith("_asimmetria");
-  const nome = asim ? err.misura.replace("_asimmetria", "") : err.misura;
+  // "partenza" (distesi tra una ripetizione e l'altra): il fantasma usa la misura della ripetizione
+  const nome = err.misura === "partenza" ? cfg.ripetizione.misura : asim ? err.misura.replace("_asimmetria", "") : err.misura;
   const spec = cfg.misure[nome];
+  if (!spec) return null;
   const f = {}; for (const [k, v] of Object.entries(posa)) f[k] = [v[0], v[1], v[2]];
   const lati = lato === "entrambi" ? ["sx", "dx"] : [lato || "sx"];
   const P = (n, l) => f[nomePunto(n, l)];   // i punti con il lato nel nome (es. "anca_sx") restano quelli

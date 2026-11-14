@@ -7208,5 +7208,989 @@
    ]
   },
   "motivo": "Pilota punti extra: regola proposta dall'app, da tarare in sala. Polso piegato: angolo gomito-polso-indice, avviso sotto 145° (180° = mano in linea)."
+ },
+ {
+  "id": "DOR-048",
+  "imposta": {
+   "misure.mento": {
+    "tipo": "distanza",
+    "punti": [
+     "naso",
+     "polso"
+    ],
+    "scala": [
+     "spalla",
+     "anca"
+    ],
+    "asse": "y",
+    "facoltativa": true
+   },
+   "errori.mento_basso": {
+    "messaggio": "Mento sopra la sbarra",
+    "gravita": "giallo",
+    "momento": "fine",
+    "statistica": "massimo",
+    "misura": "mento",
+    "minore_di": 0
+   },
+   "testi_errori.mento_basso": {
+    "cosa_succede": "In alto il viso resta sotto le mani: la trazione si ferma prima del punto più alto.",
+    "perche_conta": "La parte finale, la più difficile, non viene allenata.",
+    "come_correggere": "Tira finché il mento supera la sbarra, portando i gomiti verso i fianchi; se non ci arrivi, usa un elastico o la macchina assistita.",
+    "frase_da_ricordare": "Mento sopra la sbarra.",
+    "frase_alternativa": "Gomiti giù, petto alla sbarra."
+   },
+   "non_rilevabili": [
+    {
+     "errore": "Anelli che si allargano",
+     "motivo": "Spostamento laterale in profondità rispetto alla vista laterale."
+    },
+    {
+     "errore": "Mento che non supera davvero gli anelli",
+     "motivo": "In prova: stimato dal naso rispetto alla linea dei polsi; la sbarra non è rilevata, si vede solo il caso evidente."
+    }
+   ]
+  },
+  "motivo": "Controllo indiretto (regola proposta dall'app, da tarare in sala). Mento: naso sopra la linea dei polsi (in % del busto); avviso se in alto il naso resta sotto i polsi."
+ },
+ {
+  "id": "DOR-050",
+  "imposta": {
+   "misure.mento": {
+    "tipo": "distanza",
+    "punti": [
+     "naso",
+     "polso"
+    ],
+    "scala": [
+     "spalla",
+     "anca"
+    ],
+    "asse": "y",
+    "facoltativa": true
+   },
+   "errori.mento_basso": {
+    "messaggio": "Mento sopra la sbarra",
+    "gravita": "giallo",
+    "momento": "fine",
+    "statistica": "massimo",
+    "misura": "mento",
+    "minore_di": 0
+   },
+   "testi_errori.mento_basso": {
+    "cosa_succede": "In alto il viso resta sotto le mani: la trazione si ferma prima del punto più alto.",
+    "perche_conta": "La parte finale, la più difficile, non viene allenata.",
+    "come_correggere": "Tira finché il mento supera la sbarra, portando i gomiti verso i fianchi; se non ci arrivi, usa un elastico o la macchina assistita.",
+    "frase_da_ricordare": "Mento sopra la sbarra.",
+    "frase_alternativa": "Gomiti giù, petto alla sbarra."
+   },
+   "non_rilevabili": [
+    {
+     "errore": "Slancio con le gambe o dondolio",
+     "motivo": "Movimento in profondità rispetto alla vista frontale."
+    },
+    {
+     "errore": "Mento che non supera davvero la sbarra",
+     "motivo": "In prova: stimato dal naso rispetto alla linea dei polsi; la sbarra non è rilevata, si vede solo il caso evidente."
+    },
+    {
+     "errore": "Spalle che salgono verso le orecchie",
+     "motivo": "L'elevazione della scapola è di pochi centimetri."
+    },
+    {
+     "errore": "Mento proteso in avanti",
+     "motivo": "In prova: stimato dal naso rispetto alla linea dei polsi; la sbarra non è rilevata, si vede solo il caso evidente."
+    }
+   ]
+  },
+  "motivo": "Controllo indiretto (regola proposta dall'app, da tarare in sala). Mento: naso sopra la linea dei polsi (in % del busto); avviso se in alto il naso resta sotto i polsi."
+ },
+ {
+  "id": "DOR-051",
+  "imposta": {
+   "misure.mento": {
+    "tipo": "distanza",
+    "punti": [
+     "naso",
+     "polso"
+    ],
+    "scala": [
+     "spalla",
+     "anca"
+    ],
+    "asse": "y",
+    "facoltativa": true
+   },
+   "errori.mento_basso": {
+    "messaggio": "Mento sopra la sbarra",
+    "gravita": "giallo",
+    "momento": "fine",
+    "statistica": "massimo",
+    "misura": "mento",
+    "minore_di": 0
+   },
+   "testi_errori.mento_basso": {
+    "cosa_succede": "In alto il viso resta sotto le mani: la trazione si ferma prima del punto più alto.",
+    "perche_conta": "La parte finale, la più difficile, non viene allenata.",
+    "come_correggere": "Tira finché il mento supera la sbarra, portando i gomiti verso i fianchi; se non ci arrivi, usa un elastico o la macchina assistita.",
+    "frase_da_ricordare": "Mento sopra la sbarra.",
+    "frase_alternativa": "Gomiti giù, petto alla sbarra."
+   },
+   "non_rilevabili": [
+    {
+     "errore": "Mento che non supera davvero la sbarra",
+     "motivo": "In prova: stimato dal naso rispetto alla linea dei polsi; la sbarra non è rilevata, si vede solo il caso evidente."
+    },
+    {
+     "errore": "Spalle che salgono verso le orecchie",
+     "motivo": "L'elevazione della scapola è di pochi centimetri."
+    }
+   ]
+  },
+  "motivo": "Controllo indiretto (regola proposta dall'app, da tarare in sala). Mento: naso sopra la linea dei polsi (in % del busto); avviso se in alto il naso resta sotto i polsi."
+ },
+ {
+  "id": "DOR-052",
+  "imposta": {
+   "misure.mento": {
+    "tipo": "distanza",
+    "punti": [
+     "naso",
+     "polso"
+    ],
+    "scala": [
+     "spalla",
+     "anca"
+    ],
+    "asse": "y",
+    "facoltativa": true
+   },
+   "errori.mento_basso": {
+    "messaggio": "Mento sopra la sbarra",
+    "gravita": "giallo",
+    "momento": "fine",
+    "statistica": "massimo",
+    "misura": "mento",
+    "minore_di": 0
+   },
+   "testi_errori.mento_basso": {
+    "cosa_succede": "In alto il viso resta sotto le mani: la trazione si ferma prima del punto più alto.",
+    "perche_conta": "La parte finale, la più difficile, non viene allenata.",
+    "come_correggere": "Tira finché il mento supera la sbarra, portando i gomiti verso i fianchi; se non ci arrivi, usa un elastico o la macchina assistita.",
+    "frase_da_ricordare": "Mento sopra la sbarra.",
+    "frase_alternativa": "Gomiti giù, petto alla sbarra."
+   },
+   "non_rilevabili": [
+    {
+     "errore": "Mento che non supera davvero la sbarra",
+     "motivo": "In prova: stimato dal naso rispetto alla linea dei polsi; la sbarra non è rilevata, si vede solo il caso evidente."
+    },
+    {
+     "errore": "Spalle che salgono verso le orecchie",
+     "motivo": "L'elevazione della scapola è di pochi centimetri."
+    }
+   ]
+  },
+  "motivo": "Controllo indiretto (regola proposta dall'app, da tarare in sala). Mento: naso sopra la linea dei polsi (in % del busto); avviso se in alto il naso resta sotto i polsi."
+ },
+ {
+  "id": "DOR-060",
+  "imposta": {
+   "misure.mento": {
+    "tipo": "distanza",
+    "punti": [
+     "naso",
+     "polso"
+    ],
+    "scala": [
+     "spalla",
+     "anca"
+    ],
+    "asse": "y",
+    "facoltativa": true
+   },
+   "errori.mento_basso": {
+    "messaggio": "Mento sopra la sbarra",
+    "gravita": "giallo",
+    "momento": "fine",
+    "statistica": "massimo",
+    "misura": "mento",
+    "minore_di": 0
+   },
+   "testi_errori.mento_basso": {
+    "cosa_succede": "In alto il viso resta sotto le mani: la trazione si ferma prima del punto più alto.",
+    "perche_conta": "La parte finale, la più difficile, non viene allenata.",
+    "come_correggere": "Tira finché il mento supera la sbarra, portando i gomiti verso i fianchi; se non ci arrivi, usa un elastico o la macchina assistita.",
+    "frase_da_ricordare": "Mento sopra la sbarra.",
+    "frase_alternativa": "Gomiti giù, petto alla sbarra."
+   },
+   "non_rilevabili": [
+    {
+     "errore": "Mento che non supera davvero la sbarra",
+     "motivo": "In prova: stimato dal naso rispetto alla linea dei polsi; la sbarra non è rilevata, si vede solo il caso evidente."
+    },
+    {
+     "errore": "Spalle che salgono verso le orecchie",
+     "motivo": "L'elevazione della scapola è di pochi centimetri."
+    },
+    {
+     "errore": "Testa sempre dallo stesso lato",
+     "motivo": "Il lato della testa rispetto alla sbarra non è misurabile."
+    },
+    {
+     "errore": "Corpo che ruota",
+     "motivo": "La rotazione del tronco non è misurabile su una vista sola."
+    }
+   ]
+  },
+  "motivo": "Controllo indiretto (regola proposta dall'app, da tarare in sala). Mento: naso sopra la linea dei polsi (in % del busto); avviso se in alto il naso resta sotto i polsi."
+ },
+ {
+  "id": "DOR-061",
+  "imposta": {
+   "misure.mento": {
+    "tipo": "distanza",
+    "punti": [
+     "naso",
+     "polso"
+    ],
+    "scala": [
+     "spalla",
+     "anca"
+    ],
+    "asse": "y",
+    "facoltativa": true
+   },
+   "errori.mento_basso": {
+    "messaggio": "Mento sopra la sbarra",
+    "gravita": "giallo",
+    "momento": "fine",
+    "statistica": "massimo",
+    "misura": "mento",
+    "minore_di": 0
+   },
+   "testi_errori.mento_basso": {
+    "cosa_succede": "In alto il viso resta sotto le mani: la trazione si ferma prima del punto più alto.",
+    "perche_conta": "La parte finale, la più difficile, non viene allenata.",
+    "come_correggere": "Tira finché il mento supera la sbarra, portando i gomiti verso i fianchi; se non ci arrivi, usa un elastico o la macchina assistita.",
+    "frase_da_ricordare": "Mento sopra la sbarra.",
+    "frase_alternativa": "Gomiti giù, petto alla sbarra."
+   },
+   "non_rilevabili": [
+    {
+     "errore": "Mento che non supera davvero la sbarra",
+     "motivo": "In prova: stimato dal naso rispetto alla linea dei polsi; la sbarra non è rilevata, si vede solo il caso evidente."
+    },
+    {
+     "errore": "Spalle che salgono verso le orecchie",
+     "motivo": "L'elevazione della scapola è di pochi centimetri."
+    }
+   ]
+  },
+  "motivo": "Controllo indiretto (regola proposta dall'app, da tarare in sala). Mento: naso sopra la linea dei polsi (in % del busto); avviso se in alto il naso resta sotto i polsi."
+ },
+ {
+  "id": "GLU-011",
+  "imposta": {
+   "misure.bilanciere": {
+    "tipo": "distanza",
+    "punti": [
+     "polso",
+     "caviglia"
+    ],
+    "scala": [
+     "anca",
+     "ginocchio"
+    ],
+    "asse": "x",
+    "facoltativa": true
+   },
+   "errori.bilanciere_lontano": {
+    "messaggio": "Peso vicino alle gambe",
+    "gravita": "giallo",
+    "momento": "fine",
+    "statistica": "massimo",
+    "misura": "bilanciere",
+    "maggiore_di": 30
+   },
+   "testi_errori.bilanciere_lontano": {
+    "cosa_succede": "Il peso si allontana dalle gambe e passa davanti alla punta dei piedi.",
+    "perche_conta": "Più il peso è lontano, più la schiena fa leva: il carico sulla zona lombare aumenta.",
+    "come_correggere": "Fai scorrere il peso lungo le cosce e gli stinchi, come se dovessi sfiorarli; spingi il bacino indietro.",
+    "frase_da_ricordare": "Peso vicino alle gambe.",
+    "frase_alternativa": "Sfiora le cosce con il bilanciere."
+   },
+   "non_rilevabili": [
+    {
+     "errore": "Schiena arrotondata",
+     "motivo": "La curvatura della colonna non è misurabile con i punti disponibili (come nello squat dell'app)."
+    },
+    {
+     "errore": "Bilanciere lontano dalle gambe",
+     "motivo": "In prova: stimato dalla posizione delle mani rispetto alla caviglia (il bilanciere non è rilevato); vede solo il peso chiaramente lontano."
+    },
+    {
+     "errore": "Anche che salgono prima delle spalle",
+     "motivo": "Servirebbe confrontare due misure nello stesso istante, non previsto."
+    },
+    {
+     "errore": "Iperestensione della schiena in alto",
+     "motivo": "Non distinguibile dall'estensione dell'anca."
+    }
+   ]
+  },
+  "motivo": "Controllo indiretto (regola proposta dall'app, da tarare in sala). Bilanciere: distanza orizzontale polso-caviglia in % della coscia; avviso oltre il 30%."
+ },
+ {
+  "id": "GLU-016",
+  "imposta": {
+   "misure.bilanciere": {
+    "tipo": "distanza",
+    "punti": [
+     "polso",
+     "caviglia"
+    ],
+    "scala": [
+     "anca",
+     "ginocchio"
+    ],
+    "asse": "x",
+    "facoltativa": true
+   },
+   "errori.bilanciere_lontano": {
+    "messaggio": "Peso vicino alle gambe",
+    "gravita": "giallo",
+    "momento": "fine",
+    "statistica": "massimo",
+    "misura": "bilanciere",
+    "maggiore_di": 30
+   },
+   "testi_errori.bilanciere_lontano": {
+    "cosa_succede": "Il peso si allontana dalle gambe e passa davanti alla punta dei piedi.",
+    "perche_conta": "Più il peso è lontano, più la schiena fa leva: il carico sulla zona lombare aumenta.",
+    "come_correggere": "Fai scorrere il peso lungo le cosce e gli stinchi, come se dovessi sfiorarli; spingi il bacino indietro.",
+    "frase_da_ricordare": "Peso vicino alle gambe.",
+    "frase_alternativa": "Sfiora le cosce con il bilanciere."
+   },
+   "non_rilevabili": [
+    {
+     "errore": "Schiena arrotondata",
+     "motivo": "La curvatura della colonna non è misurabile con i punti disponibili (come nello squat dell'app)."
+    },
+    {
+     "errore": "Bilanciere lontano dalle gambe",
+     "motivo": "In prova: stimato dalla posizione delle mani rispetto alla caviglia (il bilanciere non è rilevato); vede solo il peso chiaramente lontano."
+    },
+    {
+     "errore": "Anche che salgono prima delle spalle",
+     "motivo": "Servirebbe confrontare due misure nello stesso istante, non previsto."
+    },
+    {
+     "errore": "Iperestensione della schiena in alto",
+     "motivo": "Non distinguibile dall'estensione dell'anca."
+    }
+   ]
+  },
+  "motivo": "Controllo indiretto (regola proposta dall'app, da tarare in sala). Bilanciere: distanza orizzontale polso-caviglia in % della coscia; avviso oltre il 30%."
+ },
+ {
+  "id": "GLU-022",
+  "imposta": {
+   "misure.bilanciere": {
+    "tipo": "distanza",
+    "punti": [
+     "polso",
+     "caviglia"
+    ],
+    "scala": [
+     "anca",
+     "ginocchio"
+    ],
+    "asse": "x",
+    "facoltativa": true
+   },
+   "errori.bilanciere_lontano": {
+    "messaggio": "Peso vicino alle gambe",
+    "gravita": "giallo",
+    "momento": "fine",
+    "statistica": "massimo",
+    "misura": "bilanciere",
+    "maggiore_di": 30
+   },
+   "testi_errori.bilanciere_lontano": {
+    "cosa_succede": "Il peso si allontana dalle gambe e passa davanti alla punta dei piedi.",
+    "perche_conta": "Più il peso è lontano, più la schiena fa leva: il carico sulla zona lombare aumenta.",
+    "come_correggere": "Fai scorrere il peso lungo le cosce e gli stinchi, come se dovessi sfiorarli; spingi il bacino indietro.",
+    "frase_da_ricordare": "Peso vicino alle gambe.",
+    "frase_alternativa": "Sfiora le cosce con il bilanciere."
+   },
+   "non_rilevabili": [
+    {
+     "errore": "Schiena arrotondata",
+     "motivo": "La curvatura della colonna non è misurabile con i punti disponibili (come nello squat dell'app)."
+    },
+    {
+     "errore": "Bilanciere lontano dalle gambe",
+     "motivo": "In prova: stimato dalla posizione delle mani rispetto alla caviglia (il bilanciere non è rilevato); vede solo il peso chiaramente lontano."
+    },
+    {
+     "errore": "Anche che salgono prima delle spalle",
+     "motivo": "Servirebbe confrontare due misure nello stesso istante, non previsto."
+    },
+    {
+     "errore": "Iperestensione della schiena in alto",
+     "motivo": "Non distinguibile dall'estensione dell'anca."
+    }
+   ]
+  },
+  "motivo": "Controllo indiretto (regola proposta dall'app, da tarare in sala). Bilanciere: distanza orizzontale polso-caviglia in % della coscia; avviso oltre il 30%."
+ },
+ {
+  "id": "FEM-003",
+  "imposta": {
+   "misure.bilanciere": {
+    "tipo": "distanza",
+    "punti": [
+     "polso",
+     "caviglia"
+    ],
+    "scala": [
+     "anca",
+     "ginocchio"
+    ],
+    "asse": "x",
+    "facoltativa": true
+   },
+   "errori.bilanciere_lontano": {
+    "messaggio": "Peso vicino alle gambe",
+    "gravita": "giallo",
+    "momento": "fine",
+    "statistica": "massimo",
+    "misura": "bilanciere",
+    "maggiore_di": 30
+   },
+   "testi_errori.bilanciere_lontano": {
+    "cosa_succede": "Il peso si allontana dalle gambe e passa davanti alla punta dei piedi.",
+    "perche_conta": "Più il peso è lontano, più la schiena fa leva: il carico sulla zona lombare aumenta.",
+    "come_correggere": "Fai scorrere il peso lungo le cosce e gli stinchi, come se dovessi sfiorarli; spingi il bacino indietro.",
+    "frase_da_ricordare": "Peso vicino alle gambe.",
+    "frase_alternativa": "Sfiora le cosce con il bilanciere."
+   },
+   "non_rilevabili": [
+    {
+     "errore": "Schiena che si arrotonda",
+     "motivo": "La curvatura della colonna non è misurabile con i punti disponibili."
+    },
+    {
+     "errore": "Bilanciere lontano dalle gambe",
+     "motivo": "In prova: stimato dalla posizione delle mani rispetto alla caviglia (il bilanciere non è rilevato); vede solo il peso chiaramente lontano."
+    }
+   ]
+  },
+  "motivo": "Controllo indiretto (regola proposta dall'app, da tarare in sala). Bilanciere: distanza orizzontale polso-caviglia in % della coscia; avviso oltre il 30%."
+ },
+ {
+  "id": "FEM-004",
+  "imposta": {
+   "errori.bilanciere_lontano": {
+    "messaggio": "Peso vicino alle gambe",
+    "gravita": "giallo",
+    "momento": "fine",
+    "statistica": "massimo",
+    "misura": "bilanciere",
+    "maggiore_di": 30
+   },
+   "testi_errori.bilanciere_lontano": {
+    "cosa_succede": "Il peso si allontana dalle gambe e passa davanti alla punta dei piedi.",
+    "perche_conta": "Più il peso è lontano, più la schiena fa leva: il carico sulla zona lombare aumenta.",
+    "come_correggere": "Fai scorrere il peso lungo le cosce e gli stinchi, come se dovessi sfiorarli; spingi il bacino indietro.",
+    "frase_da_ricordare": "Peso vicino alle gambe.",
+    "frase_alternativa": "Sfiora le cosce con il bilanciere."
+   },
+   "non_rilevabili": [
+    {
+     "errore": "Schiena che si arrotonda",
+     "motivo": "La curvatura della colonna non è misurabile con i punti disponibili."
+    },
+    {
+     "errore": "Bilanciere lontano dalle gambe",
+     "motivo": "In prova: stimato dalla posizione delle mani rispetto alla caviglia (il bilanciere non è rilevato); vede solo il peso chiaramente lontano."
+    }
+   ],
+   "misure": {
+    "bilanciere": {
+     "tipo": "distanza",
+     "punti": [
+      "polso",
+      "caviglia"
+     ],
+     "scala": [
+      "anca",
+      "ginocchio"
+     ],
+     "asse": "x",
+     "facoltativa": true
+    }
+   }
+  },
+  "motivo": "Controllo indiretto (regola proposta dall'app, da tarare in sala). Bilanciere: distanza orizzontale polso-caviglia in % della coscia; avviso oltre il 30%."
+ },
+ {
+  "id": "FEM-007",
+  "imposta": {
+   "misure.bilanciere": {
+    "tipo": "distanza",
+    "punti": [
+     "polso",
+     "caviglia"
+    ],
+    "scala": [
+     "anca",
+     "ginocchio"
+    ],
+    "asse": "x",
+    "facoltativa": true
+   },
+   "errori.bilanciere_lontano": {
+    "messaggio": "Peso vicino alle gambe",
+    "gravita": "giallo",
+    "momento": "fine",
+    "statistica": "massimo",
+    "misura": "bilanciere",
+    "maggiore_di": 30
+   },
+   "testi_errori.bilanciere_lontano": {
+    "cosa_succede": "Il peso si allontana dalle gambe e passa davanti alla punta dei piedi.",
+    "perche_conta": "Più il peso è lontano, più la schiena fa leva: il carico sulla zona lombare aumenta.",
+    "come_correggere": "Fai scorrere il peso lungo le cosce e gli stinchi, come se dovessi sfiorarli; spingi il bacino indietro.",
+    "frase_da_ricordare": "Peso vicino alle gambe.",
+    "frase_alternativa": "Sfiora le cosce con il bilanciere."
+   },
+   "non_rilevabili": [
+    {
+     "errore": "Schiena che si arrotonda",
+     "motivo": "La curvatura della colonna non è misurabile con i punti disponibili."
+    },
+    {
+     "errore": "Bilanciere lontano dalle gambe",
+     "motivo": "In prova: stimato dalla posizione delle mani rispetto alla caviglia (il bilanciere non è rilevato); vede solo il peso chiaramente lontano."
+    }
+   ]
+  },
+  "motivo": "Controllo indiretto (regola proposta dall'app, da tarare in sala). Bilanciere: distanza orizzontale polso-caviglia in % della coscia; avviso oltre il 30%."
+ },
+ {
+  "id": "FEM-010",
+  "imposta": {
+   "misure.bilanciere": {
+    "tipo": "distanza",
+    "punti": [
+     "polso",
+     "caviglia"
+    ],
+    "scala": [
+     "anca",
+     "ginocchio"
+    ],
+    "asse": "x",
+    "facoltativa": true
+   },
+   "errori.bilanciere_lontano": {
+    "messaggio": "Peso vicino alle gambe",
+    "gravita": "giallo",
+    "momento": "fine",
+    "statistica": "massimo",
+    "misura": "bilanciere",
+    "maggiore_di": 30
+   },
+   "testi_errori.bilanciere_lontano": {
+    "cosa_succede": "Il peso si allontana dalle gambe e passa davanti alla punta dei piedi.",
+    "perche_conta": "Più il peso è lontano, più la schiena fa leva: il carico sulla zona lombare aumenta.",
+    "come_correggere": "Fai scorrere il peso lungo le cosce e gli stinchi, come se dovessi sfiorarli; spingi il bacino indietro.",
+    "frase_da_ricordare": "Peso vicino alle gambe.",
+    "frase_alternativa": "Sfiora le cosce con il bilanciere."
+   },
+   "non_rilevabili": [
+    {
+     "errore": "Schiena che si arrotonda",
+     "motivo": "La curvatura della colonna non è misurabile con i punti disponibili."
+    },
+    {
+     "errore": "Bilanciere lontano dalle gambe",
+     "motivo": "In prova: stimato dalla posizione delle mani rispetto alla caviglia (il bilanciere non è rilevato); vede solo il peso chiaramente lontano."
+    }
+   ]
+  },
+  "motivo": "Controllo indiretto (regola proposta dall'app, da tarare in sala). Bilanciere: distanza orizzontale polso-caviglia in % della coscia; avviso oltre il 30%."
+ },
+ {
+  "id": "PET-001",
+  "imposta": {
+   "errori.braccia_non_distese": {
+    "messaggio": "Distendi le braccia in alto",
+    "gravita": "giallo",
+    "momento": "fine",
+    "statistica": "massimo",
+    "misura": "partenza",
+    "minore_di": 168
+   },
+   "testi_errori.braccia_non_distese": {
+    "cosa_succede": "Tra una ripetizione e l'altra le braccia non arrivano distese.",
+    "perche_conta": "Si allena solo metà del movimento.",
+    "come_correggere": "In alto distendi completamente le braccia, senza bloccare i gomiti con forza.",
+    "frase_da_ricordare": "Braccia distese in alto."
+   }
+  },
+  "motivo": "Controllo indiretto (regola proposta dall'app, da tarare in sala). Braccia distese in alto: gomito più disteso nella sosta prima della ripetizione, avviso sotto 168°."
+ },
+ {
+  "id": "PET-056",
+  "imposta": {
+   "errori.ritorno_incompleto": {
+    "messaggio": "Torna fino in fondo",
+    "gravita": "giallo",
+    "momento": "fine",
+    "statistica": "minimo",
+    "misura": "partenza",
+    "maggiore_di": 85
+   },
+   "testi_errori.ritorno_incompleto": {
+    "cosa_succede": "Tornando indietro le mani non arrivano all'altezza del petto.",
+    "perche_conta": "Il petto non lavora in allungamento: si allena solo metà del movimento.",
+    "come_correggere": "Torna lentamente finché le mani arrivano vicino al petto, senza far toccare i pesi.",
+    "frase_da_ricordare": "Torna fino al petto."
+   },
+   "non_rilevabili": [
+    {
+     "errore": "Schiena o spalle che si staccano dallo schienale",
+     "motivo": "Lo schienale copre la schiena e lo stacco delle scapole è di pochi centimetri."
+    },
+    {
+     "errore": "Gomiti bloccati con forza",
+     "motivo": "La differenza tra braccia quasi tese e bloccate è di pochi gradi."
+    },
+    {
+     "errore": "Pesi che sbattono",
+     "motivo": "Il pacco pesi non è rilevato; si stima solo dalla velocità della ripetizione."
+    },
+    {
+     "errore": "Ritorno incompleto (non si torna fino all'allungamento)",
+     "motivo": "In prova: controllato dal gomito più piegato nella sosta tra una ripetizione e l'altra."
+    }
+   ]
+  },
+  "motivo": "Controllo indiretto (regola proposta dall'app, da tarare in sala). Ritorno incompleto: gomito più piegato nella sosta prima della ripetizione, avviso oltre 85°."
+ },
+ {
+  "id": "PET-058",
+  "imposta": {
+   "errori.ritorno_incompleto": {
+    "messaggio": "Torna fino in fondo",
+    "gravita": "giallo",
+    "momento": "fine",
+    "statistica": "minimo",
+    "misura": "partenza",
+    "maggiore_di": 85
+   },
+   "testi_errori.ritorno_incompleto": {
+    "cosa_succede": "Tornando indietro le mani non arrivano all'altezza del petto.",
+    "perche_conta": "Il petto non lavora in allungamento: si allena solo metà del movimento.",
+    "come_correggere": "Torna lentamente finché le mani arrivano vicino al petto, senza far toccare i pesi.",
+    "frase_da_ricordare": "Torna fino al petto."
+   },
+   "non_rilevabili": [
+    {
+     "errore": "Seduta regolata male",
+     "motivo": "Con la traiettoria inclinata non c'è una misura che distingua una seduta sbagliata dal movimento corretto."
+    },
+    {
+     "errore": "Schiena che si stacca dallo schienale",
+     "motivo": "Lo schienale copre la schiena."
+    },
+    {
+     "errore": "Ritorno incompleto (non si torna fino all'allungamento)",
+     "motivo": "In prova: controllato dal gomito più piegato nella sosta tra una ripetizione e l'altra."
+    }
+   ]
+  },
+  "motivo": "Controllo indiretto (regola proposta dall'app, da tarare in sala). Ritorno incompleto: gomito più piegato nella sosta prima della ripetizione, avviso oltre 85°."
+ },
+ {
+  "id": "PET-059",
+  "imposta": {
+   "errori.ritorno_incompleto": {
+    "messaggio": "Torna fino in fondo",
+    "gravita": "giallo",
+    "momento": "fine",
+    "statistica": "minimo",
+    "misura": "partenza",
+    "maggiore_di": 85
+   },
+   "testi_errori.ritorno_incompleto": {
+    "cosa_succede": "Tornando indietro le mani non arrivano all'altezza del petto.",
+    "perche_conta": "Il petto non lavora in allungamento: si allena solo metà del movimento.",
+    "come_correggere": "Torna lentamente finché le mani arrivano vicino al petto, senza far toccare i pesi.",
+    "frase_da_ricordare": "Torna fino al petto."
+   },
+   "non_rilevabili": [
+    {
+     "errore": "Seduta regolata male",
+     "motivo": "Come PET-058."
+    },
+    {
+     "errore": "Spalle che salgono verso le orecchie",
+     "motivo": "L'elevazione della scapola è di pochi centimetri."
+    },
+    {
+     "errore": "Ritorno incompleto (non si torna fino all'allungamento)",
+     "motivo": "In prova: controllato dal gomito più piegato nella sosta tra una ripetizione e l'altra."
+    }
+   ]
+  },
+  "motivo": "Controllo indiretto (regola proposta dall'app, da tarare in sala). Ritorno incompleto: gomito più piegato nella sosta prima della ripetizione, avviso oltre 85°."
+ },
+ {
+  "id": "PET-045",
+  "imposta": {
+   "errori.braccia_basse": {
+    "messaggio": "Spingi all'altezza del petto",
+    "gravita": "giallo",
+    "momento": "fine",
+    "statistica": "massimo",
+    "misura": "braccia",
+    "minore_di": 70
+   },
+   "testi_errori.braccia_basse": {
+    "cosa_succede": "Le mani spingono verso il basso invece che in avanti.",
+    "perche_conta": "Il lavoro passa dal petto alle spalle e ai tricipiti.",
+    "come_correggere": "Spingi in avanti all'altezza del petto, con le braccia parallele al pavimento.",
+    "frase_da_ricordare": "Spingi dritto, all'altezza del petto."
+   },
+   "non_rilevabili": [
+    {
+     "errore": "Pressione tra i palmi che cala",
+     "motivo": "La forza applicata non è visibile; le mani sono rilevate in modo poco preciso."
+    },
+    {
+     "errore": "Spalle che salgono verso le orecchie",
+     "motivo": "L'elevazione della scapola è di pochi centimetri e il punto più vicino (orecchio) non è disponibile."
+    }
+   ]
+  },
+  "motivo": "Controllo indiretto (regola proposta dall'app, da tarare in sala). Braccia troppo basse: angolo anca-spalla-polso massimo sotto 70° (misura già presente)."
+ },
+ {
+  "id": "PET-054",
+  "imposta": {
+   "errori.braccia_basse": {
+    "messaggio": "Spingi all'altezza del petto",
+    "gravita": "giallo",
+    "momento": "fine",
+    "statistica": "massimo",
+    "misura": "braccia",
+    "minore_di": 70
+   },
+   "testi_errori.braccia_basse": {
+    "cosa_succede": "Le mani spingono verso il basso invece che in avanti.",
+    "perche_conta": "Il lavoro passa dal petto alle spalle e ai tricipiti.",
+    "come_correggere": "Spingi in avanti all'altezza del petto, con le braccia parallele al pavimento.",
+    "frase_da_ricordare": "Spingi dritto, all'altezza del petto."
+   },
+   "non_rilevabili": [
+    {
+     "errore": "Gomiti che vanno molto dietro il busto",
+     "motivo": "Lo spostamento è sul piano orizzontale, poco leggibile di lato."
+    },
+    {
+     "errore": "Asimmetria tra le braccia",
+     "motivo": "Il braccio lontano è coperto dal corpo."
+    },
+    {
+     "errore": "Busto inclinato indietro",
+     "motivo": "L'inclinazione non distingue busto in avanti (corretto) da busto indietro."
+    }
+   ]
+  },
+  "motivo": "Controllo indiretto (regola proposta dall'app, da tarare in sala). Braccia troppo basse: angolo anca-spalla-polso massimo sotto 70° (misura già presente)."
+ },
+ {
+  "id": "PET-062",
+  "imposta": {
+   "errori.braccia_basse": {
+    "messaggio": "Spingi all'altezza del petto",
+    "gravita": "giallo",
+    "momento": "fine",
+    "statistica": "massimo",
+    "misura": "braccia",
+    "minore_di": 70
+   },
+   "testi_errori.braccia_basse": {
+    "cosa_succede": "Le mani spingono verso il basso invece che in avanti.",
+    "perche_conta": "Il lavoro passa dal petto alle spalle e ai tricipiti.",
+    "come_correggere": "Spingi in avanti all'altezza del petto, con le braccia parallele al pavimento.",
+    "frase_da_ricordare": "Spingi dritto, all'altezza del petto."
+   },
+   "non_rilevabili": [
+    {
+     "errore": "Gomiti che vanno molto dietro il busto",
+     "motivo": "Lo spostamento è sul piano orizzontale, poco leggibile di lato."
+    },
+    {
+     "errore": "Asimmetria tra le braccia",
+     "motivo": "Il braccio lontano è coperto dal corpo."
+    },
+    {
+     "errore": "Busto inclinato indietro",
+     "motivo": "L'inclinazione non distingue busto in avanti (corretto) da busto indietro."
+    },
+    {
+     "errore": "Elastico ancorato male o usurato",
+     "motivo": "L'elastico non è rilevato."
+    }
+   ]
+  },
+  "motivo": "Controllo indiretto (regola proposta dall'app, da tarare in sala). Braccia troppo basse: angolo anca-spalla-polso massimo sotto 70° (misura già presente)."
+ },
+ {
+  "id": "BIC-014",
+  "imposta": {
+   "lato": "alternato",
+   "messaggio_posizione": "Camera di tre quarti (circa 45°), entrambe le braccia visibili",
+   "non_rilevabili": [
+    {
+     "errore": "Polsi piegati",
+     "motivo": "La posizione della mano è poco precisa."
+    },
+    {
+     "errore": "Spalle che salgono",
+     "motivo": "L'elevazione della scapola è di pochi centimetri."
+    },
+    {
+     "errore": "Tipo di presa",
+     "motivo": "La rotazione della mano non è misurabile."
+    },
+    {
+     "errore": "Arto di lavoro non riconosciuto",
+     "motivo": "In prova: due contatori (destro e sinistro) sommati; con la camera di tre quarti si vedono entrambe le braccia, ma il braccio lontano resta meno preciso."
+    }
+   ]
+  },
+  "motivo": "Controllo indiretto (regola proposta dall'app, da tarare in sala). Esercizio alternato: un contatore per braccio, ripetizioni sommate (lato 'alternato')."
+ },
+ {
+  "id": "BIC-017",
+  "imposta": {
+   "lato": "alternato",
+   "messaggio_posizione": "Camera di tre quarti (circa 45°), entrambe le braccia visibili",
+   "non_rilevabili": [
+    {
+     "errore": "Polsi piegati",
+     "motivo": "La posizione della mano è poco precisa."
+    },
+    {
+     "errore": "Spalle che salgono",
+     "motivo": "L'elevazione della scapola è di pochi centimetri."
+    },
+    {
+     "errore": "Tipo di presa",
+     "motivo": "La rotazione della mano non è misurabile."
+    },
+    {
+     "errore": "Arto di lavoro non riconosciuto",
+     "motivo": "In prova: due contatori (destro e sinistro) sommati; con la camera di tre quarti si vedono entrambe le braccia, ma il braccio lontano resta meno preciso."
+    }
+   ]
+  },
+  "motivo": "Controllo indiretto (regola proposta dall'app, da tarare in sala). Esercizio alternato: un contatore per braccio, ripetizioni sommate (lato 'alternato')."
+ },
+ {
+  "id": "DEA-023",
+  "imposta": {
+   "lato": "alternato",
+   "messaggio_posizione": "Camera di tre quarti (circa 45°), entrambe le braccia visibili",
+   "non_rilevabili": [
+    {
+     "errore": "Ripetizioni del braccio lontano",
+     "motivo": "In prova: due contatori (destro e sinistro) sommati; con la camera di tre quarti si vedono entrambe le braccia, ma il braccio lontano resta meno preciso."
+    },
+    {
+     "errore": "Busto che si piega di lato",
+     "motivo": "Movimento sul piano frontale."
+    }
+   ],
+   "impostazioni": [
+    {
+     "id": "lato",
+     "domanda": "Quali braccia lavorano?",
+     "opzioni": [
+      {
+       "etichetta": "Alternate",
+       "imposta": {
+        "lato": "alternato",
+        "messaggio_posizione": "Camera di tre quarti (circa 45°), entrambe le braccia visibili"
+       }
+      },
+      {
+       "etichetta": "Solo destro",
+       "imposta": {
+        "lato": "dx"
+       }
+      },
+      {
+       "etichetta": "Solo sinistro",
+       "imposta": {
+        "lato": "sx"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "motivo": "Controllo indiretto (regola proposta dall'app, da tarare in sala). Esercizio alternato: un contatore per braccio, ripetizioni sommate (lato 'alternato')."
+ },
+ {
+  "id": "DEA-026",
+  "imposta": {
+   "lato": "alternato",
+   "messaggio_posizione": "Camera di tre quarti (circa 45°), entrambe le braccia visibili",
+   "non_rilevabili": [
+    {
+     "errore": "Ripetizioni del braccio lontano",
+     "motivo": "In prova: due contatori (destro e sinistro) sommati; con la camera di tre quarti si vedono entrambe le braccia, ma il braccio lontano resta meno preciso."
+    },
+    {
+     "errore": "Rotazione del busto",
+     "motivo": "Non misurabile su una vista sola."
+    }
+   ],
+   "impostazioni": [
+    {
+     "id": "lato",
+     "domanda": "Quali braccia lavorano?",
+     "opzioni": [
+      {
+       "etichetta": "Alternate",
+       "imposta": {
+        "lato": "alternato",
+        "messaggio_posizione": "Camera di tre quarti (circa 45°), entrambe le braccia visibili"
+       }
+      },
+      {
+       "etichetta": "Solo destro",
+       "imposta": {
+        "lato": "dx"
+       }
+      },
+      {
+       "etichetta": "Solo sinistro",
+       "imposta": {
+        "lato": "sx"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "motivo": "Controllo indiretto (regola proposta dall'app, da tarare in sala). Esercizio alternato: un contatore per braccio, ripetizioni sommate (lato 'alternato')."
  }
 ]

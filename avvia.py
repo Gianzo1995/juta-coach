@@ -23,7 +23,7 @@ from PIL import Image, ImageDraw, ImageFont
 import yaml
 
 from motore.posa import COLLEGAMENTI, RilevatorePosa
-from motore.regole import Analizzatore, carica_tutti
+from motore.regole import carica_tutti, crea_analizzatore
 
 COLORI = {  # BGR per OpenCV, RGB per i testi
     "verde": (60, 180, 75), "giallo": (0, 200, 255), "rosso": (40, 40, 220), "grigio": (120, 120, 120),
@@ -123,7 +123,7 @@ def main():
     esercizi = carica_tutti("esercizi")
     tasti = {ord("1"): "QUA-016", ord("2"): "PET-012", ord("3"): "DOR-020"}
     attuale = args.esercizio
-    analizzatore = Analizzatore(esercizi[attuale])
+    analizzatore = crea_analizzatore(esercizi[attuale])
 
     print("Avvio il rilevatore di posa...")
     rilevatore = RilevatorePosa(cfg.get("modello", "full"))
@@ -181,7 +181,7 @@ def main():
             analizzatore.reset()
         if tasto in tasti and tasti[tasto] in esercizi:
             attuale = tasti[tasto]
-            analizzatore = Analizzatore(esercizi[attuale])
+            analizzatore = crea_analizzatore(esercizi[attuale])
         if cv2.getWindowProperty(finestra, cv2.WND_PROP_VISIBLE) < 1:
             break
 

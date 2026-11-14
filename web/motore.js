@@ -70,6 +70,9 @@ const geo = {
 const TIPI_MISURA = new Set(["angolo", "angolo_orientato", "angolo_avanti", "inclinazione", "posizione", "distanza", "durata"]);
 // misure calcolate dal motore a fine ripetizione (in secondi), usabili negli errori con momento "fine"
 const MISURE_TEMPO = new Set(["durata", "discesa", "pausa", "salita"]);
+// "partenza": il valore piu' in alto (braccia/gambe piu' distese) della misura di ripetizione nella sosta prima della
+// ripetizione, per controllare che tra una ripetizione e l'altra si arrivi distesi (usabile negli errori "fine")
+const MISURE_AUTOMATICHE = new Set([...MISURE_TEMPO, "partenza"]);
 const copia = v => v === undefined ? v : JSON.parse(JSON.stringify(v));
 const eOggetto = v => v !== null && typeof v === "object" && !Array.isArray(v);
 
@@ -133,7 +136,7 @@ const analizzabile = cfg => cfg.analizzabilita !== "non_analizzabile" && !!cfg.r
 function valida(cfg) {
   const problemi = [], misure = cfg.misure || {};
   for (const [nome, m] of Object.entries(misure)) if (!TIPI_MISURA.has(m.tipo)) problemi.push(`misura '${nome}': tipo sconosciuto '${m.tipo}'`);
-  const note = new Set([...Object.keys(misure), ...MISURE_TEMPO, ...Object.keys(misure).map(n => n + "_asimmetria")]);
+  const note = new Set([...Object.keys(misure), ...MISURE_AUTOMATICHE, ...Object.keys(misure).map(n => n + "_asimmetria")]);
   for (const [nome, m] of Object.entries(misure)) {
     for (const n of [...(m.punti || []), ...(m.punto ? [m.punto] : []), ...(m.scala || [])])
       if (!puntoNoto(n)) problemi.push(`misura '${nome}': punto sconosciuto '${n}'`);
@@ -230,6 +233,7 @@ class Analizzatore {
     this.estremo = null; this.tEstremo = null; this.invertito = false; this.fineUltimaRip = null;
     this.serie = []; this.tAlto = null; this.tPartenza = null;
     this.tIngresso = null; this.sostaOk = false; this.baseSerie = null; this.piccoRitorno = null;
+    this.piccoPartenza = null;   // valore piu' disteso della misura di ripetizione nella sosta prima della ripetizione
     this.erroriSerie = {}; this.msg = ["", "grigio", 0]; this.errMsg = null; this.ultimaPersona = null;
     this.tDentro = null;   // modalita' isometrica: ultimo istante nella posizione da tenere
     this.tViolazione = {}; // modalita' isometrica: da quando ogni errore "durante" e' violato
@@ -331,7 +335,10 @@ class Analizzatore {
     if (spec.tipo === "distanza") {   // distanza tra due punti in percentuale del segmento "scala"
       const scala = geo.distanza(p(spec.scala[0]), p(spec.scala[1]));
       if (!scala) return null;
-      return 100 * geo.distanza(p(spec.punti[0]), p(spec.punti[1])) / scala;
+      const a = p(spec.punti[0]), b = p(spec.punti[1]);
+      if (spec.asse === "x") return 100 * Math.abs(a[0] - b[0]) / scala;   // solo in orizzontale (es. bilanciere lontano dai piedi)
+      if (spec.asse === "y") return 100 * (b[1] - a[1]) / scala;           // in verticale con il segno: positivo se A sta sopra B
+      return 100 * geo.distanza(a, b) / scala;
     }
     throw new Error("Tipo di misura sconosciuto: " + spec.tipo);
   }
@@ -384,6 +391,7 @@ class Analizzatore {
     if (this.fase === "attesa" || this.fase === "pronto") {
       if (inPosizione) {
         if (this.tIngresso === null) this.tIngresso = t;
+        if (this.piccoPartenza === null || segno * valore > segno * this.piccoPartenza) this.piccoPartenza = valore;
         this.fase = "pronto";
         this.tAlto = t;
         this.sostaOk = t - this.tIngresso >= SOSTA_MINIMA;
@@ -472,6 +480,7 @@ class Analizzatore {
       inizio_t: r3(this.inizioRip), t: r3(t), motivo });
     this.fase = "attesa";
     this.tIngresso = null;
+    this.piccoPartenza = null;
     this.mostra(this.cfg.messaggio_non_chiusa || MESSAGGIO_NON_CHIUSA, "giallo", t);
   }
 
@@ -484,6 +493,8 @@ class Analizzatore {
     this.base = { ...(this.baseSerie || {}) };
     this.storicoPronto = [];
     this.min = { ...misure }; this.max = { ...misure };
+    if (this.piccoPartenza !== null && !this.isometrica()) this.min.partenza = this.max.partenza = this.piccoPartenza;
+    this.piccoPartenza = null;
   }
 
   chiudiRipetizione(t, stato) {
@@ -578,4 +589,77 @@ class Analizzatore {
   }
 }
 
-if (typeof module !== "undefined") module.exports = { durataPrevista, Analizzatore, posaDaMediapipe, geo, violato, soglia, unisci, risolviCatalogo, costruisciCatalogo, completa, valida, applicaImpostazioni };
+// ---------------------------------------------------------------------------
+// Esercizi alternati (lato "alternato"): un analizzatore per lato, ripetizioni sommate (identico a regole.py)
+// ---------------------------------------------------------------------------
+function creaAnalizzatore(cfg, ...kw) {
+  return cfg.lato === "alternato" ? new AnalizzatoreAlternato(cfg, ...kw) : new Analizzatore(cfg, ...kw);
+}
+
+// Destro e sinistro contati ognuno con le proprie regole; le ripetizioni sono numerate in un'unica serie.
+// Gli errori di una ripetizione escono insieme alla ripetizione (con il numero giusto), non prima.
+class AnalizzatoreAlternato {
+  constructor(cfg, ...kw) {
+    this.cfg = cfg;
+    this.lati = Object.fromEntries(LATI.map(l => [l, new Analizzatore({ ...cfg, lato: l }, ...kw)]));
+    this.reset();
+  }
+
+  reset() {
+    for (const a of Object.values(this.lati)) a.reset();
+    this.ripetizioni = 0; this.sospesi = { sx: [], dx: [] }; this.erroriSerie = {};
+  }
+
+  gestisci(l, eventi, out) {
+    for (const ev of eventi) {
+      if (ev.tipo === "errore") this.sospesi[l].push(ev);
+      else if (ev.tipo === "ripetizione") {
+        this.ripetizioni += 1;
+        for (const e of this.sospesi[l]) out.push({ ...e, ripetizione: this.ripetizioni, lato: l });
+        this.sospesi[l] = [];
+        for (const e of ev.errori) this.erroriSerie[e] = (this.erroriSerie[e] || 0) + 1;
+        out.push({ ...ev, numero: this.ripetizioni, lato: l });
+      } else if (ev.tipo === "annullata") {
+        this.sospesi[l] = [];
+        out.push({ ...ev, ripetizione: this.ripetizioni + 1, lato: l });
+      }
+      // "serie" dei singoli lati: la serie comune si chiude quando entrambi hanno chiuso
+    }
+  }
+
+  chiudiSeFinita(out) {
+    if (this.ripetizioni && Object.values(this.lati).every(a => a.ripetizioni === 0 && a.fase !== "movimento")) {
+      out.push({ tipo: "serie", esercizio: this.cfg.id, ripetizioni: this.ripetizioni, errori: { ...this.erroriSerie } });
+      this.ripetizioni = 0; this.erroriSerie = {};
+    }
+  }
+
+  aggiorna(posa, t) {
+    const stati = Object.fromEntries(LATI.map(l => [l, this.lati[l].aggiorna(posa, t)]));
+    const out = [];
+    for (const l of LATI) this.gestisci(l, stati[l].eventi, out);
+    this.chiudiSeFinita(out);
+    // stato mostrato: il messaggio piu' grave dei due lati (a parita', quello in movimento)
+    const ordine = { grigio: 0, verde: 1, giallo: 2, rosso: 3 };
+    const chiave = l => [ordine[stati[l].colore] || 0, stati[l].fase === "movimento" ? 1 : 0, l === "dx" ? 1 : 0];
+    const scelto = LATI.reduce((m, l) => { const a = chiave(l), b = chiave(m);
+      for (let i = 0; i < 3; i++) if (a[i] !== b[i]) return a[i] > b[i] ? l : m; return m; });
+    const st = stati[scelto], fasi = LATI.map(l => stati[l].fase);
+    const misure = {};
+    for (const l of LATI) for (const [k, v] of Object.entries(stati[l].misure)) misure[`${k}_${l}`] = v;
+    return { colore: st.colore, messaggio: st.messaggio, ripetizioni: this.ripetizioni,
+      fase: fasi.includes("movimento") ? "movimento" : fasi.includes("pronto") ? "pronto" : "attesa",
+      lato: "entrambi", misure, eventi: out,
+      punti_usati: [...new Set([...stati.sx.punti_usati, ...stati.dx.punti_usati])].sort(),
+      errore: st.errore ? { ...st.errore, lato: scelto } : null, tenuta_s: 0 };
+  }
+
+  termina(t) {
+    const out = [];
+    for (const l of LATI) this.gestisci(l, this.lati[l].termina(t), out);
+    this.chiudiSeFinita(out);
+    return out;
+  }
+}
+
+if (typeof module !== "undefined") module.exports = { creaAnalizzatore, AnalizzatoreAlternato, durataPrevista, Analizzatore, posaDaMediapipe, geo, violato, soglia, unisci, risolviCatalogo, costruisciCatalogo, completa, valida, applicaImpostazioni };

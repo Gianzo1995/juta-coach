@@ -66,6 +66,16 @@ Ogni voce: `{ "id", "nome"?, "gruppo"?, "scheda", "config_app" }`.
   fotogramma, il conteggio continua). `distanza` con `"rispetto_inizio": true` = variazione rispetto all'inizio della serie
   (come `posizione`), in punti percentuali della scala. Pilota (14/11/2026): testa PET-001 (angolo_orientato anca-spalla-orecchio,
   `ancora` anca), spalle che salgono DOR-004/BIC-002/TRI-022 (orecchio-spalla), polso piegato PET-012/DEA-008 (gomito-polso-indice).
+- `distanza` con `"asse": "x"` = solo distanza orizzontale (es. bilanciere lontano: polso-caviglia in % della coscia, stacchi
+  GLU-011/016/022, FEM-003/004/007/010); `"asse": "y"` = verticale con segno, positivo se il primo punto sta sopra
+  (mento sopra la sbarra: naso-polso, trazioni DOR-048/050/051/052/060/061).
+- Misura automatica `partenza` (errori "fine"): valore più disteso della misura di ripetizione nella sosta prima della
+  ripetizione (controllo in alto, punto C): PET-001 braccia non distese, PET-056/058/059 ritorno incompleto.
+- `lato: "alternato"`: `crea_analizzatore()` / `creaAnalizzatore()` crea un `AnalizzatoreAlternato` (un analizzatore per lato,
+  ripetizioni numerate in un'unica serie, eventi con `lato`; gli errori escono insieme alla ripetizione, quindi la voce arriva
+  a fine ripetizione). Camera di tre quarti. BIC-014, BIC-017, DEA-023, DEA-026 (questi due con scelta "Alternate/Solo destro/Solo sinistro").
+  Usare sempre la funzione crea_analizzatore (app, avvia.py, prove).
+- Braccia troppo basse (misura `braccia` già presente) aggiunto a PET-045/054/062.
   Il naso è unico ma nella posa esiste anche come `naso_sx`/`naso_dx`. Un punto sconosciuto esclude l'esercizio dall'analisi (`valida`).
 - Tipi di misura: `angolo` (3 punti, 0-180), `angolo_orientato` (3 punti: 180 = in linea, meno di 180 = punto
   centrale SOTTO la retta tra gli estremi, più di 180 = SOPRA; per corpi orizzontali/inclinati, es. bacino nei

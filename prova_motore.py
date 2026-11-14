@@ -6,7 +6,7 @@ Uso:  python prova_motore.py
 import math
 from pathlib import Path
 
-from motore.regole import Analizzatore, carica_tutti
+from motore.regole import Analizzatore, carica_tutti, crea_analizzatore
 
 FPS = 30
 
@@ -243,6 +243,53 @@ def posa_appeso(braccio, oscilla=0.0, gomito_lato="sx"):
                                vis_sx=0.95 if gomito_lato == "sx" else 0.4, vis_dx=0.95 if gomito_lato == "dx" else 0.4)
     for n in ("naso", "naso_sx", "naso_dx"):
         posa[n] = (sp[0] + 30, sp[1] - 60, 0.99)
+    return posa
+
+
+def posa_stacco(busto, lontano=0.0):
+    """Stacco rumeno visto di lato (guarda a destra): busto = gradi di inclinazione in avanti,
+    lontano = pixel di cui le mani (e il bilanciere) si allontanano in avanti dalle gambe."""
+    t = math.radians(busto)
+    sp = (540, 500 - 250 * math.cos(t))
+    an = (540 - 250 * math.sin(t), 500)
+    gi = (an[0] + 30, 700)
+    pl = (540 + lontano, sp[1] + 230)
+    posa = punti_entrambi_lati({"spalla": sp, "anca": an, "ginocchio": gi, "caviglia": (500, 900), "polso": pl,
+                                "gomito": (540 + lontano / 2, sp[1] + 115), "tallone": (480, 910), "punta": (560, 915)},
+                               vis_sx=0.95, vis_dx=0.4)
+    for n in ("naso", "naso_sx", "naso_dx"):
+        posa[n] = (sp[0] + 40 * math.cos(t) + 30, sp[1] - 40, 0.99)
+    return posa
+
+
+def posa_trazione(gomito, mento=0.0):
+    """Trazione alla sbarra vista di lato: mani ferme alla sbarra (y=200), gomito = angolo spalla-gomito-polso
+    (180 = appesi, 60 = in alto); mento = pixel di cui il naso sale rispetto alla testa (positivo = piu' in alto)."""
+    d = 2 * 140 * math.sin(math.radians(gomito) / 2)          # distanza spalla-polso
+    h = math.sqrt(max(0.0, 140 ** 2 - (d / 2) ** 2))         # gomito sporge in avanti
+    pl, sp = (500, 200), (500, 200 + d)
+    gm = (500 + h, 200 + d / 2)
+    an = (495, sp[1] + 260)
+    posa = punti_entrambi_lati({"spalla": sp, "gomito": gm, "polso": pl, "anca": an, "ginocchio": (500, an[1] + 200),
+                                "caviglia": (505, an[1] + 400), "tallone": (495, an[1] + 410), "punta": (530, an[1] + 410)},
+                               vis_sx=0.95, vis_dx=0.4)
+    for n in ("naso", "naso_sx", "naso_dx"):
+        posa[n] = (530, sp[1] - 75 - mento, 0.99)
+    return posa
+
+
+def posa_curl_alterno(gomito_sx, gomito_dx):
+    """Curl alternato con la camera di tre quarti: entrambe le braccia visibili, ognuna con il suo angolo."""
+    posa = {}
+    for l, gom, x0 in (("sx", gomito_sx, 460), ("dx", gomito_dx, 560)):
+        sp, gm = (x0, 300), (x0, 450)
+        d = ruota((0, 1), -(180 - gom))
+        pts = {"spalla": sp, "gomito": gm, "polso": (gm[0] + 140 * d[0], gm[1] + 140 * d[1]), "anca": (x0, 560),
+               "ginocchio": (x0 + 5, 760), "caviglia": (x0, 950), "tallone": (x0 - 20, 960), "punta": (x0 + 60, 965)}
+        for n, (x, y) in pts.items():
+            posa[f"{n}_{l}"] = (x, y, 0.9)
+    for n in ("naso", "naso_sx", "naso_dx"):
+        posa[n] = (530, 230, 0.99)
     return posa
 
 
@@ -554,6 +601,35 @@ def main():
     risultati.append(verifica("Panca PET-012: polso piegato (gomito-polso-indice)",
                               esegui(Analizzatore(es["PET-012"]), frames), [[], ["polso_piegato"], []]))
 
+    # CONTROLLI INDIRETTI: bilanciere vicino alle gambe, mento sopra la sbarra, distesi in alto, esercizi alternati
+    st = lambda b, lontano=0: posa_stacco(b, lontano=0.3 + lontano)
+    frames = [posa_stacco(0.3)] * FPS + ripetizione(st, 0.3, 75.3, secondi=4.0)
+    frames += ripetizione(st, 0.3, 75.3, secondi=4.0, lontano=50)
+    risultati.append(verifica("Stacco rumeno FEM-003: bilanciere lontano (polso-caviglia in orizzontale)",
+                              esegui(Analizzatore(es["FEM-003"]), frames), [[], ["bilanciere_lontano"]]))
+    tr = lambda g, mento=0: posa_trazione(g, mento=-40 + mento)
+    frames = [posa_trazione(175.3, mento=-40)] * FPS + ripetizione(tr, 175.3, 60.2, secondi=5.0, mento=150)
+    frames += ripetizione(tr, 175.3, 60.2, secondi=5.0)
+    risultati.append(verifica("Trazioni DOR-051: mento sotto la sbarra (naso rispetto ai polsi)",
+                              esegui(Analizzatore(es["DOR-051"]), frames), [[], ["mento_basso"]]))
+    pp = lambda g, **kw: posa_piegamento(g, **kw)
+    frames = [pp(165.2)] * FPS + ripetizione(pp, 165.2, 80.2, secondi=3.0) + ripetizione(pp, 175.3, 80.2, secondi=3.0)
+    risultati.append(verifica("Piegamenti PET-001: braccia non distese in alto (misura 'partenza')",
+                              esegui(Analizzatore(es["PET-001"]), frames), [["braccia_non_distese"], []]))
+    alt = lambda s_, d_: posa_curl_alterno(s_, d_)
+    frames = [alt(165.3, 165.3)] * FPS
+    frames += ripetizione(lambda g: alt(g, 165.3), 165.3, 50.2, secondi=3.0)
+    frames += ripetizione(lambda g: alt(165.3, g), 165.3, 50.2, secondi=3.0)
+    frames += ripetizione(lambda g: alt(g, 165.3), 165.3, 90.2, secondi=3.0)
+    frames += ripetizione(lambda g: alt(165.3, g), 165.3, 50.2, secondi=3.0)
+    ev = esegui(crea_analizzatore(es["BIC-014"]), frames)
+    risultati.append(verifica("Curl alternato BIC-014: destro e sinistro sommati", ev, [[], [], ["ampiezza"], []]))
+    lati_rip = [e["lato"] for e in ev if e["tipo"] == "ripetizione"]
+    err = [e for e in ev if e["tipo"] == "errore"]
+    ok = lati_rip == ["sx", "dx", "sx", "dx"] and [e["ripetizione"] for e in err] == [3]
+    risultati.append(ok)
+    print(f"{'OK ' if ok else 'ERRORE'}  BIC-014: lati {lati_rip}, errori sulla ripetizione {[e['ripetizione'] for e in err]}")
+
     # Ogni esercizio analizzabile deve girare senza bloccarsi su una posa completa (tutti i punti, naso con lato)
     from motore.regole import applica_impostazioni
     bloccati = []
@@ -561,7 +637,7 @@ def main():
         for imp in cfg.get("impostazioni") or []:
             cfg = applica_impostazioni(cfg, imp["opzioni"][0]["imposta"])
         try:
-            a = Analizzatore(cfg)
+            a = crea_analizzatore(cfg)
             for k, f in enumerate(ripetizione(posa_squat, 175, 90, secondi=1.0)):
                 f = dict(f, naso=(500, 100, 0.99), naso_sx=(500, 100, 0.99), naso_dx=(500, 100, 0.99))
                 f.update({f"punta_piede_{l}": f[f"punta_{l}"] for l in ("sx", "dx")})

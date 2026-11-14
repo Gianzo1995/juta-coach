@@ -14,7 +14,7 @@ RADICE = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(RADICE))
 
 import prova_motore as pm  # noqa: E402
-from motore.regole import Analizzatore, carica_tutti  # noqa: E402
+from motore.regole import carica_tutti, crea_analizzatore  # noqa: E402
 
 FPS = 30
 R = pm.ripetizione
@@ -90,6 +90,17 @@ def casi():
                    + R(lambda g, spalle=0: pm.posa_braccio(g, spalle=0.2 + spalle), 165.3, 50.2, secondi=3.0, spalle=30.3),
         "PET-012#polso": [pb(170, polso=0.3)] * FPS + R(lambda g, polso=0: pb(g, polso=0.3 + polso), 170, 80, secondi=3.0)
                    + R(lambda g, polso=0: pb(g, polso=0.3 + polso), 170, 80, secondi=3.0, polso=50.3),
+        # controlli indiretti: distanza orizzontale/verticale, misura "partenza", esercizio alternato
+        "FEM-003": [pm.posa_stacco(0.3)] * FPS + R(lambda b, lontano=0: pm.posa_stacco(b, lontano=0.3 + lontano), 0.3, 75.3, secondi=4.0)
+                   + R(lambda b, lontano=0: pm.posa_stacco(b, lontano=0.3 + lontano), 0.3, 75.3, secondi=4.0, lontano=50.4),
+        "DOR-051": [pm.posa_trazione(175.3, mento=-40)] * FPS
+                   + R(lambda g, mento=0: pm.posa_trazione(g, mento=-40 + mento), 175.3, 60.2, secondi=5.0, mento=150.3)
+                   + R(lambda g, mento=0: pm.posa_trazione(g, mento=-40 + mento), 175.3, 60.2, secondi=5.0),
+        "PET-001#partenza": [pp(165.2)] * FPS + R(pp, 165.2, 80.2, secondi=3.0) + R(pp, 175.3, 80.2, secondi=3.0),
+        "BIC-014": [pm.posa_curl_alterno(165.3, 165.3)] * FPS
+                   + R(lambda g: pm.posa_curl_alterno(g, 165.3), 165.3, 50.2, secondi=3.0)
+                   + R(lambda g: pm.posa_curl_alterno(165.3, g), 165.3, 50.2, secondi=3.0)
+                   + R(lambda g: pm.posa_curl_alterno(g, 165.3), 165.3, 90.2, secondi=3.0),
         "BIC-020": [pm.posa_braccio(165.3)] * FPS + pm.ripetizione_fasi(pm.posa_braccio, 165.3, 50.2, 1, 1, 2)
                    + pm.ripetizione_fasi(pm.posa_braccio, 165.3, 80.4, 1, 1, 2),
         "PET-002": [pp(175)] * FPS + R(pp, 175, 80, secondi=3.0) + R(pp, 175, 80, secondi=3.0, abbassa_bacino=70),
@@ -103,7 +114,7 @@ def main():
     risultati = {}
     c = casi()
     for k, frames in c.items():
-        a, ev, t = Analizzatore(es[k.split("#")[0]]), [], 0.0   # "ID#nome": piu' casi sullo stesso esercizio
+        a, ev, t = crea_analizzatore(es[k.split("#")[0]]), [], 0.0   # "ID#nome": piu' casi sullo stesso esercizio
         for p in frames:
             ev += a.aggiorna(p, t).eventi
             t += 1 / FPS
