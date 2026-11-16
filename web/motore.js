@@ -127,7 +127,8 @@ function durataPrevista(tempo) {
 }
 function durataMassimaDaScheda(cfg, scheda) {
   const prevista = durataPrevista(scheda?.tempo);
-  if (prevista && cfg.ripetizione && cfg.ripetizione.durata_massima === undefined)
+  // in modalita' balistica la finestra resta fissa (3 s), qualunque sia il tempo della scheda
+  if (prevista && cfg.ripetizione && cfg.ripetizione.durata_massima === undefined && cfg.modalita !== "balistica")
     cfg.ripetizione.durata_massima = Math.max(6, Math.round(3 * prevista * 100) / 100);
   return cfg;
 }

@@ -38,6 +38,21 @@ def pulisci(cartella):
     cartella.mkdir(parents=True)
 
 
+FONTI = [("Barlow", 400, "barlow-latin-400-normal"), ("Barlow", 500, "barlow-latin-500-normal"),
+         ("Barlow", 600, "barlow-latin-600-normal"), ("Barlow Condensed", 600, "barlow-condensed-latin-600-normal"),
+         ("Barlow Condensed", 700, "barlow-condensed-latin-700-normal")]
+
+
+def fonti_incorporate():
+    """@font-face con i caratteri dentro la pagina: nessuna richiesta esterna per i font."""
+    righe = []
+    for famiglia, peso, file in FONTI:
+        b64 = base64.b64encode((QUI / "fonti" / f"{file}.woff2").read_bytes()).decode()
+        righe.append(f'@font-face{{font-family:"{famiglia}";font-weight:{peso};font-style:normal;font-display:swap;'
+                     f'src:url(data:font/woff2;base64,{b64}) format("woff2")}}')
+    return "\n".join(righe)
+
+
 def copia_vendor(dest, con_modello):
     shutil.copy(VENDOR / "vision_bundle.mjs", dest)
     shutil.copytree(VENDOR / "wasm", dest / "wasm")
@@ -51,7 +66,8 @@ def main():
     catalogo = "const CATALOGO_GREZZO = " + json.dumps(voci, ensure_ascii=False) + ";"
     app = (QUI / "app.html").read_text(encoding="utf-8")
     motore = (QUI / "motore.js").read_text(encoding="utf-8")
-    corpo = app.replace("/*__CATALOGO__*/", catalogo).replace("/*__MOTORE__*/", motore)
+    corpo = (app.replace("/*__CATALOGO__*/", catalogo).replace("/*__MOTORE__*/", motore)
+             .replace("/*__FONTI__*/", fonti_incorporate()))
 
     # --- versione online ---
     sito = RADICE / "sito"

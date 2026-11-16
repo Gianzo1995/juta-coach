@@ -144,7 +144,8 @@ def durata_prevista(tempo):
 def durata_massima_da_scheda(cfg, scheda):
     """Finestra massima di una ripetizione: 3 volte la durata prevista dal tempo (minimo 6 s)."""
     prevista = durata_prevista((scheda or {}).get("tempo"))
-    if prevista and cfg.get("ripetizione") and "durata_massima" not in cfg["ripetizione"]:
+    # in modalita' balistica la finestra resta fissa (3 s in completa), qualunque sia il tempo della scheda
+    if prevista and cfg.get("ripetizione") and "durata_massima" not in cfg["ripetizione"] and cfg.get("modalita") != "balistica":
         cfg["ripetizione"]["durata_massima"] = max(6.0, round(3 * prevista, 2))
     return cfg
 

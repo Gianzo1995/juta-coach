@@ -1,8 +1,8 @@
 <title>Juta Coach</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Barlow:wght@400;500;600&display=swap">
 <style>
+/* Caratteri Barlow incorporati da costruisci.py (web/fonti/, licenza OFL): nessuna richiesta a Google (GDPR) */
+/*__FONTI__*/
 /* Layout: tre viste a tutta altezza — inizio, sessione (banda di stato, video sopra e manichino sotto, comandi),
    revisione (video + manichino, linea del tempo, scheda dell'errore). Un solo aspetto scuro, scelto per la sala. */
 :root {
@@ -324,7 +324,9 @@ function testoMisura(es, misura, v) {
 }
 // "punto piu' basso" vale per squat e panca; nei movimenti che aumentano (es. pullover) e' il punto di massima ampiezza
 const puntoEstremo = es => ESERCIZI[es]?.ripetizione?.direzione === "aumenta" ? "nel punto di massima ampiezza" : "al punto più basso";
-const testoTempo = (es, e) => `${nomeMisura(e.misura)} ${testoMisura(es, e.misura, e.valore)} · minimo ${testoSoglia(es, e.misura, e.soglia)}`;
+// la soglia e' un massimo se l'errore scatta quando la misura la supera (maggiore_di), altrimenti un minimo
+const testoTempo = (es, e) => `${nomeMisura(e.misura)} ${testoMisura(es, e.misura, e.valore)} · ${
+  erroreCfg(es, e.id)?.maggiore_di !== undefined ? "massimo" : "minimo"} ${testoSoglia(es, e.misura, e.soglia)}`;
 const testoFasi = f => f && f.discesa !== undefined ? `discesa ${virgola(f.discesa, 1)} s · fermo ${virgola(f.pausa, 1)} s · salita ${virgola(f.salita, 1)} s` : "";
 const testoSoglia = (es, misura, s) => { const t = tipoMisura(es, misura);
   return t === "durata" ? `${virgola(s, 1)} s` : t === "distanza" ? `${Math.round(s)}%` : `${Math.round(s)}°`; };
@@ -613,8 +615,12 @@ function posaAl(t) {
   return best;
 }
 
+// in un video caricato possono esserci piu' serie: il motore riparte da 1, quindi ogni evento porta il numero della serie
+const stessaRip = (e, numero, serie) => e.ripetizione === numero && (e.serie || 0) === (serie || 0);
+
 function gestisciEvento(ev) {
   const s = sessione, off = s.offset;
+  ev = { ...ev, serie: s.nSerie || 0 };
   if (ev.tipo === "errore") {
     const e = { ...ev, tv: ev.t - off, tvFoto: ev.t_origine - off };
     s.eventi.push(e);
@@ -633,7 +639,7 @@ function gestisciEvento(ev) {
     s.eventi.push({ ...ev, tv0: ev.inizio_t - off, tvF: ev.fine_t - off, tvB: ev.fondo_t - off });
     perf.fasi = ev.fasi;
     for (const e of s.eventi) {          // errori di fine ripetizione: il momento giusto è il punto più basso
-      if (e.tipo === "errore" && e.ripetizione === ev.numero && !e.anticipato && e.misura !== "durata"
+      if (e.tipo === "errore" && stessaRip(e, ev.numero, ev.serie) && !e.anticipato && e.misura !== "durata"
           && erroreCfg(e.esercizio, e.id).momento === "fine") e.tvFoto = ev.fondo_t - off;
     }
     for (const [id, e] of Object.entries(rivediDopoErrore)) {
@@ -642,15 +648,17 @@ function gestisciEvento(ev) {
     }
     rivediDopoErrore = {};
     for (const err of ESERCIZI[ev.esercizio].errori) ripetuti[err.id] = ev.errori.includes(err.id) ? (ripetuti[err.id] || 0) + 1 : 0;
-    if (!ev.errori.length) parla(String(ev.numero));
+    // tenuta: si dicono i secondi tenuti; ripetizione: il numero
+    if (!ev.errori.length) parla(ev.tenuta ? `${Math.round(ev.durata_s)} secondi` : String(ev.numero));
     $("riepilogo").hidden = true;
   }
   if (ev.tipo === "annullata") {         // finestra fantasma o ripetizione non chiusa: niente ripetizione, niente errori
-    s.eventi = s.eventi.filter(e => !(e.tipo === "errore" && e.ripetizione === ev.ripetizione && e.t >= ev.inizio_t - 0.01));
+    s.eventi = s.eventi.filter(e => !(e.tipo === "errore" && stessaRip(e, ev.ripetizione, ev.serie) && e.t >= ev.inizio_t - 0.01));
     rivediDopoErrore = {}; fermo = null;
     parla(ESERCIZI[ev.esercizio].messaggio_non_chiusa || "Ripetizione non contata: torna fino alla posizione di partenza", true);
   }
   if (ev.tipo === "serie" && modo === "live") chiudiSerieLive();
+  else if (ev.tipo === "serie") s.nSerie = (s.nSerie || 0) + 1;   // video: le serie successive restano nella stessa revisione
 }
 
 function chiudiSerieLive() {
@@ -1133,8 +1141,9 @@ async function apriRevisione(s, primoErrore) {
   orologio.pausa(); orologio.velocita(orologio.rate);
 
   rv.rip = s.eventi.filter(e => e.tipo === "ripetizione");
-  const finali = new Map(rv.rip.map(r => [r.numero, new Set(r.errori)]));
-  rv.marcatori = s.eventi.filter(e => e.tipo === "errore" && finali.get(e.ripetizione)?.has(e.id))
+  const chiave = (n, serie) => `${serie || 0}:${n}`;
+  const finali = new Map(rv.rip.map(r => [chiave(r.numero, r.serie), new Set(r.errori)]));
+  rv.marcatori = s.eventi.filter(e => e.tipo === "errore" && finali.get(chiave(e.ripetizione, e.serie))?.has(e.id))
     .map(e => momentoPeggiore(s, e)).sort((a, b) => a.tv - b.tv);
 
   const r = riassunto(s);
@@ -1170,7 +1179,7 @@ function misuraDaPosa(es, nome, posa, lato) {
 }
 function momentoPeggiore(s, e) {
   const m = { ev: { ...e }, tv: Math.max(0, e.tvFoto) };
-  const cfg = erroreCfg(e.esercizio, e.id), rip = s.eventi.find(r => r.tipo === "ripetizione" && r.numero === e.ripetizione);
+  const cfg = erroreCfg(e.esercizio, e.id), rip = s.eventi.find(r => r.tipo === "ripetizione" && r.numero === e.ripetizione && (r.serie || 0) === (e.serie || 0));
   if (cfg.momento !== "durante" || !rip) return m;
   const fonte = cfg.maggiore_di !== undefined ? rip.massimi : rip.minimi;
   if (fonte?.[e.misura] !== undefined) m.ev.peggiore = fonte[e.misura];
@@ -1209,9 +1218,12 @@ function costruisciLinea() {
   });
 }
 
+const ripDi = ev => rv.rip.find(r => r.numero === ev.ripetizione && (r.serie || 0) === (ev.serie || 0));
+
 function seleziona(i) {
-  rv.sel = i; rv.ia = null;
   const m = rv.marcatori[i];
+  if (!m) return;                     // nessun errore da mostrare
+  rv.sel = i; rv.ia = null;
   orologio.pausa(); orologio.vai(m.tv);
   document.querySelectorAll(".segno").forEach((b, k) => b.setAttribute("aria-current", String(k === i)));
   mostraSchedaErrore(m);
@@ -1260,7 +1272,7 @@ function mostraSchedaErrore(m) {
   ascolta.onclick = () => parla(`${cfg.messaggio}. ${compila(sp.cosa, ev)} ${sp.perche} ${come.join(" ")}`, true);
   $("scheda").replaceChildren(chips, el("h2", { textContent: cfg.messaggio }),
     voceScheda("Cosa è successo", el("div", { className: "misurati" }, el("p", { textContent: compila(sp.cosa, ev) }), el("p", { className: "misurato", textContent: testoMisurato(ev) }),
-      ...(testoFasi(rv.rip.find(r => r.numero === ev.ripetizione)?.fasi) ? [el("p", { className: "misurato", textContent: "Tempi: " + testoFasi(rv.rip.find(r => r.numero === ev.ripetizione).fasi) })] : []))),
+      ...(testoFasi(ripDi(ev)?.fasi) ? [el("p", { className: "misurato", textContent: "Tempi: " + testoFasi(ripDi(ev).fasi) })] : []))),
     voceScheda("Perché conta", el("p", { textContent: sp.perche })),
     voceScheda("Come correggerlo", lista),
     el("p", { className: "cue", textContent: `«${sp.cue}»` }),
@@ -1279,7 +1291,7 @@ function mostraSchedaSerie() {
          el("div", {}, el("b", { textContent: r.corrette }), el("span", { textContent: "corrette" }))]),
     el("div", {}, el("b", { textContent: rv.marcatori.length }), el("span", { textContent: "errori" })));
   const figli = [el("h2", { textContent: r.top ? "Com'è andata la serie" : "Serie pulita" }), numeri];
-  if (r.top) {
+  if (r.top && rv.marcatori.length) {
     const vai = el("button", { className: "btn primario", textContent: "Vai al primo errore" });
     vai.onclick = () => seleziona(0);
     figli.push(el("p", { textContent: `Errore più frequente: ${erroreCfg(rv.s.esercizio, r.top[0]).messaggio} (${r.top[1]} volt${r.top[1] === 1 ? "a" : "e"}). Tocca un segno colorato sulla linea del tempo per vedere l'errore sul manichino.` }),

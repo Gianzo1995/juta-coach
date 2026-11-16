@@ -152,6 +152,18 @@ Ogni voce: `{ "id", "nome"?, "gruppo"?, "scheda", "config_app" }`.
   `durata_massima` (3 × durata prevista da `scheda.tempo`, minimo 6 s) viene scartata; se dopo l'inversione si
   torna indietro di oltre 12° senza arrivare alla partenza → "ripetizione non chiusa".
 
+## Revisione indipendente (11/11/2026) e correzioni (16/11/2026)
+
+- Corretti: misura `posizione` (spostamento dalla partenza ÷ segmento misurato alla partenza: prima il tremolio della posa
+  dava falsi "Talloni a terra"/"Glutei staccati"/"Petto staccato" in 55 esercizi); esitazione in discesa (risalita sotto
+  1/3 del movimento e poi di nuovo giù = ripensamento, la ripetizione continua: `FRAZIONE_RIPENSAMENTO`); video con più
+  serie (gli eventi in app portano `serie`); etichetta massimo/minimo in revisione; caratteri Barlow incorporati da
+  `web/fonti/` (licenza OFL, nessuna richiesta a Google); voce "N secondi" a fine tenuta; finestra fissa 3 s nei balistici.
+- Restano aperti (minori): "Scendi di più" detto a voce durante un'esitazione (la revisione poi lo toglie); appesi alla
+  sbarra (AVA-001/002/003) che possono partire stando in piedi a braccia alzate e front lever (DOR-064) da sdraiati a terra:
+  da verificare in sala; smoothing condiviso tra i lati al cambio di lato automatico; `prove/parita.py` confronta solo
+  una parte dei campi; versione PC: modello "latest" senza versione fissa e scelte prima della serie non applicate.
+
 ## Decisioni già prese
 
 - Uso anonimo per ora (nessun riconoscimento del cliente). Notifiche all'istruttore rimandate.
@@ -195,7 +207,7 @@ Ogni voce: `{ "id", "nome"?, "gruppo"?, "scheda", "config_app" }`.
   avvisi rossi su GLU-020 e QUA-015. Il prefisso ADD ora è Adduttori: il futuro catalogo addome deve usare un altro prefisso. Ultimi file ricevuti da Gianluca: `NOTE_PER_IL_MOTORE.md`
   (versione con le braccia, regole §1-§7) e i cinque cataloghi.
 - **Dove la usa**: dal telefono in Safari (sito GitHub Pages, ha la modalità live) e dentro l'app Claude
-  (artifact privato https://claude.ai/artifact/WVtohRo9gD7CcymYtvYsqS, solo video caricato; i video scelti su iPhone
+  (artifact privato "Juta Coach" tra gli artifact di Gianluca (link non scritto qui: il repository è pubblico), solo video caricato; i video scelti su iPhone
   vengono compressi da iOS, per questo per la qualità migliore va usata la versione Safari).
 - **Pubblicare l'artifact**: dopo `python web/costruisci.py`, ripubblicare `sito_claude/artifact.html` sullo stesso URL
   (capacità `sample` per "Spiegamelo meglio"; il modello è in `sito_claude/modello.js`, già caricato: ripassarlo solo se cambia).
