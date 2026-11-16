@@ -27,6 +27,7 @@ const GRAVITA = { verde: 0, giallo: 1, rosso: 2 };
 const ISTERESI_INVERSIONE = 5;
 const SOSTA_MINIMA = 0.5;        // secondi fermi in partenza prima della PRIMA ripetizione della serie
 const RITORNO_INDIETRO = 12;     // gradi: tornare verso l'estremo dopo l'inversione = ripetizione non chiusa
+const FRAZIONE_RIPENSAMENTO = 1 / 3;  // risalita sotto questa parte del movimento e poi di nuovo giu': ripensamento
 const USCITA_TENUTA = 1;         // secondi fuori dalla posizione prima di chiudere una tenuta (modalita' isometrica)
 const MESSAGGIO_TENUTA = "Tieni la posizione";
 const PERSISTENZA_TENUTA = 1;    // nelle tenute un errore "durante" conta solo se dura almeno questi secondi di fila
@@ -328,10 +329,8 @@ class Analizzatore {
       return geo.angoloAvanti(p(a), p(b), p(c), this.verso[l] ?? 1);
     }
     if (spec.tipo === "inclinazione") return geo.inclinazione(p(spec.punti[0]), p(spec.punti[1]));
-    if (spec.tipo === "posizione") {
-      const scala = geo.distanza(p(spec.scala[0]), p(spec.scala[1])) || 1;
-      return -p(spec.punto)[1] / scala;
-    }
+    // altezza del punto in pixel (verso l'alto): la scala si applica dopo, fissata a inizio serie
+    if (spec.tipo === "posizione") return -p(spec.punto)[1];
     if (spec.tipo === "distanza") {   // distanza tra due punti in percentuale del segmento "scala"
       const scala = geo.distanza(p(spec.scala[0]), p(spec.scala[1]));
       if (!scala) return null;
@@ -343,13 +342,19 @@ class Analizzatore {
     throw new Error("Tipo di misura sconosciuto: " + spec.tipo);
   }
 
+  // lunghezza media del segmento "scala" di una misura posizione (sui lati analizzati). Identica a regole.py
+  scalaPosizione(spec, posa, lati) {
+    const v = lati.map(l => geo.distanza(posa[nomePunto(spec.scala[0], l)], posa[nomePunto(spec.scala[1], l)]));
+    return v.reduce((a, b) => a + b, 0) / v.length;
+  }
+
   calcolaMisure(posa, lato) {
     const misure = {};
     for (const [nome, spec] of Object.entries(this.cfg.misure)) {
       if (spec.tipo === "durata") continue;
       if (spec.facoltativa && !this.visibile(spec, posa, lato === "entrambi" ? LATI : [lato])) {
         // non si vede: la misura salta in questo fotogramma (e il filtro riparte da capo)
-        delete this.lisciate[nome]; delete this.lisciate[`${nome}_asimmetria`];
+        delete this.lisciate[nome]; delete this.lisciate[`${nome}_asimmetria`]; delete this.lisciate[`${nome}__scala`];
         continue;
       }
       let valore;
@@ -363,7 +368,14 @@ class Analizzatore {
         if (valore === null) continue;
       }
       misure[nome] = this.liscia(nome, valore);
-      if (spec.tipo === "posizione" || spec.rispetto_inizio) {
+      if (spec.tipo === "posizione") {
+        // spostamento dalla partenza diviso per il segmento misurato alla partenza (vedi regole.py)
+        this.liscia(`${nome}__scala`, this.scalaPosizione(spec, posa, lato === "entrambi" ? LATI : [lato]));
+        const base = this.base[nome], baseScala = this.base[`${nome}__scala`];
+        misure[nome] = base === undefined || !baseScala ? 0 : (misure[nome] - base) / baseScala;
+        this.grezze[nome] = this.lisciate[nome];
+        this.grezze[`${nome}__scala`] = this.lisciate[`${nome}__scala`];
+      } else if (spec.rispetto_inizio) {
         const base = this.base[nome];
         misure[nome] = base === undefined ? 0 : misure[nome] - base;
         this.grezze[nome] = this.lisciate[nome];
@@ -417,10 +429,20 @@ class Analizzatore {
       this.controllaErrori("inversione", null, t, stato, this.ripetizioni + 1);
     } else if (this.invertito) {
       if (segno * valore > segno * this.piccoRitorno) this.piccoRitorno = valore;
-      else if (segno * (this.piccoRitorno - valore) > RITORNO_INDIETRO && !inPosizione) return this.annullaRipetizione(t, stato, "non_chiusa");
+      else if (segno * (this.piccoRitorno - valore) > RITORNO_INDIETRO && !inPosizione) {
+        // ripensamento (risaliti di poco e poi di nuovo giu'): la ripetizione continua; altrimenti non chiusa
+        if (this.risalitaBreve(rip)) { this.invertito = false; this.piccoRitorno = null; }
+        else return this.annullaRipetizione(t, stato, "non_chiusa");
+      }
     }
     if (inPosizione) this.chiudiRipetizione(t, stato);
     else if (t - this.inizioRip > rip.durata_massima) this.annullaRipetizione(t, stato, "troppo_lunga");
+  }
+
+  // true se dopo l'inversione si e' risaliti per meno di un terzo del movimento fatto finora. Identica a regole.py
+  risalitaBreve(rip) {
+    const segno = this.segno(), partenza = this.min.partenza ?? rip.posizione_iniziale;   // valore piu' disteso prima
+    return segno * (this.piccoRitorno - this.estremo) < FRAZIONE_RIPENSAMENTO * segno * (partenza - this.estremo);
   }
 
   // Modalita' isometrica: una "ripetizione" e' una tenuta (cronometro al posto del conteggio). Identica a regole.py

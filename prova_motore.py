@@ -694,6 +694,33 @@ def main():
     risultati.append(verifica("Squat QUA-016 di fronte (ginocchia dentro, spalla destra bassa)",
                               esegui(Analizzatore(fronte), frames), [[], ["ginocchia_dentro"], ["spalla_destra_bassa"]]))
 
+    # Tremolio della posa (revisione 11/11/2026): 10 squat corretti con rumore di 3 px sui punti, talloni fermi
+    import random
+    rng = random.Random(7)
+    trema = lambda p: {k: (v[0] + rng.gauss(0, 3), v[1] + rng.gauss(0, 3), v[2]) for k, v in p.items()}
+    sq = lambda k, **kw: posa_squat(k)
+    fr = [sq(175)] * FPS
+    for _ in range(10):
+        fr += ripetizione_fasi(sq, 175, 80.3, 2, 1, 1) + [sq(175)] * FPS
+    ev = esegui(Analizzatore(es["QUA-016"]), [trema(f) for f in fr])
+    n_rip = sum(e["tipo"] == "ripetizione" for e in ev)
+    falsi = [e["id"] for e in ev if e["tipo"] == "errore"]
+    ok = n_rip == 10 and "talloni" not in falsi
+    risultati.append(ok)
+    print(f"{'OK ' if ok else 'ERRORE'}  Squat con tremolio della posa: {n_rip} ripetizioni su 10, errori {falsi or 'nessuno'}")
+
+    # Esitazione in discesa: ci si ferma, si risale di poco e si scende fino in fondo -> ripetizione contata, nessun errore
+    lin = lambda a, b, sec: [sq(a + (b - a) * i / int(sec * FPS)) for i in range(int(sec * FPS))]
+    fr = ([sq(175)] * FPS + lin(175, 130.3, 1) + lin(130.3, 138.4, 0.3) + lin(138.4, 80.3, 1) + [sq(80.3)] * 15
+          + lin(80.3, 175, 1.2) + [sq(175)] * FPS)
+    risultati.append(verifica("Squat con esitazione in discesa", esegui(Analizzatore(es["QUA-016"]), fr), [[]]))
+    fr = ([sq(175)] * FPS + lin(175, 90.3, 1) + lin(90.3, 140.4, 0.8) + lin(140.4, 90.3, 0.8) + lin(90.3, 175, 1)
+          + [sq(175)] * FPS)
+    ev = esegui(Analizzatore(es["QUA-016"]), fr)
+    ok = [e["motivo"] for e in ev if e["tipo"] == "annullata"] == ["non_chiusa"] and not any(e["tipo"] == "ripetizione" for e in ev)
+    risultati.append(ok)
+    print(f"{'OK ' if ok else 'ERRORE'}  Squat risalito a meta' e ridisceso: ripetizione non contata")
+
     # Ogni esercizio analizzabile deve girare senza bloccarsi su una posa completa (tutti i punti, naso con lato)
     bloccati = []
     for i, cfg in es.items():

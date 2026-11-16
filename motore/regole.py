@@ -23,6 +23,7 @@ GRAVITA = {"verde": 0, "giallo": 1, "rosso": 2}
 ISTERESI_INVERSIONE = 5.0
 SOSTA_MINIMA = 0.5          # secondi fermi nella posizione di partenza prima della PRIMA ripetizione della serie
 RITORNO_INDIETRO = 12.0     # gradi: se dopo l'inversione si torna verso l'estremo, la ripetizione non e' stata chiusa
+FRAZIONE_RIPENSAMENTO = 1 / 3  # risalita sotto questa parte del movimento e poi di nuovo giu': ripensamento, non ripetizione nuova
 USCITA_TENUTA = 1.0         # secondi fuori dalla posizione prima di chiudere una tenuta (modalita' isometrica)
 MESSAGGIO_TENUTA = "Tieni la posizione"
 PERSISTENZA_TENUTA = 1.0    # nelle tenute un errore "durante" conta solo se dura almeno questi secondi di fila
@@ -433,9 +434,8 @@ class Analizzatore:
             basso, alto = spec["punti"]
             return geometria.inclinazione(p(basso), p(alto))
         if tipo == "posizione":
-            s1, s2 = spec["scala"]
-            scala = geometria.distanza(p(s1), p(s2)) or 1.0
-            return -p(spec["punto"])[1] / scala
+            # altezza del punto in pixel (verso l'alto): la scala si applica dopo, fissata a inizio serie
+            return -p(spec["punto"])[1]
         if tipo == "distanza":
             # distanza tra due punti in percentuale del segmento "scala" (100 = lunga quanto il segmento)
             scala = geometria.distanza(p(spec["scala"][0]), p(spec["scala"][1]))
@@ -448,6 +448,14 @@ class Analizzatore:
                 return 100.0 * (p(b)[1] - p(a)[1]) / scala
             return 100.0 * geometria.distanza(p(a), p(b)) / scala
         raise ValueError(f"Tipo di misura sconosciuto: {tipo}")
+
+    def _scala_posizione(self, spec, posa, lati):
+        """Lunghezza media del segmento "scala" di una misura posizione (sui lati analizzati)."""
+        valori = []
+        for l in lati:
+            a, b = (posa[n if con_lato(n) else f"{n}_{l}"][:2] for n in spec["scala"])
+            valori.append(geometria.distanza(a, b))
+        return sum(valori) / len(valori)
 
     def _visibile(self, spec, posa, lati):
         """Misura facoltativa: tutti i suoi punti devono esserci ed essere visibili."""
@@ -467,6 +475,7 @@ class Analizzatore:
                 # non si vede: la misura salta in questo fotogramma (e il filtro riparte da capo)
                 self._lisciate.pop(nome, None)
                 self._lisciate.pop(f"{nome}_asimmetria", None)
+                self._lisciate.pop(f"{nome}__scala", None)
                 continue
             if lato == "entrambi":
                 valori = [self._misura_su_lato(spec, posa, l) for l in LATI]
@@ -480,7 +489,15 @@ class Analizzatore:
                 if valore is None:
                     continue
             misure[nome] = self._liscia(nome, valore)
-            if spec["tipo"] == "posizione" or spec.get("rispetto_inizio"):
+            if spec["tipo"] == "posizione":
+                # spostamento dalla partenza diviso per il segmento misurato alla partenza: il tremolio della
+                # lunghezza stimata del segmento non si moltiplica piu' per l'altezza assoluta del punto
+                self._liscia(f"{nome}__scala", self._scala_posizione(spec, posa, LATI if lato == "entrambi" else (lato,)))
+                base, base_scala = self._base.get(nome), self._base.get(f"{nome}__scala")
+                misure[nome] = 0.0 if base is None or not base_scala else (misure[nome] - base) / base_scala
+                self._grezze[nome] = self._lisciate[nome]
+                self._grezze[f"{nome}__scala"] = self._lisciate[f"{nome}__scala"]
+            elif spec.get("rispetto_inizio"):
                 base = self._base.get(nome)
                 misure[nome] = 0.0 if base is None else misure[nome] - base
                 self._grezze[nome] = self._lisciate[nome]
@@ -545,12 +562,26 @@ class Analizzatore:
                 self._picco_ritorno = valore
             elif segno * (self._picco_ritorno - valore) > RITORNO_INDIETRO and not in_posizione:
                 # si torna verso l'estremo senza essere arrivati alla posizione di partenza
-                return self._annulla_ripetizione(t, stato, "non_chiusa")
+                if self._risalita_breve(rip):
+                    # ripensamento (ci si e' fermati e si e' risaliti di poco): la ripetizione continua;
+                    # gli avvisi anticipati si ricontrollano a fine ripetizione con i valori finali
+                    self._invertito = False
+                    self._picco_ritorno = None
+                else:
+                    return self._annulla_ripetizione(t, stato, "non_chiusa")
 
         if in_posizione:
             self._chiudi_ripetizione(t, stato)
         elif t - self._inizio_rip > rip["durata_massima"]:
             self._annulla_ripetizione(t, stato, "troppo_lunga")
+
+    def _risalita_breve(self, rip):
+        """True se dopo l'inversione si e' risaliti per meno di un terzo del movimento fatto finora."""
+        segno = self._segno()
+        partenza = self._min.get("partenza", rip["posizione_iniziale"])   # valore piu' disteso prima della ripetizione
+        escursione = segno * (partenza - self._estremo)
+        risalita = segno * (self._picco_ritorno - self._estremo)
+        return risalita < FRAZIONE_RIPENSAMENTO * escursione
 
     # ------------------------------------------------------------------
     # Modalita' isometrica: una "ripetizione" e' una tenuta (cronometro al posto del conteggio)
