@@ -230,3 +230,16 @@ Ogni voce: `{ "id", "nome"?, "gruppo"?, "scheda", "config_app" }`.
   convertire i controlli di velocità su `durata` in `discesa`/`salita` (40% della fase prevista da `scheda.tempo`),
   aggiungere scelta del braccio agli esercizi a un braccio/alternati e `avviso_sicurezza` ai non analizzabili per
   sicurezza, tutto in `integrazioni.json`; se il prefisso dell'id è nuovo, aggiungerlo a `GRUPPI` in `web/motore.js`.
+
+## Avatar dimostrativo 3D ("Come si fa")
+
+- `web/avatar/manichino.js`: manichino articolato **costruito nel codice** (nessun file di terzi, nessuna licenza esterna).
+  Scheletro con i nomi Mixamo (`mixamorig…`), segmenti rigidi attaccati alle ossa.
+- `web/avatar/avatar.js`: motore. Ogni esercizio = uno **schema** di movimento + parametri. Schemi: `accosciata`
+  (corpo libero o `attrezzo: "bilanciere_schiena"`, inclinazione del busto calcolata per tenere il bilanciere sul
+  metà piede), `piegamenti`. La posa si imposta per direzioni nel mondo (`punta`), braccia con IK a due segmenti.
+- `esercizi/avatar.json`: quali esercizi hanno l'avatar (`id`, `schema`, `parametri`, testi per fase). File separato
+  dal catalogo, come `integrazioni.json`. `costruisci.py` controlla che id e schema esistano.
+- `web/vendor/three/`: three.js r128 (licenza MIT), caricato solo quando si apre una scheda con avatar.
+- Prove: aprire la scheda con Playwright (Chrome con `--use-gl=swiftshader`) e guardare gli screenshot.
+- Stato 16/11/2026: QUA-001, QUA-016, PET-001. Testi e tecnica da rivedere con gli istruttori.

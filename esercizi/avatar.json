@@ -1,0 +1,38 @@
+{
+  "_nota": "Avatar dimostrativo nella scheda 'Come si fa'. Ogni voce: id dell'esercizio, schema di movimento (web/avatar/avatar.js), parametri e testi per fase. I testi sono una prima proposta: da rivedere con gli istruttori.",
+  "esercizi": [
+    {
+      "id": "QUA-001",
+      "schema": "accosciata",
+      "parametri": { "profondita": 100, "inclinazione_busto": 44 },
+      "fasi": {
+        "In piedi": "Piedi larghezza spalle, punte leggermente aperte, petto alto e addome attivo.",
+        "Discesa": "Spingi le anche indietro e piega le ginocchia nella direzione delle punte.",
+        "Fondo": "Anca al livello del ginocchio (linea gialla), talloni a terra, schiena neutra.",
+        "Risalita": "Spingi dal metà piede, anche e spalle salgono insieme, espira."
+      }
+    },
+    {
+      "id": "QUA-016",
+      "schema": "accosciata",
+      "parametri": { "attrezzo": "bilanciere_schiena", "profondita": 100 },
+      "fasi": {
+        "In piedi": "Bilanciere sui trapezi, presa poco più larga delle spalle, gomiti verso il basso. Inspira e blocca l'addome.",
+        "Discesa": "Anche indietro e ginocchia avanti insieme, nella direzione delle punte. Il bilanciere scende in verticale sul metà piede.",
+        "Fondo": "Anca al livello del ginocchio (linea gialla), talloni a terra, schiena neutra, petto aperto.",
+        "Risalita": "Spingi il pavimento, anche e spalle salgono insieme, il bilanciere resta sulla linea grigia. Espira in alto."
+      }
+    },
+    {
+      "id": "PET-001",
+      "schema": "piegamenti",
+      "parametri": { "larghezza_mani": 0.1, "gomiti": 45 },
+      "fasi": {
+        "In alto": "Mani sotto le spalle, poco più larghe. Corpo dritto dalla testa ai talloni (linea gialla), glutei e addome attivi.",
+        "Discesa": "Scendi in controllo, gomiti a circa 45° dal busto, il corpo resta un blocco unico.",
+        "In basso": "Petto a pochi centimetri da terra, bacino che non cede, sguardo verso il pavimento.",
+        "Spinta": "Spingi il pavimento via da te, spalle e bacino salgono insieme. Espira."
+      }
+    }
+  ]
+}

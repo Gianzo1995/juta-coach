@@ -130,6 +130,15 @@ canvas { display: block; width: 100%; height: 100%; }
 .cue-lista { display: flex; flex-wrap: wrap; gap: 6px; }
 .cue-lista span { background: rgba(47,191,113,.12); color: #8fe3b4; border-radius: 999px; padding: 6px 12px; font-weight: 600; }
 .link-es { background: none; border: 0; padding: 0; color: #8fe3b4; text-decoration: underline; text-underline-offset: 3px; font: inherit; text-align: left; }
+.avatar-demo { display: grid; gap: 8px; }
+.avatar-scena { position: relative; height: min(62vh, 440px); background: var(--panel); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; touch-action: none; }
+.avatar-scena canvas { display: block; }
+.avatar-fase { position: absolute; top: 10px; left: 10px; background: var(--verde); color: #06150d; font: 700 14px/1 var(--body); padding: 6px 12px; border-radius: 999px; }
+.avatar-msg { position: absolute; inset: 0; display: grid; place-items: center; color: var(--muted); padding: 16px; text-align: center; }
+.avatar-comandi { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.avatar-comandi button { background: var(--bg); border: 1px solid var(--line); border-radius: 999px; padding: 8px 14px; font-weight: 600; min-width: 44px; }
+.avatar-comandi button[aria-pressed="true"] { background: var(--fg); color: var(--bg); border-color: var(--fg); }
+.avatar-testo { margin: 0; color: var(--fg); min-height: 3em; }
 .riquadro { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 14px; display: grid; gap: 8px; }
 .riquadro.attenzione { border-color: rgba(242,181,48,.5); }
 .impostazioni { display: grid; gap: 12px; background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; }
@@ -1451,6 +1460,36 @@ function apriCome(id, da) {
   mostraVista("come");
   disegnaCome(id);
 }
+// Avatar dimostrativo 3D (web/avatar/avatar.js, voci in esercizi/avatar.json): caricato solo quando serve
+const AVATAR = typeof AVATAR_ESERCIZI !== "undefined" ? Object.fromEntries(AVATAR_ESERCIZI.map(a => [a.id, a])) : {};
+let avatarAttivo = null, avatarScript = null;
+function caricaScript(src) { return new Promise((ok, ko) => { const s = document.createElement("script"); s.src = src; s.onload = ok; s.onerror = () => ko(new Error(src)); document.head.append(s); }); }
+function caricaAvatar() {
+  if (!avatarScript) avatarScript = ["three.min.js", "OrbitControls.js", "GLTFLoader.js", "manichino.js", "avatar.js"]
+    .reduce((p, f) => p.then(() => caricaScript("avatar/" + f)), Promise.resolve()).catch(e => { avatarScript = null; throw e; });
+  return avatarScript;
+}
+function fermaAvatar() { if (avatarAttivo) { avatarAttivo.then(c => c?.ferma()).catch(() => {}); avatarAttivo = null; } }
+function sezioneAvatar(voce) {
+  const fase = el("div", { className: "avatar-fase", textContent: "…" }), msg = el("div", { className: "avatar-msg", textContent: "Carico l'avatar…" });
+  const scena = el("div", { className: "avatar-scena", ariaLabel: "Avatar 3D che esegue l'esercizio: trascina per ruotarlo" }, msg, fase);
+  const testo = el("p", { className: "avatar-testo" });
+  const bottone = (etichetta, fn, premuto) => { const b = el("button", { textContent: etichetta }); if (premuto != null) b.setAttribute("aria-pressed", premuto); b.onclick = () => fn(b); return b; };
+  let ctl = null, va = true, guide = true, vel = 1;
+  const viste = [["lato", "Lato"], ["tq", "3/4"], ["fronte", "Fronte"]].map(([k, l]) => bottone(l, b => { ctl?.vista(k); viste.forEach(x => x.setAttribute("aria-pressed", x === b)); }, k === "tq"));
+  const comandi = el("div", { className: "avatar-comandi" },
+    bottone("Pausa", b => { va = !va; ctl?.pausa(!va); b.textContent = va ? "Pausa" : "Riprendi"; }),
+    bottone("1x", b => { vel = vel === 1 ? .5 : vel === .5 ? 1.5 : 1; ctl?.velocita(vel); b.textContent = vel + "x"; }),
+    ...viste,
+    bottone("Guide", b => { guide = !guide; ctl?.guide(guide); b.setAttribute("aria-pressed", guide); }, true));
+  fermaAvatar();
+  avatarAttivo = caricaAvatar().then(() => new Promise(r => requestAnimationFrame(r)))
+    .then(() => JutaAvatar.mostra(scena, voce, { suFase: (n, tx) => { fase.textContent = n; testo.textContent = tx; } }))
+    .then(c => { msg.remove(); ctl = c; return c; })
+    .catch(e => { console.warn("avatar", e); msg.textContent = "L'avatar non si è caricato su questo dispositivo."; fase.remove(); return null; });
+  return el("section", { className: "avatar-demo" }, el("h2", { textContent: "Guarda il movimento" }), scena, comandi, testo,
+    el("p", { className: "nota", textContent: "Trascina per ruotare, pizzica per avvicinarti. Avatar dimostrativo: tecnica da confermare con l'istruttore." }));
+}
 function disegnaCome(id) {
   const v = VOCE_CATALOGO[id], sc = v.scheda, cfg = v.cfg;
   $("come-titolo").textContent = v.nome;
@@ -1459,6 +1498,8 @@ function disegnaCome(id) {
   const sez = (titolo, ...figli) => el("section", {}, el("h2", { textContent: titolo }), ...figli);
   const coppia = (x, y) => el("li", { className: "coppia" }, el("b", { textContent: x }), el("span", { textContent: y }));
   const parti = [];
+  fermaAvatar();
+  if (AVATAR[id]) parti.push(sezioneAvatar(AVATAR[id]));
   if (cfg.avviso_sicurezza) parti.push(el("section", { className: "riquadro pericolo" }, sotto("Attenzione"), el("p", { textContent: cfg.avviso_sicurezza })));
   if (sc) {
     if (sc.descrizione) parti.push(el("section", {}, par(sc.descrizione)));
@@ -1513,6 +1554,7 @@ $("cerca").addEventListener("input", disegnaLista);
 $("b-come").addEventListener("click", () => apriCome(esercizio, "inizio"));
 $("rv-come").addEventListener("click", () => rv.s && apriCome(rv.s.esercizio, "revisione"));
 $("come-indietro").addEventListener("click", () => {
+  fermaAvatar();
   mostraVista(ritornoCome);
   if (ritornoCome === "revisione") requestAnimationFrame(cicloRev); else aggiornaInizio();
 });
