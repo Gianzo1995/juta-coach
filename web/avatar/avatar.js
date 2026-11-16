@@ -251,7 +251,8 @@ async function mostra(cont, voce, opz = {}) {
   const gltf = opz.modello ? await caricaModello(opz.modello) : window.JutaManichino.crea();
   gltf.scene.traverse(o => { if (o.isMesh) { o.castShadow = true; o.frustumCulled = false;
     const giunto = /joint|giunto/i.test(o.material.name || o.name);
-    o.material = new THREE.MeshStandardMaterial({ skinning: !!o.isSkinnedMesh, color: giunto ? COLORI.giunti : COLORI.corpo, roughness: giunto ? .5 : .35, metalness: .05 }); } });
+    o.material = new THREE.MeshPhysicalMaterial({ skinning: !!o.isSkinnedMesh, color: giunto ? COLORI.giunti : COLORI.corpo,
+      roughness: giunto ? .45 : .32, metalness: .02, clearcoat: giunto ? .3 : .6, clearcoatRoughness: .25 }); } });
   scena.add(gltf.scene);
   const R = creaRig(gltf), S = schema(R, voce.parametri || {}, scena);
   const [ox, , oz] = S.ombra; pavimento.position.set(ox, 0, oz); anello.position.set(ox, .002, oz); if (S.lungo) anello.scale.setScalar(1.45);

@@ -62,12 +62,10 @@ function creaScheletro() {
 function segmento(len, profilo, { scalaX = 1, scalaZ = 1, calotte = true } = {}) {
   const pts = [], r0 = profilo[0][1], r1 = profilo[profilo.length - 1][1];
   if (calotte) for (let i = 0; i <= 8; i++) { const a = (i / 8) * Math.PI / 2; pts.push(new THREE.Vector2(Math.max(1e-4, r0 * Math.sin(a)), -r0 * Math.cos(a) * .9)); }
-  const N = 28;
-  for (let i = 1; i < N; i++) {
-    const t = i / N; let k = 1; while (k < profilo.length - 1 && profilo[k][0] < t) k++;
-    const [ta, ra] = profilo[k - 1], [tb, rb] = profilo[k], u = (t - ta) / ((tb - ta) || 1), w = (1 - Math.cos(u * Math.PI)) / 2;
-    pts.push(new THREE.Vector2(ra + (rb - ra) * w, t * len));
-  }
+  // raggio lungo il pezzo: curva morbida (Catmull-Rom) che passa per i punti del profilo, senza "gradini"
+  const curva = new THREE.SplineCurve(profilo.map(([tt, r]) => new THREE.Vector2(tt, r)));
+  const N = 40;
+  for (let i = 1; i < N; i++) { const q = curva.getPointAt(i / N); pts.push(new THREE.Vector2(Math.max(.002, q.y), q.x * len)); }
   if (calotte) for (let i = 0; i <= 8; i++) { const a = (i / 8) * Math.PI / 2; pts.push(new THREE.Vector2(Math.max(1e-4, r1 * Math.cos(a)), len + r1 * Math.sin(a) * .9)); }
   const g = new THREE.LatheGeometry(pts, 40);
   g.scale(scalaX, 1, scalaZ); g.computeVertexNormals();
@@ -92,44 +90,47 @@ function creaManichino() {
     m.scale.set(...sc); m.position.copy(P).sub(pos[osso]); ossa[osso].add(m); return m;
   }
   const P = n => pos[n];
-  // --- tronco
-  tra("Hips", V(0, .875, -.005), V(0, 1.03, -.01), segmento(.155, [[0, .1], [.45, .148], [1, .128]], { scalaX: 1.12, scalaZ: .78 }));
-  palla("Spine1", V(0, 1.11, -.012), .1, [1.12, .62, .74]);
-  tra("Spine1", V(0, 1.12, -.012), V(0, 1.23, -.015), segmento(.11, [[0, .108], [1, .118]], { scalaX: 1.12, scalaZ: .72, calotte: false }));
-  tra("Spine2", V(0, 1.2, -.018), V(0, 1.44, -.025), segmento(.24, [[0, .118], [.55, .148], [1, .1]], { scalaX: 1.22, scalaZ: .74 }));
-  palla("Neck", V(0, 1.51, -.02), .052, [1, .9, 1]);
-  tra("Neck", V(0, 1.49, -.02), V(0, 1.575, -.008), segmento(.085, [[0, .045], [1, .04]], { calotte: false }));
-  // --- testa: ovale, un po' più profonda davanti (mento)
-  palla("Head", V(0, 1.672, .008), .1, [.88, 1.08, .98], corpo);                     // cranio
-  palla("Head", V(0, 1.625, .03), .07, [.95, .9, 1], corpo);                         // mascella e mento
+  // pezzo bianco tra due punti, accorciato ai capi (ga, gb) per lasciare a vista la sfera verde del giunto
+  function pezzo(osso, A, B, profilo, opz = {}, ga = 0, gb = 0) {
+    const d = B.clone().sub(A).normalize(), A2 = A.clone().addScaledVector(d, ga), B2 = B.clone().addScaledVector(d, -gb);
+    return tra(osso, A2, B2, segmento(A2.distanceTo(B2), profilo, opz));
+  }
+  // --- tronco: guscio del petto, addome verde a vista, guscio del bacino
+  tra("Hips", V(0, .875, -.004), V(0, 1.035, -.012), segmento(.16, [[0, .06], [.35, .118], [.75, .132], [1, .118]], { scalaX: 1.12, scalaZ: .78 }));
+  palla("Spine1", V(0, 1.125, -.008), .102, [1.02, .95, .8]);                           // addome (verde)
+  tra("Spine2", V(0, 1.215, -.014), V(0, 1.45, -.026), segmento(.235, [[0, .1], [.22, .118], [.55, .146], [.85, .14], [1, .095]], { scalaX: 1.24, scalaZ: .72 }));
+  palla("Spine2", V(0, 1.34, .03), .1, [1.2, .7, .42], corpo);                         // pettorali
+  palla("Neck", V(0, 1.488, -.024), .046);                                              // collo (verde)
+  tra("Neck", V(0, 1.5, -.022), V(0, 1.565, -.01), segmento(.065, [[0, .047], [1, .041]], { calotte: false }));
+  // --- testa: ovale liscio, leggermente inclinato in avanti
+  const testa = palla("Head", V(0, 1.668, .012), .105, [.86, 1.12, .98], corpo); testa.rotation.x = -.18;
   ["Left", "Right"].forEach(l => {
     const s = l === "Left" ? 1 : -1;
-    // --- braccio
-    palla(l + "Shoulder", P(l + "Arm").clone().add(V(-.01 * s, .012, 0)), .068, [1, .95, 1]);
-    tra(l + "Shoulder", V(.07 * s, 1.445, -.022), P(l + "Arm").clone().add(V(-.02 * s, .01, 0)), segmento(.11, [[0, .05], [1, .06]], { scalaZ: .8 }));
-    tra(l + "Arm", P(l + "Arm"), P(l + "ForeArm"), segmento(.28, [[0, .052], [.12, .055], [.45, .052], [1, .04]], { scalaZ: .92 }));
-    palla(l + "ForeArm", P(l + "ForeArm"), .041);
-    tra(l + "ForeArm", P(l + "ForeArm"), P(l + "Hand"), segmento(.255, [[0, .04], [.25, .045], [1, .028]], { scalaX: .92 }));
-    palla(l + "Hand", P(l + "Hand"), .028);
-    // --- mano: palmo + falangi
+    // --- braccio: spalla, braccio, gomito, avambraccio, polso
+    palla(l + "Arm", P(l + "Arm").clone().add(V(-.006 * s, .006, 0)), .053);
+    tra(l + "Shoulder", V(.06 * s, 1.448, -.024), P(l + "Arm").clone().add(V(-.035 * s, .012, 0)), segmento(.09, [[0, .045], [1, .05]], { scalaZ: .8 }));
+    pezzo(l + "Arm", P(l + "Arm"), P(l + "ForeArm"), [[0, .046], [.35, .05], [1, .038]], { scalaZ: .92 }, .05, .036);
+    palla(l + "ForeArm", P(l + "ForeArm"), .036);
+    pezzo(l + "ForeArm", P(l + "ForeArm"), P(l + "Hand"), [[0, .039], [.3, .042], [1, .027]], { scalaX: .9 }, .036, .024);
+    palla(l + "Hand", P(l + "Hand"), .025);
     const H = P(l + "Hand");
-    tra(l + "Hand", H.clone().add(V(-.004 * s, -.012, .002)), H.clone().add(V(-.006 * s, -.08, .002)),
-      segmento(.068, [[0, .03], [.6, .042], [1, .038]], { scalaX: .5, scalaZ: 1.15 }));
+    tra(l + "Hand", H.clone().add(V(-.004 * s, -.024, .002)), H.clone().add(V(-.006 * s, -.08, .002)),
+      segmento(.056, [[0, .032], [.6, .041], [1, .037]], { scalaX: .5, scalaZ: 1.15 }));
     for (const d of ["Index", "Middle", "Ring", "Pinky", "Thumb"]) for (let i = 1; i <= 3; i++) {
-      const a = l + "Hand" + d + i, b = l + "Hand" + d + (i + 1), r = (d === "Thumb" ? .0115 : d === "Pinky" ? .0085 : .0098) * (1 - (i - 1) * .1);
+      const a = l + "Hand" + d + i, b = l + "Hand" + d + (i + 1), r = (d === "Thumb" ? .0112 : d === "Pinky" ? .0085 : .0097) * (1 - (i - 1) * .1);
       tra(a, P(a), P(b), segmento(P(a).distanceTo(P(b)), [[0, r], [1, r * .93]]));
     }
-    // --- gamba
-    palla(l + "UpLeg", P(l + "UpLeg").clone().add(V(.01 * s, -.02, 0)), .085, [1, 1, 1]);
-    tra(l + "UpLeg", P(l + "UpLeg"), P(l + "Leg"), segmento(.425, [[0, .085], [.25, .084], [.7, .066], [1, .052]], { scalaZ: .96 }));
-    palla(l + "Leg", P(l + "Leg"), .056);
-    tra(l + "Leg", P(l + "Leg"), P(l + "Foot"), segmento(.425, [[0, .052], [.28, .058], [.75, .038], [1, .032]], { scalaX: .95 }));
-    palla(l + "Foot", P(l + "Foot"), .036);
-    // --- piede: tallone-pianta sull'osso Foot, punta sull'osso ToeBase
-    tra(l + "Foot", P(l + "Foot").clone().add(V(0, -.05, -.06)), P(l + "ToeBase").clone().add(V(0, .01, 0)),
-      segmento(.2, [[0, .036], [.5, .044], [1, .04]], { scalaX: 1.05, scalaZ: .7 }));
-    tra(l + "ToeBase", P(l + "ToeBase").clone().add(V(0, .004, 0)), P(l + "Toe_End").clone().add(V(0, .002, 0)),
-      segmento(.07, [[0, .038], [1, .03]], { scalaX: 1.1, scalaZ: .55 }));
+    // --- gamba: anca, coscia, ginocchio, gamba, caviglia
+    palla(l + "UpLeg", P(l + "UpLeg").clone().add(V(.006 * s, -.035, 0)), .072);
+    pezzo(l + "UpLeg", P(l + "UpLeg"), P(l + "Leg"), [[0, .08], [.3, .083], [.75, .062], [1, .05]], { scalaZ: .95 }, .085, .048);
+    palla(l + "Leg", P(l + "Leg"), .049);
+    pezzo(l + "Leg", P(l + "Leg"), P(l + "Foot"), [[0, .05], [.25, .057], [.75, .036], [1, .03]], { scalaX: .95 }, .046, .034);
+    palla(l + "Foot", P(l + "Foot"), .034);
+    // --- piede: scarpa bianca (tallone-pianta sull'osso Foot, punta su ToeBase)
+    tra(l + "Foot", P(l + "Foot").clone().add(V(0, -.052, -.062)), P(l + "ToeBase").clone().add(V(0, .008, 0)),
+      segmento(.2, [[0, .034], [.5, .044], [1, .04]], { scalaX: 1.05, scalaZ: .68 }));
+    tra(l + "ToeBase", P(l + "ToeBase").clone().add(V(0, .004, .006)), P(l + "Toe_End").clone().add(V(0, .002, 0)),
+      segmento(.065, [[0, .038], [1, .03]], { scalaX: 1.1, scalaZ: .55 }));
   });
   radice.traverse(o => { if (o.isMesh) o.castShadow = true; });
   return { scene: radice, animations: [] };
