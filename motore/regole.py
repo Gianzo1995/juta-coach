@@ -171,6 +171,9 @@ def valida(cfg):
         problemi.append("ripetizione: in modalita' isometrica serve tenuta_minimo o tenuta_massimo")
     if rip.get("misura") not in misure:
         problemi.append(f"ripetizione: misura '{rip.get('misura')}' non definita")
+    for c in rip.get("tenuta_anche", []):
+        if c.get("misura") not in misure:
+            problemi.append(f"ripetizione.tenuta_anche: misura '{c.get('misura')}' non definita")
     for e in cfg.get("errori", []):
         if e.get("misura") not in note:
             problemi.append(f"errore '{e.get('id')}': misura '{e.get('misura')}' non definita")
@@ -400,7 +403,8 @@ class Analizzatore:
     def _nomi_base(self):
         # solo i punti delle misure usate (ripetizione ed errori): una misura ereditata ma inutilizzata
         # non deve sospendere l'analisi se i suoi punti non si vedono
-        usate = {self.cfg["ripetizione"]["misura"]} | {e["misura"].replace("_asimmetria", "") for e in self.cfg["errori"]}
+        usate = ({self.cfg["ripetizione"]["misura"]} | {e["misura"].replace("_asimmetria", "") for e in self.cfg["errori"]}
+                 | {c["misura"] for c in self.cfg["ripetizione"].get("tenuta_anche", [])})
         nomi = set()
         for nome, m in self.cfg["misure"].items():
             if nome not in usate or m.get("facoltativa"):
@@ -596,6 +600,11 @@ class Analizzatore:
         if valore is None:
             return
         dentro = rip.get("tenuta_minimo", float("-inf")) <= valore <= rip.get("tenuta_massimo", float("inf"))
+        # condizioni in piu' (es. corpo orizzontale E braccio sotto la spalla): stare in piedi o sdraiati non e' una tenuta
+        for c in rip.get("tenuta_anche", []):
+            v = misure.get(c["misura"])
+            if v is None or not c.get("minimo", float("-inf")) <= v <= c.get("massimo", float("inf")):
+                dentro = False
         if self.fase in ("attesa", "pronto"):
             if not dentro:
                 self._t_ingresso = None

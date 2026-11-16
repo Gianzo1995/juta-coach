@@ -147,6 +147,8 @@ function valida(cfg) {
   if (cfg.modalita === "isometrica" && !("tenuta_minimo" in rip) && !("tenuta_massimo" in rip))
     problemi.push("ripetizione: in modalita' isometrica serve tenuta_minimo o tenuta_massimo");
   if (!(rip.misura in misure)) problemi.push(`ripetizione: misura '${rip.misura}' non definita`);
+  for (const c of rip.tenuta_anche || [])
+    if (!(c.misura in misure)) problemi.push(`ripetizione.tenuta_anche: misura '${c.misura}' non definita`);
   for (const e of cfg.errori || []) {
     if (!note.has(e.misura)) problemi.push(`errore '${e.id}': misura '${e.misura}' non definita`);
     if (e.maggiore_di === undefined && e.minore_di === undefined) problemi.push(`errore '${e.id}': manca la soglia`);
@@ -177,7 +179,7 @@ function applicaImpostazioni(cfg, imposta) {
 
 const GRUPPI = { PET: "Petto", DOR: "Schiena", SCH: "Schiena", GAM: "Gambe", SPA: "Spalle", DEA: "Spalle", DEL: "Spalle", DEP: "Spalle", BRA: "Braccia",
   GLU: "Glutei", QUA: "Quadricipiti", FEM: "Femorali", ADD: "Adduttori", ABD: "Abduttori", POL: "Polpacci",
-  BIC: "Bicipiti", TRI: "Tricipiti", AVA: "Avambracci" };
+  BIC: "Bicipiti", TRI: "Tricipiti", AVA: "Avambracci", ADM: "Addominali" };
 
 // Catalogo per l'app: nome e gruppo (ricavati se mancano), scheda, config risolta, esercizi analizzabili
 function costruisciCatalogo(voci) {
@@ -293,7 +295,8 @@ class Analizzatore {
 
   nomiBase() {
     // solo i punti delle misure usate (ripetizione ed errori), come in regole.py
-    const usate = new Set([this.cfg.ripetizione.misura, ...this.cfg.errori.map(e => e.misura.replace("_asimmetria", ""))]);
+    const usate = new Set([this.cfg.ripetizione.misura, ...this.cfg.errori.map(e => e.misura.replace("_asimmetria", "")),
+      ...(this.cfg.ripetizione.tenuta_anche || []).map(c => c.misura)]);
     const s = new Set();
     for (const [nome, m] of Object.entries(this.cfg.misure)) {
       if (!usate.has(nome) || m.facoltativa) continue;   // i punti delle misure facoltative non sono obbligatori
@@ -452,7 +455,12 @@ class Analizzatore {
   macchinaTenuta(misure, t, stato) {
     const rip = this.cfg.ripetizione, valore = misure[rip.misura];
     if (valore === undefined) return;
-    const dentro = (rip.tenuta_minimo ?? -Infinity) <= valore && valore <= (rip.tenuta_massimo ?? Infinity);
+    let dentro = (rip.tenuta_minimo ?? -Infinity) <= valore && valore <= (rip.tenuta_massimo ?? Infinity);
+    // condizioni in piu' (es. corpo orizzontale E braccio sotto la spalla): stare in piedi o sdraiati non e' una tenuta
+    for (const c of rip.tenuta_anche || []) {
+      const v = misure[c.misura];
+      if (v === undefined || !((c.minimo ?? -Infinity) <= v && v <= (c.massimo ?? Infinity))) dentro = false;
+    }
     if (this.fase === "attesa" || this.fase === "pronto") {
       if (!dentro) { this.tIngresso = null; this.fase = "attesa"; return; }
       if (this.tIngresso === null) this.tIngresso = t;

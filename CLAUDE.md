@@ -16,7 +16,7 @@ Gianluca, titolare di Juta. **Non è uno sviluppatore.**
 
 | Percorso | Cosa contiene |
 |---|---|
-| `esercizi/catalogo/*.json` | **Catalogo esercizi**: regole (`config_app`) + scheda tecnica (`scheda`). Fonte unica per PC e telefono. La vecchia `panca` è stata sostituita da PET-012, la vecchia `lat_machine` da DOR-020. Cataloghi: base, PETTORALI 001-080, DORSALI 001-064, SPALLE DEA/DEL/DEP (gruppo «Spalle»), GAMBE GLU/QUA/FEM/ADD/ABD/POL (gruppi Glutei, Quadricipiti, Femorali, Adduttori, Abduttori, Polpacci), BRACCIA BIC/TRI/AVA (Bicipiti, Tricipiti, Avambracci). Lo `squat` di `base.json` è solo un banco di prova del motore: sul telefono è nascosto (`NASCOSTI` in `costruisci.py`) e si usa QUA-016, con le stesse regole. |
+| `esercizi/catalogo/*.json` | **Catalogo esercizi**: regole (`config_app`) + scheda tecnica (`scheda`). Fonte unica per PC e telefono. La vecchia `panca` è stata sostituita da PET-012, la vecchia `lat_machine` da DOR-020. Cataloghi: base, PETTORALI 001-080, DORSALI 001-064, SPALLE DEA/DEL/DEP (gruppo «Spalle»), GAMBE GLU/QUA/FEM/ADD/ABD/POL (gruppi Glutei, Quadricipiti, Femorali, Adduttori, Abduttori, Polpacci), BRACCIA BIC/TRI/AVA (Bicipiti, Tricipiti, Avambracci), ADDOMINALI ADM 001-053 (Addominali). Lo `squat` di `base.json` è solo un banco di prova del motore: sul telefono è nascosto (`NASCOSTI` in `costruisci.py`) e si usa QUA-016, con le stesse regole. |
 | `motore/regole.py` | Motore delle regole (Python, versione PC). |
 | `web/motore.js` | Lo stesso motore in JavaScript (telefono). **Deve restare identico a `regole.py`.** |
 | `web/app.html` | Interfaccia telefono: live, manichino digitale, revisione, ricerca esercizi, "Come si fa". |
@@ -114,7 +114,9 @@ Ogni voce: `{ "id", "nome"?, "gruppo"?, "scheda", "config_app" }`.
 - `modalita: "isometrica"` (facoltativo): tenute al posto delle ripetizioni. `ripetizione` = `{misura, tenuta_minimo,
   tenuta_massimo}`: la tenuta parte dopo 0,5 s nell'intervallo e finisce dopo 1 s fuori; l'evento è una `ripetizione` con
   `tenuta: true` e `durata_s` = secondi tenuti. Errori "durante": ignorati nel primo secondo (assestamento) e contati solo se
-  durano 1 s di fila; errori "fine" sulla `durata`. `messaggio_tenuta` = testo durante la tenuta. Nell'app il contatore
+  durano 1 s di fila; errori "fine" sulla `durata`. `ripetizione.tenuta_anche`: condizioni in più, tutte necessarie,
+  `[{misura, minimo?, massimo?}]` (es. plank: corpo orizzontale E braccio sotto la spalla; front lever: braccia verso la
+  sbarra), così stare in piedi o sdraiati a terra non fa partire il cronometro. `messaggio_tenuta` = testo durante la tenuta. Nell'app il contatore
   mostra i secondi (a voce ogni 10 s). Esempi: QUA-006 wall sit, DOR-064 front lever.
 - `modalita: "balistica"` (facoltativo): salti e swing continui; la prima ripetizione parte senza i 0,5 s fermi e la
   finestra massima è 3 s (se `ripetizione.durata_massima` non dice altro). Esempi: QUA-002/010/063, GLU-019/021.
@@ -160,8 +162,8 @@ Ogni voce: `{ "id", "nome"?, "gruppo"?, "scheda", "config_app" }`.
   serie (gli eventi in app portano `serie`); etichetta massimo/minimo in revisione; caratteri Barlow incorporati da
   `web/fonti/` (licenza OFL, nessuna richiesta a Google); voce "N secondi" a fine tenuta; finestra fissa 3 s nei balistici.
 - Restano aperti (minori): "Scendi di più" detto a voce durante un'esitazione (la revisione poi lo toglie); appesi alla
-  sbarra (AVA-001/002/003) che possono partire stando in piedi a braccia alzate e front lever (DOR-064) da sdraiati a terra:
-  da verificare in sala; smoothing condiviso tra i lati al cambio di lato automatico; `prove/parita.py` confronta solo
+  sbarra (AVA-001/002/003) che possono partire stando in piedi a braccia alzate (front lever DOR-064 sistemato con
+  `tenuta_anche`);  smoothing condiviso tra i lati al cambio di lato automatico; `prove/parita.py` confronta solo
   una parte dei campi; versione PC: modello "latest" senza versione fissa e scelte prima della serie non applicate.
 
 ## Decisioni già prese
@@ -195,7 +197,13 @@ Ogni voce: `{ "id", "nome"?, "gruppo"?, "scheda", "config_app" }`.
 
 ## Stato attuale e come riprendere (aggiornato 11/11/2026)
 
-- **Versione app**: Beta 0.9. Catalogo: 474 esercizi sul telefono (PET 001-080 + DOR 001-064 + SPALLE DEA/DEL/DEP +
+- **Addominali (16/11/2026)**: 53 esercizi ADM, 42 analizzabili (34 del catalogo + 8 tenute rese analizzabili con regole
+  proposte dall'app: plank ADM-016/017/018/021/044, hollow hold ADM-022, L-sit ADM-052/053); 27 controlli di velocità
+  convertiti; ADM-020/038 con bacino che cede / sedere alto, ADM-020 con scelta del braccio e senza la modalità tenuta
+  ereditata dal plank; rollout ADM-028/029/039/043 con "bacino che cede" (indizio della zona lombare, nessun "allunga di
+  più" come chiede la nota §5); avvisi rossi ADM-027/030/040. Totale: 527 esercizi sul telefono, 446 analizzabili,
+  493 integrazioni. Restano solo scheda: gambe alternate (ADM-014/015/024/025/026), ADM-019/023/045.
+- **Versione app**: Beta 0.9. Catalogo (prima degli addominali): 474 esercizi sul telefono (PET 001-080 + DOR 001-064 + SPALLE DEA/DEL/DEP +
   GAMBE: GLU 32, QUA 65, FEM 26, ADD 10, ABD 13, POL 14 + BRACCIA: BIC 35, TRI 39, AVA 18), 400 analizzabili,
   388 integrazioni in `esercizi/integrazioni.json`. Esercizio iniziale: QUA-016.
   Braccia (11/11/2026): 60 controlli di velocità convertiti, scelta del braccio su 10 esercizi a un braccio, TRI-001 con
@@ -205,7 +213,7 @@ Ogni voce: `{ "id", "nome"?, "gruppo"?, "scheda", "config_app" }`.
   (18 esercizi resi analizzabili con regole proposte dall'app: da far rivedere a Gianluca e tarare in sala).
   Gambe (11/11/2026): 86 controlli di velocità convertiti in discesa/salita/pausa, scelta della gamba su 30 esercizi a una gamba,
   avvisi rossi su GLU-020 e QUA-015. Il prefisso ADD ora è Adduttori: il futuro catalogo addome deve usare un altro prefisso. Ultimi file ricevuti da Gianluca: `NOTE_PER_IL_MOTORE.md`
-  (versione con le braccia, regole §1-§7) e i cinque cataloghi.
+  (versione 5, con gli addominali, regole §1-§7) e i sei cataloghi.
 - **Dove la usa**: dal telefono in Safari (sito GitHub Pages, ha la modalità live) e dentro l'app Claude
   (artifact privato "Juta Coach" tra gli artifact di Gianluca (link non scritto qui: il repository è pubblico), solo video caricato; i video scelti su iPhone
   vengono compressi da iOS, per questo per la qualità migliore va usata la versione Safari).
@@ -225,7 +233,7 @@ Ogni voce: `{ "id", "nome"?, "gruppo"?, "scheda", "config_app" }`.
   parziali a blocchi), TRI-019 tate press. AVA-008 e AVA-014 (tenute con bilanciere e dischi) restano solo scheda:
   la camera non distingue la tenuta dallo stare in piedi.
 - **In attesa da Gianluca**: regole per DEL-009, DEL-013, DEL-014/015, DEP-007 (a un braccio, vista frontale);
-  taratura delle soglie in sala con gli istruttori; prossimi cataloghi (addome...).
+  taratura delle soglie in sala con gli istruttori; prossimi cataloghi.
 - **Quando arriva un nuovo catalogo**: copiarlo in `esercizi/catalogo/` senza modificarlo, lanciare build e test,
   convertire i controlli di velocità su `durata` in `discesa`/`salita` (40% della fase prevista da `scheda.tempo`),
   aggiungere scelta del braccio agli esercizi a un braccio/alternati e `avviso_sicurezza` ai non analizzabili per

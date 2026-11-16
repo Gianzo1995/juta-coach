@@ -11458,5 +11458,1338 @@
    ]
   },
   "motivo": "Vista frontale (scelta prima della serie): regole proposte dall'app, da tarare in sala. Di fronte: conteggio dalla distanza anca-caviglia (in % della larghezza delle spalle), ginocchia dentro se più vicine delle caviglie (sotto 80%), spalle storte oltre 12°."
+ },
+ {
+  "id": "ADM-001",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta, il ritorno (salita del motore), almeno il 40% dei 2 s previsti dal tempo 1-1-2-0."
+ },
+ {
+  "id": "ADM-005",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta, il ritorno (salita del motore), almeno il 40% dei 2 s previsti dal tempo 1-1-2-0."
+ },
+ {
+  "id": "ADM-006",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta, il ritorno (salita del motore), almeno il 40% dei 2 s previsti dal tempo 1-1-2-0."
+ },
+ {
+  "id": "ADM-007",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta, il ritorno (salita del motore), almeno il 40% dei 2 s previsti dal tempo 1-0-2-0."
+ },
+ {
+  "id": "ADM-010",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta, il ritorno (salita del motore), almeno il 40% dei 2 s previsti dal tempo 1-0-2-0."
+ },
+ {
+  "id": "ADM-011",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta, il ritorno (salita del motore), almeno il 40% dei 2 s previsti dal tempo 1-0-2-0."
+ },
+ {
+  "id": "ADM-012",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta, il ritorno (salita del motore), almeno il 40% dei 2 s previsti dal tempo 1-0-2-0."
+ },
+ {
+  "id": "ADM-013",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta, il ritorno (salita del motore), almeno il 40% dei 2 s previsti dal tempo 1-1-2-0."
+ },
+ {
+  "id": "ADM-028",
+  "imposta": {
+   "errori.troppo_veloce.misura": "discesa",
+   "errori.troppo_veloce.minore_di": 1.2
+  },
+  "motivo": "'Vai avanti più lentamente': misurata direttamente la fase lenta, la prima fase (discesa del motore), almeno il 40% dei 3 s previsti dal tempo 3-0-2-0."
+ },
+ {
+  "id": "ADM-029",
+  "imposta": {
+   "errori.troppo_veloce.misura": "discesa",
+   "errori.troppo_veloce.minore_di": 1.2
+  },
+  "motivo": "'Vai avanti più lentamente': misurata direttamente la fase lenta, la prima fase (discesa del motore), almeno il 40% dei 3 s previsti dal tempo 3-0-2-0."
+ },
+ {
+  "id": "ADM-031",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Torna più lentamente': misurata direttamente la fase lenta, il ritorno (salita del motore), almeno il 40% dei 2 s previsti dal tempo 1-1-2-0."
+ },
+ {
+  "id": "ADM-032",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Torna più lentamente': misurata direttamente la fase lenta, il ritorno (salita del motore), almeno il 40% dei 2 s previsti dal tempo 1-1-2-0."
+ },
+ {
+  "id": "ADM-033",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Torna più lentamente': misurata direttamente la fase lenta, il ritorno (salita del motore), almeno il 40% dei 2 s previsti dal tempo 1-1-2-0."
+ },
+ {
+  "id": "ADM-034",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta, il ritorno (salita del motore), almeno il 40% dei 2 s previsti dal tempo 1-1-2-0."
+ },
+ {
+  "id": "ADM-035",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta, il ritorno (salita del motore), almeno il 40% dei 2 s previsti dal tempo 1-1-2-0."
+ },
+ {
+  "id": "ADM-036",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Torna più lentamente': misurata direttamente la fase lenta, il ritorno (salita del motore), almeno il 40% dei 2 s previsti dal tempo 1-1-2-0."
+ },
+ {
+  "id": "ADM-037",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Torna più lentamente': misurata direttamente la fase lenta, il ritorno (salita del motore), almeno il 40% dei 2 s previsti dal tempo 1-1-2-0."
+ },
+ {
+  "id": "ADM-038",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Più lento e controllato': misurata direttamente la fase lenta, il ritorno (salita del motore), almeno il 40% dei 2 s previsti dal tempo 2-0-2-0."
+ },
+ {
+  "id": "ADM-039",
+  "imposta": {
+   "errori.troppo_veloce.misura": "discesa",
+   "errori.troppo_veloce.minore_di": 1.2
+  },
+  "motivo": "'Vai avanti più lentamente': misurata direttamente la fase lenta, la prima fase (discesa del motore), almeno il 40% dei 3 s previsti dal tempo 3-0-2-0."
+ },
+ {
+  "id": "ADM-042",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta, il ritorno (salita del motore), almeno il 40% dei 2 s previsti dal tempo 1-1-2-0."
+ },
+ {
+  "id": "ADM-043",
+  "imposta": {
+   "errori.troppo_veloce.misura": "discesa",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Vai avanti più lentamente': misurata direttamente la fase lenta, la prima fase (discesa del motore), almeno il 40% dei 2 s previsti dal tempo 2-0-2-0."
+ },
+ {
+  "id": "ADM-046",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Torna più lentamente': misurata direttamente la fase lenta, il ritorno (salita del motore), almeno il 40% dei 2 s previsti dal tempo 1-1-2-0."
+ },
+ {
+  "id": "ADM-047",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Torna più lentamente': misurata direttamente la fase lenta, il ritorno (salita del motore), almeno il 40% dei 2 s previsti dal tempo 1-1-2-0."
+ },
+ {
+  "id": "ADM-048",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta, il ritorno (salita del motore), almeno il 40% dei 2 s previsti dal tempo 1-0-2-0."
+ },
+ {
+  "id": "ADM-049",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta, il ritorno (salita del motore), almeno il 40% dei 2 s previsti dal tempo 1-1-2-0."
+ },
+ {
+  "id": "ADM-050",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta, il ritorno (salita del motore), almeno il 40% dei 2 s previsti dal tempo 1-1-2-0."
+ },
+ {
+  "id": "ADM-051",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Scendi più lentamente': misurata direttamente la fase lenta, il ritorno (salita del motore), almeno il 40% dei 2 s previsti dal tempo 1-0-2-0."
+ },
+ {
+  "id": "ADM-016",
+  "imposta": {
+   "analizzabilita": "parziale",
+   "modalita": "isometrica",
+   "vista_camera": "laterale",
+   "lato": "auto",
+   "messaggio_posizione": "Camera a terra di lato, corpo intero visibile",
+   "messaggio_ok": "Ottima tenuta!",
+   "messaggio_tenuta": "Tieni, corpo in linea",
+   "misure": {
+    "orizzontale": {
+     "tipo": "inclinazione",
+     "punti": [
+      "caviglia",
+      "spalla"
+     ]
+    },
+    "braccio": {
+     "tipo": "inclinazione",
+     "punti": [
+      "gomito",
+      "spalla"
+     ]
+    },
+    "corpo": {
+     "tipo": "angolo_orientato",
+     "punti": [
+      "spalla",
+      "anca",
+      "caviglia"
+     ],
+     "ancora": "spalla"
+    }
+   },
+   "ripetizione": {
+    "misura": "orizzontale",
+    "tenuta_minimo": 55,
+    "tenuta_massimo": 105,
+    "tenuta_anche": [
+     {
+      "misura": "braccio",
+      "minimo": 0,
+      "massimo": 35
+     }
+    ]
+   },
+   "errori": [
+    {
+     "id": "bacino_cede",
+     "messaggio": "Glutei stretti, bacino su",
+     "gravita": "giallo",
+     "momento": "durante",
+     "misura": "corpo",
+     "minore_di": 163
+    },
+    {
+     "id": "sedere_alto",
+     "messaggio": "Abbassa il sedere",
+     "gravita": "giallo",
+     "momento": "durante",
+     "misura": "corpo",
+     "maggiore_di": 200
+    }
+   ],
+   "testi_errori": {
+    "bacino_cede": {
+     "cosa_succede": "Il bacino scende sotto la linea spalle-piedi e la schiena si inarca.",
+     "perche_conta": "La zona lombare si carica e l'addome smette di lavorare.",
+     "come_correggere": "Stringi glutei e addome, bacino leggermente in retroversione; se non tieni la linea, accorcia la tenuta o appoggia le ginocchia.",
+     "frase_da_ricordare": "Glutei stretti, bacino su.",
+     "frase_alternativa": "Pancia dentro, corpo rigido."
+    },
+    "sedere_alto": {
+     "cosa_succede": "Il sedere sale sopra la linea spalle-piedi.",
+     "perche_conta": "La tenuta diventa più facile e l'addome lavora poco.",
+     "come_correggere": "Abbassa il bacino finché spalle, anche e talloni sono in linea.",
+     "frase_da_ricordare": "Sedere giù, corpo in linea."
+    }
+   },
+   "motivo": "Modalità isometrica: il cronometro parte solo con il corpo orizzontale e il braccio sotto la spalla (così stare in piedi o sdraiati a terra non conta); il primo secondo serve ad assestarsi. Soglie stimate, da tarare in sala.",
+   "non_rilevabili": [
+    {
+     "errore": "Apnea",
+     "motivo": "Il respiro non è visibile."
+    },
+    {
+     "errore": "Testa che cade",
+     "motivo": "Il naso da solo non rappresenta in modo affidabile l'allineamento del collo."
+    }
+   ]
+  },
+  "motivo": "Reso analizzabile con la modalità isometrica e le condizioni multiple della tenuta (richiesta del catalogo). Regole proposte dall'app."
+ },
+ {
+  "id": "ADM-018",
+  "imposta": {
+   "analizzabilita": "parziale",
+   "modalita": "isometrica",
+   "vista_camera": "laterale",
+   "lato": "auto",
+   "messaggio_posizione": "Camera a terra di lato, corpo intero visibile",
+   "messaggio_ok": "Ottima tenuta!",
+   "messaggio_tenuta": "Tieni, corpo in linea",
+   "misure": {
+    "orizzontale": {
+     "tipo": "inclinazione",
+     "punti": [
+      "caviglia",
+      "spalla"
+     ]
+    },
+    "braccio": {
+     "tipo": "inclinazione",
+     "punti": [
+      "gomito",
+      "spalla"
+     ]
+    },
+    "corpo": {
+     "tipo": "angolo_orientato",
+     "punti": [
+      "spalla",
+      "anca",
+      "caviglia"
+     ],
+     "ancora": "spalla"
+    }
+   },
+   "ripetizione": {
+    "misura": "orizzontale",
+    "tenuta_minimo": 55,
+    "tenuta_massimo": 105,
+    "tenuta_anche": [
+     {
+      "misura": "braccio",
+      "minimo": 0,
+      "massimo": 50
+     }
+    ]
+   },
+   "errori": [
+    {
+     "id": "bacino_cede",
+     "messaggio": "Glutei stretti, bacino su",
+     "gravita": "giallo",
+     "momento": "durante",
+     "misura": "corpo",
+     "minore_di": 163
+    },
+    {
+     "id": "sedere_alto",
+     "messaggio": "Abbassa il sedere",
+     "gravita": "giallo",
+     "momento": "durante",
+     "misura": "corpo",
+     "maggiore_di": 200
+    }
+   ],
+   "testi_errori": {
+    "bacino_cede": {
+     "cosa_succede": "Il bacino scende sotto la linea spalle-piedi e la schiena si inarca.",
+     "perche_conta": "La zona lombare si carica e l'addome smette di lavorare.",
+     "come_correggere": "Stringi glutei e addome, bacino leggermente in retroversione; se non tieni la linea, accorcia la tenuta o appoggia le ginocchia.",
+     "frase_da_ricordare": "Glutei stretti, bacino su.",
+     "frase_alternativa": "Pancia dentro, corpo rigido."
+    },
+    "sedere_alto": {
+     "cosa_succede": "Il sedere sale sopra la linea spalle-piedi.",
+     "perche_conta": "La tenuta diventa più facile e l'addome lavora poco.",
+     "come_correggere": "Abbassa il bacino finché spalle, anche e talloni sono in linea.",
+     "frase_da_ricordare": "Sedere giù, corpo in linea."
+    }
+   },
+   "motivo": "Modalità isometrica: il cronometro parte solo con il corpo orizzontale e il braccio sotto la spalla (così stare in piedi o sdraiati a terra non conta); il primo secondo serve ad assestarsi. Soglie stimate, da tarare in sala.",
+   "non_rilevabili": [
+    {
+     "errore": "Apnea",
+     "motivo": "Il respiro non è visibile."
+    },
+    {
+     "errore": "Testa che cade",
+     "motivo": "Il naso da solo non rappresenta in modo affidabile l'allineamento del collo."
+    }
+   ]
+  },
+  "motivo": "Reso analizzabile con la modalità isometrica e le condizioni multiple della tenuta (richiesta del catalogo). Regole proposte dall'app."
+ },
+ {
+  "id": "ADM-017",
+  "imposta": {
+   "analizzabilita": "parziale",
+   "modalita": "isometrica",
+   "vista_camera": "laterale",
+   "lato": "auto",
+   "messaggio_posizione": "Camera a terra di lato, corpo intero visibile",
+   "messaggio_ok": "Ottima tenuta!",
+   "messaggio_tenuta": "Tieni, corpo in linea",
+   "misure": {
+    "orizzontale": {
+     "tipo": "inclinazione",
+     "punti": [
+      "caviglia",
+      "spalla"
+     ]
+    },
+    "braccio": {
+     "tipo": "inclinazione",
+     "punti": [
+      "polso",
+      "spalla"
+     ]
+    },
+    "corpo": {
+     "tipo": "angolo_orientato",
+     "punti": [
+      "spalla",
+      "anca",
+      "caviglia"
+     ],
+     "ancora": "spalla"
+    }
+   },
+   "ripetizione": {
+    "misura": "orizzontale",
+    "tenuta_minimo": 55,
+    "tenuta_massimo": 105,
+    "tenuta_anche": [
+     {
+      "misura": "braccio",
+      "minimo": 0,
+      "massimo": 30
+     }
+    ]
+   },
+   "errori": [
+    {
+     "id": "bacino_cede",
+     "messaggio": "Glutei stretti, bacino su",
+     "gravita": "giallo",
+     "momento": "durante",
+     "misura": "corpo",
+     "minore_di": 163
+    },
+    {
+     "id": "sedere_alto",
+     "messaggio": "Abbassa il sedere",
+     "gravita": "giallo",
+     "momento": "durante",
+     "misura": "corpo",
+     "maggiore_di": 200
+    }
+   ],
+   "testi_errori": {
+    "bacino_cede": {
+     "cosa_succede": "Il bacino scende sotto la linea spalle-piedi e la schiena si inarca.",
+     "perche_conta": "La zona lombare si carica e l'addome smette di lavorare.",
+     "come_correggere": "Stringi glutei e addome, bacino leggermente in retroversione; se non tieni la linea, accorcia la tenuta o appoggia le ginocchia.",
+     "frase_da_ricordare": "Glutei stretti, bacino su.",
+     "frase_alternativa": "Pancia dentro, corpo rigido."
+    },
+    "sedere_alto": {
+     "cosa_succede": "Il sedere sale sopra la linea spalle-piedi.",
+     "perche_conta": "La tenuta diventa più facile e l'addome lavora poco.",
+     "come_correggere": "Abbassa il bacino finché spalle, anche e talloni sono in linea.",
+     "frase_da_ricordare": "Sedere giù, corpo in linea."
+    }
+   },
+   "motivo": "Modalità isometrica: il cronometro parte solo con il corpo orizzontale e il braccio sotto la spalla (così stare in piedi o sdraiati a terra non conta); il primo secondo serve ad assestarsi. Soglie stimate, da tarare in sala.",
+   "non_rilevabili": [
+    {
+     "errore": "Apnea",
+     "motivo": "Il respiro non è visibile."
+    },
+    {
+     "errore": "Testa che cade",
+     "motivo": "Il naso da solo non rappresenta in modo affidabile l'allineamento del collo."
+    },
+    {
+     "errore": "Spalle che sprofondano",
+     "motivo": "Lo spostamento delle scapole è di pochi centimetri e le scapole non sono punti rilevati."
+    }
+   ]
+  },
+  "motivo": "Reso analizzabile con la modalità isometrica e le condizioni multiple della tenuta (richiesta del catalogo). Regole proposte dall'app."
+ },
+ {
+  "id": "ADM-021",
+  "imposta": {
+   "analizzabilita": "parziale",
+   "modalita": "isometrica",
+   "vista_camera": "laterale",
+   "lato": "auto",
+   "messaggio_posizione": "Camera a terra di lato, corpo intero visibile",
+   "messaggio_ok": "Ottima tenuta!",
+   "messaggio_tenuta": "Tieni, corpo in linea",
+   "misure": {
+    "orizzontale": {
+     "tipo": "inclinazione",
+     "punti": [
+      "caviglia",
+      "spalla"
+     ]
+    },
+    "braccio": {
+     "tipo": "inclinazione",
+     "punti": [
+      "gomito",
+      "spalla"
+     ]
+    },
+    "corpo": {
+     "tipo": "angolo_orientato",
+     "punti": [
+      "spalla",
+      "anca",
+      "caviglia"
+     ],
+     "ancora": "spalla"
+    }
+   },
+   "ripetizione": {
+    "misura": "orizzontale",
+    "tenuta_minimo": 55,
+    "tenuta_massimo": 105,
+    "tenuta_anche": [
+     {
+      "misura": "braccio",
+      "minimo": 0,
+      "massimo": 35
+     }
+    ]
+   },
+   "errori": [
+    {
+     "id": "bacino_cede",
+     "messaggio": "Glutei stretti, bacino su",
+     "gravita": "giallo",
+     "momento": "durante",
+     "misura": "corpo",
+     "minore_di": 163
+    },
+    {
+     "id": "sedere_alto",
+     "messaggio": "Abbassa il sedere",
+     "gravita": "giallo",
+     "momento": "durante",
+     "misura": "corpo",
+     "maggiore_di": 200
+    }
+   ],
+   "testi_errori": {
+    "bacino_cede": {
+     "cosa_succede": "Il bacino scende sotto la linea spalle-piedi e la schiena si inarca.",
+     "perche_conta": "La zona lombare si carica e l'addome smette di lavorare.",
+     "come_correggere": "Stringi glutei e addome, bacino leggermente in retroversione; se non tieni la linea, accorcia la tenuta o appoggia le ginocchia.",
+     "frase_da_ricordare": "Glutei stretti, bacino su.",
+     "frase_alternativa": "Pancia dentro, corpo rigido."
+    },
+    "sedere_alto": {
+     "cosa_succede": "Il sedere sale sopra la linea spalle-piedi.",
+     "perche_conta": "La tenuta diventa più facile e l'addome lavora poco.",
+     "come_correggere": "Abbassa il bacino finché spalle, anche e talloni sono in linea.",
+     "frase_da_ricordare": "Sedere giù, corpo in linea."
+    }
+   },
+   "motivo": "Modalità isometrica: il cronometro parte solo con il corpo orizzontale e il braccio sotto la spalla (così stare in piedi o sdraiati a terra non conta); il primo secondo serve ad assestarsi. Soglie stimate, da tarare in sala.",
+   "non_rilevabili": [
+    {
+     "errore": "Apnea",
+     "motivo": "Il respiro non è visibile."
+    },
+    {
+     "errore": "Testa che cade",
+     "motivo": "Il naso da solo non rappresenta in modo affidabile l'allineamento del collo."
+    },
+    {
+     "errore": "Disco sulla zona lombare",
+     "motivo": "Il disco non è un punto rilevato."
+    }
+   ]
+  },
+  "motivo": "Reso analizzabile con la modalità isometrica e le condizioni multiple della tenuta (richiesta del catalogo). Regole proposte dall'app."
+ },
+ {
+  "id": "ADM-044",
+  "imposta": {
+   "analizzabilita": "parziale",
+   "modalita": "isometrica",
+   "vista_camera": "laterale",
+   "lato": "auto",
+   "messaggio_posizione": "Camera di lato, corpo intero e palla visibili",
+   "messaggio_ok": "Ottima tenuta!",
+   "messaggio_tenuta": "Tieni, corpo in linea",
+   "misure": {
+    "orizzontale": {
+     "tipo": "inclinazione",
+     "punti": [
+      "caviglia",
+      "spalla"
+     ]
+    },
+    "braccio": {
+     "tipo": "inclinazione",
+     "punti": [
+      "gomito",
+      "spalla"
+     ]
+    },
+    "corpo": {
+     "tipo": "angolo_orientato",
+     "punti": [
+      "spalla",
+      "anca",
+      "caviglia"
+     ],
+     "ancora": "spalla"
+    }
+   },
+   "ripetizione": {
+    "misura": "orizzontale",
+    "tenuta_minimo": 55,
+    "tenuta_massimo": 105,
+    "tenuta_anche": [
+     {
+      "misura": "braccio",
+      "minimo": 0,
+      "massimo": 45
+     }
+    ]
+   },
+   "errori": [
+    {
+     "id": "bacino_cede",
+     "messaggio": "Glutei stretti, bacino su",
+     "gravita": "giallo",
+     "momento": "durante",
+     "misura": "corpo",
+     "minore_di": 163
+    },
+    {
+     "id": "sedere_alto",
+     "messaggio": "Abbassa il sedere",
+     "gravita": "giallo",
+     "momento": "durante",
+     "misura": "corpo",
+     "maggiore_di": 200
+    }
+   ],
+   "testi_errori": {
+    "bacino_cede": {
+     "cosa_succede": "Il bacino scende sotto la linea spalle-piedi e la schiena si inarca.",
+     "perche_conta": "La zona lombare si carica e l'addome smette di lavorare.",
+     "come_correggere": "Stringi glutei e addome, bacino leggermente in retroversione; se non tieni la linea, accorcia la tenuta o appoggia le ginocchia.",
+     "frase_da_ricordare": "Glutei stretti, bacino su.",
+     "frase_alternativa": "Pancia dentro, corpo rigido."
+    },
+    "sedere_alto": {
+     "cosa_succede": "Il sedere sale sopra la linea spalle-piedi.",
+     "perche_conta": "La tenuta diventa più facile e l'addome lavora poco.",
+     "come_correggere": "Abbassa il bacino finché spalle, anche e talloni sono in linea.",
+     "frase_da_ricordare": "Sedere giù, corpo in linea."
+    }
+   },
+   "motivo": "Modalità isometrica: il cronometro parte solo con il corpo orizzontale e il braccio sotto la spalla (così stare in piedi o sdraiati a terra non conta); il primo secondo serve ad assestarsi. Soglie stimate, da tarare in sala.",
+   "non_rilevabili": [
+    {
+     "errore": "Apnea",
+     "motivo": "Il respiro non è visibile."
+    },
+    {
+     "errore": "Testa che cade",
+     "motivo": "Il naso da solo non rappresenta in modo affidabile l'allineamento del collo."
+    },
+    {
+     "errore": "Palla che si muove",
+     "motivo": "La palla non è rilevata."
+    }
+   ]
+  },
+  "motivo": "Reso analizzabile con la modalità isometrica e le condizioni multiple della tenuta (richiesta del catalogo). Regole proposte dall'app."
+ },
+ {
+  "id": "ADM-022",
+  "imposta": {
+   "analizzabilita": "parziale",
+   "modalita": "isometrica",
+   "vista_camera": "laterale",
+   "lato": "auto",
+   "messaggio_posizione": "Camera a terra di lato, corpo intero visibile",
+   "messaggio_ok": "Ottima tenuta!",
+   "messaggio_tenuta": "Tieni, schiena a terra",
+   "misure": {
+    "anca": {
+     "tipo": "angolo",
+     "punti": [
+      "spalla",
+      "anca",
+      "caviglia"
+     ],
+     "ancora": "anca"
+    },
+    "busto": {
+     "tipo": "inclinazione",
+     "punti": [
+      "anca",
+      "spalla"
+     ]
+    },
+    "gambe": {
+     "tipo": "inclinazione",
+     "punti": [
+      "anca",
+      "caviglia"
+     ]
+    },
+    "ginocchio": {
+     "tipo": "angolo",
+     "punti": [
+      "anca",
+      "ginocchio",
+      "caviglia"
+     ]
+    }
+   },
+   "ripetizione": {
+    "misura": "anca",
+    "tenuta_minimo": 130,
+    "tenuta_massimo": 172,
+    "tenuta_anche": [
+     {
+      "misura": "busto",
+      "minimo": 55,
+      "massimo": 100
+     }
+    ]
+   },
+   "errori": [
+    {
+     "id": "gambe_alte",
+     "messaggio": "Gambe più basse, schiena a terra",
+     "gravita": "giallo",
+     "momento": "durante",
+     "misura": "gambe",
+     "minore_di": 55
+    },
+    {
+     "id": "ginocchia_piegate",
+     "messaggio": "Gambe tese",
+     "gravita": "giallo",
+     "momento": "durante",
+     "misura": "ginocchio",
+     "minore_di": 150
+    }
+   ],
+   "testi_errori": {
+    "gambe_alte": {
+     "cosa_succede": "Le gambe sono a {valore} dalla verticale: sono troppo alte (90° = orizzontali, limite {soglia}).",
+     "perche_conta": "Con le gambe alte la leva si accorcia e l'addome lavora meno.",
+     "come_correggere": "Abbassa le gambe finché riesci a tenere la zona lombare a terra; se si stacca, risali un poco.",
+     "frase_da_ricordare": "Gambe lunghe, schiena a terra."
+    },
+    "ginocchia_piegate": {
+     "cosa_succede": "Il ginocchio è piegato a {valore} (limite {soglia}).",
+     "perche_conta": "Piegando le gambe la tenuta diventa più facile.",
+     "come_correggere": "Tieni le gambe tese e unite; se è troppo dura, usa la versione raccolta con le ginocchia al petto.",
+     "frase_da_ricordare": "Gambe tese."
+    }
+   },
+   "motivo": "Modalità isometrica: il cronometro parte con la forma a banana (spalle e gambe staccate) e il busto quasi orizzontale. Soglie stimate, da tarare in sala.",
+   "non_rilevabili": [
+    {
+     "errore": "Zona lombare che si stacca",
+     "motivo": "La curvatura della schiena non è misurabile: l'app controlla solo che le gambe non siano troppo basse o troppo alte in modo indiretto."
+    },
+    {
+     "errore": "Collo in tensione",
+     "motivo": "Non misurabile con i punti disponibili."
+    },
+    {
+     "errore": "Apnea",
+     "motivo": "Il respiro non è visibile."
+    }
+   ]
+  },
+  "motivo": "Reso analizzabile con la modalità isometrica (richiesta del catalogo). Regole proposte dall'app."
+ },
+ {
+  "id": "ADM-052",
+  "imposta": {
+   "analizzabilita": "parziale",
+   "modalita": "isometrica",
+   "vista_camera": "laterale",
+   "lato": "auto",
+   "messaggio_posizione": "Camera di lato, corpo intero e parallele visibili",
+   "messaggio_ok": "Ottima tenuta!",
+   "messaggio_tenuta": "Tieni, gambe tese",
+   "misure": {
+    "anca": {
+     "tipo": "angolo",
+     "punti": [
+      "spalla",
+      "anca",
+      "caviglia"
+     ],
+     "ancora": "anca"
+    },
+    "gambe": {
+     "tipo": "inclinazione",
+     "punti": [
+      "anca",
+      "caviglia"
+     ]
+    },
+    "ginocchio": {
+     "tipo": "angolo",
+     "punti": [
+      "anca",
+      "ginocchio",
+      "caviglia"
+     ]
+    },
+    "gomito": {
+     "tipo": "angolo",
+     "punti": [
+      "spalla",
+      "gomito",
+      "polso"
+     ]
+    },
+    "braccio": {
+     "tipo": "inclinazione",
+     "punti": [
+      "polso",
+      "spalla"
+     ]
+    }
+   },
+   "ripetizione": {
+    "misura": "anca",
+    "tenuta_minimo": 55,
+    "tenuta_massimo": 125,
+    "tenuta_anche": [
+     {
+      "misura": "braccio",
+      "minimo": 0,
+      "massimo": 30
+     },
+     {
+      "misura": "gomito",
+      "minimo": 145
+     }
+    ]
+   },
+   "errori": [
+    {
+     "id": "gambe_basse",
+     "messaggio": "Alza le gambe",
+     "gravita": "giallo",
+     "momento": "durante",
+     "misura": "gambe",
+     "maggiore_di": 110
+    },
+    {
+     "id": "ginocchia_piegate",
+     "messaggio": "Gambe tese",
+     "gravita": "giallo",
+     "momento": "durante",
+     "misura": "ginocchio",
+     "minore_di": 150
+    },
+    {
+     "id": "braccia_piegate",
+     "messaggio": "Braccia tese, spingi giù",
+     "gravita": "giallo",
+     "momento": "durante",
+     "misura": "gomito",
+     "minore_di": 155
+    }
+   ],
+   "testi_errori": {
+    "gambe_basse": {
+     "cosa_succede": "Le gambe scendono sotto l'orizzontale ({valore} dalla verticale, limite {soglia}).",
+     "perche_conta": "Con le gambe basse la tenuta perde efficacia per addome e flessori dell'anca.",
+     "come_correggere": "Tieni le gambe all'altezza delle anche; se non ci riesci, piega le ginocchia (versione raccolta).",
+     "frase_da_ricordare": "Gambe all'altezza delle anche."
+    },
+    "ginocchia_piegate": {
+     "cosa_succede": "Il ginocchio è piegato a {valore} (limite {soglia}).",
+     "perche_conta": "Piegando le ginocchia la tenuta diventa un'altra, più facile.",
+     "come_correggere": "Distendi le gambe e punta i piedi; se è troppo dura, usa la versione raccolta di proposito.",
+     "frase_da_ricordare": "Gambe tese."
+    },
+    "braccia_piegate": {
+     "cosa_succede": "Il gomito si piega a {valore} (limite {soglia}).",
+     "perche_conta": "Le spalle sprofondano e si caricano.",
+     "come_correggere": "Braccia tese e spalle lontane dalle orecchie: spingi giù.",
+     "frase_da_ricordare": "Spingi giù, braccia tese."
+    }
+   },
+   "motivo": "Modalità isometrica: il cronometro parte con anca a circa 90° e braccia tese sotto le spalle. Soglie stimate, da tarare in sala.",
+   "non_rilevabili": [
+    {
+     "errore": "Spalle che salgono",
+     "motivo": "L'elevazione delle scapole è di pochi centimetri."
+    },
+    {
+     "errore": "Piedi che toccano terra",
+     "motivo": "La camera non vede con certezza il contatto con il pavimento: seduti a terra con le mani appoggiate le misure sono simili."
+    }
+   ]
+  },
+  "motivo": "Reso analizzabile con la modalità isometrica e le condizioni multiple (richiesta del catalogo). Regole proposte dall'app."
+ },
+ {
+  "id": "ADM-053",
+  "imposta": {
+   "analizzabilita": "parziale",
+   "modalita": "isometrica",
+   "vista_camera": "laterale",
+   "lato": "auto",
+   "messaggio_posizione": "Camera di lato, corpo intero e anelli visibili",
+   "messaggio_ok": "Ottima tenuta!",
+   "messaggio_tenuta": "Tieni, gambe tese",
+   "misure": {
+    "anca": {
+     "tipo": "angolo",
+     "punti": [
+      "spalla",
+      "anca",
+      "caviglia"
+     ],
+     "ancora": "anca"
+    },
+    "gambe": {
+     "tipo": "inclinazione",
+     "punti": [
+      "anca",
+      "caviglia"
+     ]
+    },
+    "ginocchio": {
+     "tipo": "angolo",
+     "punti": [
+      "anca",
+      "ginocchio",
+      "caviglia"
+     ]
+    },
+    "gomito": {
+     "tipo": "angolo",
+     "punti": [
+      "spalla",
+      "gomito",
+      "polso"
+     ]
+    },
+    "braccio": {
+     "tipo": "inclinazione",
+     "punti": [
+      "polso",
+      "spalla"
+     ]
+    }
+   },
+   "ripetizione": {
+    "misura": "anca",
+    "tenuta_minimo": 55,
+    "tenuta_massimo": 125,
+    "tenuta_anche": [
+     {
+      "misura": "braccio",
+      "minimo": 0,
+      "massimo": 30
+     },
+     {
+      "misura": "gomito",
+      "minimo": 145
+     }
+    ]
+   },
+   "errori": [
+    {
+     "id": "gambe_basse",
+     "messaggio": "Alza le gambe",
+     "gravita": "giallo",
+     "momento": "durante",
+     "misura": "gambe",
+     "maggiore_di": 110
+    },
+    {
+     "id": "ginocchia_piegate",
+     "messaggio": "Gambe tese",
+     "gravita": "giallo",
+     "momento": "durante",
+     "misura": "ginocchio",
+     "minore_di": 150
+    },
+    {
+     "id": "braccia_piegate",
+     "messaggio": "Braccia tese, spingi giù",
+     "gravita": "giallo",
+     "momento": "durante",
+     "misura": "gomito",
+     "minore_di": 155
+    }
+   ],
+   "testi_errori": {
+    "gambe_basse": {
+     "cosa_succede": "Le gambe scendono sotto l'orizzontale ({valore} dalla verticale, limite {soglia}).",
+     "perche_conta": "Con le gambe basse la tenuta perde efficacia per addome e flessori dell'anca.",
+     "come_correggere": "Tieni le gambe all'altezza delle anche; se non ci riesci, piega le ginocchia (versione raccolta).",
+     "frase_da_ricordare": "Gambe all'altezza delle anche."
+    },
+    "ginocchia_piegate": {
+     "cosa_succede": "Il ginocchio è piegato a {valore} (limite {soglia}).",
+     "perche_conta": "Piegando le ginocchia la tenuta diventa un'altra, più facile.",
+     "come_correggere": "Distendi le gambe e punta i piedi; se è troppo dura, usa la versione raccolta di proposito.",
+     "frase_da_ricordare": "Gambe tese."
+    },
+    "braccia_piegate": {
+     "cosa_succede": "Il gomito si piega a {valore} (limite {soglia}).",
+     "perche_conta": "Le spalle sprofondano e si caricano.",
+     "come_correggere": "Braccia tese e spalle lontane dalle orecchie: spingi giù.",
+     "frase_da_ricordare": "Spingi giù, braccia tese."
+    }
+   },
+   "motivo": "Modalità isometrica: il cronometro parte con anca a circa 90° e braccia tese sotto le spalle. Soglie stimate, da tarare in sala.",
+   "non_rilevabili": [
+    {
+     "errore": "Spalle che salgono",
+     "motivo": "L'elevazione delle scapole è di pochi centimetri."
+    },
+    {
+     "errore": "Piedi che toccano terra",
+     "motivo": "La camera non vede con certezza il contatto con il pavimento: seduti a terra con le mani appoggiate le misure sono simili."
+    },
+    {
+     "errore": "Anelli che si aprono",
+     "motivo": "Lo spostamento laterale degli anelli avviene verso la camera."
+    }
+   ]
+  },
+  "motivo": "Come ADM-052."
+ },
+ {
+  "id": "ADM-020",
+  "imposta": {
+   "misure.corpo.tipo": "angolo_orientato"
+  },
+  "motivo": "Angolo con verso (richiesta del catalogo): distingue il bacino che cede dal sedere alto."
+ },
+ {
+  "id": "ADM-020",
+  "imposta": {
+   "errori.allineamento": null,
+   "errori.bacino_cede": {
+    "messaggio": "Glutei stretti, bacino su",
+    "gravita": "giallo",
+    "momento": "durante",
+    "misura": "corpo",
+    "minore_di": 155
+   },
+   "errori.sedere_alto": {
+    "messaggio": "Abbassa il sedere",
+    "gravita": "giallo",
+    "momento": "durante",
+    "misura": "corpo",
+    "maggiore_di": 205
+   },
+   "testi_errori.bacino_cede": {
+    "cosa_succede": "Il bacino scende verso terra e la schiena si inarca.",
+    "perche_conta": "La zona lombare si carica proprio quando lo sforzo è massimo.",
+    "come_correggere": "Stringi glutei e addome prima di scendere; se non riesci a tenere la linea, passa a una versione più facile.",
+    "frase_da_ricordare": "Glutei stretti, bacino su.",
+    "frase_alternativa": "Pancia dentro, corpo rigido."
+   },
+   "testi_errori.sedere_alto": {
+    "cosa_succede": "Il sedere sale e il corpo forma una V rovesciata.",
+    "perche_conta": "L'esercizio diventa più facile e il lavoro passa dal petto alle spalle.",
+    "come_correggere": "Abbassa il bacino finché spalle, anche e piedi sono in linea.",
+    "frase_da_ricordare": "Sedere giù.",
+    "frase_alternativa": "Abbassa il sedere, corpo in linea."
+   }
+  },
+  "motivo": "Come PET-001: 'Corpo in linea retta' diviso in due correzioni: bacino che cede (sotto 155°, gravità giallo (corpo libero e TRX)) e sedere alto (oltre 205°, gravità giallo)."
+ },
+ {
+  "id": "ADM-038",
+  "imposta": {
+   "misure.corpo.tipo": "angolo_orientato"
+  },
+  "motivo": "Angolo con verso (richiesta del catalogo): distingue il bacino che cede dal sedere alto."
+ },
+ {
+  "id": "ADM-038",
+  "imposta": {
+   "errori.allineamento": null,
+   "errori.bacino_cede": {
+    "messaggio": "Glutei stretti, bacino su",
+    "gravita": "giallo",
+    "momento": "durante",
+    "misura": "corpo",
+    "minore_di": 155
+   },
+   "errori.sedere_alto": {
+    "messaggio": "Abbassa il sedere",
+    "gravita": "giallo",
+    "momento": "durante",
+    "misura": "corpo",
+    "maggiore_di": 205
+   },
+   "testi_errori.bacino_cede": {
+    "cosa_succede": "Il bacino scende verso terra e la schiena si inarca.",
+    "perche_conta": "La zona lombare si carica proprio quando lo sforzo è massimo.",
+    "come_correggere": "Stringi glutei e addome prima di scendere; se non riesci a tenere la linea, passa a una versione più facile.",
+    "frase_da_ricordare": "Glutei stretti, bacino su.",
+    "frase_alternativa": "Pancia dentro, corpo rigido."
+   },
+   "testi_errori.sedere_alto": {
+    "cosa_succede": "Il sedere sale e il corpo forma una V rovesciata.",
+    "perche_conta": "L'esercizio diventa più facile e il lavoro passa dal petto alle spalle.",
+    "come_correggere": "Abbassa il bacino finché spalle, anche e piedi sono in linea.",
+    "frase_da_ricordare": "Sedere giù.",
+    "frase_alternativa": "Abbassa il sedere, corpo in linea."
+   }
+  },
+  "motivo": "Come PET-001: 'Corpo in linea retta' diviso in due correzioni: bacino che cede (sotto 155°, gravità giallo (corpo libero e TRX)) e sedere alto (oltre 205°, gravità giallo)."
+ },
+ {
+  "id": "ADM-020",
+  "imposta": {
+   "impostazioni": [
+    {
+     "id": "lato",
+     "domanda": "Con quale braccio sali per primo? (tienilo verso la camera)",
+     "opzioni": [
+      {
+       "etichetta": "Destro",
+       "imposta": {
+        "lato": "dx"
+       }
+      },
+      {
+       "etichetta": "Sinistro",
+       "imposta": {
+        "lato": "sx"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "motivo": "Scelta del braccio verso la camera (come PET-006)."
+ },
+ {
+  "id": "ADM-028",
+  "imposta": {
+   "misure.corpo": {
+    "tipo": "angolo_orientato",
+    "punti": [
+     "spalla",
+     "anca",
+     "ginocchio"
+    ],
+    "ancora": "ginocchio"
+   },
+   "errori.bacino_cede": {
+    "messaggio": "Pancia dentro, accorcia",
+    "gravita": "giallo",
+    "momento": "durante",
+    "misura": "corpo",
+    "minore_di": 165
+   },
+   "testi_errori.bacino_cede": {
+    "cosa_succede": "Allungandoti il bacino scende sotto la linea spalle-ginocchia e la schiena si inarca.",
+    "perche_conta": "È il segnale più visibile della zona lombare che cede, il rischio principale dei rollout.",
+    "come_correggere": "Allungati solo finché tieni addome e glutei stretti; accorcia l'ampiezza invece di cedere.",
+    "frase_da_ricordare": "Accorcia, pancia dentro."
+   }
+  },
+  "motivo": "Angolo con verso (richiesta del catalogo): il bacino che scende sotto la linea è un indizio indiretto della zona lombare che cede. Nessun controllo 'allunga di più' (nota §5). Soglia stimata, da tarare."
+ },
+ {
+  "id": "ADM-029",
+  "imposta": {
+   "misure.corpo": {
+    "tipo": "angolo_orientato",
+    "punti": [
+     "spalla",
+     "anca",
+     "ginocchio"
+    ],
+    "ancora": "ginocchio"
+   },
+   "errori.bacino_cede": {
+    "messaggio": "Pancia dentro, accorcia",
+    "gravita": "giallo",
+    "momento": "durante",
+    "misura": "corpo",
+    "minore_di": 165
+   },
+   "testi_errori.bacino_cede": {
+    "cosa_succede": "Allungandoti il bacino scende sotto la linea spalle-ginocchia e la schiena si inarca.",
+    "perche_conta": "È il segnale più visibile della zona lombare che cede, il rischio principale dei rollout.",
+    "come_correggere": "Allungati solo finché tieni addome e glutei stretti; accorcia l'ampiezza invece di cedere.",
+    "frase_da_ricordare": "Accorcia, pancia dentro."
+   }
+  },
+  "motivo": "Angolo con verso (richiesta del catalogo): il bacino che scende sotto la linea è un indizio indiretto della zona lombare che cede. Nessun controllo 'allunga di più' (nota §5). Soglia stimata, da tarare."
+ },
+ {
+  "id": "ADM-043",
+  "imposta": {
+   "misure.corpo": {
+    "tipo": "angolo_orientato",
+    "punti": [
+     "spalla",
+     "anca",
+     "ginocchio"
+    ],
+    "ancora": "ginocchio"
+   },
+   "errori.bacino_cede": {
+    "messaggio": "Pancia dentro, accorcia",
+    "gravita": "giallo",
+    "momento": "durante",
+    "misura": "corpo",
+    "minore_di": 165
+   },
+   "testi_errori.bacino_cede": {
+    "cosa_succede": "Allungandoti il bacino scende sotto la linea spalle-ginocchia e la schiena si inarca.",
+    "perche_conta": "È il segnale più visibile della zona lombare che cede, il rischio principale dei rollout.",
+    "come_correggere": "Allungati solo finché tieni addome e glutei stretti; accorcia l'ampiezza invece di cedere.",
+    "frase_da_ricordare": "Accorcia, pancia dentro."
+   }
+  },
+  "motivo": "Angolo con verso (richiesta del catalogo): il bacino che scende sotto la linea è un indizio indiretto della zona lombare che cede. Nessun controllo 'allunga di più' (nota §5). Soglia stimata, da tarare."
+ },
+ {
+  "id": "ADM-039",
+  "imposta": {
+   "misure.corpo": {
+    "tipo": "angolo_orientato",
+    "punti": [
+     "spalla",
+     "anca",
+     "caviglia"
+    ],
+    "ancora": "caviglia"
+   },
+   "errori.bacino_cede": {
+    "messaggio": "Pancia dentro, accorcia",
+    "gravita": "giallo",
+    "momento": "durante",
+    "misura": "corpo",
+    "minore_di": 165
+   },
+   "testi_errori.bacino_cede": {
+    "cosa_succede": "Allungandoti il bacino scende sotto la linea spalle-piedi e la schiena si inarca.",
+    "perche_conta": "È il segnale più visibile della zona lombare che cede, il rischio principale dei rollout.",
+    "come_correggere": "Allungati solo finché tieni addome e glutei stretti; accorcia l'ampiezza invece di cedere.",
+    "frase_da_ricordare": "Accorcia, pancia dentro."
+   }
+  },
+  "motivo": "Angolo con verso (richiesta del catalogo): il bacino che scende sotto la linea è un indizio indiretto della zona lombare che cede. Nessun controllo 'allunga di più' (nota §5). Soglia stimata, da tarare."
+ },
+ {
+  "id": "ADM-027",
+  "imposta": {
+   "avviso_sicurezza": "Esercizio avanzato con forte carico su schiena e spalle: solo con l'istruttore e con una buona base. L'app non lo analizza; per iniziare è meglio il sollevamento gambe a terra (ADM-013)."
+  },
+  "motivo": "Non analizzato per scelta di sicurezza (solo_scheda con avviso)."
+ },
+ {
+  "id": "ADM-030",
+  "imposta": {
+   "avviso_sicurezza": "Carico molto alto sulla zona lombare: solo per chi esegue bene il rollout in ginocchio, con l'istruttore. L'app non lo analizza; meglio l'ab wheel rollout in ginocchio (ADM-029)."
+  },
+  "motivo": "Non analizzato per scelta di sicurezza (solo_scheda con avviso)."
+ },
+ {
+  "id": "ADM-040",
+  "imposta": {
+   "avviso_sicurezza": "La palla torna verso il viso: palle morbide, lanci leggeri e un compagno attento. L'app non lo analizza; meglio il sit-up classico (ADM-007)."
+  },
+  "motivo": "Non analizzato per scelta di sicurezza (solo_scheda con avviso)."
+ },
+ {
+  "id": "ADM-020",
+  "imposta": {
+   "modalita": null,
+   "messaggio_tenuta": null
+  },
+  "motivo": "Variante a ripetizioni di ADM-016: non eredita la modalità isometrica del plank."
+ },
+ {
+  "id": "DOR-064",
+  "imposta": {
+   "misure.braccio": {
+    "tipo": "angolo",
+    "punti": [
+     "anca",
+     "spalla",
+     "gomito"
+    ]
+   },
+   "ripetizione.tenuta_anche": [
+    {
+     "misura": "braccio",
+     "minimo": 45,
+     "massimo": 135
+    }
+   ]
+  },
+  "motivo": "Revisione 11/11: da sdraiati a terra tra un tentativo e l'altro il corpo è orizzontale come nel front lever. Ora il cronometro parte solo con le braccia verso la sbarra (angolo anca-spalla-gomito tra 45° e 135°)."
  }
 ]

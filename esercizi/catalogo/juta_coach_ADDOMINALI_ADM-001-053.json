@@ -1,0 +1,5318 @@
+[
+  {
+    "id": "ADM-001",
+    "nome": "Crunch",
+    "scheda": {
+      "descrizione": "Da supini con le ginocchia piegate si arrotola il busto staccando le scapole da terra. È l'esercizio di base per il retto dell'addome, semplice e adatto a tutti.",
+      "muscoli": {
+        "primari": [
+          "retto dell'addome"
+        ],
+        "secondari": [
+          "obliqui"
+        ],
+        "stabilizzatori": [
+          "muscoli del collo"
+        ]
+      },
+      "partenza": "Supini su un tappetino, ginocchia piegate, piedi a terra alla larghezza delle anche, mani dietro le orecchie o incrociate sul petto.",
+      "esecuzione": {
+        "concentrica": "Si arrotola il busto staccando testa e scapole da terra, portando le costole verso il bacino; la zona lombare resta appoggiata.",
+        "pausa": "Breve pausa in alto stringendo l'addome.",
+        "eccentrica": "Ritorno controllato srotolando il busto fino ad appoggiare scapole e testa."
+      },
+      "rom": "Flessione del busto di circa 30-40°: si staccano solo testa e scapole.",
+      "respirazione": "Espira salendo, inspira scendendo.",
+      "tempo": "1-1-2-0 (salita/spinta 1 s, pausa 1 s, ritorno 2 s, pausa 0 s)",
+      "errori": [
+        {
+          "errore": "Tirare la testa con le mani",
+          "correzione": "Mani appena dietro le orecchie, gomiti aperti, sguardo in alto."
+        },
+        {
+          "errore": "Slancio",
+          "correzione": "Movimento lento e controllato."
+        },
+        {
+          "errore": "Movimento troppo ampio (diventa un sit-up)",
+          "correzione": "Solo le scapole si staccano."
+        }
+      ],
+      "cue": [
+        "Costole verso il bacino",
+        "Collo rilassato",
+        "Scapole staccate",
+        "Giù lento"
+      ],
+      "regressione_progressione": {
+        "regressione": [],
+        "progressione": [
+          "ADM-004 Crunch zavorrato",
+          "ADM-031 Crunch al cavo in ginocchio"
+        ]
+      },
+      "precauzioni": "Chi ha fastidi al collo tenga le mani incrociate sul petto. In caso di fastidi o dolore chiedere il parere di un professionista sanitario."
+    },
+    "config_app": {
+      "eredita_da": null,
+      "vista_camera": "laterale",
+      "lato": "auto",
+      "messaggio_posizione": "Camera a terra di lato, corpo intero visibile",
+      "messaggio_ok": "Ottimo crunch!",
+      "misure": {
+        "busto": {
+          "tipo": "inclinazione",
+          "punti": [
+            "anca",
+            "spalla"
+          ]
+        }
+      },
+      "ripetizione": {
+        "misura": "busto",
+        "direzione": "diminuisce",
+        "posizione_iniziale": 86,
+        "inizio_movimento": 82
+      },
+      "errori": [
+        {
+          "id": "ampiezza",
+          "messaggio": "Stacca di più le spalle",
+          "gravita": "giallo",
+          "momento": "fine",
+          "misura": "busto",
+          "statistica": "minimo",
+          "maggiore_di": 78
+        },
+        {
+          "id": "troppo_veloce",
+          "messaggio": "Scendi più lentamente",
+          "gravita": "giallo",
+          "momento": "fine",
+          "misura": "durata",
+          "statistica": "massimo",
+          "minore_di": 1.5
+        }
+      ],
+      "testi_errori": {
+        "ampiezza": {
+          "cosa_succede": "Le spalle si staccano poco da terra.",
+          "perche_conta": "Con un movimento così piccolo l'addome lavora poco.",
+          "come_correggere": "Arrotola il busto staccando le scapole da terra, mento leggermente verso il petto.",
+          "frase_da_ricordare": "Scapole staccate."
+        },
+        "troppo_veloce": {
+          "cosa_succede": "La ripetizione è troppo rapida.",
+          "perche_conta": "Con lo slancio si tira con il collo e l'addome lavora poco.",
+          "come_correggere": "Sali controllato e conta due secondi per scendere.",
+          "frase_da_ricordare": "Giù in due."
+        }
+      },
+      "analizzabilita": "parziale",
+      "motivo": "Di lato si legge l'inclinazione del busto (anca-spalla): circa 90° da sdraiati, circa 75-80° con le scapole staccate, perché la zona lombare resta a terra e la linea anca-spalla si inclina solo di metà della flessione. Il crunch è un movimento piccolo: soglie da verificare in sala. Questa misura assume la convenzione dell'inclinazione da 0 a 180 (§2).",
+      "non_rilevabili": [
+        {
+          "errore": "Tirare la testa con le mani",
+          "motivo": "Il collo non è misurabile in modo affidabile con il solo punto del naso."
+        },
+        {
+          "errore": "Zona lombare che si stacca",
+          "motivo": "La curvatura della colonna non è misurabile."
+        }
+      ],
+      "richiesta_motore": [],
+      "da_calibrare": true
+    }
+  },
+  {
+    "id": "ADM-002",
+    "nome": "Crunch con gambe sollevate",
+    "scheda": {
+      "descrizione": "Crunch con le gambe sollevate, anche e ginocchia a 90°. Elimina l'aiuto dei piedi a terra e aumenta il lavoro dell'addome.",
+      "muscoli": {
+        "primari": [
+          "retto dell'addome"
+        ],
+        "secondari": [
+          "obliqui",
+          "ileopsoas (flessori dell'anca)"
+        ],
+        "stabilizzatori": [
+          "muscoli del collo"
+        ]
+      },
+      "partenza": "Supini, gambe sollevate con anche e ginocchia a 90° (posizione tavolino), mani dietro le orecchie.",
+      "esecuzione": "Come ADM-001, tenendo le gambe ferme a 90°.",
+      "rom": "Come ADM-001.",
+      "respirazione": "Espira salendo, inspira scendendo.",
+      "tempo": "1-1-2-0 (salita/spinta 1 s, pausa 1 s, ritorno 2 s, pausa 0 s)",
+      "errori": [
+        {
+          "errore": "Gambe che si muovono",
+          "correzione": "Gambe ferme a 90°."
+        },
+        {
+          "errore": "Tirare la testa",
+          "correzione": "Collo rilassato."
+        },
+        {
+          "errore": "Slancio",
+          "correzione": "Movimento lento."
+        }
+      ],
+      "cue": [
+        "Gambe ferme",
+        "Costole verso il bacino",
+        "Collo rilassato",
+        "Giù lento"
+      ],
+      "regressione_progressione": {
+        "regressione": [
+          "ADM-001 Crunch"
+        ],
+        "progressione": [
+          "ADM-003 Crunch toccata punte"
+        ]
+      },
+      "precauzioni": "In caso di fastidi o dolore chiedere il parere di un professionista sanitario."
+    },
+    "config_app": {
+      "eredita_da": "ADM-001",
+      "analizzabilita": "parziale",
+      "motivo": "Come ADM-001: stesse misure e soglie. Le gambe sollevate possono coprire in parte l'anca.",
+      "non_rilevabili": [
+        {
+          "errore": "Tirare la testa con le mani",
+          "motivo": "Il collo non è misurabile in modo affidabile con il solo punto del naso."
+        },
+        {
+          "errore": "Zona lombare che si stacca",
+          "motivo": "La curvatura della colonna non è misurabile."
+        }
+      ],
+      "richiesta_motore": [],
+      "da_calibrare": true
+    }
+  },
+  {
+    "id": "ADM-003",
+    "nome": "Crunch toccata punte",
+    "scheda": {
+      "descrizione": "Crunch con le gambe tese in verticale, portando le mani verso le punte dei piedi. Il movimento verso l'alto aumenta l'ampiezza della contrazione.",
+      "muscoli": {
+        "primari": [
+          "retto dell'addome"
+        ],
+        "secondari": [
+          "obliqui"
+        ],
+        "stabilizzatori": [
+          "flessori dell'anca"
+        ]
+      },
+      "partenza": "Supini, gambe tese in verticale sopra le anche, braccia tese verso il soffitto.",
+      "esecuzione": "Come ADM-001, portando le mani verso le punte dei piedi con le gambe ferme in verticale.",
+      "rom": "Come ADM-001.",
+      "respirazione": "Espira salendo, inspira scendendo.",
+      "tempo": "1-1-2-0 (salita/spinta 1 s, pausa 1 s, ritorno 2 s, pausa 0 s)",
+      "errori": [
+        {
+          "errore": "Gambe che cadono in avanti",
+          "correzione": "Gambe ferme in verticale."
+        },
+        {
+          "errore": "Slancio con le braccia",
+          "correzione": "Sali con l'addome."
+        },
+        {
+          "errore": "Collo in tensione",
+          "correzione": "Sguardo verso le punte."
+        }
+      ],
+      "cue": [
+        "Gambe verticali",
+        "Mani alle punte",
+        "Sali con l'addome",
+        "Giù lento"
+      ],
+      "regressione_progressione": {
+        "regressione": [
+          "ADM-002 Crunch con gambe sollevate"
+        ],
+        "progressione": []
+      },
+      "precauzioni": "In caso di fastidi o dolore chiedere il parere di un professionista sanitario."
+    },
+    "config_app": {
+      "eredita_da": "ADM-001",
+      "analizzabilita": "parziale",
+      "motivo": "Come ADM-001: stesse misure e soglie.",
+      "non_rilevabili": [
+        {
+          "errore": "Tirare la testa con le mani",
+          "motivo": "Il collo non è misurabile in modo affidabile con il solo punto del naso."
+        },
+        {
+          "errore": "Zona lombare che si stacca",
+          "motivo": "La curvatura della colonna non è misurabile."
+        }
+      ],
+      "richiesta_motore": [],
+      "da_calibrare": true
+    }
+  },
+  {
+    "id": "ADM-004",
+    "nome": "Crunch zavorrato",
+    "scheda": {
+      "descrizione": "Crunch con un disco tenuto sul petto o un manubrio a braccia tese sopra il petto. Aumenta il carico per chi esegue già facilmente molte ripetizioni.",
+      "muscoli": {
+        "primari": [
+          "retto dell'addome"
+        ],
+        "secondari": [
+          "obliqui"
+        ],
+        "stabilizzatori": [
+          "muscoli del collo"
+        ]
+      },
+      "partenza": "Come ADM-001, con un disco tenuto sul petto (più semplice) o un manubrio tenuto sopra il petto a braccia tese.",
+      "esecuzione": "Come ADM-001.",
+      "rom": "Come ADM-001.",
+      "respirazione": "Espira salendo, inspira scendendo.",
+      "tempo": "1-1-2-0 (salita/spinta 1 s, pausa 1 s, ritorno 2 s, pausa 0 s)",
+      "errori": [
+        {
+          "errore": "Carico dietro la testa che tira il collo",
+          "correzione": "Tenere il carico sul petto."
+        },
+        {
+          "errore": "Slancio",
+          "correzione": "Movimento lento."
+        },
+        {
+          "errore": "Carico eccessivo",
+          "correzione": "Carico leggero."
+        }
+      ],
+      "cue": [
+        "Carico sul petto",
+        "Costole verso il bacino",
+        "Collo rilassato",
+        "Giù lento"
+      ],
+      "regressione_progressione": {
+        "regressione": [
+          "ADM-001 Crunch"
+        ],
+        "progressione": [
+          "ADM-031 Crunch al cavo in ginocchio"
+        ]
+      },
+      "precauzioni": "Preferire il carico sul petto: dietro la testa sollecita il collo. In caso di fastidi o dolore chiedere il parere di un professionista sanitario."
+    },
+    "config_app": {
+      "eredita_da": "ADM-001",
+      "analizzabilita": "parziale",
+      "motivo": "Come ADM-001: stesse misure e soglie. Il carico può coprire le spalle.",
+      "non_rilevabili": [
+        {
+          "errore": "Tirare la testa con le mani",
+          "motivo": "Il collo non è misurabile in modo affidabile con il solo punto del naso."
+        },
+        {
+          "errore": "Zona lombare che si stacca",
+          "motivo": "La curvatura della colonna non è misurabile."
+        }
+      ],
+      "richiesta_motore": [],
+      "da_calibrare": true
+    }
+  },
+  {
+    "id": "ADM-005",
+    "nome": "Crunch su panca declinata",
+    "scheda": {
+      "descrizione": "Crunch su panca declinata con le gambe bloccate: la testa parte più in basso del bacino. L'inclinazione aumenta il carico sull'addome.",
+      "muscoli": {
+        "primari": [
+          "retto dell'addome"
+        ],
+        "secondari": [
+          "obliqui"
+        ],
+        "stabilizzatori": [
+          "flessori dell'anca"
+        ]
+      },
+      "partenza": "Su panca declinata inclinata a circa 20°, gambe bloccate sotto i rulli, schiena appoggiata, mani dietro le orecchie o sul petto.",
+      "esecuzione": "Come ADM-001: si staccano testa e scapole dalla panca, la zona lombare resta appoggiata.",
+      "rom": "Flessione del busto di circa 30-40° rispetto alla panca.",
+      "respirazione": "Espira salendo, inspira scendendo.",
+      "tempo": "1-1-2-0 (salita/spinta 1 s, pausa 1 s, ritorno 2 s, pausa 0 s)",
+      "errori": [
+        {
+          "errore": "Tirare la testa con le mani",
+          "correzione": "Mani appena dietro le orecchie, gomiti aperti, sguardo in alto."
+        },
+        {
+          "errore": "Slancio",
+          "correzione": "Movimento lento e controllato."
+        },
+        {
+          "errore": "Movimento troppo ampio (diventa un sit-up)",
+          "correzione": "Solo le scapole si staccano."
+        }
+      ],
+      "cue": [
+        "Costole verso il bacino",
+        "Collo rilassato",
+        "Scapole staccate",
+        "Giù lento"
+      ],
+      "regressione_progressione": {
+        "regressione": [
+          "ADM-001 Crunch"
+        ],
+        "progressione": [
+          "ADM-010 Sit-up su panca declinata"
+        ]
+      },
+      "precauzioni": "Chi ha problemi di pressione dovrebbe evitare le posizioni a testa in giù. In caso di fastidi o dolore chiedere il parere di un professionista sanitario."
+    },
+    "config_app": {
+      "eredita_da": null,
+      "vista_camera": "laterale",
+      "lato": "auto",
+      "messaggio_posizione": "Di lato alla panca, inclinata a circa 20°",
+      "messaggio_ok": "Ottimo crunch!",
+      "misure": {
+        "busto": {
+          "tipo": "inclinazione",
+          "punti": [
+            "anca",
+            "spalla"
+          ]
+        }
+      },
+      "ripetizione": {
+        "misura": "busto",
+        "direzione": "diminuisce",
+        "posizione_iniziale": 106,
+        "inizio_movimento": 102
+      },
+      "errori": [
+        {
+          "id": "ampiezza",
+          "messaggio": "Stacca di più le spalle",
+          "gravita": "giallo",
+          "momento": "fine",
+          "misura": "busto",
+          "statistica": "minimo",
+          "maggiore_di": 98
+        },
+        {
+          "id": "troppo_veloce",
+          "messaggio": "Scendi più lentamente",
+          "gravita": "giallo",
+          "momento": "fine",
+          "misura": "durata",
+          "statistica": "massimo",
+          "minore_di": 1.5
+        }
+      ],
+      "testi_errori": {
+        "ampiezza": {
+          "cosa_succede": "Le spalle si staccano poco dalla panca.",
+          "perche_conta": "Con un movimento così piccolo l'addome lavora poco.",
+          "come_correggere": "Arrotola il busto staccando le scapole dalla panca, mento leggermente verso il petto.",
+          "frase_da_ricordare": "Scapole staccate."
+        },
+        "troppo_veloce": {
+          "cosa_succede": "La ripetizione è troppo rapida.",
+          "perche_conta": "Con lo slancio si tira con il collo e l'addome lavora poco.",
+          "come_correggere": "Sali controllato e conta due secondi per scendere.",
+          "frase_da_ricordare": "Giù in due."
+        }
+      },
+      "analizzabilita": "parziale",
+      "motivo": "Come ADM-001, con soglie più alte perché sulla panca declinata (circa 20°) il busto parte a circa 110°. Con una panca più inclinata le ripetizioni non vengono contate: serve una soglia relativa alla partenza. Dipende dalla convenzione 0-180 dell'inclinazione (§2).",
+      "non_rilevabili": [
+        {
+          "errore": "Tirare la testa con le mani",
+          "motivo": "Il collo non è misurabile in modo affidabile con il solo punto del naso."
+        },
+        {
+          "errore": "Zona lombare che si stacca",
+          "motivo": "La curvatura della colonna non è misurabile."
+        }
+      ],
+      "richiesta_motore": [
+        "Soglie relative alla partenza (come §7.7): la posizione iniziale dipende dall'inclinazione della panca."
+      ],
+      "da_calibrare": true
+    }
+  },
+  {
+    "id": "ADM-006",
+    "nome": "Crunch inverso",
+    "scheda": {
+      "descrizione": "Da supini con le gambe a tavolino, si portano le ginocchia verso il petto sollevando il bacino da terra. Enfatizza la retroversione del bacino e il lavoro del retto dell'addome.",
+      "muscoli": {
+        "primari": [
+          "retto dell'addome"
+        ],
+        "secondari": [
+          "obliqui",
+          "ileopsoas (flessori dell'anca)"
+        ],
+        "stabilizzatori": [
+          "dorsali (braccia a terra)"
+        ]
+      },
+      "partenza": "Supini, braccia lungo i fianchi con i palmi a terra, gambe sollevate con le cosce verticali e le ginocchia a 90°.",
+      "esecuzione": {
+        "concentrica": "Le ginocchia vanno verso il petto e il bacino si arrotola staccandosi da terra.",
+        "pausa": "Breve pausa in alto.",
+        "eccentrica": "Ritorno controllato del bacino a terra e delle gambe a 90°."
+      },
+      "rom": "Anca da circa 90° a circa 40-50° con il bacino sollevato.",
+      "respirazione": "Espira salendo, inspira scendendo.",
+      "tempo": "1-1-2-0 (salita/spinta 1 s, pausa 1 s, ritorno 2 s, pausa 0 s)",
+      "errori": [
+        {
+          "errore": "Slancio con le gambe",
+          "correzione": "Movimento lento, il bacino si arrotola."
+        },
+        {
+          "errore": "Bacino che non si stacca",
+          "correzione": "Arrotolare il bacino, non solo piegare le anche."
+        },
+        {
+          "errore": "Ritorno veloce",
+          "correzione": "Ritorno controllato."
+        }
+      ],
+      "cue": [
+        "Ginocchia al petto",
+        "Arrotola il bacino",
+        "Niente slancio",
+        "Giù lento"
+      ],
+      "regressione_progressione": {
+        "regressione": [
+          "ADM-001 Crunch"
+        ],
+        "progressione": [
+          "ADM-034 Sollevamento ginocchia alla sedia romana"
+        ]
+      },
+      "precauzioni": "In caso di fastidi o dolore chiedere il parere di un professionista sanitario."
+    },
+    "config_app": {
+      "eredita_da": null,
+      "vista_camera": "laterale",
+      "lato": "auto",
+      "messaggio_posizione": "Camera a terra di lato, corpo intero visibile",
+      "messaggio_ok": "Ottimo!",
+      "misure": {
+        "anca": {
+          "tipo": "angolo",
+          "punti": [
+            "spalla",
+            "anca",
+            "ginocchio"
+          ]
+        }
+      },
+      "ripetizione": {
+        "misura": "anca",
+        "direzione": "diminuisce",
+        "posizione_iniziale": 80,
+        "inizio_movimento": 70
+      },
+      "errori": [
+        {
+          "id": "ampiezza",
+          "messaggio": "Ginocchia verso il petto",
+          "gravita": "giallo",
+          "momento": "fine",
+          "misura": "anca",
+          "statistica": "minimo",
+          "maggiore_di": 55
+        },
+        {
+          "id": "troppo_veloce",
+          "messaggio": "Scendi più lentamente",
+          "gravita": "giallo",
+          "momento": "fine",
+          "misura": "durata",
+          "statistica": "massimo",
+          "minore_di": 1.5
+        }
+      ],
+      "testi_errori": {
+        "ampiezza": {
+          "cosa_succede": "Le ginocchia si avvicinano poco al petto.",
+          "perche_conta": "Senza arrotolare il bacino l'addome lavora poco.",
+          "come_correggere": "Porta le ginocchia verso il petto staccando il bacino da terra.",
+          "frase_da_ricordare": "Ginocchia al petto."
+        },
+        "troppo_veloce": {
+          "cosa_succede": "La ripetizione è troppo rapida.",
+          "perche_conta": "Con lo slancio lavorano le gambe invece dell'addome.",
+          "come_correggere": "Conta due secondi per scendere.",
+          "frase_da_ricordare": "Giù in due."
+        }
+      },
+      "analizzabilita": "parziale",
+      "motivo": "Di lato si legge l'angolo dell'anca (spalla-anca-ginocchio): circa 90° a gambe a tavolino, circa 45° con il bacino arrotolato. La ripetizione si chiude tornando a gambe a 90° (oltre 80°).",
+      "non_rilevabili": [
+        {
+          "errore": "Bacino che non si stacca da terra",
+          "motivo": "Lo stacco del bacino è di pochi centimetri."
+        }
+      ],
+      "richiesta_motore": [],
+      "da_calibrare": true
+    }
+  },
+  {
+    "id": "ADM-007",
+    "nome": "Sit-up",
+    "scheda": {
+      "descrizione": "Da supini con le ginocchia piegate, si solleva il busto fino a seduti e si torna giù. Allena addome e flessori dell'anca su tutta l'ampiezza.",
+      "muscoli": {
+        "primari": [
+          "retto dell'addome",
+          "ileopsoas (flessori dell'anca)"
+        ],
+        "secondari": [
+          "obliqui"
+        ],
+        "stabilizzatori": [
+          "muscoli del collo"
+        ]
+      },
+      "partenza": "Supini, ginocchia piegate, piedi a terra (bloccati se serve), mani incrociate sul petto o alle tempie.",
+      "esecuzione": {
+        "concentrica": "Si arrotola il busto staccando prima la testa e le scapole, poi tutta la schiena, fino a busto quasi verticale.",
+        "pausa": "Breve pausa in alto.",
+        "eccentrica": "Ritorno controllato appoggiando la schiena una vertebra alla volta."
+      },
+      "rom": "Busto da sdraiato (circa 90° dalla verticale) a quasi verticale.",
+      "respirazione": "Espira salendo, inspira scendendo.",
+      "tempo": "1-0-2-0 (salita/spinta 1 s, pausa 0 s, ritorno 2 s, pausa 0 s)",
+      "errori": [
+        {
+          "errore": "Tirare la testa con le mani",
+          "correzione": "Mani incrociate sul petto o alle tempie."
+        },
+        {
+          "errore": "Slancio",
+          "correzione": "Movimento controllato."
+        },
+        {
+          "errore": "Piedi che si staccano",
+          "correzione": "Piedi bloccati o più vicini al bacino."
+        }
+      ],
+      "cue": [
+        "Arrotola il busto",
+        "Collo rilassato",
+        "Su fino in alto",
+        "Giù lento"
+      ],
+      "regressione_progressione": {
+        "regressione": [
+          "ADM-001 Crunch"
+        ],
+        "progressione": [
+          "ADM-009 Sit-up zavorrato",
+          "ADM-010 Sit-up su panca declinata"
+        ]
+      },
+      "precauzioni": "Chi ha fastidi alla zona lombare preferisca il crunch. In caso di fastidi o dolore chiedere il parere di un professionista sanitario."
+    },
+    "config_app": {
+      "eredita_da": null,
+      "vista_camera": "laterale",
+      "lato": "auto",
+      "messaggio_posizione": "Camera a terra di lato, corpo intero visibile",
+      "messaggio_ok": "Ottimo sit-up!",
+      "misure": {
+        "busto": {
+          "tipo": "inclinazione",
+          "punti": [
+            "anca",
+            "spalla"
+          ]
+        }
+      },
+      "ripetizione": {
+        "misura": "busto",
+        "direzione": "diminuisce",
+        "posizione_iniziale": 75,
+        "inizio_movimento": 60
+      },
+      "errori": [
+        {
+          "id": "ampiezza",
+          "messaggio": "Sali fino in alto",
+          "gravita": "giallo",
+          "momento": "fine",
+          "misura": "busto",
+          "statistica": "minimo",
+          "maggiore_di": 35
+        },
+        {
+          "id": "troppo_veloce",
+          "messaggio": "Scendi più lentamente",
+          "gravita": "giallo",
+          "momento": "fine",
+          "misura": "durata",
+          "statistica": "massimo",
+          "minore_di": 1.1
+        }
+      ],
+      "testi_errori": {
+        "ampiezza": {
+          "cosa_succede": "Il busto non arriva in alto.",
+          "perche_conta": "La parte finale del sit-up resta incompleta.",
+          "come_correggere": "Sali finché il busto è quasi verticale, petto verso le ginocchia.",
+          "frase_da_ricordare": "Su fino in alto."
+        },
+        "troppo_veloce": {
+          "cosa_succede": "La ripetizione è troppo rapida.",
+          "perche_conta": "Con lo slancio si tira con il collo e si sollecita la zona lombare.",
+          "come_correggere": "Scendi appoggiando la schiena una vertebra alla volta, in due secondi.",
+          "frase_da_ricordare": "Giù in due."
+        }
+      },
+      "analizzabilita": "parziale",
+      "motivo": "Di lato si legge l'inclinazione del busto: circa 90° da sdraiati, 10-30° seduti. Le soglie dipendono dalla convenzione 0-180 dell'inclinazione (§2).",
+      "non_rilevabili": [
+        {
+          "errore": "Piedi che si staccano da terra",
+          "motivo": "Lo stacco è di pochi centimetri."
+        },
+        {
+          "errore": "Tirare la testa con le mani",
+          "motivo": "Non misurabile in modo affidabile."
+        }
+      ],
+      "richiesta_motore": [],
+      "da_calibrare": true
+    }
+  },
+  {
+    "id": "ADM-008",
+    "nome": "Butterfly sit-up",
+    "scheda": {
+      "descrizione": "Sit-up con le piante dei piedi unite e le ginocchia aperte. La posizione riduce l'aiuto dei flessori dell'anca.",
+      "muscoli": {
+        "primari": [
+          "retto dell'addome"
+        ],
+        "secondari": [
+          "obliqui",
+          "ileopsoas (flessori dell'anca)"
+        ],
+        "stabilizzatori": [
+          "adduttori"
+        ]
+      },
+      "partenza": "Supini, piante dei piedi unite e ginocchia aperte a farfalla, braccia distese sopra la testa.",
+      "esecuzione": "Come ADM-007, accompagnando la salita con le braccia fino a toccare i piedi.",
+      "rom": "Come ADM-007.",
+      "respirazione": "Espira salendo, inspira scendendo.",
+      "tempo": "1-0-2-0 (salita/spinta 1 s, pausa 0 s, ritorno 2 s, pausa 0 s)",
+      "errori": [
+        {
+          "errore": "Slancio",
+          "correzione": "Movimento controllato."
+        },
+        {
+          "errore": "Piedi che si staccano",
+          "correzione": "Piedi bloccati o più vicini al bacino."
+        },
+        {
+          "errore": "Ginocchia che si chiudono",
+          "correzione": "Ginocchia aperte."
+        }
+      ],
+      "cue": [
+        "Piedi uniti",
+        "Arrotola il busto",
+        "Mani ai piedi",
+        "Giù lento"
+      ],
+      "regressione_progressione": {
+        "regressione": [
+          "ADM-007 Sit-up"
+        ],
+        "progressione": []
+      },
+      "precauzioni": "Chi ha fastidi alla zona lombare preferisca il crunch. In caso di fastidi o dolore chiedere il parere di un professionista sanitario."
+    },
+    "config_app": {
+      "eredita_da": "ADM-007",
+      "analizzabilita": "parziale",
+      "motivo": "Come ADM-007: stesse misure e soglie. Con le ginocchia aperte le gambe possono coprire in parte l'anca.",
+      "non_rilevabili": [
+        {
+          "errore": "Piedi che si staccano",
+          "motivo": "Movimento piccolo."
+        }
+      ],
+      "richiesta_motore": [],
+      "da_calibrare": true
+    }
+  },
+  {
+    "id": "ADM-009",
+    "nome": "Sit-up zavorrato",
+    "scheda": {
+      "descrizione": "Sit-up con un disco tenuto sul petto. Aumenta il carico per chi esegue già molte ripetizioni.",
+      "muscoli": {
+        "primari": [
+          "retto dell'addome",
+          "ileopsoas (flessori dell'anca)"
+        ],
+        "secondari": [
+          "obliqui"
+        ],
+        "stabilizzatori": [
+          "muscoli del collo"
+        ]
+      },
+      "partenza": "Come ADM-007, con un disco tenuto stretto sul petto.",
+      "esecuzione": "Come ADM-007.",
+      "rom": "Come ADM-007.",
+      "respirazione": "Espira salendo, inspira scendendo.",
+      "tempo": "1-0-2-0 (salita/spinta 1 s, pausa 0 s, ritorno 2 s, pausa 0 s)",
+      "errori": [
+        {
+          "errore": "Disco che si allontana dal petto",
+          "correzione": "Disco stretto sul petto."
+        },
+        {
+          "errore": "Slancio",
+          "correzione": "Movimento controllato."
+        },
+        {
+          "errore": "Piedi che si staccano",
+          "correzione": "Piedi bloccati."
+        }
+      ],
+      "cue": [
+        "Disco sul petto",
+        "Arrotola il busto",
+        "Su fino in alto",
+        "Giù lento"
+      ],
+      "regressione_progressione": {
+        "regressione": [
+          "ADM-007 Sit-up"
+        ],
+        "progressione": []
+      },
+      "precauzioni": "Chi ha fastidi alla zona lombare preferisca il crunch. In caso di fastidi o dolore chiedere il parere di un professionista sanitario."
+    },
+    "config_app": {
+      "eredita_da": "ADM-007",
+      "analizzabilita": "parziale",
+      "motivo": "Come ADM-007: stesse misure e soglie. Il disco può coprire le spalle.",
+      "non_rilevabili": [
+        {
+          "errore": "Piedi che si staccano",
+          "motivo": "Movimento piccolo."
+        }
+      ],
+      "richiesta_motore": [],
+      "da_calibrare": true
+    }
+  },
+  {
+    "id": "ADM-010",
+    "nome": "Sit-up su panca declinata",
+    "scheda": {
+      "descrizione": "Sit-up su panca declinata con le gambe bloccate. La pendenza aumenta l'ampiezza e il carico rispetto al sit-up a terra.",
+      "muscoli": {
+        "primari": [
+          "retto dell'addome",
+          "ileopsoas (flessori dell'anca)"
+        ],
+        "secondari": [
+          "obliqui"
+        ],
+        "stabilizzatori": [
+          "muscoli del collo"
+        ]
+      },
+      "partenza": "Su panca declinata, gambe bloccate sotto i rulli, mani incrociate sul petto.",
+      "esecuzione": "Come ADM-007, salendo fino a busto quasi verticale.",
+      "rom": "Busto da circa 100-110° (oltre l'orizzontale) a quasi verticale.",
+      "respirazione": "Espira salendo, inspira scendendo.",
+      "tempo": "1-0-2-0 (salita/spinta 1 s, pausa 0 s, ritorno 2 s, pausa 0 s)",
+      "errori": [
+        {
+          "errore": "Tirare la testa con le mani",
+          "correzione": "Mani incrociate sul petto o alle tempie."
+        },
+        {
+          "errore": "Slancio",
+          "correzione": "Movimento controllato."
+        },
+        {
+          "errore": "Schiena inarcata in basso",
+          "correzione": "Scendere controllati senza rilassarsi."
+        }
+      ],
+      "cue": [
+        "Arrotola il busto",
+        "Su fino in alto",
+        "Giù lento",
+        "Collo rilassato"
+      ],
+      "regressione_progressione": {
+        "regressione": [
+          "ADM-007 Sit-up"
+        ],
+        "progressione": []
+      },
+      "precauzioni": "Chi ha problemi di pressione dovrebbe evitare le posizioni a testa in giù. Chi ha fastidi alla zona lombare preferisca il crunch. In caso di fastidi o dolore chiedere il parere di un professionista sanitario."
+    },
+    "config_app": {
+      "eredita_da": null,
+      "vista_camera": "laterale",
+      "lato": "auto",
+      "messaggio_posizione": "Camera di lato alla panca, corpo visibile",
+      "messaggio_ok": "Ottimo sit-up!",
+      "misure": {
+        "busto": {
+          "tipo": "inclinazione",
+          "punti": [
+            "anca",
+            "spalla"
+          ]
+        }
+      },
+      "ripetizione": {
+        "misura": "busto",
+        "direzione": "diminuisce",
+        "posizione_iniziale": 90,
+        "inizio_movimento": 75
+      },
+      "errori": [
+        {
+          "id": "ampiezza",
+          "messaggio": "Sali fino in alto",
+          "gravita": "giallo",
+          "momento": "fine",
+          "misura": "busto",
+          "statistica": "minimo",
+          "maggiore_di": 35
+        },
+        {
+          "id": "troppo_veloce",
+          "messaggio": "Scendi più lentamente",
+          "gravita": "giallo",
+          "momento": "fine",
+          "misura": "durata",
+          "statistica": "massimo",
+          "minore_di": 1.1
+        }
+      ],
+      "testi_errori": {
+        "ampiezza": {
+          "cosa_succede": "Il busto non arriva in alto.",
+          "perche_conta": "La parte finale del sit-up resta incompleta.",
+          "come_correggere": "Sali finché il busto è quasi verticale, petto verso le ginocchia.",
+          "frase_da_ricordare": "Su fino in alto."
+        },
+        "troppo_veloce": {
+          "cosa_succede": "La ripetizione è troppo rapida.",
+          "perche_conta": "Con lo slancio si tira con il collo e si sollecita la zona lombare.",
+          "come_correggere": "Scendi appoggiando la schiena una vertebra alla volta, in due secondi.",
+          "frase_da_ricordare": "Giù in due."
+        }
+      },
+      "analizzabilita": "parziale",
+      "motivo": "Di lato si legge l'inclinazione del busto: circa 90° da sdraiati, 10-30° seduti. Le soglie dipendono dalla convenzione 0-180 dell'inclinazione (§2). Sulla panca declinata il busto parte oltre l'orizzontale: soglie da verificare per la pendenza.",
+      "non_rilevabili": [
+        {
+          "errore": "Tirare la testa con le mani",
+          "motivo": "Non misurabile in modo affidabile."
+        }
+      ],
+      "richiesta_motore": [],
+      "da_calibrare": true
+    }
+  },
+  {
+    "id": "ADM-011",
+    "nome": "V-up",
+    "scheda": {
+      "descrizione": "Da supini a corpo disteso, si sollevano insieme busto e gambe tese fino a formare una V. Esercizio intenso per addome e flessori dell'anca.",
+      "muscoli": {
+        "primari": [
+          "retto dell'addome",
+          "ileopsoas (flessori dell'anca)"
+        ],
+        "secondari": [
+          "obliqui"
+        ],
+        "stabilizzatori": [
+          "quadricipiti"
+        ]
+      },
+      "partenza": "Supini, gambe tese unite, braccia distese oltre la testa.",
+      "esecuzione": {
+        "concentrica": "Si sollevano insieme busto e gambe tese, portando le mani verso le punte dei piedi in equilibrio sui glutei.",
+        "pausa": "Breve pausa in alto.",
+        "eccentrica": "Ritorno controllato a corpo disteso, senza far sbattere schiena e gambe."
+      },
+      "rom": "Anca da circa 175° a circa 50-70°.",
+      "respirazione": "Espira salendo, inspira scendendo.",
+      "tempo": "1-0-2-0 (salita/spinta 1 s, pausa 0 s, ritorno 2 s, pausa 0 s)",
+      "errori": [
+        {
+          "errore": "Gambe piegate",
+          "correzione": "Gambe tese o usare il tuck-up."
+        },
+        {
+          "errore": "Slancio con le braccia",
+          "correzione": "Sali con l'addome."
+        },
+        {
+          "errore": "Schiena inarcata in basso",
+          "correzione": "Addome contratto anche in basso."
+        }
+      ],
+      "cue": [
+        "Sali insieme",
+        "Gambe tese",
+        "Mani ai piedi",
+        "Giù lento"
+      ],
+      "regressione_progressione": {
+        "regressione": [
+          "ADM-012 Tuck-up"
+        ],
+        "progressione": [
+          "ADM-041 V-up con palla medica"
+        ]
+      },
+      "precauzioni": "Chi ha fastidi alla zona lombare preferisca il tuck-up o il crunch. In caso di fastidi o dolore chiedere il parere di un professionista sanitario."
+    },
+    "config_app": {
+      "eredita_da": null,
+      "vista_camera": "laterale",
+      "lato": "auto",
+      "messaggio_posizione": "Camera a terra di lato, corpo intero visibile",
+      "messaggio_ok": "Ottimo V-up!",
+      "misure": {
+        "anca": {
+          "tipo": "angolo",
+          "punti": [
+            "spalla",
+            "anca",
+            "ginocchio"
+          ]
+        },
+        "ginocchio": {
+          "tipo": "angolo",
+          "punti": [
+            "anca",
+            "ginocchio",
+            "caviglia"
+          ]
+        }
+      },
+      "ripetizione": {
+        "misura": "anca",
+        "direzione": "diminuisce",
+        "posizione_iniziale": 150,
+        "inizio_movimento": 130
+      },
+      "errori": [
+        {
+          "id": "ampiezza",
+          "messaggio": "Mani verso i piedi",
+          "gravita": "giallo",
+          "momento": "fine",
+          "misura": "anca",
+          "statistica": "minimo",
+          "maggiore_di": 85
+        },
+        {
+          "id": "gambe_piegate",
+          "messaggio": "Gambe tese",
+          "gravita": "giallo",
+          "momento": "durante",
+          "misura": "ginocchio",
+          "minore_di": 150
+        },
+        {
+          "id": "troppo_veloce",
+          "messaggio": "Scendi più lentamente",
+          "gravita": "giallo",
+          "momento": "fine",
+          "misura": "durata",
+          "statistica": "massimo",
+          "minore_di": 1.1
+        }
+      ],
+      "testi_errori": {
+        "ampiezza": {
+          "cosa_succede": "Busto e gambe si avvicinano poco.",
+          "perche_conta": "La V resta aperta e l'addome lavora poco nella parte finale.",
+          "come_correggere": "Solleva insieme busto e gambe tese, mani verso le punte dei piedi.",
+          "frase_da_ricordare": "Mani verso i piedi."
+        },
+        "gambe_piegate": {
+          "cosa_succede": "Le ginocchia si piegano.",
+          "perche_conta": "Piegando le gambe la leva si accorcia e l'esercizio diventa più facile.",
+          "come_correggere": "Gambe tese; se non ci riesci, usa la versione a gambe piegate (tuck-up).",
+          "frase_da_ricordare": "Gambe tese."
+        },
+        "troppo_veloce": {
+          "cosa_succede": "La ripetizione è troppo rapida.",
+          "perche_conta": "Scendere di colpo fa sbattere schiena e gambe a terra.",
+          "come_correggere": "Scendi in due secondi senza appoggiare del tutto.",
+          "frase_da_ricordare": "Giù in due."
+        }
+      },
+      "analizzabilita": "parziale",
+      "motivo": "Di lato si leggono bene la chiusura dell'anca (spalla-anca-ginocchio, circa 175° da sdraiati, 60-80° in alto) e le ginocchia. La zona lombare che si inarca in basso non è misurabile.",
+      "non_rilevabili": [
+        {
+          "errore": "Zona lombare che si inarca in basso",
+          "motivo": "La curvatura della colonna non è misurabile."
+        }
+      ],
+      "richiesta_motore": [],
+      "da_calibrare": true
+    }
+  },
+  {
+    "id": "ADM-012",
+    "nome": "Tuck-up",
+    "scheda": {
+      "descrizione": "Come il V-up ma con le ginocchia che si piegano verso il petto mentre sale il busto. Più semplice, è la preparazione al V-up.",
+      "muscoli": {
+        "primari": [
+          "retto dell'addome",
+          "ileopsoas (flessori dell'anca)"
+        ],
+        "secondari": [
+          "obliqui"
+        ],
+        "stabilizzatori": [
+          "quadricipiti"
+        ]
+      },
+      "partenza": "Come ADM-011.",
+      "esecuzione": {
+        "concentrica": "Busto che sale e ginocchia che si piegano verso il petto, abbracciando le ginocchia o portando le mani ai lati.",
+        "pausa": "Breve pausa in alto.",
+        "eccentrica": "Ritorno controllato a corpo disteso."
+      },
+      "rom": "Anca da circa 175° a circa 40-60°.",
+      "respirazione": "Espira salendo, inspira scendendo.",
+      "tempo": "1-0-2-0 (salita/spinta 1 s, pausa 0 s, ritorno 2 s, pausa 0 s)",
+      "errori": [
+        {
+          "errore": "Slancio",
+          "correzione": "Movimento controllato."
+        },
+        {
+          "errore": "Busto che non sale",
+          "correzione": "Sali con busto e gambe insieme."
+        },
+        {
+          "errore": "Ritorno veloce",
+          "correzione": "Giù controllato."
+        }
+      ],
+      "cue": [
+        "Ginocchia al petto",
+        "Sali insieme",
+        "Giù lento",
+        "Addome contratto"
+      ],
+      "regressione_progressione": {
+        "regressione": [
+          "ADM-006 Crunch inverso"
+        ],
+        "progressione": [
+          "ADM-011 V-up"
+        ]
+      },
+      "precauzioni": "In caso di fastidi o dolore chiedere il parere di un professionista sanitario."
+    },
+    "config_app": {
+      "eredita_da": "ADM-011",
+      "messaggio_ok": "Ottimo!",
+      "errori": [
+        {
+          "id": "ampiezza",
+          "messaggio": "Ginocchia al petto",
+          "gravita": "giallo",
+          "momento": "fine",
+          "misura": "anca",
+          "statistica": "minimo",
+          "maggiore_di": 65
+        },
+        {
+          "id": "troppo_veloce",
+          "messaggio": "Scendi più lentamente",
+          "gravita": "giallo",
+          "momento": "fine",
+          "misura": "durata",
+          "statistica": "massimo",
+          "minore_di": 1.1
+        }
+      ],
+      "testi_errori": {
+        "ampiezza": {
+          "cosa_succede": "Ginocchia e petto si avvicinano poco.",
+          "perche_conta": "L'addome lavora soprattutto nella chiusura finale.",
+          "come_correggere": "Porta le ginocchia al petto mentre sale il busto.",
+          "frase_da_ricordare": "Ginocchia al petto."
+        },
+        "troppo_veloce": {
+          "cosa_succede": "La ripetizione è troppo rapida.",
+          "perche_conta": "Scendere di colpo fa sbattere schiena e gambe a terra.",
+          "come_correggere": "Scendi in due secondi senza appoggiare del tutto.",
+          "frase_da_ricordare": "Giù in due."
+        }
+      },
+      "analizzabilita": "parziale",
+      "motivo": "Come ADM-011 senza il controllo delle gambe tese (qui le ginocchia si piegano) e con una soglia di chiusura più stretta.",
+      "non_rilevabili": [
+        {
+          "errore": "Zona lombare che si inarca in basso",
+          "motivo": "La curvatura della colonna non è misurabile."
+        }
+      ],
+      "richiesta_motore": [],
+      "da_calibrare": true
+    }
+  },
+  {
+    "id": "ADM-013",
+    "nome": "Sollevamento gambe a terra",
+    "scheda": {
+      "descrizione": "Da supini si sollevano le gambe tese fino in verticale e si riabbassano senza toccare terra. Allena addome e flessori dell'anca, con enfasi sul controllo del bacino.",
+      "muscoli": {
+        "primari": [
+          "retto dell'addome",
+          "ileopsoas (flessori dell'anca)"
+        ],
+        "secondari": [
+          "obliqui"
+        ],
+        "stabilizzatori": [
+          "quadricipiti"
+        ]
+      },
+      "partenza": "Supini, gambe tese unite, braccia lungo i fianchi o mani sotto i glutei, zona lombare appoggiata.",
+      "esecuzione": {
+        "concentrica": "Le gambe tese salgono fino in verticale sopra le anche.",
+        "pausa": "Breve pausa in alto.",
+        "eccentrica": "Discesa lenta fino a pochi centimetri da terra, senza inarcare la zona lombare."
+      },
+      "rom": "Anca da circa 170° a circa 90°.",
+      "respirazione": "Espira salendo, inspira scendendo.",
+      "tempo": "1-1-2-0 (salita/spinta 1 s, pausa 1 s, ritorno 2 s, pausa 0 s)",
+      "errori": [
+        {
+          "errore": "Zona lombare che si inarca",
+          "correzione": "Scendere solo fin dove la schiena resta appoggiata."
+        },
+        {
+          "errore": "Gambe che scendono di colpo",
+          "correzione": "Discesa lenta."
+        },
+        {
+          "errore": "Ginocchia piegate",
+          "correzione": "Gambe tese."
+        }
+      ],
+      "cue": [
+        "Schiena a terra",
+        "Gambe tese",
+        "Su in verticale",
+        "Giù lento"
+      ],
+      "regressione_progressione": {
+        "regressione": [
+          "ADM-006 Crunch inverso"
+        ],
+        "progressione": [
+          "ADM-034 Sollevamento ginocchia alla sedia romana"
+        ]
+      },
+      "precauzioni": "Chi ha fastidi alla zona lombare pieghi le ginocchia invece di fermare la discesa a metà: l'app conta la ripetizione solo quando le gambe tornano basse. In caso di fastidi o dolore chiedere il parere di un professionista sanitario."
+    },
+    "config_app": {
+      "eredita_da": null,
+      "vista_camera": "laterale",
+      "lato": "auto",
+      "messaggio_posizione": "Camera a terra di lato, corpo intero visibile",
+      "messaggio_ok": "Ottimo!",
+      "misure": {
+        "anca": {
+          "tipo": "angolo",
+          "punti": [
+            "spalla",
+            "anca",
+            "ginocchio"
+          ]
+        },
+        "ginocchio": {
+          "tipo": "angolo",
+          "punti": [
+            "anca",
+            "ginocchio",
+            "caviglia"
+          ]
+        }
+      },
+      "ripetizione": {
+        "misura": "anca",
+        "direzione": "diminuisce",
+        "posizione_iniziale": 155,
+        "inizio_movimento": 140
+      },
+      "errori": [
+        {
+          "id": "ampiezza",
+          "messaggio": "Gambe fino in verticale",
+          "gravita": "giallo",
+          "momento": "fine",
+          "misura": "anca",
+          "statistica": "minimo",
+          "maggiore_di": 105
+        },
+        {
+          "id": "gambe_piegate",
+          "messaggio": "Gambe tese",
+          "gravita": "giallo",
+          "momento": "durante",
+          "misura": "ginocchio",
+          "minore_di": 150
+        },
+        {
+          "id": "troppo_veloce",
+          "messaggio": "Scendi più lentamente",
+          "gravita": "giallo",
+          "momento": "fine",
+          "misura": "durata",
+          "statistica": "massimo",
+          "minore_di": 1.5
+        }
+      ],
+      "testi_errori": {
+        "ampiezza": {
+          "cosa_succede": "Le gambe salgono poco.",
+          "perche_conta": "L'addome lavora soprattutto quando il bacino inizia ad arrotolarsi, in alto.",
+          "come_correggere": "Solleva le gambe tese fino in verticale sopra le anche.",
+          "frase_da_ricordare": "Gambe in verticale."
+        },
+        "gambe_piegate": {
+          "cosa_succede": "Le ginocchia si piegano.",
+          "perche_conta": "La leva si accorcia e l'esercizio diventa più facile.",
+          "come_correggere": "Gambe tese; se non ci riesci, piega leggermente le ginocchia sempre allo stesso modo.",
+          "frase_da_ricordare": "Gambe tese."
+        },
+        "troppo_veloce": {
+          "cosa_succede": "La ripetizione è troppo rapida.",
+          "perche_conta": "Le gambe scendono di colpo e la zona lombare si inarca.",
+          "come_correggere": "Conta due secondi per scendere.",
+          "frase_da_ricordare": "Giù in due."
+        }
+      },
+      "analizzabilita": "parziale",
+      "motivo": "Di lato si leggono bene l'angolo dell'anca e le ginocchia. Il rischio principale, la zona lombare che si inarca in basso, non è misurabile: per questo la discesa lenta è controllata. La ripetizione si chiude tornando con le gambe basse (oltre 155°).",
+      "non_rilevabili": [
+        {
+          "errore": "Zona lombare che si inarca",
+          "motivo": "La curvatura della colonna non è misurabile."
+        }
+      ],
+      "richiesta_motore": [],
+      "da_calibrare": true
+    }
+  },
+  {
+    "id": "ADM-014",
+    "nome": "Flutter kick",
+    "scheda": {
+      "descrizione": "Da supini con le gambe tese sollevate di pochi centimetri, si muovono le gambe su e giù in alternanza. Allena la resistenza dell'addome e il controllo del bacino.",
+      "muscoli": {
+        "primari": [
+          "retto dell'addome",
+          "ileopsoas (flessori dell'anca)"
+        ],
+        "secondari": [
+          "obliqui"
+        ],
+        "stabilizzatori": [
+          "quadricipiti"
+        ]
+      },
+      "partenza": "Supini, mani sotto i glutei, gambe tese sollevate di 10-20 cm, zona lombare appoggiata.",
+      "esecuzione": "Movimenti alternati rapidi e piccoli delle gambe tese su e giù per il tempo o il numero di battute stabilito.",
+      "rom": "Anca tra circa 150° e 170°, alternata.",
+      "respirazione": "Respirazione regolare, senza apnea.",
+      "tempo": "Controllato",
+      "errori": [
+        {
+          "errore": "Zona lombare che si inarca",
+          "correzione": "Gambe un po' più alte."
+        },
+        {
+          "errore": "Ginocchia piegate",
+          "correzione": "Gambe tese."
+        },
+        {
+          "errore": "Apnea",
+          "correzione": "Respirare."
+        }
+      ],
+      "cue": [
+        "Schiena a terra",
+        "Gambe tese",
+        "Piccole battute",
+        "Respira"
+      ],
+      "regressione_progressione": {
+        "regressione": [
+          "ADM-013 Sollevamento gambe a terra"
+        ],
+        "progressione": [
+          "ADM-015 Scissor kick"
+        ]
+      },
+      "precauzioni": "Chi ha fastidi alla zona lombare tenga le gambe più alte. In caso di fastidi o dolore chiedere il parere di un professionista sanitario."
+    },
+    "config_app": {
+      "eredita_da": "ADM-013",
+      "vista_camera": "laterale",
+      "lato": "auto",
+      "messaggio_posizione": "Esercizio non supportato: chiedi all'istruttore",
+      "messaggio_ok": "",
+      "misure": {},
+      "ripetizione": {},
+      "errori": [],
+      "testi_errori": {},
+      "analizzabilita": "non_analizzabile",
+      "motivo": "Le gambe si muovono in alternanza con pochi gradi di ampiezza e, di lato, si sovrappongono: il motore non distingue le due gambe e non ha un movimento da contare. Nota per il motore: con 'non_analizzabile' non va applicata nessuna regola ereditata.",
+      "non_rilevabili": [
+        {
+          "errore": "Battute delle gambe",
+          "motivo": "Gambe sovrapposte di lato."
+        }
+      ],
+      "richiesta_motore": [
+        "Riconoscimento di destra e sinistra nella vista laterale."
+      ],
+      "da_calibrare": true
+    }
+  },
+  {
+    "id": "ADM-015",
+    "nome": "Scissor kick",
+    "scheda": {
+      "descrizione": "Come il flutter kick, ma le gambe si incrociano in orizzontale come una forbice. Allena addome, flessori dell'anca e adduttori.",
+      "muscoli": {
+        "primari": [
+          "retto dell'addome",
+          "ileopsoas (flessori dell'anca)"
+        ],
+        "secondari": [
+          "adduttori"
+        ],
+        "stabilizzatori": [
+          "quadricipiti"
+        ]
+      },
+      "partenza": "Come ADM-014.",
+      "esecuzione": "Le gambe tese si aprono e si incrociano alternando quale passa sopra, per il tempo o il numero stabilito.",
+      "rom": "Apertura delle gambe di circa 20-30°.",
+      "respirazione": "Respirazione regolare, senza apnea.",
+      "tempo": "Controllato",
+      "errori": [
+        {
+          "errore": "Zona lombare che si inarca",
+          "correzione": "Gambe un po' più alte."
+        },
+        {
+          "errore": "Ginocchia piegate",
+          "correzione": "Gambe tese."
+        },
+        {
+          "errore": "Apnea",
+          "correzione": "Respirare."
+        }
+      ],
+      "cue": [
+        "Schiena a terra",
+        "Gambe tese",
+        "Incrocia",
+        "Respira"
+      ],
+      "regressione_progressione": {
+        "regressione": [
+          "ADM-014 Flutter kick"
+        ],
+        "progressione": []
+      },
+      "precauzioni": "Chi ha fastidi alla zona lombare tenga le gambe più alte. In caso di fastidi o dolore chiedere il parere di un professionista sanitario."
+    },
+    "config_app": {
+      "eredita_da": "ADM-013",
+      "vista_camera": "laterale",
+      "lato": "auto",
+      "messaggio_posizione": "Esercizio non supportato: chiedi all'istruttore",
+      "messaggio_ok": "",
+      "misure": {},
+      "ripetizione": {},
+      "errori": [],
+      "testi_errori": {},
+      "analizzabilita": "non_analizzabile",
+      "motivo": "Il movimento è sul piano frontale (le gambe si aprono e si incrociano) e di lato le gambe si sovrappongono. Nota per il motore: con 'non_analizzabile' non va applicata nessuna regola ereditata.",
+      "non_rilevabili": [
+        {
+          "errore": "Apertura delle gambe",
+          "motivo": "Movimento verso la camera."
+        }
+      ],
+      "richiesta_motore": [
+        "Camera dall'alto o davanti ai piedi."
+      ],
+      "da_calibrare": true
+    }
+  },
+  {
+    "id": "ADM-016",
+    "nome": "Plank",
+    "scheda": {
+      "descrizione": "Tenuta in appoggio sugli avambracci e sulle punte dei piedi con il corpo in linea. È l'esercizio di base per la stabilità del tronco.",
+      "muscoli": {
+        "primari": [
+          "retto dell'addome",
+          "trasverso dell'addome"
+        ],
+        "secondari": [
+          "obliqui",
+          "deltoide anteriore",
+          "glutei"
+        ],
+        "stabilizzatori": [
+          "quadricipiti",
+          "dentato anteriore"
+        ]
+      },
+      "partenza": "Avambracci a terra con i gomiti sotto le spalle, punte dei piedi a terra alla larghezza delle anche, corpo in linea dalla testa ai talloni.",
+      "esecuzione": "Mantenere la posizione per il tempo stabilito (in genere 20-60 secondi) con glutei e addome contratti.",
+      "rom": "Isometria: anca e ginocchia distese, corpo in linea.",
+      "respirazione": "Respirazione regolare, senza apnea.",
+      "tempo": "Tenuta di 20-60 s",
+      "errori": [
+        {
+          "errore": "Bacino che cede",
+          "correzione": "Glutei e addome contratti."
+        },
+        {
+          "errore": "Sedere troppo alto",
+          "correzione": "Corpo in linea dalle spalle ai talloni."
+        },
+        {
+          "errore": "Apnea",
+          "correzione": "Respirazione regolare."
+        }
+      ],
+      "cue": [
+        "Corpo in linea",
+        "Glutei stretti",
+        "Gomiti sotto le spalle",
+        "Respira"
+      ],
+      "regressione_progressione": {
+        "regressione": [
+          "ADM-016 Plank, sulle ginocchia"
+        ],
+        "progressione": [
+          "ADM-018 RKC plank",
+          "ADM-021 Plank zavorrato"
+        ]
+      },
+      "precauzioni": "Chi ha problemi di pressione eviti l'apnea durante la tenuta. In caso di fastidi o dolore chiedere il parere di un professionista sanitario."
+    },
+    "config_app": {
+      "eredita_da": null,
+      "vista_camera": "laterale",
+      "lato": "auto",
+      "messaggio_posizione": "Esercizio non supportato: chiedi all'istruttore",
+      "messaggio_ok": "",
+      "misure": {},
+      "ripetizione": {},
+      "errori": [],
+      "testi_errori": {},
+      "analizzabilita": "non_analizzabile",
+      "motivo": "È una tenuta isometrica: il motore conta ripetizioni e non gestisce il tempo di tenuta. Di lato l'allineamento del corpo sarebbe ben visibile.",
+      "non_rilevabili": [
+        {
+          "errore": "Bacino che cede",
+          "motivo": "Misurabile, ma il formato non prevede esercizi a tenuta."
+        }
+      ],
+      "richiesta_motore": [
+        "Modalità isometrica (come §7.8): cronometro della tenuta e controllo continuo dell'allineamento."
+      ],
+      "da_calibrare": true
+    }
+  },
+  {
+    "id": "ADM-017",
+    "nome": "Plank sulle mani",
+    "scheda": {
+      "descrizione": "Plank a braccia tese con le mani sotto le spalle. È la posizione alta del piegamento e prepara ai piegamenti.",
+      "muscoli": {
+        "primari": [
+          "retto dell'addome",
+          "trasverso dell'addome"
+        ],
+        "secondari": [
+          "obliqui",
+          "deltoide anteriore",
+          "grande pettorale"
+        ],
+        "stabilizzatori": [
+          "dentato anteriore",
+          "tricipite brachiale"
+        ]
+      },
+      "partenza": "Come ADM-016, in appoggio sulle mani sotto le spalle, braccia tese.",
+      "esecuzione": "Come ADM-016.",
+      "rom": "Come ADM-016.",
+      "respirazione": "Respirazione regolare, senza apnea.",
+      "tempo": "Tenuta di 20-60 s",
+      "errori": [
+        {
+          "errore": "Bacino che cede",
+          "correzione": "Glutei e addome contratti."
+        },
+        {
+          "errore": "Sedere troppo alto",
+          "correzione": "Corpo in linea dalle spalle ai talloni."
+        },
+        {
+          "errore": "Spalle che sprofondano",
+          "correzione": "Spingere il pavimento lontano."
+        }
+      ],
+      "cue": [
+        "Corpo in linea",
+        "Spingi il pavimento",
+        "Glutei stretti",
+        "Respira"
+      ],
+      "regressione_progressione": {
+        "regressione": [],
+        "progressione": [
+          "ADM-016 Plank",
+          "PET-001 Piegamenti sulle braccia"
+        ]
+      },
+      "precauzioni": "Chi ha fastidi ai polsi può usare il plank sugli avambracci. In caso di fastidi o dolore chiedere il parere di un professionista sanitario."
+    },
+    "config_app": {
+      "eredita_da": "ADM-016",
+      "vista_camera": "laterale",
+      "lato": "auto",
+      "messaggio_posizione": "Esercizio non supportato: chiedi all'istruttore",
+      "messaggio_ok": "",
+      "misure": {},
+      "ripetizione": {},
+      "errori": [],
+      "testi_errori": {},
+      "analizzabilita": "non_analizzabile",
+      "motivo": "È una tenuta isometrica: il motore conta ripetizioni e non gestisce il tempo di tenuta. Di lato l'allineamento del corpo sarebbe ben visibile.",
+      "non_rilevabili": [
+        {
+          "errore": "Bacino che cede",
+          "motivo": "Il formato non prevede esercizi a tenuta."
+        }
+      ],
+      "richiesta_motore": [
+        "Modalità isometrica (come §7.8): cronometro della tenuta e controllo continuo dell'allineamento."
+      ],
+      "da_calibrare": true
+    }
+  },
+  {
+    "id": "ADM-018",
+    "nome": "RKC plank",
+    "scheda": {
+      "descrizione": "Plank in cui si contraggono al massimo glutei, quadricipiti e addome, tirando i gomiti verso i piedi. Più intenso del plank normale, si tiene per tempi brevi.",
+      "muscoli": {
+        "primari": [
+          "retto dell'addome",
+          "trasverso dell'addome"
+        ],
+        "secondari": [
+          "obliqui",
+          "glutei",
+          "quadricipiti"
+        ],
+        "stabilizzatori": [
+          "dorsali"
+        ]
+      },
+      "partenza": "Come ADM-016, con i gomiti un po' più avanti e le mani unite.",
+      "esecuzione": "Contrazione massima di glutei, cosce e addome, tirando i gomiti verso i piedi senza muoverli, per 10-20 secondi.",
+      "rom": "Come ADM-016.",
+      "respirazione": "Respirazione breve e controllata, senza apnea prolungata.",
+      "tempo": "Tenuta di 10-20 s",
+      "errori": [
+        {
+          "errore": "Bacino che cede",
+          "correzione": "Glutei e addome contratti."
+        },
+        {
+          "errore": "Sedere troppo alto",
+          "correzione": "Corpo in linea dalle spalle ai talloni."
+        },
+        {
+          "errore": "Apnea",
+          "correzione": "Respirazione regolare."
+        }
+      ],
+      "cue": [
+        "Stringi tutto",
+        "Gomiti verso i piedi",
+        "Corpo in linea",
+        "Respira"
+      ],
+      "regressione_progressione": {
+        "regressione": [
+          "ADM-016 Plank"
+        ],
+        "progressione": []
+      },
+      "precauzioni": "Chi ha problemi di pressione eviti l'apnea durante la tenuta. In caso di fastidi o dolore chiedere il parere di un professionista sanitario."
+    },
+    "config_app": {
+      "eredita_da": "ADM-016",
+      "vista_camera": "laterale",
+      "lato": "auto",
+      "messaggio_posizione": "Esercizio non supportato: chiedi all'istruttore",
+      "messaggio_ok": "",
+      "misure": {},
+      "ripetizione": {},
+      "errori": [],
+      "testi_errori": {},
+      "analizzabilita": "non_analizzabile",
+      "motivo": "È una tenuta isometrica: il motore conta ripetizioni e non gestisce il tempo di tenuta. Di lato l'allineamento del corpo sarebbe ben visibile.",
+      "non_rilevabili": [
+        {
+          "errore": "Intensità della contrazione",
+          "motivo": "Non misurabile."
+        }
+      ],
+      "richiesta_motore": [
+        "Modalità isometrica (come §7.8): cronometro della tenuta e controllo continuo dell'allineamento."
+      ],
+      "da_calibrare": true
+    }
+  },
+  {
+    "id": "ADM-019",
+    "nome": "Plank con tocco spalla",
+    "scheda": {
+      "descrizione": "Dal plank sulle mani si tocca la spalla opposta con una mano alla volta, senza ruotare il bacino. Allena la stabilità contro la rotazione.",
+      "muscoli": {
+        "primari": [
+          "retto dell'addome",
+          "obliqui"
+        ],
+        "secondari": [
+          "deltoide anteriore"
+        ],
+        "stabilizzatori": [
+          "trasverso dell'addome",
+          "glutei"
+        ]
+      },
+      "partenza": "Come ADM-017, con i piedi un po' più larghi per stabilità.",
+      "esecuzione": "Si solleva una mano e si tocca la spalla opposta, poi si appoggia e si cambia lato, mantenendo bacino e spalle fermi.",
+      "rom": "Movimento del braccio; bacino fermo.",
+      "respirazione": "Respirazione regolare.",
+      "tempo": "Controllato",
+      "errori": [
+        {
+          "errore": "Bacino che ruota",
+          "correzione": "Piedi più larghi, glutei contratti."
+        },
+        {
+          "errore": "Bacino che cede",
+          "correzione": "Corpo in linea."
+        },
+        {
+          "errore": "Tocchi veloci",
+          "correzione": "Movimento lento."
+        }
+      ],
+      "cue": [
+        "Bacino fermo",
+        "Piedi larghi",
+        "Tocca lento",
+        "Corpo in linea"
+      ],
+      "regressione_progressione": {
+        "regressione": [
+          "ADM-017 Plank sulle mani"
+        ],
+        "progressione": []
+      },
+      "precauzioni": "In caso di fastidi o dolore chiedere il parere di un professionista sanitario."
+    },
+    "config_app": {
+      "eredita_da": "ADM-016",
+      "vista_camera": "laterale",
+      "lato": "auto",
+      "messaggio_posizione": "Esercizio non supportato: chiedi all'istruttore",
+      "messaggio_ok": "",
+      "misure": {},
+      "ripetizione": {},
+      "errori": [],
+      "testi_errori": {},
+      "analizzabilita": "non_analizzabile",
+      "motivo": "Il braccio si muove verso la spalla opposta sul piano frontale, un lato alla volta, e il rischio da controllare (bacino che ruota) è una rotazione verso la camera: non misurabile con una camera sola. Nota per il motore: con 'non_analizzabile' non va applicata nessuna regola ereditata.",
+      "non_rilevabili": [
+        {
+          "errore": "Bacino che ruota",
+          "motivo": "Rotazione verso la camera."
+        }
+      ],
+      "richiesta_motore": [
+        "Campo 'lato_lavoro' in vista frontale."
+      ],
+      "da_calibrare": true
+    }
+  },
+  {
+    "id": "ADM-020",
+    "nome": "Plank up-down",
+    "scheda": {
+      "descrizione": "Si passa dal plank sugli avambracci al plank sulle mani, un braccio alla volta, e si torna giù. Allena stabilità del tronco, spalle e tricipiti.",
+      "muscoli": {
+        "primari": [
+          "retto dell'addome",
+          "obliqui"
+        ],
+        "secondari": [
+          "tricipite brachiale",
+          "deltoide anteriore"
+        ],
+        "stabilizzatori": [
+          "glutei",
+          "dentato anteriore"
+        ]
+      },
+      "partenza": "Plank sugli avambracci, piedi alla larghezza delle anche o un po' più larghi.",
+      "esecuzione": {
+        "concentrica": "Si appoggia una mano sotto la spalla e poi l'altra, salendo al plank sulle mani.",
+        "pausa": "Breve pausa in alto.",
+        "eccentrica": "Si torna sugli avambracci un braccio alla volta, alternando il braccio che parte."
+      },
+      "rom": "Gomito da circa 90° a circa 170°; corpo in linea.",
+      "respirazione": "Respirazione regolare.",
+      "tempo": "2-0-2-0 (salita/spinta 2 s, pausa 0 s, ritorno 2 s, pausa 0 s)",
+      "errori": [
+        {
+          "errore": "Bacino che ondeggia",
+          "correzione": "Piedi più larghi, glutei contratti."
+        },
+        {
+          "errore": "Bacino che cede",
+          "correzione": "Corpo in linea."
+        },
+        {
+          "errore": "Movimento veloce",
+          "correzione": "Ogni passaggio controllato."
+        }
+      ],
+      "cue": [
+        "Bacino fermo",
+        "Corpo in linea",
+        "Una mano alla volta",
+        "Piedi larghi"
+      ],
+      "regressione_progressione": {
+        "regressione": [
+          "ADM-016 Plank"
+        ],
+        "progressione": []
+      },
+      "precauzioni": "Chi ha fastidi ai polsi può limitare le ripetizioni. In caso di fastidi o dolore chiedere il parere di un professionista sanitario."
+    },
+    "config_app": {
+      "eredita_da": "ADM-016",
+      "vista_camera": "laterale",
+      "lato": "auto",
+      "messaggio_posizione": "Camera a terra di lato, conta un solo braccio",
+      "messaggio_ok": "Ottimo!",
+      "misure": {
+        "gomito": {
+          "tipo": "angolo",
+          "punti": [
+            "spalla",
+            "gomito",
+            "polso"
+          ]
+        },
+        "corpo": {
+          "tipo": "angolo",
+          "punti": [
+            "spalla",
+            "anca",
+            "caviglia"
+          ]
+        }
+      },
+      "ripetizione": {
+        "misura": "gomito",
+        "direzione": "aumenta",
+        "posizione_iniziale": 110,
+        "inizio_movimento": 130
+      },
+      "errori": [
+        {
+          "id": "braccia_piegate",
+          "messaggio": "Braccia distese in alto",
+          "gravita": "giallo",
+          "momento": "fine",
+          "misura": "gomito",
+          "statistica": "massimo",
+          "minore_di": 155
+        },
+        {
+          "id": "allineamento",
+          "messaggio": "Corpo in linea retta",
+          "gravita": "rosso",
+          "momento": "durante",
+          "misura": "corpo",
+          "minore_di": 155
+        }
+      ],
+      "testi_errori": {
+        "braccia_piegate": {
+          "cosa_succede": "In alto le braccia restano piegate.",
+          "perche_conta": "Il passaggio al plank sulle mani resta incompleto.",
+          "come_correggere": "Sali fino ad avere le braccia distese sotto le spalle.",
+          "frase_da_ricordare": "Braccia distese."
+        },
+        "allineamento": {
+          "cosa_succede": "Il corpo non è in linea: bacino che cede o sedere alto.",
+          "perche_conta": "Il carico passa sulla zona lombare.",
+          "come_correggere": "Stringi glutei e addome: corpo dritto dalle spalle ai talloni.",
+          "frase_da_ricordare": "Corpo come una tavola."
+        }
+      },
+      "analizzabilita": "parziale",
+      "motivo": "Di lato si leggono il gomito del braccio verso la camera e l'allineamento del corpo. La ripetizione si conta sul braccio verso la camera e si chiude tornando sugli avambracci (sotto 110°). Il bacino che ondeggia di lato non è misurabile. Il controllo di velocità è tolto: alternando il braccio che parte, la finestra del braccio verso la camera dura poco anche a ritmo corretto.",
+      "non_rilevabili": [
+        {
+          "errore": "Bacino che ondeggia",
+          "motivo": "Movimento verso la camera."
+        },
+        {
+          "errore": "Arto di lavoro non riconosciuto",
+          "motivo": "Come PET-006: il motore sceglie il lato più visibile, non quello che lavora."
+        }
+      ],
+      "richiesta_motore": [
+        "Come PET-006: campo 'lato_lavoro'.",
+        "Angolo con verso (come §7.5)."
+      ],
+      "da_calibrare": true
+    }
+  },
+  {
+    "id": "ADM-021",
+    "nome": "Plank zavorrato",
+    "scheda": {
+      "descrizione": "Plank sugli avambracci con un disco appoggiato sulla parte alta della schiena. Aumenta il carico per chi tiene già il plank a lungo.",
+      "muscoli": {
+        "primari": [
+          "retto dell'addome",
+          "trasverso dell'addome"
+        ],
+        "secondari": [
+          "obliqui",
+          "glutei"
+        ],
+        "stabilizzatori": [
+          "deltoide anteriore"
+        ]
+      },
+      "partenza": "Come ADM-016, con un disco appoggiato tra le scapole da un compagno.",
+      "esecuzione": "Come ADM-016.",
+      "rom": "Come ADM-016.",
+      "respirazione": "Respirazione regolare, senza apnea.",
+      "tempo": "Tenuta di 20-45 s",
+      "errori": [
+        {
+          "errore": "Bacino che cede",
+          "correzione": "Glutei e addome contratti."
+        },
+        {
+          "errore": "Sedere troppo alto",
+          "correzione": "Corpo in linea dalle spalle ai talloni."
+        },
+        {
+          "errore": "Disco sulla zona lombare",
+          "correzione": "Disco tra le scapole."
+        }
+      ],
+      "cue": [
+        "Corpo in linea",
+        "Glutei stretti",
+        "Disco tra le scapole",
+        "Respira"
+      ],
+      "regressione_progressione": {
+        "regressione": [
+          "ADM-016 Plank"
+        ],
+        "progressione": []
+      },
+      "precauzioni": "Farsi mettere e togliere il disco da un compagno. Chi ha problemi di pressione eviti l'apnea. In caso di fastidi o dolore chiedere il parere di un professionista sanitario."
+    },
+    "config_app": {
+      "eredita_da": "ADM-016",
+      "vista_camera": "laterale",
+      "lato": "auto",
+      "messaggio_posizione": "Esercizio non supportato: chiedi all'istruttore",
+      "messaggio_ok": "",
+      "misure": {},
+      "ripetizione": {},
+      "errori": [],
+      "testi_errori": {},
+      "analizzabilita": "non_analizzabile",
+      "motivo": "È una tenuta isometrica: il motore conta ripetizioni e non gestisce il tempo di tenuta. Di lato l'allineamento del corpo sarebbe ben visibile.",
+      "non_rilevabili": [
+        {
+          "errore": "Bacino che cede",
+          "motivo": "Il formato non prevede esercizi a tenuta."
+        }
+      ],
+      "richiesta_motore": [
+        "Modalità isometrica (come §7.8): cronometro della tenuta e controllo continuo dell'allineamento."
+      ],
+      "da_calibrare": true
+    }
+  },
+  {
+    "id": "ADM-022",
+    "nome": "Hollow body hold",
+    "scheda": {
+      "descrizione": "Da supini si sollevano spalle e gambe tese tenendo la zona lombare a terra, con il corpo a forma di barchetta. Tenuta base della ginnastica per la stabilità del tronco.",
+      "muscoli": {
+        "primari": [
+          "retto dell'addome",
+          "trasverso dell'addome"
+        ],
+        "secondari": [
+          "ileopsoas (flessori dell'anca)",
+          "obliqui"
+        ],
+        "stabilizzatori": [
+          "quadricipiti"
+        ]
+      },
+      "partenza": "Supini, braccia distese oltre la testa, gambe tese unite.",
+      "esecuzione": "Si staccano da terra spalle e gambe, zona lombare schiacciata a terra, e si mantiene la posizione per il tempo stabilito.",
+      "rom": "Isometria: anca a circa 150-160°, spalle staccate.",
+      "respirazione": "Respirazione regolare, senza apnea.",
+      "tempo": "Tenuta di 15-40 s",
+      "errori": [
+        {
+          "errore": "Zona lombare che si stacca",
+          "correzione": "Gambe più alte o ginocchia piegate."
+        },
+        {
+          "errore": "Collo in tensione",
+          "correzione": "Sguardo verso i piedi."
+        },
+        {
+          "errore": "Apnea",
+          "correzione": "Respirare."
+        }
+      ],
+      "cue": [
+        "Schiena a terra",
+        "Gambe tese",
+        "Braccia lunghe",
+        "Respira"
+      ],
+      "regressione_progressione": {
+        "regressione": [
+          "ADM-024 Dead bug"
+        ],
+        "progressione": [
+          "ADM-023 Hollow rock"
+        ]
+      },
+      "precauzioni": "In caso di fastidi o dolore chiedere il parere di un professionista sanitario."
+    },
+    "config_app": {
+      "eredita_da": null,
+      "vista_camera": "laterale",
+      "lato": "auto",
+      "messaggio_posizione": "Esercizio non supportato: chiedi all'istruttore",
+      "messaggio_ok": "",
+      "misure": {},
+      "ripetizione": {},
+      "errori": [],
+      "testi_errori": {},
+      "analizzabilita": "non_analizzabile",
+      "motivo": "È una tenuta isometrica: il motore conta ripetizioni e non gestisce il tempo di tenuta. Di lato l'allineamento del corpo sarebbe ben visibile.",
+      "non_rilevabili": [
+        {
+          "errore": "Zona lombare che si stacca",
+          "motivo": "Il formato non prevede tenute e la curvatura non è misurabile."
+        }
+      ],
+      "richiesta_motore": [
+        "Modalità isometrica (come §7.8): cronometro della tenuta e controllo continuo dell'allineamento."
+      ],
+      "da_calibrare": true
+    }
+  },
+  {
+    "id": "ADM-023",
+    "nome": "Hollow rock",
+    "scheda": {
+      "descrizione": "Dalla posizione di hollow body si dondola avanti e indietro mantenendo la forma a barchetta. Aggiunge controllo dinamico alla tenuta.",
+      "muscoli": {
+        "primari": [
+          "retto dell'addome",
+          "trasverso dell'addome"
+        ],
+        "secondari": [
+          "ileopsoas (flessori dell'anca)",
+          "obliqui"
+        ],
+        "stabilizzatori": [
+          "quadricipiti"
+        ]
+      },
+      "partenza": "Come ADM-022.",
+      "esecuzione": "Dondolio ritmico avanti e indietro senza perdere la forma: il corpo resta rigido come un'unica barchetta.",
+      "rom": "Come ADM-022.",
+      "respirazione": "Respirazione regolare.",
+      "tempo": "Ritmico",
+      "errori": [
+        {
+          "errore": "Forma che si apre",
+          "correzione": "Corpo rigido."
+        },
+        {
+          "errore": "Dondolio con le gambe",
+          "correzione": "Il corpo si muove in blocco."
+        },
+        {
+          "errore": "Zona lombare che si stacca",
+          "correzione": "Addome contratto."
+        }
+      ],
+      "cue": [
+        "Corpo rigido",
+        "Dondola in blocco",
+        "Schiena curva",
+        "Respira"
+      ],
+      "regressione_progressione": {
+        "regressione": [
+          "ADM-022 Hollow body hold"
+        ],
+        "progressione": []
+      },
+      "precauzioni": "In caso di fastidi o dolore chiedere il parere di un professionista sanitario."
+    },
+    "config_app": {
+      "eredita_da": "ADM-022",
+      "vista_camera": "laterale",
+      "lato": "auto",
+      "messaggio_posizione": "Esercizio non supportato: chiedi all'istruttore",
+      "messaggio_ok": "",
+      "misure": {},
+      "ripetizione": {},
+      "errori": [],
+      "testi_errori": {},
+      "analizzabilita": "non_analizzabile",
+      "motivo": "Il corpo dondola in blocco senza che cambino gli angoli: non c'è un movimento articolare da contare e la forma da mantenere è la curvatura della colonna, non misurabile.",
+      "non_rilevabili": [
+        {
+          "errore": "Forma della barchetta",
+          "motivo": "La curvatura non è misurabile."
+        }
+      ],
+      "richiesta_motore": [
+        "Conteggio delle oscillazioni dall'inclinazione [anca, spalla]."
+      ],
+      "da_calibrare": true
+    }
+  },
+  {
+    "id": "ADM-024",
+    "nome": "Dead bug",
+    "scheda": {
+      "descrizione": "Da supini con braccia e gambe in alto, si distendono in alternanza un braccio e la gamba opposta mantenendo la zona lombare a terra. Allena il controllo del tronco, adatto anche ai principianti.",
+      "muscoli": {
+        "primari": [
+          "trasverso dell'addome",
+          "retto dell'addome"
+        ],
+        "secondari": [
+          "obliqui",
+          "ileopsoas (flessori dell'anca)"
+        ],
+        "stabilizzatori": [
+          "glutei"
+        ]
+      },
+      "partenza": "Supini, braccia distese verso il soffitto, anche e ginocchia a 90°, zona lombare appoggiata.",
+      "esecuzione": {
+        "eccentrica": "Si distendono un braccio oltre la testa e la gamba opposta fino a pochi centimetri da terra, zona lombare a terra.",
+        "pausa": "Breve pausa.",
+        "concentrica": "Ritorno alla posizione di partenza e cambio lato."
+      },
+      "rom": "Anca della gamba che si distende da circa 90° a circa 160-170°.",
+      "respirazione": "Espira distendendo, inspira tornando.",
+      "tempo": "2-1-1-0 (distensione 2 s, pausa 1 s, ritorno 1 s, pausa 0 s)",
+      "errori": [
+        {
+          "errore": "Zona lombare che si stacca",
+          "correzione": "Distendere meno."
+        },
+        {
+          "errore": "Movimento veloce",
+          "correzione": "Lento e controllato."
+        },
+        {
+          "errore": "Braccio e gamba dello stesso lato",
+          "correzione": "Lati opposti."
+        }
+      ],
+      "cue": [
+        "Schiena a terra",
+        "Braccio e gamba opposti",
+        "Lento",
+        "Espira distendendo"
+      ],
+      "regressione_progressione": {
+        "regressione": [],
+        "progressione": [
+          "ADM-025 Dead bug zavorrato",
+          "ADM-022 Hollow body hold"
+        ]
+      },
+      "precauzioni": "In caso di fastidi o dolore chiedere il parere di un professionista sanitario."
+    },
+    "config_app": {
+      "eredita_da": null,
+      "vista_camera": "laterale",
+      "lato": "auto",
+      "messaggio_posizione": "Esercizio non supportato: chiedi all'istruttore",
+      "messaggio_ok": "",
+      "misure": {},
+      "ripetizione": {},
+      "errori": [],
+      "testi_errori": {},
+      "analizzabilita": "non_analizzabile",
+      "motivo": "Nella posizione a tavolino le due cosce si sovrappongono di lato e il motore può scambiare le gambe; le gambe si alternano. Come ADM-014 e ADM-026, solo scheda finché non esiste 'lato_lavoro'.",
+      "non_rilevabili": [
+        {
+          "errore": "Distensione della gamba",
+          "motivo": "Gambe sovrapposte di lato."
+        },
+        {
+          "errore": "Zona lombare che si stacca",
+          "motivo": "La curvatura della colonna non è misurabile."
+        }
+      ],
+      "richiesta_motore": [
+        "Campo 'lato_lavoro' (come PET-006) e riconoscimento di destra e sinistra nella vista laterale."
+      ],
+      "da_calibrare": true
+    }
+  },
+  {
+    "id": "ADM-025",
+    "nome": "Dead bug zavorrato",
+    "scheda": {
+      "descrizione": "Dead bug con un kettlebell o un manubrio tenuto a braccia tese sopra il petto. Aumenta la richiesta di stabilità.",
+      "muscoli": {
+        "primari": [
+          "trasverso dell'addome",
+          "retto dell'addome"
+        ],
+        "secondari": [
+          "obliqui"
+        ],
+        "stabilizzatori": [
+          "deltoidi"
+        ]
+      },
+      "partenza": "Come ADM-024, con un kettlebell o un manubrio tenuto a due mani a braccia tese sopra il petto.",
+      "esecuzione": "Come ADM-024, muovendo solo le gambe in alternanza e tenendo il carico fermo.",
+      "rom": "Come ADM-024.",
+      "respirazione": "Espira distendendo, inspira tornando.",
+      "tempo": "2-1-1-0 (distensione 2 s, pausa 1 s, ritorno 1 s, pausa 0 s)",
+      "errori": [
+        {
+          "errore": "Zona lombare che si stacca",
+          "correzione": "Distendere meno."
+        },
+        {
+          "errore": "Carico che si sposta",
+          "correzione": "Braccia ferme."
+        },
+        {
+          "errore": "Movimento veloce",
+          "correzione": "Lento."
+        }
+      ],
+      "cue": [
+        "Schiena a terra",
+        "Carico fermo",
+        "Gamba lunga",
+        "Lento"
+      ],
+      "regressione_progressione": {
+        "regressione": [
+          "ADM-024 Dead bug"
+        ],
+        "progressione": []
+      },
+      "precauzioni": "In caso di fastidi o dolore chiedere il parere di un professionista sanitario."
+    },
+    "config_app": {
+      "eredita_da": "ADM-024",
+      "vista_camera": "laterale",
+      "lato": "auto",
+      "messaggio_posizione": "Esercizio non supportato: chiedi all'istruttore",
+      "messaggio_ok": "",
+      "misure": {},
+      "ripetizione": {},
+      "errori": [],
+      "testi_errori": {},
+      "analizzabilita": "non_analizzabile",
+      "motivo": "Nella posizione a tavolino le due cosce si sovrappongono di lato e il motore può scambiare le gambe; le gambe si alternano. Come ADM-014 e ADM-026, solo scheda finché non esiste 'lato_lavoro'. Nota per il motore: con 'non_analizzabile' non va applicata nessuna regola ereditata.",
+      "non_rilevabili": [
+        {
+          "errore": "Distensione della gamba",
+          "motivo": "Gambe sovrapposte di lato."
+        },
+        {
+          "errore": "Zona lombare che si stacca",
+          "motivo": "La curvatura della colonna non è misurabile."
+        }
+      ],
+      "richiesta_motore": [
+        "Campo 'lato_lavoro' (come PET-006) e riconoscimento di destra e sinistra nella vista laterale."
+      ],
+      "da_calibrare": true
+    }
+  },
+  {
+    "id": "ADM-026",
+    "nome": "Mountain climber",
+    "scheda": {
+      "descrizione": "In plank sulle mani si portano rapidamente le ginocchia al petto in alternanza. Combina lavoro dell'addome e componente cardio.",
+      "muscoli": {
+        "primari": [
+          "retto dell'addome",
+          "ileopsoas (flessori dell'anca)"
+        ],
+        "secondari": [
+          "deltoide anteriore",
+          "quadricipiti"
+        ],
+        "stabilizzatori": [
+          "dentato anteriore",
+          "glutei"
+        ]
+      },
+      "partenza": "Come ADM-017, in plank sulle mani.",
+      "esecuzione": "Si porta un ginocchio verso il petto e lo si riporta indietro mentre parte l'altro, a ritmo sostenuto, mantenendo il bacino basso e le spalle sopra le mani.",
+      "rom": "Anca della gamba che avanza da circa 170° a circa 70-90°.",
+      "respirazione": "Respirazione regolare e ritmica.",
+      "tempo": "Ritmico",
+      "errori": [
+        {
+          "errore": "Bacino alto",
+          "correzione": "Bacino in linea con le spalle."
+        },
+        {
+          "errore": "Spalle che vanno indietro",
+          "correzione": "Spalle sopra le mani."
+        },
+        {
+          "errore": "Ginocchia che avanzano poco",
+          "correzione": "Ginocchio verso il petto."
+        }
+      ],
+      "cue": [
+        "Bacino basso",
+        "Spalle sulle mani",
+        "Ginocchia al petto",
+        "Ritmo"
+      ],
+      "regressione_progressione": {
+        "regressione": [
+          "ADM-017 Plank sulle mani"
+        ],
+        "progressione": [
+          "ADM-037 Knee tuck al TRX"
+        ]
+      },
+      "precauzioni": "Chi ha fastidi ai polsi può limitare la durata. In caso di fastidi o dolore chiedere il parere di un professionista sanitario."
+    },
+    "config_app": {
+      "eredita_da": null,
+      "vista_camera": "laterale",
+      "lato": "auto",
+      "messaggio_posizione": "Esercizio non supportato: chiedi all'istruttore",
+      "messaggio_ok": "",
+      "misure": {},
+      "ripetizione": {},
+      "errori": [],
+      "testi_errori": {},
+      "analizzabilita": "non_analizzabile",
+      "motivo": "Le gambe si alternano a ritmo veloce e di lato si sovrappongono: il motore non distingue le due gambe e a 30 fps i punti diventano instabili.",
+      "non_rilevabili": [
+        {
+          "errore": "Ampiezza e bacino",
+          "motivo": "Gambe sovrapposte, ritmo troppo rapido."
+        }
+      ],
+      "richiesta_motore": [
+        "Riconoscimento di destra e sinistra nella vista laterale; modalità balistica."
+      ],
+      "da_calibrare": true
+    }
+  },
+  {
+    "id": "ADM-027",
+    "nome": "Dragon flag",
+    "scheda": {
+      "descrizione": "Sdraiati su una panca tenendosi dietro la testa, si abbassa e si risolleva il corpo rigido facendo perno sulle spalle. Esercizio avanzato e molto intenso per tutto il tronco.",
+      "muscoli": {
+        "primari": [
+          "retto dell'addome",
+          "trasverso dell'addome"
+        ],
+        "secondari": [
+          "obliqui",
+          "gran dorsale",
+          "flessori dell'anca"
+        ],
+        "stabilizzatori": [
+          "glutei",
+          "quadricipiti"
+        ]
+      },
+      "partenza": "Supini su una panca, mani dietro la testa a impugnare il bordo della panca o un appoggio solido. Si sollevano gambe e bacino fino a corpo verticale appoggiato sulle spalle.",
+      "esecuzione": {
+        "eccentrica": "Discesa lenta del corpo rigido e dritto dalle spalle ai piedi, senza piegare le anche, fino a poco sopra la panca.",
+        "pausa": "Breve pausa in basso senza appoggiare.",
+        "concentrica": "Risalita del corpo rigido fino in verticale."
+      },
+      "rom": "Corpo da quasi verticale a quasi orizzontale; anca ferma a circa 170-180°.",
+      "respirazione": "Espira scendendo, inspira in alto. Niente apnea prolungata.",
+      "tempo": "4-0-1-0 (discesa 4 s, pausa 0 s, salita 1 s, pausa 0 s)",
+      "errori": [
+        {
+          "errore": "Anche che si piegano",
+          "correzione": "Corpo dritto; partire dalla versione a ginocchia piegate."
+        },
+        {
+          "errore": "Discesa veloce",
+          "correzione": "Discesa in 4 secondi."
+        },
+        {
+          "errore": "Peso sul collo",
+          "correzione": "Peso sulle spalle e sulla parte alta della schiena."
+        }
+      ],
+      "cue": [
+        "Corpo rigido",
+        "Anche distese",
+        "Giù lento",
+        "Peso sulle spalle"
+      ],
+      "regressione_progressione": {
+        "regressione": [
+          "ADM-013 Sollevamento gambe a terra"
+        ],
+        "progressione": []
+      },
+      "precauzioni": "Esercizio avanzato con forte carico sulla zona lombare e sulle spalle: proporlo solo a chi ha già una buona base. Il peso non deve mai poggiare sul collo. In caso di fastidi o dolore chiedere il parere di un professionista sanitario."
+    },
+    "config_app": {
+      "eredita_da": null,
+      "vista_camera": "laterale",
+      "lato": "auto",
+      "messaggio_posizione": "Esercizio non supportato: chiedi all'istruttore",
+      "messaggio_ok": "",
+      "misure": {},
+      "ripetizione": {},
+      "errori": [],
+      "testi_errori": {},
+      "analizzabilita": "non_analizzabile",
+      "motivo": "Il rischio principale, la zona lombare che si inarca con il corpo quasi orizzontale, è alto e non misurabile. Come ADM-030 e GLU-020, solo scheda con supervisione.",
+      "non_rilevabili": [
+        {
+          "errore": "Zona lombare che si inarca",
+          "motivo": "La curvatura della colonna non è misurabile."
+        },
+        {
+          "errore": "Peso sul collo",
+          "motivo": "Non misurabile."
+        }
+      ],
+      "richiesta_motore": [
+        "Campo 'solo_scheda' con avviso di sicurezza."
+      ],
+      "da_calibrare": true
+    }
+  },
+  {
+    "id": "ADM-028",
+    "nome": "Rollout con bilanciere",
+    "scheda": {
+      "descrizione": "In ginocchio con le mani su un bilanciere carico di dischi, si fa rotolare il bilanciere in avanti allungando il corpo e si torna indietro. Esercizio avanzato contro l'estensione della zona lombare.",
+      "muscoli": {
+        "primari": [
+          "retto dell'addome",
+          "trasverso dell'addome"
+        ],
+        "secondari": [
+          "obliqui",
+          "gran dorsale",
+          "tricipite brachiale"
+        ],
+        "stabilizzatori": [
+          "glutei"
+        ]
+      },
+      "partenza": "In ginocchio su un tappetino, mani sul bilanciere con dischi rotondi alla larghezza delle spalle, braccia distese sotto le spalle.",
+      "esecuzione": {
+        "eccentrica": "L'attrezzo rotola in avanti mentre le braccia si allungano sopra la testa e le anche si distendono, addome contratto e bacino in retroversione.",
+        "pausa": "Breve pausa in allungamento.",
+        "concentrica": "Ritorno tirando con addome e dorsali, senza piegare prima le anche."
+      },
+      "rom": "Spalla da circa 60-80° a circa 150-170°.",
+      "respirazione": "Espira tornando, inspira andando avanti.",
+      "tempo": "3-0-2-0 (allungamento 3 s, pausa 0 s, ritorno 2 s, pausa 0 s)",
+      "errori": [
+        {
+          "errore": "Zona lombare che cede",
+          "correzione": "Ridurre l'ampiezza, bacino in retroversione."
+        },
+        {
+          "errore": "Ritorno piegando le anche",
+          "correzione": "Tornare con le braccia e l'addome."
+        },
+        {
+          "errore": "Allungamento veloce",
+          "correzione": "Andare avanti in 3 secondi."
+        }
+      ],
+      "cue": [
+        "Bacino in dentro",
+        "Addome contratto",
+        "Avanti lento",
+        "Torna con le braccia"
+      ],
+      "regressione_progressione": {
+        "regressione": [
+          "ADM-043 Rollout su fitball",
+          "ADM-029 Ab wheel rollout"
+        ],
+        "progressione": []
+      },
+      "precauzioni": "Carico elevato sulla zona lombare: aumentare l'ampiezza gradualmente. In caso di fastidi o dolore chiedere il parere di un professionista sanitario."
+    },
+    "config_app": {
+      "eredita_da": null,
+      "vista_camera": "laterale",
+      "lato": "auto",
+      "messaggio_posizione": "Camera a terra di lato, corpo intero visibile",
+      "messaggio_ok": "Ottimo rollout!",
+      "misure": {
+        "braccio": {
+          "tipo": "angolo",
+          "punti": [
+            "anca",
+            "spalla",
+            "gomito"
+          ]
+        }
+      },
+      "ripetizione": {
+        "misura": "braccio",
+        "direzione": "aumenta",
+        "posizione_iniziale": 100,
+        "inizio_movimento": 115
+      },
+      "errori": [
+        {
+          "id": "troppo_veloce",
+          "messaggio": "Vai avanti più lentamente",
+          "gravita": "giallo",
+          "momento": "fine",
+          "misura": "durata",
+          "statistica": "massimo",
+          "minore_di": 1.9
+        }
+      ],
+      "testi_errori": {
+        "troppo_veloce": {
+          "cosa_succede": "La ripetizione è troppo rapida.",
+          "perche_conta": "Andare avanti di colpo fa cedere la zona lombare.",
+          "come_correggere": "Conta tre secondi per andare avanti.",
+          "frase_da_ricordare": "Avanti in tre."
+        }
+      },
+      "analizzabilita": "parziale",
+      "motivo": "Di lato si legge l'angolo della spalla (anca-spalla-gomito): circa 50-80° in partenza, 150-170° in allungamento. Il rischio principale, la zona lombare che cede, non si distingue dal bacino alto: per questo l'ampiezza va scelta con l'istruttore. I dischi possono coprire le mani. Non c'è un controllo dell'ampiezza: allungarsi di più aumenta il rischio per la zona lombare, che non è misurabile, quindi l'ampiezza la decide l'istruttore.",
+      "non_rilevabili": [
+        {
+          "errore": "Zona lombare che cede in allungamento",
+          "motivo": "Con un angolo senza verso il bacino che cede e il bacino alto si leggono allo stesso modo; la curvatura non è misurabile."
+        }
+      ],
+      "richiesta_motore": [
+        "Angolo con verso (come §7.5)."
+      ],
+      "da_calibrare": true
+    }
+  },
+  {
+    "id": "ADM-029",
+    "nome": "Ab wheel rollout",
+    "scheda": {
+      "descrizione": "Rollout in ginocchio con la ruota per addominali. La versione più diffusa dell'esercizio, adatta a chi ha già una buona base.",
+      "muscoli": {
+        "primari": [
+          "retto dell'addome",
+          "trasverso dell'addome"
+        ],
+        "secondari": [
+          "obliqui",
+          "gran dorsale",
+          "tricipite brachiale"
+        ],
+        "stabilizzatori": [
+          "glutei"
+        ]
+      },
+      "partenza": "In ginocchio su un tappetino, ruota a terra sotto le spalle impugnata con le due mani, braccia distese.",
+      "esecuzione": {
+        "eccentrica": "L'attrezzo rotola in avanti mentre le braccia si allungano sopra la testa e le anche si distendono, addome contratto e bacino in retroversione.",
+        "pausa": "Breve pausa in allungamento.",
+        "concentrica": "Ritorno tirando con addome e dorsali, senza piegare prima le anche."
+      },
+      "rom": "Spalla da circa 60-80° a circa 150-170°.",
+      "respirazione": "Espira tornando, inspira andando avanti.",
+      "tempo": "3-0-2-0 (allungamento 3 s, pausa 0 s, ritorno 2 s, pausa 0 s)",
+      "errori": [
+        {
+          "errore": "Zona lombare che cede",
+          "correzione": "Ridurre l'ampiezza, bacino in retroversione."
+        },
+        {
+          "errore": "Ritorno piegando le anche",
+          "correzione": "Tornare con le braccia e l'addome."
+        },
+        {
+          "errore": "Allungamento veloce",
+          "correzione": "Andare avanti in 3 secondi."
+        }
+      ],
+      "cue": [
+        "Bacino in dentro",
+        "Addome contratto",
+        "Avanti lento",
+        "Torna con le braccia"
+      ],
+      "regressione_progressione": {
+        "regressione": [
+          "ADM-043 Rollout su fitball"
+        ],
+        "progressione": [
+          "ADM-030 Ab wheel da in piedi"
+        ]
+      },
+      "precauzioni": "Carico elevato sulla zona lombare: aumentare l'ampiezza gradualmente. In caso di fastidi o dolore chiedere il parere di un professionista sanitario."
+    },
+    "config_app": {
+      "eredita_da": null,
+      "vista_camera": "laterale",
+      "lato": "auto",
+      "messaggio_posizione": "Camera a terra di lato, corpo intero visibile",
+      "messaggio_ok": "Ottimo rollout!",
+      "misure": {
+        "braccio": {
+          "tipo": "angolo",
+          "punti": [
+            "anca",
+            "spalla",
+            "gomito"
+          ]
+        }
+      },
+      "ripetizione": {
+        "misura": "braccio",
+        "direzione": "aumenta",
+        "posizione_iniziale": 100,
+        "inizio_movimento": 115
+      },
+      "errori": [
+        {
+          "id": "troppo_veloce",
+          "messaggio": "Vai avanti più lentamente",
+          "gravita": "giallo",
+          "momento": "fine",
+          "misura": "durata",
+          "statistica": "massimo",
+          "minore_di": 1.9
+        }
+      ],
+      "testi_errori": {
+        "troppo_veloce": {
+          "cosa_succede": "La ripetizione è troppo rapida.",
+          "perche_conta": "Andare avanti di colpo fa cedere la zona lombare.",
+          "come_correggere": "Conta tre secondi per andare avanti.",
+          "frase_da_ricordare": "Avanti in tre."
+        }
+      },
+      "analizzabilita": "parziale",
+      "motivo": "Di lato si legge l'angolo della spalla (anca-spalla-gomito): circa 50-80° in partenza, 150-170° in allungamento. Il rischio principale, la zona lombare che cede, non si distingue dal bacino alto: per questo l'ampiezza va scelta con l'istruttore. Non c'è un controllo dell'ampiezza: allungarsi di più aumenta il rischio per la zona lombare, che non è misurabile, quindi l'ampiezza la decide l'istruttore.",
+      "non_rilevabili": [
+        {
+          "errore": "Zona lombare che cede in allungamento",
+          "motivo": "Con un angolo senza verso il bacino che cede e il bacino alto si leggono allo stesso modo; la curvatura non è misurabile."
+        }
+      ],
+      "richiesta_motore": [
+        "Angolo con verso (come §7.5)."
+      ],
+      "da_calibrare": true
+    }
+  },
+  {
+    "id": "ADM-030",
+    "nome": "Ab wheel da in piedi",
+    "scheda": {
+      "descrizione": "Rollout con la ruota partendo in piedi e arrivando con il corpo quasi a terra. Uno degli esercizi più difficili per l'addome.",
+      "muscoli": {
+        "primari": [
+          "retto dell'addome",
+          "trasverso dell'addome"
+        ],
+        "secondari": [
+          "obliqui",
+          "gran dorsale",
+          "tricipite brachiale"
+        ],
+        "stabilizzatori": [
+          "glutei"
+        ]
+      },
+      "partenza": "In piedi, gambe leggermente divaricate, ruota a terra davanti ai piedi.",
+      "esecuzione": "Come ADM-029, partendo in piedi e allungandosi fino quasi a terra.",
+      "rom": "Corpo da piegato in avanti a quasi orizzontale.",
+      "respirazione": "Espira tornando, inspira andando avanti.",
+      "tempo": "3-0-2-0 (allungamento 3 s, pausa 0 s, ritorno 2 s, pausa 0 s)",
+      "errori": [
+        {
+          "errore": "Zona lombare che cede",
+          "correzione": "Ridurre l'ampiezza, bacino in retroversione."
+        },
+        {
+          "errore": "Ritorno piegando le anche",
+          "correzione": "Tornare con le braccia e l'addome."
+        },
+        {
+          "errore": "Allungamento veloce",
+          "correzione": "Andare avanti in 3 secondi."
+        }
+      ],
+      "cue": [
+        "Bacino in dentro",
+        "Corpo rigido",
+        "Avanti lento",
+        "Torna con le braccia"
+      ],
+      "regressione_progressione": {
+        "regressione": [
+          "ADM-029 Ab wheel rollout"
+        ],
+        "progressione": []
+      },
+      "precauzioni": "Carico molto elevato sulla zona lombare: proporlo solo a chi esegue bene il rollout in ginocchio. In caso di fastidi o dolore chiedere il parere di un professionista sanitario."
+    },
+    "config_app": {
+      "eredita_da": "ADM-029",
+      "vista_camera": "laterale",
+      "lato": "auto",
+      "messaggio_posizione": "Esercizio non supportato: chiedi all'istruttore",
+      "messaggio_ok": "",
+      "misure": {},
+      "ripetizione": {},
+      "errori": [],
+      "testi_errori": {},
+      "analizzabilita": "non_analizzabile",
+      "motivo": "Il rischio principale, la zona lombare che cede a corpo quasi orizzontale, non è misurabile, ed è molto più alto che nella versione in ginocchio. Come per lo swing americano, solo scheda. Nota per il motore: con 'non_analizzabile' non va applicata nessuna regola ereditata.",
+      "non_rilevabili": [
+        {
+          "errore": "Zona lombare che cede in allungamento",
+          "motivo": "Con un angolo senza verso il bacino che cede e il bacino alto si leggono allo stesso modo; la curvatura non è misurabile."
+        }
+      ],
+      "richiesta_motore": [
+        "Campo 'solo_scheda' con avviso di sicurezza."
+      ],
+      "da_calibrare": true
+    }
+  },
+  {
+    "id": "ADM-031",
+    "nome": "Crunch al cavo in ginocchio",
+    "scheda": {
+      "descrizione": "In ginocchio sotto il cavo alto con la corda dietro la testa, si arrotola il busto portando i gomiti verso le cosce. Permette di caricare l'addome in modo progressivo.",
+      "muscoli": {
+        "primari": [
+          "retto dell'addome"
+        ],
+        "secondari": [
+          "obliqui"
+        ],
+        "stabilizzatori": [
+          "gran dorsale"
+        ]
+      },
+      "partenza": "In ginocchio davanti al cavo alto, corda tenuta ai lati della testa, busto leggermente inclinato in avanti, bacino fermo sopra le ginocchia.",
+      "esecuzione": {
+        "concentrica": "Si arrotola il busto portando i gomiti verso le cosce, bacino fermo.",
+        "pausa": "Breve pausa stringendo l'addome.",
+        "eccentrica": "Ritorno controllato."
+      },
+      "rom": "Busto da circa 20-30° a circa 70-90° di inclinazione; anche quasi ferme.",
+      "respirazione": "Espira scendendo, inspira tornando.",
+      "tempo": "1-1-2-0 (flessione 1 s, pausa 1 s, ritorno 2 s, pausa 0 s)",
+      "errori": [
+        {
+          "errore": "Piegare le anche invece della schiena",
+          "correzione": "Bacino fermo, arrotolare la schiena."
+        },
+        {
+          "errore": "Tirare con le braccia",
+          "correzione": "Mani ferme vicino alla testa."
+        },
+        {
+          "errore": "Ritorno veloce",
+          "correzione": "Ritorno controllato."
+        }
+      ],
+      "cue": [
+        "Bacino fermo",
+        "Arrotola la schiena",
+        "Gomiti alle cosce",
+        "Su lento"
+      ],
+      "regressione_progressione": {
+        "regressione": [
+          "ADM-001 Crunch"
+        ],
+        "progressione": [
+          "ADM-032 Crunch al cavo in piedi"
+        ]
+      },
+      "precauzioni": "In caso di fastidi o dolore chiedere il parere di un professionista sanitario."
+    },
+    "config_app": {
+      "eredita_da": null,
+      "vista_camera": "laterale",
+      "lato": "auto",
+      "messaggio_posizione": "Di lato al cavo, corpo visibile",
+      "messaggio_ok": "Ottimo crunch!",
+      "misure": {
+        "busto": {
+          "tipo": "inclinazione",
+          "punti": [
+            "anca",
+            "spalla"
+          ]
+        }
+      },
+      "ripetizione": {
+        "misura": "busto",
+        "direzione": "aumenta",
+        "posizione_iniziale": 40,
+        "inizio_movimento": 55
+      },
+      "errori": [
+        {
+          "id": "ampiezza",
+          "messaggio": "Gomiti verso le cosce",
+          "gravita": "giallo",
+          "momento": "fine",
+          "misura": "busto",
+          "statistica": "massimo",
+          "minore_di": 60
+        },
+        {
+          "id": "troppo_veloce",
+          "messaggio": "Torna più lentamente",
+          "gravita": "giallo",
+          "momento": "fine",
+          "misura": "durata",
+          "statistica": "massimo",
+          "minore_di": 1.5
+        }
+      ],
+      "testi_errori": {
+        "ampiezza": {
+          "cosa_succede": "Il busto si piega poco.",
+          "perche_conta": "Con mezza ampiezza l'addome lavora poco.",
+          "come_correggere": "Arrotola il busto portando i gomiti verso le cosce.",
+          "frase_da_ricordare": "Gomiti alle cosce."
+        },
+        "troppo_veloce": {
+          "cosa_succede": "La ripetizione è troppo rapida.",
+          "perche_conta": "Il cavo riporta su il busto di colpo.",
+          "come_correggere": "Conta due secondi per tornare.",
+          "frase_da_ricordare": "Su in due."
+        }
+      },
+      "analizzabilita": "parziale",
+      "motivo": "Di lato si legge l'inclinazione del busto (circa 20-30° in partenza, 60-75° in basso). Arrotolare la schiena e piegare le anche danno la stessa lettura: la tecnica va insegnata dall'istruttore. Dipende dalla convenzione 0-180 dell'inclinazione (§2).",
+      "non_rilevabili": [
+        {
+          "errore": "Piegare le anche invece di arrotolare la schiena",
+          "motivo": "L'inclinazione del busto aumenta in entrambi i casi: la curvatura non è misurabile."
+        }
+      ],
+      "richiesta_motore": [],
+      "da_calibrare": true
+    }
+  },
+  {
+    "id": "ADM-032",
+    "nome": "Crunch al cavo in piedi",
+    "scheda": {
+      "descrizione": "Crunch al cavo alto eseguito in piedi, di spalle o di fronte alla puleggia. Più difficile da tenere a bacino fermo rispetto alla versione in ginocchio.",
+      "muscoli": {
+        "primari": [
+          "retto dell'addome"
+        ],
+        "secondari": [
+          "obliqui"
+        ],
+        "stabilizzatori": [
+          "gran dorsale",
+          "quadricipiti"
+        ]
+      },
+      "partenza": "In piedi di fronte al cavo alto, corda ai lati della testa, ginocchia leggermente piegate.",
+      "esecuzione": "Come ADM-031, in piedi.",
+      "rom": "Come ADM-031.",
+      "respirazione": "Espira scendendo, inspira tornando.",
+      "tempo": "1-1-2-0 (flessione 1 s, pausa 1 s, ritorno 2 s, pausa 0 s)",
+      "errori": [
+        {
+          "errore": "Piegare le anche",
+          "correzione": "Bacino fermo."
+        },
+        {
+          "errore": "Tirare con le braccia",
+          "correzione": "Mani ferme."
+        },
+        {
+          "errore": "Ginocchia che si piegano",
+          "correzione": "Gambe ferme."
+        }
+      ],
+      "cue": [
+        "Bacino fermo",
+        "Arrotola la schiena",
+        "Gomiti alle cosce",
+        "Su lento"
+      ],
+      "regressione_progressione": {
+        "regressione": [
+          "ADM-031 Crunch al cavo in ginocchio"
+        ],
+        "progressione": []
+      },
+      "precauzioni": "In caso di fastidi o dolore chiedere il parere di un professionista sanitario."
+    },
+    "config_app": {
+      "eredita_da": "ADM-031",
+      "ripetizione": {
+        "misura": "busto",
+        "direzione": "aumenta",
+        "posizione_iniziale": 15,
+        "inizio_movimento": 30
+      },
+      "errori": [
+        {
+          "id": "ampiezza",
+          "messaggio": "Gomiti verso le cosce",
+          "gravita": "giallo",
+          "momento": "fine",
+          "misura": "busto",
+          "statistica": "massimo",
+          "minore_di": 45
+        },
+        {
+          "id": "troppo_veloce",
+          "messaggio": "Torna più lentamente",
+          "gravita": "giallo",
+          "momento": "fine",
+          "misura": "durata",
+          "statistica": "massimo",
+          "minore_di": 1.5
+        }
+      ],
+      "analizzabilita": "parziale",
+      "motivo": "Come ADM-031, con soglie più basse: in piedi, con il bacino fermo, la linea anca-spalla si inclina solo di circa 40-50°. Piegare le anche invece di arrotolare la schiena dà la stessa lettura.",
+      "non_rilevabili": [
+        {
+          "errore": "Piegare le anche invece di arrotolare la schiena",
+          "motivo": "L'inclinazione del busto aumenta in entrambi i casi: la curvatura non è misurabile."
+        }
+      ],
+      "richiesta_motore": [],
+      "da_calibrare": true
+    }
+  },
+  {
+    "id": "ADM-033",
+    "nome": "Crunch alla macchina",
+    "scheda": {
+      "descrizione": "Crunch da seduti su macchina dedicata, con il carico regolabile. Semplice e adatto ai principianti.",
+      "muscoli": {
+        "primari": [
+          "retto dell'addome"
+        ],
+        "secondari": [
+          "obliqui"
+        ],
+        "stabilizzatori": [
+          "flessori dell'anca"
+        ]
+      },
+      "partenza": "Seduti con la schiena appoggiata, piedi bloccati, maniglie o cuscinetti all'altezza delle spalle. Regolazioni dipendenti dal modello.",
+      "esecuzione": {
+        "concentrica": "Si arrotola il busto in avanti portando il petto verso le cosce.",
+        "pausa": "Breve pausa.",
+        "eccentrica": "Ritorno controllato senza far sbattere i pesi."
+      },
+      "rom": "Busto da circa 0-15° a circa 45-60° di inclinazione.",
+      "respirazione": "Espira scendendo, inspira tornando.",
+      "tempo": "1-1-2-0 (flessione 1 s, pausa 1 s, ritorno 2 s, pausa 0 s)",
+      "errori": [
+        {
+          "errore": "Tirare con le braccia",
+          "correzione": "Le braccia accompagnano."
+        },
+        {
+          "errore": "Piegare le anche",
+          "correzione": "Arrotolare la schiena."
+        },
+        {
+          "errore": "Ritorno veloce",
+          "correzione": "Ritorno controllato."
+        }
+      ],
+      "cue": [
+        "Arrotola la schiena",
+        "Braccia ferme",
+        "Stringi l'addome",
+        "Torna lento"
+      ],
+      "regressione_progressione": {
+        "regressione": [
+          "ADM-001 Crunch"
+        ],
+        "progressione": [
+          "ADM-031 Crunch al cavo in ginocchio"
+        ]
+      },
+      "precauzioni": "In caso di fastidi o dolore chiedere il parere di un professionista sanitario."
+    },
+    "config_app": {
+      "eredita_da": null,
+      "vista_camera": "laterale",
+      "lato": "auto",
+      "messaggio_posizione": "Di lato alla macchina, busto visibile",
+      "messaggio_ok": "Ottimo crunch!",
+      "misure": {
+        "busto": {
+          "tipo": "inclinazione",
+          "punti": [
+            "anca",
+            "spalla"
+          ]
+        }
+      },
+      "ripetizione": {
+        "misura": "busto",
+        "direzione": "aumenta",
+        "posizione_iniziale": 20,
+        "inizio_movimento": 35
+      },
+      "errori": [
+        {
+          "id": "ampiezza",
+          "messaggio": "Petto verso le cosce",
+          "gravita": "giallo",
+          "momento": "fine",
+          "misura": "busto",
+          "statistica": "massimo",
+          "minore_di": 45
+        },
+        {
+          "id": "troppo_veloce",
+          "messaggio": "Torna più lentamente",
+          "gravita": "giallo",
+          "momento": "fine",
+          "misura": "durata",
+          "statistica": "massimo",
+          "minore_di": 1.5
+        }
+      ],
+      "testi_errori": {
+        "ampiezza": {
+          "cosa_succede": "Il busto si piega poco.",
+          "perche_conta": "Con mezza ampiezza l'addome lavora poco.",
+          "come_correggere": "Arrotola il busto portando il petto verso le cosce.",
+          "frase_da_ricordare": "Petto verso le cosce."
+        },
+        "troppo_veloce": {
+          "cosa_succede": "La ripetizione è troppo rapida.",
+          "perche_conta": "Il carico riporta indietro il busto di colpo.",
+          "come_correggere": "Conta due secondi per tornare.",
+          "frase_da_ricordare": "Torna in due."
+        }
+      },
+      "analizzabilita": "parziale",
+      "motivo": "Come ADM-031: di lato si legge l'inclinazione del busto. Lo schienale e la struttura della macchina possono coprire anca e spalle: affidabilità da verificare per il modello.",
+      "non_rilevabili": [
+        {
+          "errore": "Piegare le anche invece di arrotolare la schiena",
+          "motivo": "L'inclinazione del busto aumenta in entrambi i casi: la curvatura non è misurabile."
+        }
+      ],
+      "richiesta_motore": [
+        "Come PET-056: profilo di posizione camera per macchina."
+      ],
+      "da_calibrare": true
+    }
+  },
+  {
+    "id": "ADM-034",
+    "nome": "Sollevamento ginocchia alla sedia romana",
+    "scheda": {
+      "descrizione": "Con la schiena appoggiata alla sedia romana e gli avambracci sui supporti, si portano le ginocchia verso il petto. Allena addome e flessori dell'anca senza carico sulle mani.",
+      "muscoli": {
+        "primari": [
+          "retto dell'addome",
+          "ileopsoas (flessori dell'anca)"
+        ],
+        "secondari": [
+          "obliqui"
+        ],
+        "stabilizzatori": [
+          "muscoli della spalla"
+        ]
+      },
+      "partenza": "Schiena appoggiata allo schienale, avambracci sui cuscinetti, mani sulle maniglie, gambe libere verso il basso.",
+      "esecuzione": {
+        "concentrica": "Le ginocchia salgono verso il petto arrotolando leggermente il bacino, senza slancio.",
+        "pausa": "Breve pausa in alto.",
+        "eccentrica": "Discesa controllata delle gambe, senza dondolare."
+      },
+      "rom": "Anca da circa 170° a circa 60-80°.",
+      "respirazione": "Espira salendo, inspira scendendo.",
+      "tempo": "1-1-2-0 (salita/spinta 1 s, pausa 1 s, ritorno 2 s, pausa 0 s)",
+      "errori": [
+        {
+          "errore": "Slancio con le gambe",
+          "correzione": "Movimento controllato."
+        },
+        {
+          "errore": "Schiena che si stacca",
+          "correzione": "Schiena appoggiata."
+        },
+        {
+          "errore": "Discesa veloce",
+          "correzione": "Discesa controllata."
+        }
+      ],
+      "cue": [
+        "Schiena appoggiata",
+        "Ginocchia al petto",
+        "Niente slancio",
+        "Giù lento"
+      ],
+      "regressione_progressione": {
+        "regressione": [
+          "ADM-006 Crunch inverso"
+        ],
+        "progressione": [
+          "ADM-035 Sollevamento gambe tese alla sedia romana",
+          "ADM-049 Sollevamento ginocchia alla sbarra"
+        ]
+      },
+      "precauzioni": "In caso di fastidi o dolore chiedere il parere di un professionista sanitario."
+    },
+    "config_app": {
+      "eredita_da": null,
+      "vista_camera": "laterale",
+      "lato": "auto",
+      "messaggio_posizione": "Di lato alla sedia romana, corpo visibile",
+      "messaggio_ok": "Ottimo!",
+      "misure": {
+        "anca": {
+          "tipo": "angolo",
+          "punti": [
+            "spalla",
+            "anca",
+            "ginocchio"
+          ]
+        }
+      },
+      "ripetizione": {
+        "misura": "anca",
+        "direzione": "diminuisce",
+        "posizione_iniziale": 150,
+        "inizio_movimento": 135
+      },
+      "errori": [
+        {
+          "id": "ampiezza",
+          "messaggio": "Ginocchia sopra le anche",
+          "gravita": "giallo",
+          "momento": "fine",
+          "misura": "anca",
+          "statistica": "minimo",
+          "maggiore_di": 90
+        },
+        {
+          "id": "troppo_veloce",
+          "messaggio": "Scendi più lentamente",
+          "gravita": "giallo",
+          "momento": "fine",
+          "misura": "durata",
+          "statistica": "massimo",
+          "minore_di": 1.5
+        }
+      ],
+      "testi_errori": {
+        "ampiezza": {
+          "cosa_succede": "Le ginocchia salgono poco.",
+          "perche_conta": "L'addome lavora soprattutto quando il bacino si arrotola, in alto.",
+          "come_correggere": "Porta le ginocchia sopra le anche, verso il petto.",
+          "frase_da_ricordare": "Ginocchia al petto."
+        },
+        "troppo_veloce": {
+          "cosa_succede": "La ripetizione è troppo rapida.",
+          "perche_conta": "Le gambe scendono di colpo e il corpo dondola.",
+          "come_correggere": "Conta due secondi per scendere.",
+          "frase_da_ricordare": "Giù in due."
+        }
+      },
+      "analizzabilita": "parziale",
+      "motivo": "Di lato si legge l'angolo dell'anca (spalla-anca-ginocchio): circa 170° a gambe giù, 60-90° in alto. La ripetizione si chiude tornando a gambe giù (oltre 150°). La struttura della sedia può coprire in parte il busto.",
+      "non_rilevabili": [
+        {
+          "errore": "Dondolio del corpo",
+          "motivo": "Lo slancio si vede solo in parte con la durata."
+        }
+      ],
+      "richiesta_motore": [],
+      "da_calibrare": true
+    }
+  },
+  {
+    "id": "ADM-035",
+    "nome": "Sollevamento gambe tese alla sedia romana",
+    "scheda": {
+      "descrizione": "Come il sollevamento delle ginocchia, ma con le gambe tese. La leva più lunga rende l'esercizio più difficile.",
+      "muscoli": {
+        "primari": [
+          "retto dell'addome",
+          "ileopsoas (flessori dell'anca)"
+        ],
+        "secondari": [
+          "obliqui"
+        ],
+        "stabilizzatori": [
+          "quadricipiti"
+        ]
+      },
+      "partenza": "Come ADM-034.",
+      "esecuzione": "Come ADM-034, sollevando le gambe tese almeno fino all'orizzontale.",
+      "rom": "Anca da circa 170° a circa 80-90°.",
+      "respirazione": "Espira salendo, inspira scendendo.",
+      "tempo": "1-1-2-0 (salita/spinta 1 s, pausa 1 s, ritorno 2 s, pausa 0 s)",
+      "errori": [
+        {
+          "errore": "Gambe piegate",
+          "correzione": "Gambe tese."
+        },
+        {
+          "errore": "Slancio",
+          "correzione": "Movimento controllato."
+        },
+        {
+          "errore": "Discesa veloce",
+          "correzione": "Discesa controllata."
+        }
+      ],
+      "cue": [
+        "Gambe tese",
+        "Su fino all'orizzontale",
+        "Niente slancio",
+        "Giù lento"
+      ],
+      "regressione_progressione": {
+        "regressione": [
+          "ADM-034 Sollevamento ginocchia alla sedia romana"
+        ],
+        "progressione": []
+      },
+      "precauzioni": "In caso di fastidi o dolore chiedere il parere di un professionista sanitario."
+    },
+    "config_app": {
+      "eredita_da": "ADM-034",
+      "misure": {
+        "ginocchio": {
+          "tipo": "angolo",
+          "punti": [
+            "anca",
+            "ginocchio",
+            "caviglia"
+          ]
+        }
+      },
+      "errori": [
+        {
+          "id": "ampiezza",
+          "messaggio": "Gambe fino all'orizzontale",
+          "gravita": "giallo",
+          "momento": "fine",
+          "misura": "anca",
+          "statistica": "minimo",
+          "maggiore_di": 100
+        },
+        {
+          "id": "gambe_piegate",
+          "messaggio": "Gambe tese",
+          "gravita": "giallo",
+          "momento": "durante",
+          "misura": "ginocchio",
+          "minore_di": 150
+        },
+        {
+          "id": "troppo_veloce",
+          "messaggio": "Scendi più lentamente",
+          "gravita": "giallo",
+          "momento": "fine",
+          "misura": "durata",
+          "statistica": "massimo",
+          "minore_di": 1.5
+        }
+      ],
+      "testi_errori": {
+        "ampiezza": {
+          "cosa_succede": "Le gambe salgono poco.",
+          "perche_conta": "L'addome lavora soprattutto nella parte alta.",
+          "come_correggere": "Solleva le gambe tese almeno fino all'orizzontale.",
+          "frase_da_ricordare": "Gambe all'orizzontale."
+        },
+        "gambe_piegate": {
+          "cosa_succede": "Le ginocchia si piegano.",
+          "perche_conta": "Piegando le gambe la leva si accorcia e l'esercizio diventa più facile.",
+          "come_correggere": "Gambe tese; se non ci riesci, usa la versione a ginocchia piegate (ADM-034 Sollevamento ginocchia alla sedia romana).",
+          "frase_da_ricordare": "Gambe tese."
+        },
+        "troppo_veloce": {
+          "cosa_succede": "La ripetizione è troppo rapida.",
+          "perche_conta": "Le gambe scendono di colpo e il corpo dondola.",
+          "come_correggere": "Conta due secondi per scendere.",
+          "frase_da_ricordare": "Giù in due."
+        }
+      },
+      "analizzabilita": "parziale",
+      "motivo": "Come ADM-034, con il controllo delle gambe tese e soglia di ampiezza all'orizzontale.",
+      "non_rilevabili": [
+        {
+          "errore": "Dondolio del corpo",
+          "motivo": "Si vede solo in parte con la durata."
+        }
+      ],
+      "richiesta_motore": [],
+      "da_calibrare": true
+    }
+  },
+  {
+    "id": "ADM-036",
+    "nome": "Pike al TRX",
+    "scheda": {
+      "descrizione": "In plank sulle mani con i piedi nelle staffe del TRX, si solleva il bacino verso il soffitto con le gambe tese. Esercizio avanzato per addome e spalle.",
+      "muscoli": {
+        "primari": [
+          "retto dell'addome",
+          "ileopsoas (flessori dell'anca)"
+        ],
+        "secondari": [
+          "deltoide anteriore"
+        ],
+        "stabilizzatori": [
+          "dentato anteriore",
+          "tricipite brachiale"
+        ]
+      },
+      "partenza": "Piedi nelle staffe regolate a circa 30-40 cm da terra, plank sulle mani con le mani sotto le spalle e il corpo in linea.",
+      "esecuzione": {
+        "concentrica": "Il bacino sale verso il soffitto con le gambe tese, i piedi scivolano verso le mani, spalle sopra le mani.",
+        "pausa": "Breve pausa in alto.",
+        "eccentrica": "Ritorno controllato in plank."
+      },
+      "rom": "Anca da circa 175° a circa 60-90°.",
+      "respirazione": "Espira salendo, inspira tornando.",
+      "tempo": "1-1-2-0 (salita/spinta 1 s, pausa 1 s, ritorno 2 s, pausa 0 s)",
+      "errori": [
+        {
+          "errore": "Gambe piegate",
+          "correzione": "Gambe tese o usare il knee tuck."
+        },
+        {
+          "errore": "Spalle che vanno indietro",
+          "correzione": "Spalle sopra le mani."
+        },
+        {
+          "errore": "Bacino che cede al ritorno",
+          "correzione": "Corpo in linea."
+        }
+      ],
+      "cue": [
+        "Anche in alto",
+        "Gambe tese",
+        "Spalle sulle mani",
+        "Torna lento"
+      ],
+      "regressione_progressione": {
+        "regressione": [
+          "ADM-037 Knee tuck al TRX"
+        ],
+        "progressione": []
+      },
+      "precauzioni": "Controllare l'ancoraggio del TRX. Chi ha fastidi ai polsi o alle spalle dovrebbe evitarlo. In caso di fastidi o dolore chiedere il parere di un professionista sanitario."
+    },
+    "config_app": {
+      "eredita_da": null,
+      "vista_camera": "laterale",
+      "lato": "auto",
+      "messaggio_posizione": "Camera a terra di lato, corpo intero visibile",
+      "messaggio_ok": "Ottimo pike!",
+      "misure": {
+        "anca": {
+          "tipo": "angolo",
+          "punti": [
+            "spalla",
+            "anca",
+            "caviglia"
+          ]
+        },
+        "ginocchio": {
+          "tipo": "angolo",
+          "punti": [
+            "anca",
+            "ginocchio",
+            "caviglia"
+          ]
+        }
+      },
+      "ripetizione": {
+        "misura": "anca",
+        "direzione": "diminuisce",
+        "posizione_iniziale": 155,
+        "inizio_movimento": 140
+      },
+      "errori": [
+        {
+          "id": "ampiezza",
+          "messaggio": "Anche più in alto",
+          "gravita": "giallo",
+          "momento": "fine",
+          "misura": "anca",
+          "statistica": "minimo",
+          "maggiore_di": 100
+        },
+        {
+          "id": "gambe_piegate",
+          "messaggio": "Gambe tese",
+          "gravita": "giallo",
+          "momento": "durante",
+          "misura": "ginocchio",
+          "minore_di": 155
+        },
+        {
+          "id": "troppo_veloce",
+          "messaggio": "Torna più lentamente",
+          "gravita": "giallo",
+          "momento": "fine",
+          "misura": "durata",
+          "statistica": "massimo",
+          "minore_di": 1.5
+        }
+      ],
+      "testi_errori": {
+        "ampiezza": {
+          "cosa_succede": "Il bacino sale poco.",
+          "perche_conta": "L'addome lavora soprattutto nella parte alta del carpiato.",
+          "come_correggere": "Solleva il bacino verso il soffitto con le gambe tese, spalle sopra le mani.",
+          "frase_da_ricordare": "Anche in alto."
+        },
+        "gambe_piegate": {
+          "cosa_succede": "Le ginocchia si piegano.",
+          "perche_conta": "Piegando le gambe la leva si accorcia e l'esercizio diventa più facile.",
+          "come_correggere": "Gambe tese; se non ci riesci, usa la versione a ginocchia piegate (ADM-037 Knee tuck al TRX).",
+          "frase_da_ricordare": "Gambe tese."
+        },
+        "troppo_veloce": {
+          "cosa_succede": "La ripetizione è troppo rapida.",
+          "perche_conta": "Scendere di colpo fa cedere il bacino.",
+          "come_correggere": "Torna in plank in due secondi.",
+          "frase_da_ricordare": "Torna in due."
+        }
+      },
+      "analizzabilita": "parziale",
+      "motivo": "Di lato si leggono bene la chiusura dell'anca (spalla-anca-caviglia: circa 175° in plank, 60-90° in alto) e le ginocchia.",
+      "non_rilevabili": [
+        {
+          "errore": "Spalle che vanno indietro",
+          "motivo": "Movimento piccolo."
+        }
+      ],
+      "richiesta_motore": [],
+      "da_calibrare": true
+    }
+  },
+  {
+    "id": "ADM-037",
+    "nome": "Knee tuck al TRX",
+    "scheda": {
+      "descrizione": "In plank sulle mani con i piedi nelle staffe del TRX, si portano le ginocchia al petto. Allena addome e stabilità delle spalle.",
+      "muscoli": {
+        "primari": [
+          "retto dell'addome",
+          "ileopsoas (flessori dell'anca)"
+        ],
+        "secondari": [
+          "deltoide anteriore"
+        ],
+        "stabilizzatori": [
+          "dentato anteriore"
+        ]
+      },
+      "partenza": "Come ADM-036.",
+      "esecuzione": {
+        "concentrica": "Le ginocchia vanno verso il petto, il bacino sale leggermente, spalle sopra le mani.",
+        "pausa": "Breve pausa.",
+        "eccentrica": "Ritorno controllato in plank."
+      },
+      "rom": "Anca da circa 175° a circa 60-80°.",
+      "respirazione": "Espira portando le ginocchia, inspira tornando.",
+      "tempo": "1-1-2-0 (salita/spinta 1 s, pausa 1 s, ritorno 2 s, pausa 0 s)",
+      "errori": [
+        {
+          "errore": "Bacino che cede al ritorno",
+          "correzione": "Corpo in linea."
+        },
+        {
+          "errore": "Spalle che vanno indietro",
+          "correzione": "Spalle sopra le mani."
+        },
+        {
+          "errore": "Slancio",
+          "correzione": "Movimento controllato."
+        }
+      ],
+      "cue": [
+        "Ginocchia al petto",
+        "Spalle sulle mani",
+        "Corpo in linea",
+        "Torna lento"
+      ],
+      "regressione_progressione": {
+        "regressione": [
+          "ADM-026 Mountain climber"
+        ],
+        "progressione": [
+          "ADM-036 Pike al TRX"
+        ]
+      },
+      "precauzioni": "Controllare l'ancoraggio del TRX. In caso di fastidi o dolore chiedere il parere di un professionista sanitario."
+    },
+    "config_app": {
+      "eredita_da": null,
+      "vista_camera": "laterale",
+      "lato": "auto",
+      "messaggio_posizione": "Camera a terra di lato, corpo intero visibile",
+      "messaggio_ok": "Ottimo!",
+      "misure": {
+        "anca": {
+          "tipo": "angolo",
+          "punti": [
+            "spalla",
+            "anca",
+            "ginocchio"
+          ]
+        }
+      },
+      "ripetizione": {
+        "misura": "anca",
+        "direzione": "diminuisce",
+        "posizione_iniziale": 155,
+        "inizio_movimento": 140
+      },
+      "errori": [
+        {
+          "id": "ampiezza",
+          "messaggio": "Ginocchia al petto",
+          "gravita": "giallo",
+          "momento": "fine",
+          "misura": "anca",
+          "statistica": "minimo",
+          "maggiore_di": 90
+        },
+        {
+          "id": "troppo_veloce",
+          "messaggio": "Torna più lentamente",
+          "gravita": "giallo",
+          "momento": "fine",
+          "misura": "durata",
+          "statistica": "massimo",
+          "minore_di": 1.5
+        }
+      ],
+      "testi_errori": {
+        "ampiezza": {
+          "cosa_succede": "Le ginocchia si avvicinano poco al petto.",
+          "perche_conta": "L'addome lavora soprattutto nella chiusura.",
+          "come_correggere": "Porta le ginocchia verso il petto mantenendo le spalle sopra le mani.",
+          "frase_da_ricordare": "Ginocchia al petto."
+        },
+        "troppo_veloce": {
+          "cosa_succede": "La ripetizione è troppo rapida.",
+          "perche_conta": "Con lo slancio le cinghie oscillano e si perde il controllo.",
+          "come_correggere": "Distendi le gambe in due secondi.",
+          "frase_da_ricordare": "Torna in due."
+        }
+      },
+      "analizzabilita": "parziale",
+      "motivo": "Di lato si legge l'angolo dell'anca (spalla-anca-ginocchio): circa 170° in plank, 60-80° con le ginocchia al petto. La ripetizione si chiude tornando in plank (oltre 155°), quindi ogni ripetizione richiede di distendere le gambe.",
+      "non_rilevabili": [
+        {
+          "errore": "Bacino che cede in plank",
+          "motivo": "Con un angolo senza verso il bacino che cede e il bacino alto si leggono allo stesso modo."
+        },
+        {
+          "errore": "Spalle che vanno indietro",
+          "motivo": "Movimento piccolo."
+        }
+      ],
+      "richiesta_motore": [
+        "Angolo con verso (come §7.5)."
+      ],
+      "da_calibrare": true
+    }
+  },
+  {
+    "id": "ADM-038",
+    "nome": "Body saw al TRX",
+    "scheda": {
+      "descrizione": "In plank sugli avambracci con i piedi nelle staffe, si sposta il corpo avanti e indietro facendo leva sulle spalle, come una sega. Allena l'addome contro l'estensione.",
+      "muscoli": {
+        "primari": [
+          "retto dell'addome",
+          "trasverso dell'addome"
+        ],
+        "secondari": [
+          "deltoide anteriore",
+          "gran dorsale"
+        ],
+        "stabilizzatori": [
+          "glutei"
+        ]
+      },
+      "partenza": "Piedi nelle staffe, plank sugli avambracci con i gomiti sotto le spalle e il corpo in linea.",
+      "esecuzione": {
+        "eccentrica": "Il corpo si sposta indietro spingendo con gli avambracci: i gomiti si trovano davanti alla testa.",
+        "pausa": "Breve pausa.",
+        "concentrica": "Ritorno con i gomiti sotto le spalle, corpo sempre in linea."
+      },
+      "rom": "Spalla da circa 90° a circa 120-130°.",
+      "respirazione": "Respirazione regolare.",
+      "tempo": "2-0-2-0 (spinta indietro 2 s, pausa 0 s, ritorno 2 s, pausa 0 s)",
+      "errori": [
+        {
+          "errore": "Bacino che cede",
+          "correzione": "Glutei e addome contratti."
+        },
+        {
+          "errore": "Spostamento troppo ampio",
+          "correzione": "Fin dove il corpo resta in linea."
+        },
+        {
+          "errore": "Movimento veloce",
+          "correzione": "Lento e controllato."
+        }
+      ],
+      "cue": [
+        "Corpo in linea",
+        "Spingi indietro",
+        "Glutei stretti",
+        "Lento"
+      ],
+      "regressione_progressione": {
+        "regressione": [
+          "ADM-016 Plank"
+        ],
+        "progressione": [
+          "ADM-039 Fallout al TRX"
+        ]
+      },
+      "precauzioni": "Controllare l'ancoraggio del TRX. In caso di fastidi o dolore chiedere il parere di un professionista sanitario."
+    },
+    "config_app": {
+      "eredita_da": null,
+      "vista_camera": "laterale",
+      "lato": "auto",
+      "messaggio_posizione": "Camera a terra di lato, corpo intero visibile",
+      "messaggio_ok": "Ottimo!",
+      "misure": {
+        "braccio": {
+          "tipo": "angolo",
+          "punti": [
+            "anca",
+            "spalla",
+            "gomito"
+          ]
+        },
+        "corpo": {
+          "tipo": "angolo",
+          "punti": [
+            "spalla",
+            "anca",
+            "caviglia"
+          ]
+        }
+      },
+      "ripetizione": {
+        "misura": "braccio",
+        "direzione": "aumenta",
+        "posizione_iniziale": 100,
+        "inizio_movimento": 108
+      },
+      "errori": [
+        {
+          "id": "ampiezza",
+          "messaggio": "Spingi più indietro",
+          "gravita": "giallo",
+          "momento": "fine",
+          "misura": "braccio",
+          "statistica": "massimo",
+          "minore_di": 115
+        },
+        {
+          "id": "allineamento",
+          "messaggio": "Corpo in linea retta",
+          "gravita": "rosso",
+          "momento": "durante",
+          "misura": "corpo",
+          "minore_di": 155
+        },
+        {
+          "id": "troppo_veloce",
+          "messaggio": "Più lento e controllato",
+          "gravita": "giallo",
+          "momento": "fine",
+          "misura": "durata",
+          "statistica": "massimo",
+          "minore_di": 1.5
+        }
+      ],
+      "testi_errori": {
+        "ampiezza": {
+          "cosa_succede": "Il corpo si sposta poco.",
+          "perche_conta": "L'addome lavora di più quando le braccia si allungano davanti alla testa.",
+          "come_correggere": "Spingi il corpo indietro con gli avambracci, mantenendo il corpo in linea.",
+          "frase_da_ricordare": "Spingi indietro."
+        },
+        "allineamento": {
+          "cosa_succede": "Durante lo spostamento il corpo non è in linea.",
+          "perche_conta": "Il bacino che cede carica la zona lombare.",
+          "come_correggere": "Glutei e addome contratti: corpo dritto dalle spalle ai talloni per tutto il movimento.",
+          "frase_da_ricordare": "Corpo in linea."
+        },
+        "troppo_veloce": {
+          "cosa_succede": "La ripetizione è troppo rapida.",
+          "perche_conta": "Con la fretta le cinghie oscillano e il bacino cede.",
+          "come_correggere": "Conta due secondi per andare indietro.",
+          "frase_da_ricordare": "Indietro in due."
+        }
+      },
+      "analizzabilita": "parziale",
+      "motivo": "Di lato si leggono lo spostamento (angolo anca-spalla-gomito, da circa 90° a 120-130°) e l'allineamento del corpo. Il movimento è piccolo: soglie da verificare in sala.",
+      "non_rilevabili": [
+        {
+          "errore": "Bacino che cede o sedere alto",
+          "motivo": "L'angolo non dice da che parte si piega."
+        }
+      ],
+      "richiesta_motore": [
+        "Angolo con verso (come §7.5)."
+      ],
+      "da_calibrare": true
+    }
+  },
+  {
+    "id": "ADM-039",
+    "nome": "Fallout al TRX",
+    "scheda": {
+      "descrizione": "In piedi con il corpo inclinato in avanti e le mani nelle maniglie del TRX, si portano le braccia sopra la testa lasciando avanzare il corpo e si torna. Variante del rollout in cui si regola la difficoltà con l'inclinazione.",
+      "muscoli": {
+        "primari": [
+          "retto dell'addome",
+          "trasverso dell'addome"
+        ],
+        "secondari": [
+          "gran dorsale",
+          "deltoide anteriore"
+        ],
+        "stabilizzatori": [
+          "glutei"
+        ]
+      },
+      "partenza": "Di spalle all'ancoraggio, maniglie in mano a braccia tese davanti al petto, corpo inclinato in avanti in linea sulle punte dei piedi.",
+      "esecuzione": {
+        "eccentrica": "Le braccia salgono sopra la testa e il corpo avanza inclinandosi, corpo in linea.",
+        "pausa": "Breve pausa.",
+        "concentrica": "Ritorno tirando le braccia giù davanti al petto."
+      },
+      "rom": "Spalla da circa 90° a circa 160-170°.",
+      "respirazione": "Inspira andando avanti, espira tornando.",
+      "tempo": "3-0-2-0 (allungamento 3 s, pausa 0 s, ritorno 2 s, pausa 0 s)",
+      "errori": [
+        {
+          "errore": "Zona lombare che cede",
+          "correzione": "Ridurre l'ampiezza o l'inclinazione."
+        },
+        {
+          "errore": "Anche che si piegano",
+          "correzione": "Corpo in linea."
+        },
+        {
+          "errore": "Movimento veloce",
+          "correzione": "Lento."
+        }
+      ],
+      "cue": [
+        "Corpo in linea",
+        "Bacino in dentro",
+        "Braccia sopra la testa",
+        "Torna con l'addome"
+      ],
+      "regressione_progressione": {
+        "regressione": [
+          "ADM-043 Rollout su fitball"
+        ],
+        "progressione": [
+          "ADM-029 Ab wheel rollout"
+        ]
+      },
+      "precauzioni": "Controllare l'ancoraggio del TRX. In caso di fastidi o dolore chiedere il parere di un professionista sanitario."
+    },
+    "config_app": {
+      "eredita_da": null,
+      "vista_camera": "laterale",
+      "lato": "auto",
+      "messaggio_posizione": "Di lato alla camera, corpo intero visibile",
+      "messaggio_ok": "Ottimo!",
+      "misure": {
+        "braccio": {
+          "tipo": "angolo",
+          "punti": [
+            "anca",
+            "spalla",
+            "gomito"
+          ]
+        }
+      },
+      "ripetizione": {
+        "misura": "braccio",
+        "direzione": "aumenta",
+        "posizione_iniziale": 115,
+        "inizio_movimento": 130
+      },
+      "errori": [
+        {
+          "id": "troppo_veloce",
+          "messaggio": "Vai avanti più lentamente",
+          "gravita": "giallo",
+          "momento": "fine",
+          "misura": "durata",
+          "statistica": "massimo",
+          "minore_di": 1.9
+        }
+      ],
+      "testi_errori": {
+        "troppo_veloce": {
+          "cosa_succede": "La ripetizione è troppo rapida.",
+          "perche_conta": "Andare avanti di colpo fa cedere la zona lombare.",
+          "come_correggere": "Conta tre secondi per andare avanti.",
+          "frase_da_ricordare": "Avanti in tre."
+        }
+      },
+      "analizzabilita": "parziale",
+      "motivo": "Di lato si legge l'angolo della spalla (anca-spalla-gomito): circa 110-120° in partenza, 150-170° in allungamento. Il rischio principale, la zona lombare che cede, non si distingue dal bacino alto: per questo l'ampiezza va scelta con l'istruttore. La difficoltà dipende dall'inclinazione del corpo, che il motore non controlla. Non c'è un controllo dell'ampiezza: allungarsi di più aumenta il rischio per la zona lombare, che non è misurabile, quindi l'ampiezza la decide l'istruttore.",
+      "non_rilevabili": [
+        {
+          "errore": "Zona lombare che cede in allungamento",
+          "motivo": "Con un angolo senza verso il bacino che cede e il bacino alto si leggono allo stesso modo; la curvatura non è misurabile."
+        }
+      ],
+      "richiesta_motore": [
+        "Angolo con verso (come §7.5)."
+      ],
+      "da_calibrare": true
+    }
+  },
+  {
+    "id": "ADM-040",
+    "nome": "Sit-up con lancio della palla medica",
+    "scheda": {
+      "descrizione": "Sit-up in cui, salendo, si lancia la palla medica a un compagno o contro il muro e la si riprende. Aggiunge potenza al lavoro dell'addome.",
+      "muscoli": {
+        "primari": [
+          "retto dell'addome",
+          "ileopsoas (flessori dell'anca)"
+        ],
+        "secondari": [
+          "obliqui",
+          "grande pettorale",
+          "tricipite brachiale"
+        ],
+        "stabilizzatori": [
+          "muscoli del collo"
+        ]
+      },
+      "partenza": "Come ADM-007, con una palla medica tenuta sopra il petto, di fronte a un compagno o a un muro.",
+      "esecuzione": "Salita esplosiva con lancio della palla al culmine; si riceve la palla e si scende controllati.",
+      "rom": "Come ADM-007.",
+      "respirazione": "Espira nel lancio.",
+      "tempo": "Esplosivo",
+      "errori": [
+        {
+          "errore": "Palla ricevuta sul viso",
+          "correzione": "Mani pronte davanti al petto, lanci leggeri."
+        },
+        {
+          "errore": "Discesa a peso morto",
+          "correzione": "Scendere controllati."
+        },
+        {
+          "errore": "Slancio con il collo",
+          "correzione": "Sali con l'addome."
+        }
+      ],
+      "cue": [
+        "Mani pronte",
+        "Lancia salendo",
+        "Giù controllato",
+        "Palla leggera"
+      ],
+      "regressione_progressione": {
+        "regressione": [
+          "ADM-007 Sit-up"
+        ],
+        "progressione": []
+      },
+      "precauzioni": "La palla torna verso il viso: palle morbide, lanci leggeri e compagno attento. In caso di fastidi o dolore chiedere il parere di un professionista sanitario."
+    },
+    "config_app": {
+      "eredita_da": null,
+      "vista_camera": "laterale",
+      "lato": "auto",
+      "messaggio_posizione": "Esercizio non supportato: chiedi all'istruttore",
+      "messaggio_ok": "",
+      "misure": {},
+      "ripetizione": {},
+      "errori": [],
+      "testi_errori": {},
+      "analizzabilita": "non_analizzabile",
+      "motivo": "Come PET-072: la palla torna verso il viso mentre si è sdraiati e il gesto è esplosivo. Per sicurezza solo scheda.",
+      "non_rilevabili": [
+        {
+          "errore": "Ricezione della palla",
+          "motivo": "La palla non è rilevata."
+        }
+      ],
+      "richiesta_motore": [
+        "Campo 'solo_scheda' con avviso di sicurezza."
+      ],
+      "da_calibrare": true
+    }
+  },
+  {
+    "id": "ADM-041",
+    "nome": "V-up con palla medica",
+    "scheda": {
+      "descrizione": "V-up passando o tenendo una palla medica tra le mani. Il carico aumenta la difficoltà.",
+      "muscoli": {
+        "primari": [
+          "retto dell'addome",
+          "ileopsoas (flessori dell'anca)"
+        ],
+        "secondari": [
+          "obliqui"
+        ],
+        "stabilizzatori": [
+          "quadricipiti"
+        ]
+      },
+      "partenza": "Come ADM-011, con una palla medica tra le mani.",
+      "esecuzione": "Come ADM-011, portando la palla verso i piedi.",
+      "rom": "Come ADM-011.",
+      "respirazione": "Espira salendo, inspira scendendo.",
+      "tempo": "1-0-2-0 (salita/spinta 1 s, pausa 0 s, ritorno 2 s, pausa 0 s)",
+      "errori": [
+        {
+          "errore": "Gambe piegate",
+          "correzione": "Gambe tese."
+        },
+        {
+          "errore": "Palla che cade sul viso",
+          "correzione": "Presa salda, palla leggera."
+        },
+        {
+          "errore": "Schiena inarcata in basso",
+          "correzione": "Addome contratto."
+        }
+      ],
+      "cue": [
+        "Sali insieme",
+        "Gambe tese",
+        "Palla ai piedi",
+        "Giù lento"
+      ],
+      "regressione_progressione": {
+        "regressione": [
+          "ADM-011 V-up"
+        ],
+        "progressione": []
+      },
+      "precauzioni": "Chi ha fastidi alla zona lombare preferisca il tuck-up. In caso di fastidi o dolore chiedere il parere di un professionista sanitario."
+    },
+    "config_app": {
+      "eredita_da": "ADM-011",
+      "analizzabilita": "parziale",
+      "motivo": "Come ADM-011: stesse misure e soglie. La palla può coprire le mani.",
+      "non_rilevabili": [
+        {
+          "errore": "Zona lombare che si inarca in basso",
+          "motivo": "La curvatura della colonna non è misurabile."
+        }
+      ],
+      "richiesta_motore": [],
+      "da_calibrare": true
+    }
+  },
+  {
+    "id": "ADM-042",
+    "nome": "Crunch su fitball",
+    "scheda": {
+      "descrizione": "Crunch con la zona lombare appoggiata su una fitball. La palla permette di partire con il busto in estensione e aumenta l'ampiezza.",
+      "muscoli": {
+        "primari": [
+          "retto dell'addome"
+        ],
+        "secondari": [
+          "obliqui"
+        ],
+        "stabilizzatori": [
+          "glutei",
+          "quadricipiti"
+        ]
+      },
+      "partenza": "Seduti sulla fitball, si cammina in avanti finché la zona lombare è appoggiata sulla palla, piedi a terra larghi, mani dietro le orecchie.",
+      "esecuzione": {
+        "concentrica": "Si arrotola il busto staccando testa e scapole dalla palla, portando le costole verso il bacino; la zona lombare resta appoggiata.",
+        "pausa": "Breve pausa in alto stringendo l'addome.",
+        "eccentrica": "Ritorno controllato srotolando il busto fino ad appoggiare scapole e testa sulla palla."
+      },
+      "rom": "Busto da leggermente esteso sulla palla a circa 30-40° di flessione.",
+      "respirazione": "Espira salendo, inspira scendendo.",
+      "tempo": "1-1-2-0 (salita/spinta 1 s, pausa 1 s, ritorno 2 s, pausa 0 s)",
+      "errori": [
+        {
+          "errore": "Tirare la testa con le mani",
+          "correzione": "Mani appena dietro le orecchie, gomiti aperti, sguardo in alto."
+        },
+        {
+          "errore": "Slancio",
+          "correzione": "Movimento lento e controllato."
+        },
+        {
+          "errore": "Palla che rotola",
+          "correzione": "Piedi larghi e ben piantati."
+        }
+      ],
+      "cue": [
+        "Costole verso il bacino",
+        "Collo rilassato",
+        "Scapole staccate",
+        "Giù lento"
+      ],
+      "regressione_progressione": {
+        "regressione": [
+          "ADM-001 Crunch"
+        ],
+        "progressione": []
+      },
+      "precauzioni": "Usare una fitball integra e ben gonfia. In caso di fastidi o dolore chiedere il parere di un professionista sanitario."
+    },
+    "config_app": {
+      "eredita_da": null,
+      "vista_camera": "laterale",
+      "lato": "auto",
+      "messaggio_posizione": "Camera di lato, corpo e palla visibili",
+      "messaggio_ok": "Ottimo crunch!",
+      "misure": {
+        "busto": {
+          "tipo": "inclinazione",
+          "punti": [
+            "anca",
+            "spalla"
+          ]
+        }
+      },
+      "ripetizione": {
+        "misura": "busto",
+        "direzione": "diminuisce",
+        "posizione_iniziale": 88,
+        "inizio_movimento": 84
+      },
+      "errori": [
+        {
+          "id": "ampiezza",
+          "messaggio": "Stacca di più le spalle",
+          "gravita": "giallo",
+          "momento": "fine",
+          "misura": "busto",
+          "statistica": "minimo",
+          "maggiore_di": 80
+        },
+        {
+          "id": "troppo_veloce",
+          "messaggio": "Scendi più lentamente",
+          "gravita": "giallo",
+          "momento": "fine",
+          "misura": "durata",
+          "statistica": "massimo",
+          "minore_di": 1.5
+        }
+      ],
+      "testi_errori": {
+        "ampiezza": {
+          "cosa_succede": "Le spalle si staccano poco dalla palla.",
+          "perche_conta": "Con un movimento così piccolo l'addome lavora poco.",
+          "come_correggere": "Arrotola il busto staccando le scapole dalla palla, mento leggermente verso il petto.",
+          "frase_da_ricordare": "Scapole staccate."
+        },
+        "troppo_veloce": {
+          "cosa_succede": "La ripetizione è troppo rapida.",
+          "perche_conta": "Con lo slancio si tira con il collo e l'addome lavora poco.",
+          "come_correggere": "Sali controllato e conta due secondi per scendere.",
+          "frase_da_ricordare": "Giù in due."
+        }
+      },
+      "analizzabilita": "parziale",
+      "motivo": "Come ADM-001: sulla palla il busto parte circa orizzontale o un po' esteso. La palla può coprire l'anca. Dipende dalla convenzione 0-180 dell'inclinazione (§2).",
+      "non_rilevabili": [
+        {
+          "errore": "Tirare la testa con le mani",
+          "motivo": "Il collo non è misurabile in modo affidabile con il solo punto del naso."
+        },
+        {
+          "errore": "Zona lombare che si stacca",
+          "motivo": "La curvatura della colonna non è misurabile."
+        }
+      ],
+      "richiesta_motore": [],
+      "da_calibrare": true
+    }
+  },
+  {
+    "id": "ADM-043",
+    "nome": "Rollout su fitball",
+    "scheda": {
+      "descrizione": "In ginocchio con gli avambracci su una fitball, la si fa rotolare in avanti allungando il corpo. È la versione più semplice del rollout.",
+      "muscoli": {
+        "primari": [
+          "retto dell'addome",
+          "trasverso dell'addome"
+        ],
+        "secondari": [
+          "gran dorsale"
+        ],
+        "stabilizzatori": [
+          "glutei"
+        ]
+      },
+      "partenza": "In ginocchio davanti a una fitball, avambracci appoggiati sulla palla, corpo inclinato in avanti.",
+      "esecuzione": {
+        "eccentrica": "La palla rotola in avanti sotto gli avambracci mentre le anche si distendono e il corpo si allunga in linea.",
+        "pausa": "Breve pausa.",
+        "concentrica": "Ritorno tirando con gli avambracci."
+      },
+      "rom": "Spalla da circa 80-90° a circa 130-140°.",
+      "respirazione": "Inspira andando avanti, espira tornando.",
+      "tempo": "2-0-2-0 (allungamento 2 s, pausa 0 s, ritorno 2 s, pausa 0 s)",
+      "errori": [
+        {
+          "errore": "Zona lombare che cede",
+          "correzione": "Ridurre l'ampiezza, bacino in retroversione."
+        },
+        {
+          "errore": "Ritorno piegando le anche",
+          "correzione": "Tornare con le braccia e l'addome."
+        },
+        {
+          "errore": "Palla che sfugge di lato",
+          "correzione": "Movimento lento e dritto."
+        }
+      ],
+      "cue": [
+        "Corpo in linea",
+        "Bacino in dentro",
+        "Avanti lento",
+        "Torna con l'addome"
+      ],
+      "regressione_progressione": {
+        "regressione": [
+          "ADM-016 Plank"
+        ],
+        "progressione": [
+          "ADM-029 Ab wheel rollout"
+        ]
+      },
+      "precauzioni": "Usare una fitball integra e ben gonfia. In caso di fastidi o dolore chiedere il parere di un professionista sanitario."
+    },
+    "config_app": {
+      "eredita_da": null,
+      "vista_camera": "laterale",
+      "lato": "auto",
+      "messaggio_posizione": "Camera a terra di lato, corpo intero visibile",
+      "messaggio_ok": "Ottimo rollout!",
+      "misure": {
+        "braccio": {
+          "tipo": "angolo",
+          "punti": [
+            "anca",
+            "spalla",
+            "gomito"
+          ]
+        }
+      },
+      "ripetizione": {
+        "misura": "braccio",
+        "direzione": "aumenta",
+        "posizione_iniziale": 100,
+        "inizio_movimento": 110
+      },
+      "errori": [
+        {
+          "id": "troppo_veloce",
+          "messaggio": "Vai avanti più lentamente",
+          "gravita": "giallo",
+          "momento": "fine",
+          "misura": "durata",
+          "statistica": "massimo",
+          "minore_di": 1.5
+        }
+      ],
+      "testi_errori": {
+        "troppo_veloce": {
+          "cosa_succede": "La ripetizione è troppo rapida.",
+          "perche_conta": "Andare avanti di colpo fa cedere la zona lombare.",
+          "come_correggere": "Conta due secondi per andare avanti.",
+          "frase_da_ricordare": "Avanti in due."
+        }
+      },
+      "analizzabilita": "parziale",
+      "motivo": "Come ADM-029, con un'ampiezza minore: angolo anca-spalla-gomito da circa 80-90° a 130-140°. La palla può coprire gli avambracci. Non c'è un controllo dell'ampiezza: allungarsi di più aumenta il rischio per la zona lombare, che non è misurabile, quindi l'ampiezza la decide l'istruttore.",
+      "non_rilevabili": [
+        {
+          "errore": "Zona lombare che cede in allungamento",
+          "motivo": "Con un angolo senza verso il bacino che cede e il bacino alto si leggono allo stesso modo; la curvatura non è misurabile."
+        }
+      ],
+      "richiesta_motore": [
+        "Angolo con verso (come §7.5)."
+      ],
+      "da_calibrare": true
+    }
+  },
+  {
+    "id": "ADM-044",
+    "nome": "Plank su fitball",
+    "scheda": {
+      "descrizione": "Plank con gli avambracci appoggiati su una fitball. L'appoggio instabile aumenta il lavoro dell'addome.",
+      "muscoli": {
+        "primari": [
+          "retto dell'addome",
+          "trasverso dell'addome"
+        ],
+        "secondari": [
+          "obliqui",
+          "deltoide anteriore"
+        ],
+        "stabilizzatori": [
+          "glutei"
+        ]
+      },
+      "partenza": "Avambracci sulla fitball con i gomiti sotto le spalle, piedi a terra, corpo in linea.",
+      "esecuzione": "Mantenere la posizione per il tempo stabilito senza far muovere la palla.",
+      "rom": "Come ADM-016.",
+      "respirazione": "Respirazione regolare, senza apnea.",
+      "tempo": "Tenuta di 15-45 s",
+      "errori": [
+        {
+          "errore": "Bacino che cede",
+          "correzione": "Glutei e addome contratti."
+        },
+        {
+          "errore": "Sedere troppo alto",
+          "correzione": "Corpo in linea dalle spalle ai talloni."
+        },
+        {
+          "errore": "Palla che si muove",
+          "correzione": "Gomiti fermi, addome contratto."
+        }
+      ],
+      "cue": [
+        "Corpo in linea",
+        "Palla ferma",
+        "Glutei stretti",
+        "Respira"
+      ],
+      "regressione_progressione": {
+        "regressione": [
+          "ADM-016 Plank"
+        ],
+        "progressione": [
+          "ADM-045 Stir the pot"
+        ]
+      },
+      "precauzioni": "Usare una fitball integra e ben gonfia. In caso di fastidi o dolore chiedere il parere di un professionista sanitario."
+    },
+    "config_app": {
+      "eredita_da": null,
+      "vista_camera": "laterale",
+      "lato": "auto",
+      "messaggio_posizione": "Esercizio non supportato: chiedi all'istruttore",
+      "messaggio_ok": "",
+      "misure": {},
+      "ripetizione": {},
+      "errori": [],
+      "testi_errori": {},
+      "analizzabilita": "non_analizzabile",
+      "motivo": "È una tenuta isometrica: il motore conta ripetizioni e non gestisce il tempo di tenuta. Di lato l'allineamento del corpo sarebbe ben visibile.",
+      "non_rilevabili": [
+        {
+          "errore": "Bacino che cede",
+          "motivo": "Il formato non prevede esercizi a tenuta."
+        }
+      ],
+      "richiesta_motore": [
+        "Modalità isometrica (come §7.8): cronometro della tenuta e controllo continuo dell'allineamento."
+      ],
+      "da_calibrare": true
+    }
+  },
+  {
+    "id": "ADM-045",
+    "nome": "Stir the pot",
+    "scheda": {
+      "descrizione": "Dal plank su fitball si disegnano piccoli cerchi con gli avambracci, come per mescolare una pentola. Allena l'addome contro estensione e rotazione.",
+      "muscoli": {
+        "primari": [
+          "retto dell'addome",
+          "obliqui"
+        ],
+        "secondari": [
+          "deltoide anteriore"
+        ],
+        "stabilizzatori": [
+          "trasverso dell'addome",
+          "glutei"
+        ]
+      },
+      "partenza": "Come ADM-044.",
+      "esecuzione": "Piccoli cerchi con gli avambracci in un senso e poi nell'altro, mantenendo il corpo fermo e in linea.",
+      "rom": "Cerchi di pochi centimetri.",
+      "respirazione": "Respirazione regolare.",
+      "tempo": "Controllato",
+      "errori": [
+        {
+          "errore": "Bacino che si muove",
+          "correzione": "Corpo fermo."
+        },
+        {
+          "errore": "Cerchi troppo ampi",
+          "correzione": "Cerchi piccoli."
+        },
+        {
+          "errore": "Bacino che cede",
+          "correzione": "Corpo in linea."
+        }
+      ],
+      "cue": [
+        "Corpo fermo",
+        "Cerchi piccoli",
+        "Glutei stretti",
+        "Respira"
+      ],
+      "regressione_progressione": {
+        "regressione": [
+          "ADM-044 Plank su fitball"
+        ],
+        "progressione": []
+      },
+      "precauzioni": "Usare una fitball integra e ben gonfia. In caso di fastidi o dolore chiedere il parere di un professionista sanitario."
+    },
+    "config_app": {
+      "eredita_da": "ADM-044",
+      "vista_camera": "laterale",
+      "lato": "auto",
+      "messaggio_posizione": "Esercizio non supportato: chiedi all'istruttore",
+      "messaggio_ok": "",
+      "misure": {},
+      "ripetizione": {},
+      "errori": [],
+      "testi_errori": {},
+      "analizzabilita": "non_analizzabile",
+      "motivo": "I cerchi degli avambracci sono piccoli e avvengono in parte verso la camera; non c'è un movimento articolare da contare.",
+      "non_rilevabili": [
+        {
+          "errore": "Cerchi",
+          "motivo": "Movimento piccolo e in profondità."
+        }
+      ],
+      "richiesta_motore": [
+        "Modalità isometrica."
+      ],
+      "da_calibrare": true
+    }
+  },
+  {
+    "id": "ADM-046",
+    "nome": "Knee tuck su fitball",
+    "scheda": {
+      "descrizione": "In plank sulle mani con le tibie su una fitball, si portano le ginocchia al petto facendo rotolare la palla. Allena addome e stabilità delle spalle.",
+      "muscoli": {
+        "primari": [
+          "retto dell'addome",
+          "ileopsoas (flessori dell'anca)"
+        ],
+        "secondari": [
+          "deltoide anteriore"
+        ],
+        "stabilizzatori": [
+          "dentato anteriore"
+        ]
+      },
+      "partenza": "Plank sulle mani con le tibie o il collo dei piedi sulla fitball, corpo in linea.",
+      "esecuzione": {
+        "concentrica": "Le ginocchia vanno verso il petto facendo rotolare la palla, spalle sopra le mani.",
+        "pausa": "Breve pausa.",
+        "eccentrica": "Ritorno controllato in plank."
+      },
+      "rom": "Anca da circa 175° a circa 60-80°.",
+      "respirazione": "Espira portando le ginocchia, inspira tornando.",
+      "tempo": "1-1-2-0 (salita/spinta 1 s, pausa 1 s, ritorno 2 s, pausa 0 s)",
+      "errori": [
+        {
+          "errore": "Bacino che cede al ritorno",
+          "correzione": "Corpo in linea."
+        },
+        {
+          "errore": "Palla che sfugge di lato",
+          "correzione": "Movimento lento."
+        },
+        {
+          "errore": "Spalle che vanno indietro",
+          "correzione": "Spalle sopra le mani."
+        }
+      ],
+      "cue": [
+        "Ginocchia al petto",
+        "Spalle sulle mani",
+        "Corpo in linea",
+        "Torna lento"
+      ],
+      "regressione_progressione": {
+        "regressione": [
+          "ADM-037 Knee tuck al TRX"
+        ],
+        "progressione": [
+          "ADM-047 Pike su fitball"
+        ]
+      },
+      "precauzioni": "Usare una fitball integra e ben gonfia. In caso di fastidi o dolore chiedere il parere di un professionista sanitario."
+    },
+    "config_app": {
+      "eredita_da": null,
+      "vista_camera": "laterale",
+      "lato": "auto",
+      "messaggio_posizione": "Camera a terra di lato, corpo intero visibile",
+      "messaggio_ok": "Ottimo!",
+      "misure": {
+        "anca": {
+          "tipo": "angolo",
+          "punti": [
+            "spalla",
+            "anca",
+            "ginocchio"
+          ]
+        }
+      },
+      "ripetizione": {
+        "misura": "anca",
+        "direzione": "diminuisce",
+        "posizione_iniziale": 155,
+        "inizio_movimento": 140
+      },
+      "errori": [
+        {
+          "id": "ampiezza",
+          "messaggio": "Ginocchia al petto",
+          "gravita": "giallo",
+          "momento": "fine",
+          "misura": "anca",
+          "statistica": "minimo",
+          "maggiore_di": 100
+        },
+        {
+          "id": "troppo_veloce",
+          "messaggio": "Torna più lentamente",
+          "gravita": "giallo",
+          "momento": "fine",
+          "misura": "durata",
+          "statistica": "massimo",
+          "minore_di": 1.5
+        }
+      ],
+      "testi_errori": {
+        "ampiezza": {
+          "cosa_succede": "Le ginocchia si avvicinano poco al petto.",
+          "perche_conta": "L'addome lavora soprattutto nella chiusura.",
+          "come_correggere": "Porta le ginocchia verso il petto mantenendo le spalle sopra le mani.",
+          "frase_da_ricordare": "Ginocchia al petto."
+        },
+        "troppo_veloce": {
+          "cosa_succede": "La ripetizione è troppo rapida.",
+          "perche_conta": "Con la fretta la palla scappa e si perde il controllo.",
+          "come_correggere": "Distendi le gambe in due secondi.",
+          "frase_da_ricordare": "Torna in due."
+        }
+      },
+      "analizzabilita": "parziale",
+      "motivo": "Di lato si legge l'angolo dell'anca (spalla-anca-ginocchio): circa 170° in plank, 60-80° con le ginocchia al petto. La ripetizione si chiude tornando in plank (oltre 155°), quindi ogni ripetizione richiede di distendere le gambe. La palla può coprire le caviglie.",
+      "non_rilevabili": [
+        {
+          "errore": "Bacino che cede in plank",
+          "motivo": "Con un angolo senza verso il bacino che cede e il bacino alto si leggono allo stesso modo."
+        },
+        {
+          "errore": "Spalle che vanno indietro",
+          "motivo": "Movimento piccolo."
+        }
+      ],
+      "richiesta_motore": [
+        "Angolo con verso (come §7.5)."
+      ],
+      "da_calibrare": true
+    }
+  },
+  {
+    "id": "ADM-047",
+    "nome": "Pike su fitball",
+    "scheda": {
+      "descrizione": "In plank sulle mani con i piedi su una fitball, si solleva il bacino verso il soffitto con le gambe tese. Esercizio avanzato per addome e spalle.",
+      "muscoli": {
+        "primari": [
+          "retto dell'addome",
+          "ileopsoas (flessori dell'anca)"
+        ],
+        "secondari": [
+          "deltoide anteriore"
+        ],
+        "stabilizzatori": [
+          "dentato anteriore",
+          "tricipite brachiale"
+        ]
+      },
+      "partenza": "Come ADM-046, con il collo dei piedi sulla fitball.",
+      "esecuzione": "Come ADM-036, con la palla che rotola verso le mani.",
+      "rom": "Anca da circa 175° a circa 60-90°.",
+      "respirazione": "Espira salendo, inspira tornando.",
+      "tempo": "1-1-2-0 (salita/spinta 1 s, pausa 1 s, ritorno 2 s, pausa 0 s)",
+      "errori": [
+        {
+          "errore": "Gambe piegate",
+          "correzione": "Gambe tese o usare il knee tuck."
+        },
+        {
+          "errore": "Palla che sfugge di lato",
+          "correzione": "Movimento lento."
+        },
+        {
+          "errore": "Spalle che vanno indietro",
+          "correzione": "Spalle sopra le mani."
+        }
+      ],
+      "cue": [
+        "Anche in alto",
+        "Gambe tese",
+        "Spalle sulle mani",
+        "Torna lento"
+      ],
+      "regressione_progressione": {
+        "regressione": [
+          "ADM-046 Knee tuck su fitball"
+        ],
+        "progressione": []
+      },
+      "precauzioni": "Usare una fitball integra e ben gonfia. Chi ha fastidi ai polsi o alle spalle dovrebbe evitarlo. In caso di fastidi o dolore chiedere il parere di un professionista sanitario."
+    },
+    "config_app": {
+      "eredita_da": "ADM-046",
+      "messaggio_ok": "Ottimo pike!",
+      "misure": {
+        "anca": {
+          "tipo": "angolo",
+          "punti": [
+            "spalla",
+            "anca",
+            "caviglia"
+          ]
+        },
+        "ginocchio": {
+          "tipo": "angolo",
+          "punti": [
+            "anca",
+            "ginocchio",
+            "caviglia"
+          ]
+        }
+      },
+      "errori": [
+        {
+          "id": "ampiezza",
+          "messaggio": "Anche più in alto",
+          "gravita": "giallo",
+          "momento": "fine",
+          "misura": "anca",
+          "statistica": "minimo",
+          "maggiore_di": 100
+        },
+        {
+          "id": "gambe_piegate",
+          "messaggio": "Gambe tese",
+          "gravita": "giallo",
+          "momento": "durante",
+          "misura": "ginocchio",
+          "minore_di": 155
+        },
+        {
+          "id": "troppo_veloce",
+          "messaggio": "Torna più lentamente",
+          "gravita": "giallo",
+          "momento": "fine",
+          "misura": "durata",
+          "statistica": "massimo",
+          "minore_di": 1.5
+        }
+      ],
+      "testi_errori": {
+        "ampiezza": {
+          "cosa_succede": "Il bacino sale poco.",
+          "perche_conta": "L'addome lavora soprattutto nella parte alta del carpiato.",
+          "come_correggere": "Solleva il bacino verso il soffitto con le gambe tese, spalle sopra le mani.",
+          "frase_da_ricordare": "Anche in alto."
+        },
+        "gambe_piegate": {
+          "cosa_succede": "Le ginocchia si piegano.",
+          "perche_conta": "Piegando le gambe la leva si accorcia e l'esercizio diventa più facile.",
+          "come_correggere": "Gambe tese; se non ci riesci, usa la versione a ginocchia piegate (ADM-046 Knee tuck su fitball).",
+          "frase_da_ricordare": "Gambe tese."
+        },
+        "troppo_veloce": {
+          "cosa_succede": "La ripetizione è troppo rapida.",
+          "perche_conta": "Scendere di colpo fa cedere il bacino.",
+          "come_correggere": "Torna in plank in due secondi.",
+          "frase_da_ricordare": "Torna in due."
+        }
+      },
+      "analizzabilita": "parziale",
+      "motivo": "Come ADM-036: chiusura dell'anca misurata spalla-anca-caviglia, con il controllo delle gambe tese.",
+      "non_rilevabili": [
+        {
+          "errore": "Spalle che vanno indietro",
+          "motivo": "Movimento piccolo."
+        },
+        {
+          "errore": "Palla che sfugge di lato",
+          "motivo": "La palla non è rilevata."
+        }
+      ],
+      "richiesta_motore": [],
+      "da_calibrare": true
+    }
+  },
+  {
+    "id": "ADM-048",
+    "nome": "Passaggio della fitball",
+    "scheda": {
+      "descrizione": "V-up in cui la fitball passa dalle mani ai piedi e viceversa a ogni ripetizione. Allena addome, flessori dell'anca e coordinazione.",
+      "muscoli": {
+        "primari": [
+          "retto dell'addome",
+          "ileopsoas (flessori dell'anca)"
+        ],
+        "secondari": [
+          "adduttori"
+        ],
+        "stabilizzatori": [
+          "quadricipiti"
+        ]
+      },
+      "partenza": "Come ADM-011, con una fitball tra le mani.",
+      "esecuzione": "Come ADM-011: in alto la palla passa dalle mani ai piedi, si scende con la palla tra le caviglie e alla ripetizione successiva torna alle mani.",
+      "rom": "Come ADM-011.",
+      "respirazione": "Espira salendo, inspira scendendo.",
+      "tempo": "1-0-2-0 (salita/spinta 1 s, pausa 0 s, ritorno 2 s, pausa 0 s)",
+      "errori": [
+        {
+          "errore": "Palla che cade",
+          "correzione": "Movimento controllato."
+        },
+        {
+          "errore": "Gambe piegate",
+          "correzione": "Gambe tese."
+        },
+        {
+          "errore": "Schiena inarcata in basso",
+          "correzione": "Addome contratto."
+        }
+      ],
+      "cue": [
+        "Sali insieme",
+        "Passa la palla",
+        "Gambe tese",
+        "Giù lento"
+      ],
+      "regressione_progressione": {
+        "regressione": [
+          "ADM-011 V-up"
+        ],
+        "progressione": []
+      },
+      "precauzioni": "Chi ha fastidi alla zona lombare preferisca il tuck-up. In caso di fastidi o dolore chiedere il parere di un professionista sanitario."
+    },
+    "config_app": {
+      "eredita_da": "ADM-011",
+      "errori": [
+        {
+          "id": "ampiezza",
+          "messaggio": "Mani verso i piedi",
+          "gravita": "giallo",
+          "momento": "fine",
+          "misura": "anca",
+          "statistica": "minimo",
+          "maggiore_di": 100
+        },
+        {
+          "id": "gambe_piegate",
+          "messaggio": "Gambe tese",
+          "gravita": "giallo",
+          "momento": "durante",
+          "misura": "ginocchio",
+          "minore_di": 150
+        },
+        {
+          "id": "troppo_veloce",
+          "messaggio": "Scendi più lentamente",
+          "gravita": "giallo",
+          "momento": "fine",
+          "misura": "durata",
+          "statistica": "massimo",
+          "minore_di": 1.1
+        }
+      ],
+      "analizzabilita": "parziale",
+      "motivo": "Come ADM-011, con una soglia di chiusura più larga: la fitball tra mani e caviglie impedisce di chiudere la V del tutto. La palla può coprire mani e caviglie.",
+      "non_rilevabili": [
+        {
+          "errore": "Zona lombare che si inarca in basso",
+          "motivo": "La curvatura della colonna non è misurabile."
+        }
+      ],
+      "richiesta_motore": [],
+      "da_calibrare": true
+    }
+  },
+  {
+    "id": "ADM-049",
+    "nome": "Sollevamento ginocchia alla sbarra",
+    "scheda": {
+      "descrizione": "Appesi alla sbarra si portano le ginocchia verso il petto senza dondolare. Allena l'addome e insieme la presa.",
+      "muscoli": {
+        "primari": [
+          "retto dell'addome",
+          "ileopsoas (flessori dell'anca)"
+        ],
+        "secondari": [
+          "obliqui"
+        ],
+        "stabilizzatori": [
+          "avambracci",
+          "gran dorsale"
+        ]
+      },
+      "partenza": "Appesi alla sbarra in presa prona alla larghezza delle spalle, braccia distese, spalle attive, gambe ferme.",
+      "esecuzione": {
+        "concentrica": "Le ginocchia salgono verso il petto arrotolando leggermente il bacino, senza slancio.",
+        "pausa": "Breve pausa in alto.",
+        "eccentrica": "Discesa controllata delle gambe, senza dondolare."
+      },
+      "rom": "Anca da circa 170° a circa 60-80°.",
+      "respirazione": "Espira salendo, inspira scendendo.",
+      "tempo": "1-1-2-0 (salita/spinta 1 s, pausa 1 s, ritorno 2 s, pausa 0 s)",
+      "errori": [
+        {
+          "errore": "Dondolio",
+          "correzione": "Spalle attive, discesa controllata."
+        },
+        {
+          "errore": "Slancio con le gambe",
+          "correzione": "Salire controllati."
+        },
+        {
+          "errore": "Presa che cede",
+          "correzione": "Usare le fasce o la sedia romana."
+        }
+      ],
+      "cue": [
+        "Corpo fermo",
+        "Ginocchia al petto",
+        "Niente slancio",
+        "Giù lento"
+      ],
+      "regressione_progressione": {
+        "regressione": [
+          "ADM-034 Sollevamento ginocchia alla sedia romana"
+        ],
+        "progressione": [
+          "ADM-050 Sollevamento gambe tese alla sbarra"
+        ]
+      },
+      "precauzioni": "Chi ha fastidi alle spalle preferisca la sedia romana. In caso di fastidi o dolore chiedere il parere di un professionista sanitario."
+    },
+    "config_app": {
+      "eredita_da": null,
+      "vista_camera": "laterale",
+      "lato": "auto",
+      "messaggio_posizione": "Di lato alla camera, corpo intero visibile",
+      "messaggio_ok": "Ottimo!",
+      "misure": {
+        "anca": {
+          "tipo": "angolo",
+          "punti": [
+            "spalla",
+            "anca",
+            "ginocchio"
+          ]
+        }
+      },
+      "ripetizione": {
+        "misura": "anca",
+        "direzione": "diminuisce",
+        "posizione_iniziale": 150,
+        "inizio_movimento": 135
+      },
+      "errori": [
+        {
+          "id": "ampiezza",
+          "messaggio": "Ginocchia sopra le anche",
+          "gravita": "giallo",
+          "momento": "fine",
+          "misura": "anca",
+          "statistica": "minimo",
+          "maggiore_di": 90
+        },
+        {
+          "id": "troppo_veloce",
+          "messaggio": "Scendi più lentamente",
+          "gravita": "giallo",
+          "momento": "fine",
+          "misura": "durata",
+          "statistica": "massimo",
+          "minore_di": 1.5
+        }
+      ],
+      "testi_errori": {
+        "ampiezza": {
+          "cosa_succede": "Le ginocchia salgono poco.",
+          "perche_conta": "L'addome lavora soprattutto quando il bacino si arrotola, in alto.",
+          "come_correggere": "Porta le ginocchia sopra le anche, verso il petto.",
+          "frase_da_ricordare": "Ginocchia al petto."
+        },
+        "troppo_veloce": {
+          "cosa_succede": "La ripetizione è troppo rapida.",
+          "perche_conta": "Le gambe scendono di colpo e il corpo dondola.",
+          "come_correggere": "Conta due secondi per scendere.",
+          "frase_da_ricordare": "Giù in due."
+        }
+      },
+      "analizzabilita": "parziale",
+      "motivo": "Di lato si legge l'angolo dell'anca (spalla-anca-ginocchio): circa 170° a gambe giù, 60-90° in alto. La ripetizione si chiude tornando a gambe giù (oltre 150°). Lo slancio del corpo si stima in modo indiretto con la durata.",
+      "non_rilevabili": [
+        {
+          "errore": "Dondolio del corpo",
+          "motivo": "Lo slancio si vede solo in parte con la durata."
+        }
+      ],
+      "richiesta_motore": [],
+      "da_calibrare": true
+    }
+  },
+  {
+    "id": "ADM-050",
+    "nome": "Sollevamento gambe tese alla sbarra",
+    "scheda": {
+      "descrizione": "Come il sollevamento delle ginocchia alla sbarra, ma con le gambe tese. Più difficile per la leva lunga e per il controllo del dondolio.",
+      "muscoli": {
+        "primari": [
+          "retto dell'addome",
+          "ileopsoas (flessori dell'anca)"
+        ],
+        "secondari": [
+          "obliqui"
+        ],
+        "stabilizzatori": [
+          "avambracci",
+          "gran dorsale",
+          "quadricipiti"
+        ]
+      },
+      "partenza": "Come ADM-049.",
+      "esecuzione": "Come ADM-049, sollevando le gambe tese almeno fino all'orizzontale.",
+      "rom": "Anca da circa 170° a circa 80-90°.",
+      "respirazione": "Espira salendo, inspira scendendo.",
+      "tempo": "1-1-2-0 (salita/spinta 1 s, pausa 1 s, ritorno 2 s, pausa 0 s)",
+      "errori": [
+        {
+          "errore": "Gambe piegate",
+          "correzione": "Gambe tese."
+        },
+        {
+          "errore": "Dondolio",
+          "correzione": "Spalle attive."
+        },
+        {
+          "errore": "Discesa veloce",
+          "correzione": "Discesa controllata."
+        }
+      ],
+      "cue": [
+        "Gambe tese",
+        "Su fino all'orizzontale",
+        "Corpo fermo",
+        "Giù lento"
+      ],
+      "regressione_progressione": {
+        "regressione": [
+          "ADM-049 Sollevamento ginocchia alla sbarra"
+        ],
+        "progressione": [
+          "ADM-051 Toes to bar"
+        ]
+      },
+      "precauzioni": "Chi ha fastidi alle spalle preferisca la sedia romana. In caso di fastidi o dolore chiedere il parere di un professionista sanitario."
+    },
+    "config_app": {
+      "eredita_da": "ADM-049",
+      "misure": {
+        "ginocchio": {
+          "tipo": "angolo",
+          "punti": [
+            "anca",
+            "ginocchio",
+            "caviglia"
+          ]
+        }
+      },
+      "errori": [
+        {
+          "id": "ampiezza",
+          "messaggio": "Gambe fino all'orizzontale",
+          "gravita": "giallo",
+          "momento": "fine",
+          "misura": "anca",
+          "statistica": "minimo",
+          "maggiore_di": 100
+        },
+        {
+          "id": "gambe_piegate",
+          "messaggio": "Gambe tese",
+          "gravita": "giallo",
+          "momento": "durante",
+          "misura": "ginocchio",
+          "minore_di": 150
+        },
+        {
+          "id": "troppo_veloce",
+          "messaggio": "Scendi più lentamente",
+          "gravita": "giallo",
+          "momento": "fine",
+          "misura": "durata",
+          "statistica": "massimo",
+          "minore_di": 1.5
+        }
+      ],
+      "testi_errori": {
+        "ampiezza": {
+          "cosa_succede": "Le gambe salgono poco.",
+          "perche_conta": "L'addome lavora soprattutto nella parte alta.",
+          "come_correggere": "Solleva le gambe tese almeno fino all'orizzontale.",
+          "frase_da_ricordare": "Gambe all'orizzontale."
+        },
+        "gambe_piegate": {
+          "cosa_succede": "Le ginocchia si piegano.",
+          "perche_conta": "Piegando le gambe la leva si accorcia e l'esercizio diventa più facile.",
+          "come_correggere": "Gambe tese; se non ci riesci, usa la versione a ginocchia piegate (ADM-049 Sollevamento ginocchia alla sbarra).",
+          "frase_da_ricordare": "Gambe tese."
+        },
+        "troppo_veloce": {
+          "cosa_succede": "La ripetizione è troppo rapida.",
+          "perche_conta": "Le gambe scendono di colpo e il corpo dondola.",
+          "come_correggere": "Conta due secondi per scendere.",
+          "frase_da_ricordare": "Giù in due."
+        }
+      },
+      "analizzabilita": "parziale",
+      "motivo": "Come ADM-049, con il controllo delle gambe tese e soglia di ampiezza all'orizzontale.",
+      "non_rilevabili": [
+        {
+          "errore": "Dondolio del corpo",
+          "motivo": "Si vede solo in parte con la durata."
+        }
+      ],
+      "richiesta_motore": [],
+      "da_calibrare": true
+    }
+  },
+  {
+    "id": "ADM-051",
+    "nome": "Toes to bar",
+    "scheda": {
+      "descrizione": "Appesi alla sbarra si portano le punte dei piedi a toccare la sbarra. Esercizio avanzato che richiede forza dell'addome, mobilità e controllo.",
+      "muscoli": {
+        "primari": [
+          "retto dell'addome",
+          "ileopsoas (flessori dell'anca)"
+        ],
+        "secondari": [
+          "obliqui",
+          "gran dorsale"
+        ],
+        "stabilizzatori": [
+          "avambracci"
+        ]
+      },
+      "partenza": "Come ADM-049.",
+      "esecuzione": {
+        "concentrica": "Si portano le gambe verso la sbarra spingendo leggermente le braccia verso il basso, fino a toccare la sbarra con le punte.",
+        "pausa": "Tocco.",
+        "eccentrica": "Discesa controllata senza dondolare."
+      },
+      "rom": "Anca da circa 170° a circa 30-45°.",
+      "respirazione": "Espira salendo, inspira scendendo.",
+      "tempo": "1-0-2-0 (salita/spinta 1 s, pausa 0 s, ritorno 2 s, pausa 0 s)",
+      "errori": [
+        {
+          "errore": "Dondolio eccessivo",
+          "correzione": "Fermare il corpo tra una ripetizione e l'altra."
+        },
+        {
+          "errore": "Piedi che non arrivano",
+          "correzione": "Usare il sollevamento a gambe tese."
+        },
+        {
+          "errore": "Discesa a peso morto",
+          "correzione": "Discesa controllata."
+        }
+      ],
+      "cue": [
+        "Piedi alla sbarra",
+        "Spingi giù la sbarra",
+        "Corpo fermo",
+        "Giù controllato"
+      ],
+      "regressione_progressione": {
+        "regressione": [
+          "ADM-050 Sollevamento gambe tese alla sbarra"
+        ],
+        "progressione": []
+      },
+      "precauzioni": "Chi ha fastidi alle spalle dovrebbe evitarlo. La versione con slancio (kipping) richiede supervisione. In caso di fastidi o dolore chiedere il parere di un professionista sanitario."
+    },
+    "config_app": {
+      "eredita_da": "ADM-049",
+      "messaggio_ok": "Ottimo T2B!",
+      "errori": [
+        {
+          "id": "ampiezza",
+          "messaggio": "Piedi alla sbarra",
+          "gravita": "giallo",
+          "momento": "fine",
+          "misura": "anca",
+          "statistica": "minimo",
+          "maggiore_di": 55
+        },
+        {
+          "id": "troppo_veloce",
+          "messaggio": "Scendi più lentamente",
+          "gravita": "giallo",
+          "momento": "fine",
+          "misura": "durata",
+          "statistica": "massimo",
+          "minore_di": 1.1
+        }
+      ],
+      "testi_errori": {
+        "ampiezza": {
+          "cosa_succede": "I piedi non arrivano alla sbarra.",
+          "perche_conta": "La ripetizione resta incompleta.",
+          "come_correggere": "Porta le punte dei piedi a toccare la sbarra; se non ci riesci, usa il sollevamento a gambe tese.",
+          "frase_da_ricordare": "Piedi alla sbarra."
+        },
+        "troppo_veloce": {
+          "cosa_succede": "La ripetizione è troppo rapida.",
+          "perche_conta": "Le gambe scendono di colpo e il corpo dondola.",
+          "come_correggere": "Conta due secondi per scendere.",
+          "frase_da_ricordare": "Giù in due."
+        }
+      },
+      "analizzabilita": "parziale",
+      "motivo": "Versione controllata, come ADM-049: soglia di ampiezza fino ai piedi alla sbarra. La versione con slancio (kipping) non è supportata, come le trazioni kipping (DOR-062): il motore leggerebbe ripetizioni incomplete.",
+      "non_rilevabili": [
+        {
+          "errore": "Piedi che toccano la sbarra",
+          "motivo": "La sbarra non è rilevata: si stima dall'angolo dell'anca."
+        },
+        {
+          "errore": "Kipping",
+          "motivo": "Gesto balistico non supportato."
+        }
+      ],
+      "richiesta_motore": [],
+      "da_calibrare": true
+    }
+  },
+  {
+    "id": "ADM-052",
+    "nome": "L-sit alle parallele",
+    "scheda": {
+      "descrizione": "In appoggio sulle parallele a braccia tese, si tengono le gambe tese in avanti all'orizzontale, con il corpo a forma di L. Tenuta avanzata per addome, flessori dell'anca e tricipiti.",
+      "muscoli": {
+        "primari": [
+          "retto dell'addome",
+          "ileopsoas (flessori dell'anca)"
+        ],
+        "secondari": [
+          "tricipite brachiale",
+          "quadricipiti"
+        ],
+        "stabilizzatori": [
+          "deltoidi",
+          "dentato anteriore"
+        ]
+      },
+      "partenza": "In appoggio sulle parallele a braccia tese, spalle basse.",
+      "esecuzione": "Si sollevano le gambe tese in avanti fino all'orizzontale e si mantiene la posizione per il tempo stabilito.",
+      "rom": "Isometria: anca a circa 90°, ginocchia distese.",
+      "respirazione": "Respirazione regolare, senza apnea.",
+      "tempo": "Tenuta di 10-30 s",
+      "errori": [
+        {
+          "errore": "Gambe che scendono",
+          "correzione": "Ginocchia piegate o una gamba alla volta."
+        },
+        {
+          "errore": "Spalle che salgono",
+          "correzione": "Spingere le parallele verso il basso."
+        },
+        {
+          "errore": "Ginocchia piegate",
+          "correzione": "Gambe tese."
+        }
+      ],
+      "cue": [
+        "Spalle basse",
+        "Gambe tese",
+        "Spingi giù",
+        "Respira"
+      ],
+      "regressione_progressione": {
+        "regressione": [
+          "ADM-034 Sollevamento ginocchia alla sedia romana"
+        ],
+        "progressione": [
+          "ADM-053 L-sit agli anelli"
+        ]
+      },
+      "precauzioni": "Chi ha fastidi alle spalle o ai polsi dovrebbe evitarlo. In caso di fastidi o dolore chiedere il parere di un professionista sanitario."
+    },
+    "config_app": {
+      "eredita_da": null,
+      "vista_camera": "laterale",
+      "lato": "auto",
+      "messaggio_posizione": "Esercizio non supportato: chiedi all'istruttore",
+      "messaggio_ok": "",
+      "misure": {},
+      "ripetizione": {},
+      "errori": [],
+      "testi_errori": {},
+      "analizzabilita": "non_analizzabile",
+      "motivo": "È una tenuta isometrica: il motore conta ripetizioni e non gestisce il tempo di tenuta. Di lato l'allineamento del corpo sarebbe ben visibile.",
+      "non_rilevabili": [
+        {
+          "errore": "Gambe che scendono",
+          "motivo": "Misurabile, ma il formato non prevede esercizi a tenuta."
+        }
+      ],
+      "richiesta_motore": [
+        "Modalità isometrica (come §7.8): cronometro della tenuta e controllo continuo dell'allineamento."
+      ],
+      "da_calibrare": true
+    }
+  },
+  {
+    "id": "ADM-053",
+    "nome": "L-sit agli anelli",
+    "scheda": {
+      "descrizione": "L-sit in appoggio sugli anelli: la base instabile aumenta molto la difficoltà. Variante per atleti avanzati.",
+      "muscoli": {
+        "primari": [
+          "retto dell'addome",
+          "ileopsoas (flessori dell'anca)"
+        ],
+        "secondari": [
+          "tricipite brachiale",
+          "quadricipiti"
+        ],
+        "stabilizzatori": [
+          "stabilizzatori della spalla"
+        ]
+      },
+      "partenza": "In appoggio sugli anelli a braccia tese, anelli vicini ai fianchi.",
+      "esecuzione": "Come ADM-052, mantenendo fermi gli anelli.",
+      "rom": "Come ADM-052.",
+      "respirazione": "Respirazione regolare, senza apnea.",
+      "tempo": "Tenuta di 10-20 s",
+      "errori": [
+        {
+          "errore": "Anelli che si aprono",
+          "correzione": "Anelli vicini ai fianchi."
+        },
+        {
+          "errore": "Gambe che scendono",
+          "correzione": "Ginocchia piegate."
+        },
+        {
+          "errore": "Spalle che salgono",
+          "correzione": "Spalle basse."
+        }
+      ],
+      "cue": [
+        "Anelli ai fianchi",
+        "Gambe tese",
+        "Spalle basse",
+        "Respira"
+      ],
+      "regressione_progressione": {
+        "regressione": [
+          "ADM-052 L-sit alle parallele"
+        ],
+        "progressione": []
+      },
+      "precauzioni": "Chi ha fastidi alle spalle dovrebbe evitarlo. In caso di fastidi o dolore chiedere il parere di un professionista sanitario."
+    },
+    "config_app": {
+      "eredita_da": null,
+      "vista_camera": "laterale",
+      "lato": "auto",
+      "messaggio_posizione": "Esercizio non supportato: chiedi all'istruttore",
+      "messaggio_ok": "",
+      "misure": {},
+      "ripetizione": {},
+      "errori": [],
+      "testi_errori": {},
+      "analizzabilita": "non_analizzabile",
+      "motivo": "È una tenuta isometrica: il motore conta ripetizioni e non gestisce il tempo di tenuta. Di lato l'allineamento del corpo sarebbe ben visibile.",
+      "non_rilevabili": [
+        {
+          "errore": "Gambe che scendono",
+          "motivo": "Il formato non prevede esercizi a tenuta."
+        }
+      ],
+      "richiesta_motore": [
+        "Modalità isometrica (come §7.8): cronometro della tenuta e controllo continuo dell'allineamento."
+      ],
+      "da_calibrare": true
+    }
+  }
+]

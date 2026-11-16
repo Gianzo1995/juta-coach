@@ -339,6 +339,26 @@ def posa_squat_fronte(ginocchio, dentro=0.0, inclina=0.0):
     return posa
 
 
+def posa_plank(abbassa_bacino=0.0, terra=False, in_piedi=False):
+    """Plank sugli avambracci visto di lato (abbassa_bacino in px, positivo = bacino che cede).
+    terra: sdraiati a pancia in giu' con le braccia lungo il corpo; in_piedi: in piedi, braccia lungo i fianchi."""
+    if in_piedi:
+        pt = {"spalla": (500, 300), "gomito": (505, 430), "polso": (510, 550), "anca": (500, 560),
+              "ginocchio": (505, 760), "caviglia": (500, 950)}
+    else:
+        y = 740 if terra else 600
+        sp, cv = (300, y), (800, y + (5 if terra else 50))
+        an = ((sp[0] + cv[0]) / 2, (sp[1] + cv[1]) / 2 + abbassa_bacino)
+        gm, pl = ((420, y + 5), (520, y + 5)) if terra else ((300, 700), (400, 700))
+        pt = {"spalla": sp, "gomito": gm, "polso": pl, "anca": an,
+              "ginocchio": ((an[0] + cv[0]) / 2, (an[1] + cv[1]) / 2), "caviglia": cv}
+    pt.update({"tallone": pt["caviglia"], "punta": pt["caviglia"]})
+    posa = punti_entrambi_lati(pt, vis_sx=0.95, vis_dx=0.4)
+    for n in ("naso", "naso_sx", "naso_dx"):
+        posa[n] = (pt["spalla"][0] - 40, pt["spalla"][1] - 30, 0.99)
+    return posa
+
+
 def ripetizione(fn_posa, inizio, fondo, secondi=2.0, **extra_fondo):
     """Genera una ripetizione: da 'inizio' a 'fondo' e ritorno, piu' una pausa."""
     n = int(secondi * FPS)
@@ -720,6 +740,26 @@ def main():
     ok = [e["motivo"] for e in ev if e["tipo"] == "annullata"] == ["non_chiusa"] and not any(e["tipo"] == "ripetizione" for e in ev)
     risultati.append(ok)
     print(f"{'OK ' if ok else 'ERRORE'}  Squat risalito a meta' e ridisceso: ripetizione non contata")
+
+    # Tenute con condizioni multiple: plank vero conta, in piedi o sdraiati a terra no; bacino che cede segnalato
+    pl = posa_plank
+    fr = ([pl(in_piedi=True)] * (2 * FPS) + [pl()] * (8 * FPS) + [pl(in_piedi=True)] * (2 * FPS)
+          + [pl(terra=True)] * (6 * FPS) + [pl(abbassa_bacino=60)] * (5 * FPS) + [pl(terra=True)] * (2 * FPS))
+    ev = esegui(Analizzatore(es["ADM-016"]), fr)
+    durate = [e["durata_s"] for e in ev if e["tipo"] == "ripetizione"]
+    errori = sorted({e["id"] for e in ev if e["tipo"] == "errore"})
+    ok = len(durate) == 2 and 7 <= durate[0] <= 8.5 and errori == ["bacino_cede"]
+    risultati.append(ok)
+    print(f"{'OK ' if ok else 'ERRORE'}  Plank ADM-016: tenute {durate} s (attese 2: ~8 s e ~5 s), errori {errori}; in piedi e sdraiati non contano")
+    fl_terra = posa_front_lever(90.3)
+    for l in ("sx", "dx"):                      # braccia lungo il corpo, verso le anche
+        sp = fl_terra[f"spalla_{l}"]
+        fl_terra[f"gomito_{l}"] = (sp[0] + 120, sp[1] + 5, sp[2])
+        fl_terra[f"polso_{l}"] = (sp[0] + 230, sp[1] + 8, sp[2])
+    ev = esegui(Analizzatore(es["DOR-064"]), [posa_front_lever(178.3)] * FPS + [fl_terra] * (6 * FPS) + [posa_front_lever(178.3)] * (2 * FPS))
+    ok = not any(e["tipo"] == "ripetizione" for e in ev)
+    risultati.append(ok)
+    print(f"{'OK ' if ok else 'ERRORE'}  Front lever DOR-064: sdraiati con le braccia lungo il corpo non parte il cronometro")
 
     # Ogni esercizio analizzabile deve girare senza bloccarsi su una posa completa (tutti i punti, naso con lato)
     bloccati = []

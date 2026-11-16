@@ -106,6 +106,8 @@ def casi():
                    + R(lambda b: pm.posa_sdraiato(braccio=b), 10.3, 50.2, secondi=3.0),
         "BIC-020": [pm.posa_braccio(165.3)] * FPS + pm.ripetizione_fasi(pm.posa_braccio, 165.3, 50.2, 1, 1, 2)
                    + pm.ripetizione_fasi(pm.posa_braccio, 165.3, 80.4, 1, 1, 2),
+        "ADM-016": [pm.posa_plank(in_piedi=True)] * (2 * FPS) + [pm.posa_plank()] * (6 * FPS) + [pm.posa_plank(terra=True)] * (3 * FPS)
+                   + [pm.posa_plank(abbassa_bacino=60)] * (4 * FPS) + [pm.posa_plank(terra=True)] * (2 * FPS),
         "PET-002": [pp(175)] * FPS + R(pp, 175, 80, secondi=3.0) + R(pp, 175, 80, secondi=3.0, abbassa_bacino=70),
     }
 
