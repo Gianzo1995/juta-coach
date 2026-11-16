@@ -59,9 +59,9 @@ function creaScheletro() {
 
 // ---------------------------------------------------------------- forme lisce (tornio) con estremi arrotondati
 // profilo: [[t, r], ...] con t da 0 (osso A) a 1 (osso B); calotte sferiche ai due capi
-function segmento(len, profilo, { scalaX = 1, scalaZ = 1, calotte = true } = {}) {
+function segmento(len, profilo, { scalaX = 1, scalaZ = 1, calotte = true, fondo = .9 } = {}) {
   const pts = [], r0 = profilo[0][1], r1 = profilo[profilo.length - 1][1];
-  if (calotte) for (let i = 0; i <= 8; i++) { const a = (i / 8) * Math.PI / 2; pts.push(new THREE.Vector2(Math.max(1e-4, r0 * Math.sin(a)), -r0 * Math.cos(a) * .9)); }
+  if (calotte) for (let i = 0; i <= 8; i++) { const a = (i / 8) * Math.PI / 2; pts.push(new THREE.Vector2(Math.max(1e-4, r0 * Math.sin(a)), -r0 * Math.cos(a) * fondo)); }
   // raggio lungo il pezzo: curva morbida (Catmull-Rom) che passa per i punti del profilo, senza "gradini"
   const curva = new THREE.SplineCurve(profilo.map(([tt, r]) => new THREE.Vector2(tt, r)));
   const N = 40;
@@ -96,7 +96,7 @@ function creaManichino() {
     return tra(osso, A2, B2, segmento(A2.distanceTo(B2), profilo, opz));
   }
   // --- tronco: guscio del petto, addome verde a vista, guscio del bacino
-  tra("Hips", V(0, .875, -.004), V(0, 1.035, -.012), segmento(.16, [[0, .06], [.35, .118], [.75, .132], [1, .118]], { scalaX: 1.12, scalaZ: .78 }));
+  tra("Hips", V(0, .925, -.006), V(0, 1.035, -.012), segmento(.11, [[0, .112], [.5, .13], [1, .118]], { scalaX: 1.12, scalaZ: .78, fondo: .3 }));
   palla("Spine1", V(0, 1.125, -.008), .102, [1.02, .95, .8]);                           // addome (verde)
   tra("Spine2", V(0, 1.215, -.014), V(0, 1.45, -.026), segmento(.235, [[0, .1], [.22, .118], [.55, .146], [.85, .14], [1, .095]], { scalaX: 1.24, scalaZ: .72 }));
   palla("Spine2", V(0, 1.34, .03), .1, [1.2, .7, .42], corpo);                         // pettorali
@@ -121,8 +121,8 @@ function creaManichino() {
       tra(a, P(a), P(b), segmento(P(a).distanceTo(P(b)), [[0, r], [1, r * .93]]));
     }
     // --- gamba: anca, coscia, ginocchio, gamba, caviglia
-    palla(l + "UpLeg", P(l + "UpLeg").clone().add(V(.006 * s, -.035, 0)), .072);
-    pezzo(l + "UpLeg", P(l + "UpLeg"), P(l + "Leg"), [[0, .08], [.3, .083], [.75, .062], [1, .05]], { scalaZ: .95 }, .085, .048);
+    palla(l + "UpLeg", P(l + "UpLeg").clone().add(V(0, -.03, 0)), .062);
+    pezzo(l + "UpLeg", P(l + "UpLeg"), P(l + "Leg"), [[0, .07], [.3, .08], [.75, .062], [1, .05]], { scalaZ: .95 }, .125, .048);
     palla(l + "Leg", P(l + "Leg"), .049);
     pezzo(l + "Leg", P(l + "Leg"), P(l + "Foot"), [[0, .05], [.25, .057], [.75, .036], [1, .03]], { scalaX: .95 }, .046, .034);
     palla(l + "Foot", P(l + "Foot"), .034);
