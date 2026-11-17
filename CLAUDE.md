@@ -16,7 +16,7 @@ Gianluca, titolare di Juta. **Non è uno sviluppatore.**
 
 | Percorso | Cosa contiene |
 |---|---|
-| `esercizi/catalogo/*.json` | **Catalogo esercizi**: regole (`config_app`) + scheda tecnica (`scheda`). Fonte unica per PC e telefono. La vecchia `panca` è stata sostituita da PET-012, la vecchia `lat_machine` da DOR-020. Cataloghi: base, PETTORALI 001-080, DORSALI 001-064, SPALLE DEA/DEL/DEP (gruppo «Spalle»), GAMBE GLU/QUA/FEM/ADD/ABD/POL (gruppi Glutei, Quadricipiti, Femorali, Adduttori, Abduttori, Polpacci), BRACCIA BIC/TRI/AVA (Bicipiti, Tricipiti, Avambracci), ADDOMINALI ADM 001-053 (Addominali). Lo `squat` di `base.json` è solo un banco di prova del motore: sul telefono è nascosto (`NASCOSTI` in `costruisci.py`) e si usa QUA-016, con le stesse regole. |
+| `esercizi/catalogo/*.json` | **Catalogo esercizi**: regole (`config_app`) + scheda tecnica (`scheda`). Fonte unica per PC e telefono. La vecchia `panca` è stata sostituita da PET-012, la vecchia `lat_machine` da DOR-020. Cataloghi: base, PETTORALI 001-080, DORSALI 001-064, SPALLE DEA/DEL/DEP (gruppo «Spalle»), GAMBE GLU/QUA/FEM/ADD/ABD/POL (gruppi Glutei, Quadricipiti, Femorali, Adduttori, Abduttori, Polpacci), BRACCIA BIC/TRI/AVA (Bicipiti, Tricipiti, Avambracci), ADDOMINALI ADM 001-053 (Addominali), TOTALBODY TOT 001-052 (Total body). Lo `squat` di `base.json` è solo un banco di prova del motore: sul telefono è nascosto (`NASCOSTI` in `costruisci.py`) e si usa QUA-016, con le stesse regole. |
 | `motore/regole.py` | Motore delle regole (Python, versione PC). |
 | `web/motore.js` | Lo stesso motore in JavaScript (telefono). **Deve restare identico a `regole.py`.** |
 | `web/app.html` | Interfaccia telefono: live, manichino digitale, revisione, ricerca esercizi, "Come si fa". |
@@ -197,6 +197,13 @@ Ogni voce: `{ "id", "nome"?, "gruppo"?, "scheda", "config_app" }`.
 
 ## Stato attuale e come riprendere (aggiornato 11/11/2026)
 
+- **Total body (17/11/2026)**: 52 esercizi TOT (gruppo «Total body»), 15 analizzabili come da catalogo; integrazioni:
+  4 controlli di velocità convertiti, modalità balistica su burpee (TOT-001 e varianti), girata con kettlebell TOT-035
+  (con scelta della mano) e wall ball TOT-045, scelta del braccio su renegade row TOT-031 (non alternato: di lato si vede
+  solo il braccio verso la camera), avvisi rossi su olimpici TOT-011→020, TOT-005/025/027/028/029/036/037/048/049.
+  Non fatto: "statistica estesa oltre la chiusura" (braccia distese sopra la testa nei thruster TOT-022/026/038/042 e
+  altezza del kettlebell GLU-019): i thruster contano e controllano solo lo squat. Back lever TOT-044 resta solo scheda.
+  Totale: 579 esercizi sul telefono, 461 analizzabili, 519 integrazioni. Note: `NOTE_PER_IL_MOTORE` versione 6.
 - **Addominali (16/11/2026)**: 53 esercizi ADM, 42 analizzabili (34 del catalogo + 8 tenute rese analizzabili con regole
   proposte dall'app: plank ADM-016/017/018/021/044, hollow hold ADM-022, L-sit ADM-052/053); 27 controlli di velocità
   convertiti; ADM-020/038 con bacino che cede / sedere alto, ADM-020 con scelta del braccio e senza la modalità tenuta

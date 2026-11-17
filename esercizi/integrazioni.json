@@ -12791,5 +12791,229 @@
    ]
   },
   "motivo": "Revisione 11/11: da sdraiati a terra tra un tentativo e l'altro il corpo è orizzontale come nel front lever. Ora il cronometro parte solo con le braccia verso la sbarra (angolo anca-spalla-gomito tra 45° e 135°)."
+ },
+ {
+  "id": "TOT-008",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 1.2
+  },
+  "motivo": "'Più lento e controllato': misurata direttamente la fase lenta (salita del motore), almeno il 40% dei 3 s previsti dal tempo 3-1-3-0."
+ },
+ {
+  "id": "TOT-009",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Più lento e controllato': misurata direttamente la fase lenta (salita del motore), almeno il 40% dei 2 s previsti dal tempo 2-1-2-0."
+ },
+ {
+  "id": "TOT-031",
+  "imposta": {
+   "errori.troppo_veloce.misura": "salita",
+   "errori.troppo_veloce.minore_di": 0.8
+  },
+  "motivo": "'Appoggia più lentamente': misurata direttamente la fase lenta (salita del motore), almeno il 40% dei 2 s previsti dal tempo 1-1-2-0."
+ },
+ {
+  "id": "TOT-001",
+  "imposta": {
+   "modalita": "balistica"
+  },
+  "motivo": "Modalità balistica (richiesta del catalogo): nessuna attesa di 0,5 s in partenza e finestra massima di 3 s, per gesti continui."
+ },
+ {
+  "id": "TOT-045",
+  "imposta": {
+   "modalita": "balistica"
+  },
+  "motivo": "Modalità balistica (richiesta del catalogo): nessuna attesa di 0,5 s in partenza e finestra massima di 3 s, per gesti continui."
+ },
+ {
+  "id": "TOT-035",
+  "imposta": {
+   "modalita": "balistica",
+   "impostazioni": [
+    {
+     "id": "lato",
+     "domanda": "Con quale mano tieni il kettlebell? (tienila verso la camera)",
+     "opzioni": [
+      {
+       "etichetta": "Destra",
+       "imposta": {
+        "lato": "dx"
+       }
+      },
+      {
+       "etichetta": "Sinistra",
+       "imposta": {
+        "lato": "sx"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "motivo": "Modalità balistica (richiesta del catalogo): nessuna attesa di 0,5 s in partenza e finestra massima di 3 s, per gesti continui. Scelta della mano (come PET-006)."
+ },
+ {
+  "id": "TOT-031",
+  "imposta": {
+   "impostazioni": [
+    {
+     "id": "lato",
+     "domanda": "Quale braccio analizzo? (tienilo verso la camera)",
+     "opzioni": [
+      {
+       "etichetta": "Destra",
+       "imposta": {
+        "lato": "dx"
+       }
+      },
+      {
+       "etichetta": "Sinistra",
+       "imposta": {
+        "lato": "sx"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  "motivo": "Scelta del braccio (come PET-006): di lato si vede bene solo il braccio verso la camera, quindi si conta solo quello; il conteggio alternato dei due lati richiede la camera di tre quarti."
+ },
+ {
+  "id": "TOT-005",
+  "imposta": {
+   "avviso_sicurezza": "Rischio di urtare il box o atterrare male: solo con l'istruttore e box stabile o morbido. L'app non lo analizza."
+  },
+  "motivo": "Non analizzato per scelta di sicurezza (note per il motore §5): avviso ben visibile."
+ },
+ {
+  "id": "TOT-025",
+  "imposta": {
+   "avviso_sicurezza": "Salto con carico: rischio per schiena e atterraggio. Solo con l'istruttore e carichi leggeri. L'app non lo analizza."
+  },
+  "motivo": "Non analizzato per scelta di sicurezza (note per il motore §5): avviso ben visibile."
+ },
+ {
+  "id": "TOT-027",
+  "imposta": {
+   "avviso_sicurezza": "Gesto esplosivo a più fasi: da imparare con l'istruttore. L'app non lo analizza."
+  },
+  "motivo": "Non analizzato per scelta di sicurezza (note per il motore §5): avviso ben visibile."
+ },
+ {
+  "id": "TOT-028",
+  "imposta": {
+   "avviso_sicurezza": "Gesto esplosivo a più fasi con il manubrio sopra la testa: da imparare con l'istruttore. L'app non lo analizza."
+  },
+  "motivo": "Non analizzato per scelta di sicurezza (note per il motore §5): avviso ben visibile."
+ },
+ {
+  "id": "TOT-029",
+  "imposta": {
+   "avviso_sicurezza": "Gesto esplosivo a più fasi: da imparare con l'istruttore. L'app non lo analizza."
+  },
+  "motivo": "Non analizzato per scelta di sicurezza (note per il motore §5): avviso ben visibile."
+ },
+ {
+  "id": "TOT-036",
+  "imposta": {
+   "avviso_sicurezza": "Gesto esplosivo a più fasi con il kettlebell: da imparare con l'istruttore. L'app non lo analizza."
+  },
+  "motivo": "Non analizzato per scelta di sicurezza (note per il motore §5): avviso ben visibile."
+ },
+ {
+  "id": "TOT-037",
+  "imposta": {
+   "avviso_sicurezza": "Gesto esplosivo con il kettlebell sopra la testa: da imparare con l'istruttore. L'app non lo analizza."
+  },
+  "motivo": "Non analizzato per scelta di sicurezza (note per il motore §5): avviso ben visibile."
+ },
+ {
+  "id": "TOT-048",
+  "imposta": {
+   "avviso_sicurezza": "Rischio di caduta: solo con il materasso sotto la fune e con l'istruttore presente. L'app non lo analizza."
+  },
+  "motivo": "Non analizzato per scelta di sicurezza (note per il motore §5): avviso ben visibile."
+ },
+ {
+  "id": "TOT-049",
+  "imposta": {
+   "avviso_sicurezza": "Rischio di caduta: solo con il materasso sotto la fune e con l'istruttore presente. L'app non lo analizza."
+  },
+  "motivo": "Non analizzato per scelta di sicurezza (note per il motore §5): avviso ben visibile."
+ },
+ {
+  "id": "TOT-011",
+  "imposta": {
+   "avviso_sicurezza": "Sollevamento olimpico: tecnica complessa e carichi importanti, da imparare e praticare solo con l'istruttore. L'app non lo analizza."
+  },
+  "motivo": "Non analizzato per scelta di sicurezza (note per il motore §5): avviso ben visibile."
+ },
+ {
+  "id": "TOT-012",
+  "imposta": {
+   "avviso_sicurezza": "Sollevamento olimpico: tecnica complessa e carichi importanti, da imparare e praticare solo con l'istruttore. L'app non lo analizza."
+  },
+  "motivo": "Non analizzato per scelta di sicurezza (note per il motore §5): avviso ben visibile."
+ },
+ {
+  "id": "TOT-013",
+  "imposta": {
+   "avviso_sicurezza": "Sollevamento olimpico: tecnica complessa e carichi importanti, da imparare e praticare solo con l'istruttore. L'app non lo analizza."
+  },
+  "motivo": "Non analizzato per scelta di sicurezza (note per il motore §5): avviso ben visibile."
+ },
+ {
+  "id": "TOT-014",
+  "imposta": {
+   "avviso_sicurezza": "Sollevamento olimpico: tecnica complessa e carichi importanti, da imparare e praticare solo con l'istruttore. L'app non lo analizza."
+  },
+  "motivo": "Non analizzato per scelta di sicurezza (note per il motore §5): avviso ben visibile."
+ },
+ {
+  "id": "TOT-015",
+  "imposta": {
+   "avviso_sicurezza": "Sollevamento olimpico: tecnica complessa e carichi importanti, da imparare e praticare solo con l'istruttore. L'app non lo analizza."
+  },
+  "motivo": "Non analizzato per scelta di sicurezza (note per il motore §5): avviso ben visibile."
+ },
+ {
+  "id": "TOT-016",
+  "imposta": {
+   "avviso_sicurezza": "Sollevamento olimpico: tecnica complessa e carichi importanti, da imparare e praticare solo con l'istruttore. L'app non lo analizza."
+  },
+  "motivo": "Non analizzato per scelta di sicurezza (note per il motore §5): avviso ben visibile."
+ },
+ {
+  "id": "TOT-017",
+  "imposta": {
+   "avviso_sicurezza": "Sollevamento olimpico: tecnica complessa e carichi importanti, da imparare e praticare solo con l'istruttore. L'app non lo analizza."
+  },
+  "motivo": "Non analizzato per scelta di sicurezza (note per il motore §5): avviso ben visibile."
+ },
+ {
+  "id": "TOT-018",
+  "imposta": {
+   "avviso_sicurezza": "Sollevamento olimpico: tecnica complessa e carichi importanti, da imparare e praticare solo con l'istruttore. L'app non lo analizza."
+  },
+  "motivo": "Non analizzato per scelta di sicurezza (note per il motore §5): avviso ben visibile."
+ },
+ {
+  "id": "TOT-019",
+  "imposta": {
+   "avviso_sicurezza": "Sollevamento olimpico: tecnica complessa e carichi importanti, da imparare e praticare solo con l'istruttore. L'app non lo analizza."
+  },
+  "motivo": "Non analizzato per scelta di sicurezza (note per il motore §5): avviso ben visibile."
+ },
+ {
+  "id": "TOT-020",
+  "imposta": {
+   "avviso_sicurezza": "Sollevamento olimpico: tecnica complessa e carichi importanti, da imparare e praticare solo con l'istruttore. L'app non lo analizza."
+  },
+  "motivo": "Non analizzato per scelta di sicurezza (note per il motore §5): avviso ben visibile."
  }
 ]

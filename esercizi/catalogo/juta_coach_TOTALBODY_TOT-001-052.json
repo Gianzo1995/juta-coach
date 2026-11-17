@@ -1,0 +1,4892 @@
+[
+  {
+    "id": "TOT-001",
+    "nome": "Burpee",
+    "scheda": {
+      "descrizione": "Dalla posizione in piedi ci si accovaccia, si portano i piedi indietro in plank, si ritorna accovacciati e si chiude con un salto. Allena tutto il corpo con una forte componente cardio.",
+      "muscoli": {
+        "primari": [
+          "quadricipiti",
+          "grande gluteo"
+        ],
+        "secondari": [
+          "grande pettorale",
+          "tricipite brachiale",
+          "deltoide anteriore",
+          "addominali"
+        ],
+        "stabilizzatori": [
+          "polpacci",
+          "dentato anteriore"
+        ]
+      },
+      "partenza": "In piedi, piedi alla larghezza delle spalle, braccia lungo il corpo.",
+      "esecuzione": "Accosciata con le mani a terra davanti ai piedi, salto o passo indietro con i piedi fino al plank, ritorno dei piedi vicino alle mani, salto verticale con le braccia in alto.",
+      "rom": "Busto da verticale a orizzontale (plank) e ritorno; anca e ginocchio da circa 175° a circa 60-80° nell'accosciata.",
+      "respirazione": "Respirazione ritmica: espira nel salto e nel ritorno dei piedi.",
+      "tempo": "Ritmico",
+      "errori": [
+        {
+          "errore": "Bacino che cede in plank",
+          "correzione": "Addome contratto quando i piedi vanno indietro."
+        },
+        {
+          "errore": "Atterraggio rigido",
+          "correzione": "Atterrare morbidi sull'avampiede."
+        },
+        {
+          "errore": "Mani lontane dai piedi",
+          "correzione": "Mani a terra appena davanti ai piedi."
+        }
+      ],
+      "cue": [
+        "Plank dritto",
+        "Piedi alle mani",
+        "Salta",
+        "Atterra morbido"
+      ],
+      "regressione_progressione": {
+        "regressione": [
+          "TOT-003 Squat thrust"
+        ],
+        "progressione": [
+          "TOT-002 Burpee con piegamento",
+          "TOT-005 Burpee con salto sul box"
+        ]
+      },
+      "precauzioni": "Esercizio ad alto impatto e intensità: dosare le ripetizioni. Chi ha fastidi a polsi, spalle o ginocchia scelga lo squat thrust. In caso di fastidi o dolore chiedere il parere di un professionista sanitario."
+    },
+    "config_app": {
+      "eredita_da": null,
+      "vista_camera": "laterale",
+      "lato": "auto",
+      "messaggio_posizione": "Mettiti di lato alla camera, corpo intero visibile",
+      "messaggio_ok": "Ottimo burpee!",
+      "misure": {
+        "busto": {
+          "tipo": "inclinazione",
+          "punti": [
+            "anca",
+            "spalla"
+          ]
+        },
+        "corpo": {
+          "tipo": "angolo",
+          "punti": [
+            "spalla",
+            "anca",
+            "caviglia"
+          ]
+        }
+      },
+      "ripetizione": {
+        "misura": "busto",
+        "direzione": "aumenta",
+        "posizione_iniziale": 30,
+        "inizio_movimento": 60
+      },
+      "errori": [
+        {
+          "id": "plank",
+          "messaggio": "Gambe distese indietro",
+          "gravita": "giallo",
+          "momento": "fine",
+          "misura": "corpo",
+          "statistica": "massimo",
+          "minore_di": 160
+        }
+      ],
+      "testi_errori": {
+        "plank": {
+          "cosa_succede": "In basso il corpo non arriva disteso.",
+          "perche_conta": "Senza un plank completo il burpee resta a metà.",
+          "come_correggere": "Porta i piedi indietro fino ad avere il corpo dritto dalle spalle ai talloni.",
+          "frase_da_ricordare": "Gambe distese indietro."
+        }
+      },
+      "analizzabilita": "parziale",
+      "motivo": "Si conta sull'inclinazione del busto (anca-spalla): circa 0-10° in piedi, 80-100° in plank. La ripetizione si chiude solo tornando con il busto quasi verticale (sotto 30°). Di lato si vede se in basso il corpo arriva disteso; il bacino che cede in plank e l'atterraggio del salto non sono misurabili. Dipende dalla convenzione 0-180 dell'inclinazione (§2). Il controllo del corpo disteso riconosce solo chi in basso resta con le anche piegate.",
+      "non_rilevabili": [
+        {
+          "errore": "Bacino che cede in plank",
+          "motivo": "Nella finestra ci sono anche le fasi accovacciate: un controllo continuo darebbe falsi errori."
+        },
+        {
+          "errore": "Atterraggio del salto",
+          "motivo": "Avviene in un istante."
+        }
+      ],
+      "richiesta_motore": [
+        "Modalità balistica (come §4): nessuna attesa di 0,5 s in partenza e finestra massima fissa, per gesti continui."
+      ],
+      "da_calibrare": true
+    }
+  },
+  {
+    "id": "TOT-002",
+    "nome": "Burpee con piegamento",
+    "scheda": {
+      "descrizione": "Burpee in cui, dalla posizione di plank, si scende con il petto fino a terra prima di risalire. È la versione completa, più impegnativa per petto e tricipiti.",
+      "muscoli": {
+        "primari": [
+          "quadricipiti",
+          "grande pettorale"
+        ],
+        "secondari": [
+          "tricipite brachiale",
+          "deltoide anteriore",
+          "addominali"
+        ],
+        "stabilizzatori": [
+          "polpacci"
+        ]
+      },
+      "partenza": "Come TOT-001.",
+      "esecuzione": "Come TOT-001, con un piegamento completo (petto a terra) quando si è in plank.",
+      "rom": "Come TOT-001, più la flessione del gomito fino al petto a terra.",
+      "respirazione": "Come TOT-001.",
+      "tempo": "Ritmico",
+      "errori": [
+        {
+          "errore": "Bacino che cede in plank",
+          "correzione": "Addome contratto quando i piedi vanno indietro."
+        },
+        {
+          "errore": "Atterraggio rigido",
+          "correzione": "Atterrare morbidi sull'avampiede."
+        },
+        {
+          "errore": "Petto che non arriva a terra",
+          "correzione": "Piegamento completo."
+        }
+      ],
+      "cue": [
+        "Petto a terra",
+        "Plank dritto",
+        "Piedi alle mani",
+        "Salta"
+      ],
+      "regressione_progressione": {
+        "regressione": [
+          "TOT-001 Burpee"
+        ],
+        "progressione": []
+      },
+      "precauzioni": "Esercizio ad alto impatto e intensità: dosare le ripetizioni. In caso di fastidi o dolore chiedere il parere di un professionista sanitario."
+    },
+    "config_app": {
+      "eredita_da": "TOT-001",
+      "misure": {
+        "gomito": {
+          "tipo": "angolo",
+          "punti": [
+            "spalla",
+            "gomito",
+            "polso"
+          ]
+        }
+      },
+      "errori": [
+        {
+          "id": "plank",
+          "messaggio": "Gambe distese indietro",
+          "gravita": "giallo",
+          "momento": "fine",
+          "misura": "corpo",
+          "statistica": "massimo",
+          "minore_di": 160
+        },
+        {
+          "id": "petto",
+          "messaggio": "Petto a terra",
+          "gravita": "giallo",
+          "momento": "fine",
+          "misura": "gomito",
+          "statistica": "minimo",
+          "maggiore_di": 100
+        }
+      ],
+      "testi_errori": {
+        "plank": {
+          "cosa_succede": "In basso il corpo non arriva disteso.",
+          "perche_conta": "Senza un plank completo il burpee resta a metà.",
+          "come_correggere": "Porta i piedi indietro fino ad avere il corpo dritto dalle spalle ai talloni.",
+          "frase_da_ricordare": "Gambe distese indietro."
+        },
+        "petto": {
+          "cosa_succede": "Il petto non arriva a terra.",
+          "perche_conta": "Il burpee completo chiede il petto al pavimento.",
+          "come_correggere": "Scendi in piegamento fino a toccare terra con il petto, poi spingi.",
+          "frase_da_ricordare": "Petto a terra."
+        }
+      },
+      "analizzabilita": "parziale",
+      "motivo": "Come TOT-001, con in più il controllo del petto a terra (angolo del gomito nella finestra).",
+      "non_rilevabili": [
+        {
+          "errore": "Bacino che cede in plank",
+          "motivo": "Nella finestra ci sono anche le fasi accovacciate: un controllo continuo darebbe falsi errori."
+        },
+        {
+          "errore": "Atterraggio del salto",
+          "motivo": "Avviene in un istante."
+        }
+      ],
+      "richiesta_motore": [
+        "Modalità balistica (come §4): nessuna attesa di 0,5 s in partenza e finestra massima fissa, per gesti continui."
+      ],
+      "da_calibrare": true
+    }
+  },
+  {
+    "id": "TOT-003",
+    "nome": "Squat thrust",
+    "scheda": {
+      "descrizione": "Burpee senza salto finale e senza piegamento: accosciata, piedi indietro in plank, ritorno. Allena gambe, addome e spalle con meno impatto del burpee.",
+      "muscoli": {
+        "primari": [
+          "quadricipiti",
+          "addominali"
+        ],
+        "secondari": [
+          "deltoide anteriore",
+          "grande gluteo"
+        ],
+        "stabilizzatori": [
+          "dentato anteriore"
+        ]
+      },
+      "partenza": "Come TOT-001.",
+      "esecuzione": "Come TOT-001, chiudendo ogni ripetizione in piedi senza saltare.",
+      "rom": "Come TOT-001.",
+      "respirazione": "Respirazione ritmica.",
+      "tempo": "Ritmico",
+      "errori": [
+        {
+          "errore": "Bacino che cede in plank",
+          "correzione": "Addome contratto."
+        },
+        {
+          "errore": "Mani lontane dai piedi",
+          "correzione": "Mani appena davanti ai piedi."
+        },
+        {
+          "errore": "Non tornare in piedi",
+          "correzione": "Chiudere ogni ripetizione in piedi."
+        }
+      ],
+      "cue": [
+        "Plank dritto",
+        "Piedi alle mani",
+        "In piedi",
+        "Ritmo"
+      ],
+      "regressione_progressione": {
+        "regressione": [],
+        "progressione": [
+          "TOT-001 Burpee"
+        ]
+      },
+      "precauzioni": "Chi ha fastidi ai polsi può appoggiare le mani su un rialzo. In caso di fastidi o dolore chiedere il parere di un professionista sanitario."
+    },
+    "config_app": {
+      "eredita_da": "TOT-001",
+      "messaggio_ok": "Ottimo!",
+      "analizzabilita": "parziale",
+      "motivo": "Come TOT-001: stesse misure e soglie.",
+      "non_rilevabili": [
+        {
+          "errore": "Bacino che cede in plank",
+          "motivo": "Come TOT-001."
+        }
+      ],
+      "richiesta_motore": [
+        "Modalità balistica (come §4): nessuna attesa di 0,5 s in partenza e finestra massima fissa, per gesti continui."
+      ],
+      "da_calibrare": true
+    }
+  },
+  {
+    "id": "TOT-004",
+    "nome": "Sprawl",
+    "scheda": {
+      "descrizione": "Come uno squat thrust in cui, portando i piedi indietro, si lasciano cadere le anche fino a terra, poi si torna in piedi rapidamente. Movimento tipico degli sport da combattimento.",
+      "muscoli": {
+        "primari": [
+          "addominali",
+          "quadricipiti"
+        ],
+        "secondari": [
+          "deltoide anteriore",
+          "grande gluteo"
+        ],
+        "stabilizzatori": [
+          "erettori spinali"
+        ]
+      },
+      "partenza": "Come TOT-001.",
+      "esecuzione": "Accosciata con le mani a terra, piedi indietro con le anche che scendono fino al pavimento, ritorno rapido dei piedi e in piedi.",
+      "rom": "Come TOT-001.",
+      "respirazione": "Respirazione ritmica.",
+      "tempo": "Ritmico",
+      "errori": [
+        {
+          "errore": "Anche che crollano a terra inarcando la zona lombare",
+          "correzione": "Accompagnare con braccia e addome."
+        },
+        {
+          "errore": "Ritorno lento",
+          "correzione": "Ritmo deciso."
+        },
+        {
+          "errore": "Mani lontane",
+          "correzione": "Mani appena davanti ai piedi."
+        }
+      ],
+      "cue": [
+        "Anche a terra",
+        "Ritorno rapido",
+        "Petto alto in piedi",
+        "Ritmo"
+      ],
+      "regressione_progressione": {
+        "regressione": [
+          "TOT-003 Squat thrust"
+        ],
+        "progressione": []
+      },
+      "precauzioni": "Chi ha fastidi alla zona lombare preferisca lo squat thrust. In caso di fastidi o dolore chiedere il parere di un professionista sanitario."
+    },
+    "config_app": {
+      "eredita_da": "TOT-001",
+      "messaggio_ok": "Ottimo sprawl!",
+      "errori": [],
+      "analizzabilita": "parziale",
+      "motivo": "Come TOT-001 per il conteggio. Con le anche che scendono fino a terra l'angolo spalla-anca-caviglia passa comunque per la linea dritta, quindi il controllo del corpo disteso non avrebbe senso ed è tolto: l'app conta le ripetizioni.",
+      "non_rilevabili": [
+        {
+          "errore": "Anche che cadono di colpo",
+          "motivo": "Non misurabile."
+        }
+      ],
+      "richiesta_motore": [
+        "Modalità balistica (come §4): nessuna attesa di 0,5 s in partenza e finestra massima fissa, per gesti continui."
+      ],
+      "da_calibrare": true
+    }
+  },
+  {
+    "id": "TOT-005",
+    "nome": "Burpee con salto sul box",
+    "scheda": {
+      "descrizione": "Burpee seguito da un salto sopra un box, scavalcandolo. Aumenta la richiesta su gambe, potenza e capacità cardio.",
+      "muscoli": {
+        "primari": [
+          "quadricipiti",
+          "grande gluteo"
+        ],
+        "secondari": [
+          "grande pettorale",
+          "polpacci"
+        ],
+        "stabilizzatori": [
+          "addominali"
+        ]
+      },
+      "partenza": "Di fianco a un box basso e stabile.",
+      "esecuzione": "Burpee a terra, poi salto a piedi uniti sopra il box (o sul box e giù dall'altra parte), poi burpee dall'altro lato.",
+      "rom": "Come TOT-001.",
+      "respirazione": "Respirazione ritmica.",
+      "tempo": "Ritmico",
+      "errori": [
+        {
+          "errore": "Urto con il box",
+          "correzione": "Box morbido, altezza bassa."
+        },
+        {
+          "errore": "Atterraggio rigido",
+          "correzione": "Atterrare morbidi."
+        },
+        {
+          "errore": "Fretta che fa perdere la tecnica",
+          "correzione": "Ritmo sostenibile."
+        }
+      ],
+      "cue": [
+        "Plank dritto",
+        "Salta pulito",
+        "Atterra morbido",
+        "Ritmo"
+      ],
+      "regressione_progressione": {
+        "regressione": [
+          "TOT-001 Burpee"
+        ],
+        "progressione": []
+      },
+      "precauzioni": "Rischio di urtare il box: box morbidi e altezze basse. In caso di fastidi o dolore chiedere il parere di un professionista sanitario."
+    },
+    "config_app": {
+      "eredita_da": "TOT-001",
+      "vista_camera": "laterale",
+      "lato": "auto",
+      "messaggio_posizione": "Esercizio non supportato: chiedi all'istruttore",
+      "messaggio_ok": "",
+      "misure": {},
+      "ripetizione": {},
+      "errori": [],
+      "testi_errori": {},
+      "analizzabilita": "non_analizzabile",
+      "motivo": "Come QUA-015: il rischio di urtare il box non è misurabile e la persona cambia posizione rispetto alla camera a ogni ripetizione. Nota per il motore: con 'non_analizzabile' non va applicata nessuna regola ereditata.",
+      "non_rilevabili": [
+        {
+          "errore": "Urto con il box",
+          "motivo": "Il box non è rilevato."
+        }
+      ],
+      "richiesta_motore": [
+        "Campo 'solo_scheda' con avviso di sicurezza."
+      ],
+      "da_calibrare": true
+    }
+  },
+  {
+    "id": "TOT-006",
+    "nome": "Burpee con trazione",
+    "scheda": {
+      "descrizione": "Burpee in cui il salto finale porta ad afferrare una sbarra e fare una trazione. Combina lavoro cardio, gambe, petto e dorso.",
+      "muscoli": {
+        "primari": [
+          "gran dorsale",
+          "quadricipiti"
+        ],
+        "secondari": [
+          "bicipite brachiale",
+          "grande pettorale"
+        ],
+        "stabilizzatori": [
+          "addominali",
+          "avambracci"
+        ]
+      },
+      "partenza": "Sotto una sbarra raggiungibile con un salto.",
+      "esecuzione": "Burpee, salto verso la sbarra, trazione con il mento sopra la sbarra, discesa controllata e nuovo burpee.",
+      "rom": "Come TOT-001 più la trazione.",
+      "respirazione": "Respirazione ritmica.",
+      "tempo": "Ritmico",
+      "errori": [
+        {
+          "errore": "Presa mancata nel salto",
+          "correzione": "Sbarra a un'altezza adatta."
+        },
+        {
+          "errore": "Caduta dalla sbarra",
+          "correzione": "Scendere controllati."
+        },
+        {
+          "errore": "Trazione con slancio",
+          "correzione": "Trazione controllata."
+        }
+      ],
+      "cue": [
+        "Salta alla sbarra",
+        "Mento sopra",
+        "Scendi controllato",
+        "Ritmo"
+      ],
+      "regressione_progressione": {
+        "regressione": [
+          "TOT-001 Burpee"
+        ],
+        "progressione": []
+      },
+      "precauzioni": "Sbarra stabile e altezza adatta. Chi ha fastidi alle spalle dovrebbe evitarlo. In caso di fastidi o dolore chiedere il parere di un professionista sanitario."
+    },
+    "config_app": {
+      "eredita_da": "TOT-001",
+      "vista_camera": "laterale",
+      "lato": "auto",
+      "messaggio_posizione": "Esercizio non supportato: chiedi all'istruttore",
+      "messaggio_ok": "",
+      "misure": {},
+      "ripetizione": {},
+      "errori": [],
+      "testi_errori": {},
+      "analizzabilita": "non_analizzabile",
+      "motivo": "Esercizio a più fasi in cui la persona passa da terra alla sbarra: con una camera sola il corpo esce in parte dall'inquadratura e i due conteggi (burpee e trazione) si mescolano. Nota per il motore: con 'non_analizzabile' non va applicata nessuna regola ereditata.",
+      "non_rilevabili": [
+        {
+          "errore": "Trazione",
+          "motivo": "Fase diversa dal burpee."
+        }
+      ],
+      "richiesta_motore": [
+        "Esercizi a più fasi (come §7.12)."
+      ],
+      "da_calibrare": true
+    }
+  },
+  {
+    "id": "TOT-007",
+    "nome": "Bear crawl",
+    "scheda": {
+      "descrizione": "Camminata a quattro zampe con le ginocchia sollevate di pochi centimetri da terra, mani e piedi opposti che avanzano insieme. Allena stabilità del tronco, spalle e coordinazione.",
+      "muscoli": {
+        "primari": [
+          "addominali",
+          "deltoide anteriore"
+        ],
+        "secondari": [
+          "quadricipiti",
+          "tricipite brachiale"
+        ],
+        "stabilizzatori": [
+          "dentato anteriore",
+          "glutei"
+        ]
+      },
+      "partenza": "In quadrupedia, mani sotto le spalle, ginocchia sotto le anche sollevate di pochi centimetri, schiena piatta.",
+      "esecuzione": "Avanzare muovendo insieme mano e piede opposti a passi piccoli, schiena piatta e ginocchia basse, per la distanza stabilita.",
+      "rom": "Movimento alternato di spalle e anche.",
+      "respirazione": "Respirazione regolare.",
+      "tempo": "Controllato",
+      "errori": [
+        {
+          "errore": "Bacino alto",
+          "correzione": "Ginocchia basse, schiena piatta."
+        },
+        {
+          "errore": "Bacino che ondeggia",
+          "correzione": "Passi piccoli."
+        },
+        {
+          "errore": "Testa bassa",
+          "correzione": "Sguardo davanti alle mani."
+        }
+      ],
+      "cue": [
+        "Schiena piatta",
+        "Ginocchia basse",
+        "Passi piccoli",
+        "Respira"
+      ],
+      "regressione_progressione": {
+        "regressione": [],
+        "progressione": [
+          "TOT-008 Inchworm"
+        ]
+      },
+      "precauzioni": "Chi ha fastidi ai polsi può limitare la distanza. In caso di fastidi o dolore chiedere il parere di un professionista sanitario."
+    },
+    "config_app": {
+      "eredita_da": null,
+      "vista_camera": "laterale",
+      "lato": "auto",
+      "messaggio_posizione": "Esercizio non supportato: chiedi all'istruttore",
+      "messaggio_ok": "",
+      "misure": {},
+      "ripetizione": {},
+      "errori": [],
+      "testi_errori": {},
+      "analizzabilita": "non_analizzabile",
+      "motivo": "La persona si sposta ed esce dall'inquadratura dopo pochi passi: con una camera fissa non è possibile seguire la serie.",
+      "non_rilevabili": [
+        {
+          "errore": "Schiena piatta",
+          "motivo": "Misurabile solo da fermi."
+        }
+      ],
+      "richiesta_motore": [
+        "Camera che segue la persona (come §7.15)."
+      ],
+      "da_calibrare": true
+    }
+  },
+  {
+    "id": "TOT-008",
+    "nome": "Inchworm",
+    "scheda": {
+      "descrizione": "Da in piedi ci si piega in avanti, si camminano le mani fino al plank e si torna camminando con le mani verso i piedi, restando sul posto. Combina allungamento dei femorali e stabilità del tronco.",
+      "muscoli": {
+        "primari": [
+          "addominali",
+          "deltoide anteriore"
+        ],
+        "secondari": [
+          "ischiocrurali",
+          "tricipite brachiale"
+        ],
+        "stabilizzatori": [
+          "dentato anteriore"
+        ]
+      },
+      "partenza": "In piedi, piedi alla larghezza delle anche.",
+      "esecuzione": {
+        "eccentrica": "Ci si piega in avanti con le gambe quasi tese e si camminano le mani in avanti fino al plank.",
+        "pausa": "Breve pausa in plank con il corpo in linea.",
+        "concentrica": "Si camminano le mani indietro verso i piedi e ci si rialza."
+      },
+      "rom": "Anca da circa 175° a circa 40-60° e ritorno.",
+      "respirazione": "Respirazione regolare.",
+      "tempo": "3-1-3-0 (discesa 3 s, pausa 1 s, salita 3 s, pausa 0 s)",
+      "errori": [
+        {
+          "errore": "Ginocchia molto piegate",
+          "correzione": "Gambe quasi tese, fin dove si riesce."
+        },
+        {
+          "errore": "Bacino che cede in plank",
+          "correzione": "Addome contratto."
+        },
+        {
+          "errore": "Passi troppo lunghi",
+          "correzione": "Piccoli passi."
+        }
+      ],
+      "cue": [
+        "Gambe quasi tese",
+        "Plank dritto",
+        "Piccoli passi",
+        "Respira"
+      ],
+      "regressione_progressione": {
+        "regressione": [],
+        "progressione": [
+          "TOT-009 Dive bomber push-up"
+        ]
+      },
+      "precauzioni": "Chi ha fastidi alla zona lombare pieghi un po' le ginocchia. In caso di fastidi o dolore chiedere il parere di un professionista sanitario."
+    },
+    "config_app": {
+      "eredita_da": null,
+      "vista_camera": "laterale",
+      "lato": "auto",
+      "messaggio_posizione": "Mettiti di lato alla camera, corpo intero visibile",
+      "messaggio_ok": "Ottimo!",
+      "misure": {
+        "busto": {
+          "tipo": "inclinazione",
+          "punti": [
+            "anca",
+            "spalla"
+          ]
+        },
+        "corpo": {
+          "tipo": "angolo",
+          "punti": [
+            "spalla",
+            "anca",
+            "caviglia"
+          ]
+        },
+        "ginocchio": {
+          "tipo": "angolo",
+          "punti": [
+            "anca",
+            "ginocchio",
+            "caviglia"
+          ]
+        }
+      },
+      "ripetizione": {
+        "misura": "busto",
+        "direzione": "aumenta",
+        "posizione_iniziale": 30,
+        "inizio_movimento": 60
+      },
+      "errori": [
+        {
+          "id": "plank",
+          "messaggio": "Arriva fino al plank",
+          "gravita": "giallo",
+          "momento": "fine",
+          "misura": "corpo",
+          "statistica": "massimo",
+          "minore_di": 160
+        },
+        {
+          "id": "gambe_piegate",
+          "messaggio": "Gambe quasi tese",
+          "gravita": "giallo",
+          "momento": "durante",
+          "misura": "ginocchio",
+          "minore_di": 140
+        },
+        {
+          "id": "troppo_veloce",
+          "messaggio": "Più lento e controllato",
+          "gravita": "giallo",
+          "momento": "fine",
+          "misura": "durata",
+          "statistica": "massimo",
+          "minore_di": 2.6
+        }
+      ],
+      "testi_errori": {
+        "plank": {
+          "cosa_succede": "Le mani non arrivano abbastanza avanti.",
+          "perche_conta": "Senza arrivare al plank l'addome lavora poco.",
+          "come_correggere": "Cammina con le mani fino ad avere il corpo dritto dalle spalle ai talloni.",
+          "frase_da_ricordare": "Fino al plank."
+        },
+        "gambe_piegate": {
+          "cosa_succede": "Le ginocchia si piegano molto.",
+          "perche_conta": "Piegando le gambe si perde l'allungamento dei femorali.",
+          "come_correggere": "Tieni le gambe quasi tese, fin dove riesci.",
+          "frase_da_ricordare": "Gambe quasi tese."
+        },
+        "troppo_veloce": {
+          "cosa_succede": "La ripetizione è troppo rapida.",
+          "perche_conta": "Camminare di fretta con le mani fa cedere il bacino in plank.",
+          "come_correggere": "Passi piccoli e controllati.",
+          "frase_da_ricordare": "Piano e controllato."
+        }
+      },
+      "analizzabilita": "parziale",
+      "motivo": "Versione sul posto (walkout): si conta sull'inclinazione del busto (anca-spalla), circa 0-10° in piedi e 80-90° in plank, e si controlla che si arrivi al plank (spalla-anca-caviglia oltre 160°) e che le gambe restino quasi tese. Il bacino che cede in plank non è misurabile. Dipende dalla convenzione 0-180 dell'inclinazione (§2).",
+      "non_rilevabili": [
+        {
+          "errore": "Bacino che cede in plank",
+          "motivo": "L'angolo non dice da che parte si piega."
+        }
+      ],
+      "richiesta_motore": [],
+      "da_calibrare": true
+    }
+  },
+  {
+    "id": "TOT-009",
+    "nome": "Dive bomber push-up",
+    "scheda": {
+      "descrizione": "Dalla posizione a V capovolta si passa con il petto vicino a terra fino ad aprire il busto in avanti, poi si torna indietro sullo stesso percorso. Allena petto, spalle e tricipiti con mobilità della colonna.",
+      "muscoli": {
+        "primari": [
+          "grande pettorale",
+          "deltoide anteriore",
+          "tricipite brachiale"
+        ],
+        "secondari": [
+          "erettori spinali",
+          "addominali"
+        ],
+        "stabilizzatori": [
+          "dentato anteriore"
+        ]
+      },
+      "partenza": "Mani a terra poco più larghe delle spalle, piedi larghi, bacino in alto con il corpo a V capovolta, gambe tese.",
+      "esecuzione": {
+        "eccentrica": "Le braccia si piegano e il petto passa vicino al pavimento, avanzando tra le mani.",
+        "pausa": "Il busto si apre in avanti a braccia distese, anche vicine a terra.",
+        "concentrica": "Ritorno sullo stesso percorso fino alla V capovolta."
+      },
+      "rom": "Anca da circa 60-80° (V capovolta) a estensione completa, poi apertura del busto con la zona lombare in estensione; gomito fino a circa 90°.",
+      "respirazione": "Inspira passando in basso, espira tornando.",
+      "tempo": "2-1-2-0 (discesa 2 s, pausa 1 s, salita 2 s, pausa 0 s)",
+      "errori": [
+        {
+          "errore": "Passaggio troppo alto",
+          "correzione": "Petto vicino a terra."
+        },
+        {
+          "errore": "Zona lombare che si inarca troppo",
+          "correzione": "Aprire il petto fin dove è comodo."
+        },
+        {
+          "errore": "Movimento veloce",
+          "correzione": "Passaggio controllato."
+        }
+      ],
+      "cue": [
+        "Petto vicino a terra",
+        "Apri il petto",
+        "Torna lento",
+        "Spingi via il pavimento"
+      ],
+      "regressione_progressione": {
+        "regressione": [
+          "PET-001 Piegamenti sulle braccia"
+        ],
+        "progressione": [
+          "TOT-010 Hindu push-up"
+        ]
+      },
+      "precauzioni": "Chi ha fastidi alla zona lombare o alle spalle limiti l'apertura del busto. In caso di fastidi o dolore chiedere il parere di un professionista sanitario."
+    },
+    "config_app": {
+      "eredita_da": null,
+      "vista_camera": "laterale",
+      "lato": "auto",
+      "messaggio_posizione": "Camera a terra di lato, corpo intero visibile",
+      "messaggio_ok": "Ottimo!",
+      "misure": {
+        "anca": {
+          "tipo": "angolo",
+          "punti": [
+            "spalla",
+            "anca",
+            "caviglia"
+          ]
+        },
+        "gomito": {
+          "tipo": "angolo",
+          "punti": [
+            "spalla",
+            "gomito",
+            "polso"
+          ]
+        }
+      },
+      "ripetizione": {
+        "misura": "anca",
+        "direzione": "aumenta",
+        "posizione_iniziale": 100,
+        "inizio_movimento": 115
+      },
+      "errori": [
+        {
+          "id": "ampiezza",
+          "messaggio": "Abbassa le anche",
+          "gravita": "giallo",
+          "momento": "fine",
+          "misura": "anca",
+          "statistica": "massimo",
+          "minore_di": 145
+        },
+        {
+          "id": "profondita",
+          "messaggio": "Passa vicino a terra",
+          "gravita": "giallo",
+          "momento": "fine",
+          "misura": "gomito",
+          "statistica": "minimo",
+          "maggiore_di": 120
+        },
+        {
+          "id": "troppo_veloce",
+          "messaggio": "Più lento e controllato",
+          "gravita": "giallo",
+          "momento": "fine",
+          "misura": "durata",
+          "statistica": "massimo",
+          "minore_di": 1.9
+        }
+      ],
+      "testi_errori": {
+        "ampiezza": {
+          "cosa_succede": "Resti con le anche in alto.",
+          "perche_conta": "Il movimento resta a metà: petto e spalle non passano in avanti.",
+          "come_correggere": "Fai passare il petto in avanti e abbassa le anche verso il pavimento.",
+          "frase_da_ricordare": "Abbassa le anche."
+        },
+        "profondita": {
+          "cosa_succede": "Passi troppo in alto.",
+          "perche_conta": "Senza passare vicino a terra il lavoro di petto e tricipiti diminuisce.",
+          "come_correggere": "Piega le braccia e fai passare il petto vicino al pavimento.",
+          "frase_da_ricordare": "Passa vicino a terra."
+        },
+        "troppo_veloce": {
+          "cosa_succede": "La ripetizione è troppo rapida.",
+          "perche_conta": "Con la fretta la zona lombare si inarca di colpo.",
+          "come_correggere": "Fai il passaggio in due secondi.",
+          "frase_da_ricordare": "Passa lento."
+        }
+      },
+      "analizzabilita": "parziale",
+      "motivo": "Si conta sull'angolo dell'anca (spalla-anca-caviglia): circa 60-80° nella V capovolta; passando in avanti l'anca si distende (circa 180°) e poi, con il busto aperto, torna a circa 135-150° perché l'angolo non ha verso. Il controllo dell'ampiezza riconosce solo chi resta con le anche in alto, non quanto si apre il petto. Si vede anche il passaggio basso (angolo del gomito). L'inarcamento della zona lombare non è misurabile.",
+      "non_rilevabili": [
+        {
+          "errore": "Zona lombare che si inarca troppo",
+          "motivo": "Con un angolo senza verso non si distingue da un'anca poco aperta."
+        }
+      ],
+      "richiesta_motore": [
+        "Angolo con verso (come §7.5)."
+      ],
+      "da_calibrare": true
+    }
+  },
+  {
+    "id": "TOT-010",
+    "nome": "Hindu push-up",
+    "scheda": {
+      "descrizione": "Come il dive bomber, ma per tornare alla V capovolta si spinge indietro direttamente a braccia tese invece di ripercorrere il passaggio basso. Movimento tradizionale per forza e mobilità.",
+      "muscoli": {
+        "primari": [
+          "grande pettorale",
+          "deltoide anteriore",
+          "tricipite brachiale"
+        ],
+        "secondari": [
+          "erettori spinali",
+          "addominali"
+        ],
+        "stabilizzatori": [
+          "dentato anteriore"
+        ]
+      },
+      "partenza": "Come TOT-009.",
+      "esecuzione": {
+        "eccentrica": "Come TOT-009: passaggio con il petto vicino a terra.",
+        "pausa": "Busto aperto in avanti a braccia distese.",
+        "concentrica": "Spinta indietro a braccia tese fino alla V capovolta."
+      },
+      "rom": "Come TOT-009 Dive bomber push-up.",
+      "respirazione": "Inspira passando in basso, espira tornando.",
+      "tempo": "2-1-2-0 (discesa 2 s, pausa 1 s, salita 2 s, pausa 0 s)",
+      "errori": [
+        {
+          "errore": "Passaggio troppo alto",
+          "correzione": "Petto vicino a terra."
+        },
+        {
+          "errore": "Zona lombare che si inarca troppo",
+          "correzione": "Aprire il petto fin dove è comodo."
+        },
+        {
+          "errore": "Movimento veloce",
+          "correzione": "Controllato."
+        }
+      ],
+      "cue": [
+        "Petto vicino a terra",
+        "Apri il petto",
+        "Spingi indietro",
+        "Respira"
+      ],
+      "regressione_progressione": {
+        "regressione": [
+          "TOT-009 Dive bomber push-up"
+        ],
+        "progressione": []
+      },
+      "precauzioni": "Chi ha fastidi alla zona lombare o alle spalle limiti l'apertura del busto. In caso di fastidi o dolore chiedere il parere di un professionista sanitario."
+    },
+    "config_app": {
+      "eredita_da": "TOT-009",
+      "analizzabilita": "parziale",
+      "motivo": "Come TOT-009: stesse misure e soglie.",
+      "non_rilevabili": [
+        {
+          "errore": "Zona lombare che si inarca troppo",
+          "motivo": "Come TOT-009."
+        }
+      ],
+      "richiesta_motore": [
+        "Angolo con verso (come §7.5)."
+      ],
+      "da_calibrare": true
+    }
+  },
+  {
+    "id": "TOT-011",
+    "nome": "Girata al petto",
+    "scheda": {
+      "descrizione": "Il bilanciere viene sollevato da terra con una tirata esplosiva e ricevuto sulle spalle in squat profondo, poi ci si alza. È uno degli esercizi olimpici di base per la potenza di tutto il corpo.",
+      "muscoli": {
+        "primari": [
+          "quadricipiti",
+          "grande gluteo",
+          "ischiocrurali"
+        ],
+        "secondari": [
+          "trapezio",
+          "deltoide anteriore",
+          "erettori spinali"
+        ],
+        "stabilizzatori": [
+          "addominali",
+          "avambracci"
+        ]
+      },
+      "partenza": "Piedi alla larghezza delle anche sotto il bilanciere, presa poco più larga delle spalle, spalle sopra il bilanciere, schiena tesa, braccia distese.",
+      "esecuzione": "Prima tirata da terra fino sopra le ginocchia, seconda tirata esplosiva con estensione completa di anche, ginocchia e caviglie, poi ci si tira sotto il bilanciere ricevendolo sulle spalle con i gomiti alti in squat profondo; ci si alza in piedi.",
+      "rom": "Anca e ginocchio da piegati a estensione completa, poi squat profondo in ricezione.",
+      "respirazione": "Inspira e trattieni prima di tirare per stabilizzare il tronco, espira superato il punto più duro. Con carichi leggeri: inspira nella fase di discesa, espira nella fase di spinta.",
+      "tempo": "Esplosivo",
+      "errori": [
+        {
+          "errore": "Braccia che tirano troppo presto",
+          "correzione": "Braccia lunghe fino all'estensione delle anche."
+        },
+        {
+          "errore": "Bilanciere lontano dal corpo",
+          "correzione": "Bilanciere vicino alle gambe."
+        },
+        {
+          "errore": "Gomiti bassi nell'incastro",
+          "correzione": "Gomiti veloci in avanti."
+        },
+        {
+          "errore": "Schiena che si arrotonda",
+          "correzione": "Petto alto, schiena tesa."
+        }
+      ],
+      "cue": [
+        "Bilanciere vicino",
+        "Esplodi con le anche",
+        "Gomiti veloci",
+        "Ricevi in squat"
+      ],
+      "regressione_progressione": {
+        "regressione": [
+          "TOT-014 Hang power clean"
+        ],
+        "progressione": [
+          "TOT-020 Girata e slancio"
+        ]
+      },
+      "precauzioni": "Esercizio tecnico: va imparato con un istruttore qualificato, partendo con il bilanciere scarico e con dischi in gomma su una pedana. Chi ha problemi di pressione dovrebbe evitare di trattenere il respiro sotto sforzo. In caso di fastidi o dolore chiedere il parere di un professionista sanitario."
+    },
+    "config_app": {
+      "eredita_da": null,
+      "vista_camera": "laterale",
+      "lato": "auto",
+      "messaggio_posizione": "Esercizio non supportato: chiedi all'istruttore",
+      "messaggio_ok": "",
+      "misure": {},
+      "ripetizione": {},
+      "errori": [],
+      "testi_errori": {},
+      "analizzabilita": "non_analizzabile",
+      "motivo": "Gesto olimpico: dura meno di un secondo, ha più fasi (tirata, incastro, recupero) e i rischi principali (schiena che si arrotonda, traiettoria del bilanciere, posizione di incastro) non sono misurabili. Va insegnato e seguito da un istruttore di pesistica: solo scheda.",
+      "non_rilevabili": [
+        {
+          "errore": "Schiena arrotondata nella tirata",
+          "motivo": "La curvatura della colonna non è misurabile."
+        },
+        {
+          "errore": "Traiettoria del bilanciere",
+          "motivo": "Il bilanciere non è un punto rilevato."
+        },
+        {
+          "errore": "Posizione di incastro",
+          "motivo": "Fase troppo rapida a 30 fps."
+        }
+      ],
+      "richiesta_motore": [
+        "Esercizi a più fasi (come §7.12) e camera ad alta frequenza.",
+        "Campo 'solo_scheda' con avviso di sicurezza."
+      ],
+      "da_calibrare": true
+    }
+  },
+  {
+    "id": "TOT-012",
+    "nome": "Power clean",
+    "scheda": {
+      "descrizione": "Girata in cui il bilanciere viene ricevuto in mezzo squat, sopra il parallelo. Sviluppa la potenza di anche e gambe ed è più semplice da imparare della girata completa.",
+      "muscoli": {
+        "primari": [
+          "grande gluteo",
+          "ischiocrurali",
+          "quadricipiti"
+        ],
+        "secondari": [
+          "trapezio",
+          "deltoide anteriore"
+        ],
+        "stabilizzatori": [
+          "addominali"
+        ]
+      },
+      "partenza": "Come TOT-011.",
+      "esecuzione": "Come TOT-011, ricevendo il bilanciere in mezzo squat (cosce sopra il parallelo).",
+      "rom": "Come TOT-011, con ricezione in mezzo squat.",
+      "respirazione": "Inspira e trattieni prima di tirare per stabilizzare il tronco, espira superato il punto più duro. Con carichi leggeri: inspira nella fase di discesa, espira nella fase di spinta.",
+      "tempo": "Esplosivo",
+      "errori": [
+        {
+          "errore": "Braccia che tirano troppo presto",
+          "correzione": "Braccia lunghe fino all'estensione delle anche."
+        },
+        {
+          "errore": "Bilanciere lontano dal corpo",
+          "correzione": "Bilanciere vicino alle gambe."
+        },
+        {
+          "errore": "Gomiti bassi nell'incastro",
+          "correzione": "Gomiti veloci in avanti."
+        },
+        {
+          "errore": "Schiena che si arrotonda",
+          "correzione": "Petto alto, schiena tesa."
+        }
+      ],
+      "cue": [
+        "Bilanciere vicino",
+        "Esplodi con le anche",
+        "Gomiti veloci",
+        "Ricevi alto"
+      ],
+      "regressione_progressione": {
+        "regressione": [
+          "TOT-014 Hang power clean"
+        ],
+        "progressione": [
+          "TOT-011 Girata al petto"
+        ]
+      },
+      "precauzioni": "Esercizio tecnico: va imparato con un istruttore qualificato, partendo con il bilanciere scarico e con dischi in gomma su una pedana. Chi ha problemi di pressione dovrebbe evitare di trattenere il respiro sotto sforzo. In caso di fastidi o dolore chiedere il parere di un professionista sanitario."
+    },
+    "config_app": {
+      "eredita_da": "TOT-011",
+      "vista_camera": "laterale",
+      "lato": "auto",
+      "messaggio_posizione": "Esercizio non supportato: chiedi all'istruttore",
+      "messaggio_ok": "",
+      "misure": {},
+      "ripetizione": {},
+      "errori": [],
+      "testi_errori": {},
+      "analizzabilita": "non_analizzabile",
+      "motivo": "Gesto olimpico: dura meno di un secondo, ha più fasi (tirata, incastro, recupero) e i rischi principali (schiena che si arrotonda, traiettoria del bilanciere, posizione di incastro) non sono misurabili. Va insegnato e seguito da un istruttore di pesistica: solo scheda. Nota per il motore: con 'non_analizzabile' non va applicata nessuna regola ereditata.",
+      "non_rilevabili": [
+        {
+          "errore": "Schiena arrotondata nella tirata",
+          "motivo": "La curvatura della colonna non è misurabile."
+        },
+        {
+          "errore": "Traiettoria del bilanciere",
+          "motivo": "Il bilanciere non è un punto rilevato."
+        },
+        {
+          "errore": "Posizione di incastro",
+          "motivo": "Fase troppo rapida a 30 fps."
+        }
+      ],
+      "richiesta_motore": [
+        "Esercizi a più fasi (come §7.12) e camera ad alta frequenza.",
+        "Campo 'solo_scheda' con avviso di sicurezza."
+      ],
+      "da_calibrare": true
+    }
+  },
+  {
+    "id": "TOT-013",
+    "nome": "Hang clean",
+    "scheda": {
+      "descrizione": "Girata che parte con il bilanciere già sollevato, all'altezza delle cosce o sopra le ginocchia. Allena la seconda tirata e l'incastro.",
+      "muscoli": {
+        "primari": [
+          "grande gluteo",
+          "ischiocrurali",
+          "quadricipiti"
+        ],
+        "secondari": [
+          "trapezio"
+        ],
+        "stabilizzatori": [
+          "addominali"
+        ]
+      },
+      "partenza": "In piedi con il bilanciere in mano a braccia distese, ci si piega leggermente portando il bilanciere a metà coscia.",
+      "esecuzione": "Dalla posizione sospesa, tirata esplosiva e ricezione in squat profondo come TOT-011.",
+      "rom": "Come TOT-011, senza la prima tirata.",
+      "respirazione": "Inspira e trattieni prima di tirare per stabilizzare il tronco, espira superato il punto più duro. Con carichi leggeri: inspira nella fase di discesa, espira nella fase di spinta.",
+      "tempo": "Esplosivo",
+      "errori": [
+        {
+          "errore": "Braccia che tirano troppo presto",
+          "correzione": "Braccia lunghe fino all'estensione delle anche."
+        },
+        {
+          "errore": "Bilanciere lontano dal corpo",
+          "correzione": "Bilanciere vicino alle gambe."
+        },
+        {
+          "errore": "Gomiti bassi nell'incastro",
+          "correzione": "Gomiti veloci in avanti."
+        },
+        {
+          "errore": "Schiena che si arrotonda",
+          "correzione": "Petto alto, schiena tesa."
+        }
+      ],
+      "cue": [
+        "Bilanciere vicino",
+        "Esplodi con le anche",
+        "Gomiti veloci",
+        "Ricevi in squat"
+      ],
+      "regressione_progressione": {
+        "regressione": [
+          "TOT-014 Hang power clean"
+        ],
+        "progressione": [
+          "TOT-011 Girata al petto"
+        ]
+      },
+      "precauzioni": "Esercizio tecnico: va imparato con un istruttore qualificato, partendo con il bilanciere scarico e con dischi in gomma su una pedana. Chi ha problemi di pressione dovrebbe evitare di trattenere il respiro sotto sforzo. In caso di fastidi o dolore chiedere il parere di un professionista sanitario."
+    },
+    "config_app": {
+      "eredita_da": "TOT-011",
+      "vista_camera": "laterale",
+      "lato": "auto",
+      "messaggio_posizione": "Esercizio non supportato: chiedi all'istruttore",
+      "messaggio_ok": "",
+      "misure": {},
+      "ripetizione": {},
+      "errori": [],
+      "testi_errori": {},
+      "analizzabilita": "non_analizzabile",
+      "motivo": "Gesto olimpico: dura meno di un secondo, ha più fasi (tirata, incastro, recupero) e i rischi principali (schiena che si arrotonda, traiettoria del bilanciere, posizione di incastro) non sono misurabili. Va insegnato e seguito da un istruttore di pesistica: solo scheda. Nota per il motore: con 'non_analizzabile' non va applicata nessuna regola ereditata.",
+      "non_rilevabili": [
+        {
+          "errore": "Schiena arrotondata nella tirata",
+          "motivo": "La curvatura della colonna non è misurabile."
+        },
+        {
+          "errore": "Traiettoria del bilanciere",
+          "motivo": "Il bilanciere non è un punto rilevato."
+        },
+        {
+          "errore": "Posizione di incastro",
+          "motivo": "Fase troppo rapida a 30 fps."
+        }
+      ],
+      "richiesta_motore": [
+        "Esercizi a più fasi (come §7.12) e camera ad alta frequenza.",
+        "Campo 'solo_scheda' con avviso di sicurezza."
+      ],
+      "da_calibrare": true
+    }
+  },
+  {
+    "id": "TOT-014",
+    "nome": "Hang power clean",
+    "scheda": {
+      "descrizione": "Girata dalla posizione sospesa con ricezione in mezzo squat. È la variante più accessibile della girata e la più usata per imparare.",
+      "muscoli": {
+        "primari": [
+          "grande gluteo",
+          "ischiocrurali"
+        ],
+        "secondari": [
+          "trapezio",
+          "quadricipiti"
+        ],
+        "stabilizzatori": [
+          "addominali"
+        ]
+      },
+      "partenza": "Come TOT-013.",
+      "esecuzione": "Come TOT-013, con ricezione in mezzo squat.",
+      "rom": "Come TOT-013, con ricezione alta.",
+      "respirazione": "Inspira e trattieni prima di tirare per stabilizzare il tronco, espira superato il punto più duro. Con carichi leggeri: inspira nella fase di discesa, espira nella fase di spinta.",
+      "tempo": "Esplosivo",
+      "errori": [
+        {
+          "errore": "Braccia che tirano troppo presto",
+          "correzione": "Braccia lunghe fino all'estensione delle anche."
+        },
+        {
+          "errore": "Bilanciere lontano dal corpo",
+          "correzione": "Bilanciere vicino alle gambe."
+        },
+        {
+          "errore": "Gomiti bassi nell'incastro",
+          "correzione": "Gomiti veloci in avanti."
+        },
+        {
+          "errore": "Schiena che si arrotonda",
+          "correzione": "Petto alto, schiena tesa."
+        }
+      ],
+      "cue": [
+        "Bilanciere vicino",
+        "Esplodi con le anche",
+        "Gomiti veloci",
+        "Ricevi alto"
+      ],
+      "regressione_progressione": {
+        "regressione": [
+          "GLU-011 Stacco da terra"
+        ],
+        "progressione": [
+          "TOT-012 Power clean"
+        ]
+      },
+      "precauzioni": "Esercizio tecnico: va imparato con un istruttore qualificato, partendo con il bilanciere scarico e con dischi in gomma su una pedana. Chi ha problemi di pressione dovrebbe evitare di trattenere il respiro sotto sforzo. In caso di fastidi o dolore chiedere il parere di un professionista sanitario."
+    },
+    "config_app": {
+      "eredita_da": "TOT-011",
+      "vista_camera": "laterale",
+      "lato": "auto",
+      "messaggio_posizione": "Esercizio non supportato: chiedi all'istruttore",
+      "messaggio_ok": "",
+      "misure": {},
+      "ripetizione": {},
+      "errori": [],
+      "testi_errori": {},
+      "analizzabilita": "non_analizzabile",
+      "motivo": "Gesto olimpico: dura meno di un secondo, ha più fasi (tirata, incastro, recupero) e i rischi principali (schiena che si arrotonda, traiettoria del bilanciere, posizione di incastro) non sono misurabili. Va insegnato e seguito da un istruttore di pesistica: solo scheda. Nota per il motore: con 'non_analizzabile' non va applicata nessuna regola ereditata.",
+      "non_rilevabili": [
+        {
+          "errore": "Schiena arrotondata nella tirata",
+          "motivo": "La curvatura della colonna non è misurabile."
+        },
+        {
+          "errore": "Traiettoria del bilanciere",
+          "motivo": "Il bilanciere non è un punto rilevato."
+        },
+        {
+          "errore": "Posizione di incastro",
+          "motivo": "Fase troppo rapida a 30 fps."
+        }
+      ],
+      "richiesta_motore": [
+        "Esercizi a più fasi (come §7.12) e camera ad alta frequenza.",
+        "Campo 'solo_scheda' con avviso di sicurezza."
+      ],
+      "da_calibrare": true
+    }
+  },
+  {
+    "id": "TOT-015",
+    "nome": "Strappo",
+    "scheda": {
+      "descrizione": "Il bilanciere viene portato da terra sopra la testa in un unico movimento, con presa larga, e ricevuto in squat profondo a braccia tese. È il gesto olimpico più tecnico e richiede grande mobilità.",
+      "muscoli": {
+        "primari": [
+          "quadricipiti",
+          "grande gluteo",
+          "ischiocrurali"
+        ],
+        "secondari": [
+          "trapezio",
+          "deltoidi"
+        ],
+        "stabilizzatori": [
+          "addominali",
+          "stabilizzatori della spalla"
+        ]
+      },
+      "partenza": "Come TOT-011 Girata al petto, con presa larga (bilanciere che in piedi si appoggia alle anche).",
+      "esecuzione": "Prima e seconda tirata come la girata, poi ci si tira sotto il bilanciere ricevendolo a braccia tese sopra la testa in squat profondo; ci si alza in piedi.",
+      "rom": "Estensione completa e ricezione in overhead squat.",
+      "respirazione": "Inspira e trattieni prima di tirare per stabilizzare il tronco, espira superato il punto più duro. Con carichi leggeri: inspira nella fase di discesa, espira nella fase di spinta.",
+      "tempo": "Esplosivo",
+      "errori": [
+        {
+          "errore": "Braccia che tirano troppo presto",
+          "correzione": "Braccia lunghe fino all'estensione delle anche."
+        },
+        {
+          "errore": "Bilanciere lontano dal corpo",
+          "correzione": "Bilanciere vicino."
+        },
+        {
+          "errore": "Braccia molli in ricezione",
+          "correzione": "Braccia tese e attive sopra la testa."
+        },
+        {
+          "errore": "Schiena che si arrotonda",
+          "correzione": "Petto alto."
+        }
+      ],
+      "cue": [
+        "Bilanciere vicino",
+        "Esplodi con le anche",
+        "Braccia tese",
+        "Ricevi in squat"
+      ],
+      "regressione_progressione": {
+        "regressione": [
+          "TOT-021 Overhead squat"
+        ],
+        "progressione": []
+      },
+      "precauzioni": "Esercizio tecnico: va imparato con un istruttore qualificato, partendo con il bilanciere scarico e con dischi in gomma su una pedana. Chi ha problemi di pressione dovrebbe evitare di trattenere il respiro sotto sforzo. In caso di fastidi o dolore chiedere il parere di un professionista sanitario."
+    },
+    "config_app": {
+      "eredita_da": null,
+      "vista_camera": "laterale",
+      "lato": "auto",
+      "messaggio_posizione": "Esercizio non supportato: chiedi all'istruttore",
+      "messaggio_ok": "",
+      "misure": {},
+      "ripetizione": {},
+      "errori": [],
+      "testi_errori": {},
+      "analizzabilita": "non_analizzabile",
+      "motivo": "Gesto olimpico: dura meno di un secondo, ha più fasi (tirata, incastro, recupero) e i rischi principali (schiena che si arrotonda, traiettoria del bilanciere, posizione di incastro) non sono misurabili. Va insegnato e seguito da un istruttore di pesistica: solo scheda.",
+      "non_rilevabili": [
+        {
+          "errore": "Schiena arrotondata nella tirata",
+          "motivo": "La curvatura della colonna non è misurabile."
+        },
+        {
+          "errore": "Traiettoria del bilanciere",
+          "motivo": "Il bilanciere non è un punto rilevato."
+        },
+        {
+          "errore": "Posizione di incastro",
+          "motivo": "Fase troppo rapida a 30 fps."
+        }
+      ],
+      "richiesta_motore": [
+        "Esercizi a più fasi (come §7.12) e camera ad alta frequenza.",
+        "Campo 'solo_scheda' con avviso di sicurezza."
+      ],
+      "da_calibrare": true
+    }
+  },
+  {
+    "id": "TOT-016",
+    "nome": "Power snatch",
+    "scheda": {
+      "descrizione": "Strappo con ricezione sopra il parallelo. Sviluppa la potenza di tutto il corpo con meno mobilità richiesta dello strappo completo.",
+      "muscoli": {
+        "primari": [
+          "grande gluteo",
+          "ischiocrurali"
+        ],
+        "secondari": [
+          "trapezio",
+          "deltoidi",
+          "quadricipiti"
+        ],
+        "stabilizzatori": [
+          "addominali"
+        ]
+      },
+      "partenza": "Come TOT-015.",
+      "esecuzione": "Come TOT-015, ricevendo in mezzo squat.",
+      "rom": "Come TOT-015, con ricezione alta.",
+      "respirazione": "Inspira e trattieni prima di tirare per stabilizzare il tronco, espira superato il punto più duro. Con carichi leggeri: inspira nella fase di discesa, espira nella fase di spinta.",
+      "tempo": "Esplosivo",
+      "errori": [
+        {
+          "errore": "Braccia che tirano troppo presto",
+          "correzione": "Braccia lunghe fino all'estensione delle anche."
+        },
+        {
+          "errore": "Bilanciere lontano dal corpo",
+          "correzione": "Bilanciere vicino."
+        },
+        {
+          "errore": "Braccia molli in ricezione",
+          "correzione": "Braccia tese e attive sopra la testa."
+        },
+        {
+          "errore": "Schiena che si arrotonda",
+          "correzione": "Petto alto."
+        }
+      ],
+      "cue": [
+        "Bilanciere vicino",
+        "Esplodi",
+        "Braccia tese",
+        "Ricevi alto"
+      ],
+      "regressione_progressione": {
+        "regressione": [
+          "TOT-017 Hang snatch"
+        ],
+        "progressione": [
+          "TOT-015 Strappo"
+        ]
+      },
+      "precauzioni": "Esercizio tecnico: va imparato con un istruttore qualificato, partendo con il bilanciere scarico e con dischi in gomma su una pedana. Chi ha problemi di pressione dovrebbe evitare di trattenere il respiro sotto sforzo. In caso di fastidi o dolore chiedere il parere di un professionista sanitario."
+    },
+    "config_app": {
+      "eredita_da": "TOT-015",
+      "vista_camera": "laterale",
+      "lato": "auto",
+      "messaggio_posizione": "Esercizio non supportato: chiedi all'istruttore",
+      "messaggio_ok": "",
+      "misure": {},
+      "ripetizione": {},
+      "errori": [],
+      "testi_errori": {},
+      "analizzabilita": "non_analizzabile",
+      "motivo": "Gesto olimpico: dura meno di un secondo, ha più fasi (tirata, incastro, recupero) e i rischi principali (schiena che si arrotonda, traiettoria del bilanciere, posizione di incastro) non sono misurabili. Va insegnato e seguito da un istruttore di pesistica: solo scheda. Nota per il motore: con 'non_analizzabile' non va applicata nessuna regola ereditata.",
+      "non_rilevabili": [
+        {
+          "errore": "Schiena arrotondata nella tirata",
+          "motivo": "La curvatura della colonna non è misurabile."
+        },
+        {
+          "errore": "Traiettoria del bilanciere",
+          "motivo": "Il bilanciere non è un punto rilevato."
+        },
+        {
+          "errore": "Posizione di incastro",
+          "motivo": "Fase troppo rapida a 30 fps."
+        }
+      ],
+      "richiesta_motore": [
+        "Esercizi a più fasi (come §7.12) e camera ad alta frequenza.",
+        "Campo 'solo_scheda' con avviso di sicurezza."
+      ],
+      "da_calibrare": true
+    }
+  },
+  {
+    "id": "TOT-017",
+    "nome": "Hang snatch",
+    "scheda": {
+      "descrizione": "Strappo che parte dalla posizione sospesa, con il bilanciere a metà coscia. Allena la seconda tirata e la ricezione sopra la testa.",
+      "muscoli": {
+        "primari": [
+          "grande gluteo",
+          "ischiocrurali"
+        ],
+        "secondari": [
+          "trapezio",
+          "deltoidi"
+        ],
+        "stabilizzatori": [
+          "addominali"
+        ]
+      },
+      "partenza": "Come TOT-013, con presa larga.",
+      "esecuzione": "Dalla posizione sospesa, tirata esplosiva e ricezione a braccia tese sopra la testa.",
+      "rom": "Come TOT-015, senza la prima tirata.",
+      "respirazione": "Inspira e trattieni prima di tirare per stabilizzare il tronco, espira superato il punto più duro. Con carichi leggeri: inspira nella fase di discesa, espira nella fase di spinta.",
+      "tempo": "Esplosivo",
+      "errori": [
+        {
+          "errore": "Braccia che tirano troppo presto",
+          "correzione": "Braccia lunghe fino all'estensione delle anche."
+        },
+        {
+          "errore": "Bilanciere lontano dal corpo",
+          "correzione": "Bilanciere vicino."
+        },
+        {
+          "errore": "Braccia molli in ricezione",
+          "correzione": "Braccia tese e attive sopra la testa."
+        },
+        {
+          "errore": "Schiena che si arrotonda",
+          "correzione": "Petto alto."
+        }
+      ],
+      "cue": [
+        "Bilanciere vicino",
+        "Esplodi",
+        "Braccia tese",
+        "Ricevi stabile"
+      ],
+      "regressione_progressione": {
+        "regressione": [
+          "TOT-021 Overhead squat"
+        ],
+        "progressione": [
+          "TOT-015 Strappo"
+        ]
+      },
+      "precauzioni": "Esercizio tecnico: va imparato con un istruttore qualificato, partendo con il bilanciere scarico e con dischi in gomma su una pedana. Chi ha problemi di pressione dovrebbe evitare di trattenere il respiro sotto sforzo. In caso di fastidi o dolore chiedere il parere di un professionista sanitario."
+    },
+    "config_app": {
+      "eredita_da": "TOT-015",
+      "vista_camera": "laterale",
+      "lato": "auto",
+      "messaggio_posizione": "Esercizio non supportato: chiedi all'istruttore",
+      "messaggio_ok": "",
+      "misure": {},
+      "ripetizione": {},
+      "errori": [],
+      "testi_errori": {},
+      "analizzabilita": "non_analizzabile",
+      "motivo": "Gesto olimpico: dura meno di un secondo, ha più fasi (tirata, incastro, recupero) e i rischi principali (schiena che si arrotonda, traiettoria del bilanciere, posizione di incastro) non sono misurabili. Va insegnato e seguito da un istruttore di pesistica: solo scheda. Nota per il motore: con 'non_analizzabile' non va applicata nessuna regola ereditata.",
+      "non_rilevabili": [
+        {
+          "errore": "Schiena arrotondata nella tirata",
+          "motivo": "La curvatura della colonna non è misurabile."
+        },
+        {
+          "errore": "Traiettoria del bilanciere",
+          "motivo": "Il bilanciere non è un punto rilevato."
+        },
+        {
+          "errore": "Posizione di incastro",
+          "motivo": "Fase troppo rapida a 30 fps."
+        }
+      ],
+      "richiesta_motore": [
+        "Esercizi a più fasi (come §7.12) e camera ad alta frequenza.",
+        "Campo 'solo_scheda' con avviso di sicurezza."
+      ],
+      "da_calibrare": true
+    }
+  },
+  {
+    "id": "TOT-018",
+    "nome": "Slancio",
+    "scheda": {
+      "descrizione": "Con il bilanciere sulle spalle, un rapido piegamento delle gambe lancia il bilanciere in alto e lo si riceve a braccia tese con un nuovo piegamento. Allena la potenza delle gambe trasferita sopra la testa.",
+      "muscoli": {
+        "primari": [
+          "deltoide anteriore",
+          "tricipite brachiale",
+          "quadricipiti"
+        ],
+        "secondari": [
+          "grande gluteo",
+          "trapezio"
+        ],
+        "stabilizzatori": [
+          "addominali"
+        ]
+      },
+      "partenza": "In piedi con il bilanciere sulle spalle in posizione di front rack, piedi alla larghezza delle anche.",
+      "esecuzione": "Breve piegamento delle ginocchia con busto verticale, spinta esplosiva delle gambe, ricezione a braccia tese con un secondo piegamento, poi in piedi.",
+      "rom": "Ginocchio fino a circa 140-150° nel caricamento; braccia fino a estensione completa sopra la testa.",
+      "respirazione": "Inspira e trattieni prima del piegamento, espira a bilanciere bloccato sopra la testa. Con carichi leggeri: espira nella spinta.",
+      "tempo": "Esplosivo",
+      "errori": [
+        {
+          "errore": "Busto che si piega in avanti nel caricamento",
+          "correzione": "Busto verticale, ginocchia avanti."
+        },
+        {
+          "errore": "Spinta con le braccia invece che con le gambe",
+          "correzione": "Le gambe lanciano il bilanciere."
+        },
+        {
+          "errore": "Braccia molli in ricezione",
+          "correzione": "Braccia tese e bloccate."
+        },
+        {
+          "errore": "Schiena inarcata sopra la testa",
+          "correzione": "Addome contratto."
+        }
+      ],
+      "cue": [
+        "Busto dritto",
+        "Spingi con le gambe",
+        "Braccia bloccate",
+        "Ricevi stabile"
+      ],
+      "regressione_progressione": {
+        "regressione": [
+          "DEA-013 Push press"
+        ],
+        "progressione": [
+          "TOT-019 Split jerk"
+        ]
+      },
+      "precauzioni": "Esercizio tecnico: va imparato con un istruttore qualificato, partendo con il bilanciere scarico e con dischi in gomma su una pedana. Chi ha problemi di pressione dovrebbe evitare di trattenere il respiro sotto sforzo. In caso di fastidi o dolore chiedere il parere di un professionista sanitario."
+    },
+    "config_app": {
+      "eredita_da": null,
+      "vista_camera": "laterale",
+      "lato": "auto",
+      "messaggio_posizione": "Esercizio non supportato: chiedi all'istruttore",
+      "messaggio_ok": "",
+      "misure": {},
+      "ripetizione": {},
+      "errori": [],
+      "testi_errori": {},
+      "analizzabilita": "non_analizzabile",
+      "motivo": "Gesto olimpico: dura meno di un secondo, ha più fasi (tirata, incastro, recupero) e i rischi principali (schiena che si arrotonda, traiettoria del bilanciere, posizione di incastro) non sono misurabili. Va insegnato e seguito da un istruttore di pesistica: solo scheda.",
+      "non_rilevabili": [
+        {
+          "errore": "Schiena arrotondata nella tirata",
+          "motivo": "La curvatura della colonna non è misurabile."
+        },
+        {
+          "errore": "Traiettoria del bilanciere",
+          "motivo": "Il bilanciere non è un punto rilevato."
+        },
+        {
+          "errore": "Posizione di incastro",
+          "motivo": "Fase troppo rapida a 30 fps."
+        }
+      ],
+      "richiesta_motore": [
+        "Esercizi a più fasi (come §7.12) e camera ad alta frequenza.",
+        "Campo 'solo_scheda' con avviso di sicurezza."
+      ],
+      "da_calibrare": true
+    }
+  },
+  {
+    "id": "TOT-019",
+    "nome": "Split jerk",
+    "scheda": {
+      "descrizione": "Slancio in cui si riceve il bilanciere sopra la testa con le gambe divaricate avanti e indietro. Allena potenza di gambe e spalle e permette di sollevare carichi maggiori.",
+      "muscoli": {
+        "primari": [
+          "deltoide anteriore",
+          "tricipite brachiale",
+          "quadricipiti"
+        ],
+        "secondari": [
+          "grande gluteo"
+        ],
+        "stabilizzatori": [
+          "addominali"
+        ]
+      },
+      "partenza": "Come TOT-018.",
+      "esecuzione": "Come TOT-018, ricevendo con un piede avanti e uno indietro, poi si riuniscono i piedi.",
+      "rom": "Come TOT-018.",
+      "respirazione": "Inspira e trattieni prima del piegamento, espira a bilanciere bloccato sopra la testa. Con carichi leggeri: espira nella spinta.",
+      "tempo": "Esplosivo",
+      "errori": [
+        {
+          "errore": "Busto che si piega in avanti nel caricamento",
+          "correzione": "Busto verticale, ginocchia avanti."
+        },
+        {
+          "errore": "Spinta con le braccia invece che con le gambe",
+          "correzione": "Le gambe lanciano il bilanciere."
+        },
+        {
+          "errore": "Braccia molli in ricezione",
+          "correzione": "Braccia tese e bloccate."
+        },
+        {
+          "errore": "Schiena inarcata sopra la testa",
+          "correzione": "Addome contratto."
+        }
+      ],
+      "cue": [
+        "Busto dritto",
+        "Spingi con le gambe",
+        "Divarica veloce",
+        "Riunisci i piedi"
+      ],
+      "regressione_progressione": {
+        "regressione": [
+          "TOT-018 Slancio"
+        ],
+        "progressione": []
+      },
+      "precauzioni": "Esercizio tecnico: va imparato con un istruttore qualificato, partendo con il bilanciere scarico e con dischi in gomma su una pedana. Chi ha problemi di pressione dovrebbe evitare di trattenere il respiro sotto sforzo. In caso di fastidi o dolore chiedere il parere di un professionista sanitario."
+    },
+    "config_app": {
+      "eredita_da": "TOT-018",
+      "vista_camera": "laterale",
+      "lato": "auto",
+      "messaggio_posizione": "Esercizio non supportato: chiedi all'istruttore",
+      "messaggio_ok": "",
+      "misure": {},
+      "ripetizione": {},
+      "errori": [],
+      "testi_errori": {},
+      "analizzabilita": "non_analizzabile",
+      "motivo": "Gesto olimpico: dura meno di un secondo, ha più fasi (tirata, incastro, recupero) e i rischi principali (schiena che si arrotonda, traiettoria del bilanciere, posizione di incastro) non sono misurabili. Va insegnato e seguito da un istruttore di pesistica: solo scheda. Nota per il motore: con 'non_analizzabile' non va applicata nessuna regola ereditata.",
+      "non_rilevabili": [
+        {
+          "errore": "Schiena arrotondata nella tirata",
+          "motivo": "La curvatura della colonna non è misurabile."
+        },
+        {
+          "errore": "Traiettoria del bilanciere",
+          "motivo": "Il bilanciere non è un punto rilevato."
+        },
+        {
+          "errore": "Posizione di incastro",
+          "motivo": "Fase troppo rapida a 30 fps."
+        }
+      ],
+      "richiesta_motore": [
+        "Esercizi a più fasi (come §7.12) e camera ad alta frequenza.",
+        "Campo 'solo_scheda' con avviso di sicurezza."
+      ],
+      "da_calibrare": true
+    }
+  },
+  {
+    "id": "TOT-020",
+    "nome": "Girata e slancio",
+    "scheda": {
+      "descrizione": "Combinazione di girata al petto e slancio: il bilanciere va da terra alle spalle e poi sopra la testa. È una delle due specialità della pesistica olimpica.",
+      "muscoli": {
+        "primari": [
+          "quadricipiti",
+          "grande gluteo",
+          "deltoide anteriore"
+        ],
+        "secondari": [
+          "ischiocrurali",
+          "trapezio",
+          "tricipite brachiale"
+        ],
+        "stabilizzatori": [
+          "addominali"
+        ]
+      },
+      "partenza": "Come TOT-011.",
+      "esecuzione": "Girata al petto come TOT-011, ci si alza in piedi, poi slancio come TOT-018 o TOT-019.",
+      "rom": "Come TOT-011 e TOT-018.",
+      "respirazione": "Inspira e trattieni prima di tirare per stabilizzare il tronco, espira superato il punto più duro. Con carichi leggeri: inspira nella fase di discesa, espira nella fase di spinta.",
+      "tempo": "Esplosivo",
+      "errori": [
+        {
+          "errore": "Braccia che tirano troppo presto",
+          "correzione": "Braccia lunghe fino all'estensione delle anche."
+        },
+        {
+          "errore": "Bilanciere lontano dal corpo",
+          "correzione": "Bilanciere vicino alle gambe."
+        },
+        {
+          "errore": "Busto che si piega in avanti nel caricamento",
+          "correzione": "Busto verticale, ginocchia avanti."
+        },
+        {
+          "errore": "Spinta con le braccia invece che con le gambe",
+          "correzione": "Le gambe lanciano il bilanciere."
+        }
+      ],
+      "cue": [
+        "Bilanciere vicino",
+        "Ricevi in squat",
+        "Spingi con le gambe",
+        "Braccia bloccate"
+      ],
+      "regressione_progressione": {
+        "regressione": [
+          "TOT-011 Girata al petto",
+          "TOT-018 Slancio"
+        ],
+        "progressione": []
+      },
+      "precauzioni": "Esercizio tecnico: va imparato con un istruttore qualificato, partendo con il bilanciere scarico e con dischi in gomma su una pedana. Chi ha problemi di pressione dovrebbe evitare di trattenere il respiro sotto sforzo. In caso di fastidi o dolore chiedere il parere di un professionista sanitario."
+    },
+    "config_app": {
+      "eredita_da": null,
+      "vista_camera": "laterale",
+      "lato": "auto",
+      "messaggio_posizione": "Esercizio non supportato: chiedi all'istruttore",
+      "messaggio_ok": "",
+      "misure": {},
+      "ripetizione": {},
+      "errori": [],
+      "testi_errori": {},
+      "analizzabilita": "non_analizzabile",
+      "motivo": "Gesto olimpico: dura meno di un secondo, ha più fasi (tirata, incastro, recupero) e i rischi principali (schiena che si arrotonda, traiettoria del bilanciere, posizione di incastro) non sono misurabili. Va insegnato e seguito da un istruttore di pesistica: solo scheda.",
+      "non_rilevabili": [
+        {
+          "errore": "Schiena arrotondata nella tirata",
+          "motivo": "La curvatura della colonna non è misurabile."
+        },
+        {
+          "errore": "Traiettoria del bilanciere",
+          "motivo": "Il bilanciere non è un punto rilevato."
+        },
+        {
+          "errore": "Posizione di incastro",
+          "motivo": "Fase troppo rapida a 30 fps."
+        }
+      ],
+      "richiesta_motore": [
+        "Esercizi a più fasi (come §7.12) e camera ad alta frequenza.",
+        "Campo 'solo_scheda' con avviso di sicurezza."
+      ],
+      "da_calibrare": true
+    }
+  },
+  {
+    "id": "TOT-021",
+    "nome": "Overhead squat",
+    "scheda": {
+      "descrizione": "Squat completo con il bilanciere tenuto a braccia tese sopra la testa e presa larga. Richiede grande mobilità di spalle, anche e caviglie ed è la base dello strappo.",
+      "muscoli": {
+        "primari": [
+          "quadricipiti",
+          "grande gluteo"
+        ],
+        "secondari": [
+          "deltoidi",
+          "trapezio",
+          "addominali"
+        ],
+        "stabilizzatori": [
+          "stabilizzatori della spalla",
+          "erettori spinali"
+        ]
+      },
+      "partenza": "Bilanciere sopra la testa a braccia tese con presa larga (come nello strappo), piedi alla larghezza delle spalle, punte leggermente in fuori.",
+      "esecuzione": {
+        "eccentrica": "Squat completo mantenendo il bilanciere sopra il centro del piede e le braccia tese.",
+        "pausa": "Breve pausa in basso.",
+        "concentrica": "Ritorno in piedi con le braccia sempre tese."
+      },
+      "rom": "Ginocchio da circa 175° a circa 60-80°; braccia tese sopra la testa.",
+      "respirazione": "Inspira e trattieni prima di scendere per stabilizzare il tronco, espira superato il punto più duro. Con carichi leggeri: inspira nella fase di discesa, espira nella fase di spinta.",
+      "tempo": "3-1-1-0 (discesa 3 s, pausa 1 s, salita 1 s, pausa 0 s)",
+      "errori": [
+        {
+          "errore": "Braccia che vanno avanti",
+          "correzione": "Spingere il bilanciere in alto e indietro."
+        },
+        {
+          "errore": "Busto che si piega",
+          "correzione": "Petto alto."
+        },
+        {
+          "errore": "Talloni che si staccano",
+          "correzione": "Lavorare sulla mobilità della caviglia."
+        },
+        {
+          "errore": "Gomiti che si piegano",
+          "correzione": "Braccia tese."
+        }
+      ],
+      "cue": [
+        "Braccia tese",
+        "Petto alto",
+        "Bilanciere sopra i piedi",
+        "Spingi il pavimento"
+      ],
+      "regressione_progressione": {
+        "regressione": [
+          "QUA-021 Front squat"
+        ],
+        "progressione": [
+          "TOT-015 Strappo"
+        ]
+      },
+      "precauzioni": "Iniziare con un bastone o il bilanciere scarico. Chi ha fastidi alle spalle dovrebbe evitarlo. Chi ha problemi di pressione dovrebbe evitare di trattenere il respiro sotto sforzo. In caso di fastidi o dolore chiedere il parere di un professionista sanitario."
+    },
+    "config_app": {
+      "eredita_da": null,
+      "vista_camera": "laterale",
+      "lato": "auto",
+      "messaggio_posizione": "Mettiti di lato alla camera, corpo intero visibile",
+      "messaggio_ok": "Ottimo overhead squat!",
+      "misure": {
+        "ginocchio": {
+          "tipo": "angolo",
+          "punti": [
+            "anca",
+            "ginocchio",
+            "caviglia"
+          ]
+        },
+        "busto": {
+          "tipo": "inclinazione",
+          "punti": [
+            "anca",
+            "spalla"
+          ]
+        },
+        "braccio": {
+          "tipo": "inclinazione",
+          "punti": [
+            "spalla",
+            "gomito"
+          ]
+        },
+        "tallone": {
+          "tipo": "posizione",
+          "punto": "tallone",
+          "scala": [
+            "ginocchio",
+            "caviglia"
+          ]
+        }
+      },
+      "ripetizione": {
+        "misura": "ginocchio",
+        "direzione": "diminuisce",
+        "posizione_iniziale": 160,
+        "inizio_movimento": 140
+      },
+      "errori": [
+        {
+          "id": "profondita",
+          "messaggio": "Scendi di più",
+          "gravita": "giallo",
+          "momento": "fine",
+          "misura": "ginocchio",
+          "statistica": "minimo",
+          "maggiore_di": 100
+        },
+        {
+          "id": "busto_inclinato",
+          "messaggio": "Petto alto, busto dritto",
+          "gravita": "rosso",
+          "momento": "durante",
+          "misura": "busto",
+          "maggiore_di": 40
+        },
+        {
+          "id": "braccia_avanti",
+          "messaggio": "Bilanciere sopra la testa",
+          "gravita": "rosso",
+          "momento": "durante",
+          "misura": "braccio",
+          "maggiore_di": 20
+        },
+        {
+          "id": "talloni",
+          "messaggio": "Talloni a terra",
+          "gravita": "rosso",
+          "momento": "durante",
+          "misura": "tallone",
+          "maggiore_di": 0.08
+        }
+      ],
+      "testi_errori": {
+        "profondita": {
+          "cosa_succede": "Ti fermi troppo in alto.",
+          "perche_conta": "Con mezza ampiezza il lavoro e la mobilità allenata diminuiscono.",
+          "come_correggere": "Scendi fino ad avere le anche almeno all'altezza delle ginocchia, se la mobilità lo consente.",
+          "frase_da_ricordare": "Anche alle ginocchia."
+        },
+        "busto_inclinato": {
+          "cosa_succede": "Il busto si piega in avanti.",
+          "perche_conta": "Con il bilanciere sopra la testa, il busto inclinato porta il carico in avanti e può farlo cadere.",
+          "come_correggere": "Petto in alto, scendi con il bacino tra le ginocchia; se non ci riesci, allarga la presa o scendi meno.",
+          "frase_da_ricordare": "Petto alto."
+        },
+        "braccia_avanti": {
+          "cosa_succede": "Le braccia vanno in avanti e il bilanciere esce dalla verticale.",
+          "perche_conta": "Il bilanciere fuori asse è instabile e può cadere.",
+          "come_correggere": "Spingi il bilanciere verso l'alto e un po' indietro, braccia vicino alle orecchie.",
+          "frase_da_ricordare": "Bilanciere sopra la testa."
+        },
+        "talloni": {
+          "cosa_succede": "I talloni si staccano da terra.",
+          "perche_conta": "Con il bilanciere sopra la testa, il peso sulle punte fa perdere l'equilibrio in avanti.",
+          "come_correggere": "Peso su tutto il piede; se non ci riesci, allarga un po' i piedi o scendi meno.",
+          "frase_da_ricordare": "Talloni a terra."
+        }
+      },
+      "analizzabilita": "parziale",
+      "motivo": "Di lato si leggono profondità, busto, inclinazione del braccio rispetto alla verticale (spalla-gomito: 0° a braccio verticale) e talloni. Busto inclinato, braccia che vanno avanti e talloni sono in rosso perché con il bilanciere sopra la testa fanno perdere l'equilibrio. Il disco può coprire i polsi, non i gomiti. Dipende dalla convenzione 0-180 dell'inclinazione (§2).",
+      "non_rilevabili": [
+        {
+          "errore": "Ginocchia che cedono verso l'interno",
+          "motivo": "Si vede solo di fronte."
+        },
+        {
+          "errore": "Gomiti che si piegano",
+          "motivo": "Il disco può coprire i polsi."
+        },
+        {
+          "errore": "Discesa troppo veloce",
+          "motivo": "Lasciato fuori per restare entro quattro controlli."
+        }
+      ],
+      "richiesta_motore": [],
+      "da_calibrare": true
+    }
+  },
+  {
+    "id": "TOT-022",
+    "nome": "Thruster con bilanciere",
+    "scheda": {
+      "descrizione": "Front squat seguito senza pause da una spinta del bilanciere sopra la testa, usando la spinta delle gambe. Esercizio intenso per gambe, spalle e capacità cardio.",
+      "muscoli": {
+        "primari": [
+          "quadricipiti",
+          "grande gluteo",
+          "deltoide anteriore"
+        ],
+        "secondari": [
+          "tricipite brachiale",
+          "trapezio"
+        ],
+        "stabilizzatori": [
+          "addominali"
+        ]
+      },
+      "partenza": "Bilanciere in front rack sulle spalle (come QUA-021 Front squat), presa poco più larga delle spalle, gomiti alti, piedi alla larghezza delle spalle.",
+      "esecuzione": {
+        "eccentrica": "Front squat fino ad anche all'altezza delle ginocchia, gomiti alti.",
+        "pausa": "Nessuna.",
+        "concentrica": "Risalita esplosiva e, sfruttando la spinta delle gambe, spinta del bilanciere fino a braccia tese sopra la testa; poi il bilanciere torna sulle spalle per la ripetizione successiva."
+      },
+      "rom": "Ginocchio da circa 175° a circa 70-90°; braccia fino a estensione completa sopra la testa.",
+      "respirazione": "Inspira in alto, trattieni durante lo squat, espira nella spinta sopra la testa.",
+      "tempo": "2-0-1-0 (discesa 2 s, pausa 0 s, salita 1 s, pausa 0 s)",
+      "errori": [
+        {
+          "errore": "Gomiti che scendono in fondo allo squat",
+          "correzione": "Gomiti alti."
+        },
+        {
+          "errore": "Spinta solo con le braccia",
+          "correzione": "Le gambe lanciano il bilanciere."
+        },
+        {
+          "errore": "Schiena inarcata sopra la testa",
+          "correzione": "Addome contratto, testa che passa in avanti."
+        },
+        {
+          "errore": "Busto che si piega",
+          "correzione": "Petto alto."
+        }
+      ],
+      "cue": [
+        "Gomiti alti",
+        "Petto in alto",
+        "Spingi con le gambe",
+        "Braccia bloccate"
+      ],
+      "regressione_progressione": {
+        "regressione": [
+          "TOT-026 Thruster con manubri",
+          "TOT-045 Wall ball"
+        ],
+        "progressione": [
+          "TOT-020 Girata e slancio"
+        ]
+      },
+      "precauzioni": "Carichi moderati: la combinazione di squat e spinta affatica rapidamente. Chi ha problemi di pressione dovrebbe evitare di trattenere il respiro sotto sforzo. In caso di fastidi o dolore chiedere il parere di un professionista sanitario."
+    },
+    "config_app": {
+      "eredita_da": null,
+      "vista_camera": "laterale",
+      "lato": "auto",
+      "messaggio_posizione": "Mettiti di lato alla camera, corpo intero visibile",
+      "messaggio_ok": "Ottimo thruster!",
+      "misure": {
+        "ginocchio": {
+          "tipo": "angolo",
+          "punti": [
+            "anca",
+            "ginocchio",
+            "caviglia"
+          ]
+        },
+        "busto": {
+          "tipo": "inclinazione",
+          "punti": [
+            "anca",
+            "spalla"
+          ]
+        }
+      },
+      "ripetizione": {
+        "misura": "ginocchio",
+        "direzione": "diminuisce",
+        "posizione_iniziale": 160,
+        "inizio_movimento": 140
+      },
+      "errori": [
+        {
+          "id": "profondita",
+          "messaggio": "Scendi di più",
+          "gravita": "giallo",
+          "momento": "fine",
+          "misura": "ginocchio",
+          "statistica": "minimo",
+          "maggiore_di": 100
+        },
+        {
+          "id": "busto_inclinato",
+          "messaggio": "Petto alto, busto dritto",
+          "gravita": "rosso",
+          "momento": "durante",
+          "misura": "busto",
+          "maggiore_di": 40
+        }
+      ],
+      "testi_errori": {
+        "profondita": {
+          "cosa_succede": "Ti fermi troppo in alto.",
+          "perche_conta": "Con mezza ampiezza il lavoro e la mobilità allenata diminuiscono.",
+          "come_correggere": "Scendi fino ad avere le anche almeno all'altezza delle ginocchia, se la mobilità lo consente.",
+          "frase_da_ricordare": "Anche alle ginocchia."
+        },
+        "busto_inclinato": {
+          "cosa_succede": "Il busto si piega in avanti.",
+          "perche_conta": "Con il carico davanti il busto inclinato carica la zona lombare e rovina la spinta.",
+          "come_correggere": "Gomiti alti, petto in alto, scendi con il bacino tra le ginocchia.",
+          "frase_da_ricordare": "Petto alto."
+        }
+      },
+      "analizzabilita": "parziale",
+      "motivo": "Si conta sull'angolo del ginocchio, come nel front squat: si controllano profondità e busto. La distensione delle braccia sopra la testa avviene dopo che la ripetizione si è chiusa (ginocchio oltre 160°), quindi non è controllata.",
+      "non_rilevabili": [
+        {
+          "errore": "Braccia distese sopra la testa",
+          "motivo": "La distensione avviene dopo la chiusura della ripetizione."
+        },
+        {
+          "errore": "Schiena inarcata sopra la testa",
+          "motivo": "La curvatura della colonna non è misurabile."
+        },
+        {
+          "errore": "Gomiti che scendono",
+          "motivo": "Di lato il disco copre il gomito in front rack."
+        }
+      ],
+      "richiesta_motore": [
+        "Statistica estesa fino al picco successivo alla chiusura della ripetizione (come GLU-019)."
+      ],
+      "da_calibrare": true
+    }
+  },
+  {
+    "id": "TOT-023",
+    "nome": "Zercher carry",
+    "scheda": {
+      "descrizione": "Camminata tenendo un bilanciere nell'incavo dei gomiti davanti al corpo. Allena addominali, parte alta della schiena e resistenza alla flessione del busto.",
+      "muscoli": {
+        "primari": [
+          "addominali",
+          "erettori spinali"
+        ],
+        "secondari": [
+          "bicipite brachiale",
+          "quadricipiti"
+        ],
+        "stabilizzatori": [
+          "trapezio"
+        ]
+      },
+      "partenza": "Bilanciere preso dal rack all'altezza della vita nell'incavo dei gomiti, con un cuscinetto, mani unite davanti al petto.",
+      "esecuzione": "Camminata a passi corti per la distanza stabilita, busto dritto, poi si riappoggia il bilanciere nel rack.",
+      "rom": "Isometria del tronco durante la camminata.",
+      "respirazione": "Respirazione breve e controllata, senza apnea prolungata.",
+      "tempo": "Distanza 10-30 m",
+      "errori": [
+        {
+          "errore": "Busto che si piega",
+          "correzione": "Petto alto."
+        },
+        {
+          "errore": "Bilanciere che scende sulle braccia",
+          "correzione": "Gomiti piegati e stretti."
+        },
+        {
+          "errore": "Passi lunghi",
+          "correzione": "Passi corti."
+        }
+      ],
+      "cue": [
+        "Petto alto",
+        "Gomiti stretti",
+        "Passi corti",
+        "Respira"
+      ],
+      "regressione_progressione": {
+        "regressione": [
+          "TOT-041 Front rack carry con kettlebell"
+        ],
+        "progressione": []
+      },
+      "precauzioni": "Usare un cuscinetto sul bilanciere e il rack per prenderlo e riappoggiarlo. Chi ha problemi di pressione dovrebbe evitare di trattenere il respiro sotto sforzo. In caso di fastidi o dolore chiedere il parere di un professionista sanitario."
+    },
+    "config_app": {
+      "eredita_da": null,
+      "vista_camera": "laterale",
+      "lato": "auto",
+      "messaggio_posizione": "Esercizio non supportato: chiedi all'istruttore",
+      "messaggio_ok": "",
+      "misure": {},
+      "ripetizione": {},
+      "errori": [],
+      "testi_errori": {},
+      "analizzabilita": "non_analizzabile",
+      "motivo": "La persona si sposta ed esce dall'inquadratura dopo pochi passi: con una camera fissa non è possibile seguire la serie.",
+      "non_rilevabili": [
+        {
+          "errore": "Busto che si piega",
+          "motivo": "Misurabile solo da fermi."
+        }
+      ],
+      "richiesta_motore": [
+        "Camera che segue la persona (come §7.15)."
+      ],
+      "da_calibrare": true
+    }
+  },
+  {
+    "id": "TOT-024",
+    "nome": "Farmer walk con trap bar",
+    "scheda": {
+      "descrizione": "Camminata tenendo una trap bar carica ai lati del corpo. Permette carichi elevati per presa, trapezi e tronco.",
+      "muscoli": {
+        "primari": [
+          "avambracci",
+          "trapezio"
+        ],
+        "secondari": [
+          "addominali",
+          "grande gluteo"
+        ],
+        "stabilizzatori": [
+          "quadricipiti"
+        ]
+      },
+      "partenza": "Dentro la trap bar, la si solleva come uno stacco a braccia tese.",
+      "esecuzione": "Camminata a passi corti per la distanza stabilita, spalle indietro, busto dritto; poi si riappoggia la trap bar piegando le gambe.",
+      "rom": "Isometria del tronco.",
+      "respirazione": "Respirazione regolare, senza apnea prolungata.",
+      "tempo": "Distanza 15-40 m",
+      "errori": [
+        {
+          "errore": "Spalle che cedono in avanti",
+          "correzione": "Spalle indietro e basse."
+        },
+        {
+          "errore": "Busto che si inclina",
+          "correzione": "Busto dritto, passi controllati."
+        },
+        {
+          "errore": "Passi troppo lunghi",
+          "correzione": "Passi corti e veloci."
+        }
+      ],
+      "cue": [
+        "Spalle indietro",
+        "Busto dritto",
+        "Passi corti",
+        "Presa salda"
+      ],
+      "regressione_progressione": {
+        "regressione": [
+          "TOT-032 Farmer walk con manubri"
+        ],
+        "progressione": []
+      },
+      "precauzioni": "Sollevare e riappoggiare con la tecnica dello stacco. Chi ha problemi di pressione dovrebbe evitare di trattenere il respiro sotto sforzo. In caso di fastidi o dolore chiedere il parere di un professionista sanitario."
+    },
+    "config_app": {
+      "eredita_da": null,
+      "vista_camera": "laterale",
+      "lato": "auto",
+      "messaggio_posizione": "Esercizio non supportato: chiedi all'istruttore",
+      "messaggio_ok": "",
+      "misure": {},
+      "ripetizione": {},
+      "errori": [],
+      "testi_errori": {},
+      "analizzabilita": "non_analizzabile",
+      "motivo": "La persona si sposta ed esce dall'inquadratura dopo pochi passi: con una camera fissa non è possibile seguire la serie.",
+      "non_rilevabili": [
+        {
+          "errore": "Postura",
+          "motivo": "Misurabile solo da fermi."
+        }
+      ],
+      "richiesta_motore": [
+        "Camera che segue la persona (come §7.15)."
+      ],
+      "da_calibrare": true
+    }
+  },
+  {
+    "id": "TOT-025",
+    "nome": "Salto con trap bar",
+    "scheda": {
+      "descrizione": "Salto verticale esplosivo tenendo una trap bar leggera, con atterraggio ammortizzato. Sviluppa la potenza di gambe e glutei con un carico.",
+      "muscoli": {
+        "primari": [
+          "quadricipiti",
+          "grande gluteo"
+        ],
+        "secondari": [
+          "polpacci",
+          "ischiocrurali"
+        ],
+        "stabilizzatori": [
+          "addominali",
+          "trapezio"
+        ]
+      },
+      "partenza": "Dentro la trap bar con un carico leggero, impugnature alte, braccia tese.",
+      "esecuzione": "Rapido piegamento a mezzo squat, salto verticale esplosivo, atterraggio morbido piegando anche e ginocchia; pausa e nuova ripetizione.",
+      "rom": "Ginocchio da circa 175° a circa 110-130° nel caricamento.",
+      "respirazione": "Espira nel salto.",
+      "tempo": "Esplosivo",
+      "errori": [
+        {
+          "errore": "Atterraggio rigido",
+          "correzione": "Atterrare morbidi."
+        },
+        {
+          "errore": "Carico eccessivo",
+          "correzione": "Carico leggero: è un esercizio di velocità."
+        },
+        {
+          "errore": "Schiena che si arrotonda",
+          "correzione": "Petto alto."
+        }
+      ],
+      "cue": [
+        "Carica veloce",
+        "Esplodi",
+        "Atterra morbido",
+        "Petto alto"
+      ],
+      "regressione_progressione": {
+        "regressione": [
+          "QUA-002 Squat jump"
+        ],
+        "progressione": []
+      },
+      "precauzioni": "Atterrare con un carico aumenta molto lo stress su ginocchia e schiena: carichi leggeri e superficie adatta. In caso di fastidi o dolore chiedere il parere di un professionista sanitario."
+    },
+    "config_app": {
+      "eredita_da": null,
+      "vista_camera": "laterale",
+      "lato": "auto",
+      "messaggio_posizione": "Esercizio non supportato: chiedi all'istruttore",
+      "messaggio_ok": "",
+      "misure": {},
+      "ripetizione": {},
+      "errori": [],
+      "testi_errori": {},
+      "analizzabilita": "non_analizzabile",
+      "motivo": "A differenza dello squat jump (QUA-002), qui si atterra con un carico in mano: il rischio principale, l'atterraggio con la trap bar, avviene in un istante e non è misurabile. Per sicurezza solo scheda.",
+      "non_rilevabili": [
+        {
+          "errore": "Atterraggio",
+          "motivo": "Avviene in un istante."
+        }
+      ],
+      "richiesta_motore": [
+        "Campo 'solo_scheda' con avviso di sicurezza."
+      ],
+      "da_calibrare": true
+    }
+  },
+  {
+    "id": "TOT-026",
+    "nome": "Thruster con manubri",
+    "scheda": {
+      "descrizione": "Thruster con un manubrio per mano appoggiato sulle spalle. Più semplice da gestire del bilanciere e permette a ogni braccio di muoversi liberamente.",
+      "muscoli": {
+        "primari": [
+          "quadricipiti",
+          "grande gluteo",
+          "deltoide anteriore"
+        ],
+        "secondari": [
+          "tricipite brachiale"
+        ],
+        "stabilizzatori": [
+          "addominali"
+        ]
+      },
+      "partenza": "In piedi, un manubrio per mano appoggiato sulle spalle, gomiti in avanti, piedi alla larghezza delle spalle.",
+      "esecuzione": {
+        "eccentrica": "Squat fino ad anche all'altezza delle ginocchia, manubri sulle spalle.",
+        "pausa": "Nessuna.",
+        "concentrica": "Risalita esplosiva e spinta dei manubri sopra la testa."
+      },
+      "rom": "Come TOT-022 Thruster con bilanciere.",
+      "respirazione": "Inspira scendendo, espira nella spinta.",
+      "tempo": "2-0-1-0 (discesa 2 s, pausa 0 s, salita 1 s, pausa 0 s)",
+      "errori": [
+        {
+          "errore": "Busto che si piega",
+          "correzione": "Petto alto."
+        },
+        {
+          "errore": "Spinta solo con le braccia",
+          "correzione": "Le gambe lanciano i manubri."
+        },
+        {
+          "errore": "Schiena inarcata sopra la testa",
+          "correzione": "Addome contratto."
+        }
+      ],
+      "cue": [
+        "Petto in alto",
+        "Spingi con le gambe",
+        "Braccia bloccate",
+        "Ritmo"
+      ],
+      "regressione_progressione": {
+        "regressione": [
+          "QUA-032 Squat con manubri"
+        ],
+        "progressione": [
+          "TOT-022 Thruster con bilanciere"
+        ]
+      },
+      "precauzioni": "In caso di fastidi o dolore chiedere il parere di un professionista sanitario."
+    },
+    "config_app": {
+      "eredita_da": null,
+      "vista_camera": "laterale",
+      "lato": "auto",
+      "messaggio_posizione": "Mettiti di lato alla camera, corpo intero visibile",
+      "messaggio_ok": "Ottimo thruster!",
+      "misure": {
+        "ginocchio": {
+          "tipo": "angolo",
+          "punti": [
+            "anca",
+            "ginocchio",
+            "caviglia"
+          ]
+        },
+        "busto": {
+          "tipo": "inclinazione",
+          "punti": [
+            "anca",
+            "spalla"
+          ]
+        }
+      },
+      "ripetizione": {
+        "misura": "ginocchio",
+        "direzione": "diminuisce",
+        "posizione_iniziale": 160,
+        "inizio_movimento": 140
+      },
+      "errori": [
+        {
+          "id": "profondita",
+          "messaggio": "Scendi di più",
+          "gravita": "giallo",
+          "momento": "fine",
+          "misura": "ginocchio",
+          "statistica": "minimo",
+          "maggiore_di": 100
+        },
+        {
+          "id": "busto_inclinato",
+          "messaggio": "Petto alto, busto dritto",
+          "gravita": "giallo",
+          "momento": "durante",
+          "misura": "busto",
+          "maggiore_di": 40
+        }
+      ],
+      "testi_errori": {
+        "profondita": {
+          "cosa_succede": "Ti fermi troppo in alto.",
+          "perche_conta": "Con mezza ampiezza il lavoro e la mobilità allenata diminuiscono.",
+          "come_correggere": "Scendi fino ad avere le anche almeno all'altezza delle ginocchia, se la mobilità lo consente.",
+          "frase_da_ricordare": "Anche alle ginocchia."
+        },
+        "busto_inclinato": {
+          "cosa_succede": "Il busto si piega in avanti.",
+          "perche_conta": "Con il carico davanti il busto inclinato carica la zona lombare e rovina la spinta.",
+          "come_correggere": "Manubri fermi sulle spalle, petto in alto, scendi con il bacino tra le ginocchia.",
+          "frase_da_ricordare": "Petto alto."
+        }
+      },
+      "analizzabilita": "parziale",
+      "motivo": "Si conta sull'angolo del ginocchio, come nel front squat: si controllano profondità e busto. La distensione delle braccia sopra la testa avviene dopo che la ripetizione si è chiusa (ginocchio oltre 160°), quindi non è controllata. Con i manubri il busto inclinato è in giallo.",
+      "non_rilevabili": [
+        {
+          "errore": "Braccia distese sopra la testa",
+          "motivo": "La distensione avviene dopo la chiusura della ripetizione."
+        },
+        {
+          "errore": "Schiena inarcata sopra la testa",
+          "motivo": "La curvatura della colonna non è misurabile."
+        }
+      ],
+      "richiesta_motore": [
+        "Statistica estesa fino al picco successivo alla chiusura della ripetizione (come GLU-019)."
+      ],
+      "da_calibrare": true
+    }
+  },
+  {
+    "id": "TOT-027",
+    "nome": "Girata con manubri",
+    "scheda": {
+      "descrizione": "Dalla posizione sospesa o da terra, i manubri vengono portati sulle spalle con una tirata esplosiva delle anche. Versione più semplice della girata con bilanciere.",
+      "muscoli": {
+        "primari": [
+          "grande gluteo",
+          "ischiocrurali"
+        ],
+        "secondari": [
+          "trapezio",
+          "bicipite brachiale"
+        ],
+        "stabilizzatori": [
+          "addominali"
+        ]
+      },
+      "partenza": "In piedi, un manubrio per mano ai lati delle cosce, piedi alla larghezza delle anche.",
+      "esecuzione": "Leggero piegamento delle anche, estensione esplosiva, i manubri salgono vicino al corpo e vengono ricevuti sulle spalle con un piccolo piegamento delle ginocchia.",
+      "rom": "Anca e ginocchio da piegati a estensione completa.",
+      "respirazione": "Espira nella fase esplosiva.",
+      "tempo": "Esplosivo",
+      "errori": [
+        {
+          "errore": "Tirare con le braccia",
+          "correzione": "Le anche lanciano i manubri."
+        },
+        {
+          "errore": "Manubri lontani dal corpo",
+          "correzione": "Manubri vicini."
+        },
+        {
+          "errore": "Ricezione rigida",
+          "correzione": "Piegare le ginocchia nella ricezione."
+        }
+      ],
+      "cue": [
+        "Spingi con le anche",
+        "Manubri vicini",
+        "Ricevi morbido",
+        "Petto alto"
+      ],
+      "regressione_progressione": {
+        "regressione": [
+          "GLU-019 Kettlebell swing"
+        ],
+        "progressione": [
+          "TOT-011 Girata al petto"
+        ]
+      },
+      "precauzioni": "Imparare con carichi leggeri. In caso di fastidi o dolore chiedere il parere di un professionista sanitario."
+    },
+    "config_app": {
+      "eredita_da": null,
+      "vista_camera": "laterale",
+      "lato": "auto",
+      "messaggio_posizione": "Esercizio non supportato: chiedi all'istruttore",
+      "messaggio_ok": "",
+      "misure": {},
+      "ripetizione": {},
+      "errori": [],
+      "testi_errori": {},
+      "analizzabilita": "non_analizzabile",
+      "motivo": "Gesto balistico a più fasi (tirata e incastro o ricezione sopra la testa) che dura meno di un secondo: a 30 fps i punti sono instabili e le fasi non si distinguono. Rischi principali non misurabili: solo scheda.",
+      "non_rilevabili": [
+        {
+          "errore": "Fasi del gesto",
+          "motivo": "Troppo rapide e diverse tra loro."
+        },
+        {
+          "errore": "Schiena arrotondata",
+          "motivo": "La curvatura della colonna non è misurabile."
+        }
+      ],
+      "richiesta_motore": [
+        "Esercizi a più fasi (come §7.12) e camera ad alta frequenza."
+      ],
+      "da_calibrare": true
+    }
+  },
+  {
+    "id": "TOT-028",
+    "nome": "Strappo con manubrio",
+    "scheda": {
+      "descrizione": "Un manubrio viene portato da terra sopra la testa in un unico movimento esplosivo, con un braccio. Allena la potenza di tutto il corpo.",
+      "muscoli": {
+        "primari": [
+          "grande gluteo",
+          "ischiocrurali",
+          "deltoide anteriore"
+        ],
+        "secondari": [
+          "trapezio",
+          "quadricipiti"
+        ],
+        "stabilizzatori": [
+          "addominali",
+          "stabilizzatori della spalla"
+        ]
+      },
+      "partenza": "Piedi alla larghezza delle spalle, manubrio a terra tra i piedi, presa con una mano, schiena tesa.",
+      "esecuzione": "Estensione esplosiva di anche e ginocchia, il manubrio sale vicino al corpo e viene ricevuto a braccio teso sopra la testa; si torna giù controllati.",
+      "rom": "Da piegati a estensione completa con braccio sopra la testa.",
+      "respirazione": "Espira nella fase esplosiva.",
+      "tempo": "Esplosivo",
+      "errori": [
+        {
+          "errore": "Schiena arrotondata nella partenza",
+          "correzione": "Petto alto, schiena tesa."
+        },
+        {
+          "errore": "Tirare con il braccio",
+          "correzione": "Le anche lanciano il manubrio."
+        },
+        {
+          "errore": "Braccio molle sopra la testa",
+          "correzione": "Braccio teso e bloccato."
+        }
+      ],
+      "cue": [
+        "Spingi con le anche",
+        "Manubrio vicino",
+        "Braccio bloccato",
+        "Giù controllato"
+      ],
+      "regressione_progressione": {
+        "regressione": [
+          "TOT-027 Girata con manubri"
+        ],
+        "progressione": [
+          "TOT-037 Strappo con kettlebell"
+        ]
+      },
+      "precauzioni": "Imparare con carichi leggeri. Chi ha fastidi alla spalla dovrebbe evitarlo. In caso di fastidi o dolore chiedere il parere di un professionista sanitario."
+    },
+    "config_app": {
+      "eredita_da": null,
+      "vista_camera": "laterale",
+      "lato": "auto",
+      "messaggio_posizione": "Esercizio non supportato: chiedi all'istruttore",
+      "messaggio_ok": "",
+      "misure": {},
+      "ripetizione": {},
+      "errori": [],
+      "testi_errori": {},
+      "analizzabilita": "non_analizzabile",
+      "motivo": "Gesto balistico a più fasi (tirata e incastro o ricezione sopra la testa) che dura meno di un secondo: a 30 fps i punti sono instabili e le fasi non si distinguono. Rischi principali non misurabili: solo scheda.",
+      "non_rilevabili": [
+        {
+          "errore": "Fasi del gesto",
+          "motivo": "Troppo rapide e diverse tra loro."
+        },
+        {
+          "errore": "Schiena arrotondata",
+          "motivo": "La curvatura della colonna non è misurabile."
+        }
+      ],
+      "richiesta_motore": [
+        "Esercizi a più fasi (come §7.12) e camera ad alta frequenza."
+      ],
+      "da_calibrare": true
+    }
+  },
+  {
+    "id": "TOT-029",
+    "nome": "Devil press",
+    "scheda": {
+      "descrizione": "Burpee con due manubri seguito da un movimento che porta i manubri da terra fino sopra la testa con una spinta delle anche. Esercizio molto intenso per tutto il corpo.",
+      "muscoli": {
+        "primari": [
+          "grande gluteo",
+          "ischiocrurali",
+          "deltoide anteriore"
+        ],
+        "secondari": [
+          "grande pettorale",
+          "tricipite brachiale"
+        ],
+        "stabilizzatori": [
+          "addominali"
+        ]
+      },
+      "partenza": "In piedi, un manubrio per mano.",
+      "esecuzione": "Manubri a terra, burpee con le mani sui manubri, ritorno dei piedi, poi i manubri vengono portati da terra sopra la testa con un'unica spinta delle anche, come uno strappo.",
+      "rom": "Combina burpee e strappo con due manubri.",
+      "respirazione": "Espira nella fase esplosiva.",
+      "tempo": "Esplosivo",
+      "errori": [
+        {
+          "errore": "Schiena arrotondata nella partenza",
+          "correzione": "Petto alto."
+        },
+        {
+          "errore": "Tirare con le braccia",
+          "correzione": "Le anche lanciano i manubri."
+        },
+        {
+          "errore": "Fretta che fa perdere la tecnica",
+          "correzione": "Ritmo sostenibile."
+        }
+      ],
+      "cue": [
+        "Schiena tesa",
+        "Spingi con le anche",
+        "Braccia bloccate",
+        "Ritmo"
+      ],
+      "regressione_progressione": {
+        "regressione": [
+          "TOT-001 Burpee",
+          "TOT-028 Strappo con manubrio"
+        ],
+        "progressione": []
+      },
+      "precauzioni": "Carichi leggeri: la fatica arriva rapidamente. In caso di fastidi o dolore chiedere il parere di un professionista sanitario."
+    },
+    "config_app": {
+      "eredita_da": null,
+      "vista_camera": "laterale",
+      "lato": "auto",
+      "messaggio_posizione": "Esercizio non supportato: chiedi all'istruttore",
+      "messaggio_ok": "",
+      "misure": {},
+      "ripetizione": {},
+      "errori": [],
+      "testi_errori": {},
+      "analizzabilita": "non_analizzabile",
+      "motivo": "Esercizio a più fasi (burpee, poi slancio sopra la testa): le fasi sono diverse e veloci e il rischio per la schiena nello slancio non è misurabile. Solo scheda.",
+      "non_rilevabili": [
+        {
+          "errore": "Fasi del gesto",
+          "motivo": "Troppo rapide e diverse tra loro."
+        },
+        {
+          "errore": "Schiena arrotondata",
+          "motivo": "La curvatura della colonna non è misurabile."
+        }
+      ],
+      "richiesta_motore": [
+        "Esercizi a più fasi (come §7.12) e camera ad alta frequenza."
+      ],
+      "da_calibrare": true
+    }
+  },
+  {
+    "id": "TOT-030",
+    "nome": "Man maker",
+    "scheda": {
+      "descrizione": "Sequenza con due manubri: piegamento, rematore con ogni braccio, ritorno in piedi con girata e spinta sopra la testa. Esercizio completo e molto impegnativo.",
+      "muscoli": {
+        "primari": [
+          "grande pettorale",
+          "gran dorsale",
+          "quadricipiti",
+          "deltoide anteriore"
+        ],
+        "secondari": [
+          "tricipite brachiale",
+          "bicipite brachiale"
+        ],
+        "stabilizzatori": [
+          "addominali"
+        ]
+      },
+      "partenza": "In piedi, un manubrio per mano.",
+      "esecuzione": "Mani sui manubri a terra, piedi indietro in plank, piegamento, rematore destro e sinistro, piedi alle mani, girata dei manubri sulle spalle con squat, spinta sopra la testa.",
+      "rom": "Sequenza di più movimenti.",
+      "respirazione": "Espira nella fase esplosiva.",
+      "tempo": "Controllato",
+      "errori": [
+        {
+          "errore": "Bacino che ruota nei rematori",
+          "correzione": "Piedi larghi, addome contratto."
+        },
+        {
+          "errore": "Schiena arrotondata nella girata",
+          "correzione": "Petto alto."
+        },
+        {
+          "errore": "Fretta",
+          "correzione": "Ogni fase controllata."
+        }
+      ],
+      "cue": [
+        "Plank dritto",
+        "Bacino fermo",
+        "Petto alto",
+        "Una fase alla volta"
+      ],
+      "regressione_progressione": {
+        "regressione": [
+          "TOT-031 Renegade row"
+        ],
+        "progressione": []
+      },
+      "precauzioni": "Carichi leggeri, manubri stabili a terra (esagonali). In caso di fastidi o dolore chiedere il parere di un professionista sanitario."
+    },
+    "config_app": {
+      "eredita_da": null,
+      "vista_camera": "laterale",
+      "lato": "auto",
+      "messaggio_posizione": "Esercizio non supportato: chiedi all'istruttore",
+      "messaggio_ok": "",
+      "misure": {},
+      "ripetizione": {},
+      "errori": [],
+      "testi_errori": {},
+      "analizzabilita": "non_analizzabile",
+      "motivo": "Sequenza di cinque movimenti diversi in una ripetizione: il motore conta una sola misura e non può seguire le fasi. Solo scheda.",
+      "non_rilevabili": [
+        {
+          "errore": "Fasi del gesto",
+          "motivo": "Troppo rapide e diverse tra loro."
+        },
+        {
+          "errore": "Schiena arrotondata",
+          "motivo": "La curvatura della colonna non è misurabile."
+        }
+      ],
+      "richiesta_motore": [
+        "Esercizi a più fasi (come §7.12) e camera ad alta frequenza."
+      ],
+      "da_calibrare": true
+    }
+  },
+  {
+    "id": "TOT-031",
+    "nome": "Renegade row",
+    "scheda": {
+      "descrizione": "In plank sulle mani appoggiate a due manubri, si tira un manubrio al fianco alternando le braccia. Allena dorso, addome e stabilità contro la rotazione.",
+      "muscoli": {
+        "primari": [
+          "gran dorsale",
+          "addominali"
+        ],
+        "secondari": [
+          "obliqui",
+          "tricipite brachiale",
+          "bicipite brachiale"
+        ],
+        "stabilizzatori": [
+          "glutei",
+          "dentato anteriore"
+        ]
+      },
+      "partenza": "Plank sulle mani impugnando due manubri esagonali alla larghezza delle spalle, piedi larghi per stabilità, corpo in linea.",
+      "esecuzione": {
+        "concentrica": "Si tira un manubrio verso il fianco con il gomito vicino al busto, mantenendo bacino e spalle fermi.",
+        "pausa": "Breve pausa in alto.",
+        "eccentrica": "Si riappoggia il manubrio controllato e si cambia braccio."
+      },
+      "rom": "Gomito da circa 170° a circa 70-90°; corpo in linea.",
+      "respirazione": "Espira tirando, inspira appoggiando.",
+      "tempo": "1-1-2-0 (tirata 1 s, pausa 1 s, ritorno 2 s, pausa 0 s)",
+      "errori": [
+        {
+          "errore": "Bacino che ruota",
+          "correzione": "Piedi più larghi, glutei contratti."
+        },
+        {
+          "errore": "Bacino che cede",
+          "correzione": "Corpo in linea."
+        },
+        {
+          "errore": "Manubrio che sbatte a terra",
+          "correzione": "Appoggiare controllati."
+        }
+      ],
+      "cue": [
+        "Bacino fermo",
+        "Gomito al fianco",
+        "Corpo in linea",
+        "Piedi larghi"
+      ],
+      "regressione_progressione": {
+        "regressione": [
+          "DOR-012 Rematore con manubrio a un braccio"
+        ],
+        "progressione": [
+          "TOT-030 Man maker"
+        ]
+      },
+      "precauzioni": "Usare manubri esagonali e stabili. Chi ha fastidi ai polsi può limitare le ripetizioni. In caso di fastidi o dolore chiedere il parere di un professionista sanitario."
+    },
+    "config_app": {
+      "eredita_da": null,
+      "vista_camera": "laterale",
+      "lato": "auto",
+      "messaggio_posizione": "Camera a terra di lato, corpo intero visibile",
+      "messaggio_ok": "Ottimo rematore!",
+      "misure": {
+        "gomito": {
+          "tipo": "angolo",
+          "punti": [
+            "spalla",
+            "gomito",
+            "polso"
+          ]
+        },
+        "corpo": {
+          "tipo": "angolo",
+          "punti": [
+            "spalla",
+            "anca",
+            "caviglia"
+          ]
+        }
+      },
+      "ripetizione": {
+        "misura": "gomito",
+        "direzione": "diminuisce",
+        "posizione_iniziale": 150,
+        "inizio_movimento": 130
+      },
+      "errori": [
+        {
+          "id": "ampiezza",
+          "messaggio": "Manubrio al fianco",
+          "gravita": "giallo",
+          "momento": "fine",
+          "misura": "gomito",
+          "statistica": "minimo",
+          "maggiore_di": 100
+        },
+        {
+          "id": "allineamento",
+          "messaggio": "Corpo in linea retta",
+          "gravita": "rosso",
+          "momento": "durante",
+          "misura": "corpo",
+          "minore_di": 155
+        },
+        {
+          "id": "troppo_veloce",
+          "messaggio": "Appoggia più lentamente",
+          "gravita": "giallo",
+          "momento": "fine",
+          "misura": "durata",
+          "statistica": "massimo",
+          "minore_di": 1.5
+        }
+      ],
+      "testi_errori": {
+        "ampiezza": {
+          "cosa_succede": "Il manubrio sale poco.",
+          "perche_conta": "Il dorso lavora poco.",
+          "come_correggere": "Tira il manubrio fino al fianco, gomito vicino al busto.",
+          "frase_da_ricordare": "Gomito al fianco."
+        },
+        "allineamento": {
+          "cosa_succede": "Il corpo non è in linea: bacino che cede o sedere alto.",
+          "perche_conta": "Il carico passa sulla zona lombare.",
+          "come_correggere": "Stringi glutei e addome: corpo dritto dalle spalle ai talloni.",
+          "frase_da_ricordare": "Corpo come una tavola."
+        },
+        "troppo_veloce": {
+          "cosa_succede": "La ripetizione è troppo rapida.",
+          "perche_conta": "Il manubrio sbatte a terra e il bacino si sbilancia.",
+          "come_correggere": "Appoggia il manubrio in due secondi.",
+          "frase_da_ricordare": "Giù controllato."
+        }
+      },
+      "analizzabilita": "parziale",
+      "motivo": "Di lato si leggono la flessione del gomito del braccio verso la camera e l'allineamento del corpo. Si contano solo le ripetizioni di quel braccio (metà del totale). Il bacino che ruota, il rischio tipico, è una rotazione verso la camera e non è misurabile. L'allineamento è in rosso come nei piegamenti (PET-001).",
+      "non_rilevabili": [
+        {
+          "errore": "Bacino che ruota",
+          "motivo": "Rotazione verso la camera."
+        },
+        {
+          "errore": "Arto di lavoro non riconosciuto",
+          "motivo": "Come PET-006: il motore sceglie il lato più visibile, non quello che lavora."
+        }
+      ],
+      "richiesta_motore": [
+        "Come PET-006: campo 'lato_lavoro'.",
+        "Conteggio alternato: sommare le ripetizioni dei due lati."
+      ],
+      "da_calibrare": true
+    }
+  },
+  {
+    "id": "TOT-032",
+    "nome": "Farmer walk con manubri",
+    "scheda": {
+      "descrizione": "Camminata tenendo un manubrio pesante per mano ai lati del corpo. Allena la presa, i trapezi e la stabilità del tronco.",
+      "muscoli": {
+        "primari": [
+          "avambracci",
+          "trapezio"
+        ],
+        "secondari": [
+          "addominali",
+          "grande gluteo"
+        ],
+        "stabilizzatori": [
+          "quadricipiti"
+        ]
+      },
+      "partenza": "In piedi tra due manubri pesanti, li si solleva piegando le gambe con la schiena tesa.",
+      "esecuzione": "Camminata a passi corti per la distanza stabilita, spalle indietro, busto dritto; poi si riappoggiano i manubri piegando le gambe.",
+      "rom": "Isometria del tronco.",
+      "respirazione": "Respirazione regolare, senza apnea prolungata.",
+      "tempo": "Distanza 15-40 m",
+      "errori": [
+        {
+          "errore": "Spalle che cedono in avanti",
+          "correzione": "Spalle indietro e basse."
+        },
+        {
+          "errore": "Busto che si inclina",
+          "correzione": "Busto dritto, passi controllati."
+        },
+        {
+          "errore": "Passi troppo lunghi",
+          "correzione": "Passi corti e veloci."
+        }
+      ],
+      "cue": [
+        "Spalle indietro",
+        "Busto dritto",
+        "Passi corti",
+        "Presa salda"
+      ],
+      "regressione_progressione": {
+        "regressione": [],
+        "progressione": [
+          "TOT-024 Farmer walk con trap bar"
+        ]
+      },
+      "precauzioni": "Sollevare e riappoggiare i manubri con la schiena tesa. In caso di fastidi o dolore chiedere il parere di un professionista sanitario."
+    },
+    "config_app": {
+      "eredita_da": null,
+      "vista_camera": "laterale",
+      "lato": "auto",
+      "messaggio_posizione": "Esercizio non supportato: chiedi all'istruttore",
+      "messaggio_ok": "",
+      "misure": {},
+      "ripetizione": {},
+      "errori": [],
+      "testi_errori": {},
+      "analizzabilita": "non_analizzabile",
+      "motivo": "La persona si sposta ed esce dall'inquadratura dopo pochi passi: con una camera fissa non è possibile seguire la serie.",
+      "non_rilevabili": [
+        {
+          "errore": "Postura",
+          "motivo": "Misurabile solo da fermi."
+        }
+      ],
+      "richiesta_motore": [
+        "Camera che segue la persona (come §7.15)."
+      ],
+      "da_calibrare": true
+    }
+  },
+  {
+    "id": "TOT-033",
+    "nome": "Camminata con manubri sopra la testa",
+    "scheda": {
+      "descrizione": "Camminata tenendo uno o due manubri a braccia tese sopra la testa. Allena la stabilità delle spalle e del tronco.",
+      "muscoli": {
+        "primari": [
+          "deltoidi",
+          "trapezio"
+        ],
+        "secondari": [
+          "addominali",
+          "tricipite brachiale"
+        ],
+        "stabilizzatori": [
+          "stabilizzatori della spalla"
+        ]
+      },
+      "partenza": "In piedi con uno o due manubri a braccia tese sopra la testa, braccia vicino alle orecchie.",
+      "esecuzione": "Camminata a passi corti per la distanza stabilita mantenendo le braccia tese e il busto dritto.",
+      "rom": "Isometria di spalle e tronco.",
+      "respirazione": "Respirazione regolare, senza apnea prolungata.",
+      "tempo": "Distanza 10-30 m",
+      "errori": [
+        {
+          "errore": "Schiena inarcata",
+          "correzione": "Addome contratto, costole basse."
+        },
+        {
+          "errore": "Braccia che si piegano o vanno avanti",
+          "correzione": "Braccia tese sopra la testa."
+        },
+        {
+          "errore": "Passi lunghi",
+          "correzione": "Passi corti."
+        }
+      ],
+      "cue": [
+        "Braccia bloccate",
+        "Costole basse",
+        "Passi corti",
+        "Respira"
+      ],
+      "regressione_progressione": {
+        "regressione": [
+          "TOT-032 Farmer walk con manubri"
+        ],
+        "progressione": []
+      },
+      "precauzioni": "Carichi moderati. Chi ha fastidi alle spalle dovrebbe evitarlo. In caso di fastidi o dolore chiedere il parere di un professionista sanitario."
+    },
+    "config_app": {
+      "eredita_da": null,
+      "vista_camera": "laterale",
+      "lato": "auto",
+      "messaggio_posizione": "Esercizio non supportato: chiedi all'istruttore",
+      "messaggio_ok": "",
+      "misure": {},
+      "ripetizione": {},
+      "errori": [],
+      "testi_errori": {},
+      "analizzabilita": "non_analizzabile",
+      "motivo": "La persona si sposta ed esce dall'inquadratura dopo pochi passi: con una camera fissa non è possibile seguire la serie.",
+      "non_rilevabili": [
+        {
+          "errore": "Braccia e schiena",
+          "motivo": "Misurabili solo da fermi."
+        }
+      ],
+      "richiesta_motore": [
+        "Camera che segue la persona (come §7.15)."
+      ],
+      "da_calibrare": true
+    }
+  },
+  {
+    "id": "TOT-034",
+    "nome": "Turkish get-up",
+    "scheda": {
+      "descrizione": "Da sdraiati con un kettlebell a braccio teso, ci si alza in piedi passando per una sequenza di posizioni, sempre con il peso sopra la testa, e si torna giù. Allena stabilità della spalla, tronco e coordinazione.",
+      "muscoli": {
+        "primari": [
+          "deltoidi",
+          "addominali",
+          "obliqui"
+        ],
+        "secondari": [
+          "grande gluteo",
+          "tricipite brachiale"
+        ],
+        "stabilizzatori": [
+          "stabilizzatori della spalla"
+        ]
+      },
+      "partenza": "Supini, kettlebell a braccio teso sopra la spalla, gamba dello stesso lato piegata, l'altra gamba e il braccio libero a terra a 45°.",
+      "esecuzione": "Sequenza: appoggio sul gomito, sulla mano, ponte delle anche, gamba libera portata sotto il corpo in ginocchio, busto dritto, in piedi; poi la stessa sequenza al contrario. Lo sguardo resta sul kettlebell.",
+      "rom": "Sequenza di più posizioni con il braccio sempre verticale.",
+      "respirazione": "Respirazione regolare tra una posizione e l'altra.",
+      "tempo": "Controllato",
+      "errori": [
+        {
+          "errore": "Braccio che si piega o si inclina",
+          "correzione": "Braccio teso e verticale."
+        },
+        {
+          "errore": "Fretta tra le posizioni",
+          "correzione": "Una posizione alla volta."
+        },
+        {
+          "errore": "Sguardo che perde il kettlebell",
+          "correzione": "Occhi sul kettlebell."
+        }
+      ],
+      "cue": [
+        "Braccio verticale",
+        "Occhi sul peso",
+        "Una posizione alla volta",
+        "Respira"
+      ],
+      "regressione_progressione": {
+        "regressione": [
+          "TOT-039 Halo con kettlebell"
+        ],
+        "progressione": []
+      },
+      "precauzioni": "Imparare senza peso o con una scarpa in equilibrio sul pugno, poi con carichi leggeri. In caso di fastidi o dolore chiedere il parere di un professionista sanitario."
+    },
+    "config_app": {
+      "eredita_da": null,
+      "vista_camera": "laterale",
+      "lato": "auto",
+      "messaggio_posizione": "Esercizio non supportato: chiedi all'istruttore",
+      "messaggio_ok": "",
+      "misure": {},
+      "ripetizione": {},
+      "errori": [],
+      "testi_errori": {},
+      "analizzabilita": "non_analizzabile",
+      "motivo": "Sequenza di sette o più posizioni diverse, da sdraiati a in piedi: il motore conta una sola misura e da sdraiati la posa è poco affidabile. Solo scheda.",
+      "non_rilevabili": [
+        {
+          "errore": "Braccio verticale",
+          "motivo": "Cambia riferimento a ogni posizione."
+        }
+      ],
+      "richiesta_motore": [
+        "Esercizi a più fasi (come §7.12)."
+      ],
+      "da_calibrare": true
+    }
+  },
+  {
+    "id": "TOT-035",
+    "nome": "Girata con kettlebell",
+    "scheda": {
+      "descrizione": "Il kettlebell viene portato da tra le gambe alla posizione di rack sulla spalla con una spinta delle anche. Insieme allo swing, è la base del lavoro balistico con il kettlebell.",
+      "muscoli": {
+        "primari": [
+          "grande gluteo",
+          "ischiocrurali"
+        ],
+        "secondari": [
+          "avambracci",
+          "bicipite brachiale"
+        ],
+        "stabilizzatori": [
+          "addominali"
+        ]
+      },
+      "partenza": "Come GLU-021 Swing a una mano, con un kettlebell a terra davanti ai piedi.",
+      "esecuzione": "Swing all'indietro tra le gambe, spinta delle anche, il kettlebell sale vicino al corpo e la mano lo avvolge appoggiandolo in rack su avambraccio e spalla senza sbattere.",
+      "rom": "Anca da piegata a estensione completa.",
+      "respirazione": "Espira nella fase esplosiva.",
+      "tempo": "Esplosivo",
+      "errori": [
+        {
+          "errore": "Kettlebell che sbatte sull'avambraccio",
+          "correzione": "Avvolgere la mano attorno all'ansa."
+        },
+        {
+          "errore": "Tirare con il braccio",
+          "correzione": "Le anche lanciano il kettlebell."
+        },
+        {
+          "errore": "Schiena arrotondata",
+          "correzione": "Petto alto."
+        }
+      ],
+      "cue": [
+        "Spingi con le anche",
+        "Kettlebell vicino",
+        "Avvolgi la mano",
+        "Rack morbido"
+      ],
+      "regressione_progressione": {
+        "regressione": [
+          "GLU-021 Swing a una mano"
+        ],
+        "progressione": [
+          "TOT-036 Girata e spinta con kettlebell"
+        ]
+      },
+      "precauzioni": "Imparare con carichi leggeri. In caso di fastidi o dolore chiedere il parere di un professionista sanitario."
+    },
+    "config_app": {
+      "eredita_da": null,
+      "vista_camera": "laterale",
+      "lato": "auto",
+      "messaggio_posizione": "Mettiti di lato alla camera, corpo intero visibile",
+      "messaggio_ok": "Ottima girata!",
+      "misure": {
+        "anca": {
+          "tipo": "angolo",
+          "punti": [
+            "spalla",
+            "anca",
+            "ginocchio"
+          ]
+        },
+        "ginocchio": {
+          "tipo": "angolo",
+          "punti": [
+            "anca",
+            "ginocchio",
+            "caviglia"
+          ]
+        }
+      },
+      "ripetizione": {
+        "misura": "anca",
+        "direzione": "diminuisce",
+        "posizione_iniziale": 165,
+        "inizio_movimento": 140
+      },
+      "errori": [
+        {
+          "id": "squat",
+          "messaggio": "Anche indietro, non giù",
+          "gravita": "giallo",
+          "momento": "fine",
+          "misura": "ginocchio",
+          "statistica": "minimo",
+          "minore_di": 125
+        }
+      ],
+      "testi_errori": {
+        "squat": {
+          "cosa_succede": "Le ginocchia si piegano molto: lo swing diventa uno squat.",
+          "perche_conta": "La spinta deve venire dalle anche: con lo squat lavorano i quadricipiti e il gesto perde potenza.",
+          "come_correggere": "Spingi le anche indietro come per chiudere una porta con il sedere, ginocchia appena piegate.",
+          "frase_da_ricordare": "Anche indietro, non giù."
+        }
+      },
+      "analizzabilita": "parziale",
+      "motivo": "Come GLU-019 Kettlebell swing: il conteggio e il controllo dello squat si basano sull'anca, che lavora allo stesso modo. Si analizza il lato verso la camera. La ricezione in rack e il colpo sull'avambraccio non sono misurabili.",
+      "non_rilevabili": [
+        {
+          "errore": "Kettlebell che sbatte sull'avambraccio",
+          "motivo": "Il kettlebell non è rilevato."
+        },
+        {
+          "errore": "Schiena arrotondata",
+          "motivo": "La curvatura della colonna non è misurabile."
+        },
+        {
+          "errore": "Arto di lavoro non riconosciuto",
+          "motivo": "Come PET-006: il motore sceglie il lato più visibile, non quello che lavora."
+        }
+      ],
+      "richiesta_motore": [
+        "Modalità balistica (come §4): nessuna attesa di 0,5 s in partenza e finestra massima fissa, per gesti continui.",
+        "Come PET-006: campo 'lato_lavoro'."
+      ],
+      "da_calibrare": true
+    }
+  },
+  {
+    "id": "TOT-036",
+    "nome": "Girata e spinta con kettlebell",
+    "scheda": {
+      "descrizione": "Girata con kettlebell seguita da una spinta sopra la testa a ogni ripetizione (long cycle). Molto usata nello sport del kettlebell per la resistenza.",
+      "muscoli": {
+        "primari": [
+          "grande gluteo",
+          "ischiocrurali",
+          "deltoide anteriore"
+        ],
+        "secondari": [
+          "tricipite brachiale"
+        ],
+        "stabilizzatori": [
+          "addominali"
+        ]
+      },
+      "partenza": "Come TOT-035.",
+      "esecuzione": "Girata come TOT-035, spinta sopra la testa (con o senza aiuto delle gambe), ritorno in rack e poi tra le gambe.",
+      "rom": "Come TOT-035, più la spinta sopra la testa.",
+      "respirazione": "Espira nella fase esplosiva.",
+      "tempo": "Esplosivo",
+      "errori": [
+        {
+          "errore": "Schiena inarcata nella spinta",
+          "correzione": "Addome contratto."
+        },
+        {
+          "errore": "Kettlebell che sbatte",
+          "correzione": "Rack morbido."
+        },
+        {
+          "errore": "Tirare con il braccio",
+          "correzione": "Le anche lanciano."
+        }
+      ],
+      "cue": [
+        "Spingi con le anche",
+        "Rack morbido",
+        "Braccio bloccato",
+        "Ritmo"
+      ],
+      "regressione_progressione": {
+        "regressione": [
+          "TOT-035 Girata con kettlebell"
+        ],
+        "progressione": []
+      },
+      "precauzioni": "Imparare con carichi leggeri. Chi ha fastidi alle spalle dovrebbe evitarlo. In caso di fastidi o dolore chiedere il parere di un professionista sanitario."
+    },
+    "config_app": {
+      "eredita_da": "TOT-035",
+      "vista_camera": "laterale",
+      "lato": "auto",
+      "messaggio_posizione": "Esercizio non supportato: chiedi all'istruttore",
+      "messaggio_ok": "",
+      "misure": {},
+      "ripetizione": {},
+      "errori": [],
+      "testi_errori": {},
+      "analizzabilita": "non_analizzabile",
+      "motivo": "Gesto balistico a più fasi (tirata e incastro o ricezione sopra la testa) che dura meno di un secondo: a 30 fps i punti sono instabili e le fasi non si distinguono. Rischi principali non misurabili: solo scheda. Nota per il motore: con 'non_analizzabile' non va applicata nessuna regola ereditata.",
+      "non_rilevabili": [
+        {
+          "errore": "Fasi del gesto",
+          "motivo": "Troppo rapide e diverse tra loro."
+        },
+        {
+          "errore": "Schiena arrotondata",
+          "motivo": "La curvatura della colonna non è misurabile."
+        }
+      ],
+      "richiesta_motore": [
+        "Esercizi a più fasi (come §7.12) e camera ad alta frequenza."
+      ],
+      "da_calibrare": true
+    }
+  },
+  {
+    "id": "TOT-037",
+    "nome": "Strappo con kettlebell",
+    "scheda": {
+      "descrizione": "Il kettlebell viene portato da tra le gambe sopra la testa in un unico movimento, a braccio teso. Esercizio avanzato di potenza e resistenza.",
+      "muscoli": {
+        "primari": [
+          "grande gluteo",
+          "ischiocrurali",
+          "deltoide anteriore"
+        ],
+        "secondari": [
+          "trapezio",
+          "avambracci"
+        ],
+        "stabilizzatori": [
+          "stabilizzatori della spalla"
+        ]
+      },
+      "partenza": "Come TOT-035.",
+      "esecuzione": "Swing all'indietro, spinta esplosiva delle anche, il kettlebell sale vicino al corpo e la mano lo avvolge in alto ricevendolo a braccio teso sopra la testa senza sbattere; discesa controllata tra le gambe.",
+      "rom": "Anca da piegata a estensione completa, braccio sopra la testa.",
+      "respirazione": "Espira nella fase esplosiva.",
+      "tempo": "Esplosivo",
+      "errori": [
+        {
+          "errore": "Kettlebell che sbatte sull'avambraccio",
+          "correzione": "Avvolgere la mano in alto."
+        },
+        {
+          "errore": "Braccio molle sopra la testa",
+          "correzione": "Braccio teso."
+        },
+        {
+          "errore": "Schiena arrotondata in basso",
+          "correzione": "Petto alto."
+        }
+      ],
+      "cue": [
+        "Spingi con le anche",
+        "Kettlebell vicino",
+        "Avvolgi in alto",
+        "Braccio bloccato"
+      ],
+      "regressione_progressione": {
+        "regressione": [
+          "TOT-035 Girata con kettlebell"
+        ],
+        "progressione": []
+      },
+      "precauzioni": "Esercizio avanzato: imparare prima swing e girata. Chi ha fastidi alle spalle dovrebbe evitarlo. In caso di fastidi o dolore chiedere il parere di un professionista sanitario."
+    },
+    "config_app": {
+      "eredita_da": null,
+      "vista_camera": "laterale",
+      "lato": "auto",
+      "messaggio_posizione": "Esercizio non supportato: chiedi all'istruttore",
+      "messaggio_ok": "",
+      "misure": {},
+      "ripetizione": {},
+      "errori": [],
+      "testi_errori": {},
+      "analizzabilita": "non_analizzabile",
+      "motivo": "Gesto balistico a più fasi (tirata e incastro o ricezione sopra la testa) che dura meno di un secondo: a 30 fps i punti sono instabili e le fasi non si distinguono. Rischi principali non misurabili: solo scheda.",
+      "non_rilevabili": [
+        {
+          "errore": "Fasi del gesto",
+          "motivo": "Troppo rapide e diverse tra loro."
+        },
+        {
+          "errore": "Schiena arrotondata",
+          "motivo": "La curvatura della colonna non è misurabile."
+        }
+      ],
+      "richiesta_motore": [
+        "Esercizi a più fasi (come §7.12) e camera ad alta frequenza."
+      ],
+      "da_calibrare": true
+    }
+  },
+  {
+    "id": "TOT-038",
+    "nome": "Thruster con kettlebell",
+    "scheda": {
+      "descrizione": "Thruster con uno o due kettlebell in posizione di rack. Il carico vicino al corpo rende il movimento più fluido rispetto ai manubri.",
+      "muscoli": {
+        "primari": [
+          "quadricipiti",
+          "grande gluteo",
+          "deltoide anteriore"
+        ],
+        "secondari": [
+          "tricipite brachiale"
+        ],
+        "stabilizzatori": [
+          "addominali",
+          "avambracci"
+        ]
+      },
+      "partenza": "Uno o due kettlebell in rack sulle spalle, gomiti vicini al busto, piedi alla larghezza delle spalle.",
+      "esecuzione": {
+        "eccentrica": "Squat fino ad anche all'altezza delle ginocchia, kettlebell in rack.",
+        "pausa": "Nessuna.",
+        "concentrica": "Risalita esplosiva e spinta dei kettlebell sopra la testa."
+      },
+      "rom": "Come TOT-022 Thruster con bilanciere.",
+      "respirazione": "Inspira scendendo, espira nella spinta.",
+      "tempo": "2-0-1-0 (discesa 2 s, pausa 0 s, salita 1 s, pausa 0 s)",
+      "errori": [
+        {
+          "errore": "Busto che si piega",
+          "correzione": "Petto alto."
+        },
+        {
+          "errore": "Kettlebell che cadono in avanti",
+          "correzione": "Gomiti stretti."
+        },
+        {
+          "errore": "Schiena inarcata sopra la testa",
+          "correzione": "Addome contratto."
+        }
+      ],
+      "cue": [
+        "Petto in alto",
+        "Gomiti stretti",
+        "Spingi con le gambe",
+        "Braccia bloccate"
+      ],
+      "regressione_progressione": {
+        "regressione": [
+          "QUA-040 Front squat con kettlebell"
+        ],
+        "progressione": [
+          "TOT-022 Thruster con bilanciere"
+        ]
+      },
+      "precauzioni": "In caso di fastidi o dolore chiedere il parere di un professionista sanitario."
+    },
+    "config_app": {
+      "eredita_da": null,
+      "vista_camera": "laterale",
+      "lato": "auto",
+      "messaggio_posizione": "Mettiti di lato alla camera, corpo intero visibile",
+      "messaggio_ok": "Ottimo thruster!",
+      "misure": {
+        "ginocchio": {
+          "tipo": "angolo",
+          "punti": [
+            "anca",
+            "ginocchio",
+            "caviglia"
+          ]
+        },
+        "busto": {
+          "tipo": "inclinazione",
+          "punti": [
+            "anca",
+            "spalla"
+          ]
+        }
+      },
+      "ripetizione": {
+        "misura": "ginocchio",
+        "direzione": "diminuisce",
+        "posizione_iniziale": 160,
+        "inizio_movimento": 140
+      },
+      "errori": [
+        {
+          "id": "profondita",
+          "messaggio": "Scendi di più",
+          "gravita": "giallo",
+          "momento": "fine",
+          "misura": "ginocchio",
+          "statistica": "minimo",
+          "maggiore_di": 100
+        },
+        {
+          "id": "busto_inclinato",
+          "messaggio": "Petto alto, busto dritto",
+          "gravita": "giallo",
+          "momento": "durante",
+          "misura": "busto",
+          "maggiore_di": 40
+        }
+      ],
+      "testi_errori": {
+        "profondita": {
+          "cosa_succede": "Ti fermi troppo in alto.",
+          "perche_conta": "Con mezza ampiezza il lavoro e la mobilità allenata diminuiscono.",
+          "come_correggere": "Scendi fino ad avere le anche almeno all'altezza delle ginocchia, se la mobilità lo consente.",
+          "frase_da_ricordare": "Anche alle ginocchia."
+        },
+        "busto_inclinato": {
+          "cosa_succede": "Il busto si piega in avanti.",
+          "perche_conta": "Con il carico davanti il busto inclinato carica la zona lombare e rovina la spinta.",
+          "come_correggere": "Kettlebell stretti al petto, petto in alto, scendi con il bacino tra le ginocchia.",
+          "frase_da_ricordare": "Petto alto."
+        }
+      },
+      "analizzabilita": "parziale",
+      "motivo": "Come TOT-026: stesse misure e soglie. I kettlebell in rack possono coprire le spalle.",
+      "non_rilevabili": [
+        {
+          "errore": "Braccia distese sopra la testa",
+          "motivo": "La distensione avviene dopo la chiusura della ripetizione."
+        },
+        {
+          "errore": "Schiena inarcata sopra la testa",
+          "motivo": "La curvatura della colonna non è misurabile."
+        }
+      ],
+      "richiesta_motore": [
+        "Statistica estesa fino al picco successivo alla chiusura della ripetizione (come GLU-019)."
+      ],
+      "da_calibrare": true
+    }
+  },
+  {
+    "id": "TOT-039",
+    "nome": "Halo con kettlebell",
+    "scheda": {
+      "descrizione": "Si fa girare un kettlebell tenuto per le anse attorno alla testa, vicino al collo, in un senso e nell'altro. Allena la mobilità e la stabilità delle spalle.",
+      "muscoli": {
+        "primari": [
+          "deltoidi",
+          "trapezio"
+        ],
+        "secondari": [
+          "addominali"
+        ],
+        "stabilizzatori": [
+          "stabilizzatori della spalla"
+        ]
+      },
+      "partenza": "In piedi o in ginocchio, kettlebell tenuto capovolto per le anse davanti al petto.",
+      "esecuzione": "Il kettlebell gira attorno alla testa passando vicino al collo e dietro la nuca, poi torna davanti; si alterna il senso.",
+      "rom": "Rotazione completa delle braccia attorno alla testa.",
+      "respirazione": "Respirazione regolare.",
+      "tempo": "Controllato",
+      "errori": [
+        {
+          "errore": "Kettlebell lontano dalla testa",
+          "correzione": "Passare vicino al collo."
+        },
+        {
+          "errore": "Busto che si inarca o ruota",
+          "correzione": "Addome contratto, busto fermo."
+        },
+        {
+          "errore": "Movimento veloce",
+          "correzione": "Lento e controllato."
+        }
+      ],
+      "cue": [
+        "Vicino alla testa",
+        "Busto fermo",
+        "Lento",
+        "Cambia senso"
+      ],
+      "regressione_progressione": {
+        "regressione": [],
+        "progressione": []
+      },
+      "precauzioni": "Carichi leggeri: il kettlebell passa vicino alla testa. In caso di fastidi o dolore chiedere il parere di un professionista sanitario."
+    },
+    "config_app": {
+      "eredita_da": null,
+      "vista_camera": "laterale",
+      "lato": "auto",
+      "messaggio_posizione": "Esercizio non supportato: chiedi all'istruttore",
+      "messaggio_ok": "",
+      "misure": {},
+      "ripetizione": {},
+      "errori": [],
+      "testi_errori": {},
+      "analizzabilita": "non_analizzabile",
+      "motivo": "Il kettlebell gira attorno alla testa: il movimento è una rotazione in profondità e le mani passano dietro la testa, fuori vista. Non c'è un angolo da contare.",
+      "non_rilevabili": [
+        {
+          "errore": "Giro attorno alla testa",
+          "motivo": "Movimento in profondità."
+        }
+      ],
+      "richiesta_motore": [
+        "Camera dall'alto (come §7.11)."
+      ],
+      "da_calibrare": true
+    }
+  },
+  {
+    "id": "TOT-040",
+    "nome": "Farmer walk con kettlebell",
+    "scheda": {
+      "descrizione": "Camminata tenendo un kettlebell pesante per mano ai lati del corpo. Allena presa, trapezi e stabilità del tronco.",
+      "muscoli": {
+        "primari": [
+          "avambracci",
+          "trapezio"
+        ],
+        "secondari": [
+          "addominali",
+          "grande gluteo"
+        ],
+        "stabilizzatori": [
+          "quadricipiti"
+        ]
+      },
+      "partenza": "In piedi tra due kettlebell, li si solleva piegando le gambe con la schiena tesa.",
+      "esecuzione": "Camminata a passi corti per la distanza stabilita, spalle indietro, busto dritto.",
+      "rom": "Isometria del tronco.",
+      "respirazione": "Respirazione regolare, senza apnea prolungata.",
+      "tempo": "Distanza 15-40 m",
+      "errori": [
+        {
+          "errore": "Spalle che cedono in avanti",
+          "correzione": "Spalle indietro e basse."
+        },
+        {
+          "errore": "Busto che si inclina",
+          "correzione": "Busto dritto, passi controllati."
+        },
+        {
+          "errore": "Passi troppo lunghi",
+          "correzione": "Passi corti e veloci."
+        }
+      ],
+      "cue": [
+        "Spalle indietro",
+        "Busto dritto",
+        "Passi corti",
+        "Presa salda"
+      ],
+      "regressione_progressione": {
+        "regressione": [],
+        "progressione": [
+          "TOT-032 Farmer walk con manubri"
+        ]
+      },
+      "precauzioni": "Sollevare e riappoggiare con la schiena tesa. In caso di fastidi o dolore chiedere il parere di un professionista sanitario."
+    },
+    "config_app": {
+      "eredita_da": null,
+      "vista_camera": "laterale",
+      "lato": "auto",
+      "messaggio_posizione": "Esercizio non supportato: chiedi all'istruttore",
+      "messaggio_ok": "",
+      "misure": {},
+      "ripetizione": {},
+      "errori": [],
+      "testi_errori": {},
+      "analizzabilita": "non_analizzabile",
+      "motivo": "La persona si sposta ed esce dall'inquadratura dopo pochi passi: con una camera fissa non è possibile seguire la serie.",
+      "non_rilevabili": [
+        {
+          "errore": "Postura",
+          "motivo": "Misurabile solo da fermi."
+        }
+      ],
+      "richiesta_motore": [
+        "Camera che segue la persona (come §7.15)."
+      ],
+      "da_calibrare": true
+    }
+  },
+  {
+    "id": "TOT-041",
+    "nome": "Front rack carry con kettlebell",
+    "scheda": {
+      "descrizione": "Camminata tenendo uno o due kettlebell in posizione di rack sulle spalle. Allena addome e parte alta della schiena contro il carico davanti.",
+      "muscoli": {
+        "primari": [
+          "addominali"
+        ],
+        "secondari": [
+          "bicipite brachiale",
+          "deltoide anteriore"
+        ],
+        "stabilizzatori": [
+          "trapezio"
+        ]
+      },
+      "partenza": "Uno o due kettlebell portati in rack, gomiti vicini al busto, polsi dritti.",
+      "esecuzione": "Camminata a passi corti per la distanza stabilita mantenendo il busto dritto e i kettlebell fermi.",
+      "rom": "Isometria del tronco.",
+      "respirazione": "Respirazione regolare, senza apnea prolungata.",
+      "tempo": "Distanza 15-30 m",
+      "errori": [
+        {
+          "errore": "Busto che si inclina indietro",
+          "correzione": "Addome contratto."
+        },
+        {
+          "errore": "Gomiti che si aprono",
+          "correzione": "Gomiti vicini al busto."
+        },
+        {
+          "errore": "Passi lunghi",
+          "correzione": "Passi corti."
+        }
+      ],
+      "cue": [
+        "Busto dritto",
+        "Gomiti stretti",
+        "Passi corti",
+        "Respira"
+      ],
+      "regressione_progressione": {
+        "regressione": [
+          "TOT-040 Farmer walk con kettlebell"
+        ],
+        "progressione": []
+      },
+      "precauzioni": "In caso di fastidi o dolore chiedere il parere di un professionista sanitario."
+    },
+    "config_app": {
+      "eredita_da": "TOT-040",
+      "vista_camera": "laterale",
+      "lato": "auto",
+      "messaggio_posizione": "Esercizio non supportato: chiedi all'istruttore",
+      "messaggio_ok": "",
+      "misure": {},
+      "ripetizione": {},
+      "errori": [],
+      "testi_errori": {},
+      "analizzabilita": "non_analizzabile",
+      "motivo": "La persona si sposta ed esce dall'inquadratura dopo pochi passi: con una camera fissa non è possibile seguire la serie. Nota per il motore: con 'non_analizzabile' non va applicata nessuna regola ereditata.",
+      "non_rilevabili": [
+        {
+          "errore": "Postura",
+          "motivo": "Misurabile solo da fermi."
+        }
+      ],
+      "richiesta_motore": [
+        "Camera che segue la persona (come §7.15)."
+      ],
+      "da_calibrare": true
+    }
+  },
+  {
+    "id": "TOT-042",
+    "nome": "Landmine thruster",
+    "scheda": {
+      "descrizione": "Squat tenendo l'estremità del bilanciere del landmine alla spalla, seguito da una spinta in avanti e in alto. La traiettoria ad arco è più semplice per le spalle del thruster classico.",
+      "muscoli": {
+        "primari": [
+          "quadricipiti",
+          "grande gluteo",
+          "deltoide anteriore"
+        ],
+        "secondari": [
+          "tricipite brachiale"
+        ],
+        "stabilizzatori": [
+          "addominali"
+        ]
+      },
+      "partenza": "Di fronte al landmine, estremità del bilanciere tenuta a due mani (o una) davanti alla spalla, piedi alla larghezza delle spalle.",
+      "esecuzione": {
+        "eccentrica": "Squat fino ad anche all'altezza delle ginocchia, bilanciere alla spalla.",
+        "pausa": "Nessuna.",
+        "concentrica": "Risalita esplosiva e spinta del bilanciere in avanti e in alto fino a braccia tese."
+      },
+      "rom": "Come TOT-022 Thruster con bilanciere.",
+      "respirazione": "Inspira scendendo, espira nella spinta.",
+      "tempo": "2-0-1-0 (discesa 2 s, pausa 0 s, salita 1 s, pausa 0 s)",
+      "errori": [
+        {
+          "errore": "Busto che si piega",
+          "correzione": "Petto alto."
+        },
+        {
+          "errore": "Spinta solo con le braccia",
+          "correzione": "Le gambe lanciano."
+        },
+        {
+          "errore": "Schiena inarcata",
+          "correzione": "Addome contratto."
+        }
+      ],
+      "cue": [
+        "Petto in alto",
+        "Spingi con le gambe",
+        "Braccia distese",
+        "Ritmo"
+      ],
+      "regressione_progressione": {
+        "regressione": [
+          "QUA-041 Landmine squat"
+        ],
+        "progressione": [
+          "TOT-022 Thruster con bilanciere"
+        ]
+      },
+      "precauzioni": "Base del landmine stabile. In caso di fastidi o dolore chiedere il parere di un professionista sanitario."
+    },
+    "config_app": {
+      "eredita_da": null,
+      "vista_camera": "laterale",
+      "lato": "auto",
+      "messaggio_posizione": "Mettiti di lato alla camera, corpo intero visibile",
+      "messaggio_ok": "Ottimo thruster!",
+      "misure": {
+        "ginocchio": {
+          "tipo": "angolo",
+          "punti": [
+            "anca",
+            "ginocchio",
+            "caviglia"
+          ]
+        },
+        "busto": {
+          "tipo": "inclinazione",
+          "punti": [
+            "anca",
+            "spalla"
+          ]
+        }
+      },
+      "ripetizione": {
+        "misura": "ginocchio",
+        "direzione": "diminuisce",
+        "posizione_iniziale": 160,
+        "inizio_movimento": 140
+      },
+      "errori": [
+        {
+          "id": "profondita",
+          "messaggio": "Scendi di più",
+          "gravita": "giallo",
+          "momento": "fine",
+          "misura": "ginocchio",
+          "statistica": "minimo",
+          "maggiore_di": 100
+        },
+        {
+          "id": "busto_inclinato",
+          "messaggio": "Petto alto, busto dritto",
+          "gravita": "giallo",
+          "momento": "durante",
+          "misura": "busto",
+          "maggiore_di": 50
+        }
+      ],
+      "testi_errori": {
+        "profondita": {
+          "cosa_succede": "Ti fermi troppo in alto.",
+          "perche_conta": "Con mezza ampiezza il lavoro e la mobilità allenata diminuiscono.",
+          "come_correggere": "Scendi fino ad avere le anche almeno all'altezza delle ginocchia, se la mobilità lo consente.",
+          "frase_da_ricordare": "Anche alle ginocchia."
+        },
+        "busto_inclinato": {
+          "cosa_succede": "Il busto si piega troppo in avanti.",
+          "perche_conta": "Il carico passa sulla zona lombare e la spinta perde forza.",
+          "come_correggere": "Petto in alto, scendi con il bacino tra le ginocchia.",
+          "frase_da_ricordare": "Petto alto."
+        }
+      },
+      "analizzabilita": "parziale",
+      "motivo": "Come TOT-026, con soglia del busto più larga: verso il landmine il busto si inclina un po' per tecnica. La spinta finale in avanti e in alto avviene dopo la chiusura della ripetizione.",
+      "non_rilevabili": [
+        {
+          "errore": "Braccia distese sopra la testa",
+          "motivo": "La distensione avviene dopo la chiusura della ripetizione."
+        },
+        {
+          "errore": "Schiena inarcata sopra la testa",
+          "motivo": "La curvatura della colonna non è misurabile."
+        }
+      ],
+      "richiesta_motore": [
+        "Statistica estesa fino al picco successivo alla chiusura della ripetizione (come GLU-019)."
+      ],
+      "da_calibrare": true
+    }
+  },
+  {
+    "id": "TOT-043",
+    "nome": "Landmine clean and press",
+    "scheda": {
+      "descrizione": "L'estremità del bilanciere del landmine viene portata da terra alla spalla con una girata e poi spinta in alto. Versione guidata e più accessibile di girata e spinta.",
+      "muscoli": {
+        "primari": [
+          "grande gluteo",
+          "ischiocrurali",
+          "deltoide anteriore"
+        ],
+        "secondari": [
+          "tricipite brachiale"
+        ],
+        "stabilizzatori": [
+          "addominali"
+        ]
+      },
+      "partenza": "Di fianco o di fronte all'estremità del bilanciere a terra, presa con una o due mani.",
+      "esecuzione": "Girata dell'estremità alla spalla con una spinta delle anche, poi spinta in alto fino a braccio teso; ritorno controllato a terra.",
+      "rom": "Anca da piegata a estesa, braccio fino a estensione completa.",
+      "respirazione": "Espira nella fase esplosiva.",
+      "tempo": "Esplosivo",
+      "errori": [
+        {
+          "errore": "Schiena arrotondata nella partenza",
+          "correzione": "Petto alto."
+        },
+        {
+          "errore": "Tirare con le braccia",
+          "correzione": "Le anche lanciano."
+        },
+        {
+          "errore": "Busto che si inclina nella spinta",
+          "correzione": "Addome contratto."
+        }
+      ],
+      "cue": [
+        "Spingi con le anche",
+        "Petto alto",
+        "Braccio bloccato",
+        "Giù controllato"
+      ],
+      "regressione_progressione": {
+        "regressione": [
+          "TOT-042 Landmine thruster"
+        ],
+        "progressione": []
+      },
+      "precauzioni": "Base del landmine stabile; imparare con carichi leggeri. In caso di fastidi o dolore chiedere il parere di un professionista sanitario."
+    },
+    "config_app": {
+      "eredita_da": null,
+      "vista_camera": "laterale",
+      "lato": "auto",
+      "messaggio_posizione": "Esercizio non supportato: chiedi all'istruttore",
+      "messaggio_ok": "",
+      "misure": {},
+      "ripetizione": {},
+      "errori": [],
+      "testi_errori": {},
+      "analizzabilita": "non_analizzabile",
+      "motivo": "Esercizio a due fasi (girata e spinta) con traiettoria ad arco e spesso con rotazione del busto: le fasi non si distinguono con una sola misura. Solo scheda.",
+      "non_rilevabili": [
+        {
+          "errore": "Fasi del gesto",
+          "motivo": "Troppo rapide e diverse tra loro."
+        },
+        {
+          "errore": "Schiena arrotondata",
+          "motivo": "La curvatura della colonna non è misurabile."
+        }
+      ],
+      "richiesta_motore": [
+        "Esercizi a più fasi (come §7.12) e camera ad alta frequenza."
+      ],
+      "da_calibrare": true
+    }
+  },
+  {
+    "id": "TOT-044",
+    "nome": "Back lever",
+    "scheda": {
+      "descrizione": "Tenuta alla sbarra o agli anelli con il corpo orizzontale a pancia in giù e le braccia dietro il corpo. Esercizio di ginnastica avanzato per spalle, tronco e braccia.",
+      "muscoli": {
+        "primari": [
+          "deltoide anteriore",
+          "bicipite brachiale",
+          "addominali"
+        ],
+        "secondari": [
+          "grande pettorale",
+          "erettori spinali"
+        ],
+        "stabilizzatori": [
+          "stabilizzatori della spalla"
+        ]
+      },
+      "partenza": "Appesi agli anelli o alla sbarra, si passa sotto la presa con le gambe (skin the cat) fino ad avere le braccia dietro il corpo.",
+      "esecuzione": "Si abbassa il corpo fino all'orizzontale, dritto dalle spalle ai piedi, e si mantiene la posizione per il tempo stabilito.",
+      "rom": "Isometria: spalle in forte estensione, corpo orizzontale.",
+      "respirazione": "Respirazione controllata, senza apnea prolungata.",
+      "tempo": "Tenuta di 5-15 s",
+      "errori": [
+        {
+          "errore": "Bacino che cede o anche piegate",
+          "correzione": "Corpo dritto; partire dalla versione raccolta."
+        },
+        {
+          "errore": "Braccia piegate",
+          "correzione": "Braccia tese."
+        },
+        {
+          "errore": "Discesa troppo rapida nella posizione",
+          "correzione": "Entrare lentamente."
+        }
+      ],
+      "cue": [
+        "Corpo dritto",
+        "Braccia tese",
+        "Glutei stretti",
+        "Respira"
+      ],
+      "regressione_progressione": {
+        "regressione": [],
+        "progressione": []
+      },
+      "precauzioni": "Forte carico sulla parte anteriore della spalla e sul bicipite: progressioni graduali. Chi ha fastidi alle spalle dovrebbe evitarlo. In caso di fastidi o dolore chiedere il parere di un professionista sanitario."
+    },
+    "config_app": {
+      "eredita_da": null,
+      "vista_camera": "laterale",
+      "lato": "auto",
+      "messaggio_posizione": "Esercizio non supportato: chiedi all'istruttore",
+      "messaggio_ok": "",
+      "misure": {},
+      "ripetizione": {},
+      "errori": [],
+      "testi_errori": {},
+      "analizzabilita": "non_analizzabile",
+      "motivo": "È una tenuta isometrica in posizione capovolta o quasi: il formato non prevede le tenute e MediaPipe è poco affidabile nelle pose capovolte (come DEA-002 → 007).",
+      "non_rilevabili": [
+        {
+          "errore": "Corpo orizzontale",
+          "motivo": "Il formato non prevede esercizi a tenuta."
+        }
+      ],
+      "richiesta_motore": [
+        "Modalità isometrica (come §7.8)."
+      ],
+      "da_calibrare": true
+    }
+  },
+  {
+    "id": "TOT-045",
+    "nome": "Wall ball",
+    "scheda": {
+      "descrizione": "Squat con una palla medica al petto seguito da un lancio verso un bersaglio in alto sul muro, riprendendo la palla nella discesa. Esercizio intenso per gambe, spalle e capacità cardio.",
+      "muscoli": {
+        "primari": [
+          "quadricipiti",
+          "grande gluteo"
+        ],
+        "secondari": [
+          "deltoide anteriore",
+          "tricipite brachiale"
+        ],
+        "stabilizzatori": [
+          "addominali"
+        ]
+      },
+      "partenza": "Di fronte al muro a circa 50-80 cm, palla medica tenuta al petto con le mani sotto, gomiti sotto la palla, piedi alla larghezza delle spalle.",
+      "esecuzione": {
+        "eccentrica": "Squat fino ad anche sotto le ginocchia, palla al petto.",
+        "pausa": "Nessuna.",
+        "concentrica": "Risalita esplosiva e lancio della palla verso il bersaglio; si riprende la palla e si scende direttamente nello squat successivo."
+      },
+      "rom": "Ginocchio da circa 175° a circa 60-80°.",
+      "respirazione": "Espira nel lancio.",
+      "tempo": "Ritmico",
+      "errori": [
+        {
+          "errore": "Squat poco profondo",
+          "correzione": "Anche sotto le ginocchia."
+        },
+        {
+          "errore": "Lancio solo con le braccia",
+          "correzione": "Le gambe lanciano."
+        },
+        {
+          "errore": "Palla ricevuta con le braccia tese e rigide",
+          "correzione": "Ricevere e scendere insieme."
+        }
+      ],
+      "cue": [
+        "Scendi profondo",
+        "Spingi con le gambe",
+        "Ricevi e scendi",
+        "Petto alto"
+      ],
+      "regressione_progressione": {
+        "regressione": [
+          "QUA-030 Goblet squat con manubrio"
+        ],
+        "progressione": [
+          "TOT-022 Thruster con bilanciere"
+        ]
+      },
+      "precauzioni": "Scegliere un peso della palla adatto: ricevere una palla pesante dall'alto sollecita spalle e polsi. In caso di fastidi o dolore chiedere il parere di un professionista sanitario."
+    },
+    "config_app": {
+      "eredita_da": null,
+      "vista_camera": "laterale",
+      "lato": "auto",
+      "messaggio_posizione": "Di lato alla camera e al muro, corpo intero",
+      "messaggio_ok": "Ottimo wall ball!",
+      "misure": {
+        "ginocchio": {
+          "tipo": "angolo",
+          "punti": [
+            "anca",
+            "ginocchio",
+            "caviglia"
+          ]
+        },
+        "busto": {
+          "tipo": "inclinazione",
+          "punti": [
+            "anca",
+            "spalla"
+          ]
+        }
+      },
+      "ripetizione": {
+        "misura": "ginocchio",
+        "direzione": "diminuisce",
+        "posizione_iniziale": 160,
+        "inizio_movimento": 140
+      },
+      "errori": [
+        {
+          "id": "profondita",
+          "messaggio": "Scendi di più",
+          "gravita": "giallo",
+          "momento": "fine",
+          "misura": "ginocchio",
+          "statistica": "minimo",
+          "maggiore_di": 90
+        },
+        {
+          "id": "busto_inclinato",
+          "messaggio": "Petto alto, busto dritto",
+          "gravita": "giallo",
+          "momento": "durante",
+          "misura": "busto",
+          "maggiore_di": 45
+        }
+      ],
+      "testi_errori": {
+        "profondita": {
+          "cosa_succede": "Ti fermi troppo in alto.",
+          "perche_conta": "Con mezza ampiezza il lancio perde potenza e le gambe lavorano poco.",
+          "come_correggere": "Scendi con le anche sotto le ginocchia, poi esplodi verso l'alto.",
+          "frase_da_ricordare": "Anche sotto le ginocchia."
+        },
+        "busto_inclinato": {
+          "cosa_succede": "Il busto si piega in avanti.",
+          "perche_conta": "Il lancio perde potenza e la schiena si carica.",
+          "come_correggere": "Palla al petto, gomiti sotto, petto in alto mentre scendi.",
+          "frase_da_ricordare": "Petto alto."
+        }
+      },
+      "analizzabilita": "parziale",
+      "motivo": "Si conta sull'angolo del ginocchio come in uno squat: si controllano profondità e busto. Il lancio e la ricezione della palla avvengono intorno alla chiusura della ripetizione e la palla non è rilevata.",
+      "non_rilevabili": [
+        {
+          "errore": "Altezza del lancio",
+          "motivo": "La palla non è rilevata."
+        },
+        {
+          "errore": "Ricezione della palla",
+          "motivo": "Avviene in un istante."
+        }
+      ],
+      "richiesta_motore": [
+        "Modalità balistica (come §4): nessuna attesa di 0,5 s in partenza e finestra massima fissa, per gesti continui."
+      ],
+      "da_calibrare": true
+    }
+  },
+  {
+    "id": "TOT-046",
+    "nome": "Slam con palla medica",
+    "scheda": {
+      "descrizione": "Si porta una palla medica (slam ball, che non rimbalza) sopra la testa e la si scaglia con forza a terra davanti ai piedi. Esercizio esplosivo per dorso, addome e spalle.",
+      "muscoli": {
+        "primari": [
+          "gran dorsale",
+          "addominali"
+        ],
+        "secondari": [
+          "deltoide anteriore",
+          "tricipite brachiale",
+          "grande gluteo"
+        ],
+        "stabilizzatori": [
+          "erettori spinali"
+        ]
+      },
+      "partenza": "In piedi, piedi alla larghezza delle spalle, slam ball tenuta davanti al corpo.",
+      "esecuzione": "Si porta la palla sopra la testa estendendo il corpo, poi la si scaglia a terra davanti ai piedi piegando anche e ginocchia; la si raccoglie con la schiena tesa.",
+      "rom": "Da estensione completa a busto piegato.",
+      "respirazione": "Espira nello slam.",
+      "tempo": "Esplosivo",
+      "errori": [
+        {
+          "errore": "Schiena arrotondata nella raccolta",
+          "correzione": "Piegare le gambe, schiena tesa."
+        },
+        {
+          "errore": "Palla che rimbalza sul viso",
+          "correzione": "Usare slam ball che non rimbalzano."
+        },
+        {
+          "errore": "Lancio solo con le braccia",
+          "correzione": "Tutto il corpo lancia."
+        }
+      ],
+      "cue": [
+        "Su in punta",
+        "Scaglia giù",
+        "Raccogli con le gambe",
+        "Schiena tesa"
+      ],
+      "regressione_progressione": {
+        "regressione": [],
+        "progressione": [
+          "TOT-047 Lancio della palla medica all'indietro"
+        ]
+      },
+      "precauzioni": "Usare palle da slam che non rimbalzano. In caso di fastidi o dolore chiedere il parere di un professionista sanitario."
+    },
+    "config_app": {
+      "eredita_da": null,
+      "vista_camera": "laterale",
+      "lato": "auto",
+      "messaggio_posizione": "Esercizio non supportato: chiedi all'istruttore",
+      "messaggio_ok": "",
+      "misure": {},
+      "ripetizione": {},
+      "errori": [],
+      "testi_errori": {},
+      "analizzabilita": "non_analizzabile",
+      "motivo": "Gesto balistico in cui l'unico rischio (la schiena nella raccolta della palla) non è misurabile e non c'è una forma da controllare durante la ripetizione. Solo scheda.",
+      "non_rilevabili": [
+        {
+          "errore": "Schiena nella raccolta",
+          "motivo": "La curvatura della colonna non è misurabile."
+        }
+      ],
+      "richiesta_motore": [
+        "Campo 'solo_scheda'."
+      ],
+      "da_calibrare": true
+    }
+  },
+  {
+    "id": "TOT-047",
+    "nome": "Lancio della palla medica all'indietro",
+    "scheda": {
+      "descrizione": "Con una spinta esplosiva delle anche si lancia la palla medica all'indietro sopra la testa, il più lontano possibile. Allena la potenza della catena posteriore.",
+      "muscoli": {
+        "primari": [
+          "grande gluteo",
+          "ischiocrurali"
+        ],
+        "secondari": [
+          "erettori spinali",
+          "deltoide anteriore"
+        ],
+        "stabilizzatori": [
+          "addominali"
+        ]
+      },
+      "partenza": "In piedi in uno spazio aperto, palla medica tenuta a braccia tese tra le gambe, spalle al punto di lancio.",
+      "esecuzione": "Piegamento delle anche e delle ginocchia, estensione esplosiva di tutto il corpo e lancio della palla all'indietro sopra la testa a braccia tese.",
+      "rom": "Da anca piegata a estensione completa.",
+      "respirazione": "Espira nel lancio.",
+      "tempo": "Esplosivo",
+      "errori": [
+        {
+          "errore": "Lancio solo con le braccia",
+          "correzione": "Le anche lanciano."
+        },
+        {
+          "errore": "Schiena arrotondata nel caricamento",
+          "correzione": "Petto alto."
+        },
+        {
+          "errore": "Spazio insufficiente",
+          "correzione": "Area libera dietro di sé."
+        }
+      ],
+      "cue": [
+        "Carica con le anche",
+        "Esplodi",
+        "Braccia lunghe",
+        "Area libera"
+      ],
+      "regressione_progressione": {
+        "regressione": [
+          "GLU-019 Kettlebell swing"
+        ],
+        "progressione": []
+      },
+      "precauzioni": "Assicurarsi che l'area di lancio sia libera. In caso di fastidi o dolore chiedere il parere di un professionista sanitario."
+    },
+    "config_app": {
+      "eredita_da": null,
+      "vista_camera": "laterale",
+      "lato": "auto",
+      "messaggio_posizione": "Esercizio non supportato: chiedi all'istruttore",
+      "messaggio_ok": "",
+      "misure": {},
+      "ripetizione": {},
+      "errori": [],
+      "testi_errori": {},
+      "analizzabilita": "non_analizzabile",
+      "motivo": "Gesto balistico singolo con rilascio della palla: non c'è un ritorno alla posizione iniziale che chiuda la ripetizione e i rischi non sono misurabili.",
+      "non_rilevabili": [
+        {
+          "errore": "Potenza del lancio",
+          "motivo": "La palla non è rilevata."
+        }
+      ],
+      "richiesta_motore": [
+        "Campo 'solo_scheda'."
+      ],
+      "da_calibrare": true
+    }
+  },
+  {
+    "id": "TOT-048",
+    "nome": "Salita alla fune",
+    "scheda": {
+      "descrizione": "Salita lungo una fune verticale usando braccia e gambe, con la tecnica di bloccaggio dei piedi. Allena dorso, braccia, presa e coordinazione.",
+      "muscoli": {
+        "primari": [
+          "gran dorsale",
+          "bicipite brachiale",
+          "avambracci"
+        ],
+        "secondari": [
+          "addominali"
+        ],
+        "stabilizzatori": [
+          "quadricipiti"
+        ]
+      },
+      "partenza": "Appesi alla fune con le due mani, fune tra le gambe.",
+      "esecuzione": "Si raccolgono le ginocchia, si blocca la fune tra i piedi, ci si alza in piedi sulla fune e si sposta in alto la presa; si ripete fino all'altezza stabilita e si scende controllati con lo stesso metodo.",
+      "rom": "Alternanza di trazione e spinta delle gambe.",
+      "respirazione": "Respirazione regolare.",
+      "tempo": "Controllato",
+      "errori": [
+        {
+          "errore": "Salire solo con le braccia",
+          "correzione": "Usare il bloccaggio dei piedi."
+        },
+        {
+          "errore": "Discesa scivolando",
+          "correzione": "Scendere mano dopo mano."
+        },
+        {
+          "errore": "Salire oltre il proprio controllo",
+          "correzione": "Altezze progressive."
+        }
+      ],
+      "cue": [
+        "Blocca i piedi",
+        "Spingi con le gambe",
+        "Mano sopra mano",
+        "Scendi controllato"
+      ],
+      "regressione_progressione": {
+        "regressione": [
+          "DOR-050 Trazioni alla sbarra"
+        ],
+        "progressione": [
+          "TOT-049 Salita alla fune senza gambe"
+        ]
+      },
+      "precauzioni": "Tappeto sotto la fune e altezze progressive: la caduta è il rischio principale. In caso di fastidi o dolore chiedere il parere di un professionista sanitario."
+    },
+    "config_app": {
+      "eredita_da": null,
+      "vista_camera": "laterale",
+      "lato": "auto",
+      "messaggio_posizione": "Esercizio non supportato: chiedi all'istruttore",
+      "messaggio_ok": "",
+      "misure": {},
+      "ripetizione": {},
+      "errori": [],
+      "testi_errori": {},
+      "analizzabilita": "non_analizzabile",
+      "motivo": "La persona sale lungo la fune ed esce dall'inquadratura in verticale; non c'è una ripetizione da contare con una camera fissa.",
+      "non_rilevabili": [
+        {
+          "errore": "Tecnica di salita",
+          "motivo": "Fuori inquadratura."
+        }
+      ],
+      "richiesta_motore": [
+        "Campo 'solo_scheda' con avviso di sicurezza."
+      ],
+      "da_calibrare": true
+    }
+  },
+  {
+    "id": "TOT-049",
+    "nome": "Salita alla fune senza gambe",
+    "scheda": {
+      "descrizione": "Salita alla fune usando solo le braccia, a mano sopra mano. Variante molto avanzata per forza di dorso, braccia e presa.",
+      "muscoli": {
+        "primari": [
+          "gran dorsale",
+          "bicipite brachiale",
+          "avambracci"
+        ],
+        "secondari": [
+          "addominali"
+        ],
+        "stabilizzatori": [
+          "flessori dell'anca"
+        ]
+      },
+      "partenza": "Appesi alla fune, gambe raccolte o in L.",
+      "esecuzione": "Salita a mano sopra mano senza usare le gambe fino all'altezza stabilita; discesa controllata mano dopo mano.",
+      "rom": "Trazioni alternate.",
+      "respirazione": "Respirazione regolare.",
+      "tempo": "Controllato",
+      "errori": [
+        {
+          "errore": "Discesa scivolando",
+          "correzione": "Mano dopo mano."
+        },
+        {
+          "errore": "Salire oltre il proprio controllo",
+          "correzione": "Altezze progressive."
+        },
+        {
+          "errore": "Dondolio",
+          "correzione": "Gambe ferme."
+        }
+      ],
+      "cue": [
+        "Mano sopra mano",
+        "Gambe ferme",
+        "Scendi controllato",
+        "Respira"
+      ],
+      "regressione_progressione": {
+        "regressione": [
+          "TOT-048 Salita alla fune"
+        ],
+        "progressione": []
+      },
+      "precauzioni": "Tappeto sotto la fune e altezze progressive. In caso di fastidi o dolore chiedere il parere di un professionista sanitario."
+    },
+    "config_app": {
+      "eredita_da": "TOT-048",
+      "vista_camera": "laterale",
+      "lato": "auto",
+      "messaggio_posizione": "Esercizio non supportato: chiedi all'istruttore",
+      "messaggio_ok": "",
+      "misure": {},
+      "ripetizione": {},
+      "errori": [],
+      "testi_errori": {},
+      "analizzabilita": "non_analizzabile",
+      "motivo": "La persona sale lungo la fune ed esce dall'inquadratura in verticale; non c'è una ripetizione da contare con una camera fissa. Nota per il motore: con 'non_analizzabile' non va applicata nessuna regola ereditata.",
+      "non_rilevabili": [
+        {
+          "errore": "Tecnica di salita",
+          "motivo": "Fuori inquadratura."
+        }
+      ],
+      "richiesta_motore": [
+        "Campo 'solo_scheda' con avviso di sicurezza."
+      ],
+      "da_calibrare": true
+    }
+  },
+  {
+    "id": "TOT-050",
+    "nome": "Spinta della slitta",
+    "scheda": {
+      "descrizione": "Si spinge una slitta carica sul pavimento con il corpo inclinato in avanti e le braccia tese. Allena gambe, glutei e capacità cardio con un basso stress articolare.",
+      "muscoli": {
+        "primari": [
+          "quadricipiti",
+          "grande gluteo"
+        ],
+        "secondari": [
+          "polpacci",
+          "grande pettorale",
+          "tricipite brachiale"
+        ],
+        "stabilizzatori": [
+          "addominali"
+        ]
+      },
+      "partenza": "Mani sulle impugnature alte o basse della slitta, braccia tese, corpo inclinato in avanti in linea.",
+      "esecuzione": "Spinta della slitta con passi corti e potenti per la distanza stabilita, corpo in linea, spingendo con l'avampiede.",
+      "rom": "Estensione alternata di anca e ginocchio.",
+      "respirazione": "Respirazione regolare.",
+      "tempo": "Distanza 10-30 m",
+      "errori": [
+        {
+          "errore": "Bacino che cede",
+          "correzione": "Corpo in linea."
+        },
+        {
+          "errore": "Passi lunghi",
+          "correzione": "Passi corti e potenti."
+        },
+        {
+          "errore": "Braccia piegate",
+          "correzione": "Braccia tese."
+        }
+      ],
+      "cue": [
+        "Corpo in linea",
+        "Passi corti",
+        "Spingi con l'avampiede",
+        "Braccia tese"
+      ],
+      "regressione_progressione": {
+        "regressione": [],
+        "progressione": [
+          "TOT-051 Traino della slitta"
+        ]
+      },
+      "precauzioni": "In caso di fastidi o dolore chiedere il parere di un professionista sanitario."
+    },
+    "config_app": {
+      "eredita_da": null,
+      "vista_camera": "laterale",
+      "lato": "auto",
+      "messaggio_posizione": "Esercizio non supportato: chiedi all'istruttore",
+      "messaggio_ok": "",
+      "misure": {},
+      "ripetizione": {},
+      "errori": [],
+      "testi_errori": {},
+      "analizzabilita": "non_analizzabile",
+      "motivo": "La persona si sposta ed esce dall'inquadratura dopo pochi passi: con una camera fissa non è possibile seguire la serie.",
+      "non_rilevabili": [
+        {
+          "errore": "Postura",
+          "motivo": "Misurabile solo da fermi."
+        }
+      ],
+      "richiesta_motore": [
+        "Camera che segue la persona (come §7.15)."
+      ],
+      "da_calibrare": true
+    }
+  },
+  {
+    "id": "TOT-051",
+    "nome": "Traino della slitta",
+    "scheda": {
+      "descrizione": "Si traina una slitta carica camminando all'indietro e tenendo le cinghie a braccia tese. Allena soprattutto i quadricipiti e la capacità cardio con un basso stress articolare.",
+      "muscoli": {
+        "primari": [
+          "quadricipiti"
+        ],
+        "secondari": [
+          "grande gluteo",
+          "gran dorsale",
+          "bicipite brachiale"
+        ],
+        "stabilizzatori": [
+          "addominali"
+        ]
+      },
+      "partenza": "Cinghie collegate alla slitta tenute a braccia tese davanti al corpo, busto leggermente inclinato indietro, ginocchia piegate.",
+      "esecuzione": "Camminata all'indietro a passi corti e decisi, spingendo con l'avampiede e mantenendo le cinghie tese, per la distanza stabilita.",
+      "rom": "Estensione alternata di ginocchio e anca.",
+      "respirazione": "Respirazione regolare.",
+      "tempo": "Distanza 10-30 m",
+      "errori": [
+        {
+          "errore": "Schiena arrotondata",
+          "correzione": "Petto alto."
+        },
+        {
+          "errore": "Strappi",
+          "correzione": "Trazione continua."
+        },
+        {
+          "errore": "Passi lunghi",
+          "correzione": "Passi corti."
+        }
+      ],
+      "cue": [
+        "Schiena tesa",
+        "Passi corti",
+        "Trazione continua",
+        "Respira"
+      ],
+      "regressione_progressione": {
+        "regressione": [
+          "TOT-050 Spinta della slitta"
+        ],
+        "progressione": []
+      },
+      "precauzioni": "In caso di fastidi o dolore chiedere il parere di un professionista sanitario."
+    },
+    "config_app": {
+      "eredita_da": null,
+      "vista_camera": "laterale",
+      "lato": "auto",
+      "messaggio_posizione": "Esercizio non supportato: chiedi all'istruttore",
+      "messaggio_ok": "",
+      "misure": {},
+      "ripetizione": {},
+      "errori": [],
+      "testi_errori": {},
+      "analizzabilita": "non_analizzabile",
+      "motivo": "La persona si sposta ed esce dall'inquadratura dopo pochi passi: con una camera fissa non è possibile seguire la serie.",
+      "non_rilevabili": [
+        {
+          "errore": "Postura",
+          "motivo": "Misurabile solo da fermi."
+        }
+      ],
+      "richiesta_motore": [
+        "Camera che segue la persona (come §7.15)."
+      ],
+      "da_calibrare": true
+    }
+  },
+  {
+    "id": "TOT-052",
+    "nome": "Ribaltamento del pneumatico",
+    "scheda": {
+      "descrizione": "Si solleva e si ribalta in avanti un grande pneumatico con una combinazione di stacco e spinta. Esercizio di forza funzionale per tutto il corpo.",
+      "muscoli": {
+        "primari": [
+          "grande gluteo",
+          "ischiocrurali",
+          "quadricipiti"
+        ],
+        "secondari": [
+          "erettori spinali",
+          "grande pettorale",
+          "bicipite brachiale"
+        ],
+        "stabilizzatori": [
+          "addominali"
+        ]
+      },
+      "partenza": "Davanti al pneumatico, piedi alla larghezza delle spalle, dita sotto il bordo, petto contro il pneumatico, schiena tesa.",
+      "esecuzione": "Spinta delle gambe in avanti e in alto sollevando il pneumatico, ginocchio contro il pneumatico per avanzare, poi spinta con le mani fino a ribaltarlo; si raggiunge e si ripete.",
+      "rom": "Da anca e ginocchio molto piegati a estensione completa.",
+      "respirazione": "Inspira e trattieni prima di sollevare, espira a pneumatico in piedi.",
+      "tempo": "Esplosivo",
+      "errori": [
+        {
+          "errore": "Schiena arrotondata",
+          "correzione": "Petto contro il pneumatico, schiena tesa."
+        },
+        {
+          "errore": "Sollevare con le braccia (bicipiti tesi)",
+          "correzione": "Spingere con le gambe."
+        },
+        {
+          "errore": "Pneumatico troppo pesante",
+          "correzione": "Scegliere un peso adatto."
+        }
+      ],
+      "cue": [
+        "Petto al pneumatico",
+        "Spingi con le gambe",
+        "Schiena tesa",
+        "Spingi via con le mani"
+      ],
+      "regressione_progressione": {
+        "regressione": [
+          "GLU-011 Stacco da terra"
+        ],
+        "progressione": []
+      },
+      "precauzioni": "Rischio per la schiena e per il bicipite con pneumatici troppo pesanti. Chi ha problemi di pressione dovrebbe evitare di trattenere il respiro sotto sforzo. In caso di fastidi o dolore chiedere il parere di un professionista sanitario."
+    },
+    "config_app": {
+      "eredita_da": null,
+      "vista_camera": "laterale",
+      "lato": "auto",
+      "messaggio_posizione": "Esercizio non supportato: chiedi all'istruttore",
+      "messaggio_ok": "",
+      "misure": {},
+      "ripetizione": {},
+      "errori": [],
+      "testi_errori": {},
+      "analizzabilita": "non_analizzabile",
+      "motivo": "A ogni ripetizione il pneumatico si sposta e la persona lo segue, uscendo dall'inquadratura; il pneumatico copre gran parte del corpo. Solo scheda.",
+      "non_rilevabili": [
+        {
+          "errore": "Schiena",
+          "motivo": "Il pneumatico copre il corpo."
+        }
+      ],
+      "richiesta_motore": [
+        "Camera che segue la persona (come §7.15)."
+      ],
+      "da_calibrare": true
+    }
+  }
+]
